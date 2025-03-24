@@ -86,10 +86,3 @@ ls -aldh llama*
 
 You should see three directories and a `.zip` file. The `llama-server-one-deploy.zip` file is ready to upload and share.
 
----
-Congratulations! You did it. You built a `llama-server-one` executable that runs on two different CPU architectures and several popular operating systems. If you had any trouble in this process, please post a question in the [Discussions section](https://github.com/BradHutchings/llama-server-one/discussions). I'm happy to help!
-
--Brad
-
-
-

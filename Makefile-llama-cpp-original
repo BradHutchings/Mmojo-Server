@@ -2,12 +2,9 @@ ifndef LLAMA_MAKEFILE
 $(error The Makefile build is deprecated. Use the CMake build instead. For more details, see https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md)
 endif
 
-# Modified by Brad Hutchings to build llama.cpp targets correctly and build with cosmocc.
-
 # Define the default target now so that it is always the first target
 BUILD_TARGETS = \
 	libllava.a \
-	llama-server \
 	llama-batched \
 	llama-batched-bench \
 	llama-bench \
@@ -39,6 +36,7 @@ BUILD_TARGETS = \
 	llama-quantize-stats \
 	llama-retrieval \
 	llama-save-load-state \
+	llama-server \
 	llama-simple \
 	llama-simple-chat \
 	llama-run \
@@ -260,7 +258,7 @@ endif
 #
 
 # keep standard at C11 and C++17
-MK_CPPFLAGS  = -Iggml/include -Iggml/src -Iinclude -Isrc -Icommon -I. -DGGML_USE_CPU
+MK_CPPFLAGS  = -Iggml/include -Iggml/src -Iinclude -Isrc -Icommon -DGGML_USE_CPU
 MK_CFLAGS    = -std=c11   -fPIC
 MK_CXXFLAGS  = -std=c++17 -fPIC
 MK_NVCCFLAGS = -std=c++17
@@ -372,66 +370,27 @@ ifndef GGML_NO_CPU_AARCH64
 	MK_CPPFLAGS += -DGGML_USE_CPU_AARCH64
 endif
 
-ifeq ($(UNAME_S),cosmocc)
-$(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
-	
-	WARN_FLAGS_ORIG = \
-		-Wall \
-		-Wextra \
-		-Wpedantic \
-		-Wcast-qual \
-		-Wno-unused-function
+# warnings
+WARN_FLAGS = \
+	-Wall \
+	-Wextra \
+	-Wpedantic \
+	-Wcast-qual \
+	-Wno-unused-function
 
-	WARN_FLAGS = \
-		-Wcast-qual \
-		-Wno-unused-function
+MK_CFLAGS += \
+	$(WARN_FLAGS) \
+	-Wshadow \
+	-Wstrict-prototypes \
+	-Wpointer-arith \
+	-Wmissing-prototypes \
+	-Werror=implicit-int \
+	-Werror=implicit-function-declaration
 
-	MK_CFLAGS += \
-		$(WARN_FLAGS) \
-		-Wshadow \
-		-Wstrict-prototypes \
-		-Wpointer-arith \
-		-Wmissing-prototypes \
-		-Werror=implicit-function-declaration \
-		-Wno-implicit-int \
-		-DCOSMOCC=1
-
-	MK_CXXFLAGS += \
-		$(WARN_FLAGS) \
-		-Wmissing-declarations \
-		-Wmissing-noreturn \
-		-Wno-literal-suffix \
-		-DCOSMOCC=1
-
-
-else
-$(info Using default MK_CFLAGS and MK_CXXFLAGS flags.)
-
-	# warnings
-	WARN_FLAGS = \
-		-Wall \
-		-Wextra \
-		-Wpedantic \
-		-Wcast-qual \
-		-Wno-unused-function
-
-	MK_CFLAGS += \
-		$(WARN_FLAGS) \
-		-Wshadow \
-		-Wstrict-prototypes \
-		-Wpointer-arith \
-		-Wmissing-prototypes \
-		-Werror=implicit-int \
-		-Werror=implicit-function-declaration
-
-	MK_CXXFLAGS += \
-		$(WARN_FLAGS) \
-		-Wmissing-declarations \
-		-Wmissing-noreturn
-
-endif
-
-
+MK_CXXFLAGS += \
+	$(WARN_FLAGS) \
+	-Wmissing-declarations \
+	-Wmissing-noreturn
 
 ifeq ($(LLAMA_FATAL_WARNINGS),1)
 	MK_CFLAGS   += -Werror
@@ -439,10 +398,8 @@ ifeq ($(LLAMA_FATAL_WARNINGS),1)
 endif
 
 # this version of Apple ld64 is buggy
-ifneq ($(UNAME_S),cosmocc)
 ifneq '' '$(findstring dyld-1015.7,$(shell $(CC) $(LDFLAGS) -Wl,-v 2>&1))'
 	MK_CPPFLAGS += -DHAVE_BUGGY_APPLE_LINKER
-endif
 endif
 
 # OS specific
@@ -503,7 +460,6 @@ ifeq ($(UNAME_M),$(filter $(UNAME_M),x86_64 i686 amd64))
 	#MK_CXXFLAGS += -mssse3
 endif
 
-ifneq ($(UNAME_S),cosmocc)
 ifneq '' '$(findstring mingw,$(shell $(CC) -dumpmachine))'
 	# The stack is only 16-byte aligned on Windows, so don't let gcc emit aligned moves.
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=54412
@@ -513,7 +469,6 @@ ifneq '' '$(findstring mingw,$(shell $(CC) -dumpmachine))'
 
 	# Target Windows 8 for PrefetchVirtualMemory
 	MK_CPPFLAGS += -D_WIN32_WINNT=0x602
-endif
 endif
 
 ifneq ($(filter aarch64%,$(UNAME_M)),)
@@ -1023,7 +978,6 @@ OBJ_GGML = \
 	$(DIR_GGML)/src/ggml-cpu/ggml-cpu-hbm.o \
 	$(DIR_GGML)/src/ggml-cpu/ggml-cpu-quants.o \
 	$(DIR_GGML)/src/ggml-cpu/ggml-cpu-traits.o \
-	$(DIR_GGML)/src/gguf.o \
 	$(OBJ_GGML_EXT)
 
 OBJ_LLAMA = \
@@ -1031,24 +985,8 @@ OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama-vocab.o \
 	$(DIR_LLAMA)/llama-grammar.o \
 	$(DIR_LLAMA)/llama-sampling.o \
-	$(DIR_LLAMA)/llama-adapter.o \
-	$(DIR_LLAMA)/llama-arch.o \
-	$(DIR_LLAMA)/llama-batch.o \
-	$(DIR_LLAMA)/llama-chat.o \
-	$(DIR_LLAMA)/llama-context.o \
-	$(DIR_LLAMA)/llama-graph.o \
-	$(DIR_LLAMA)/llama-hparams.o \
-	$(DIR_LLAMA)/llama-impl.o \
-	$(DIR_LLAMA)/llama-io.o \
-	$(DIR_LLAMA)/llama-kv-cache.o \
-	$(DIR_LLAMA)/llama-mmap.o \
-	$(DIR_LLAMA)/llama-model.o \
-	$(DIR_LLAMA)/llama-model-loader.o \
-	$(DIR_LLAMA)/llama-quant.o \
 	$(DIR_LLAMA)/unicode.o \
 	$(DIR_LLAMA)/unicode-data.o
-
-#	$(DIR_LLAMA)/llama-context.o \
 
 OBJ_COMMON = \
 	$(DIR_COMMON)/common.o \
@@ -1111,10 +1049,8 @@ $(info I CFLAGS:    $(CFLAGS))
 $(info I CXXFLAGS:  $(CXXFLAGS))
 $(info I NVCCFLAGS: $(NVCCFLAGS))
 $(info I LDFLAGS:   $(LDFLAGS))
-ifneq ($(UNAME_S),cosmocc)
 $(info I CC:        $(shell $(CC)   --version | head -n 1))
 $(info I CXX:       $(shell $(CXX)  --version | head -n 1))
-endif
 ifdef GGML_CUDA
 $(info I NVCC:      $(shell $(NVCC) --version | tail -n 1))
 CUDA_VERSION := $(shell $(NVCC) --version | grep -oP 'release (\K[0-9]+\.[0-9])')
@@ -1260,14 +1196,7 @@ llama-infill: examples/infill/infill.cpp \
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 
-llama-run: \
-	examples/run/run.cpp \
-	examples/run/linenoise.cpp/linenoise.cpp \
-	$(OBJ_ALL)
-	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
-	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
-
-llama-run-orig: examples/run/run.cpp \
+llama-run: examples/run/run.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
@@ -1441,20 +1370,6 @@ rpc-server: examples/rpc/rpc-server.cpp \
 endif # GGML_RPC
 
 llama-server: \
-	examples/server/server.cpp \
-	examples/server/httplib.h \
-	common/chat.h \
-	common/minja/chat-template.hpp \
-	common/json.hpp \
-	common//minja/minja.hpp \
-	$(OBJ_ALL)
-	cmake -DINPUT=examples/server/public/index.html.gz -DOUTPUT=examples/server/index.html.gz.hpp -P scripts/xxd.cmake
-	cmake -DINPUT=examples/server/public_legacy/index.html -DOUTPUT=examples/server/index.html.hpp -P scripts/xxd.cmake
-	cmake -DINPUT=examples/server/public_legacy/loading.html -DOUTPUT=examples/server/loading.html.hpp -P scripts/xxd.cmake
-	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
-	$(CXX) $(CXXFLAGS) $(filter-out %.h %.hpp $<,$^) -Iexamples/server $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS) $(LWINSOCK2)
-
-llama-server-orig: \
 	examples/server/server.cpp \
 	examples/server/utils.hpp \
 	examples/server/httplib.h \

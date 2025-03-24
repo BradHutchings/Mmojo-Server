@@ -72,6 +72,13 @@ zip -0 $DEPLOY_ZIP *
 mv $DEPLOY_ZIP ~
 cd ~
 ```
+---
+If you've made it this far, you've built, packaged, and are ready to deploy a `llama-server-one` LLM server. Let's look at what you've built:
+```
+ls -alhd llama*
+```
 
+Congratulations! If you had any trouble working through these guides, please let me know in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions).
 
+-Brad
 

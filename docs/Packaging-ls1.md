@@ -57,7 +57,7 @@ zip -0 -r $LLAMA_SERVER_ONE_ZIP website/*
 unzip -l $LLAMA_SERVER_ONE_ZIP 
 ```
 
-A `llama-server-one-args` file in the archive can specify sane default parameters. The format of the file is parameter name on a line, parameter value on a line, rinse, repeat. End the file with a `...` line to include user specified parameters.
+A `default-args` file in the archive can specify sane default parameters. The format of the file is parameter name on a line, parameter value on a line, rinse, repeat. End the file with a `...` line to include user specified parameters.
 
 We don't yet support including the model inside the zip archive (yet). That has a 4GB size limitation on Windows anyway, as `.exe` files cannot exceed 4GB. So let's use an adjacent file called `model.gguf`.
 
@@ -93,12 +93,12 @@ model.gguf
 EOF
 ```
 
-Add the `llama-server-one-args` file to the archive:
+Add the `default-args` file to the archive:
 ```
 zip -0 -r $LLAMA_SERVER_ONE_ZIP $DEFAULT_ARGS
 ```
 
-Verify that the archive contains the `llama-server-one-args` file:
+Verify that the archive contains the `default-args` file:
 ```
 unzip -l $LLAMA_SERVER_ONE_ZIP 
 ```

@@ -13,8 +13,8 @@ Assuming you configured as instructed in the [Configuring-ls1.md](Configuring-ls
 ### Environment Variables
 Let's define some environment variables:
 ```
-LLAMA_CPP_DIR="llama.cpp"
-LLAMA_SERVER_ONE_DIR="llama-server-one"
+BUILDING_DIR="1-BUILDING-llama.cpp"
+CONFIGURING_DIR="2-CONFIGURING-llama-server-one"
 PACKAGING_DIR="llama-server-one-packaging"
 PACKAGING_ZIP="llama-server-one-packaging.zip"
 
@@ -34,7 +34,7 @@ cd ~
 rm -r -f $PACKAGING_DIR $PACKAGING_ZIP
 mkdir -p $PACKAGING_DIR
 cd $PACKAGING_DIR
-cp ~/$LLAMA_SERVER_ONE_DIR/$LLAMA_SERVER_ONE .
+cp ~/$CONFIGURING_DIR/$LLAMA_SERVER_ONE .
 printf "\n**********\n*\n* FINISHED: Create Packaging Directory.\n*\n**********\n\n"
 ```
 
@@ -54,7 +54,7 @@ printf "\n**********\n*\n* FINISHED: Copy llama-server-one as .exe.\n*\n********
 We have already downloaded a model in the [Packaging steps](Packaging-ls1.md). Let's copy that into our deploy directory. We'll use the model's original filename and make that work with the `llama-server-args` file (below).
 ```
 MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
-cp ~/$LLAMA_SERVER_ONE_DIR/model.gguf $MODEL_FILE
+cp ~/$CONFIGURING_DIR/model.gguf $MODEL_FILE
 printf "\n**********\n*\n* FINISHED: Copy Model File.\n*\n**********\n\n"
 ```
 

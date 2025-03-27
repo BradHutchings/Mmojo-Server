@@ -127,4 +127,4 @@ If you'd like it to listen on all available interfaces, so you can connect from 
 ./$LLAMA_SERVER_ONE --host 0.0.0.0
 ```
 ---
-Congratulations! You are ready to deploy your `llams-server-one` executable. Follow instructions in [Deploying-ls1.md](Deploying-ls1.md).
+Congratulations! You are ready to package your `llams-server-one` executable for deployment. Follow instructions in [Packaging-ls1.md](Packaging-ls1.md).

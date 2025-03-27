@@ -38,8 +38,8 @@ I welcome any of my changes being implemented in the official llama.cpp.
 ### Documentation
 Follow these guides in order to build, package, and deploy `llama-server-one`:
 - My start-to-finish guide for building `llama-server` with Cosmo is in the [Building-ls1.md](docs/Building-ls1.md) file.
-- My guide for packaging a `llama-server-one` executable is in the [Packaging-ls1.md](docs/Packaging-ls1.md) file.
-- My guide for deploying a `llama-server-one` executable is in the [Deploying-ls1.md](docs/Deploying-ls1.md) file.
+- My guide for configuring a `llama-server-one` executable is in the [Configuring-ls1.md](docs/Configuring-ls1.md) file.
+- My guide for packaging a `llama-server-one` executable for deployment is in the [Packaging-ls1.md](docs/Packaging-ls1.md) file.
 
 ---
 ### Modifications to llama.cpp

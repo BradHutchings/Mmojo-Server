@@ -1,12 +1,12 @@
-## Packaging llama-server-one
+## Configuring llama-server-one
 
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for packaging the `llama-server-one` executable to make it ready to deploy on multiple platforms.
+This file contains instructions for configuring the `llama-server-one` executable to make it ready to package for multiple platforms.
 
 ---
-### Package llama-server-one Executable
+### Configure llama-server-one Executable
 
 Let's define some environment variables:
 ```

@@ -15,8 +15,8 @@ Let's define some environment variables:
 ```
 BUILDING_DIR="1-BUILDING-llama.cpp"
 CONFIGURING_DIR="2-CONFIGURING-llama-server-one"
-PACKAGING_DIR="llama-server-one-packaging"
-PACKAGING_ZIP="llama-server-one-packaging.zip"
+PACKAGING_DIR="3-PACKAGING-llama-server-one"
+DEPLOY_ZIP="llama-server-one-deploy.zip"
 
 LLAMA_SERVER="llama-server"
 LLAMA_SERVER_ONE="llama-server-one"
@@ -31,7 +31,7 @@ Create a folder and copy `llama-server-one` into the new folder.
 ```
 # This should use variables for paths and filenames. So should the packaging instructions.
 cd ~
-rm -r -f $PACKAGING_DIR $PACKAGING_ZIP
+rm -r -f $PACKAGING_DIR $DEPLOY_ZIP
 mkdir -p $PACKAGING_DIR
 cd $PACKAGING_DIR
 cp ~/$CONFIGURING_DIR/$LLAMA_SERVER_ONE .
@@ -95,7 +95,7 @@ Now we can test run `llama-server-one`, listening on all network interfaces, por
 
 After starting up and loading the model, it should display:
 
-**main: server is listening on http://127.0.0.1:8080 - starting the main loop**<br/>
+**main: server is listening on http://0.0.0.0:8888 - starting the main loop**<br/>
 **srv  update_slots: all slots are idle**
 
 Hit `ctrl-C` on your keyboard to stop it.
@@ -106,8 +106,8 @@ Hit `ctrl-C` on your keyboard to stop it.
 Let's zip up the files into a `.zip` file you can share and move it to your home directory. The model won't compress much, so we're turning compression off with the `-0` parameter.
 
 ```
-zip -0 $PACKAGING_ZIP *
-mv $PACKAGING_ZIP ~
+zip -0 $DEPLOY_ZIP *
+mv $DEPLOY_ZIP ~
 cd ~
 printf "\n**********\n*\n* FINISHED: Make .zip Acrhive.\n*\n**********\n\n"
 ```
@@ -116,7 +116,7 @@ printf "\n**********\n*\n* FINISHED: Make .zip Acrhive.\n*\n**********\n\n"
 ### Review What You Created
 Finally, let's review what you created in building, packaging, and deploying `llama-server-one`:
 ```
-ls -aldh llama*
+ls -aldh *llama*
 printf "\n**********\n*\n* FINISHED: Review What You Created.\n*\n**********\n\n"
 ```
 

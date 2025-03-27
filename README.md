@@ -38,8 +38,8 @@ I welcome any of my changes being implemented in the official llama.cpp.
 ### Documentation
 Follow these guides in order to build, package, and deploy `llama-server-one`:
 - My start-to-finish guide for building `llama-server` with Cosmo is in the [Building-ls1.md](docs/Building-ls1.md) file.
-- My guide for packaging a `llama-server-one` executable is in the [Packaging-ls1.md](docs/Packaging-ls1.md) file.
-- My guide for deploying a `llama-server-one` executable is in the [Deploying-ls1.md](docs/Deploying-ls1.md) file.
+- My guide for configuring a `llama-server-one` executable is in the [Configuring-ls1.md](docs/Configuring-ls1.md) file.
+- My guide for packaging a `llama-server-one` executable for deployment is in the [Packaging-ls1.md](docs/Packaging-ls1.md) file.
 
 ---
 ### Modifications to llama.cpp
@@ -72,4 +72,4 @@ In no particular order of importance, these are the things that bother me:
 - Clean up remaining build warnings, either by fixing source (i.e. Cosmo) or finding the magical compiler flags.
 - Copy the `cosmo_args` function into `server.cpp` so it could potentially be incorporated upstream in non-Cosmo builds. `common/arg2.cpp` might be a good landing spot. License in [Cosmo source code](https://github.com/jart/cosmopolitan/blob/master/tool/args/args2.c) appears to be MIT compatible with attribution. 
 - The `--ctx-size` parameter doesn't seem quite right given that new models have the training (or max) context size in their metadata. That size should be used subject to a maximum in a passed parameter. E.g. So a 128K model can run comfortably on a smaller device.
-- The documentation steps are mis-named. Should be building, assembling, and packaging. Deploying is a whole 'nother step that should address the args file, removing the extra executable depending on platform, models, host, port. context size.
+- Write docs for a Deploying step. It should address the args file, removing the extra executable depending on platform, models, host, port. context size.

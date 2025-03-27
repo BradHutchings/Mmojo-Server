@@ -3,128 +3,129 @@
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for packaging the `llama-server-one` executable to make it ready to deploy on multiple platforms.
+This file contains instructions for packaging the `llama-server-one` executable for deployment. I'm using Ubuntu 24.04.
 
 ---
-### Package llama-server-one Executable
+### Packaging Folder
+Assuming you configured as instructed in the [Configuring-ls1.md](Configuring-ls1.md) instructions file, let's create a folder with everything you need to package for deployment. You can zip this folder to distribute your `llama-server-one`, model, and arguments file for use on any platform. 
 
+---
+### Environment Variables
 Let's define some environment variables:
 ```
-LLAMA_CPP_DIR="llama.cpp"
-LLAMA_SERVER_ONE_DIR="llama-server-one"
+BUILDING_DIR="1-BUILDING-llama.cpp"
+CONFIGURING_DIR="2-CONFIGURING-llama-server-one"
+PACKAGING_DIR="3-PACKAGING-llama-server-one-deploy"
+DEPLOY_ZIP="llama-server-one-deploy.zip"
 
 LLAMA_SERVER="llama-server"
 LLAMA_SERVER_ONE="llama-server-one"
-LLAMA_SERVER_ONE_ZIP="llama-server-one.zip"
-DEFAULT_ARGS="default-args"
+LLAMA_SERVER_ONE_EXE="llama-server-one.exe"
+LLAMA_SERVER_ONE_ARGS="llama-server-one-args"
+printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
-Next, let's create a directory where we'll package up `llama-server-one`:
+---
+### Create Packaging Directory
+Create a folder and copy `llama-server-one` into the new folder.
 ```
+# This should use variables for paths and filenames. So should the packaging instructions.
 cd ~
-rm -r -f ~/$LLAMA_SERVER_ONE_DIR
-mkdir -p $LLAMA_SERVER_ONE_DIR
-cp ~/$LLAMA_CPP_DIR/$LLAMA_SERVER \
-    ~/$LLAMA_SERVER_ONE_DIR/$LLAMA_SERVER_ONE_ZIP
-
-cd ~/$LLAMA_SERVER_ONE_DIR
+rm -r -f $PACKAGING_DIR $DEPLOY_ZIP
+mkdir -p $PACKAGING_DIR
+cd $PACKAGING_DIR
+cp ~/$CONFIGURING_DIR/$LLAMA_SERVER_ONE .
+printf "\n**********\n*\n* FINISHED: Create Packaging Directory.\n*\n**********\n\n"
 ```
 
-Look at the contents of the `llama-server-one` zip archive:
+---
+### Copy llama-server-one as .exe
+
+On Windows, this executable will need to be renamed to a `.exe` file. Since our executable is small, let's just make a copy of `llama-server-one` with the `.exe` extension.
+
 ```
-unzip -l $LLAMA_SERVER_ONE_ZIP 
+cp $LLAMA_SERVER_ONE $LLAMA_SERVER_ONE_EXE
+printf "\n**********\n*\n* FINISHED: Copy llama-server-one as .exe.\n*\n**********\n\n"
 ```
 
-You should notice a bunch of extraneous timezone related files in `/usr/*`. Let's get rid of those:
+---
+### Copy Model File
+
+We have already downloaded a model in the [Packaging steps](Packaging-ls1.md). Let's copy that into our deploy directory. We'll use the model's original filename and make that work with the `llama-server-args` file (below).
 ```
-zip -d $LLAMA_SERVER_ONE_ZIP "/usr/*"
+MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
+cp ~/$CONFIGURING_DIR/model.gguf $MODEL_FILE
+printf "\n**********\n*\n* FINISHED: Copy Model File.\n*\n**********\n\n"
 ```
 
-Verify that these files are no longer in the archive:
-```
-unzip -l $LLAMA_SERVER_ONE_ZIP 
-```
+#### OPTINAL: Download Model File Again
 
-**Optional:** `llama.cpp` has a built in chat UI. If you'd like to provide a custom UI, you should add a `website` directory to the `llama-server-one` archive. `llama.cpp`'s chat UI is optimized for serving inside the project's source code. But we can copy the unoptimized source:
-```
-mkdir -p website
-cp -r ~/$LLAMA_CPP_DIR/examples/server/public_legacy/* website
-zip -0 -r $LLAMA_SERVER_ONE_ZIP website/*
-```
-
-**Optional:** Verify that the archive has your website:
-```
-unzip -l $LLAMA_SERVER_ONE_ZIP 
-```
-
-A `default-args` file in the archive can specify sane default parameters. The format of the file is parameter name on a line, parameter value on a line, rinse, repeat. End the file with a `...` line to include user specified parameters.
-
-We don't yet support including the model inside the zip archive (yet). That has a 4GB size limitation on Windows anyway, as `.exe` files cannot exceed 4GB. So let's use an adjacent file called `model.gguf`.
-
-We will serve on localhost, port 8080 by default for safety. The `--ctx-size` parameter is the size of the context window. This is kinda screwy to have as a set size rather than a maximum because the `.gguf` files now have the training context size in metadata. We set it to 8192 to be sensible.
-```
-cat << EOF > $DEFAULT_ARGS
--m
-model.gguf
---host
-127.0.0.1
---port
-8080
---ctx-size
-8192
-...
-EOF
-```
-
-**Optional:** If you added a website to the archive, use this instead:
-```
-cat << EOF > $DEFAULT_ARGS
--m
-model.gguf
---host
-127.0.0.1
---port
-8080
---ctx-size
-8192
---path
-/zip/website
-...
-EOF
-```
-
-Add the `default-args` file to the archive:
-```
-zip -0 -r $LLAMA_SERVER_ONE_ZIP $DEFAULT_ARGS
-```
-
-Verify that the archive contains the `default-args` file:
-```
-unzip -l $LLAMA_SERVER_ONE_ZIP 
-```
-
-Remove the `.zip` from our working file:
-```
-mv $LLAMA_SERVER_ONE_ZIP $LLAMA_SERVER_ONE
-```
-
-Let's download a small model. We'll use Google Gemma 1B Instruct v3, a surprisingly capable tiny model.
+If you would rather download it again and save as the original name, here are the commands:
 ```
 MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
 wget https://huggingface.co/bradhutchings/Brads-LLMs/resolve/main/models/$MODEL_FILE?download=true \
-    --show-progress --quiet -O model.gguf
+    --show-progress --quiet -O $MODEL_FILE
+printf "\n**********\n*\n* FINISHED: Download Model File Again.\n*\n**********\n\n"
 ```
 
-Now we can test run `llama-server-one`, listening on localhost:8080.
+---
+### Create llama-server-one-args File
+
+Let's create a `llama-server-one-args` file. These parameters can override or augment the parameters you previously embedded in you `llama-server-one` archive. This file could be edited by the end user to configure llama-file-one without having to construct and type a long command line. Notice that we've overridden the `-m`, `--host`, and `--port` parameters.
+```
+cat << EOF > $LLAMA_SERVER_ONE_ARGS
+-m
+$MODEL_FILE
+--host
+0.0.0.0
+--port
+8888
+...
+EOF
+printf "\n**********\n*\n* FINISHED: Create llama-server-one-args File.\n*\n**********\n\n"
+```
+
+---
+### Test Run
+
+Now we can test run `llama-server-one`, listening on all network interfaces, port 8888. Note that these are different from the default args you built into `llama-server-one`. You can connect to it from another web browser.
 ```
 ./$LLAMA_SERVER_ONE
 ```
 
-Hit `ctrl-C` to stop it.
+After starting up and loading the model, it should display:
 
-If you'd like it to listen on all available interfaces, so you can connect from a browser on another computer:
-```
-./$LLAMA_SERVER_ONE --host 0.0.0.0
-```
+**main: server is listening on http://0.0.0.0:8888 - starting the main loop**<br/>
+**srv  update_slots: all slots are idle**
+
+Hit `ctrl-C` on your keyboard to stop it.
+
 ---
-Congratulations! You are ready to deploy your `llams-server-one` executable. Follow instructions in [Deploying-ls1.md](Deploying-ls1.md).
+### Make .zip Acrhive
+
+Let's zip up the files into a `.zip` file you can share and move it to your home directory. The model won't compress much, so we're turning compression off with the `-0` parameter.
+
+```
+zip -0 $DEPLOY_ZIP *
+mv $DEPLOY_ZIP ~
+cd ~
+printf "\n**********\n*\n* FINISHED: Make .zip Acrhive.\n*\n**********\n\n"
+```
+
+---
+### Review What You Created
+Finally, let's review what you created in building, packaging, and deploying `llama-server-one`:
+```
+ls -aldh *llama*
+printf "\n**********\n*\n* FINISHED: Review What You Created.\n*\n**********\n\n"
+```
+
+You should see three directories and a `.zip` file. The `llama-server-one-deploy.zip` file is ready to upload and share.
+
+---
+### Congratulations!
+
+Congratulations! You did it. You built a `llama-server-one` executable that runs on two different CPU architectures and several popular operating systems. If you had any trouble in this process, please post a question in the [Discussions section](https://github.com/BradHutchings/llama-server-one/discussions). I'm happy to help!
+
+-Brad
+

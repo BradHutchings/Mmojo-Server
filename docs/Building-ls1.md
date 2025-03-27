@@ -5,6 +5,15 @@ brad@bradhutchings.com
 
 This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `llama-server` executable that will run on multiple platforms.
 
+### Environment Variables
+
+Let's define some environment variables:
+```
+BUILDING_DIR="1-BUILDING-llama.cpp"
+printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
+```
+
+
 ---
 ### Build Dependencies
 I build with a freshly installed Ubuntu 24.04 VM. Here are some packages that are helpful in creating a working build system. You may need to install more.
@@ -22,13 +31,13 @@ _Note that if you copy each code block from the guide and paste it into your ter
 Clone this repo into a `~\llama.cpp` directory.
 ```
 cd ~
-git clone https://github.com/BradHutchings/llama-server-one.git llama.cpp
+git clone https://github.com/BradHutchings/llama-server-one.git $BUILDING_DIR
 printf "\n**********\n*\n* FINISHED: Clone this Repo Locally.\n*\n**********\n\n"
 ```
 
 **Optional:** Use the `work-in-progress` branch where I implement and test my own changes and where I test upstream changes from `llama.cpp`.
 ```
-cd ~/llama.cpp
+cd ~/$BUILDING_DIR
 git checkout work-in-progress
 printf "\n**********\n*\n* FINISHED: Checkout work-in-progress.\n*\n**********\n\n"
 ```
@@ -37,7 +46,7 @@ printf "\n**********\n*\n* FINISHED: Checkout work-in-progress.\n*\n**********\n
 ### Make llama.cpp
 We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
 ```
-cd ~/llama.cpp
+cd ~/$BUILDING_DIR
 export LLAMA_MAKEFILE=1
 make clean
 make

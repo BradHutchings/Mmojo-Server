@@ -127,7 +127,7 @@ printf "\n**********\n*\n* FINISHED: Verify Zip Archive.\n*\n**********\n\n"
 ```
 
 ---
-### Packaging llama-server-one
+### Configuring llama-server-one
 
 Now that you've built `llama-server`, you're ready to configure it as `llama-server-one`. Follow instructions in [Configuring-ls1.md](Configuring-ls1.md).
 

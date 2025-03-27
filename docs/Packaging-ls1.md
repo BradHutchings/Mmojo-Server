@@ -1,9 +1,9 @@
-## Deploying llama-server-one
+## Packaging llama-server-one
 
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for deploying the `llama-server-one` executable. I'm using Ubuntu 24.04.
+This file contains instructions for packaging the `llama-server-one` executable for deployment. I'm using Ubuntu 24.04.
 
 ---
 ### Deployment Folder

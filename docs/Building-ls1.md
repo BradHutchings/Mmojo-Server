@@ -12,33 +12,47 @@ I build with a freshly installed Ubuntu 24.04 VM. Here are some packages that ar
 sudo apt install -y git python3-pip build-essential zlib1g-dev \
     libffi-dev libssl-dev libbz2-dev libreadline-dev libsqlite3-dev \
     liblzma-dev tk-dev python3-tk cmake zip
+printf "\n**********\n*\n* FINISHED: Build Dependencies.\n*\n**********\n\n"
 ```
 
+_Note that if you copy each code block from the guide and paste it into your terminal, each block ends with a message so you won't lose your place in this guide._
+
+---
 ### Clone this Repo Locally
 Clone this repo into a `~\llama.cpp` directory.
 ```
 cd ~
 git clone https://github.com/BradHutchings/llama-server-one.git llama.cpp
+printf "\n**********\n*\n* FINISHED: Clone this Repo Locally.\n*\n**********\n\n"
 ```
 
 **Optional:** Use the `work-in-progress` branch where I implement and test my own changes and where I test upstream changes from `llama.cpp`.
 ```
 cd ~/llama.cpp
 git checkout work-in-progress
+printf "\n**********\n*\n* FINISHED: Checkout work-in-progress.\n*\n**********\n\n"
 ```
 
+---
 ### Make llama.cpp
 We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
 ```
 cd ~/llama.cpp
 export LLAMA_MAKEFILE=1
+make clean
 make
+printf "\n**********\n*\n* FINISHED: Make llama.cpp.\n*\n**********\n\n"
 ```
 
 If the build is successful, it will end with this message:
 
 &nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
 
+If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
+
+If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions) area.
+
+---
 ### Install Cosmo
 ```
 mkdir -p cosmocc
@@ -47,8 +61,10 @@ wget https://cosmo.zip/pub/cosmocc/cosmocc.zip
 unzip cosmocc.zip
 rm cosmocc.zip
 cd ..
+printf "\n**********\n*\n* FINISHED: Install Cosmo.\n*\n**********\n\n"
 ```
 
+---
 ### Prepare to make llama.cpp with Cosmo
 ```
 export PATH="$(pwd)/cosmocc/bin:$PATH"
@@ -59,30 +75,43 @@ export CXX="cosmocc -I$(pwd)/cosmocc/include \
 export UNAME_S="cosmocc"
 export UNAME_P="cosmocc"
 export UNAME_M="cosmocc"
+printf "\n**********\n*\n* FINISHED: Prepare to make llama.cpp with Cosmo.\n*\n**********\n\n"
 ```
 
+---
 ### Make llama.cpp with Cosmo
 ```
 make clean
 make
+printf "\n**********\n*\n* FINISHED: Make llama.cpp with Cosmo\n*\n**********\n\n"
 ```
 
 If the build is successful, it will end with this message:
 
 &nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
 
+If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
+
+If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions) area.
+
+#### List Directory
+
 At this point, you should see `llama-server` and other built binaries in the directory listing.
 ```
 ls -al
+printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
+
+#### Verify Zip Archive
 
 `llama-server` is actually a zip acrhive with an "Actually Portable Executable" (APE) loader prefix. Let's verify the zip archive part:
 ```
 unzip -l llama-server
+printf "\n**********\n*\n* FINISHED: Verify Zip Archive.\n*\n**********\n\n"
 ```
 
 ---
 ### Packaging llama-server-one
 
-Now that you've built `llama-server`, you're ready to package it as `llama-server-one`. Follow instructions in [Packaging-ls1.md](Packaging-ls1.md).
+Now that you've built `llama-server`, you're ready to configure it as `llama-server-one`. Follow instructions in [Configuring-ls1.md](Configuring-ls1.md).
 

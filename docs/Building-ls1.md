@@ -60,6 +60,14 @@ If the build fails and you've checked out the `work-in-progress` branch, well, i
 
 If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions) area.
 
+#### List Directory
+
+At this point, you should see `llama-server` and other built binaries in the directory listing.
+```
+ls -al
+printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
+```
+
 ---
 ### Install Cosmo
 ```

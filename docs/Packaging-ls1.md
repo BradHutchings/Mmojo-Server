@@ -15,7 +15,7 @@ Let's define some environment variables:
 ```
 BUILDING_DIR="1-BUILDING-llama.cpp"
 CONFIGURING_DIR="2-CONFIGURING-llama-server-one"
-PACKAGING_DIR="3-PACKAGING-llama-server-one"
+PACKAGING_DIR="3-PACKAGING-llama-server-one-deploy"
 DEPLOY_ZIP="llama-server-one-deploy.zip"
 
 LLAMA_SERVER="llama-server"

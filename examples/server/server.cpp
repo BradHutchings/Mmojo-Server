@@ -3450,8 +3450,8 @@ struct server_context {
         return json {
             {"vocab_type",  llama_vocab_type            (vocab)},
             {"n_vocab",     llama_vocab_n_tokens        (vocab)},
-            {"n_ctx_train", llama_n_ctx_train           (model)},
-            {"n_embd",      llama_n_embd                (model)},
+            {"n_ctx_train", llama_model_n_ctx_train     (model)},
+            {"n_embd",      llama_model_n_embd          (model)},
             {"n_params",    llama_model_n_params        (model)},
             {"size",        llama_model_size            (model)},
             {"general.architecture", general_architecture },

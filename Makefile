@@ -1040,7 +1040,7 @@ OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama-arch.o \
 	$(DIR_LLAMA)/llama-batch.o \
 	$(DIR_LLAMA)/llama-chat.o \
-	$(DIR_LLAMA)/llama-context.o \
+	$(DIR_LLAMA)/llama-context-ls1.o \
 	$(DIR_LLAMA)/llama-graph.o \
 	$(DIR_LLAMA)/llama-hparams.o \
 	$(DIR_LLAMA)/llama-impl.o \
@@ -1446,7 +1446,7 @@ rpc-server: examples/rpc/rpc-server.cpp \
 endif # GGML_RPC
 
 llama-server: \
-	examples/server/server.cpp \
+	examples/server/server-ls1.cpp \
 	examples/server/httplib.h \
 	common/chat.h \
 	common/minja/chat-template.hpp \

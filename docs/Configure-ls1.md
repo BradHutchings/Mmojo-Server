@@ -153,7 +153,7 @@ MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
 # Future: Cache download in ~/$DOWNLOAD_DIR
 wget https://huggingface.co/bradhutchings/Brads-LLMs/resolve/main/models/$MODEL_FILE?download=true \
     --show-progress --quiet -O model.gguf
-printf "\n**********\n*\n* FINISHED: Download Model.\n*\n**********\n\n"```
+printf "\n**********\n*\n* FINISHED: Download Model.\n*\n**********\n\n"
 ```
 
 ---

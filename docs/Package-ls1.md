@@ -1,4 +1,4 @@
-## Packaging llama-server-one
+## Package llama-server-one for Deployment
 
 Brad Hutchings<br/>
 brad@bradhutchings.com
@@ -6,16 +6,16 @@ brad@bradhutchings.com
 This file contains instructions for packaging the `llama-server-one` executable for deployment. I'm using Ubuntu 24.04.
 
 ---
-### Packaging Folder
-Assuming you configured as instructed in the [Configuring-ls1.md](Configuring-ls1.md) instructions file, let's create a folder with everything you need to package for deployment. You can zip this folder to distribute your `llama-server-one`, model, and arguments file for use on any platform. 
+### Package Directory
+Assuming you configured as instructed in the [Configure-ls1.md](Configure-ls1.md) instructions file, let's create a directory with everything you need to package for deployment. You can zip this folder to distribute your `llama-server-one`, model, and arguments file for use on any platform. 
 
 ---
 ### Environment Variables
 Let's define some environment variables:
 ```
-BUILDING_DIR="1-BUILDING-llama.cpp"
-CONFIGURING_DIR="2-CONFIGURING-llama-server-one"
-PACKAGING_DIR="3-PACKAGING-llama-server-one-deploy"
+BUILD_DIR="1-BUILD-llama.cpp"
+CONFIGURE_DIR="2-CONFIGURE-llama-server-one"
+PACKAGE_DIR="3-PACKAGE-llama-server-one-deploy"
 DEPLOY_ZIP="llama-server-one-deploy.zip"
 
 LLAMA_SERVER="llama-server"
@@ -26,16 +26,16 @@ printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
 ---
-### Create Packaging Directory
+### Create Package Directory
 Create a folder and copy `llama-server-one` into the new folder.
 ```
 # This should use variables for paths and filenames. So should the packaging instructions.
 cd ~
-rm -r -f $PACKAGING_DIR $DEPLOY_ZIP
-mkdir -p $PACKAGING_DIR
-cd $PACKAGING_DIR
-cp ~/$CONFIGURING_DIR/$LLAMA_SERVER_ONE .
-printf "\n**********\n*\n* FINISHED: Create Packaging Directory.\n*\n**********\n\n"
+rm -r -f ~/$PACKAGE_DIR ~/$DEPLOY_ZIP
+mkdir -p ~/$PACKAGE_DIR
+cd ~/$PACKAGE_DIR
+cp ~/$CONFIGURE_DIR/$LLAMA_SERVER_ONE .
+printf "\n**********\n*\n* FINISHED: Create Package Directory.\n*\n**********\n\n"
 ```
 
 ---
@@ -51,10 +51,11 @@ printf "\n**********\n*\n* FINISHED: Copy llama-server-one as .exe.\n*\n********
 ---
 ### Copy Model File
 
-We have already downloaded a model in the [Packaging steps](Packaging-ls1.md). Let's copy that into our deploy directory. We'll use the model's original filename and make that work with the `llama-server-args` file (below).
+We have already downloaded a model in the [Configure steps](Configure-ls1.md). Let's copy that into our package directory. We'll use the model's original filename and make that work with the `llama-server-args` file (below).
 ```
 MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
-cp ~/$CONFIGURING_DIR/model.gguf $MODEL_FILE
+cd ~/$PACKAGE_DIR
+cp ~/$CONFIGURE_DIR/model.gguf $MODEL_FILE
 printf "\n**********\n*\n* FINISHED: Copy Model File.\n*\n**********\n\n"
 ```
 
@@ -63,6 +64,7 @@ printf "\n**********\n*\n* FINISHED: Copy Model File.\n*\n**********\n\n"
 If you would rather download it again and save as the original name, here are the commands:
 ```
 MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
+cd ~/$PACKAGE_DIR
 wget https://huggingface.co/bradhutchings/Brads-LLMs/resolve/main/models/$MODEL_FILE?download=true \
     --show-progress --quiet -O $MODEL_FILE
 printf "\n**********\n*\n* FINISHED: Download Model File Again.\n*\n**********\n\n"

@@ -1056,7 +1056,7 @@ OBJ_LLAMA = \
 #	$(DIR_LLAMA)/llama-context.o \
 
 OBJ_COMMON = \
-	$(DIR_COMMON)/common.o \
+	$(DIR_COMMON)/common-ls1.o \
 	$(DIR_COMMON)/arg.o \
 	$(DIR_COMMON)/log.o \
 	$(DIR_COMMON)/console.o \
@@ -1066,6 +1066,8 @@ OBJ_COMMON = \
 	$(DIR_COMMON)/chat.o \
 	$(DIR_COMMON)/build-info.o \
 	$(DIR_COMMON)/json-schema-to-grammar.o
+
+#	$(DIR_COMMON)/common.o \
 
 OBJ_ALL = $(OBJ_GGML) $(OBJ_LLAMA) $(OBJ_COMMON)
 

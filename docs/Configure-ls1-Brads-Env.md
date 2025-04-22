@@ -1,4 +1,4 @@
-## Configuring llama-server-one in my Environment
+## Configure llama-server-one in my Environment
 
 Brad Hutchings<br/>
 brad@bradhutchings.com
@@ -11,8 +11,8 @@ Instructioons have been customized for my environment. You should use these [Con
 
 Let's define some environment variables:
 ```
-BUILDING_DIR="1-BUILDING-llama.cpp"
-CONFIGURING_DIR="2-CONFIGURING-llama-server-one"
+BUILD_DIR="1-BUILD-llama.cpp"
+CONFIGURE_DIR="2-CONFIGURE-llama-server-one"
 
 LLAMA_SERVER="llama-server"
 LLAMA_SERVER_ONE="llama-server-one"
@@ -27,12 +27,12 @@ printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 Next, let's create a directory where we'll configure `llama-server-one`:
 ```
 cd ~
-rm -r -f ~/$CONFIGURING_DIR
-mkdir -p $CONFIGURING_DIR
-cp ~/$BUILDING_DIR/$LLAMA_SERVER \
-    ~/$CONFIGURING_DIR/$LLAMA_SERVER_ONE_ZIP
+rm -r -f ~/$CONFIGURE_DIR
+mkdir -p $CONFIGURE_DIR
+cp ~/$BUILD_DIR/$LLAMA_SERVER \
+    ~/$CONFIGURE_DIR/$LLAMA_SERVER_ONE_ZIP
 
-cd ~/$CONFIGURING_DIR
+cd ~/$CONFIGURE_DIR
 printf "\n**********\n*\n* FINISHED: Create Configuration Directory.\n*\n**********\n\n"
 ```
 

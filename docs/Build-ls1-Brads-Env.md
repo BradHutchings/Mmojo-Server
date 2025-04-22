@@ -3,7 +3,8 @@
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `llama-server` executable that will run on multiple platforms.
+This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `llama-server` executable that will run on multiple platforms. Instructioons have been customized for my environment. You should use these [Building Instructions](Building-ls1.md).
+
 
 ### Environment Variables
 

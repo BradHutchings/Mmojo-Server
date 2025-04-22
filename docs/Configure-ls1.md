@@ -67,7 +67,7 @@ printf "\n**********\n*\n* FINISHED: Verify Contents of Zip Archive.\n*\n*******
 `llama.cpp` has a built in chat UI. If you'd like to provide a custom UI, you should add a `website` directory to the `llama-server-one` archive. `llama.cpp`'s chat UI is optimized for serving inside the project's source code. But we can copy the the included `public_simplechat` implementation:
 ```
 mkdir -p website
-cp -r ~/$BUILD_DIR/examples/server/piblic_simplechat/* website
+cp -r ~/$BUILD_DIR/examples/server/public_simplechat/* website
 zip -0 -r $LLAMA_SERVER_ONE_ZIP website/*
 printf "\n**********\n*\n* FINISHED: Create website Directory in Archive.\n*\n**********\n\n"
 ```

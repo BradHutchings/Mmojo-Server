@@ -70,6 +70,7 @@ mkdir -p website
 cp -r ~/$BUILD_DIR/examples/server/public_legacy/* website
 zip -0 -r $LLAMA_SERVER_ONE_ZIP website/*
 printf "\n**********\n*\n* FINISHED: Create website Directory in Archive.\n*\n**********\n\n"
+```
 
 #### OPTIONAL: Verify website Directory in Archive
 

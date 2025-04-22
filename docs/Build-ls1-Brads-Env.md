@@ -3,7 +3,7 @@
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `llama-server` executable that will run on multiple platforms. Instructioons have been customized for my environment. You should use these [Building Instructions](Building-ls1.md).
+This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `llama-server` executable that will run on multiple platforms. Instructions have been customized for my environment. You should use these [Building Instructions](Building-ls1.md).
 
 
 ### Environment Variables
@@ -165,6 +165,6 @@ printf "\n**********\n*\n* FINISHED: Verify Zip Archive.\n*\n**********\n\n"
 ```
 
 ---
-### Configuring llama-server-one
+### Next step: Configure llama-server-one
 
 Now that you've built `llama-server`, you're ready to configure it as `llama-server-one`. Follow instructions in [Configure-ls1-Brads-Env.md](Configure-ls1-Brads-Env.md).

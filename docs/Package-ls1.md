@@ -69,7 +69,7 @@ Let's create a `llama-server-one-args` file. These parameters can override or au
 ```
 cat << EOF > $LLAMA_SERVER_ONE_ARGS
 -m
-$MODEL_FILE
+model.gguf
 --host
 0.0.0.0
 --port

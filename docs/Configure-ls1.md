@@ -21,7 +21,7 @@ printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
 ---
-### Create Configuration Directory
+### Create Configure Directory
 
 Next, let's create a directory where we'll configure `llama-server-one`:
 ```

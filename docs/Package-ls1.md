@@ -49,25 +49,17 @@ printf "\n**********\n*\n* FINISHED: Copy llama-server-one as .exe.\n*\n********
 ```
 
 ---
-### Copy Model File
+### Download Model
 
-We have already downloaded a model in the [Configure steps](Configure-ls1.md). Let's copy that into our package directory. We'll use the model's original filename and make that work with the `llama-server-args` file (below).
+Let's download a small model. We'll use Google Gemma 1B Instruct v3, a surprisingly capable tiny model.
 ```
 MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
+cd ~/$DOWNLOAD_DIR
+URL="https://huggingface.co/bradhutchings/Brads-LLMs/resolve/main/models/$MODEL_FILE?download=true"
+if [ ! -f model.gguf ]; then wget $URL --show-progress --quiet -O model.gguf ; fi
 cd ~/$PACKAGE_DIR
-cp ~/$CONFIGURE_DIR/model.gguf $MODEL_FILE
-printf "\n**********\n*\n* FINISHED: Copy Model File.\n*\n**********\n\n"
-```
-
-#### OPTINAL: Download Model File Again
-
-If you would rather download it again and save as the original name, here are the commands:
-```
-MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
-cd ~/$PACKAGE_DIR
-wget https://huggingface.co/bradhutchings/Brads-LLMs/resolve/main/models/$MODEL_FILE?download=true \
-    --show-progress --quiet -O $MODEL_FILE
-printf "\n**********\n*\n* FINISHED: Download Model File Again.\n*\n**********\n\n"
+cp ~/$DOWNLOAD_DIR/model.gguf .
+printf "\n**********\n*\n* FINISHED: Download Model.\n*\n**********\n\n"
 ```
 
 ---

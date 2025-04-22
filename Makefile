@@ -23,7 +23,8 @@ BUILD_TARGETS = \
 	llama-gritlm \
 	llama-imatrix \
 	llama-infill \
-	llama-llava-cli \
+    # Looks to have been removed upstream from CMake around 2025-04-22. -Brad
+	# llama-llava-cli \
 	llama-minicpmv-cli\
 	llama-qwen2vl-cli\
 	llama-lookahead \
@@ -1499,13 +1500,13 @@ libllava.a: examples/llava/llava.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -static -fPIC -c $< -o $@ -Wno-cast-qual
 
-llama-llava-cli: examples/llava/llava-cli.cpp \
-	examples/llava/llava.cpp \
-	examples/llava/llava.h \
-	examples/llava/clip.cpp \
-	examples/llava/clip.h \
-	$(OBJ_ALL)
-	$(CXX) $(CXXFLAGS) $< $(filter-out %.h $<,$^) -o $@ $(LDFLAGS) -Wno-cast-qual
+# llama-llava-cli: examples/llava/llava-cli.cpp \
+# 	examples/llava/llava.cpp \
+# 	examples/llava/llava.h \
+# 	examples/llava/clip.cpp \
+# 	examples/llava/clip.h \
+# 	$(OBJ_ALL)
+# 	$(CXX) $(CXXFLAGS) $< $(filter-out %.h $<,$^) -o $@ $(LDFLAGS) -Wno-cast-qual
 
 llama-minicpmv-cli: examples/llava/minicpmv-cli.cpp \
 	examples/llava/llava.cpp \

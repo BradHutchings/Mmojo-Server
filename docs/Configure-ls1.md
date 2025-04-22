@@ -186,16 +186,6 @@ After starting up and loading the model, it should display:
 Hit `ctrl-C` on your keyboard to stop it.
 
 ---
-### Copy llama-server-one for Deployment
-Congratulations! You are ready to copy `llams-server-one` executable to the share for deployment.
-
-```
-sudo cp llama-server-one /mnt/hyperv/Mmojo-Raspberry-Pi/Mmojo-LLMs
-sudo cp llama-server-one /mnt/hyperv/Mmojo-Raspberry-Pi/Mmojo-LLMs/llama-server-one.exe
-printf "\n**********\n*\n* FINISHED: Copy llama-server-one for Deployment.\n*\n**********\n\n"
-```
-
----
 ### Next Step: Package llama-server-one for Deployment
 Congratulations! You are ready to package your llams-server-one executable for deployment. Follow instructions in [Package-ls1.md](Package-ls1.md).
 

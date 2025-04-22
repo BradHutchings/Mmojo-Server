@@ -23,7 +23,8 @@ BUILD_TARGETS = \
 	llama-gritlm \
 	llama-imatrix \
 	llama-infill \
-	llama-llava-cli \
+    # Looks to have been removed upstream from CMake around 2025-04-22. -Brad
+	# llama-llava-cli \
 	llama-minicpmv-cli\
 	llama-qwen2vl-cli\
 	llama-lookahead \
@@ -1040,7 +1041,7 @@ OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama-arch.o \
 	$(DIR_LLAMA)/llama-batch.o \
 	$(DIR_LLAMA)/llama-chat.o \
-	$(DIR_LLAMA)/llama-context.o \
+	$(DIR_LLAMA)/llama-context-ls1.o \
 	$(DIR_LLAMA)/llama-graph.o \
 	$(DIR_LLAMA)/llama-hparams.o \
 	$(DIR_LLAMA)/llama-impl.o \
@@ -1056,7 +1057,7 @@ OBJ_LLAMA = \
 #	$(DIR_LLAMA)/llama-context.o \
 
 OBJ_COMMON = \
-	$(DIR_COMMON)/common.o \
+	$(DIR_COMMON)/common-ls1.o \
 	$(DIR_COMMON)/arg.o \
 	$(DIR_COMMON)/log.o \
 	$(DIR_COMMON)/console.o \
@@ -1066,6 +1067,8 @@ OBJ_COMMON = \
 	$(DIR_COMMON)/chat.o \
 	$(DIR_COMMON)/build-info.o \
 	$(DIR_COMMON)/json-schema-to-grammar.o
+
+#	$(DIR_COMMON)/common.o \
 
 OBJ_ALL = $(OBJ_GGML) $(OBJ_LLAMA) $(OBJ_COMMON)
 
@@ -1446,7 +1449,7 @@ rpc-server: examples/rpc/rpc-server.cpp \
 endif # GGML_RPC
 
 llama-server: \
-	examples/server/server.cpp \
+	examples/server/server-ls1.cpp \
 	examples/server/httplib.h \
 	common/chat.h \
 	common/minja/chat-template.hpp \
@@ -1497,13 +1500,13 @@ libllava.a: examples/llava/llava.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -static -fPIC -c $< -o $@ -Wno-cast-qual
 
-llama-llava-cli: examples/llava/llava-cli.cpp \
-	examples/llava/llava.cpp \
-	examples/llava/llava.h \
-	examples/llava/clip.cpp \
-	examples/llava/clip.h \
-	$(OBJ_ALL)
-	$(CXX) $(CXXFLAGS) $< $(filter-out %.h $<,$^) -o $@ $(LDFLAGS) -Wno-cast-qual
+# llama-llava-cli: examples/llava/llava-cli.cpp \
+# 	examples/llava/llava.cpp \
+# 	examples/llava/llava.h \
+# 	examples/llava/clip.cpp \
+# 	examples/llava/clip.h \
+# 	$(OBJ_ALL)
+# 	$(CXX) $(CXXFLAGS) $< $(filter-out %.h $<,$^) -o $@ $(LDFLAGS) -Wno-cast-qual
 
 llama-minicpmv-cli: examples/llava/minicpmv-cli.cpp \
 	examples/llava/llava.cpp \

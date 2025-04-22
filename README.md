@@ -37,9 +37,9 @@ I welcome any of my changes being implemented in the official llama.cpp.
 ---
 ### Documentation
 Follow these guides in order to build, package, and deploy `llama-server-one`:
-- My start-to-finish guide for building `llama-server` with Cosmo is in the [Building-ls1.md](docs/Building-ls1.md) file.
-- My guide for configuring a `llama-server-one` executable is in the [Configuring-ls1.md](docs/Configuring-ls1.md) file.
-- My guide for packaging a `llama-server-one` executable for deployment is in the [Packaging-ls1.md](docs/Packaging-ls1.md) file.
+- My start-to-finish guide for building `llama-server` with Cosmo is in the [Build Steps](docs/Build-ls1.md) file.
+- My guide for configuring a `llama-server-one` executable is in the [Configure Steps](docs/Configure-ls1.md) file.
+- My guide for packaging a `llama-server-one` executable for deployment is in the [Package Steps](docs/Package-ls1.md) file.
 
 ---
 ### Modifications to llama.cpp
@@ -48,9 +48,9 @@ To get this from the llama.cpp source base, there are few files that need to be 
 
 1. [Makefile](Makefile) -- Extensive modifications to bring up to date, as it is deprecated in favor of a CMake system, and to support COSMOCC.
 
-2. [src/llama-context.cpp](src/llama-context.cpp) -- COSMOCC doesn't have std::fill in its Standard Templates Library.
+2. [src/llama-context.cpp](src/llama-context-ls1.cpp) -- COSMOCC doesn't have std::fill in its Standard Templates Library.
 
-3. [examples/server/server.cpp](examples/server/server.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
+3. [examples/server/server.cpp](examples/server/server-ls1.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
 
 ---
 ### Reference
@@ -75,4 +75,4 @@ In no particular order of importance, these are the things that bother me:
 - The `--ctx-size` parameter doesn't seem quite right given that new models have the training (or max) context size in their metadata. That size should be used subject to a maximum in a passed parameter. E.g. So a 128K model can run comfortably on a smaller device.
 - Write docs for a Deploying step. It should address the args file, removing the extra executable depending on platform, models, host, port. context size.
 - ~~Make a `.gitattributes` file so we can set the default file to be displayed and keep the README.md from llama.cpp. This will help in syncing changes continually from upstream. Reference: https://git-scm.com/docs/gitattributes~~ -- This doesn't actually work.
-- Cosmo needs libssl and libcrypto. Building these from scratch gets an error about Cosco not liking assembly files. Sort this out.
+- ~~Cosmo needs libssl and libcrypto. Building these from scratch gets an error about Cosco not liking assembly files. Sort this out.~~ Implemented.

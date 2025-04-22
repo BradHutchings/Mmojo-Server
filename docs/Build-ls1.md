@@ -1,15 +1,17 @@
-## Building llama-server
+## Build llama-server
 
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
 This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `llama-server` executable that will run on multiple platforms.
 
+
 ### Environment Variables
 
-Let's define some environment variables:
+Let's define some environment variables, resetting those that affect the Makefile:
 ```
-BUILDING_DIR="1-BUILDING-llama.cpp"
+DOWNLOAD_DIR="0-DOWNLOAD"
+BUILD_DIR="1-BUILD-llama.cpp"
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
@@ -30,13 +32,13 @@ printf "\n**********\n*\n* FINISHED: Build Dependencies.\n*\n**********\n\n"
 Clone this repo into a `~\llama.cpp` directory.
 ```
 cd ~
-git clone https://github.com/BradHutchings/llama-server-one.git $BUILDING_DIR
+git clone https://github.com/BradHutchings/llama-server-one.git $BUILD_DIR
 printf "\n**********\n*\n* FINISHED: Clone this Repo Locally.\n*\n**********\n\n"
 ```
 
 **Optional:** Use the `work-in-progress` branch where I implement and test my own changes and where I test upstream changes from `llama.cpp`.
 ```
-cd ~/$BUILDING_DIR
+cd ~/$BUILD_DIR
 git checkout work-in-progress
 printf "\n**********\n*\n* FINISHED: Checkout work-in-progress.\n*\n**********\n\n"
 ```
@@ -45,8 +47,9 @@ printf "\n**********\n*\n* FINISHED: Checkout work-in-progress.\n*\n**********\n
 ### Make llama.cpp
 We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
 ```
-cd ~/$BUILDING_DIR
+cd ~/$BUILD_DIR
 export LLAMA_MAKEFILE=1
+export LLAMA_SERVER_SSL=ON
 make clean
 make
 printf "\n**********\n*\n* FINISHED: Make llama.cpp.\n*\n**********\n\n"
@@ -70,13 +73,18 @@ printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 
 ---
 ### Install Cosmo
+If we haven't previously downloaded `cosmocc.zip`, download it to `~/$DOWNLOAD_DIR`. Then copy the `.zip` file to the build directory and unzip it.
+
 ```
-mkdir -p cosmocc
-cd cosmocc
-wget https://cosmo.zip/pub/cosmocc/cosmocc.zip
+mkdir -p ~/$DOWNLOAD_DIR
+mkdir -p ~/$BUILD_DIR/cosmocc
+cd ~/$DOWNLOAD_DIR
+if [ ! -f cosmocc.zip ]; then wget https://cosmo.zip/pub/cosmocc/cosmocc.zip; fi
+cd ~/$BUILD_DIR/cosmocc
+cp ~/$DOWNLOAD_DIR/cosmocc.zip .
 unzip cosmocc.zip
 rm cosmocc.zip
-cd ..
+cd ~/$BUILD_DIR
 printf "\n**********\n*\n* FINISHED: Install Cosmo.\n*\n**********\n\n"
 ```
 
@@ -87,11 +95,28 @@ export PATH="$(pwd)/cosmocc/bin:$PATH"
 export CC="cosmocc -I$(pwd)/cosmocc/include -L$(pwd)/cosmocc/lib"
 export CXX="cosmocc -I$(pwd)/cosmocc/include \
     -I$(pwd)/cosmocc/include/third_party/libcxx \
-    -L$(pwd)/cosmocc/lib"
+    -L$(pwd)/cosmocc/lib -L$(pwd)/openssl"
+export AR="cosmoar"
 export UNAME_S="cosmocc"
 export UNAME_P="cosmocc"
 export UNAME_M="cosmocc"
 printf "\n**********\n*\n* FINISHED: Prepare to make llama.cpp with Cosmo.\n*\n**********\n\n"
+```
+
+---
+### Make openssl with Cosmo
+We need cross-architectire `libssl` and `libcrypto` static libraries to support SSL in `llama-server-one`.
+```
+cd ~/$BUILD_DIR
+cp -r /usr/include/openssl/ ./cosmocc/include/
+cp -r /usr/include/x86_64-linux-gnu/openssl/* ./cosmocc/include/openssl
+git clone https://github.com/openssl/openssl.git
+cd ~/$BUILD_DIR/openssl
+./Configure no-asm no-dso no-afalgeng no-shared no-pinshared no-apps
+make
+cd ~/$BUILD_DIR
+printf "\n**********\n*\n* FINISHED: Make openssl with Cosmo.\n*\n**********\n\n"
+
 ```
 
 ---
@@ -127,7 +152,6 @@ printf "\n**********\n*\n* FINISHED: Verify Zip Archive.\n*\n**********\n\n"
 ```
 
 ---
-### Configuring llama-server-one
+### Next step: Configure llama-server-one
 
-Now that you've built `llama-server`, you're ready to configure it as `llama-server-one`. Follow instructions in [Configuring-ls1.md](Configuring-ls1.md).
-
+Now that you've built `llama-server`, you're ready to configure it as `llama-server-one`. Follow instructions in [Configure-ls1.md](Configure-ls1.md).

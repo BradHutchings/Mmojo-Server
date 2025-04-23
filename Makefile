@@ -23,8 +23,6 @@ BUILD_TARGETS = \
 	llama-gritlm \
 	llama-imatrix \
 	llama-infill \
-    # Looks to have been removed upstream from CMake around 2025-04-22. -Brad
-	# llama-llava-cli \
 	llama-minicpmv-cli\
 	llama-qwen2vl-cli\
 	llama-lookahead \
@@ -49,6 +47,9 @@ BUILD_TARGETS = \
 	llama-cvector-generator \
 	llama-gen-docs \
 	tests/test-c.o
+
+    # Looks to have been removed upstream from CMake around 2025-04-22. -Brad
+	# llama-llava-cli \
 
 # Binaries only useful for tests
 TEST_TARGETS = \

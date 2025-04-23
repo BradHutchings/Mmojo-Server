@@ -13,6 +13,7 @@ Assuming you configured as instructed in the [Configure-ls1.md](Configure-ls1.md
 ### Environment Variables
 Let's define some environment variables:
 ```
+DOWNLOAD_DIR="0-DOWNLOAD"
 BUILD_DIR="1-BUILD-llama.cpp"
 CONFIGURE_DIR="2-CONFIGURE-llama-server-one"
 PACKAGE_DIR="3-PACKAGE-llama-server-one-deploy"
@@ -54,11 +55,12 @@ printf "\n**********\n*\n* FINISHED: Copy llama-server-one as .exe.\n*\n********
 Let's download a small model. We'll use Google Gemma 1B Instruct v3, a surprisingly capable tiny model.
 ```
 MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
+mkdir -p ~/$DOWNLOAD_DIR
 cd ~/$DOWNLOAD_DIR
 URL="https://huggingface.co/bradhutchings/Brads-LLMs/resolve/main/models/$MODEL_FILE?download=true"
-if [ ! -f model.gguf ]; then wget $URL --show-progress --quiet -O model.gguf ; fi
-cd ~/$PACKAGE_DIR
-cp ~/$DOWNLOAD_DIR/model.gguf .
+if [ ! -f $MODEL_FILE ]; then wget $URL --show-progress --quiet -O $MODEL_FILE ; fi
+cd ~/$CONFIGURE_DIR
+cp ~/$DOWNLOAD_DIR/$MODEL_FILE model.gguf
 printf "\n**********\n*\n* FINISHED: Download Model.\n*\n**********\n\n"
 ```
 

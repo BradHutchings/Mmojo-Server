@@ -16,16 +16,12 @@ BUILD_TARGETS = \
 	llama-embedding \
 	llama-eval-callback \
 	llama-export-lora \
-	llama-gbnf-validator \
 	llama-gguf \
 	llama-gguf-hash \
 	llama-gguf-split \
 	llama-gritlm \
 	llama-imatrix \
 	llama-infill \
-    # Looks to have been removed upstream from CMake around 2025-04-22. -Brad
-	# llama-llava-cli \
-	llama-minicpmv-cli\
 	llama-qwen2vl-cli\
 	llama-lookahead \
 	llama-lookup \
@@ -37,7 +33,6 @@ BUILD_TARGETS = \
 	llama-perplexity \
 	llama-q8dot \
 	llama-quantize \
-	llama-quantize-stats \
 	llama-retrieval \
 	llama-save-load-state \
 	llama-simple \
@@ -49,6 +44,12 @@ BUILD_TARGETS = \
 	llama-cvector-generator \
 	llama-gen-docs \
 	tests/test-c.o
+
+    # Looks to have been removed upstream from CMake around 2025-04-22. -Brad
+	# llama-llava-cli \
+	# llama-minicpmv-cli \
+	# llama-gbnf-validator \
+	# llama-quantize-stats \
 
 # Binaries only useful for tests
 TEST_TARGETS = \
@@ -1310,10 +1311,10 @@ llama-quantize: examples/quantize/quantize.cpp \
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 
-llama-quantize-stats: examples/quantize-stats/quantize-stats.cpp \
-	$(OBJ_ALL)
-	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
-	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
+# llama-quantize-stats: examples/quantize-stats/quantize-stats.cpp \
+# 	$(OBJ_ALL)
+# 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
+# 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 
 llama-perplexity: examples/perplexity/perplexity.cpp \
 	$(OBJ_ALL)
@@ -1508,13 +1509,13 @@ libllava.a: examples/llava/llava.cpp \
 # 	$(OBJ_ALL)
 # 	$(CXX) $(CXXFLAGS) $< $(filter-out %.h $<,$^) -o $@ $(LDFLAGS) -Wno-cast-qual
 
-llama-minicpmv-cli: examples/llava/minicpmv-cli.cpp \
-	examples/llava/llava.cpp \
-	examples/llava/llava.h \
-	examples/llava/clip.cpp \
-	examples/llava/clip.h \
-	$(OBJ_ALL)
-	$(CXX) $(CXXFLAGS) $< $(filter-out %.h $<,$^) -o $@ $(LDFLAGS) -Wno-cast-qual
+# llama-minicpmv-cli: examples/llava/minicpmv-cli.cpp \
+# 	examples/llava/llava.cpp \
+# 	examples/llava/llava.h \
+# 	examples/llava/clip.cpp \
+# 	examples/llava/clip.h \
+# 	$(OBJ_ALL)
+# 	$(CXX) $(CXXFLAGS) $< $(filter-out %.h $<,$^) -o $@ $(LDFLAGS) -Wno-cast-qual
 
 llama-qwen2vl-cli: examples/llava/qwen2vl-cli.cpp \
 	examples/llava/llava.cpp \

@@ -16,7 +16,6 @@ BUILD_TARGETS = \
 	llama-embedding \
 	llama-eval-callback \
 	llama-export-lora \
-	llama-gbnf-validator \
 	llama-gguf \
 	llama-gguf-hash \
 	llama-gguf-split \
@@ -50,6 +49,7 @@ BUILD_TARGETS = \
     # Looks to have been removed upstream from CMake around 2025-04-22. -Brad
 	# llama-llava-cli \
 	# llama-minicpmv-cli \
+	# llama-gbnf-validator \
 
 # Binaries only useful for tests
 TEST_TARGETS = \

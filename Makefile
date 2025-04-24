@@ -33,7 +33,6 @@ BUILD_TARGETS = \
 	llama-perplexity \
 	llama-q8dot \
 	llama-quantize \
-	llama-quantize-stats \
 	llama-retrieval \
 	llama-save-load-state \
 	llama-simple \
@@ -50,6 +49,7 @@ BUILD_TARGETS = \
 	# llama-llava-cli \
 	# llama-minicpmv-cli \
 	# llama-gbnf-validator \
+	# llama-quantize-stats \
 
 # Binaries only useful for tests
 TEST_TARGETS = \
@@ -1311,10 +1311,10 @@ llama-quantize: examples/quantize/quantize.cpp \
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 
-llama-quantize-stats: examples/quantize-stats/quantize-stats.cpp \
-	$(OBJ_ALL)
-	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
-	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
+# llama-quantize-stats: examples/quantize-stats/quantize-stats.cpp \
+# 	$(OBJ_ALL)
+# 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
+# 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 
 llama-perplexity: examples/perplexity/perplexity.cpp \
 	$(OBJ_ALL)

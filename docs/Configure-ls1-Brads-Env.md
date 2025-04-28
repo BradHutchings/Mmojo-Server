@@ -164,8 +164,7 @@ Let's download a small model. We'll use Google Gemma 1B Instruct v3, a surprisin
 MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
 mkdir -p ~/$DOWNLOAD_DIR
 cd ~/$DOWNLOAD_DIR
-URL="https://huggingface.co/bradhutchings/Brads-LLMs/resolve/main/models/$MODEL_FILE?download=true"
-if [ ! -f $MODEL_FILE ]; then wget $URL --show-progress --quiet -O $MODEL_FILE ; fi
+if [ ! -f $MODEL_FILE ]; then cp /mnt/hyperv/models/$MODEL_FILE ~/0-DOWNLOAD/ ; fi
 cd ~/$CONFIGURE_DIR
 cp ~/$DOWNLOAD_DIR/$MODEL_FILE model.gguf
 printf "\n**********\n*\n* FINISHED: Download Model.\n*\n**********\n\n"

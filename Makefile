@@ -22,7 +22,6 @@ BUILD_TARGETS = \
 	llama-gritlm \
 	llama-imatrix \
 	llama-infill \
-	llama-qwen2vl-cli\
 	llama-lookahead \
 	llama-lookup \
 	llama-lookup-create \
@@ -50,6 +49,7 @@ BUILD_TARGETS = \
 	# llama-minicpmv-cli \
 	# llama-gbnf-validator \
 	# llama-quantize-stats \
+	# llama-qwen2vl-cli\
 
 # Binaries only useful for tests
 TEST_TARGETS = \
@@ -1517,13 +1517,13 @@ libllava.a: examples/llava/llava.cpp \
 # 	$(OBJ_ALL)
 # 	$(CXX) $(CXXFLAGS) $< $(filter-out %.h $<,$^) -o $@ $(LDFLAGS) -Wno-cast-qual
 
-llama-qwen2vl-cli: examples/llava/qwen2vl-cli.cpp \
-	examples/llava/llava.cpp \
-	examples/llava/llava.h \
-	examples/llava/clip.cpp \
-	examples/llava/clip.h \
-	$(OBJ_ALL)
-	$(CXX) $(CXXFLAGS) $< $(filter-out %.h $<,$^) -o $@ $(LDFLAGS) -Wno-cast-qual
+# llama-qwen2vl-cli: examples/llava/qwen2vl-cli.cpp \
+#	examples/llava/llava.cpp \
+#	examples/llava/llava.h \
+#	examples/llava/clip.cpp \
+#	examples/llava/clip.h \
+#	$(OBJ_ALL)
+#	$(CXX) $(CXXFLAGS) $< $(filter-out %.h $<,$^) -o $@ $(LDFLAGS) -Wno-cast-qual
 
 ifeq ($(UNAME_S),Darwin)
 swift: examples/batched.swift

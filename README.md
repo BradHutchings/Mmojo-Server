@@ -48,9 +48,11 @@ To get this from the llama.cpp source base, there are few files that need to be 
 
 1. [Makefile](Makefile) -- Extensive modifications to bring up to date, as it is deprecated in favor of a CMake system, and to support COSMOCC.
 
-2. [src/llama-context.cpp](src/llama-context-ls1.cpp) -- COSMOCC doesn't have std::fill in its Standard Templates Library.
+2. [common/common.cpp](common/common-ls1.cpp) -- Added COSMOCC build support.
 
-3. [examples/server/server.cpp](examples/server/server-ls1.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
+3. [src/llama-context.cpp](src/llama-context-ls1.cpp) -- COSMOCC doesn't have std::fill in its Standard Templates Library.
+
+4. [examples/server/server.cpp](examples/server/server-ls1.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
 
 ---
 ### Reference

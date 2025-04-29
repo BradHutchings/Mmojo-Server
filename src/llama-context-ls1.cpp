@@ -1534,7 +1534,7 @@ int32_t llama_context::output_reserve(int32_t n_outputs) {
     embd   = has_embd   ? output_base + logits_size : nullptr;
 
     // set all ids as invalid (negative)
-
+    
     // llama-server-one START
     #ifndef COSMOCC
     std::fill(output_ids.begin(), output_ids.end(), -1);
@@ -1583,7 +1583,7 @@ void llama_context::output_reorder() {
                 }
             }
         }
-
+        
         // llama-server-one START
         #ifndef COSMOCC
         std::fill(output_ids.begin(), output_ids.end(), -1);

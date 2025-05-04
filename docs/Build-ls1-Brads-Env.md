@@ -47,9 +47,9 @@ printf "\n**********\n*\n* FINISHED: Checkout work-in-progress.\n*\n**********\n
 ### Customize WebUI
 ```
 APP_NAME='Mmojo Chat'
-sed -i -e "s/<title>.*<\/title>/<title>$APP_NAME<\/title>/g" examples/server/webui/index.html
-sed -i -e "s/>llama.cpp<\/div>/>$APP_NAME<\/div>/g" examples/server/webui/src/components/Header.tsx
-cd examples/server/webui
+sed -i -e "s/<title>.*<\/title>/<title>$APP_NAME<\/title>/g" tools/server/webui/index.html
+sed -i -e "s/>llama.cpp<\/div>/>$APP_NAME<\/div>/g" tools/server/webui/src/components/Header.tsx
+cd tools/server/webui
 npm i
 npm run build
 cd ~/$BUILD_DIR

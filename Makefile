@@ -1446,7 +1446,6 @@ llama-server: \
 	tools/server/server-ls1.cpp \
 	tools/server/utils.hpp \
 	tools/server/httplib.h \
-	common/chat.cpp \
 	common/chat.h \
 	common/minja/chat-template.hpp \
 	common/json.hpp \

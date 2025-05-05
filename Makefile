@@ -1453,9 +1453,9 @@ llama-server: \
 	common/json.hpp \
 	common//minja/minja.hpp \
 	$(OBJ_ALL)
-	cmake -DINPUT=examples/server/public/index.html.gz -DOUTPUT=examples/server/index.html.gz.hpp -P scripts/xxd.cmake
-	cmake -DINPUT=examples/server/public_legacy/index.html -DOUTPUT=examples/server/index.html.hpp -P scripts/xxd.cmake
-	cmake -DINPUT=examples/server/public_legacy/loading.html -DOUTPUT=examples/server/loading.html.hpp -P scripts/xxd.cmake
+	cmake -DINPUT=tools/server/public/index.html.gz -DOUTPUT=tools/server/index.html.gz.hpp -P scripts/xxd.cmake
+	cmake -DINPUT=tools/server/public_legacy/index.html -DOUTPUT=tools/server/index.html.hpp -P scripts/xxd.cmake
+	cmake -DINPUT=tools/server/public_legacy/loading.html -DOUTPUT=tools/server/loading.html.hpp -P scripts/xxd.cmake
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h %.hpp $<,$^) -Iexamples/server $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS) $(LWINSOCK2)
 

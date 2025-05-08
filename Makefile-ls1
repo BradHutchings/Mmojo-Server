@@ -21,7 +21,6 @@ BUILD_TARGETS = \
 	llama-gguf-split \
 	llama-gritlm \
 	llama-imatrix \
-	llama-infill \
 	llama-lookahead \
 	llama-lookup \
 	llama-lookup-create \
@@ -50,6 +49,7 @@ BUILD_TARGETS = \
 	# llama-gbnf-validator \
 	# llama-quantize-stats \
 	# llama-qwen2vl-cli\
+	# llama-infill \
 
 # Binaries only useful for tests
 TEST_TARGETS = \
@@ -1263,11 +1263,6 @@ llama-cli: tools/main/main.cpp \
 	@echo
 	@echo '====  Run ./llama-cli -h for help.  ===='
 	@echo
-
-llama-infill: examples/infill/infill.cpp \
-	$(OBJ_ALL)
-	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
-	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 
 llama-run: tools/run/run.cpp \
 	tools/run/linenoise.cpp/linenoise.cpp \

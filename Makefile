@@ -1442,6 +1442,9 @@ llama-server: \
 	tools/server/server-ls1.cpp \
 	tools/server/utils.hpp \
 	tools/server/httplib.h \
+	tools/mtmd/clip.cpp \
+	tools/mtmd/llava.cpp \
+	tools/mtmd/mtmd.cpp \
 	common/chat.h \
 	common/minja/chat-template.hpp \
 	common/json.hpp \
@@ -1450,8 +1453,8 @@ llama-server: \
 	cmake -DINPUT=tools/server/public/index.html.gz -DOUTPUT=tools/server/index.html.gz.hpp -P scripts/xxd.cmake
 	cmake -DINPUT=tools/server/public_legacy/index.html -DOUTPUT=tools/server/index.html.hpp -P scripts/xxd.cmake
 	cmake -DINPUT=tools/server/public_legacy/loading.html -DOUTPUT=tools/server/loading.html.hpp -P scripts/xxd.cmake
-	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
-	$(CXX) $(CXXFLAGS) $(filter-out %.h %.hpp $<,$^) -Iexamples/server $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS) $(LWINSOCK2)
+	$(CXX) $(CXXFLAGS) -Itools/mtmd -c $< -o $(call GET_OBJ_FILE, $<)
+	$(CXX) $(CXXFLAGS) $(filter-out %.h %.hpp $<,$^) -Itools/server $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS) $(LWINSOCK2)
 
 llama-server-orig: \
 	tools/server/server.cpp \

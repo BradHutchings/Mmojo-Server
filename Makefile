@@ -1051,6 +1051,7 @@ OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama-mmap.o \
 	$(DIR_LLAMA)/llama-model.o \
 	$(DIR_LLAMA)/llama-model-loader.o \
+	$(DIR_LLAMA)/llama-model-saver.o \
 	$(DIR_LLAMA)/llama-quant.o \
 	$(DIR_LLAMA)/unicode.o \
 	$(DIR_LLAMA)/unicode-data.o
@@ -1443,8 +1444,8 @@ llama-server: \
 	tools/server/utils.hpp \
 	tools/server/httplib.h \
 	tools/mtmd/clip.cpp \
-	tools/mtmd/llava.cpp \
 	tools/mtmd/mtmd.cpp \
+	tools/mtmd/mtmd-helper.cpp \
 	common/chat.h \
 	common/minja/chat-template.hpp \
 	common/json.hpp \
@@ -1485,8 +1486,7 @@ llama-gen-docs: examples/gen-docs/gen-docs.cpp \
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 
-libllava.a: tools/mtmd/llava.cpp \
-	tools/mtmd/llava.h \
+libllava.a: tools/mtmd/mtmd.cpp \
 	tools/mtmd/clip.cpp \
 	tools/mtmd/clip.h \
 	common/stb_image.h \

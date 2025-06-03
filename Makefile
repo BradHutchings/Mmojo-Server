@@ -1452,6 +1452,9 @@ llama-server: \
 	tools/mtmd/mtmd-audio.cpp \
 	tools/mtmd/mtmd-helper.cpp \
 	common/chat.h \
+	common/chat.cpp \
+	common/chat-parser.cpp \
+	common/regex-partial.cpp \
 	$(OBJ_ALL)
 	cmake -DINPUT=tools/server/public/index.html.gz -DOUTPUT=tools/server/index.html.gz.hpp -P scripts/xxd.cmake
 	cmake -DINPUT=tools/server/public_legacy/index.html -DOUTPUT=tools/server/index.html.hpp -P scripts/xxd.cmake

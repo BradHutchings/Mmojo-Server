@@ -1066,14 +1066,19 @@ OBJ_LLAMA = \
 OBJ_COMMON = \
 	$(DIR_COMMON)/common-ls1.o \
 	$(DIR_COMMON)/arg.o \
-	$(DIR_COMMON)/log.o \
+	$(DIR_COMMON)/build-info.o \
+	$(DIR_COMMON)/chat.o \
+	$(DIR_COMMON)/chat-parser.o \
+	$(DIR_COMMON)/common.o \
 	$(DIR_COMMON)/console.o \
+	$(DIR_COMMON)/json-partial.o
+	$(DIR_COMMON)/json-schema-to-grammar.o
+	$(DIR_COMMON)/llguidance.o \
+	$(DIR_COMMON)/log.o \
 	$(DIR_COMMON)/ngram-cache.o \
+	$(DIR_COMMON)/regex-partial.o
 	$(DIR_COMMON)/sampling.o \
 	$(DIR_COMMON)/speculative.o \
-	$(DIR_COMMON)/chat.o \
-	$(DIR_COMMON)/build-info.o \
-	$(DIR_COMMON)/json-schema-to-grammar.o
 
 #	$(DIR_COMMON)/common.o \
 
@@ -1451,10 +1456,6 @@ llama-server: \
 	tools/mtmd/mtmd.cpp \
 	tools/mtmd/mtmd-audio.cpp \
 	tools/mtmd/mtmd-helper.cpp \
-	common/chat.h \
-	common/chat.cpp \
-	common/chat-parser.cpp \
-	common/regex-partial.cpp \
 	$(OBJ_ALL)
 	cmake -DINPUT=tools/server/public/index.html.gz -DOUTPUT=tools/server/index.html.gz.hpp -P scripts/xxd.cmake
 	cmake -DINPUT=tools/server/public_legacy/index.html -DOUTPUT=tools/server/index.html.hpp -P scripts/xxd.cmake

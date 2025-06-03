@@ -1071,8 +1071,8 @@ OBJ_COMMON = \
 	$(DIR_COMMON)/chat-parser.o \
 	$(DIR_COMMON)/common.o \
 	$(DIR_COMMON)/console.o \
-	$(DIR_COMMON)/json-partial.o
-	$(DIR_COMMON)/json-schema-to-grammar.o
+	$(DIR_COMMON)/json-partial.o \
+	$(DIR_COMMON)/json-schema-to-grammar.o \
 	$(DIR_COMMON)/llguidance.o \
 	$(DIR_COMMON)/log.o \
 	$(DIR_COMMON)/ngram-cache.o \

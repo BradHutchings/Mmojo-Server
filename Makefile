@@ -262,7 +262,7 @@ endif
 #
 
 # keep standard at C11 and C++17
-MK_CPPFLAGS  = -Iggml/include -Iggml/src -Iinclude -Isrc -Icommon -I. -DGGML_USE_CPU
+MK_CPPFLAGS  = -Iggml/include -Iggml/src -Iinclude -Isrc -Icommon -Inlohmann-json -Igoogle-minja -I. -DGGML_USE_CPU
 MK_CFLAGS    = -std=c11   -fPIC
 MK_CXXFLAGS  = -std=c++17 -fPIC
 MK_NVCCFLAGS = -std=c++17
@@ -1489,7 +1489,6 @@ llama-gen-docs: examples/gen-docs/gen-docs.cpp \
 libllava.a: tools/mtmd/mtmd.cpp \
 	tools/mtmd/clip.cpp \
 	tools/mtmd/clip.h \
-	common/stb_image.h \
 	common/base64.hpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -static -fPIC -c $< -o $@ -Wno-cast-qual

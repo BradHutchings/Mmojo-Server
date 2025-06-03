@@ -262,7 +262,7 @@ endif
 #
 
 # keep standard at C11 and C++17
-MK_CPPFLAGS  = -Iggml/include -Iggml/src -Iinclude -Isrc -Icommon -I. -DGGML_USE_CPU
+MK_CPPFLAGS  = -Iggml/include -Iggml/src -Iinclude -Isrc -Icommon -Inlohmann-json/include -Igoogle-minja/include -I. -DGGML_USE_CPU
 MK_CFLAGS    = -std=c11   -fPIC
 MK_CXXFLAGS  = -std=c++17 -fPIC
 MK_NVCCFLAGS = -std=c++17
@@ -1035,40 +1035,49 @@ OBJ_GGML = \
 
 OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama.o \
-	$(DIR_LLAMA)/llama-vocab.o \
-	$(DIR_LLAMA)/llama-grammar.o \
-	$(DIR_LLAMA)/llama-sampling.o \
 	$(DIR_LLAMA)/llama-adapter.o \
 	$(DIR_LLAMA)/llama-arch.o \
 	$(DIR_LLAMA)/llama-batch.o \
 	$(DIR_LLAMA)/llama-chat.o \
 	$(DIR_LLAMA)/llama-context-ls1.o \
+	$(DIR_LLAMA)/llama-cparams.o \
+	$(DIR_LLAMA)/llama-grammar.o \
 	$(DIR_LLAMA)/llama-graph.o \
 	$(DIR_LLAMA)/llama-hparams.o \
 	$(DIR_LLAMA)/llama-impl.o \
 	$(DIR_LLAMA)/llama-io.o \
 	$(DIR_LLAMA)/llama-kv-cache.o \
+	$(DIR_LLAMA)/llama-kv-cache-recurrent.o \
+	$(DIR_LLAMA)/llama-kv-cache-unified-iswa.o \
+	$(DIR_LLAMA)/llama-kv-cache-unified.o \
+	$(DIR_LLAMA)/llama-memory.o \
 	$(DIR_LLAMA)/llama-mmap.o \
 	$(DIR_LLAMA)/llama-model.o \
 	$(DIR_LLAMA)/llama-model-loader.o \
 	$(DIR_LLAMA)/llama-model-saver.o \
 	$(DIR_LLAMA)/llama-quant.o \
+	$(DIR_LLAMA)/llama-sampling.o \
+	$(DIR_LLAMA)/llama-vocab.o \
 	$(DIR_LLAMA)/unicode.o \
 	$(DIR_LLAMA)/unicode-data.o
 
 #	$(DIR_LLAMA)/llama-context.o \
 
 OBJ_COMMON = \
-	$(DIR_COMMON)/common-ls1.o \
 	$(DIR_COMMON)/arg.o \
-	$(DIR_COMMON)/log.o \
-	$(DIR_COMMON)/console.o \
-	$(DIR_COMMON)/ngram-cache.o \
-	$(DIR_COMMON)/sampling.o \
-	$(DIR_COMMON)/speculative.o \
-	$(DIR_COMMON)/chat.o \
 	$(DIR_COMMON)/build-info.o \
-	$(DIR_COMMON)/json-schema-to-grammar.o
+	$(DIR_COMMON)/chat.o \
+	$(DIR_COMMON)/chat-parser.o \
+	$(DIR_COMMON)/common-ls1.o \
+	$(DIR_COMMON)/console.o \
+	$(DIR_COMMON)/json-partial.o \
+	$(DIR_COMMON)/json-schema-to-grammar.o \
+	$(DIR_COMMON)/llguidance.o \
+	$(DIR_COMMON)/log.o \
+	$(DIR_COMMON)/ngram-cache.o \
+	$(DIR_COMMON)/regex-partial.o \
+	$(DIR_COMMON)/sampling.o \
+	$(DIR_COMMON)/speculative.o
 
 #	$(DIR_COMMON)/common.o \
 
@@ -1442,14 +1451,10 @@ endif # GGML_RPC
 llama-server: \
 	tools/server/server-ls1.cpp \
 	tools/server/utils.hpp \
-	tools/server/httplib.h \
 	tools/mtmd/clip.cpp \
 	tools/mtmd/mtmd.cpp \
+	tools/mtmd/mtmd-audio.cpp \
 	tools/mtmd/mtmd-helper.cpp \
-	common/chat.h \
-	common/minja/chat-template.hpp \
-	common/json.hpp \
-	common//minja/minja.hpp \
 	$(OBJ_ALL)
 	cmake -DINPUT=tools/server/public/index.html.gz -DOUTPUT=tools/server/index.html.gz.hpp -P scripts/xxd.cmake
 	cmake -DINPUT=tools/server/public_legacy/index.html -DOUTPUT=tools/server/index.html.hpp -P scripts/xxd.cmake
@@ -1489,7 +1494,6 @@ llama-gen-docs: examples/gen-docs/gen-docs.cpp \
 libllava.a: tools/mtmd/mtmd.cpp \
 	tools/mtmd/clip.cpp \
 	tools/mtmd/clip.h \
-	common/stb_image.h \
 	common/base64.hpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -static -fPIC -c $< -o $@ -Wno-cast-qual

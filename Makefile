@@ -1076,9 +1076,9 @@ OBJ_COMMON = \
 	$(DIR_COMMON)/llguidance.o \
 	$(DIR_COMMON)/log.o \
 	$(DIR_COMMON)/ngram-cache.o \
-	$(DIR_COMMON)/regex-partial.o
+	$(DIR_COMMON)/regex-partial.o \
 	$(DIR_COMMON)/sampling.o \
-	$(DIR_COMMON)/speculative.o \
+	$(DIR_COMMON)/speculative.o
 
 #	$(DIR_COMMON)/common.o \
 

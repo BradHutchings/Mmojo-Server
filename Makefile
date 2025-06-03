@@ -262,8 +262,7 @@ endif
 #
 
 # keep standard at C11 and C++17
-MK_CPPFLAGS  = -Iggml/include -Iggml/src -Iinclude -Isrc -Icommon -Inlohmann-json -Igoogle-minja -I. -DGGML_USE_CPU
-MK_CFLAGS    = -std=c11   -fPIC
+yMK_CFLAGS    = -std=c11   -fPIC
 MK_CXXFLAGS  = -std=c++17 -fPIC
 MK_NVCCFLAGS = -std=c++17
 
@@ -1447,9 +1446,6 @@ llama-server: \
 	tools/mtmd/mtmd.cpp \
 	tools/mtmd/mtmd-helper.cpp \
 	common/chat.h \
-	common/minja/chat-template.hpp \
-	common/json.hpp \
-	common//minja/minja.hpp \
 	$(OBJ_ALL)
 	cmake -DINPUT=tools/server/public/index.html.gz -DOUTPUT=tools/server/index.html.gz.hpp -P scripts/xxd.cmake
 	cmake -DINPUT=tools/server/public_legacy/index.html -DOUTPUT=tools/server/index.html.hpp -P scripts/xxd.cmake

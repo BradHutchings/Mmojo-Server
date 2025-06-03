@@ -1444,6 +1444,8 @@ llama-server: \
 	tools/server/utils.hpp \
 	tools/mtmd/clip.cpp \
 	tools/mtmd/mtmd.cpp \
+	tools/mtmd/mtmd-audio.cpp \
+	tools/mtmd/mtmd-cli.cpp \
 	tools/mtmd/mtmd-helper.cpp \
 	common/chat.h \
 	$(OBJ_ALL)

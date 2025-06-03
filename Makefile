@@ -1442,7 +1442,6 @@ endif # GGML_RPC
 llama-server: \
 	tools/server/server-ls1.cpp \
 	tools/server/utils.hpp \
-	tools/server/httplib.h \
 	tools/mtmd/clip.cpp \
 	tools/mtmd/mtmd.cpp \
 	tools/mtmd/mtmd-helper.cpp \

@@ -43,7 +43,7 @@ git clone https://github.com/google/minja.git ~/$BUILD_DIR/google-minja
 git clone https://github.com/yhirose/cpp-httplib.git ~/$BUILD_DIR/cpp-httplib
 git clone https://github.com/mackron/miniaudio.git ~/$BUILD_DIR/miniaudio
 git clone https://github.com/nothings/stb.git ~/$BUILD_DIR/stb
-sed -i -e 's/#if defined(_WIN32) || defined(_COSMOPOLITAN__)/#if defined\(_WIN32\)/g' ./miniaudio/miniaudio.h
+sed -i -e 's/#if defined(_WIN32) || defined(__COSMOPOLITAN__)/#if defined(_WIN32)/g' ./miniaudio/miniaudio.h
 ```
 
 **Optional:** Use the `work-in-progress` branch where I implement and test my own changes and where I test upstream changes from `llama.cpp`.

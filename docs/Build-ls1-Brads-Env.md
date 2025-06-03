@@ -36,6 +36,15 @@ git clone https://github.com/BradHutchings/llama-server-one.git $BUILD_DIR
 printf "\n**********\n*\n* FINISHED: Clone this Repo Locally.\n*\n**********\n\n"
 ```
 
+Install repos this repo depends upon locally.
+```
+git clone https://github.com/nlohmann/json.git ~/$BUILD_DIR/nlohmann-json
+git clone https://github.com/google/minja.git ~/$BUILD_DIR/google-minja
+git clone https://github.com/yhirose/cpp-httplib.git ~/$BUILD_DIR/cpp-httplib
+git clone https://github.com/mackron/miniaudio.git ~/$BUILD_DIR/miniaudio
+git clone https://github.com/nothings/stb.git ~/$BUILD_DIR/stb
+```
+
 **Optional:** Use the `work-in-progress` branch where I implement and test my own changes and where I test upstream changes from `llama.cpp`.
 ```
 cd ~/$BUILD_DIR

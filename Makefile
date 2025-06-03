@@ -1035,24 +1035,29 @@ OBJ_GGML = \
 
 OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama.o \
-	$(DIR_LLAMA)/llama-vocab.o \
-	$(DIR_LLAMA)/llama-grammar.o \
-	$(DIR_LLAMA)/llama-sampling.o \
 	$(DIR_LLAMA)/llama-adapter.o \
 	$(DIR_LLAMA)/llama-arch.o \
 	$(DIR_LLAMA)/llama-batch.o \
 	$(DIR_LLAMA)/llama-chat.o \
 	$(DIR_LLAMA)/llama-context-ls1.o \
+	$(DIR_LLAMA)/llama-cparams.o \
+	$(DIR_LLAMA)/llama-grammar.o \
 	$(DIR_LLAMA)/llama-graph.o \
 	$(DIR_LLAMA)/llama-hparams.o \
 	$(DIR_LLAMA)/llama-impl.o \
 	$(DIR_LLAMA)/llama-io.o \
 	$(DIR_LLAMA)/llama-kv-cache.o \
+	$(DIR_LLAMA)/llama-kv-cache-recurrent.o \
+	$(DIR_LLAMA)/llama-kv-cache-unified-iswa.o \
+	$(DIR_LLAMA)/llama-kv-cache-unified.o \
+	$(DIR_LLAMA)/llama-memory.o \
 	$(DIR_LLAMA)/llama-mmap.o \
 	$(DIR_LLAMA)/llama-model.o \
 	$(DIR_LLAMA)/llama-model-loader.o \
 	$(DIR_LLAMA)/llama-model-saver.o \
 	$(DIR_LLAMA)/llama-quant.o \
+	$(DIR_LLAMA)/llama-sampling.o \
+	$(DIR_LLAMA)/llama-vocab.o \
 	$(DIR_LLAMA)/unicode.o \
 	$(DIR_LLAMA)/unicode-data.o
 
@@ -1445,7 +1450,6 @@ llama-server: \
 	tools/mtmd/clip.cpp \
 	tools/mtmd/mtmd.cpp \
 	tools/mtmd/mtmd-audio.cpp \
-	tools/mtmd/mtmd-cli.cpp \
 	tools/mtmd/mtmd-helper.cpp \
 	common/chat.h \
 	$(OBJ_ALL)

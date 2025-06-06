@@ -20,7 +20,7 @@ LLAMA_SERVER_ONE="llama-server-one"
 LLAMA_SERVER_ONE_ZIP="llama-server-one.zip"
 DEFAULT_ARGS="default-args"
 
-TODAY=(date +%Y-%m-%d)
+TODAY=$(date +%Y-%m-%d)
 
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```

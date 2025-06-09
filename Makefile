@@ -371,7 +371,7 @@ ifdef LLAMA_SERVER_SSL
 endif
 
 ifndef GGML_NO_CPU_AARCH64
-	MK_CPPFLAGS += -DGGML_USE_CPU_AARCH64
+	MK_CPPFLAGS += -DGGML_USE_CPU_REPACK
 endif
 
 ifeq ($(UNAME_S),cosmocc)
@@ -1019,19 +1019,20 @@ OBJ_GGML = \
 	$(DIR_GGML)/src/ggml-opt.o \
 	$(DIR_GGML)/src/ggml-quants.o \
 	$(DIR_GGML)/src/ggml-threading.o \
+	$(DIR_GGML)/src/ggml-cpu/binary-ops.o \
 	$(DIR_GGML)/src/ggml-cpu/ggml-cpu.o \
 	$(DIR_GGML)/src/ggml-cpu/ggml-cpu_cpp.o \
-	$(DIR_GGML)/src/ggml-cpu/ggml-cpu-aarch64.o \
-	$(DIR_GGML)/src/ggml-cpu/ggml-cpu-hbm.o \
-	$(DIR_GGML)/src/ggml-cpu/ggml-cpu-quants.o \
-	$(DIR_GGML)/src/ggml-cpu/ggml-cpu-traits.o \
-	$(DIR_GGML)/src/ggml-cpu/binary-ops.o \
-	$(DIR_GGML)/src/ggml-cpu/cpu-feats-x86.o \
+	$(DIR_GGML)/src/ggml-cpu/hbm.o \
 	$(DIR_GGML)/src/ggml-cpu/ops.o \
+	$(DIR_GGML)/src/ggml-cpu/quants.o \
+	$(DIR_GGML)/src/ggml-cpu/repack.o \
+	$(DIR_GGML)/src/ggml-cpu/traits.o \
 	$(DIR_GGML)/src/ggml-cpu/unary-ops.o \
 	$(DIR_GGML)/src/ggml-cpu/vec.o \
 	$(DIR_GGML)/src/gguf.o \
 	$(OBJ_GGML_EXT)
+
+	# $(DIR_GGML)/src/ggml-cpu/cpu-feats-x86.o \
 
 OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama.o \
@@ -1046,7 +1047,6 @@ OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama-hparams.o \
 	$(DIR_LLAMA)/llama-impl.o \
 	$(DIR_LLAMA)/llama-io.o \
-	$(DIR_LLAMA)/llama-kv-cache.o \
 	$(DIR_LLAMA)/llama-kv-cache-recurrent.o \
 	$(DIR_LLAMA)/llama-kv-cache-unified-iswa.o \
 	$(DIR_LLAMA)/llama-kv-cache-unified.o \

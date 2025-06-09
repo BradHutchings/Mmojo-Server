@@ -19,6 +19,9 @@ LLAMA_SERVER="llama-server"
 LLAMA_SERVER_ONE="llama-server-one"
 LLAMA_SERVER_ONE_ZIP="llama-server-one.zip"
 DEFAULT_ARGS="default-args"
+
+TODAY=$(date +%Y-%m-%d)
+
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
@@ -91,6 +94,7 @@ printf "\n**********\n*\n* FINISHED: Verify certs Directory in Archive.\n*\n****
 ```
 mkdir website
 cp -r /mnt/hyperv/web-apps/completion-tool/* website
+sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/scripts.js
 cp /mnt/hyperv/Mmojo-Raspberry-Pi/Mmojo-certs/selfsignCA.crt website/CA.crt
 rm website/*.txt
 rm website/completion/images/*.svg

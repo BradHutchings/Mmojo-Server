@@ -1019,19 +1019,20 @@ OBJ_GGML = \
 	$(DIR_GGML)/src/ggml-opt.o \
 	$(DIR_GGML)/src/ggml-quants.o \
 	$(DIR_GGML)/src/ggml-threading.o \
+	$(DIR_GGML)/src/ggml-cpu/binary-ops.o \
 	$(DIR_GGML)/src/ggml-cpu/ggml-cpu.o \
 	$(DIR_GGML)/src/ggml-cpu/ggml-cpu_cpp.o \
-	$(DIR_GGML)/src/ggml-cpu/repack.o \
-	$(DIR_GGML)/src/ggml-cpu/ggml-cpu-hbm.o \
-	$(DIR_GGML)/src/ggml-cpu/ggml-cpu-quants.o \
-	$(DIR_GGML)/src/ggml-cpu/ggml-cpu-traits.o \
-	$(DIR_GGML)/src/ggml-cpu/binary-ops.o \
-	$(DIR_GGML)/src/ggml-cpu/cpu-feats-x86.o \
+	$(DIR_GGML)/src/ggml-cpu/hbm.o \
 	$(DIR_GGML)/src/ggml-cpu/ops.o \
+	$(DIR_GGML)/src/ggml-cpu/quants.o \
+	$(DIR_GGML)/src/ggml-cpu/repack.o \
+	$(DIR_GGML)/src/ggml-cpu/traits.o \
 	$(DIR_GGML)/src/ggml-cpu/unary-ops.o \
 	$(DIR_GGML)/src/ggml-cpu/vec.o \
 	$(DIR_GGML)/src/gguf.o \
 	$(OBJ_GGML_EXT)
+
+	# $(DIR_GGML)/src/ggml-cpu/cpu-feats-x86.o \
 
 OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama.o \

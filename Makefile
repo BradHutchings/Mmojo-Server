@@ -503,6 +503,10 @@ ifeq ($(UNAME_M),$(filter $(UNAME_M),x86_64 i686 amd64))
 	# Usage SSSE3-only (Not is SSE3!)
 	#MK_CFLAGS   += -mssse3
 	#MK_CXXFLAGS += -mssse3
+
+	OBJ_GGML_EXT += \
+		ggml/src/ggml-cpu/arch/x86/quants.o \
+		ggml/src/ggml-cpu/arch/x86/repack.o
 endif
 
 ifneq ($(UNAME_S),cosmocc)
@@ -532,6 +536,10 @@ ifneq ($(filter aarch64%,$(UNAME_M)),)
 			cxx = aarch64-unknown-linux-gnu-g++
 		endif
 	endif
+
+	OBJ_GGML_EXT += \
+		ggml/src/ggml-cpu/arch/arm/quants.o \
+		ggml/src/ggml-cpu/arch/arm/repack.o
 endif
 
 ifneq ($(filter armv6%,$(UNAME_M)),)

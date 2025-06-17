@@ -405,6 +405,9 @@ $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 		-Wno-literal-suffix \
 		-DCOSMOCC=1
 
+	OBJ_GGML_EXT += \
+		ggml/src/ggml-cpu/quants.o \
+		ggml/src/ggml-cpu/repack.o
 
 else
 $(info Using default MK_CFLAGS and MK_CXXFLAGS flags.)

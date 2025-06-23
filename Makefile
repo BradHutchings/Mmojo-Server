@@ -1061,6 +1061,8 @@ OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama-kv-cache-unified-iswa.o \
 	$(DIR_LLAMA)/llama-kv-cache-unified.o \
 	$(DIR_LLAMA)/llama-memory.o \
+	$(DIR_LLAMA)/llama-memory-hybrid.o \
+	$(DIR_LLAMA)/llama-memory-recurrent.o \
 	$(DIR_LLAMA)/llama-mmap.o \
 	$(DIR_LLAMA)/llama-model.o \
 	$(DIR_LLAMA)/llama-model-loader.o \

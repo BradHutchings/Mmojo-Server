@@ -406,8 +406,6 @@ $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 		-DCOSMOCC=1
 
 	OBJ_GGML_EXT += \
-		ggml/src/ggml-cpu/quants.o \
-		ggml/src/ggml-cpu/repack.o \
 		ggml/src/ggml-cpu/arch/cosmo/quants.o \
 		ggml/src/ggml-cpu/arch/cosmo/repack.o
 

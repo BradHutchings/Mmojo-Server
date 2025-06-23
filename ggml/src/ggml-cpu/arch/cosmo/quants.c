@@ -21,12 +21,82 @@
 
 #define UNUSED GGML_UNUSED
 
+void quantize_row_q4_0(const float * GGML_RESTRICT x, void * GGML_RESTRICT y, int64_t k) {
+    quantize_row_q4_0_ref(x, y, k);
+}
+
+void quantize_row_q4_1(const float * GGML_RESTRICT x, void * GGML_RESTRICT y, int64_t k) {
+    quantize_row_q4_1_ref(x, y, k);
+}
+
+void quantize_row_q5_0(const float * GGML_RESTRICT x, void * GGML_RESTRICT y, int64_t k) {
+    quantize_row_q5_0_ref(x, y, k);
+}
+
+void quantize_row_q5_1(const float * GGML_RESTRICT x, void * GGML_RESTRICT y, int64_t k) {
+    quantize_row_q5_1_ref(x, y, k);
+}
+
 void quantize_row_q8_0(const float * GGML_RESTRICT x, void * GGML_RESTRICT y, int64_t k) {
     quantize_row_q8_0_ref(x, y, k);
 }
 
 void quantize_row_q8_1(const float * GGML_RESTRICT x, void * GGML_RESTRICT y, int64_t k) {
     quantize_row_q8_1_ref(x, y, k);
+}
+
+//
+// 2-6 bit quantization in super-blocks
+//
+
+//========================- 2-bit (de)-quantization
+
+void quantize_row_q2_K(const float * GGML_RESTRICT x, void * GGML_RESTRICT vy, int64_t k) {
+    quantize_row_q2_K_ref(x, vy, k);
+}
+
+//========================= 3-bit (de)-quantization
+
+void quantize_row_q3_K(const float * GGML_RESTRICT x, void * GGML_RESTRICT vy, int64_t k) {
+    quantize_row_q3_K_ref(x, vy, k);
+}
+
+// ====================== 4-bit (de)-quantization
+
+void quantize_row_q4_K(const float * GGML_RESTRICT x, void * GGML_RESTRICT vy, int64_t k) {
+    assert(k % QK_K == 0);
+    block_q4_K * GGML_RESTRICT y = vy;
+    quantize_row_q4_K_ref(x, y, k);
+}
+
+// ====================== 5-bit (de)-quantization
+
+void quantize_row_q5_K(const float * GGML_RESTRICT x, void * GGML_RESTRICT vy, int64_t k) {
+    assert(k % QK_K == 0);
+    block_q5_K * GGML_RESTRICT y = vy;
+    quantize_row_q5_K_ref(x, y, k);
+}
+
+// ====================== 6-bit (de)-quantization
+
+void quantize_row_q6_K(const float * GGML_RESTRICT x, void * GGML_RESTRICT vy, int64_t k) {
+    assert(k % QK_K == 0);
+    block_q6_K * GGML_RESTRICT y = vy;
+    quantize_row_q6_K_ref(x, y, k);
+}
+
+// ====================== Ternary (de)-quantization (BitNet b1.58 and TriLMs)
+
+void quantize_row_tq1_0(const float * GGML_RESTRICT x, void * GGML_RESTRICT vy, int64_t k) {
+    assert(k % QK_K == 0);
+    block_tq1_0 * GGML_RESTRICT y = vy;
+    quantize_row_tq1_0_ref(x, y, k);
+}
+
+void quantize_row_tq2_0(const float * GGML_RESTRICT x, void * GGML_RESTRICT vy, int64_t k) {
+    assert(k % QK_K == 0);
+    block_tq2_0 * GGML_RESTRICT y = vy;
+    quantize_row_tq2_0_ref(x, y, k);
 }
 
 //===================================== Q8_K ==============================================
@@ -1072,4 +1142,16 @@ void ggml_vec_dot_iq4_xs_q8_K(int n, float * GGML_RESTRICT s, size_t bs, const v
         }
     }
     *s = sumf;
+}
+
+// ============================ 4-bit non-linear quants
+
+void quantize_row_iq4_nl(const float * GGML_RESTRICT x, void * GGML_RESTRICT y, int64_t k) {
+    assert(k % QK4_NL == 0);
+    quantize_row_iq4_nl_ref(x, y, k);
+}
+
+void quantize_row_iq4_xs(const float * GGML_RESTRICT x, void * GGML_RESTRICT y, int64_t k) {
+    assert(k % QK_K == 0);
+    quantize_iq4_xs(x, y, 1, k, NULL);
 }

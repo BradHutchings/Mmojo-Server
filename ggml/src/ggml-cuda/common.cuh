@@ -19,10 +19,10 @@
 #endif
 #include "ggml-common.h"
 
-#include <cstdio>
 #include <array>
 #include <cassert>
 #include <cfloat>
+#include <cstdio>
 #include <string>
 #include <vector>
 
@@ -241,8 +241,18 @@ static bool fp16_mma_available(const int cc) {
 #if defined(GGML_USE_HIP) && defined(__HIP_PLATFORM_AMD__) && !defined(GGML_HIP_ROCWMMA_FATTN)
     return false;
 #else
-    return (GGML_CUDA_CC_IS_NVIDIA(cc) && ggml_cuda_highest_compiled_arch(cc) >= GGML_CUDA_CC_VOLTA) ||
-        GGML_CUDA_CC_IS_CDNA(cc) || GGML_CUDA_CC_IS_RDNA3(cc) || GGML_CUDA_CC_IS_RDNA4(cc);
+    if ((GGML_CUDA_CC_IS_NVIDIA(cc) && ggml_cuda_highest_compiled_arch(cc) >= GGML_CUDA_CC_VOLTA) ||
+        GGML_CUDA_CC_IS_CDNA(cc) || GGML_CUDA_CC_IS_RDNA3(cc)) {
+        return true;
+    } else if (GGML_CUDA_CC_IS_RDNA4(cc)) {
+#if defined(GGML_HIP_ROCWMMA_FATTN) && defined(GGML_HIP_ROCWMMA_FATTN_GFX12)
+        return true;
+#else
+        return false;
+#endif // defined(GGML_HIP_ROCWMMA_FATTN) && defined(GGML_HIP_ROCWMMA_FATTN_GFX12)
+    } else {
+        return false;
+    }
 #endif // defined(GGML_USE_HIP) && defined(__HIP_PLATFORM_AMD__) && !defined(GGML_HIP_ROCWMMA_FATTN)
 }
 
@@ -250,6 +260,10 @@ static bool fp16_mma_available(const int cc) {
 static bool fp16_mma_hardware_available(const int cc) {
     return (GGML_CUDA_CC_IS_NVIDIA(cc) && cc >= GGML_CUDA_CC_VOLTA) ||
         GGML_CUDA_CC_IS_CDNA(cc) || GGML_CUDA_CC_IS_RDNA3(cc) || GGML_CUDA_CC_IS_RDNA4(cc);
+}
+
+static bool bf16_mma_hardware_available(const int cc) {
+    return GGML_CUDA_CC_IS_NVIDIA(cc) && cc >= GGML_CUDA_CC_AMPERE;
 }
 
 // Volta technically had FP16 tensor cores but they work very differently compared to Turing and later.
@@ -360,6 +374,26 @@ static __device__ __forceinline__ half2 warp_reduce_sum(half2 a) {
     NO_DEVICE_CODE;
     return a;
 #endif // FP16_AVAILABLE
+}
+
+// Row reduction kernel template - compute sum (norm=false) or mean (norm=true)
+template<bool norm>
+static __global__ void reduce_rows_f32(const float * x, float * dst, const int ncols) {
+    const int row = blockIdx.x;
+    const int col = threadIdx.x;
+
+    float sum = 0.0f;
+    for (int i = col; i < ncols; i += blockDim.x) {
+        sum += x[row * ncols + i];
+    }
+
+    sum = warp_reduce_sum(sum);
+
+    if (col != 0) {
+        return;
+    }
+
+    dst[row] = norm ? sum / ncols : sum;
 }
 
 template<int width = WARP_SIZE>
@@ -767,21 +801,7 @@ struct ggml_backend_cuda_context {
         name(GGML_CUDA_NAME + std::to_string(device)) {
     }
 
-    ~ggml_backend_cuda_context() {
-        if (copy_event != nullptr) {
-            CUDA_CHECK(cudaEventDestroy(copy_event));
-        }
-        for (int i = 0; i < GGML_CUDA_MAX_DEVICES; ++i) {
-            for (int j = 0; j < GGML_CUDA_MAX_STREAMS; ++j) {
-                if (streams[i][j] != nullptr) {
-                    CUDA_CHECK(cudaStreamDestroy(streams[i][j]));
-                }
-            }
-            if (cublas_handles[i] != nullptr) {
-                CUBLAS_CHECK(cublasDestroy(cublas_handles[i]));
-            }
-        }
-    }
+    ~ggml_backend_cuda_context();
 
     cudaStream_t stream(int device, int stream) {
         if (streams[device][stream] == nullptr) {

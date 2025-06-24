@@ -50,6 +50,8 @@ To get this from the llama.cpp source base, there are few files that need to be 
 
 4. [tools/server/server.cpp](tools/server/server-ls1.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
 
+5. [ggml/src/ggml-cpu/arch/cosmo](ggml/src/ggml-cpu/arch/cosmo) -- Added a cosmo architecture for GGML CPU that uses generic code to compile for both ARM and x86.
+
 ---
 ### Reference
 

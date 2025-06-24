@@ -44,6 +44,7 @@ git clone https://github.com/yhirose/cpp-httplib.git ~/$BUILD_DIR/cpp-httplib
 git clone https://github.com/mackron/miniaudio.git ~/$BUILD_DIR/miniaudio
 git clone https://github.com/nothings/stb.git ~/$BUILD_DIR/stb
 sed -i -e 's/#if defined(_WIN32) || defined(__COSMOPOLITAN__)/#if defined(_WIN32)/g' ~/$BUILD_DIR/miniaudio/miniaudio.h
+printf "\n**********\n*\n* FINISHED: Install Additional Repos Locally.\n*\n**********\n\n"
 ```
 
 **Optional:** Use the `work-in-progress` branch where I implement and test my own changes and where I test upstream changes from `llama.cpp`.

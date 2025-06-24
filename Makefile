@@ -405,6 +405,9 @@ $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 		-Wno-literal-suffix \
 		-DCOSMOCC=1
 
+	OBJ_GGML_EXT += \
+		$(DIR_GGML)/src/ggml-cpu/arch/cosmo/quants.o \
+		$(DIR_GGML)/src/ggml-cpu/arch/cosmo/repack.o
 
 else
 $(info Using default MK_CFLAGS and MK_CXXFLAGS flags.)
@@ -503,6 +506,12 @@ ifeq ($(UNAME_M),$(filter $(UNAME_M),x86_64 i686 amd64))
 	# Usage SSSE3-only (Not is SSE3!)
 	#MK_CFLAGS   += -mssse3
 	#MK_CXXFLAGS += -mssse3
+
+	OBJ_GGML_EXT += \
+		$(DIR_GGML)/src/ggml-cpu/quants.o \
+        $(DIR_GGML)/src/ggml-cpu/repack.o \
+		$(DIR_GGML)/src/ggml-cpu/arch/x86/quants.o \
+		$(DIR_GGML)/src/ggml-cpu/arch/x86/repack.o
 endif
 
 ifneq ($(UNAME_S),cosmocc)
@@ -532,6 +541,12 @@ ifneq ($(filter aarch64%,$(UNAME_M)),)
 			cxx = aarch64-unknown-linux-gnu-g++
 		endif
 	endif
+
+	OBJ_GGML_EXT += \
+		$(DIR_GGML)/src/ggml-cpu/quants.o \
+        $(DIR_GGML)/src/ggml-cpu/repack.o \
+		$(DIR_GGML)/src/ggml-cpu/arch/arm/quants.o \
+		$(DIR_GGML)/src/ggml-cpu/arch/arm/repack.o
 endif
 
 ifneq ($(filter armv6%,$(UNAME_M)),)
@@ -1024,8 +1039,6 @@ OBJ_GGML = \
 	$(DIR_GGML)/src/ggml-cpu/ggml-cpu_cpp.o \
 	$(DIR_GGML)/src/ggml-cpu/hbm.o \
 	$(DIR_GGML)/src/ggml-cpu/ops.o \
-	$(DIR_GGML)/src/ggml-cpu/quants.o \
-	$(DIR_GGML)/src/ggml-cpu/repack.o \
 	$(DIR_GGML)/src/ggml-cpu/traits.o \
 	$(DIR_GGML)/src/ggml-cpu/unary-ops.o \
 	$(DIR_GGML)/src/ggml-cpu/vec.o \
@@ -1047,10 +1060,11 @@ OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama-hparams.o \
 	$(DIR_LLAMA)/llama-impl.o \
 	$(DIR_LLAMA)/llama-io.o \
-	$(DIR_LLAMA)/llama-kv-cache-recurrent.o \
 	$(DIR_LLAMA)/llama-kv-cache-unified-iswa.o \
 	$(DIR_LLAMA)/llama-kv-cache-unified.o \
 	$(DIR_LLAMA)/llama-memory.o \
+	$(DIR_LLAMA)/llama-memory-hybrid.o \
+	$(DIR_LLAMA)/llama-memory-recurrent.o \
 	$(DIR_LLAMA)/llama-mmap.o \
 	$(DIR_LLAMA)/llama-model.o \
 	$(DIR_LLAMA)/llama-model-loader.o \

@@ -4,10 +4,6 @@ Based on [llama.cpp](https://github.com/ggml-org/llama.cpp).
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-<!--
-**THIS REPO IS NOT QUITE READY FOR PUBIC USE. I WILL REMOVE THIS NOTICE WHEN IT IS READY.**
--->
-
 ---
 ### Project Goals
 
@@ -22,7 +18,7 @@ I am inspired by the [llamafile project](https://github.com/Mozilla-Ocho/llamafi
 
 I want to use the MIT license as used by llama.cpp.
 
-GPU support is not important to me and can be handled by platform specific builds of llama.cpp. CPU inference is quite adequate for many private end-user applications.
+GPU support is not important to me and can be handled by platform specific builds of llama.cpp. CPU inference is quite adequate for many private end-user applications. Generic CPU inference is implemented. ARM and x86 tuned CPU inference is not implemented yet.
 
 The ability to package support files, such as a custom web, UI into the executable file is important to me. This is implemented.
 

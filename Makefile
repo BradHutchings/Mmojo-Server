@@ -406,8 +406,8 @@ $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 		-DCOSMOCC=1
 
 	OBJ_GGML_EXT += \
-		ggml/src/ggml-cpu/arch/cosmo/quants.o \
-		ggml/src/ggml-cpu/arch/cosmo/repack.o
+		$(DIR_GGML)/src/ggml-cpu/arch/cosmo/quants.o \
+		$(DIR_GGML)/src/ggml-cpu/arch/cosmo/repack.o
 
 else
 $(info Using default MK_CFLAGS and MK_CXXFLAGS flags.)
@@ -508,8 +508,10 @@ ifeq ($(UNAME_M),$(filter $(UNAME_M),x86_64 i686 amd64))
 	#MK_CXXFLAGS += -mssse3
 
 	OBJ_GGML_EXT += \
-		ggml/src/ggml-cpu/arch/x86/quants.o \
-		ggml/src/ggml-cpu/arch/x86/repack.o
+		$(DIR_GGML)/src/ggml-cpu/quants.o \
+        $(DIR_GGML)/src/ggml-cpu/repack.o \
+		$(DIR_GGML)/src/ggml-cpu/arch/x86/quants.o \
+		$(DIR_GGML)/src/ggml-cpu/arch/x86/repack.o
 endif
 
 ifneq ($(UNAME_S),cosmocc)
@@ -541,8 +543,10 @@ ifneq ($(filter aarch64%,$(UNAME_M)),)
 	endif
 
 	OBJ_GGML_EXT += \
-		ggml/src/ggml-cpu/arch/arm/quants.o \
-		ggml/src/ggml-cpu/arch/arm/repack.o
+		$(DIR_GGML)/src/ggml-cpu/quants.o \
+        $(DIR_GGML)/src/ggml-cpu/repack.o \
+		$(DIR_GGML)/src/ggml-cpu/arch/arm/quants.o \
+		$(DIR_GGML)/src/ggml-cpu/arch/arm/repack.o
 endif
 
 ifneq ($(filter armv6%,$(UNAME_M)),)
@@ -1035,8 +1039,6 @@ OBJ_GGML = \
 	$(DIR_GGML)/src/ggml-cpu/ggml-cpu_cpp.o \
 	$(DIR_GGML)/src/ggml-cpu/hbm.o \
 	$(DIR_GGML)/src/ggml-cpu/ops.o \
-	$(DIR_GGML)/src/ggml-cpu/quants.o \
-	$(DIR_GGML)/src/ggml-cpu/repack.o \
 	$(DIR_GGML)/src/ggml-cpu/traits.o \
 	$(DIR_GGML)/src/ggml-cpu/unary-ops.o \
 	$(DIR_GGML)/src/ggml-cpu/vec.o \

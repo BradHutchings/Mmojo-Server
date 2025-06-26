@@ -54,6 +54,16 @@ git checkout work-in-progress
 printf "\n**********\n*\n* FINISHED: Checkout work-in-progress.\n*\n**********\n\n"
 ```
 
+Patch `ggml-cpu/cosmo` with latest generic ggml-cpu code.
+```
+mkdir -p ggml/src/ggml-cpu/arch/cosmo
+cp ggml/src/ggml-cpu/repack.cpp ggml/src/ggml-cpu/arch/cosmo/
+cp ggml/src/ggml-cpu/quants.c ggml/src/ggml-cpu/arch/cosmo/
+sed -i -e "s/_generic//g" ggml/src/ggml-cpu/arch/cosmo/repack.cpp 
+sed -i -e "s/_generic//g" ggml/src/ggml-cpu/arch/cosmo/quants.c 
+printf "\n**********\n*\n* FINISHED: Patch ggml-cpu/cosmo.\n*\n**********\n\n"
+```
+
 ---
 ### Customize WebUI
 ```

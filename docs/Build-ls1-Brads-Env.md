@@ -66,8 +66,8 @@ printf "\n**********\n*\n* FINISHED: Patch ggml-cpu/cosmo.\n*\n**********\n\n"
 
 **Optional:** Patch `tools/server/server-ls1.cpp` for building `mmojo-server`. In the future, we'll move the Mmojo Completion UI into this repo and rename the repo, target, etc.
 ```
-sed -i -e "s/\"llama-server-one\"/\"mmono-server\"/g" tools/server/server-ls1.cpp 
-sed -i -e "s/\"llama-server-one-args\"/\"mmono-server-args\"/g" tools/server/server-ls1.cpp 
+sed -i -e "s/\"llama-server-one\"/\"mmojo-server\"/g" tools/server/server-ls1.cpp 
+sed -i -e "s/\"llama-server-one-args\"/\"mmojo-server-args\"/g" tools/server/server-ls1.cpp 
 printf "\n**********\n*\n* FINISHED: Patch tools/server/server-ls1.cpp.\n*\n**********\n\n"
 ```
 

@@ -86,8 +86,8 @@ printf "\n**********\n*\n* FINISHED: Customize WebUI.\n*\n**********\n\n"
 ```
 
 ---
-### Make llama.cpp
-We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
+### OPTIONAL: Make llama.cpp
+We won't use what we build here, but it will validate that the source code for llama.cpp compiles. It takes a few minutes. We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
 ```
 cd ~/$BUILD_DIR
 export LLAMA_MAKEFILE=1
@@ -175,7 +175,7 @@ make
 printf "\n**********\n*\n* FINISHED: Make other llama.cpp binaries with Cosmo\n*\n**********\n\n"
 ```
 
-If the build is successful, it will end with this message:
+If the "Make other llama.cpp binaries" step is successful, it will end with this message:
 
 &nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
 

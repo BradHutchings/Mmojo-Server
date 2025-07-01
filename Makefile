@@ -7,7 +7,7 @@ endif
 # Define the default target now so that it is always the first target
 BUILD_TARGETS = \
 	libllava.a \
-	llama-server \
+	mmojo-server \
 	llama-batched \
 	llama-batched-bench \
 	llama-bench \
@@ -1053,7 +1053,7 @@ OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama-arch.o \
 	$(DIR_LLAMA)/llama-batch.o \
 	$(DIR_LLAMA)/llama-chat.o \
-	$(DIR_LLAMA)/llama-context-ls1.o \
+	$(DIR_LLAMA)/llama-context-mmojo.o \
 	$(DIR_LLAMA)/llama-cparams.o \
 	$(DIR_LLAMA)/llama-grammar.o \
 	$(DIR_LLAMA)/llama-graph.o \
@@ -1082,7 +1082,7 @@ OBJ_COMMON = \
 	$(DIR_COMMON)/build-info.o \
 	$(DIR_COMMON)/chat.o \
 	$(DIR_COMMON)/chat-parser.o \
-	$(DIR_COMMON)/common-ls1.o \
+	$(DIR_COMMON)/common-mmojo.o \
 	$(DIR_COMMON)/console.o \
 	$(DIR_COMMON)/json-partial.o \
 	$(DIR_COMMON)/json-schema-to-grammar.o \
@@ -1463,7 +1463,7 @@ rpc-server: tools/rpc/rpc-server.cpp \
 endif # GGML_RPC
 
 mmojo-server: \
-	tools/server/server-ls1.cpp \
+	tools/server/server-mmojo.cpp \
 	tools/server/utils.hpp \
 	tools/mtmd/clip.cpp \
 	tools/mtmd/mtmd.cpp \
@@ -1476,19 +1476,19 @@ mmojo-server: \
 	$(CXX) $(CXXFLAGS) -Itools/mtmd -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h %.hpp $<,$^) -Itools/server $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS) $(LWINSOCK2)
 
-llama-server: \
-	tools/server/server-ls1.cpp \
-	tools/server/utils.hpp \
-	tools/mtmd/clip.cpp \
-	tools/mtmd/mtmd.cpp \
-	tools/mtmd/mtmd-audio.cpp \
-	tools/mtmd/mtmd-helper.cpp \
-	$(OBJ_ALL)
-	cmake -DINPUT=tools/server/public/index.html.gz -DOUTPUT=tools/server/index.html.gz.hpp -P scripts/xxd.cmake
-	cmake -DINPUT=tools/server/public_legacy/index.html -DOUTPUT=tools/server/index.html.hpp -P scripts/xxd.cmake
-	cmake -DINPUT=tools/server/public_legacy/loading.html -DOUTPUT=tools/server/loading.html.hpp -P scripts/xxd.cmake
-	$(CXX) $(CXXFLAGS) -Itools/mtmd -c $< -o $(call GET_OBJ_FILE, $<)
-	$(CXX) $(CXXFLAGS) $(filter-out %.h %.hpp $<,$^) -Itools/server $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS) $(LWINSOCK2)
+# llama-server: \
+#	tools/server/server-mmojo.cpp \
+#	tools/server/utils.hpp \
+#	tools/mtmd/clip.cpp \
+#	tools/mtmd/mtmd.cpp \
+#	tools/mtmd/mtmd-audio.cpp \
+#	tools/mtmd/mtmd-helper.cpp \
+#	$(OBJ_ALL)
+#	cmake -DINPUT=tools/server/public/index.html.gz -DOUTPUT=tools/server/index.html.gz.hpp -P scripts/xxd.cmake
+#	cmake -DINPUT=tools/server/public_legacy/index.html -DOUTPUT=tools/server/index.html.hpp -P scripts/xxd.cmake
+#	cmake -DINPUT=tools/server/public_legacy/loading.html -DOUTPUT=tools/server/loading.html.hpp -P scripts/xxd.cmake
+#	$(CXX) $(CXXFLAGS) -Itools/mtmd -c $< -o $(call GET_OBJ_FILE, $<)
+#	$(CXX) $(CXXFLAGS) $(filter-out %.h %.hpp $<,$^) -Itools/server $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS) $(LWINSOCK2)
 
 llama-server-orig: \
 	tools/server/server.cpp \

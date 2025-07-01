@@ -203,4 +203,4 @@ printf "\n**********\n*\n* FINISHED: Verify Zip Archive.\n*\n**********\n\n"
 ---
 ### Next step: Configure mmojo-server
 
-Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-mmojo-server-Brads-Env.md](Configure-mmojo-server-Brads-Env.md).
+Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-mmojo-server.md](Configure-mmojo-server.md).

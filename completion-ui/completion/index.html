@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <!-- 
+        // Copyright 2024-25 Brad Hutchings. 
+        // All Rights Reserved.
+        // License Inquiries: brad@BradHutchings.com.
+        // This file is not "open source". You may not distribute it.
+
+        <a href="https://www.freepik.com/icon/color-wheel_10910295">Icon by Yasashii std</a>
+    -->
+<head>
+    <link rel="manifest" href="completion-manifest.json" />
+    <link rel="icon" href="images/logo-128.png" />
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+    <script src="color-math.js"></script>
+    <script src="mode-words.js"></script>
+
+    <title>Mmojo Completion</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, interactive-widget=resizes-content" />
+</head>
+<body onload="PageLoaded();" onresize="PageResized();" onbeforeprint="LoadPrint();" onhashchange="HashChange();">
+    <div id="print">
+        <img id="print-picture" />
+
+        <div id="print-content">
+            Here is some content to print!
+        </div>
+    </div>
+
+    <div id="content">
+
+        <div id="title-bar" class="row">
+            <div id="mmojo">Mmojo Completion</div>
+            <img id="settings-icon" src="images/settings-64.png" onclick="ToggleSettings();" title="Toggle Settings" />
+            <img id="chat-icon" src="images/chat-64.png" onclick="Chat();" title="Chat" />
+            <img id="print-icon" src="images/print-64.png" onclick="Print();"/>
+            <img id="bookmark-icon" src="images/bookmark-64.png" onclick="EditBookmark();" title="Bookmark Maker"/>
+            <img id="full-screen-icon" src="images/fullscreen-64.png" onclick="ToggleFullScreen();" title="Toggle Full Screen"/>
+            <img id="help-icon" src="images/help-64.png" onclick="Help();" title="Help"/>
+        </div>
+
+        <div id="settings" class="row">
+            <label id="model-label" for="model">Model:</label>
+            <div id="model"></div>
+            <div id="updated-space" class="space"></div>
+            <!--
+            <div id="updated-break" class="break"></div>
+            -->
+            <label id="updated-label" for="updated">Updated:</label>
+            <div id="updated">Date</div>
+            <div id="info-break" class="break"></div>
+
+            <label id="temperature-label" for="temperature">Temperature:</label>
+            <select id="temperature">
+                <option value="0.00">0.00</option>
+                <option value="0.10">0.10</option>
+                <option value="0.25" selected>0.25</option>
+                <option value="0.50">0.50</option>
+                <option value="0.75">0.75</option>
+                <option value="0.90">0.90</option>
+                <option value="1.00">1.00</option>
+            </select>
+
+            <div id="tokens-divider" class="vertical-divider"></div>
+            <label id="tokens-label" for="tokens">Tokens:</label>
+            <select id="tokens">
+                <option value="-1" selected>Complete</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                <option value="5000">5000</option>
+                <option value="10000">10,000</option>
+            </select>
+
+            <div id="stop-words-divider" class="vertical-divider"></div>
+            <input id="stop-words-checkbox" type="checkbox" onchange="EnableControls(); StopWordsSetFocus();" />
+            <label id="stop-words-checkbox-label" for="stop-words-checkbox">Stop Words</label>
+
+            <div id="stop-words-break" class="break"></div>
+            <label id="stop-words-label" for="stop-words">Stop Words:</label>
+            <input id="stop-words" type="text"/>
+
+            <div id="print-size-break" class="break"></div>
+            <label id="print-size-label" for="print-size">Print Size:</label>
+            <select id="print-size">
+                <option value="1rem">Tiny</option>
+                <option value="1.2rem">Small</option>
+                <option value="1.4rem" selected>Medium</option>
+                <option value="1.6rem">Large</option>
+                <option value="1.8rem">Huge</option>
+            </select>
+            <div id="picture-width-divider" class="vertical-divider"></div>
+            <label id="picture-width-label" for="picture-width">Picture Width:</label>
+            <select id="picture-width">
+                <option value="10%">10%</option>
+                <option value="15%">15%</option>
+                <option value="20%">20%</option>
+                <option value="25%" selected>25%</option>
+                <option value="30%">30%</option>
+                <option value="35%">35%</option>
+                <option value="40%">40%</option>
+                <option value="45%">45%</option>
+                <option value="50%">50%</option>
+            </select>
+
+            <div id="picture-url-break" class="break"></div>
+            <label id="picture-url-label" for="picture-url">Picture URL:</label>
+            <input id="picture-url" type="text" onchange="UpdatePicture();"/>
+
+        </div>
+
+        <div id="work-area" class="row">
+            <textarea id="work-area-text" class="row-item" disabled onkeydown="WorkAreaTextKeyDown(event);" 
+                onclick="WorkAreaTextClicked(event);" onpaste="ShowHideStatusButtons();"
+                ondrop="ShowHideStatusButtons();"
+                placeholder=""></textarea>
+
+            <div id="copy-paste" class="row-item" >
+                <div id="copy-paste-item" class="copy-paste-item">
+                    <button class="copy-paste-button">Copy</button><br/>
+                    <button class="remove-button">Remove</button>
+                </div>
+
+                <div id="copy-paste-space" class="space"></div>
+                <button id="clear-cue" class="clear-button" onclick="elements.workAreaText.focus(); ClearCue();">Clear Cue</button>
+            </div>
+
+        </div>
+
+        <div id="status" class="row">
+            <div id="status-text"><b>Status:</b> The status goes here.</div>
+            <div id="status-tokens"><b>Tokens:</b></div>
+            <div id="status-space" class="space"></div>
+            <button id="status-start" onclick="elements.workAreaText.focus(); Generate();">Start</button>
+            <button id="status-stop" onclick="elements.workAreaText.focus(); StopGenerating();">Stop</button>
+            <button id="status-undo" onclick="elements.workAreaText.focus(); UndoChange();">Undo</button>
+            <button id="status-clear" onclick="elements.workAreaText.focus(); ClearWorkArea();">Clear</button>
+        </div>
+
+        <div id="gutter" class="row">
+            <img id="logo" src="images/completion-tool-flat-128.png" onclick="ShowAbout();"/>
+            <div id="link">Mmojo.net</div>
+            <div id="gutter-space" class="space"></div>
+            <div id="copyright">&copy;2024 Brad Hutchings.<br/>All rights reserved.</div>
+        </div>
+
+        <div id="preview"></div>
+    </div>
+</body>
+</html>

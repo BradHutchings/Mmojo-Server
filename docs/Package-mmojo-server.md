@@ -58,7 +58,7 @@ mkdir -p ~/$DOWNLOAD_DIR
 cd ~/$DOWNLOAD_DIR
 URL="https://huggingface.co/bradhutchings/Brads-LLMs/resolve/main/models/$MODEL_FILE?download=true"
 if [ ! -f $MODEL_FILE ]; then wget $URL --show-progress --quiet -O $MODEL_FILE ; fi
-cd ~/$CONFIGURE_DIR
+cd ~/$PACKAGE_DIR
 cp ~/$DOWNLOAD_DIR/$MODEL_FILE model.gguf
 printf "\n**********\n*\n* FINISHED: Download Model.\n*\n**********\n\n"
 ```

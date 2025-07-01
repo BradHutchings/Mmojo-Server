@@ -1,9 +1,9 @@
-## Build llama-server
+## Build mmojo-server
 
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `llama-server` executable that will run on multiple platforms. Instructions have been customized for my environment. You should use these [Building Instructions](Building-ls1.md).
+This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `mmojo-server` executable that will run on multiple platforms. Instructions have been customized for my environment. You should use these [Build Instructions](Build-ls1.md).
 
 
 ### Environment Variables
@@ -11,7 +11,7 @@ This file contains instructions for building `llama.cpp` with `cosmocc` to yield
 Let's define some environment variables, resetting those that affect the Makefile:
 ```
 DOWNLOAD_DIR="0-DOWNLOAD"
-BUILD_DIR="1-BUILD-llama.cpp"
+BUILD_DIR="1-BUILD-mmojo-server"
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
@@ -29,7 +29,7 @@ printf "\n**********\n*\n* FINISHED: Build Dependencies.\n*\n**********\n\n"
 
 ---
 ### Clone this Repo Locally
-Clone this repo into a `~\llama.cpp` directory.
+Clone this repo into a `~\1-BUILD-mmojo-server` directory.
 ```
 cd ~
 git clone https://github.com/BradHutchings/llama-server-one.git $BUILD_DIR
@@ -161,11 +161,17 @@ printf "\n**********\n*\n* FINISHED: Make openssl with Cosmo.\n*\n**********\n\n
 ```
 
 ---
-### Make llama.cpp with Cosmo
+### Make mmojo-server with Cosmo
 ```
 make clean
+make mmojo-server
+printf "\n**********\n*\n* FINISHED: Make mmojo-server with Cosmo\n*\n**********\n\n"
+```
+
+**Optional:** Make other llama.cpp binaries with Coscmo.
+```
 make
-printf "\n**********\n*\n* FINISHED: Make llama.cpp with Cosmo\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Make other llama.cpp binaries with Cosmo\n*\n**********\n\n"
 ```
 
 If the build is successful, it will end with this message:
@@ -178,7 +184,7 @@ If the build fails on the `master` branch, please post a note in the [Discussion
 
 #### List Directory
 
-At this point, you should see `llama-server` and other built binaries in the directory listing.
+At this point, you should see `mmojo-server` and other built binaries in the directory listing.
 ```
 ls -al
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
@@ -186,13 +192,13 @@ printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 
 #### Verify Zip Archive
 
-`llama-server` is actually a zip acrhive with an "Actually Portable Executable" (APE) loader prefix. Let's verify the zip archive part:
+`mmojo-server` is actually a zip acrhive with an "Actually Portable Executable" (APE) loader prefix. Let's verify the zip archive part:
 ```
-unzip -l llama-server
+unzip -l mmojo-server
 printf "\n**********\n*\n* FINISHED: Verify Zip Archive.\n*\n**********\n\n"
 ```
 
 ---
-### Next step: Configure llama-server-one
+### Next step: Configure mmojo-server
 
-Now that you've built `llama-server`, you're ready to configure it as `llama-server-one`. Follow instructions in [Configure-ls1-Brads-Env.md](Configure-ls1-Brads-Env.md).
+Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-ms-Brads-Env.md](Configure-ms-Brads-Env.md).

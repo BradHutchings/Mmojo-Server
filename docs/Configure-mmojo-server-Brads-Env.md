@@ -90,6 +90,24 @@ printf "\n**********\n*\n* FINISHED: Verify certs Directory in Archive.\n*\n****
 `llama.cpp` has a built in chat UI. If you'd like to provide a custom UI, you should add a `website` directory to the `mmojo-server` archive. `llama.cpp`'s chat UI is optimized for serving inside the project's source code. But we can copy the unoptimized source:
 ```
 mkdir website
+cp -r ~/$BUILD_DIR/completion-ui/* website
+sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/scripts.js
+sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/bookmark-scripts.js
+cp /mnt/hyperv/Mmojo-Raspberry-Pi/Mmojo-certs/selfsignCA.crt website/CA.crt
+rm website/*.txt
+rm website/completion/images/*.svg
+rm website/completion/images/*.psd
+zip -0 -r $MMOJO_SERVER_ZIP website/*
+printf "\n**********\n*\n* FINISHED: Create website Directory in Archive.\n*\n**********\n\n"
+```
+
+<!--
+---
+### Create website Directory in Archive
+
+`llama.cpp` has a built in chat UI. If you'd like to provide a custom UI, you should add a `website` directory to the `mmojo-server` archive. `llama.cpp`'s chat UI is optimized for serving inside the project's source code. But we can copy the unoptimized source:
+```
+mkdir website
 cp -r /mnt/hyperv/web-apps/completion-tool/* website
 sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/scripts.js
 sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/bookmark-scripts.js
@@ -100,6 +118,7 @@ rm website/completion/images/*.psd
 zip -0 -r $MMOJO_SERVER_ZIP website/*
 printf "\n**********\n*\n* FINISHED: Create website Directory in Archive.\n*\n**********\n\n"
 ```
+-->
 
 #### Verify website Directory in Archive
 

@@ -86,7 +86,7 @@ printf "\n**********\n*\n* FINISHED: Customize WebUI.\n*\n**********\n\n"
 ```
 
 ---
-### OPTIONAL: Make llama.cpp
+### OPTIONAL: Build llama.cpp
 We won't use what we build here, but it will validate that the source code for llama.cpp compiles. It takes a few minutes. We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
 ```
 cd ~/$BUILD_DIR
@@ -94,7 +94,7 @@ export LLAMA_MAKEFILE=1
 export LLAMA_SERVER_SSL=ON
 make clean
 make
-printf "\n**********\n*\n* FINISHED: Make llama.cpp.\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Build llama.cpp.\n*\n**********\n\n"
 ```
 
 If the build is successful, it will end with this message:
@@ -146,7 +146,7 @@ printf "\n**********\n*\n* FINISHED: Prepare to make llama.cpp with Cosmo.\n*\n*
 ```
 
 ---
-### Make openssl with Cosmo
+### Build openssl with Cosmo
 We need cross-architectire `libssl` and `libcrypto` static libraries to support SSL in `llama-server-one`.
 ```
 cd ~/$BUILD_DIR
@@ -157,25 +157,25 @@ cd ~/$BUILD_DIR/openssl
 ./Configure no-asm no-dso no-afalgeng no-shared no-pinshared no-apps
 make
 cd ~/$BUILD_DIR
-printf "\n**********\n*\n* FINISHED: Make openssl with Cosmo.\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Build openssl with Cosmo.\n*\n**********\n\n"
 
 ```
 
 ---
-### Make mmojo-server with Cosmo
+### Build mmojo-server with Cosmo
 ```
 make clean
 make mmojo-server
-printf "\n**********\n*\n* FINISHED: Make mmojo-server with Cosmo\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
 
-**Optional:** Make other llama.cpp binaries with Coscmo.
+**Optional:** Build other llama.cpp binaries with Coscmo.
 ```
 make
-printf "\n**********\n*\n* FINISHED: Make other llama.cpp binaries with Cosmo\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"
 ```
 
-If the "Make other llama.cpp binaries" step is successful, it will end with this message:
+If the "Build other llama.cpp binaries" step is successful, it will end with this message:
 
 &nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
 

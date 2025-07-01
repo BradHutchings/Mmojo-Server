@@ -1179,7 +1179,7 @@ int llama_context::decode(const llama_batch & batch_inp) {
                 }
             }
 
-            // llama-server-one START
+            // mmojo-server START
             #ifndef COSMOCC
             std::fill(output_ids.begin(), output_ids.end(), -1);
             #else
@@ -1187,7 +1187,7 @@ int llama_context::decode(const llama_batch & batch_inp) {
                 *iii = -1;
             }
             #endif
-            // llama-server-one END
+            // mmojo-server END
 
             for (uint32_t i = 0; i < n_outputs; ++i) {
                 output_ids[out_ids[i]] = i;
@@ -1272,7 +1272,7 @@ uint32_t llama_context::output_reserve(int32_t n_outputs) {
     embd   = has_embd   ? output_base + logits_size : nullptr;
 
     // set all ids as invalid (negative)
-    // llama-server-one START
+    // mmojo-server START
     #ifndef COSMOCC
     std::fill(output_ids.begin(), output_ids.end(), -1);
     #else
@@ -1280,7 +1280,7 @@ uint32_t llama_context::output_reserve(int32_t n_outputs) {
         *iii = -1;
     }
     #endif
-    // llama-server-one END
+    // mmojo-server END
 
     this->n_outputs = 0;
 

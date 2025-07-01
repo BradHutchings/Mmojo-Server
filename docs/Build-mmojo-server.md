@@ -3,8 +3,7 @@
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `mmojo-server` executable that will run on multiple platforms. Instructions have been customized for my environment. You should use these [Build Instructions](Build-ls1.md).
-
+This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `mmojo-server` executable that will run on multiple platforms.
 
 ### Environment Variables
 

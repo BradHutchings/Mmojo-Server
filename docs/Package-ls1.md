@@ -14,15 +14,14 @@ Assuming you configured as instructed in the [Configure-ls1.md](Configure-ls1.md
 Let's define some environment variables:
 ```
 DOWNLOAD_DIR="0-DOWNLOAD"
-BUILD_DIR="1-BUILD-llama.cpp"
-CONFIGURE_DIR="2-CONFIGURE-llama-server-one"
-PACKAGE_DIR="3-PACKAGE-llama-server-one-deploy"
-DEPLOY_ZIP="llama-server-one-deploy.zip"
+BUILD_DIR="1-BUILD-mmojo-server"
+CONFIGURE_DIR="2-CONFIGURE-mmojo-server"
+PACKAGE_DIR="3-PACKAGE-mmojo-server"
+DEPLOY_ZIP="mmojo-server-deploy.zip"
 
-LLAMA_SERVER="llama-server"
-LLAMA_SERVER_ONE="llama-server-one"
-LLAMA_SERVER_ONE_EXE="llama-server-one.exe"
-LLAMA_SERVER_ONE_ARGS="llama-server-one-args"
+MMOJO_SERVER="mmojo-server"
+MMOJO_SERVER_EXE ="mmojo-server.exe"
+MMOJO_SERVER_ARGS="llama-server-one-args"
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
@@ -35,18 +34,18 @@ cd ~
 rm -r -f ~/$PACKAGE_DIR ~/$DEPLOY_ZIP
 mkdir -p ~/$PACKAGE_DIR
 cd ~/$PACKAGE_DIR
-cp ~/$CONFIGURE_DIR/$LLAMA_SERVER_ONE .
+cp ~/$CONFIGURE_DIR/$MMOJO_SERVER .
 printf "\n**********\n*\n* FINISHED: Create Package Directory.\n*\n**********\n\n"
 ```
 
 ---
-### Copy llama-server-one as .exe
+### Copy mmojo-server as .exe
 
 On Windows, this executable will need to be renamed to a `.exe` file. Since our executable is small, let's just make a copy of `llama-server-one` with the `.exe` extension.
 
 ```
-cp $LLAMA_SERVER_ONE $LLAMA_SERVER_ONE_EXE
-printf "\n**********\n*\n* FINISHED: Copy llama-server-one as .exe.\n*\n**********\n\n"
+cp $MMOJO_SERVER $MMOJO_SERVER_EXE
+printf "\n**********\n*\n* FINISHED: Copy mmojo-server as .exe.\n*\n**********\n\n"
 ```
 
 ---
@@ -65,11 +64,11 @@ printf "\n**********\n*\n* FINISHED: Download Model.\n*\n**********\n\n"
 ```
 
 ---
-### Create llama-server-one-args File
+### Create mmojo-server-args File
 
-Let's create a `llama-server-one-args` file. These parameters can override or augment the parameters you previously embedded in you `llama-server-one` archive. This file could be edited by the end user to configure llama-file-one without having to construct and type a long command line. Notice that we've overridden the `-m`, `--host`, and `--port` parameters.
+Let's create a `mmojo-server-args` file. These parameters can override or augment the parameters you previously embedded in you `mmojo-server` archive. This file could be edited by the end user to configure `mmojo-server` without having to construct and type a long command line. Notice that we've overridden the `-m`, `--host`, and `--port` parameters.
 ```
-cat << EOF > $LLAMA_SERVER_ONE_ARGS
+cat << EOF > $MMOJO_SERVER_ARGS
 -m
 model.gguf
 --host
@@ -86,7 +85,7 @@ printf "\n**********\n*\n* FINISHED: Create llama-server-one-args File.\n*\n****
 
 Now we can test run `llama-server-one`, listening on all network interfaces, port 8888. Note that these are different from the default args you built into `llama-server-one`. You can connect to it from another web browser.
 ```
-./$LLAMA_SERVER_ONE
+./$MMOJO_SERVER
 ```
 
 After starting up and loading the model, it should display:
@@ -110,18 +109,18 @@ printf "\n**********\n*\n* FINISHED: Make .zip Acrhive.\n*\n**********\n\n"
 
 ---
 ### Review What You Created
-Finally, let's review what you created in building, packaging, and deploying `llama-server-one`:
+Finally, let's review what you created in building, packaging, and deploying `mmojo-server`:
 ```
-ls -aldh *llama*
+ls -aldh *mmojo*
 printf "\n**********\n*\n* FINISHED: Review What You Created.\n*\n**********\n\n"
 ```
 
-You should see three directories and a `.zip` file. The `llama-server-one-deploy.zip` file is ready to upload and share.
+You should see three directories and a `.zip` file. The `mmojo-server-deploy.zip` file is ready to upload and share.
 
 ---
 ### Congratulations!
 
-Congratulations! You did it. You built a `llama-server-one` executable that runs on two different CPU architectures and several popular operating systems. If you had any trouble in this process, please post a question in the [Discussions section](https://github.com/BradHutchings/llama-server-one/discussions). I'm happy to help!
+Congratulations! You did it. You built a `mmojo-server` executable that runs on two different CPU architectures and several popular operating systems. If you had any trouble in this process, please post a question in the [Discussions section](https://github.com/BradHutchings/llama-server-one/discussions). I'm happy to help!
 
 -Brad
 

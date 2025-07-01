@@ -110,7 +110,7 @@ If the build fails on the `master` branch, please post a note in the [Discussion
 
 At this point, you should see `llama-server` and other built binaries in the directory listing.
 ```
-ls -al
+ls -al llama-* mmojo-*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
 
@@ -188,7 +188,7 @@ If the build fails on the `master` branch, please post a note in the [Discussion
 
 At this point, you should see `mmojo-server` and other built binaries in the directory listing.
 ```
-ls -al
+ls -al llama-* mmojo-*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
 

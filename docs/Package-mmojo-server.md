@@ -1,13 +1,13 @@
-## Package llama-server-one for Deployment
+## Package mmojo-server for Deployment
 
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for packaging the `llama-server-one` executable for deployment. I'm using Ubuntu 24.04.
+This file contains instructions for packaging the `mmojo-server` executable for deployment. I'm using Ubuntu 24.04.
 
 ---
 ### Package Directory
-Assuming you configured as instructed in the [Configure-ls1.md](Configure-ls1.md) instructions file, let's create a directory with everything you need to package for deployment. You can zip this folder to distribute your `llama-server-one`, model, and arguments file for use on any platform. 
+Assuming you configured as instructed in the [Configure-ls1.md](Configure-ls1.md) instructions file, let's create a directory with everything you need to package for deployment. You can zip this folder to distribute your `mmoojo-server`, model, and arguments file for use on any platform. 
 
 ---
 ### Environment Variables
@@ -21,13 +21,13 @@ DEPLOY_ZIP="mmojo-server-deploy.zip"
 
 MMOJO_SERVER="mmojo-server"
 MMOJO_SERVER_EXE ="mmojo-server.exe"
-MMOJO_SERVER_ARGS="llama-server-one-args"
+MMOJO_SERVER_ARGS="mmojo-server-args"
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
 ---
 ### Create Package Directory
-Create a folder and copy `llama-server-one` into the new folder.
+Create a folder and copy `mmojo-server` into the new folder.
 ```
 # This should use variables for paths and filenames. So should the packaging instructions.
 cd ~
@@ -41,7 +41,7 @@ printf "\n**********\n*\n* FINISHED: Create Package Directory.\n*\n**********\n\
 ---
 ### Copy mmojo-server as .exe
 
-On Windows, this executable will need to be renamed to a `.exe` file. Since our executable is small, let's just make a copy of `llama-server-one` with the `.exe` extension.
+On Windows, this executable will need to be renamed to a `.exe` file. Since our executable is small, let's just make a copy of `mmojo-server` with the `.exe` extension.
 
 ```
 cp $MMOJO_SERVER $MMOJO_SERVER_EXE
@@ -77,13 +77,13 @@ model.gguf
 8888
 ...
 EOF
-printf "\n**********\n*\n* FINISHED: Create llama-server-one-args File.\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Create mmojo-server-one-args File.\n*\n**********\n\n"
 ```
 
 ---
 ### Test Run
 
-Now we can test run `llama-server-one`, listening on all network interfaces, port 8888. Note that these are different from the default args you built into `llama-server-one`. You can connect to it from another web browser.
+Now we can test run `mmojo-server`, listening on all network interfaces, port 8888. Note that these are different from the default args you built into `mmojo-server`. You can connect to it from another web browser.
 ```
 ./$MMOJO_SERVER
 ```

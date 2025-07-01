@@ -64,12 +64,14 @@ sed -i -e "s/_generic//g" ggml/src/ggml-cpu/arch/cosmo/quants.c
 printf "\n**********\n*\n* FINISHED: Patch ggml-cpu/cosmo.\n*\n**********\n\n"
 ```
 
+<!--
 **Optional:** Patch `tools/server/server-ls1.cpp` for building `mmojo-server`. In the future, we'll move the Mmojo Completion UI into this repo and rename the repo, target, etc.
 ```
 sed -i -e "s/\"llama-server-one\"/\"mmojo-server\"/g" tools/server/server-ls1.cpp 
 sed -i -e "s/\"llama-server-one-args\"/\"mmojo-server-args\"/g" tools/server/server-ls1.cpp 
 printf "\n**********\n*\n* FINISHED: Patch tools/server/server-ls1.cpp.\n*\n**********\n\n"
 ```
+-->
 
 ---
 ### Customize WebUI
@@ -201,4 +203,4 @@ printf "\n**********\n*\n* FINISHED: Verify Zip Archive.\n*\n**********\n\n"
 ---
 ### Next step: Configure mmojo-server
 
-Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-ms-Brads-Env.md](Configure-ms-Brads-Env.md).
+Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-mmojo-server-Brads-Env.md](Configure-mmojo-server-Brads-Env.md).

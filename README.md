@@ -33,9 +33,9 @@ I welcome any of my changes being implemented in the official llama.cpp.
 ---
 ### Documentation
 Follow these guides in order to build, package, and deploy `llama-server-one`:
-- My start-to-finish guide for building `llama-server` with Cosmo is in the [Build Steps](docs/Build-ls1.md) file.
-- My guide for configuring a `llama-server-one` executable is in the [Configure Steps](docs/Configure-ls1.md) file.
-- My guide for packaging a `llama-server-one` executable for deployment is in the [Package Steps](docs/Package-ls1.md) file.
+- My start-to-finish guide for building `llama-server` with Cosmo is in the [Build Steps](docs/Build-mmojo-server.md) file.
+- My guide for configuring a `llama-server-one` executable is in the [Configure Steps](docs/Configure-mmojo-server.md) file.
+- My guide for packaging a `llama-server-one` executable for deployment is in the [Package Steps](docs/Package-mmojo-server.md) file.
 
 ---
 ### Modifications to llama.cpp
@@ -44,11 +44,11 @@ To get this from the llama.cpp source base, there are few files that need to be 
 
 1. [Makefile](Makefile) -- Extensive modifications to bring up to date, as it is deprecated in favor of a CMake system, and to support COSMOCC.
 
-2. [common/common.cpp](common/common-ls1.cpp) -- Added COSMOCC build support.
+2. [common/common.cpp](common/common-mmojo.cpp) -- Added COSMOCC build support.
 
-3. [src/llama-context.cpp](src/llama-context-ls1.cpp) -- COSMOCC doesn't have std::fill in its Standard Templates Library.
+3. [src/llama-context.cpp](src/llama-context-mmojo.cpp) -- COSMOCC doesn't have std::fill in its Standard Templates Library.
 
-4. [tools/server/server.cpp](tools/server/server-ls1.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
+4. [tools/server/server.cpp](tools/server/server-mmojo.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
 
 5. [ggml/src/ggml-cpu/arch/cosmo](ggml/src/ggml-cpu/arch/cosmo) -- Added a cosmo architecture for GGML CPU that uses generic code to compile for both ARM and x86.
 

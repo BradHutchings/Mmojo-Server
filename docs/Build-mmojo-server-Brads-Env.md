@@ -170,7 +170,7 @@ make mmojo-server
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
 
-**Optional:** Build other llama.cpp binaries with Coscmo.
+**Optional:** Build other llama.cpp binaries with Cosmo.
 ```
 make
 printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"

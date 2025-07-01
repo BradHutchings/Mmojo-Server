@@ -94,9 +94,6 @@ cp -r ~/$BUILD_DIR/completion-ui/* website
 sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/scripts.js
 sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/bookmark-scripts.js
 cp /mnt/hyperv/Mmojo-Raspberry-Pi/Mmojo-certs/selfsignCA.crt website/CA.crt
-rm website/*.txt
-rm website/completion/images/*.svg
-rm website/completion/images/*.psd
 zip -0 -r $MMOJO_SERVER_ZIP website/*
 printf "\n**********\n*\n* FINISHED: Create website Directory in Archive.\n*\n**********\n\n"
 ```

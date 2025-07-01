@@ -173,5 +173,5 @@ After starting up and loading the model, it should display:
 Hit `ctrl-C` on your keyboard to stop it.
 
 ---
-### Next Step: Package llama-server-one for Deployment
+### Next Step: Package mmojo-server for Deployment
 Congratulations! You are ready to package your llams-server-one executable for deployment. Follow instructions in [Package-mmojo-server.md](Package-mmojo-server.md).

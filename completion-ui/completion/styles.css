@@ -1,0 +1,626 @@
+/*
+// Copyright 2024-25 Brad Hutchings. 
+// All Rights Reserved.
+// License Inquiries: brad@BradHutchings.com.
+// This file is not "open source". You may not distribute it.
+*/
+
+:root {
+    --color1: #CB997E;
+    --color2: #EDDCD2;
+    --color3: #FFF1E6;
+    --color4: #F0EFEB;
+    --color5: #DDBEA9;
+    --color6: #A5A58D;
+    --color7: #B7B7A4;
+    --color8: #C9C9B6;
+    --color9: #778DA9;
+    --color10: #415A77;
+    --grey-black: ##000000;
+    --grey-dark: #404040;
+    --grey-medium: #808080;
+    --grey-light: #C0C0C0;
+    --grey-lightlight: #E0E0E0;
+    --grey-white: #000000;
+
+    --main-spacing: 0.5rem;
+}
+
+html {
+    height: 100%;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+
+    xxcolor: var(--grey-black) !important;
+    font-family: Arial !important;
+    font-size: 1em !important;
+ }
+
+body {
+    background: var(--color4);
+    /* background: linear-gradient(-45deg, var(--color3) 0%, var(--color4) 100%); */
+
+    margin: 0px 0px 0px 0px;
+    xx-padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    padding: var(--main-spacing) var(--main-spacing) var(--main-spacing) var(--main-spacing);
+
+    height: calc(100% - (2 * var(--main-spacing)));
+    overflow: hidden;
+    display: flex;
+}
+
+label {
+    margin-right: 0.25rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+select {
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--grey-black);
+    background: var(--color3);
+    border: 1px solid var(--color6);
+    border-radius: 0.5rem;
+}
+
+select:focus {
+    outline: 4px solid var(--color1);
+    outline-offset: 1px;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--grey-black);
+    background: var(--color3);
+    border: 1px solid var(--color6);
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    max-height: 1.75rem;
+}
+
+button:focus {
+    outline: 4px solid var(--color1);
+    outline-offset: 1px;
+}
+
+button:hover {
+    color: var(--grey-black);
+    background: var(--color6);
+}
+
+/* On mobile, make sure it doesn't stick to hovering after click. */
+button:not(:focus):hover {
+    color: var(--grey-black);
+    background: var(--color3);
+}
+
+button:active {
+    color: var(--color3);
+    background: var(--color7);
+}
+
+input {
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--grey-black);
+    border: 1px solid var(--color6);
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+}
+
+input[type="text"] {
+    background: var(--color3);
+}
+
+input[type="text"]:focus {
+    outline: 4px solid var(--color1);
+    outline-offset: 1px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    color: var(--grey-dark);
+    background-color: var(--color3);
+    border: 3px solid var(--grey-dark);
+    border-radius: 0rem;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--grey-medium);
+}
+
+input[type="checkbox"]:focus {
+    outline: 4px solid var(--color1);
+    outline-offset: 1px;
+}
+
+input[type="radio"] {
+    appearance: none;
+    color: var(--grey-dark);
+    background-color: var(--color3);
+    border: 3px solid var(--grey-dark);
+    border-radius: 1rem;
+}
+
+input[type="radio"]:checked {
+    background-color: var(--grey-medium);
+}
+
+input[type="radio"]:focus {
+    outline: 4px solid var(--color1);
+    outline-offset: 1px;
+}
+
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+
+    color: var(--grey-black);
+    background-color: var(--grey-white);
+    resize: none;
+    border: 4px solid var(--grey-white);
+    outline: none;
+    padding: 1rem;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+textarea:focus {
+    border: 4px solid var(--color1);
+}
+
+textarea::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+/* Track */
+textarea::-webkit-scrollbar-track {
+    background: var(--color3);
+    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Handle */
+textarea::-webkit-scrollbar-thumb {
+    background: var(--color5);
+    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Handle on hover */
+textarea::-webkit-scrollbar-thumb:hover {
+    background: var(--color1);
+}
+
+ul, li {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+#content {
+    background: var(--color4);
+    /* min-width: 700px; */
+    width: 100%;
+    height: 100%;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.45rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: relative;
+    xx-border: 2px solid #FF0000;
+    xx-border-radius: 0.5rem;
+    xx-padding: 8px;
+}
+
+.row {
+    min-height: 6rem;
+    margin-bottom: var(--main-spacing);
+    padding: 1.0rem 1.0rem 1.0rem 1.0rem;
+    xx-padding-right: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: hsla(211, 36%, 66%, 1);
+    xx-border: 2px solid #FFFFFF;
+    border-radius: 0.5rem;
+    xx-overflow: hidden;
+}
+
+.row-item {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    xx-width: 6rem;
+    min-height: 6rem;
+    xx-flex-grow: 1;
+    xx-padding: 1.0rem;
+    xx-border: 2px solid #FFFFFF40;
+    border-radius: 0.5rem;
+}
+
+.space {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    flex-grow: 8;
+    flex-shrink: 20;
+    xx-border: 2px solid #FFFFFF;
+    xx-border-radius: 0.5rem;
+}
+
+.break {
+    display: inline-block;
+    flex-basis: 100%;
+    height: 1.0rem;
+  }
+
+.separator {
+    display: inline-block;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    height: 0px;
+    border: 1px solid #FFFFFF;
+    border-radius: 0.5rem;
+}
+
+.vertical-divider {
+    width: 0px;
+    border-left: 1px dashed var(--color3);
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+}
+
+.horizontal-divider {
+    width: 100%;
+    height: 0px;
+    border-top: 1px dashed var(--color3);
+    margin-top: 0.75rem;
+}
+
+#title-bar {
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color7);
+    color: var(--grey-dark);
+}
+
+#mmojo {
+    flex-grow: 8;
+    flex-shrink: 20;
+
+    margin-right: 0.25rem;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    font-weight: bold;
+}
+
+#settings-icon, #chat-icon, #print-icon, #bookmark-icon, #color-wheel-icon, #full-screen-icon, #help-icon {
+    width: 1.6rem;
+    margin-right: 0.8rem;
+}
+
+#help-icon {
+    margin-right: 0rem;
+}
+
+#settings {
+    display: none;
+    visibility: hidden;
+
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color7);
+    color: var(--grey-dark);
+}
+
+#settings-space {
+    display: inline-block;
+    width: 6rem;
+    height: 1.2rem;
+    top: 0rem;
+    left: 0rem;
+    margin-right: 0.75rem;
+}
+
+#temperature, #tokens, #mode, #print-size, #picture-width {
+    margin-right: 0.75rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    height: 1.6rem;
+}
+
+#model {
+    display: inline-block;
+    margin-right: 0.75rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: var(--grey-dark);
+    font-weight: bold;
+}
+
+#updated {
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: var(--grey-dark);
+    font-weight: bold;
+}
+
+#stop-words-checkbox {
+    margin-right: 0.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+#stop-words-break {
+    display: none;
+    visibility: hidden;
+}
+
+#stop-words-label {
+    display: none;
+    visibility: hidden;
+
+    xxmargin-right: 0.25rem;
+    xxmargin-top: auto;
+    xxmargin-bottom: auto;
+}
+
+#stop-words {
+    display: none;
+    visibility: hidden;
+
+    margin-right: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+#picture-url {
+    margin-right: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 40rem;
+}
+
+#work-area {
+    flex-grow: 1;
+    xx-overflow: hidden;
+    padding: 0rem 0rem 0rem 0rem;
+    background: none;
+}
+
+#work-area-text {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: var(--color2);
+    border-color: var(--color2);
+    color: var(--grey-dark);
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    flex-grow: 1;
+}
+
+#work-area-text::selection {
+    background-color: var(--color7);
+    color: var(--color4);
+}
+
+#work-area-text:focus {
+    border-color: var(--color1);
+}
+
+#copy-paste {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    user-select: none;
+    background-color: var(--color5);
+    color: var(--grey-dark);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    padding: 0.5rem;
+}
+
+.copy-paste-item {
+    border-bottom: 1px solid #808080;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.copy-paste-button {
+    font-size: 0.8rem;
+    min-width: 4.2rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.remove-button {
+    display: none;
+    visibility: hidden;
+
+    font-size: 0.8rem;
+    min-width: 4.2rem;
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.clear-button {
+    font-size: 0.8rem;
+    min-width: 4.2rem;
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.25rem;
+}
+
+#clear-cue {
+    display: none;
+    visibility: hidden;
+}
+
+#preview {
+    display: none;
+    visibility: hidden;
+    position: fixed;
+    left: 40px;
+    right: 200px;
+    top: 40px;
+    bottom: 200px;
+    user-select: none;
+    background-color: var(--color3);
+    color: var(--grey-dark);
+    border-left: 0.5rem solid var(--color4);
+    border-bottom: 0.5rem solid var(--color4);
+    border-radius: 0.5rem;
+    xx-border-top-right-radius: 0rem;
+    padding: 1rem 1rem;
+    overflow: hidden;
+}
+
+#status {
+    display: none;
+    visibility: hidden;
+    flex-wrap: nowrap;
+
+    background-color: var(--color7);
+    color: var(--grey-dark);
+    min-height: 1.6rem;
+    user-select: none;
+    xx-margin-bottom: 0rem;
+}
+
+#status-text {
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-grow: 0;
+    color: var(--grey-black);
+}
+
+#status-tokens {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1rem;
+    min-width: 4rem;
+    padding: 0.25rem 0.5rem;
+    color: var(--grey-black);
+}
+
+#status-start, #status-stop, #status-undo, #status-clear {
+    font-size: 0.8rem;
+    min-width: 4rem;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.25rem;
+}
+
+#gutter {
+    font-size: 1rem;
+    background-color: var(--color7);
+    color: var(--grey-dark);
+    min-height: 1.6rem;
+    user-select: none;
+}
+
+#logo {
+    display: none;
+    visibility: hidden;
+
+    width: 1.2rem;
+    xx-height: 1.6rem;
+
+    margin-right: 0.50rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#link {
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#copyright {
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#print {
+    display: none;
+    visibility: hidden;
+}
+
+#print-picture {
+    float: left;
+    width: 25%;
+    margin-right: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.inline-image {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+@media print {
+    html, body {
+        min-height: inherit;
+        page-break-after: avoid;
+        page-break-before: avoid;
+    }
+
+    #print {
+        display: block;
+        visibility: visible;
+
+        font-size: 1rem;
+    }
+
+    #content {
+        display: none;
+        visibility: hidden;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+    #copy-paste {
+        display: none;
+        visibility: hidden;
+    }
+
+    #work-area-text {
+        margin-right: 0rem;
+    }
+
+    #status-tokens {
+        display: none;
+        visibility: hidden;
+    }
+
+    #temperature-label, #temperature, 
+    #tokens-divider, #tokens-label, #tokens,
+    #stop-words-divider, #stop-words-checkbox,  #stop-words-checkbox-label,
+    #stop-words-break, #stop-words-label, #stop-words,
+    #print-size-break, #print-size-label, #print-size,
+    #picture-width-divider, #picture-width-label, #picture-width,
+    #picture-url-break, #picture-url-label, #picture-url,
+    #info-break {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    #xx-status-clear {
+        display: none;
+        visibility: hidden;
+    }
+}
+  

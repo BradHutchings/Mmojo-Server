@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <!-- 
+        // Copyright 2024-25 Brad Hutchings. 
+        // All Rights Reserved.
+        // License Inquiries: brad@BradHutchings.com.
+        // This file is not "open source". You may not distribute it.
+
+        <a href="https://www.freepik.com/icon/color-wheel_10910295">Icon by Yasashii std</a>
+    -->
+<head>
+    <link rel="icon" href="images/logo-128.png" />
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bookmark-styles.css">
+    <script src="bookmark-scripts.js"></script>
+    <script src="mode-words.js"></script>
+    <title>Mmojo Completion - Bookmark Maker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+</head>
+<body onload="PageLoaded();" onhashchange="HashChange();">
+    <div id="content">
+
+        <div id="settings" class="row" 
+            ondrop="settings_drop(event);"
+            ondragover="settings_dragover(event);"
+            >
+
+            <label for="label">Label:</label>
+            <input id="label" type="text" oninput="UpdateBookmark();" />
+            <div id="bookmark-space" class="space"></div>
+
+            <label id="bookmark-label" for="bookmark">Bookmark:</label>
+            <a id="bookmark" href="/#"></a>
+
+            <div id="temperature-break" class="break"></div>
+            <label for="temperature">Temperature:</label>
+            <select id="temperature" onchange="UpdateBookmark();">
+                <option value="" selected></option>
+                <option value="0.00">0.00</option>
+                <option value="0.10">0.10</option>
+                <option value="0.25">0.25</option>
+                <option value="0.50">0.50</option>
+                <option value="0.75">0.75</option>
+                <option value="0.90">0.90</option>
+                <option value="1.00">1.00</option>
+            </select>
+            <div class="vertical-divider"></div>
+            <label for="tokens">Tokens:</label>
+            <select id="tokens" onchange="UpdateBookmark();">
+                <option value="" selected></option>
+                <option value="-1">Complete</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                <option value="5000">5000</option>
+                <option value="10000">10,000</option>
+            </select>
+            
+            <div id="stop-words-break" class="break"></div>
+            <input id="stop-words-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
+            <label for="stop-words-checkbox">Stop Words</label>
+            <div class="vertical-divider"></div>
+            <label for="stop-words">Stop Words</label>
+            <input id="stop-words" type="text" oninput="UpdateBookmark();"/>
+
+            <div id="options-break" class="break"></div>
+            <input id="auto-generate-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
+            <label for="auto-generate-checkbox">Auto-Generate</label>
+            <div class="vertical-divider"></div>
+            <input id="append-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
+            <label for="append-checkbox">Append</label>
+            <div class="vertical-divider"></div>
+            <input id="replace-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
+            <label for="replace-checkbox">Replace</label>
+
+            <div class="vertical-divider"></div>
+            <input type="radio" id="bookmark-type-link" name="bookmark-type" value="link" checked onchange="UpdateBookmark();" />
+            <label for="bookmark-type-link">Link</label>
+            <input type="radio" id="bookmark-type-script" name="bookmark-type" value="script" onchange="UpdateBookmark();" />
+            <label for="bookmark-type-script">Script</label>
+
+            <div id="clear-space" class="space"></div>
+            <button id="clear" class="clear-button" onclick="ClearBookmarkMaker();">Clear</button>
+
+        </div>
+
+        <div id="cue-text-area" class="row">
+            <textarea id="cue-text" class="row-item" onkeydown="TextChanged();"
+                placeholder=""></textarea>
+            </div>
+
+        <div id="generated-text-area" class="row">
+            <textarea id="generated-text" class="row-item"  onkeydown="TextChanged();"
+                placeholder=""></textarea>
+
+        </div>
+
+        <div id="status" class="row">
+            <div id="status-text"><b>Status:</b> The status goes here.</div>
+            <div id="status-tokens"></div>
+            <button id="stop" onclick="Stop();">Stop</button>
+        </div>
+
+    </div>
+</body>
+</html>

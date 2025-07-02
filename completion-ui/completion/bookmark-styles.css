@@ -1,0 +1,104 @@
+/*
+// Copyright 2024-25 Brad Hutchings. 
+// All Rights Reserved.
+// License Inquiries: brad@BradHutchings.com.
+// This file is not "open source". You may not distribute it.
+*/
+
+#settings {
+    display: flex;
+    visibility: visible;
+
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color7);
+    color: var(--grey-dark);
+}
+
+#label {
+    margin-right: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 20rem;
+}
+
+#bookmark {
+    max-width: 20rem;
+    text-wrap: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#bookmark:link, #bookmark:visited, #bookmark:hover, #bookmark:active {
+    color: var(--grey-dark);
+}
+
+#stop-words-break {
+    display: inherit;
+    visibility: inherit;
+}
+
+#stop-words {
+    display: inherit;
+    visibility: inherit;
+}
+
+#auto-generate-checkbox {
+    margin-right: 0.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+#append-checkbox {
+    margin-right: 0.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+#replace-checkbox {
+    margin-right: 0.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+#bookmark-type-link {
+    margin-right: 0.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+#bookmark-type-script {
+    margin-right: 0.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+#cue-text-area {
+    flex-grow: 1;
+    padding: 0rem 0rem 0rem 0rem;
+    background: none;
+}
+
+#generated-text-area {
+    flex-grow: 3;
+    padding: 0rem 0rem 0rem 0rem;
+    background: none;
+}
+
+#cue-text, #generated-text {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: var(--color2);
+    border-color: var(--color2);
+    color: var(--grey-dark);
+    border-radius: 0.5rem;
+    flex-grow: 1;
+}
+
+#cue-text::selection, #generated-text::selection {
+    background-color: var(--color7);
+    color: var(--color4);
+}

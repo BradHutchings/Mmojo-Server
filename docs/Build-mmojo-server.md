@@ -1,17 +1,16 @@
-## Build llama-server
+## Build mmojo-server
 
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `llama-server` executable that will run on multiple platforms.
-
+This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `mmojo-server` executable that will run on multiple platforms.
 
 ### Environment Variables
 
 Let's define some environment variables, resetting those that affect the Makefile:
 ```
 DOWNLOAD_DIR="0-DOWNLOAD"
-BUILD_DIR="1-BUILD-llama.cpp"
+BUILD_DIR="1-BUILD-mmojo-server"
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
@@ -29,7 +28,7 @@ printf "\n**********\n*\n* FINISHED: Build Dependencies.\n*\n**********\n\n"
 
 ---
 ### Clone this Repo Locally
-Clone this repo into a `~\llama.cpp` directory.
+Clone this repo into a `~\1-BUILD-mmojo-server` directory.
 ```
 cd ~
 git clone https://github.com/BradHutchings/llama-server-one.git $BUILD_DIR
@@ -64,16 +63,38 @@ sed -i -e "s/_generic//g" ggml/src/ggml-cpu/arch/cosmo/quants.c
 printf "\n**********\n*\n* FINISHED: Patch ggml-cpu/cosmo.\n*\n**********\n\n"
 ```
 
+<!--
+**Optional:** Patch `tools/server/server-ls1.cpp` for building `mmojo-server`. In the future, we'll move the Mmojo Completion UI into this repo and rename the repo, target, etc.
+```
+sed -i -e "s/\"llama-server-one\"/\"mmojo-server\"/g" tools/server/server-ls1.cpp 
+sed -i -e "s/\"llama-server-one-args\"/\"mmojo-server-args\"/g" tools/server/server-ls1.cpp 
+printf "\n**********\n*\n* FINISHED: Patch tools/server/server-ls1.cpp.\n*\n**********\n\n"
+```
+-->
+
 ---
-### Make llama.cpp
-We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
+### Customize WebUI
+```
+APP_NAME='Mmojo Chat'
+sed -i -e "s/<title>.*<\/title>/<title>$APP_NAME<\/title>/g" tools/server/webui/index.html
+sed -i -e "s/>llama.cpp<\/div>/>$APP_NAME<\/div>/g" tools/server/webui/src/components/Header.tsx
+cd tools/server/webui
+npm i
+npm run build
+cd ~/$BUILD_DIR
+printf "\n**********\n*\n* FINISHED: Customize WebUI.\n*\n**********\n\n"
+```
+
+---
+### OPTIONAL: Build llama.cpp
+We won't use what we build here, but it will validate that the source code for llama.cpp compiles. It takes a few minutes. We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
 ```
 cd ~/$BUILD_DIR
 export LLAMA_MAKEFILE=1
 export LLAMA_SERVER_SSL=ON
 make clean
 make
-printf "\n**********\n*\n* FINISHED: Make llama.cpp.\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Build llama.cpp.\n*\n**********\n\n"
 ```
 
 If the build is successful, it will end with this message:
@@ -88,7 +109,7 @@ If the build fails on the `master` branch, please post a note in the [Discussion
 
 At this point, you should see `llama-server` and other built binaries in the directory listing.
 ```
-ls -al
+ls -al llama-* mmojo-*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
 
@@ -110,7 +131,7 @@ printf "\n**********\n*\n* FINISHED: Install Cosmo.\n*\n**********\n\n"
 ```
 
 ---
-### Prepare to make llama.cpp with Cosmo
+### Prepare to Build llama.cpp with Cosmo
 ```
 export PATH="$(pwd)/cosmocc/bin:$PATH"
 export CC="cosmocc -I$(pwd)/cosmocc/include -L$(pwd)/cosmocc/lib"
@@ -121,11 +142,11 @@ export AR="cosmoar"
 export UNAME_S="cosmocc"
 export UNAME_P="cosmocc"
 export UNAME_M="cosmocc"
-printf "\n**********\n*\n* FINISHED: Prepare to make llama.cpp with Cosmo.\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n**********\n\n"
 ```
 
 ---
-### Make openssl with Cosmo
+### Build openssl with Cosmo
 We need cross-architectire `libssl` and `libcrypto` static libraries to support SSL in `llama-server-one`.
 ```
 cd ~/$BUILD_DIR
@@ -136,19 +157,25 @@ cd ~/$BUILD_DIR/openssl
 ./Configure no-asm no-dso no-afalgeng no-shared no-pinshared no-apps
 make
 cd ~/$BUILD_DIR
-printf "\n**********\n*\n* FINISHED: Make openssl with Cosmo.\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Build openssl with Cosmo.\n*\n**********\n\n"
 
 ```
 
 ---
-### Make llama.cpp with Cosmo
+### Build mmojo-server with Cosmo
 ```
 make clean
-make
-printf "\n**********\n*\n* FINISHED: Make llama.cpp with Cosmo\n*\n**********\n\n"
+make mmojo-server
+printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
 
-If the build is successful, it will end with this message:
+**Optional:** Build other llama.cpp binaries with Cosmo.
+```
+make
+printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"
+```
+
+If the "Build other llama.cpp binaries" step is successful, it will end with this message:
 
 &nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
 
@@ -158,21 +185,21 @@ If the build fails on the `master` branch, please post a note in the [Discussion
 
 #### List Directory
 
-At this point, you should see `llama-server` and other built binaries in the directory listing.
+At this point, you should see `mmojo-server` and other built binaries in the directory listing.
 ```
-ls -al
+ls -al llama-* mmojo-*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
 
 #### Verify Zip Archive
 
-`llama-server` is actually a zip acrhive with an "Actually Portable Executable" (APE) loader prefix. Let's verify the zip archive part:
+`mmojo-server` is actually a zip acrhive with an "Actually Portable Executable" (APE) loader prefix. Let's verify the zip archive part:
 ```
-unzip -l llama-server
+unzip -l mmojo-server
 printf "\n**********\n*\n* FINISHED: Verify Zip Archive.\n*\n**********\n\n"
 ```
 
 ---
-### Next step: Configure llama-server-one
+### Next step: Configure mmojo-server
 
-Now that you've built `llama-server`, you're ready to configure it as `llama-server-one`. Follow instructions in [Configure-ls1.md](Configure-ls1.md).
+Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-mmojo-server.md](Configure-mmojo-server.md).

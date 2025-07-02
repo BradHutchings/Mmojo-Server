@@ -31,11 +31,11 @@
 #include <unordered_map>
 #include <unordered_set>
 
-// llama-server-one START
+// mmojo-server START
 #ifdef COSMOCC
 #include <cosmo.h>
 #endif
-// llama-server-one END
+// mmojo-server END
 
 using json = nlohmann::ordered_json;
 
@@ -1640,7 +1640,7 @@ struct server_queue {
         return 0;
     }
 
-    // llama-server-one START - defer() --> defer_task() to make Cosmo STL happy.
+    // mmojo-server START - defer() --> defer_task() to make Cosmo STL happy.
     // Add a new task, but defer until one slot is available
     void defer_task(server_task task) {
         std::unique_lock<std::mutex> lock(mutex_tasks);
@@ -1648,7 +1648,7 @@ struct server_queue {
         queue_tasks_deferred.push_back(std::move(task));
         condition_tasks.notify_one();
     }
-    // llama-server-one END
+    // mmojo-server END
 
     // Get the next id for creating a new task
     int get_new_id() {
@@ -2764,18 +2764,18 @@ struct server_context {
                     if (slot == nullptr) {
                         // if no slot is available, we defer this task for processing later
                         SRV_DBG("no slot is available, defer task, id_task = %d\n", task.id);
-                        // llama-server-one START
+                        // mmojo-server START
                         queue_tasks.defer_task(std::move(task));
-                        // llama-server-one END
+                        // mmojo-server END
                         break;
                     }
 
                     if (slot->is_processing()) {
                         // if requested slot is unavailable, we defer this task for processing later
                         SRV_DBG("requested slot is unavailable, defer task, id_task = %d\n", task.id);
-                        // llama-server-one START
+                        // mmojo-server START
                         queue_tasks.defer_task(std::move(task));
-                        // llama-server-one END
+                        // mmojo-server END
                         break;
                     }
 
@@ -2859,9 +2859,9 @@ struct server_context {
                     if (slot->is_processing()) {
                         // if requested slot is unavailable, we defer this task for processing later
                         SRV_DBG("requested slot is unavailable, defer task, id_task = %d\n", task.id);
-                        // llama-server-one START
+                        // mmojo-server START
                         queue_tasks.defer_task(std::move(task));
-                        // llama-server-one END
+                        // mmojo-server END
                         break;
                     }
 
@@ -2899,9 +2899,9 @@ struct server_context {
                     if (slot->is_processing()) {
                         // if requested slot is unavailable, we defer this task for processing later
                         SRV_DBG("requested slot is unavailable, defer task, id_task = %d\n", task.id);
-                        // llama-server-one START
+                        // mmojo-server START
                         queue_tasks.defer_task(std::move(task));
-                        // llama-server-one END
+                        // mmojo-server END
                         break;
                     }
 
@@ -2948,9 +2948,9 @@ struct server_context {
                     if (slot->is_processing()) {
                         // if requested slot is unavailable, we defer this task for processing later
                         SRV_DBG("requested slot is unavailable, defer task, id_task = %d\n", task.id);
-                        // llama-server-one START
+                        // mmojo-server START
                         queue_tasks.defer_task(std::move(task));
-                        // llama-server-one END
+                        // mmojo-server END
                         break;
                     }
 
@@ -3639,7 +3639,7 @@ struct server_context {
         SRV_DBG("%s", "run slots completed\n");
     }
 
-    // llama-server-one START
+    // mmojo-server START
     json model_meta() const {
         char general_architecture[64];
         char general_type[64];
@@ -3685,7 +3685,7 @@ struct server_context {
             {"general.license", general_license },
         };
     }
-    // llama-server-one END
+    // mmojo-server END
 };
 
 static void log_server_request(const httplib::Request & req, const httplib::Response & res) {
@@ -3717,14 +3717,14 @@ inline void signal_handler(int signal) {
 }
 
 int main(int argc, char ** argv) {
-    // llama-server-one START
+    // mmojo-server START
     // This implements an args file feature inspired by llamafile's.
     #ifdef COSMOCC
     // Keep the build from showing up as ape in the process list.
-    pthread_setname_np(pthread_self(), "llama-server-one");
+    pthread_setname_np(pthread_self(), "mmojo-server");
     
     // Args files if present. The names are different to remove confusion during packaging.
-    const std::string& argsFilename = "llama-server-one-args";
+    const std::string& argsFilename = "mmojo-server-args";
     const std::string& zipArgsFilename = "/zip/default-args";
     struct stat buffer;
 
@@ -3749,7 +3749,7 @@ int main(int argc, char ** argv) {
     // argsFilename args override zipArgsFilename file args.
     // User supplied args override argsFilename and zipArgsFilename args.
     #endif
-    // llama-server-one END
+    // mmojo-server END
 
     // own arguments required by this example
     common_params params;
@@ -4917,7 +4917,7 @@ int main(int argc, char ** argv) {
         }
     }
 
-    // llama-server-one START
+    // mmojo-server START
     svr->Get("/chat", [](const httplib::Request & req, httplib::Response & res) {
         if (req.get_header_value("Accept-Encoding").find("gzip") == std::string::npos) {
             res.set_content("Error: gzip is not supported by this browser", "text/plain");
@@ -4935,7 +4935,7 @@ int main(int argc, char ** argv) {
         res.set_redirect("/chat");
         return false;
     });
-    // llama-server-one END
+    // mmojo-server END
 
     // register API routes
     svr->Get ("/health",              handle_health); // public endpoint (no API key check)

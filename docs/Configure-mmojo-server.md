@@ -1,9 +1,9 @@
-## Configure llama-server-one in my Environment
+## Configure mmojo-server
 
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for configuring the `llama-server-one` executable to make it ready to package for multiple platforms.
+This file contains instructions for configuring the `mmojo-server` executable to make it ready to package for multiple platforms.
 
 ---
 ### Environment Variables
@@ -11,27 +11,27 @@ This file contains instructions for configuring the `llama-server-one` executabl
 Let's define some environment variables:
 ```
 DOWNLOAD_DIR="0-DOWNLOAD"
-BUILD_DIR="1-BUILD-llama.cpp"
-CONFIGURE_DIR="2-CONFIGURE-llama-server-one"
+BUILD_DIR="1-BUILD-mmojo-server"
+CONFIGURE_DIR="2-CONFIGURE-mmojo-server"
 
-LLAMA_SERVER="llama-server"
-LLAMA_SERVER_ONE="llama-server-one"
-LLAMA_SERVER_ONE_ZIP="llama-server-one.zip"
+MMOJO_SERVER="mmojo-server"
+MMOJO_SERVER_ZIP="mmojo-server.zip"
 DEFAULT_ARGS="default-args"
+
+TODAY=$(date +%Y-%m-%d)
+
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
 ---
 ### Create Configure Directory
 
-Next, let's create a directory where we'll configure `llama-server-one`:
+Next, let's create a directory where we'll configure `mmojo-server`:
 ```
 cd ~
 rm -r -f ~/$CONFIGURE_DIR
 mkdir -p $CONFIGURE_DIR
-cp ~/$BUILD_DIR/$LLAMA_SERVER \
-    ~/$CONFIGURE_DIR/$LLAMA_SERVER_ONE_ZIP
-
+cp ~/$BUILD_DIR/$MMOJO_SERVER ~/$CONFIGURE_DIR/$MMOJO_SERVER_ZIP
 cd ~/$CONFIGURE_DIR
 printf "\n**********\n*\n* FINISHED: Create Configuration Directory.\n*\n**********\n\n"
 ```
@@ -39,9 +39,9 @@ printf "\n**********\n*\n* FINISHED: Create Configuration Directory.\n*\n*******
 ---
 ### Examine Contents of Zip Archive
 
-Look at the contents of the `llama-server-one` zip archive:
+Look at the contents of the `mmojo.server.zip` archive:
 ```
-unzip -l $LLAMA_SERVER_ONE_ZIP 
+unzip -l $MMOJO_SERVER_ZIP 
 printf "\n**********\n*\n* FINISHED: Examine Contents of Zip Archive.\n*\n**********\n\n"
 ```
 
@@ -50,7 +50,7 @@ printf "\n**********\n*\n* FINISHED: Examine Contents of Zip Archive.\n*\n******
 
 You should notice a bunch of extraneous timezone related files in `/usr/*`. Let's get rid of those:
 ```
-zip -d $LLAMA_SERVER_ONE_ZIP "/usr/*"
+zip -d $MMOJO_SERVER_ZIP "/usr/*"
 printf "\n**********\n*\n* FINISHED: Delete Extraneous Timezone Files.\n*\n**********\n\n"
 ```
 
@@ -58,26 +58,28 @@ printf "\n**********\n*\n* FINISHED: Delete Extraneous Timezone Files.\n*\n*****
 
 Verify that these files are no longer in the archive:
 ```
-unzip -l $LLAMA_SERVER_ONE_ZIP 
+unzip -l $MMOJO_SERVER_ZIP 
 printf "\n**********\n*\n* FINISHED: Verify Contents of Zip Archive.\n*\n**********\n\n"
 ```
 
 ---
-### OPTIONAL: Create website Directory in Archive
+### Create website Directory in Archive
 
-`llama.cpp` has a built in chat UI. If you'd like to provide a custom UI, you should add a `website` directory to the `llama-server-one` archive. `llama.cpp`'s chat UI is optimized for serving inside the project's source code. But we can copy the the included `public_simplechat` implementation:
+`llama.cpp` has a built in chat UI. If you'd like to provide a custom UI, you should add a `website` directory to the `mmojo-server` archive. `llama.cpp`'s chat UI is optimized for serving inside the project's source code. But we can copy the unoptimized source:
 ```
-mkdir -p website
-cp -r ~/$BUILD_DIR/examples/server/public_simplechat/* website
-zip -0 -r $LLAMA_SERVER_ONE_ZIP website/*
+mkdir website
+cp -r ~/$BUILD_DIR/completion-ui/* website
+sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/scripts.js
+sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/bookmark-scripts.js
+zip -0 -r $MMOJO_SERVER_ZIP website/*
 printf "\n**********\n*\n* FINISHED: Create website Directory in Archive.\n*\n**********\n\n"
 ```
 
-#### OPTIONAL: Verify website Directory in Archive
+#### Verify website Directory in Archive
 
 Verify that the archive has your website:
 ```
-unzip -l $LLAMA_SERVER_ONE_ZIP 
+unzip -l $MMOJO_SERVER_ZIP 
 printf "\n**********\n*\n* FINISHED: Verify website Directory in Archive.\n*\n**********\n\n"
 ```
 
@@ -101,38 +103,19 @@ model.gguf
 8192
 --threads-http
 8
-...
-EOF
-zip -0 -r $LLAMA_SERVER_ONE_ZIP $DEFAULT_ARGS
-printf "\n**********\n*\n* FINISHED: Create Default args File in Archive.\n*\n**********\n\n"
-```
-
-#### OPTIONAL: Create default-args File in Archive with Website
-```
-cat << EOF > $DEFAULT_ARGS
--m
-model.gguf
---host
-127.0.0.1
---port
-8080
---ctx-size
-8192
---threads-http
-8
 --path
 /zip/website
 ...
 EOF
-zip -0 -r $LLAMA_SERVER_ONE_ZIP $DEFAULT_ARGS
-printf "\n**********\n*\n* FINISHED: Create Default args File in Archive with Website.\n*\n**********\n\n"
+zip -0 -r $MMOJO_SERVER_ZIP $DEFAULT_ARGS
+printf "\n**********\n*\n* FINISHED: Create Default args File in Archive.\n*\n**********\n\n"
 ```
 
 #### Verify default-args File in Archive
 
 Verify that the archive contains the `default-args` file:
 ```
-unzip -l $LLAMA_SERVER_ONE_ZIP 
+unzip -l $MMOJO_SERVER_ZIP 
 printf "\n**********\n*\n* FINISHED: Verify default-args File in Archive.\n*\n**********\n\n"
 ```
 
@@ -141,7 +124,7 @@ printf "\n**********\n*\n* FINISHED: Verify default-args File in Archive.\n*\n**
 
 Remove the `.zip` from our working file:
 ```
-mv $LLAMA_SERVER_ONE_ZIP $LLAMA_SERVER_ONE
+mv $MMOJO_SERVER_ZIP $MMOJO_SERVER
 printf "\n**********\n*\n* FINISHED: Remove .zip Extension.\n*\n**********\n\n"
 ```
 
@@ -153,7 +136,7 @@ Let's download a small model. We'll use Google Gemma 1B Instruct v3, a surprisin
 MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
 mkdir -p ~/$DOWNLOAD_DIR
 cd ~/$DOWNLOAD_DIR
-URL="https://huggingface.co/bradhutchings/Brads-LLMs/resolve/main/models/$MODEL_FILE?download=true"
+URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/models/$MODEL_FILE?download=true"
 if [ ! -f $MODEL_FILE ]; then wget $URL --show-progress --quiet -O $MODEL_FILE ; fi
 cd ~/$CONFIGURE_DIR
 cp ~/$DOWNLOAD_DIR/$MODEL_FILE model.gguf
@@ -163,9 +146,9 @@ printf "\n**********\n*\n* FINISHED: Download Model.\n*\n**********\n\n"
 ---
 ### Test Run
 
-Now we can test run `llama-server-one`, listening on localhost:8080.
+Now we can test run `mmojo-server`, listening on localhost:8080.
 ```
-./$LLAMA_SERVER_ONE
+./$MMOJO_SERVER
 ```
 
 After starting up and loading the model, it should display:
@@ -179,7 +162,7 @@ Hit `ctrl-C` on your keyboard to stop it.
 
 If you'd like it to listen on all available interfaces, so you can connect from a browser on another computer:
 ```
-./$LLAMA_SERVER_ONE --host 0.0.0.0
+./$MMOJO_SERVER --host 0.0.0.0
 ```
 
 After starting up and loading the model, it should display:
@@ -190,6 +173,5 @@ After starting up and loading the model, it should display:
 Hit `ctrl-C` on your keyboard to stop it.
 
 ---
-### Next Step: Package llama-server-one for Deployment
-Congratulations! You are ready to package your llams-server-one executable for deployment. Follow instructions in [Package-ls1.md](Package-ls1.md).
-
+### Next Step: Package mmojo-server for Deployment
+Congratulations! You are ready to package your llams-server-one executable for deployment. Follow instructions in [Package-mmojo-server.md](Package-mmojo-server.md).

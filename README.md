@@ -1,4 +1,4 @@
-## llama-server-one
+## mmojo-server (née llama-server-one)
 Based on [llama.cpp](https://github.com/ggml-org/llama.cpp).
 
 Brad Hutchings<br/>
@@ -7,7 +7,7 @@ brad@bradhutchings.com
 ---
 ### Project Goals
 
-The goal of this project is to build a single `llama-server-one executable` file that can run "anywhere":
+The goal of this project is to build a single `mmojo-server` executable file that can run "anywhere":
 - x86_64 Windows
 - x86_64 Linux
 - ARM Windows
@@ -20,7 +20,7 @@ I want to use the MIT license as used by llama.cpp.
 
 GPU support is not important to me and can be handled by platform specific builds of llama.cpp. CPU inference is quite adequate for many private end-user applications. Generic CPU inference is implemented. ARM and x86 tuned CPU inference is not implemented yet.
 
-The ability to package support files, such as a custom web, UI into the executable file is important to me. This is implemented.
+The ability to package support files, such as a custom web UI into the executable file is important to me. This is implemented.
 
 The ability to package default arguments, in an "args" file, into the executable file is important to me. This is implemented.
 
@@ -32,10 +32,10 @@ I welcome any of my changes being implemented in the official llama.cpp.
 
 ---
 ### Documentation
-Follow these guides in order to build, package, and deploy `llama-server-one`:
-- My start-to-finish guide for building `llama-server` with Cosmo is in the [Build Steps](docs/Build-ls1.md) file.
-- My guide for configuring a `llama-server-one` executable is in the [Configure Steps](docs/Configure-ls1.md) file.
-- My guide for packaging a `llama-server-one` executable for deployment is in the [Package Steps](docs/Package-ls1.md) file.
+Follow these guides in order to build, package, and deploy `mmojo-server`:
+- My start-to-finish guide for building `mmojo-server` with Cosmo is in the [Build Steps](docs/Build-mmojo-server.md) file.
+- My guide for configuring a `mmojo-server` executable is in the [Configure Steps](docs/Configure-mmojo-server.md) file.
+- My guide for packaging a `mmojo-server` executable for deployment is in the [Package Steps](docs/Package-mmojo-server.md) file.
 
 ---
 ### Modifications to llama.cpp
@@ -44,18 +44,18 @@ To get this from the llama.cpp source base, there are few files that need to be 
 
 1. [Makefile](Makefile) -- Extensive modifications to bring up to date, as it is deprecated in favor of a CMake system, and to support COSMOCC.
 
-2. [common/common.cpp](common/common-ls1.cpp) -- Added COSMOCC build support.
+2. [common/common.cpp](common/common-mmojo.cpp) -- Added COSMOCC build support.
 
-3. [src/llama-context.cpp](src/llama-context-ls1.cpp) -- COSMOCC doesn't have std::fill in its Standard Templates Library.
+3. [src/llama-context.cpp](src/llama-context-mmojo.cpp) -- COSMOCC doesn't have std::fill in its Standard Templates Library.
 
-4. [tools/server/server.cpp](tools/server/server-ls1.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
+4. [tools/server/server.cpp](tools/server/server-mmojo.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
 
 5. [ggml/src/ggml-cpu/arch/cosmo](ggml/src/ggml-cpu/arch/cosmo) -- Added a cosmo architecture for GGML CPU that uses generic code to compile for both ARM and x86.
 
 ---
 ### Reference
 
-Here are some projects and pages you should be familiar with if you want to get the most out of `llama-server-one`:
+Here are some projects and pages you should be familiar with if you want to get the most out of `mmojo-server`:
 - [llama.cpp](https://github.com/ggml-org/llama.cpp) - Georgi Gerganov and his team are the rock stars who are making the plumbing so LLMs can be available for developers of all kinds. The `llama.cpp` project is the industry standard for inference. I only fork it here because I want to make it a little better for my applications while preserving all its goodness.
 - [llamafile](https://github.com/Mozilla-Ocho/llamafile) - `Llamafile` lets you distribute and run LLMs with a single file. It is a Mozilla Foundation project that brough the Cosmopolitan C Library and llama.cpp together. It has some popular GPU support. It is based on an older version of llama.cpp and does not support all of the latest models supported by llama.cpp. Llamafile is an inspiration for this project.
 - [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) - `Cosmopolitan` is a project for building cross-platform binaries that run on x86_64 and ARM architectures, supporting Linux, Windows, macOS, and other operating systems. Like `llamafile`, I use Cosmo compile cross-platform executables of `llama.cpp` targets, including `llama-server`.

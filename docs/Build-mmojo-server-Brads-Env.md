@@ -132,7 +132,7 @@ printf "\n**********\n*\n* FINISHED: Install Cosmo.\n*\n**********\n\n"
 ```
 
 ---
-### Prepare to make llama.cpp with Cosmo
+### Prepare to Build llama.cpp with Cosmo
 ```
 export PATH="$(pwd)/cosmocc/bin:$PATH"
 export CC="cosmocc -I$(pwd)/cosmocc/include -L$(pwd)/cosmocc/lib"
@@ -143,7 +143,7 @@ export AR="cosmoar"
 export UNAME_S="cosmocc"
 export UNAME_P="cosmocc"
 export UNAME_M="cosmocc"
-printf "\n**********\n*\n* FINISHED: Prepare to make llama.cpp with Cosmo.\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n**********\n\n"
 ```
 
 ---

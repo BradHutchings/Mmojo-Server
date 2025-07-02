@@ -136,7 +136,7 @@ Let's download a small model. We'll use Google Gemma 1B Instruct v3, a surprisin
 MODEL_FILE="Google-Gemma-1B-Instruct-v3-q8_0.gguf"
 mkdir -p ~/$DOWNLOAD_DIR
 cd ~/$DOWNLOAD_DIR
-URL="https://huggingface.co/bradhutchings/Brads-LLMs/resolve/main/models/$MODEL_FILE?download=true"
+URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/models/$MODEL_FILE?download=true"
 if [ ! -f $MODEL_FILE ]; then wget $URL --show-progress --quiet -O $MODEL_FILE ; fi
 cd ~/$CONFIGURE_DIR
 cp ~/$DOWNLOAD_DIR/$MODEL_FILE model.gguf

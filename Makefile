@@ -375,11 +375,11 @@ ifndef GGML_NO_CPU_AARCH64
 endif
 
 # Build constants
-GGML_VERSION := "1"
-GGML_COMMIT := "Mmojo Server commit message."
+GGML_VERSION := \"1\"
+GGML_COMMIT := \"Mmojo\ Server\ commit\ message.\"
 
-MK_CFLAGS	+= -DGGML_VERSION=$GGML_VERSION -DGGML_COMMIT=$GGML_COMMIT
-MK_CXXFLAGS	+= -DGGML_VERSION=$GGML_VERSION -DGGML_COMMIT=$GGML_COMMIT
+MK_CFLAGS	+= -DGGML_VERSION=$(GGML_VERSION) -DGGML_COMMIT=$(GGML_COMMIT)
+MK_CXXFLAGS	+= -DGGML_VERSION=$(GGML_VERSION) -DGGML_COMMIT=$(GGML_COMMIT)
 
 
 ifeq ($(UNAME_S),cosmocc)
@@ -405,8 +405,8 @@ $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 		-Werror=implicit-function-declaration \
 		-Wno-implicit-int \
 		-DCOSMOCC=1 \
-		-DGGML_VERSION=$GGML_VERSION \
-		-DGGML_COMMIT=$GGML_COMMIT
+		-DGGML_VERSION=$(GGML_VERSION) \
+		-DGGML_COMMIT=$(GGML_COMMIT)
 
 	MK_CXXFLAGS += \
 		$(WARN_FLAGS) \
@@ -414,8 +414,8 @@ $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 		-Wmissing-noreturn \
 		-Wno-literal-suffix \
 		-DCOSMOCC=1 \
-		-DGGML_VERSION=$GGML_VERSION \
-		-DGGML_COMMIT=$GGML_COMMIT
+		-DGGML_VERSION=$(GGML_VERSION) \
+		-DGGML_COMMIT=$(GGML_COMMIT)
 
 	OBJ_GGML_EXT += \
 		$(DIR_GGML)/src/ggml-cpu/arch/cosmo/quants.o \

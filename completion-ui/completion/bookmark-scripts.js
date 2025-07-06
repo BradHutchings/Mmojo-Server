@@ -1,7 +1,6 @@
 // Copyright 2024-25 Brad Hutchings. 
 // All Rights Reserved.
 // License Inquiries: brad@BradHutchings.com.
-// This file is not "open source". You may not distribute it.
 
 const isMmojoBookmarkPage = true;
 const kLogging = false;

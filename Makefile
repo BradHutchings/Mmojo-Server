@@ -374,6 +374,17 @@ ifndef GGML_NO_CPU_AARCH64
 	MK_CPPFLAGS += -DGGML_USE_CPU_REPACK
 endif
 
+# Build constants
+GGML_VERSION := \"1\"
+GGML_COMMIT := \"Mmojo\ Server\ commit\ message.\"
+
+ifeq ($(UNAME_S),cosmocc)
+GGML_COMMIT := \"Mmojo_Server_commit_message.\"
+endif
+
+MK_CFLAGS	+= -DGGML_VERSION=$(GGML_VERSION) -DGGML_COMMIT=$(GGML_COMMIT)
+MK_CXXFLAGS	+= -DGGML_VERSION=$(GGML_VERSION) -DGGML_COMMIT=$(GGML_COMMIT)
+
 ifeq ($(UNAME_S),cosmocc)
 $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 	

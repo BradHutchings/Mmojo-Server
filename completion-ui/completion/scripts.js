@@ -8,6 +8,7 @@ const kLogging = false;
 const kMaxCopyPastes = 20;
 const kUpdated = '[[UPDATED]]';
 const kWaitToGenerate = 2000;
+const kReplayDelay = 25;
 
 // const kServerURL = "http://llama-cpp:8000";
 // const kServerURL = "http://llama-cpp:8000";
@@ -621,7 +622,6 @@ function Replay(generated) {
         var workAreaText = elements.workAreaText.value;
         var words = generated.split(' ');
         var i = 0;
-        var delay = 200;
 
         function type() {
             if (replaying && (i < words.length)) {
@@ -632,7 +632,7 @@ function Replay(generated) {
                 newText = newText + words[i];
                 elements.workAreaText.value += newText;
                 i++;
-                setTimeout(type, delay);
+                setTimeout(type, kReplayDelay);
             }
             else {
                 elements.workAreaText.value = workAreaText + generated;

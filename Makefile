@@ -378,9 +378,12 @@ endif
 GGML_VERSION := \"1\"
 GGML_COMMIT := \"Mmojo\ Server\ commit\ message.\"
 
+ifeq ($(UNAME_S),cosmocc)
+GGML_COMMIT := \"Mmojo_Server_commit_message.\"
+endif
+
 MK_CFLAGS	+= -DGGML_VERSION=$(GGML_VERSION) -DGGML_COMMIT=$(GGML_COMMIT)
 MK_CXXFLAGS	+= -DGGML_VERSION=$(GGML_VERSION) -DGGML_COMMIT=$(GGML_COMMIT)
-
 
 ifeq ($(UNAME_S),cosmocc)
 $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
@@ -404,18 +407,14 @@ $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 		-Wmissing-prototypes \
 		-Werror=implicit-function-declaration \
 		-Wno-implicit-int \
-		-DCOSMOCC=1 \
-		-DGGML_VERSION=$(GGML_VERSION) \
-		-DGGML_COMMIT=$(GGML_COMMIT)
+		-DCOSMOCC=1
 
 	MK_CXXFLAGS += \
 		$(WARN_FLAGS) \
 		-Wmissing-declarations \
 		-Wmissing-noreturn \
 		-Wno-literal-suffix \
-		-DCOSMOCC=1 \
-		-DGGML_VERSION=$(GGML_VERSION) \
-		-DGGML_COMMIT=$(GGML_COMMIT)
+		-DCOSMOCC=1
 
 	OBJ_GGML_EXT += \
 		$(DIR_GGML)/src/ggml-cpu/arch/cosmo/quants.o \

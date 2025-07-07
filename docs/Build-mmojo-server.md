@@ -152,6 +152,7 @@ We need cross-architectire `libssl` and `libcrypto` static libraries to support 
 cd ~/$BUILD_DIR
 cp -r /usr/include/openssl/ ./cosmocc/include/
 cp -r /usr/include/x86_64-linux-gnu/openssl/* ./cosmocc/include/openssl
+cp -r /usr/include/aarch64-linux-gnu/openssl/* ./cosmocc/include/openssl
 git clone https://github.com/openssl/openssl.git
 cd ~/$BUILD_DIR/openssl
 ./Configure no-asm no-dso no-afalgeng no-shared no-pinshared no-apps

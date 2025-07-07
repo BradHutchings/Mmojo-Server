@@ -3392,6 +3392,9 @@ struct server_context {
         for (int32_t i = 0; i < batch.n_tokens; i = i_next) {
             const int32_t n_tokens = std::min(n_batch, batch.n_tokens - i);
 
+            // debug the weird pause in chat with cosmo build. -Brad 2025-07-07
+            SRV_DBG("process the created batch of tokens, i = %d, n_tokens = %d\n", i, n_tokens);
+
             llama_batch batch_view = {
                 n_tokens,
                 batch.token    + i,

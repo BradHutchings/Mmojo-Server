@@ -51,7 +51,7 @@ function HideElement(elt) {
 }
 
 var workAreaText_placeholder = 
-    "Welcome to Mmojo Completion, delivered to you from your own local, private Mmojo Knowledge Appliance. " +
+    "Welcome to Mmojo Completion, delivered to you from your own Mmojo Server. " +
     "Anything you do with LLMs in the cloud, you can do here, privately.\n\n" +
     "Type some text in this work area that will get the language model started. The text you type is called a \"cue\".\n\n" +
     "Once you've entered your cue, click the Start button at the bottom or type the ENTER key to start completing.\n\n" +

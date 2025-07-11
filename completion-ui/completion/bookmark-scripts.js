@@ -146,9 +146,15 @@ function UpdateBookmark() {
         var js =
             "javascript:(() => { \n" + 
             "    let hash = '" + hash + "';\n" +
+            "    let activeElt = document.activeElement;\n" +
             "    if (typeof isMmojoPage !== 'undefined') {\n" +
             "        location.hash = hash;\n" +
             "    }\n" +
+            "    else if (activeElt) {\n" +
+            "        let cue = \"" + cue.replace(/[\\"']/g, '\\$&') + "\";\n" +
+            "        let value = (" + append + ") ? activeElt.value + cue : cue;\n" +
+            "        activeElt.value = value;\n" +
+            "    }\n" + 
             "})();"
 
         /*

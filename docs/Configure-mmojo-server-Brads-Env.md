@@ -142,7 +142,7 @@ model.gguf
 --port
 8080
 --ctx-size
-8192
+0
 --threads-http
 8
 --path

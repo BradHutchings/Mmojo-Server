@@ -67,20 +67,18 @@
             <input id="stop-words" type="text" oninput="UpdateBookmark();"/>
 
             <div id="options-break" class="break"></div>
-            <input id="auto-generate-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
-            <label for="auto-generate-checkbox">Auto-Generate</label>
-            <div class="vertical-divider"></div>
-            <input id="append-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
-            <label for="append-checkbox">Append</label>
-            <div class="vertical-divider"></div>
-            <input id="replace-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
-            <label for="replace-checkbox">Replace</label>
+
+            <label for="mode">Mode:</label>
+            <select id="mode" onchange="UpdateBookmark();">
+                <option value="cue" selected>Cue</option>
+                <option value="append">Append</option>
+                <option value="prepend">Prepend</option>
+                <option value="replace">Replace</option>
+            </select>
 
             <div class="vertical-divider"></div>
-            <input type="radio" id="bookmark-type-link" name="bookmark-type" value="link" checked onchange="UpdateBookmark();" />
-            <label for="bookmark-type-link">Link</label>
-            <input type="radio" id="bookmark-type-script" name="bookmark-type" value="script" onchange="UpdateBookmark();" />
-            <label for="bookmark-type-script">Script</label>
+            <input id="auto-generate-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
+            <label for="auto-generate-checkbox">Auto-Generate</label>
 
             <div id="clear-space" class="space"></div>
             <button id="clear" class="clear-button" onclick="ClearBookmarkMaker();">Clear</button>

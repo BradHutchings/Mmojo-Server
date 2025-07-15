@@ -26,6 +26,11 @@ const kStatus_StoppedByWord = "Stopped by \"[stopping_word]\".";
 const kStatus_StoppedAfterGenerating = "Stopped after generating [tokens_predicted] tokens.";
 const kStatus_StoppedByUser = "Stopped by you, the user.";
 
+const kModeCue = "cue";
+const kModeAppend = "append";
+const kModePrepend = "prepend";
+const kModeReplace = "replace";
+
 var elements = {};
 var controller = null;          // Rename: generatingController
 var generating = false;         // Replace this with a mode: kMode_Typing, kMode_Generating, kMode_Replaying
@@ -527,6 +532,8 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
 
                 if (lineData.data) {
                     lineData.data = JSON.parse(lineData.data);
+
+                    if (kLogging) console.log(lineData.data);
 
                     if ((lineData.data.stop_type == "word") && lineData.data.stopping_word !== "") {
                         // if (kLogging) console.log("stopping_word: " + lineData.data.stopping_word);
@@ -1202,12 +1209,12 @@ function UseHash() {
         StopGenerating();
     }
 
+    let label = null;
     let temperature = null;
     let tokens = null;
     let stopWords = null;
+    let mode = kModeCue;
     let autoGenerate = false;
-    let append = false;
-    let replace = false;
     let cue = "";
     let generated = "";
 
@@ -1243,11 +1250,20 @@ function UseHash() {
             if ('auto-generate' in data) {
                 autoGenerate = data['auto-generate'];
             }
+            if ('mode' in data) {
+                mode = data['mode'];
+            }
             if ('append' in data) {
-                append = data['append'];
+                let append = data['append'];
+                if (append) {
+                    mode = kModeAppend;
+                }
             }
             if ('replace' in data) {
-                replace = data['replace'];
+                let replace = data['replace'];
+                if (replace) {
+                    mode = kModeReplace;
+                }
             }
             if ('cue' in data) {
                 cue = data['cue'];
@@ -1262,11 +1278,15 @@ function UseHash() {
             if (kLogging || logThis) console.log(generated);
         }
 
-        if (append) {
+        if (mode == kModeAppend) {
             elements.workAreaText.value = elements.workAreaText.value + cue;
             PushChange();
         }
-        else if (replace) {
+        else if (mode == kModePrepend) {
+            elements.workAreaText.value = cue + elements.workAreaText.value;
+            PushChange();
+        }
+        else if (mode == kModeReplace) {
             // Update contents of elements.workAreaText.value. Replace cue with generated.
             let text = elements.workAreaText.value;
             if (cue != "") {
@@ -1279,7 +1299,9 @@ function UseHash() {
         }
         else {
             elements.workAreaText.value = cue;
+            PushChange();
         }
+
         if ((temperature != null) && (temperature != "")) {
             elements.temperature.value = temperature;
         }
@@ -1311,7 +1333,7 @@ function UseHash() {
     elements.workAreaText.focus();
     ScrollToEnd();
     
-    if ((generated == '') && (cue != '') && autoGenerate) {
+    if ((generated == '') && (elements.workAreaText.value != '') && autoGenerate) {
         setTimeout(() => {
             Generate();
         }, kWaitToGenerate);

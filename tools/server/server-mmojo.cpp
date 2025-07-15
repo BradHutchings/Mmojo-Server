@@ -2589,12 +2589,14 @@ struct server_context {
                 continue;
             }
 
-            const float * embd = llama_get_embeddings_seq(ctx, batch.seq_id[i][0]);
-            if (embd == NULL) {
+            const float * embd = nullptr;
+            if (llama_pooling_type(slot.ctx) == LLAMA_POOLING_TYPE_NONE) {
                 embd = llama_get_embeddings_ith(ctx, i);
+            } else {
+                embd = llama_get_embeddings_seq(ctx, batch.seq_id[i][0]);
             }
 
-            if (embd == NULL) {
+            if (embd == nullptr) {
                 SLT_ERR(slot, "failed to get embeddings, token = %d, seq_id = %d\n", batch.token[i], batch.seq_id[i][0]);
 
                 res->embedding.push_back(std::vector<float>(n_embd, 0.0f));
@@ -2602,12 +2604,12 @@ struct server_context {
             }
 
             // normalize only when there is pooling
-            // TODO: configurable
             if (llama_pooling_type(slot.ctx) != LLAMA_POOLING_TYPE_NONE) {
                 common_embd_normalize(embd, embd_res.data(), n_embd, 2);
                 res->embedding.push_back(embd_res);
+                break;
             } else {
-                res->embedding.push_back({ embd, embd + n_embd });
+                res->embedding.emplace_back(embd, embd + n_embd);
             }
         }
 
@@ -3686,6 +3688,7 @@ struct server_context {
         };
     }
     // mmojo-server END
+
 };
 
 static void log_server_request(const httplib::Request & req, const httplib::Response & res) {

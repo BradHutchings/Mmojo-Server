@@ -1303,7 +1303,7 @@ clean-server-assets:
 clean: clean-server-assets
 	rm -vrf $(BUILD_TARGETS) $(TEST_TARGETS)
 	rm -rvf *.a *.dll *.so *.dot *.elf *.macho *.ape *.dbg
-    rm -f .aarch64
+	rm -f .aarch64
 	find ggml src common tests examples pocs -type f -name "*.o" -delete
 	find ggml src common tests examples pocs -type f -name "*.d" -delete
 

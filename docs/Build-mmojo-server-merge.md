@@ -13,12 +13,8 @@ Let's define some environment variables, resetting those that affect the Makefil
 ```
 DOWNLOAD_DIR="0-DOWNLOAD"
 BUILD_DIR="1-BUILD-mmojo-server"
-export CC
-export CXX
-export AR
-export UNAME_S
-export UNAME_P
-export UNAME_M
+export LLAMA_MAKEFILE=1
+export LLAMA_SERVER_SSL=ON
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
@@ -93,14 +89,17 @@ cd ~/$BUILD_DIR
 printf "\n**********\n*\n* FINISHED: Customize WebUI.\n*\n**********\n\n"
 ```
 
-<!--
 ---
 ### Build llama.cpp
 We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
 ```
 cd ~/$BUILD_DIR
-export LLAMA_MAKEFILE=1
-export LLAMA_SERVER_SSL=ON
+export CC
+export CXX
+export AR
+export UNAME_S
+export UNAME_P
+export UNAME_M
 make clean
 make
 printf "\n**********\n*\n* FINISHED: Build llama.cpp.\n*\n**********\n\n"
@@ -121,7 +120,6 @@ At this point, you should see `llama-server` and other built binaries in the dir
 ls -al llama-* mmojo-*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
--->
 
 ---
 ### Install Cosmo

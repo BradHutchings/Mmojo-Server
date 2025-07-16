@@ -215,7 +215,7 @@ ifdef GGML_VULKAN
 	BUILD_TARGETS += vulkan-shaders-gen
 endif
 
-default: $(BUILD_TARGETS) $(LEGACY_TARGETS_BUILD)
+default: $(BUILD_TARGETS)
 
 test: $(TEST_TARGETS)
 	@failures=0; \
@@ -416,9 +416,35 @@ $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 		-Wno-literal-suffix \
 		-DCOSMOCC=1
 
-	OBJ_GGML_EXT += \
-		$(DIR_GGML)/src/ggml-cpu/arch/cosmo/quants.o \
-		$(DIR_GGML)/src/ggml-cpu/arch/cosmo/repack.o
+ifeq ($(UNAME_P),cosmocc)
+
+		OBJ_GGML_EXT += \
+			$(DIR_GGML)/src/ggml-cpu/quants.o \
+			$(DIR_GGML)/src/ggml-cpu/repack.o \
+			$(DIR_GGML)/src/ggml-cpu/arch/cosmo/quants.o \
+			$(DIR_GGML)/src/ggml-cpu/arch/cosmo/repack.o
+
+endif
+
+ifeq ($(UNAME_P),cosmocc-intel)
+
+		OBJ_GGML_EXT += \
+ 			$(DIR_GGML)/src/ggml-cpu/quants.o \
+ 			$(DIR_GGML)/src/ggml-cpu/repack.o \
+			$(DIR_GGML)/src/ggml-cpu/arch/x86/quants.o \
+			$(DIR_GGML)/src/ggml-cpu/arch/x86/repack.o
+
+endif
+
+ifeq ($(UNAME_P),cosmocc-acorn)
+
+		OBJ_GGML_EXT += \
+ 			$(DIR_GGML)/src/ggml-cpu/quants.o \
+ 			$(DIR_GGML)/src/ggml-cpu/repack.o \
+			$(DIR_GGML)/src/ggml-cpu/arch/arm/quants.o \
+			$(DIR_GGML)/src/ggml-cpu/arch/arm/repack.o
+
+endif
 
 else
 $(info Using default MK_CFLAGS and MK_CXXFLAGS flags.)
@@ -1276,7 +1302,8 @@ clean-server-assets:
 # Clean rule
 clean: clean-server-assets
 	rm -vrf $(BUILD_TARGETS) $(TEST_TARGETS)
-	rm -rvf *.a *.dll *.so *.dot
+	rm -rvf *.a *.dll *.so *.dot *.elf *.macho *.ape *.dbg
+    rm -f .aarch64
 	find ggml src common tests examples pocs -type f -name "*.o" -delete
 	find ggml src common tests examples pocs -type f -name "*.d" -delete
 

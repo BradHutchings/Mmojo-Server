@@ -429,8 +429,8 @@ endif
 ifeq ($(UNAME_P),cosmocc-intel)
 
 		OBJ_GGML_EXT += \
- 			$(DIR_GGML)/src/ggml-cpu/quants.o \
- 			$(DIR_GGML)/src/ggml-cpu/repack.o \
+			$(DIR_GGML)/src/ggml-cpu/quants.o \
+			$(DIR_GGML)/src/ggml-cpu/repack.o \
 			$(DIR_GGML)/src/ggml-cpu/arch/x86/quants.o \
 			$(DIR_GGML)/src/ggml-cpu/arch/x86/repack.o
 
@@ -439,8 +439,8 @@ endif
 ifeq ($(UNAME_P),cosmocc-acorn)
 
 		OBJ_GGML_EXT += \
- 			$(DIR_GGML)/src/ggml-cpu/quants.o \
- 			$(DIR_GGML)/src/ggml-cpu/repack.o \
+			$(DIR_GGML)/src/ggml-cpu/quants.o \
+			$(DIR_GGML)/src/ggml-cpu/repack.o \
 			$(DIR_GGML)/src/ggml-cpu/arch/arm/quants.o \
 			$(DIR_GGML)/src/ggml-cpu/arch/arm/repack.o
 

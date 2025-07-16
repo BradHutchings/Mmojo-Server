@@ -15,6 +15,7 @@ DOWNLOAD_DIR="0-DOWNLOAD"
 BUILD_DIR="1-BUILD-mmojo-server"
 export LLAMA_MAKEFILE=1
 export LLAMA_SERVER_SSL=ON
+export SAVE_PATH=$PATH
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
@@ -94,6 +95,7 @@ printf "\n**********\n*\n* FINISHED: Customize WebUI.\n*\n**********\n\n"
 We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
 ```
 cd ~/$BUILD_DIR
+export PATH=$SAVE_PATH
 export CC
 export CXX
 export AR
@@ -141,10 +143,7 @@ printf "\n**********\n*\n* FINISHED: Install Cosmo.\n*\n**********\n\n"
 ---
 ### Prepare to Build openssl with Cosmo - Both platforms
 ```
-export PATH="$(pwd)/cosmocc/bin:$PATH"
-export LLAMA_MAKEFILE=1
-export LLAMA_SERVER_SSL=ON
-
+export PATH="$(pwd)/cosmocc/bin:$SAVE_PATH"
 export CC="cosmocc -I$(pwd)/cosmocc/include -L$(pwd)/cosmocc/lib"
 export CXX="cosmocc -I$(pwd)/cosmocc/include \
     -I$(pwd)/cosmocc/include/third_party/libcxx \
@@ -176,6 +175,7 @@ printf "\n**********\n*\n* FINISHED: Build openssl with Cosmo.\n*\n**********\n\
 ---
 ### Prepare to Build mmojo-server with Cosmo - x86_64
 ```
+export PATH="$(pwd)/cosmocc/bin:$SAVE_PATH"
 export CC="x86_64-unknown-cosmo-cc -I$(pwd)/cosmocc/include -L$(pwd)/cosmocc/lib"
 export CXX="x86_64-unknown-cosmo-c++ -I$(pwd)/cosmocc/include \
     -I$(pwd)/cosmocc/include/third_party/libcxx \
@@ -215,6 +215,7 @@ If the build fails on the `master` branch, please post a note in the [Discussion
 ---
 ### Prepare to Build mmojo-server with Cosmo - Aarch64
 ```
+export PATH="$(pwd)/cosmocc/bin:$SAVE_PATH"
 export CC="aarch64-unknown-cosmo-cc -I$(pwd)/cosmocc/include -L$(pwd)/cosmocc/lib"
 export CXX="aarch64-unknown-cosmo-c++ -I$(pwd)/cosmocc/include \
     -I$(pwd)/cosmocc/include/third_party/libcxx \

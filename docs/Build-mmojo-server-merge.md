@@ -13,6 +13,12 @@ Let's define some environment variables, resetting those that affect the Makefil
 ```
 DOWNLOAD_DIR="0-DOWNLOAD"
 BUILD_DIR="1-BUILD-mmojo-server"
+export CC
+export CXX
+export AR
+export UNAME_S
+export UNAME_P
+export UNAME_M
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 

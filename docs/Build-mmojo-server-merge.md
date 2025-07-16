@@ -138,6 +138,9 @@ printf "\n**********\n*\n* FINISHED: Install Cosmo.\n*\n**********\n\n"
 ### Prepare to Build openssl with Cosmo - Both platforms
 ```
 export PATH="$(pwd)/cosmocc/bin:$PATH"
+export LLAMA_MAKEFILE=1
+export LLAMA_SERVER_SSL=ON
+
 export CC="cosmocc -I$(pwd)/cosmocc/include -L$(pwd)/cosmocc/lib"
 export CXX="cosmocc -I$(pwd)/cosmocc/include \
     -I$(pwd)/cosmocc/include/third_party/libcxx \

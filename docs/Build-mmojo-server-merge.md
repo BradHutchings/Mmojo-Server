@@ -104,6 +104,9 @@ export UNAME_P
 export UNAME_M
 make clean
 make
+mkdir Builds-Platform
+mv mmojo-* llama-* Builds-Platform
+
 printf "\n**********\n*\n* FINISHED: Build llama.cpp.\n*\n**********\n\n"
 ```
 
@@ -119,7 +122,7 @@ If the build fails on the `master` branch, please post a note in the [Discussion
 
 At this point, you should see `llama-server` and other built binaries in the directory listing.
 ```
-ls -al llama-* mmojo-*
+ls -al Builds-Platform/*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
 
@@ -192,8 +195,8 @@ printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n
 ```
 make clean
 make mmojo-server
-mkdir Builds-x86_64
-mv mmojo-* Builds-x86_64
+mkdir Builds-Cosmo-x86_64
+mv mmojo-* Builds-Cosmo-x86_64
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
 
@@ -232,8 +235,8 @@ printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n
 ```
 make clean
 make mmojo-server
-mkdir Builds-Aarch64
-mv mmojo-* Builds-Aarch64
+mkdir Builds-Cosmo-Aarch64
+mv mmojo-* Builds-Cosmo-Aarch64
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
 

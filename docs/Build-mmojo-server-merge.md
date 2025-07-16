@@ -204,6 +204,7 @@ printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n*********
 ```
 make
 mv llama-* Builds-Cosmo-x86_64
+mv mmojo-* Builds-Cosmo-x86_64
 printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"
 ```
 
@@ -244,6 +245,7 @@ printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n*********
 ```
 make
 mv llama-* Builds-Cosmo-Aarch64
+mv mmojo-* Builds-Cosmo-Aarch64
 printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"
 ```
 

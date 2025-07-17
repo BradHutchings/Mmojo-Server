@@ -105,7 +105,7 @@ export UNAME_M
 make clean
 make
 mkdir -p Builds-Platform
-mv mmojo-* llama-* Builds-Platform
+cp mmojo-* llama-* Builds-Platform
 
 printf "\n**********\n*\n* FINISHED: Build llama.cpp.\n*\n**********\n\n"
 ```
@@ -196,15 +196,14 @@ printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n
 make clean
 make mmojo-server
 mkdir -p Builds-Cosmo-x86_64
-mv mmojo-* Builds-Cosmo-x86_64
+cp mmojo-* Builds-Cosmo-x86_64
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
 
 **Optional:** Build other llama.cpp binaries with Cosmo.
 ```
 make
-mv llama-* Builds-Cosmo-x86_64
-mv mmojo-* Builds-Cosmo-x86_64
+cp llama-* Builds-Cosmo-x86_64
 printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"
 ```
 
@@ -237,15 +236,14 @@ printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n
 make clean
 make mmojo-server
 mkdir -p Builds-Cosmo-Aarch64
-mv mmojo-* Builds-Cosmo-Aarch64
+cp mmojo-* Builds-Cosmo-Aarch64
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
 
 **Optional:** Build other llama.cpp binaries with Cosmo.
 ```
 make
-mv llama-* Builds-Cosmo-Aarch64
-mv mmojo-* Builds-Cosmo-Aarch64
+cp llama-* Builds-Cosmo-Aarch64
 printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"
 ```
 

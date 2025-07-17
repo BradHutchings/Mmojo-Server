@@ -416,7 +416,7 @@ $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 		-Wno-literal-suffix \
 		-DCOSMOCC=1
 
-ifeq ($(UNAME_P),cosmocc)
+ifeq ($(UNAME_P),cosmocc-cross)
 
 		OBJ_GGML_EXT += \
 			$(DIR_GGML)/src/ggml-cpu/quants.o \

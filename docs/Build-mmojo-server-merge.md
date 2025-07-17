@@ -176,6 +176,32 @@ printf "\n**********\n*\n* FINISHED: Build openssl with Cosmo.\n*\n**********\n\
 ```
 
 ---
+### Build mmojo-server with Cosmo - Cross
+```
+make clean
+make mmojo-server
+mkdir -p Builds-Cosmo
+cp mmojo-* Builds-Cosmo
+printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
+```
+
+**Optional:** Build other llama.cpp binaries with Cosmo.
+```
+make
+cp llama-* Builds-Cosmo
+printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"
+```
+
+If the build is successful, it will end with this message:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
+
+If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
+
+If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions) area.
+
+
+---
 ### Prepare to Build mmojo-server with Cosmo - x86_64
 ```
 export PATH="$(pwd)/cosmocc/bin:$SAVE_PATH"

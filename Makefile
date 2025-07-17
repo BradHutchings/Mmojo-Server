@@ -419,8 +419,6 @@ $(info Setting MK_CFLAGS and MK_CXXFLAGS flags for cosmocc.)
 ifeq ($(UNAME_P),cosmocc-cross)
 
 		OBJ_GGML_EXT += \
-			$(DIR_GGML)/src/ggml-cpu/quants.o \
-			$(DIR_GGML)/src/ggml-cpu/repack.o \
 			$(DIR_GGML)/src/ggml-cpu/arch/cosmo/quants.o \
 			$(DIR_GGML)/src/ggml-cpu/arch/cosmo/repack.o
 

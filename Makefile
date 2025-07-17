@@ -1253,19 +1253,29 @@ all: $(BUILD_TARGETS)
 # force c++ build for source file that have same name as c file
 # Note: need this exception because `ggml-cpu.c` and `ggml-cpu.cpp` both produce the same obj/dep files
 $(DIR_GGML)/%_cpp.o: $(DIR_GGML)/%.cpp
+	@echo
+	@echo Compiling $< to $@
 	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
 
 # Rules for building object files
 $(DIR_GGML)/%.o: $(DIR_GGML)/%.c
+	@echo
+	@echo Compiling $< to $@
 	$(CC) $(CFLAGS) -MMD -c $< -o $@
 
 $(DIR_GGML)/%.o: $(DIR_GGML)/%.cpp
+	@echo
+	@echo Compiling $< to $@
 	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
 
 $(DIR_LLAMA)/%.o: $(DIR_LLAMA)/%.cpp
+	@echo
+	@echo Compiling $< to $@
 	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
 
 $(DIR_COMMON)/%.o: $(DIR_COMMON)/%.cpp
+	@echo
+	@echo Compiling $< to $@
 	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
 
 # Rules for building libraries

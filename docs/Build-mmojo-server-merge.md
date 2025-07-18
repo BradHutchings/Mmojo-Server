@@ -171,6 +171,11 @@ cp mmojo-* Builds-Cosmo
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
 
+If the build is successful, it will end with this message:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
+
+
 **Optional:** Build other llama.cpp binaries with Cosmo.
 ```
 make
@@ -181,10 +186,6 @@ printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n
 If the build is successful, it will end with this message:
 
 &nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
-
-If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
-
-If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions) area.
 
 #### List Directory
 
@@ -219,6 +220,10 @@ cp mmojo-* Builds-Cosmo-x86_64
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
 
+If the build is successful, it will end with this message:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Built mmojo-server.**
+
 **Optional:** Build other llama.cpp binaries with Cosmo.
 ```
 make
@@ -229,10 +234,6 @@ printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n
 If the build is successful, it will end with this message:
 
 &nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
-
-If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
-
-If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions) area.
 
 #### List Directory
 
@@ -266,6 +267,10 @@ mkdir -p Builds-Cosmo-Aarch64
 cp mmojo-* Builds-Cosmo-Aarch64
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
+
+If the build is successful, it will end with this message:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Built mmojo-server.**
 
 **Optional:** Build other llama.cpp binaries with Cosmo.
 ```

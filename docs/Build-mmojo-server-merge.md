@@ -33,22 +33,17 @@ printf "\n**********\n*\n* FINISHED: Build Dependencies.\n*\n**********\n\n"
 
 ---
 ### Clone this Repo Locally
-Clone this repo into a `~\1-BUILD-mmojo-server` directory.
+Clone this repo and repos this repo depends on into a `~\1-BUILD-mmojo-server` directory.
 ```
 cd ~
 git clone https://github.com/BradHutchings/llama-server-one.git $BUILD_DIR
-printf "\n**********\n*\n* FINISHED: Clone this Repo Locally.\n*\n**********\n\n"
-```
-
-Install repos this repo depends upon locally.
-```
 git clone https://github.com/nlohmann/json.git ~/$BUILD_DIR/nlohmann-json
 git clone https://github.com/google/minja.git ~/$BUILD_DIR/google-minja
 git clone https://github.com/yhirose/cpp-httplib.git ~/$BUILD_DIR/cpp-httplib
 git clone https://github.com/mackron/miniaudio.git ~/$BUILD_DIR/miniaudio
 git clone https://github.com/nothings/stb.git ~/$BUILD_DIR/stb
 sed -i -e 's/#if defined(_WIN32) || defined(__COSMOPOLITAN__)/#if defined(_WIN32)/g' ~/$BUILD_DIR/miniaudio/miniaudio.h
-printf "\n**********\n*\n* FINISHED: Install Additional Repos Locally.\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Clone this Repo and Dependent Repos Locally.\n*\n**********\n\n"
 ```
 
 **Optional:** Use the `work-in-progress` branch where I implement and test my own changes and where I test upstream changes from `llama.cpp`.
@@ -67,15 +62,6 @@ sed -i -e "s/_generic//g" ggml/src/ggml-cpu/arch/cosmo/repack.cpp
 sed -i -e "s/_generic//g" ggml/src/ggml-cpu/arch/cosmo/quants.c 
 printf "\n**********\n*\n* FINISHED: Patch ggml-cpu/cosmo.\n*\n**********\n\n"
 ```
-
-<!--
-**Optional:** Patch `tools/server/server-ls1.cpp` for building `mmojo-server`. In the future, we'll move the Mmojo Completion UI into this repo and rename the repo, target, etc.
-```
-sed -i -e "s/\"llama-server-one\"/\"mmojo-server\"/g" tools/server/server-ls1.cpp 
-sed -i -e "s/\"llama-server-one-args\"/\"mmojo-server-args\"/g" tools/server/server-ls1.cpp 
-printf "\n**********\n*\n* FINISHED: Patch tools/server/server-ls1.cpp.\n*\n**********\n\n"
-```
--->
 
 ---
 ### Customize WebUI
@@ -112,7 +98,7 @@ printf "\n**********\n*\n* FINISHED: Build llama.cpp.\n*\n**********\n\n"
 
 If the build is successful, it will end with this message:
 
-&nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
 
 If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
 
@@ -194,7 +180,7 @@ printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n
 
 If the build is successful, it will end with this message:
 
-&nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
 
 If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
 
@@ -235,7 +221,7 @@ printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n
 
 If the build is successful, it will end with this message:
 
-&nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
 
 If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
 
@@ -275,7 +261,7 @@ printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n
 
 If the build is successful, it will end with this message:
 
-&nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
 
 #### List Directory
 

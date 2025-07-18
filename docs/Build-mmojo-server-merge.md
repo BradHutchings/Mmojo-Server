@@ -106,7 +106,7 @@ If the build fails on the `master` branch, please post a note in the [Discussion
 
 #### List Directory
 
-At this point, you should see `llama-server` and other built binaries in the directory listing.
+At this point, you should see `mmojo-server` and other built binaries in the directory listing.
 ```
 ls -al Builds-Platform/*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
@@ -186,6 +186,13 @@ If the build fails and you've checked out the `work-in-progress` branch, well, i
 
 If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions) area.
 
+#### List Directory
+
+At this point, you should see `mmojo-server` and other built binaries in the directory listing.
+```
+ls -al Builds-Cosmo/*
+printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
+```
 
 ---
 ### Prepare to Build mmojo-server with Cosmo - x86_64
@@ -227,6 +234,14 @@ If the build fails and you've checked out the `work-in-progress` branch, well, i
 
 If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions) area.
 
+#### List Directory
+
+At this point, you should see `mmojo-server` and other built binaries in the directory listing.
+```
+ls -al Builds-Cosmo-x86_64/*
+printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
+```
+
 ---
 ### Prepare to Build mmojo-server with Cosmo - Aarch64
 ```
@@ -267,19 +282,9 @@ If the build is successful, it will end with this message:
 
 At this point, you should see `mmojo-server` and other built binaries in the directory listing.
 ```
-ls -al llama-* mmojo-*
+ls -al Builds-Cosmo-Aarch64/*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
-
-<!--
-#### Verify Zip Archive
-
-`mmojo-server` is actually a zip acrhive with an "Actually Portable Executable" (APE) loader prefix. Let's verify the zip archive part:
-```
-unzip -l mmojo-server
-printf "\n**********\n*\n* FINISHED: Verify Zip Archive.\n*\n**********\n\n"
-```
--->
 
 ---
 ### Next step: Configure mmojo-server

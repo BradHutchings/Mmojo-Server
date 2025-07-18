@@ -216,6 +216,7 @@ ifdef GGML_VULKAN
 endif
 
 default: $(BUILD_TARGETS)
+	@echo 'Build of all targets is complete.'
 
 test: $(TEST_TARGETS)
 	@failures=0; \
@@ -249,6 +250,7 @@ test: $(TEST_TARGETS)
 		exit 1; \
 	fi
 	@echo 'All tests passed.'
+	@echo
 
 all: $(BUILD_TARGETS) $(TEST_TARGETS) $(LEGACY_TARGETS_BUILD)
 
@@ -1332,6 +1334,7 @@ llama-cli: tools/main/main.cpp \
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-cli."
 	@echo '====  Run ./llama-cli -h for help.  ===='
+	@echo
 
 llama-run: tools/run/run.cpp \
 	tools/run/linenoise.cpp/linenoise.cpp \
@@ -1339,42 +1342,49 @@ llama-run: tools/run/run.cpp \
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-run."
+	@echo
 
 llama-simple: examples/simple/simple.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-simple."
+	@echo
 
 llama-simple-chat: examples/simple-chat/simple-chat.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-simple-chat."
+	@echo
 
 llama-tokenize: tools/tokenize/tokenize.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-tokenize."
+	@echo
 
 llama-batched: examples/batched/batched.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-batched."
+	@echo
 
 llama-batched-bench: tools/batched-bench/batched-bench.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-batched-bench."
+	@echo
 
 llama-quantize: tools/quantize/quantize.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-quantize."
+	@echo
 
 # llama-quantize-stats: tools/quantize-stats/quantize-stats.cpp \
 #	$(OBJ_ALL)
@@ -1386,36 +1396,42 @@ llama-perplexity: tools/perplexity/perplexity.cpp \
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-perplexity."
+	@echo
 
 llama-imatrix: tools/imatrix/imatrix.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-imatrix."
+	@echo
 
 llama-embedding: examples/embedding/embedding.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-embedding."
+	@echo
 
 llama-gritlm: examples/gritlm/gritlm.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-gritlm."
+	@echo
 
 llama-save-load-state: examples/save-load-state/save-load-state.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-save-load-state."
+	@echo
 
 llama-gguf: examples/gguf/gguf.cpp \
 	$(OBJ_GGML)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-gguf."
+	@echo
 
 examples/gguf-hash/deps/sha1/sha1.o: \
 	examples/gguf-hash/deps/sha1/sha1.c
@@ -1434,108 +1450,126 @@ llama-gguf-hash: examples/gguf-hash/gguf-hash.cpp examples/gguf-hash/deps/sha1/s
 	$(CXX) $(CXXFLAGS) -Iexamples/gguf-hash/deps -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-gguf-hash."
+	@echo
 
 llama-gguf-split: tools/gguf-split/gguf-split.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-gguf-split."
+	@echo
 
 llama-eval-callback: examples/eval-callback/eval-callback.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-eval-callback."
+	@echo
 
 llama-cvector-generator: tools/cvector-generator/cvector-generator.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-cvector-generator."
+	@echo
 
 llama-convert-llama2c-to-ggml: examples/convert-llama2c-to-ggml/convert-llama2c-to-ggml.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-convert-llama2c-to-ggml."
+	@echo
 
 llama-bench: tools/llama-bench/llama-bench.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-bench."
+	@echo
 
 llama-export-lora: tools/export-lora/export-lora.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-export-lora."
+	@echo
 
 llama-retrieval: examples/retrieval/retrieval.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-retrieval."
+	@echo
 
 llama-speculative: examples/speculative/speculative.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-speculative."
+	@echo
 
 llama-parallel: examples/parallel/parallel.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-parallel."
+	@echo
 
 llama-lookahead: examples/lookahead/lookahead.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-lookahead."
+	@echo
 
 llama-lookup: examples/lookup/lookup.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-lookup."
+	@echo
 
 llama-lookup-create: examples/lookup/lookup-create.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-lookup-create."
+	@echo
 
 llama-lookup-merge: examples/lookup/lookup-merge.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-lookup-merge."
+	@echo
 
 llama-lookup-stats: examples/lookup/lookup-stats.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-lookup-stats."
+	@echo
 
 llama-passkey: examples/passkey/passkey.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-passkey."
+	@echo
 
 llama-gbnf-validator: examples/gbnf-validator/gbnf-validator.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-gbnf-validator."
+	@echo
 
 ifdef GGML_RPC
 rpc-server: tools/rpc/rpc-server.cpp \
 	$(OBJ_GGML)
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 	@echo "Built rpc-server."
+	@echo
 
 endif # GGML_RPC
 
@@ -1553,6 +1587,7 @@ mmojo-server: \
 	$(CXX) $(CXXFLAGS) -Itools/mtmd -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h %.hpp $<,$^) -Itools/server $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS) $(LWINSOCK2)
 	@echo "Built mmojo-server."
+	@echo
 
 # llama-server: \
 #	tools/server/server-mmojo.cpp \
@@ -1597,6 +1632,7 @@ llama-gen-docs: examples/gen-docs/gen-docs.cpp \
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built llama-gen-docs."
+	@echo
 
 libllava.a: tools/mtmd/mtmd.cpp \
 	tools/mtmd/clip.cpp \
@@ -1605,6 +1641,7 @@ libllava.a: tools/mtmd/mtmd.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -static -fPIC -c $< -o $@ -Wno-cast-qual
 	@echo "Built libllava.a."
+	@echo
 
 # llama-llava-cli: tools/mtmd/llava-cli.cpp \
 #	tools/mtmd/llava.cpp \
@@ -1646,6 +1683,7 @@ common/build-info.cpp: $(wildcard .git/index) scripts/build-info.sh
 common/build-info.o: common/build-info.cpp
 	$(CXX) $(CXXFLAGS) -c $(filter-out %.h,$^) -o $@
 	@echo "Built build-info.o."
+	@echo
 
 #
 # Tests
@@ -1658,123 +1696,144 @@ tests/test-arg-parser: tests/test-arg-parser.cpp \
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-arg-parser."
+	@echo
 
 tests/test-llama-grammar: tests/test-llama-grammar.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-llama-grammar."
+	@echo
 
 tests/test-log: tests/test-log.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-log."
+	@echo
 
 tests/test-grammar-parser: tests/test-grammar-parser.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-grammar-parser."
+	@echo
 
 tests/test-grammar-integration: tests/test-grammar-integration.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-grammar-integration."
+	@echo
 
 tests/test-double-float: tests/test-double-float.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-double-float."
+	@echo
 
 tests/test-json-schema-to-grammar: tests/test-json-schema-to-grammar.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -Itools/server -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-json-schema-to-grammar."
+	@echo
 
 tests/test-chat: tests/test-chat.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -Itools/server -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-chat."
+	@echo
 
 tests/test-opt: tests/test-opt.cpp \
 	$(OBJ_GGML)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-opt."
+	@echo
 
 tests/test-quantize-fns: tests/test-quantize-fns.cpp \
 	$(OBJ_GGML)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-quantize-fns."
+	@echo
 
 tests/test-quantize-perf: tests/test-quantize-perf.cpp \
 	$(OBJ_GGML)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-quantize-perf."
+	@echo
 
 tests/test-sampling: tests/test-sampling.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-sampling."
+	@echo
 
 tests/test-tokenizer-0: tests/test-tokenizer-0.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-tokenizer-0."
+	@echo
 
 tests/test-tokenizer-1-bpe: tests/test-tokenizer-1-bpe.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-tokenizer-1-bpe."
+	@echo
 
 tests/test-tokenizer-1-spm: tests/test-tokenizer-1-spm.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-tokenizer-1-spm."
+	@echo
 
 tests/test-rope: tests/test-rope.cpp ggml/src/ggml.o \
 	$(OBJ_GGML)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built test-rope."
+	@echo
 
 tests/test-c.o: tests/test-c.c include/llama.h
 	$(CC) $(CFLAGS) -c $(filter-out %.h,$^) -o $@
 	@echo "Built tests/test-c.o."
+	@echo
 
 tests/test-backend-ops: tests/test-backend-ops.cpp \
 	$(OBJ_GGML)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built tests/test-backend-ops."
+	@echo
 
 tests/test-model-load-cancel: tests/test-model-load-cancel.cpp tests/get-model.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built tests/test-model-load-cancel."
+	@echo
 
 tests/test-autorelease: tests/test-autorelease.cpp tests/get-model.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built tests/test-autorelease."
+	@echo
 
 tests/test-chat-template: tests/test-chat-template.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 	@echo "Built tests/test-chat-template."
+	@echo
 
 #
 # PoCs

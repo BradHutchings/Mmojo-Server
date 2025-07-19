@@ -3900,14 +3900,8 @@ int main(int argc, char ** argv) {
         if (current_state == SERVER_STATE_LOADING_MODEL) {
             auto tmp = string_split<std::string>(req.path, '.');
             
-            // mmojo-server START
-            if (req.path == "/loading.html") {
-                // allow the loading page to display.
-                return true;
-            }
-            else if (req.path == "/" || tmp.back() == "html") {
-                res.set_redirect("/loading.html");
-                // res.set_content(reinterpret_cast<const char*>(loading_html), loading_html_len, "text/html; charset=utf-8");
+            if (req.path == "/" || tmp.back() == "html") {
+                res.set_content(reinterpret_cast<const char*>(loading_html), loading_html_len, "text/html; charset=utf-8");
                 res.status = 503;
             } else if (req.path == "/models" || req.path == "/v1/models" || req.path == "/api/tags") {
                 // allow the models endpoint to be accessed during loading
@@ -3915,7 +3909,6 @@ int main(int argc, char ** argv) {
             } else {
                 res_error(res, format_error_response("Loading model", ERROR_TYPE_UNAVAILABLE));
             }
-            // mmojo-server END
             
             return false;
         }

@@ -195,6 +195,7 @@ ls -al Builds-Cosmo/*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
 
+<!--
 ---
 ### Prepare to Build mmojo-server with Cosmo - x86_64
 ```
@@ -209,7 +210,9 @@ export UNAME_P="cosmocc-intel"
 export UNAME_M="cosmocc"
 printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n**********\n\n"
 ```
+-->
 
+<!--
 ---
 ### Build mmojo-server with Cosmo - x86_64
 ```
@@ -242,7 +245,9 @@ At this point, you should see `mmojo-server` and other built binaries in the dir
 ls -al Builds-Cosmo-x86_64/*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
+-->
 
+<!--
 ---
 ### Prepare to Build mmojo-server with Cosmo - Aarch64
 ```
@@ -290,8 +295,9 @@ At this point, you should see `mmojo-server` and other built binaries in the dir
 ls -al Builds-Cosmo-Aarch64/*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
+-->
 
 ---
 ### Next step: Configure mmojo-server
 
-Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-mmojo-server-Brads-Env.md](Configure-mmojo-server-Brads-Env.md).
+Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-mmojo-server-merge.md](Configure-mmojo-server-merge.md).

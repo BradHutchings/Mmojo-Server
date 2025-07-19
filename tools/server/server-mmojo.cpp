@@ -3901,7 +3901,10 @@ int main(int argc, char ** argv) {
             auto tmp = string_split<std::string>(req.path, '.');
             
             if (req.path == "/" || tmp.back() == "html") {
-                res.set_content(reinterpret_cast<const char*>(loading_html), loading_html_len, "text/html; charset=utf-8");
+                // mmojo-server START
+                // res.set_content(reinterpret_cast<const char*>(loading_html), loading_html_len, "text/html; charset=utf-8");
+                res.set_content(reinterpret_cast<const char*>(loading_mmojo_html), loading_mmojo_html_len, "text/html; charset=utf-8");
+                // mmojo-server END
                 res.status = 503;
             } else if (req.path == "/models" || req.path == "/v1/models" || req.path == "/api/tags") {
                 // allow the models endpoint to be accessed during loading

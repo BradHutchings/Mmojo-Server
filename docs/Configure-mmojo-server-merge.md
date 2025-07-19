@@ -32,7 +32,7 @@ Next, let's create a directory where we'll configure `mmojo-server`:
 cd ~
 rm -r -f ~/$CONFIGURE_DIR
 mkdir -p $CONFIGURE_DIR
-cp ~/$BUILD_DIR/$MMOJO_SERVER ~/$CONFIGURE_DIR/$MMOJO_SERVER_ZIP
+cp ~/$BUILD_DIR/Builds-Cosmo/$MMOJO_SERVER ~/$CONFIGURE_DIR/$MMOJO_SERVER_ZIP
 cd ~/$CONFIGURE_DIR
 printf "\n**********\n*\n* FINISHED: Create Configuration Directory.\n*\n**********\n\n"
 ```

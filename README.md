@@ -52,6 +52,10 @@ To get this from the llama.cpp source base, there are few files that need to be 
 
 5. [ggml/src/ggml-cpu/arch/cosmo](ggml/src/ggml-cpu/arch/cosmo) -- Added a cosmo architecture for GGML CPU that uses generic code to compile for both ARM and x86.
 
+6. [completion-ui](completion-ui) -- Default UI is Mmojo Completion.
+
+7. [tools/server/public_legacy/loading-mmojo.html](tools/server/public_legacy/loading-mmojo.html) -- Loading page matches Mmojo Completion theme.
+
 ---
 ### Reference
 

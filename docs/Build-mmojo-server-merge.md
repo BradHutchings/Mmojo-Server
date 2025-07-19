@@ -15,7 +15,9 @@ DOWNLOAD_DIR="0-DOWNLOAD"
 BUILD_DIR="1-BUILD-mmojo-server"
 export LLAMA_MAKEFILE=1
 export LLAMA_SERVER_SSL=ON
-export SAVE_PATH=$PATH
+if [ -z "$SAVE_PATH" ]; then
+  export SAVE_PATH=$PATH
+fi
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
@@ -82,12 +84,12 @@ We use the old `Makefile` rather than CMake. We've updated the `Makefile` in thi
 ```
 cd ~/$BUILD_DIR
 export PATH=$SAVE_PATH
-export CC
-export CXX
-export AR
-export UNAME_S
-export UNAME_P
-export UNAME_M
+unset CC; export CC
+unset CXX; export CXX
+unset AR; export AR
+unset UNAME_S; export UNAME_S
+unset UNAME_P; export UNAME_P
+unset UNAME_M; export UNAME_M
 make clean
 make
 mkdir -p Builds-Platform

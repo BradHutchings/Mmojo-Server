@@ -1094,7 +1094,7 @@ OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama-cparams.o \
 	$(DIR_LLAMA)/llama-grammar.o \
 	$(DIR_LLAMA)/llama-graph.o \
-	$(DIR_LLAMA)/llama-hparams.o \
+	$(DIR_LLAMA)/llama-hparams-mmojo.o \
 	$(DIR_LLAMA)/llama-impl.o \
 	$(DIR_LLAMA)/llama-io.o \
 	$(DIR_LLAMA)/llama-kv-cache-unified-iswa.o \

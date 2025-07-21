@@ -48,13 +48,15 @@ To get this from the llama.cpp source base, there are few files that need to be 
 
 3. [src/llama-context.cpp](src/llama-context-mmojo.cpp) -- COSMOCC doesn't have std::fill in its Standard Templates Library.
 
-4. [tools/server/server.cpp](tools/server/server-mmojo.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
+4. [src/llama-hparams.cpp](src/llama-hapams-mmojo.cpp) -- COSMOCC doesn't have std::max in its Standard Templates Library.
 
-5. [ggml/src/ggml-cpu/arch/cosmo](ggml/src/ggml-cpu/arch/cosmo) -- Added a cosmo architecture for GGML CPU that uses generic code to compile for both ARM and x86.
+5. [tools/server/server.cpp](tools/server/server-mmojo.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
 
-6. [completion-ui](completion-ui) -- Default UI is Mmojo Completion.
+6. [ggml/src/ggml-cpu/arch/cosmo](ggml/src/ggml-cpu/arch/cosmo) -- Added a cosmo architecture for GGML CPU that uses generic code to compile for both ARM and x86.
 
-7. [tools/server/public_legacy/loading-mmojo.html](tools/server/public_legacy/loading-mmojo.html) -- Loading page matches Mmojo Completion theme.
+7. [completion-ui](completion-ui) -- Default UI is Mmojo Completion.
+
+8. [tools/server/public_legacy/loading-mmojo.html](tools/server/public_legacy/loading-mmojo.html) -- Loading page matches Mmojo Completion theme.
 
 ---
 ### Reference

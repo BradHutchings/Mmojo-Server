@@ -133,7 +133,6 @@ struct slot_params {
     std::vector<std::string> response_fields;
     bool timings_per_token = false;
     bool post_sampling_probs = false;
-    bool ignore_eos = false;
 
     struct common_params_sampling sampling;
     struct common_params_speculative speculative;
@@ -447,7 +446,6 @@ struct server_task {
 
         {
             params.sampling.logit_bias.clear();
-            params.ignore_eos = json_value(data, "ignore_eos", false);
 
             const auto & logit_bias = data.find("logit_bias");
             if (logit_bias != data.end() && logit_bias->is_array()) {
@@ -477,6 +475,13 @@ struct server_task {
                         }
                     }
                 }
+            }
+
+            params.sampling.ignore_eos = json_value(data, "ignore_eos", params_base.sampling.ignore_eos);
+            if (params.sampling.ignore_eos) {
+                params.sampling.logit_bias.insert(
+                        params.sampling.logit_bias.end(),
+                        defaults.sampling.logit_bias_eog.begin(), defaults.sampling.logit_bias_eog.end());
             }
         }
 
@@ -1906,7 +1911,6 @@ struct server_context {
 
     bool clean_kv_cache = true;
     bool add_bos_token  = true;
-    bool has_eos_token  = false;
 
     int32_t n_ctx; // total context for all clients / slots
 
@@ -1965,7 +1969,6 @@ struct server_context {
         n_ctx = llama_n_ctx(ctx);
 
         add_bos_token = llama_vocab_get_add_bos(vocab);
-        has_eos_token = llama_vocab_eos(vocab) != LLAMA_TOKEN_NULL;
 
         if (!params_base.speculative.model.path.empty() || !params_base.speculative.model.hf_repo.empty()) {
             SRV_INF("loading draft model '%s'\n", params_base.speculative.model.path.c_str());
@@ -2223,10 +2226,6 @@ struct server_context {
             // Might be better to reject the request with a 400 ?
             SLT_WRN(slot, "n_predict = %d exceeds server configuration, setting to %d\n", slot.params.n_predict, slot.n_predict);
             slot.params.n_predict = slot.n_predict;
-        }
-
-        if (slot.params.ignore_eos && has_eos_token) {
-            slot.params.sampling.logit_bias.push_back({llama_vocab_eos(vocab), -INFINITY});
         }
 
         {
@@ -3900,7 +3899,10 @@ int main(int argc, char ** argv) {
         if (current_state == SERVER_STATE_LOADING_MODEL) {
             auto tmp = string_split<std::string>(req.path, '.');
             if (req.path == "/" || tmp.back() == "html") {
-                res.set_content(reinterpret_cast<const char*>(loading_html), loading_html_len, "text/html; charset=utf-8");
+                // mmojo-server START
+                // res.set_content(reinterpret_cast<const char*>(loading_html), loading_html_len, "text/html; charset=utf-8");
+                res.set_content(reinterpret_cast<const char*>(loading_mmojo_html), loading_mmojo_html_len, "text/html; charset=utf-8");
+                // mmojo-server END
                 res.status = 503;
             } else if (req.path == "/models" || req.path == "/v1/models" || req.path == "/api/tags") {
                 // allow the models endpoint to be accessed during loading
@@ -4607,9 +4609,10 @@ int main(int argc, char ** argv) {
         json tokens_response = json::array();
         if (body.count("content") != 0) {
             const bool add_special = json_value(body, "add_special", false);
+            const bool parse_special = json_value(body, "parse_special", true);
             const bool with_pieces = json_value(body, "with_pieces", false);
 
-            llama_tokens tokens = tokenize_mixed(ctx_server.vocab, body.at("content"), add_special, true);
+            llama_tokens tokens = tokenize_mixed(ctx_server.vocab, body.at("content"), add_special, parse_special);
 
             if (with_pieces) {
                 for (const auto& token : tokens) {

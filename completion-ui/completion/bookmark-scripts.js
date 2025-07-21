@@ -7,13 +7,14 @@ const kLogging = false;
 const kMaxCopyPastes = 20;
 const kUpdated = '[[UPDATED]]';
 
-const kModeCue = "cue";
+const kModeCueLink = "cue-link";
+const kModeCueScript = "cue-script";
 const kModeAppend = "append";
 const kModePrepend = "prepend";
 const kModeReplace = "replace";
-const kModes = [kModeCue, kModeAppend, kModePrepend, kModeReplace];
-const kLinkModes = [kModeCue];
-const kScriptModes = [kModeAppend, kModePrepend, kModeReplace];
+const kModes = [kModeCueLink, kModeCueScript, kModeAppend, kModePrepend, kModeReplace];
+const kLinkModes = [kModeCueLink];
+const kScriptModes = [kModeCueScript, kModeAppend, kModePrepend, kModeReplace];
 
 var elements = {};
 var textChanged = true;
@@ -93,7 +94,7 @@ function UpdateBookmark() {
     // let bookmarkTypeScript = elements.bookmarkTypeScript.checked;
 
     if (!kModes.includes(mode)) {
-        mode = kModeCue;
+        mode = kModeCueLink;
     }
     let bookmarkTypeLink = kLinkModes.includes(mode);
     let bookmarkTypeScript = kScriptModes.includes(mode);
@@ -108,10 +109,6 @@ function UpdateBookmark() {
         "stop-words": stopWordsText,
         "auto-generate": autoGenerate,
         "mode": mode,
-        //  "append": append,
-        //  "replace": replace,
-        //  "bookmark-type-link" : bookmarkTypeLink,
-        //  "bookmark-type-script" : bookmarkTypeScript,
         "cue": cue,
         "generated": generated,
     }
@@ -257,7 +254,7 @@ function ClearBookmarkMaker() {
     let temperature = "";
     let tokens = "";
     let stopWords = "";
-    let mode = kModeCue;
+    let mode = kModeCueLink;
     let autoGenerate = false;
     let cue = "";
     let generated = "";
@@ -297,7 +294,7 @@ function UseHash(hash) {
     let temperature = null;
     let tokens = null;
     let stopWords = null;
-    let mode = kModeCue;
+    let mode = kModeCueLink;
     let autoGenerate = false;
     let cue = "";
     let generated = "";
@@ -362,10 +359,13 @@ function UseHash(hash) {
 
             if ('mode' in data) {
                 mode = data['mode'];
+                if (!kLinkModes.includes(mode)) {
+                    mode = kModeCueLink;
+                }
                 elements.mode.value = mode;
             }
             else {
-                elements.mode.value = kModeCue;
+                elements.mode.value = kModeCueLink;
             }
 
             if ('auto-generate' in data) {

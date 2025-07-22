@@ -48,7 +48,7 @@ To get this from the llama.cpp source base, there are few files that need to be 
 
 3. [src/llama-context.cpp](src/llama-context-mmojo.cpp) -- COSMOCC doesn't have std::fill in its Standard Templates Library.
 
-4. [src/llama-hparams.cpp](src/llama-hapams-mmojo.cpp) -- COSMOCC doesn't have std::max in its Standard Templates Library.
+4. [src/llama-hparams.cpp](src/llama-hparams-mmojo.cpp) -- COSMOCC doesn't have std::max in its Standard Templates Library.
 
 5. [tools/server/server.cpp](tools/server/server-mmojo.cpp) -- Support embedded or adjacent "args" file, fix Cosmo name conflict with "defer" task member, add additional meta data to `model_meta`.
 

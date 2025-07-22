@@ -35,6 +35,16 @@
 #ifdef COSMOCC
 #include <cosmo.h>
 #endif
+
+bool ends_with (std::string const &fullString, std::string const &ending);
+bool ends_with (std::string const &fullString, std::string const &ending) {
+    if (fullString.length() >= ending.length()) {
+        return (0 == fullString.compare (fullString.length() - ending.length(), ending.length(), ending));
+    }
+    else {
+        return false;
+    } 
+}
 // mmojo-server END
 
 using json = nlohmann::ordered_json;
@@ -3894,12 +3904,12 @@ int main(int argc, char ** argv) {
 
         return false;
     };
-
+        
     auto middleware_server_state = [&res_error, &state](const httplib::Request & req, httplib::Response & res) {
         server_state current_state = state.load();
         if (current_state == SERVER_STATE_LOADING_MODEL) {
             auto tmp = string_split<std::string>(req.path, '.');
-            if (req.path == "/" || tmp.back() == "html" || req.path.str.ends_with("/") || req.path.str.ends_with(".html")) {
+            if (req.path == "/" || tmp.back() == "html" || ends_with(req.path, "/") || ends_with(req.path, ".html")) {
                 // mmojo-server START
                 // res.set_content(reinterpret_cast<const char*>(loading_html), loading_html_len, "text/html; charset=utf-8");
                 res.set_content(reinterpret_cast<const char*>(loading_mmojo_html), loading_mmojo_html_len, "text/html; charset=utf-8");

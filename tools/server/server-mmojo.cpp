@@ -3673,7 +3673,7 @@ struct server_context {
             {"vocab_type",  llama_vocab_type            (vocab)},
             {"n_vocab",     llama_vocab_n_tokens        (vocab)},
             {"n_ctx_train", llama_model_n_ctx_train     (model)},
-            {"n_ctx",       llama_model_n_ctx           (model)},
+            {"n_ctx",       llama_n_ctx                 (model)},
             {"n_embd",      llama_model_n_embd          (model)},
             {"n_params",    llama_model_n_params        (model)},
             {"size",        llama_model_size            (model)},

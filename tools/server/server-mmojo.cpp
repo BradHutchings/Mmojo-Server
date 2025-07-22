@@ -3899,7 +3899,7 @@ int main(int argc, char ** argv) {
         server_state current_state = state.load();
         if (current_state == SERVER_STATE_LOADING_MODEL) {
             auto tmp = string_split<std::string>(req.path, '.');
-            if (req.path == "/" || tmp.back() == "html") {
+            if (req.path == "/" || tmp.back() == "html" || req.path.str.ends_with("/") || req.path.str.ends_with(".html")) {
                 // mmojo-server START
                 // res.set_content(reinterpret_cast<const char*>(loading_html), loading_html_len, "text/html; charset=utf-8");
                 res.set_content(reinterpret_cast<const char*>(loading_mmojo_html), loading_mmojo_html_len, "text/html; charset=utf-8");

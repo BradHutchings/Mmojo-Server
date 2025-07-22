@@ -1058,6 +1058,7 @@ async function GetModelInfoFromServer() {
         metadata = data0.meta;
         const modelName = metadata["general.name"];
         const n_ctx_train = metadata["n_ctx_train"];
+        const n_ctx = metadata["n_ctx"];
 
         if (kLogging) console.log("json.data[0]:\n");
         if (kLogging) console.log(data0);
@@ -1071,7 +1072,7 @@ async function GetModelInfoFromServer() {
         if (kLogging) console.log("meta[\"n_ctx_train\"]:\n");
         if (kLogging) console.log(n_ctx_train);
 
-        contextWindowSize = n_ctx_train;
+        contextWindowSize = n_ctx;
         elements.model.innerHTML = modelName;
     }
     catch(exc) {

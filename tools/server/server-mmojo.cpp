@@ -35,6 +35,16 @@
 #ifdef COSMOCC
 #include <cosmo.h>
 #endif
+
+bool ends_with (std::string const &fullString, std::string const &ending);
+bool ends_with (std::string const &fullString, std::string const &ending) {
+    if (fullString.length() >= ending.length()) {
+        return (0 == fullString.compare (fullString.length() - ending.length(), ending.length(), ending));
+    }
+    else {
+        return false;
+    } 
+}
 // mmojo-server END
 
 using json = nlohmann::ordered_json;
@@ -259,6 +269,7 @@ struct server_task {
         defaults.sampling    = params_base.sampling;
         defaults.speculative = params_base.speculative;
         defaults.n_keep      = params_base.n_keep;
+        defaults.antiprompt  = params_base.antiprompt;
 
         // enabling this will output extra debug information in the HTTP responses from the server
         params.verbose           = params_base.verbosity > 9;
@@ -495,6 +506,10 @@ struct server_task {
                         params.antiprompt.push_back(word);
                     }
                 }
+            }
+            // set reverse prompt from cli args if not set in the request
+            if (params.antiprompt.empty()) {
+                params.antiprompt = defaults.antiprompt;
             }
         }
 
@@ -3673,6 +3688,7 @@ struct server_context {
             {"vocab_type",  llama_vocab_type            (vocab)},
             {"n_vocab",     llama_vocab_n_tokens        (vocab)},
             {"n_ctx_train", llama_model_n_ctx_train     (model)},
+            {"n_ctx",       llama_n_ctx                 (ctx)},
             {"n_embd",      llama_model_n_embd          (model)},
             {"n_params",    llama_model_n_params        (model)},
             {"size",        llama_model_size            (model)},
@@ -3687,7 +3703,6 @@ struct server_context {
         };
     }
     // mmojo-server END
-
 };
 
 static void log_server_request(const httplib::Request & req, const httplib::Response & res) {
@@ -3898,12 +3913,12 @@ int main(int argc, char ** argv) {
         server_state current_state = state.load();
         if (current_state == SERVER_STATE_LOADING_MODEL) {
             auto tmp = string_split<std::string>(req.path, '.');
-            if (req.path == "/" || tmp.back() == "html") {
-                // mmojo-server START
+            // mmojo-server START
+            if (req.path == "/" || tmp.back() == "html" || ends_with(req.path, "/") || ends_with(req.path, ".html")) {
                 // res.set_content(reinterpret_cast<const char*>(loading_html), loading_html_len, "text/html; charset=utf-8");
                 res.set_content(reinterpret_cast<const char*>(loading_mmojo_html), loading_mmojo_html_len, "text/html; charset=utf-8");
-                // mmojo-server END
                 res.status = 503;
+            // mmojo-server END
             } else if (req.path == "/models" || req.path == "/v1/models" || req.path == "/api/tags") {
                 // allow the models endpoint to be accessed during loading
                 return true;

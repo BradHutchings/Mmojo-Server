@@ -36,6 +36,13 @@ var instructions =
     "</ul>\n" +
 
     "<hr />\n" +
+    "<h3>Change the Model:</h3>\n" +
+    "<p>Use the Mmojo Admin page to change which large language model Mmojo uses:</p>\n" +
+    "<ul>\n" +
+    "<li><a href=\"/admin\" target=\"_blank\">Mmojo Admin</a></li>\n" +
+    "</ul>\n" +
+
+    "<hr />\n" +
     "<h3>Install Our Certificate Authority:</h3>\n" +
     "<p>To remove security warnings for the Mmojo Knowledge Appliance on your devices and to allow the Mmojo app to install on " +
         "your phones and tablets, please download and install our Certificate Authority on your devices.</p>\n\n" +
@@ -49,7 +56,8 @@ var instructions =
     "For more information and updates, please visit:\n\n" +
     "<ul>\n" +
     "<li><a href=\"https://Mmojo.net\" target=\"_blank\">https://Mmojo.net</a></li>\n" +
-    "</ul>\n\n";
+    "</ul>\n" +
+    "<div style=\"height: 2rem;\"></div>\n\n";
 
 function PageLoaded() {
     FindElements();

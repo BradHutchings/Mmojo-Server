@@ -291,7 +291,7 @@ ul, li {
     color: var(--grey-dark);
 }
 
-#mmojo {
+#mmojo-completion {
     flex-grow: 8;
     flex-shrink: 20;
 

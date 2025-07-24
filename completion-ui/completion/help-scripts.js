@@ -57,7 +57,7 @@ var instructions =
     "<ul>\n" +
     "<li><a href=\"https://Mmojo.net\" target=\"_blank\">https://Mmojo.net</a></li>\n" +
     "</ul>\n" +
-    "<div style="height: 2rem;"></div>\n\n";
+    "<div style=\"height: 2rem;\"></div>\n\n";
 
 function PageLoaded() {
     FindElements();

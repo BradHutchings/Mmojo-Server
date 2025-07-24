@@ -17,6 +17,7 @@ const kCompletionsURL = kServerURL + "/completion";
 const kModelsURL = kServerURL + "/v1/models"
 const kTokenizeURL = kServerURL + "/tokenize"
 
+const kMmojoCompletion = "Mmojo Completion";
 const kStatus_TypeSomething = "Awaiting your cue.";
 const kStatus_Ready = "Ready.";
 const kStatus_Evaluating = "Evaluating.";
@@ -37,6 +38,7 @@ var generating = false;         // Replace this with a mode: kMode_Typing, kMode
 var replaying = false;
 var metadata = {};
 var contextWindowSize = 0;
+var modelName = "";
 
 var isMobile = (navigator.maxTouchPoints > 1) && (window.navigator.userAgent.includes("Mobi"));
 
@@ -109,6 +111,7 @@ function FindElements() {
     elements.printContent           = document.getElementById("print-content");
 
     elements.titleBar               = document.getElementById("title-bar");
+    elements.mmojoCompletion        = document.getElementById("mmojo-completion");
     elements.settingsIcon           = document.getElementById("settings-icon");
     //  elements.hashIcon               = document.getElementById("hash-icon");
     //  elements.colorWheelIcon         = document.getElementById("color-wheel-icon");
@@ -1056,7 +1059,7 @@ async function GetModelInfoFromServer() {
 
         const data0 = json.data[0];
         metadata = data0.meta;
-        const modelName = metadata["general.name"];
+        modelName = metadata["general.name"];
         const n_ctx_train = metadata["n_ctx_train"];
         const n_ctx = metadata["n_ctx"];
 
@@ -1079,6 +1082,7 @@ async function GetModelInfoFromServer() {
         if (kLogging) console.log("Exception caught receiving results from " + kModelsURL + ".");
         if (kLogging) console.log(exc);
 
+        modelName = "";
         elements.model.innerHTML = '';
     }
 }
@@ -1447,4 +1451,20 @@ function Print() {
 
 function Help() {
     window.open('help.html', '_blank');
+}
+
+var mmojoCompletionClicked = false;
+function ClickMmojoCompletion() {
+    if (!mmojoCompletionClicked) {
+        mmojoCompletionClicked = true;
+        elements.mmojoCompletion.innerText = modelName;
+        setTimeout(function() {
+            RestoreMmojoCompletion();
+        }, 3000);
+    }
+}
+
+function RestoreMmojoCompletion() {
+    elements.mmojoCompletion.innerText = kMmojoCompletion;
+    mmojoCompletionClicked = false;
 }

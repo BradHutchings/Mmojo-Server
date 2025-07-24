@@ -56,7 +56,8 @@ var instructions =
     "For more information and updates, please visit:\n\n" +
     "<ul>\n" +
     "<li><a href=\"https://Mmojo.net\" target=\"_blank\">https://Mmojo.net</a></li>\n" +
-    "</ul>\n\n";
+    "</ul>\n" +
+    "<p></p>\n\n";
 
 function PageLoaded() {
     FindElements();

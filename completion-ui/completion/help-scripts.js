@@ -58,12 +58,6 @@ var instructions =
     "<li><a href=\"https://Mmojo.net\" target=\"_blank\">https://Mmojo.net</a></li>\n" +
     "</ul>\n\n";
 
-    
-    
-To remove security warnings for the Mmojo Knowledge Appliance on your devices and to allow the Mmojo app to install on " +
-        "your phones and tablets, please download and install our Certificate Authority on your devices.</p>\n\n" +
-
-
 function PageLoaded() {
     FindElements();
 

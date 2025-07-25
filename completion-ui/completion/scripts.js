@@ -599,7 +599,21 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
     }
     catch(exc) {
         if (kLogging) console.log("Exception caught receiving results.");
-        if (kLogging) console.log(exc);
+        if (kLogging) console.log(exc.name);
+        if (kLogging) console.log(exc.message);
+
+        // I thought this might be a checkbox in settings, but that felt clumsy.
+        // These are mostly network errors. It would be good for the user to know.
+        // -Brad 2025-07-25
+        let reportProblemsInWorkArea = true;
+        if (reportProblemsInWorkArea) {
+            if (!exc.name.includes("AbortError")) {
+                let problemText = "\n\n----------------------------------------\n\n" +
+                    "A problem was encountered while completing:\n\n" +
+                    exc + "\n\n";
+                elements.workAreaText.value = elements.workAreaText.value + problemText;
+            }
+        }
     }
 
     controller = null;
@@ -722,6 +736,9 @@ function SetStatus(status) {
     elements.statusText.innerHTML = "<b>Status:</b> " + status;
 }
 
+var generationStartedMS = 0;
+const generationMinimumTimeMS = 1500;
+
 function WorkAreaTextKeyDown(event) {
     let logThis = false;
     if (kLogging || logThis) console.log('WorkAreaTextKeyDown()');
@@ -733,8 +750,10 @@ function WorkAreaTextKeyDown(event) {
 
         // return key in the field should stop generating.
         if (event.keyCode == 13) {
-            if (kLogging || logThis) console.log('- return');
-            StopGenerating();
+            if ((Date.now() - generationStartedMS) >= generationMinimumTimeMS) {
+                if (kLogging || logThis) console.log('- return');
+                StopGenerating();
+            }
         }
     }
 
@@ -759,6 +778,7 @@ function WorkAreaTextKeyDown(event) {
         }
         event.preventDefault();
 
+        generationStartedMS = Date.now();
         setTimeout(() => {
             Generate();
         }, 500);
@@ -1377,19 +1397,19 @@ async function CountTokens() {
             "with_pieces": false,
         }
     
-        const response = await fetch(kTokenizeURL, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-            // signal: controller.signal,
-        });
-    
-        const json = await response.json();
-    
         try {
+
+            const response = await fetch(kTokenizeURL, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+                // signal: controller.signal,
+            });
+        
+            const json = await response.json();
 
             if (kLogging) console.log("json:\n");
             if (kLogging) console.log(json);
@@ -1411,7 +1431,10 @@ async function CountTokens() {
         }
         catch(exc) {
             if (kLogging) console.log("Exception caught receiving results from " + kTokenizeURL + ".");
-            if (kLogging) console.log(exc);    
+            if (kLogging) console.log(exc.name);
+            if (kLogging) console.log(exc.message);
+
+            // As far as the user sees, a silent fail here is OK.
         }
 
         elements.statusTokens.innerHTML = tokensHTML;

@@ -21,6 +21,8 @@ const kMmojoCompletion = "Mmojo Completion";
 const kStatus_TypeSomething = "Awaiting your cue.";
 const kStatus_Ready = "Ready.";
 const kStatus_Evaluating = "Evaluating.";
+const kStatus_EvaluatingProgress = "Evaluating ";
+const kStatus_EvaulatingFinishing = "Finishing evaluating.";
 const kStatus_Generating = "Generating.";
 const kStatus_FinishedGenerating = "Finished generating.";
 const kStatus_StoppedByWord = "Stopped by \"[stopping_word]\".";
@@ -456,6 +458,8 @@ var manualStop = false;
 var generatedContent = '';
 
 async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
+    let logThis = true;
+
     // show that we're working??
     SetStatus(kStatus_Evaluating);
 
@@ -466,6 +470,7 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
         "n_predict": tokens,
         "temperature": temperature,
         "stream": true,
+        "include_prompt_progress": true,
     }
 
     if (stopWords.length > 0) {
@@ -530,15 +535,34 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
             
                 if (match) {
                     lineData[match[1]] = match[2];        //  data: { whatever }
-                    if (kLogging) console.log(match[1] + ": " + match[2]);
+                    if (kLogging || logThis) console.log(match[1] + ": " + match[2]);
                 }
 
                 if (lineData.data) {
                     lineData.data = JSON.parse(lineData.data);
 
-                    if (kLogging) console.log(lineData.data);
+                    if (kLogging || logThis) console.log(lineData.data);
 
-                    if ((lineData.data.stop_type == "word") && lineData.data.stopping_word !== "") {
+                    if ("prompt_processing" in lineData.data) {
+                        if (kLogging || logThis) console.log("Prompt processing:");
+                        if (kLogging || logThis) console.log(lineData.data.prompt_processing);
+
+                        let n_past = lineData.data.prompt_processing.n_past;
+                        let n_prompt_tokens = lineData.data.prompt_processing.n_prompt_tokens;
+
+                        if (kLogging || logThis) console.log("n_past: " + n_past);
+                        if (kLogging || logThis) console.log("n_prompt_tokens: " + n_prompt_tokens);
+
+                        if (n_past < n_prompt_tokens) {
+                            let status = kStatus_EvaluatingProgress + " " + n_past + " / " + n_prompt_tokens;
+                            SetStatus(status);
+                        }
+                        else {
+                            SetStatus(kStatus_EvaulatingFinishing);
+                        }
+                    }
+
+                    else if ((lineData.data.stop_type == "word") && lineData.data.stopping_word !== "") {
                         // if (kLogging) console.log("stopping_word: " + lineData.data.stopping_word);
                         SetStatus(kStatus_StoppedByWord.replace('[stopping_word]', lineData.data.stopping_word));
             
@@ -563,7 +587,7 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
                         // elements.workAreaText.scrollTop = elements.workAreaText.scrollHeight
                         // don't set selectionStart, selectionEnd?
 
-                        if (kLogging) console.log("end of strem");
+                        if (kLogging || logThis) console.log("end of strem");
                         controller = null;
                         ShowHideStatusButtons();
                     }
@@ -598,9 +622,9 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
         }
     }
     catch(exc) {
-        if (kLogging) console.log("Exception caught receiving results.");
-        if (kLogging) console.log(exc.name);
-        if (kLogging) console.log(exc.message);
+        if (kLogging || logThis) console.log("Exception caught receiving results.");
+        if (kLogging || logThis) console.log(exc.name);
+        if (kLogging || logThis) console.log(exc.message);
 
         // I thought this might be a checkbox in settings, but that felt clumsy.
         // These are mostly network errors. It would be good for the user to know.

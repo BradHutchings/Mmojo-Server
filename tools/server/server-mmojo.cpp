@@ -2593,6 +2593,10 @@ struct server_context {
             last_slot_id = slot.id_task;
         }
 
+        /*
+        // This logic is WRONG. Just send_progress_response() after each completed batch. Set the batch size
+        // to like 64 on R-Pi with a 4B model. Voila. -Brad 2025-07-27
+        
         // Send progress if:
         // 1. This is the first progress update (last_progress == -1)
         // 2. Progress increased by at least 1% or processed at least 10 tokens
@@ -2604,6 +2608,7 @@ struct server_context {
         if (!should_send) {
             return;
         }
+        */
 
         last_progress = current_progress;
 
@@ -3463,9 +3468,11 @@ struct server_context {
                         slot.n_past++;
 
                         // mmojo-server START -- https://github.com/ggml-org/llama.cpp/pull/14731/files
+                        // THIS IS WRONG. The notifications all batch up at the end. Grrrrrr. -Brad 2025-07-27.
+
                         // Send incremental progress updates during token processing
-                        send_progress_response(slot);
-                       // mmojo-server END
+                        // send_progress_response(slot);
+                        // mmojo-server END
                     }
 
                     // SLT_INF(slot, "new cache_tokens: %s\n", slot.cache_tokens.str().c_str());

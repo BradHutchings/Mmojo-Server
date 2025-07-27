@@ -93,6 +93,7 @@ unset UNAME_M; export UNAME_M
 make clean
 make
 mkdir -p Builds-Platform
+printf "Copying builds to Builds-Platform.\n"
 cp mmojo-* llama-* Builds-Platform
 
 printf "\n**********\n*\n* FINISHED: Build llama.cpp.\n*\n**********\n\n"
@@ -169,6 +170,7 @@ printf "\n**********\n*\n* FINISHED: Build openssl with Cosmo.\n*\n**********\n\
 make clean
 make mmojo-server
 mkdir -p Builds-Cosmo
+printf "Copying builds to Builds-Cosmo.\n"
 cp mmojo-* Builds-Cosmo
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
@@ -221,6 +223,7 @@ printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n
 make clean
 make mmojo-server
 mkdir -p Builds-Cosmo-x86_64
+printf "Copying builds to Builds-Cosmo-x86_64.\n"
 cp mmojo-* Builds-Cosmo-x86_64
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
@@ -271,6 +274,7 @@ printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n
 make clean
 make mmojo-server
 mkdir -p Builds-Cosmo-Aarch64
+printf "Copying builds to Builds-Cosmo-Aarch64.\n"
 cp mmojo-* Builds-Cosmo-Aarch64
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```

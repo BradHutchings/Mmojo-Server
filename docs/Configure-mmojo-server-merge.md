@@ -221,7 +221,7 @@ Hit `ctrl-C` on your keyboard to stop it.
 
 ---
 ### Copy mmojo-server for Deployment
-Congratulations! You are ready to copy `llams-server-one` executable to the share for deployment.
+Congratulations! You are ready to copy `mmojo-server` executable to the share for deployment.
 
 ```
 sudo cp $MMOJO_SERVER /mnt/hyperv/Mmojo-Server/$MMOJO_SERVER
@@ -231,7 +231,7 @@ printf "\n**********\n*\n* FINISHED: Copy mmojo-server for Deployment.\n*\n*****
 ```
 
 ---
-### Copy mmojo-server for Deployment
+### Copy completion-ui to Local Space
 Copy completion-ui to local space.
 
 ```

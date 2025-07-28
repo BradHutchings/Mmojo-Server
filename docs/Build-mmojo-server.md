@@ -101,7 +101,8 @@ printf "\n**********\n*\n* FINISHED: Build llama.cpp.\n*\n**********\n\n"
 
 If the build is successful, it will end with this message:
 
-&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Copying builds to Builds-Platform.**
 
 If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
 
@@ -177,7 +178,8 @@ printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n*********
 
 If the build is successful, it will end with this message:
 
-&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
+&nbsp;&nbsp;&nbsp;&nbsp;**Built mmojo-server.**<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Copying builds to Builds-Cosmo.**
 
 
 **Optional:** Build other llama.cpp binaries with Cosmo.
@@ -190,7 +192,8 @@ printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n
 
 If the build is successful, it will end with this message:
 
-&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Copying builds to Builds-Cosmo.**
 
 #### List Directory
 

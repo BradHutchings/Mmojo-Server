@@ -2,9 +2,15 @@
 
 #include "ggml.h"
 
-void llama_hparams::set_swa_pattern(uint32_t n_pattern) {
-    for (uint32_t il = 0; il < n_layer; ++il) {
-        swa_layers[il] = n_pattern == 0 || (il % n_pattern < (n_pattern - 1));
+void llama_hparams::set_swa_pattern(uint32_t n_pattern, bool dense_first) {
+    if (dense_first) {
+        for (uint32_t il = 0; il < n_layer; ++il) {
+            swa_layers[il] = n_pattern == 0 || (il % n_pattern != 0);
+        }
+    } else {
+        for (uint32_t il = 0; il < n_layer; ++il) {
+            swa_layers[il] = n_pattern == 0 || (il % n_pattern < (n_pattern - 1));
+        }
     }
 }
 
@@ -90,11 +96,13 @@ bool llama_hparams::is_n_embd_v_gqa_variable() const {
 uint32_t llama_hparams::n_embd_k_gqa_max() const {
     uint32_t val = n_embd_k_gqa();
     for (uint32_t il = 0; il < n_layer; ++il) {
+        // mmojo-server START
         #ifndef COSMOCC
         val = std::max(val, n_embd_k_gqa(il));
         #else
         val = (val > n_embd_k_gqa(il)) ? val : n_embd_k_gqa(il);
         #endif
+        // mmojo-server END
     }
 
     return val;
@@ -103,11 +111,13 @@ uint32_t llama_hparams::n_embd_k_gqa_max() const {
 uint32_t llama_hparams::n_embd_v_gqa_max() const {
     uint32_t val = n_embd_v_gqa();
     for (uint32_t il = 0; il < n_layer; ++il) {
+        // mmojo-server START
         #ifndef COSMOCC
         val = std::max(val, n_embd_v_gqa(il));
         #else
         val = (val > n_embd_v_gqa(il)) ? val : n_embd_v_gqa(il);
         #endif
+        // mmojo-server END
     }
 
     return val;

@@ -423,7 +423,7 @@ function Generate() {
         }
         else {
             let problemText = "\n\n----------------------------------------\n\n" +
-                "The text in the work area exceeds the context window size for this model.\n\n" +
+                "The text in the work area ( " + tokenCount + " tokens) exceeds the context window size ( " + contextWindowSize + ") for this model.\n\n" +
                 "Please remove some text from the work area or switch to a bigger model.";
             elements.workAreaText.value = elements.workAreaText.value + problemText;
 

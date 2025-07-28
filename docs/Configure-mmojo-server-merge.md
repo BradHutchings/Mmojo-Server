@@ -229,3 +229,12 @@ sudo cp $MMOJO_SERVER /mnt/hyperv/Mmojo-Server/$MMOJO_SERVER.exe
 sudo cp $MMOJO_SERVER /mnt/hyperv/Mmojo-Raspberry-Pi/Mmojo-LLMs/$MMOJO_SERVER
 printf "\n**********\n*\n* FINISHED: Copy mmojo-server for Deployment.\n*\n**********\n\n"
 ```
+
+---
+### Copy mmojo-server for Deployment
+Copy completion-ui to local space.
+
+```
+cd ~/$BUILD_DIR
+sudo cp -r completion-ui /mny/hyperv/web-apps
+```

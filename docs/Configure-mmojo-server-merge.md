@@ -236,5 +236,5 @@ Copy completion-ui to local space.
 
 ```
 cd ~/$BUILD_DIR
-sudo cp -r completion-ui /mny/hyperv/web-apps
+sudo cp -r completion-ui /mnt/hyperv/web-apps
 ```

@@ -4,7 +4,7 @@ Brad Hutchings<br/>
 brad@bradhutchings.com
 
 This file contains instructions for configuring the `mmojo-server` executable to make it ready to package for multiple platforms.
-Instructions have been customized for my environment. You should use these [Configure Instructions](Configure-ls1.md).
+Instructions have been customized for my environment. You should use these [Configure Instructions](Configure-mojo-server.md).
 
 ---
 ### Environment Variables

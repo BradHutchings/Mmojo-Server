@@ -145,6 +145,8 @@ model.gguf
 0
 --threads-http
 8
+--batch-size
+64
 --path
 /zip/website
 --ssl-key-file

@@ -3,6 +3,8 @@
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
+This file contains instructions for configuring the `mmojo-server` executable to make it ready to package for multiple platforms.
+
 ---
 ### Environment Variables
 

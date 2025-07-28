@@ -3,8 +3,6 @@
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for configuring the `mmojo-server` executable to make it ready to package for multiple platforms.
-
 ---
 ### Environment Variables
 
@@ -31,7 +29,7 @@ Next, let's create a directory where we'll configure `mmojo-server`:
 cd ~
 rm -r -f ~/$CONFIGURE_DIR
 mkdir -p $CONFIGURE_DIR
-cp ~/$BUILD_DIR/$MMOJO_SERVER ~/$CONFIGURE_DIR/$MMOJO_SERVER_ZIP
+cp ~/$BUILD_DIR/Builds-Cosmo/$MMOJO_SERVER ~/$CONFIGURE_DIR/$MMOJO_SERVER_ZIP
 cd ~/$CONFIGURE_DIR
 printf "\n**********\n*\n* FINISHED: Create Configuration Directory.\n*\n**********\n\n"
 ```
@@ -71,9 +69,29 @@ mkdir website
 cp -r ~/$BUILD_DIR/completion-ui/* website
 sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/scripts.js
 sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/bookmark-scripts.js
+cp /mnt/hyperv/Mmojo-Raspberry-Pi/Mmojo-certs/selfsignCA.crt website/CA.crt
 zip -0 -r $MMOJO_SERVER_ZIP website/*
 printf "\n**********\n*\n* FINISHED: Create website Directory in Archive.\n*\n**********\n\n"
 ```
+
+<!--
+---
+### Create website Directory in Archive
+
+`llama.cpp` has a built in chat UI. If you'd like to provide a custom UI, you should add a `website` directory to the `mmojo-server` archive. `llama.cpp`'s chat UI is optimized for serving inside the project's source code. But we can copy the unoptimized source:
+```
+mkdir website
+cp -r /mnt/hyperv/web-apps/completion-tool/* website
+sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/scripts.js
+sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" website/completion/bookmark-scripts.js
+cp /mnt/hyperv/Mmojo-Raspberry-Pi/Mmojo-certs/selfsignCA.crt website/CA.crt
+rm website/*.txt
+rm website/completion/images/*.svg
+rm website/completion/images/*.psd
+zip -0 -r $MMOJO_SERVER_ZIP website/*
+printf "\n**********\n*\n* FINISHED: Create website Directory in Archive.\n*\n**********\n\n"
+```
+-->
 
 #### Verify website Directory in Archive
 
@@ -100,9 +118,11 @@ model.gguf
 --port
 8080
 --ctx-size
-8192
+0
 --threads-http
 8
+--batch-size
+64
 --path
 /zip/website
 ...

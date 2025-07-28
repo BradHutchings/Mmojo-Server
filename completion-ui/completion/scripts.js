@@ -428,6 +428,7 @@ function Generate() {
             elements.workAreaText.value = elements.workAreaText.value + problemText;
 
             ScrollToEnd();
+            PushChange();
         }
     }
 }

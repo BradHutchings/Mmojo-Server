@@ -3,7 +3,9 @@
 Brad Hutchings<br/>
 brad@bradhutchings.com
 
-This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `mmojo-server` executable that will run on multiple platforms.
+This file contains instructions for building `llama.cpp` with `cosmocc` to yield a `mmojo-server` executable that will run on multiple platforms. Instructions have been customized for my environment. You should use these [Build Instructions](Build-ls1.md).
+
+This particular file is a work in progress to build separate x86_64 and Aarch64 build with Cosmo, then merge them together. This would get the right CPU optimized GGML code into each, rather than generic CPU code which seems fragile. I'm not sure if that's even going to work yet!
 
 ### Environment Variables
 
@@ -11,6 +13,11 @@ Let's define some environment variables, resetting those that affect the Makefil
 ```
 DOWNLOAD_DIR="0-DOWNLOAD"
 BUILD_DIR="1-BUILD-mmojo-server"
+export LLAMA_MAKEFILE=1
+export LLAMA_SERVER_SSL=ON
+if [ -z "$SAVE_PATH" ]; then
+  export SAVE_PATH=$PATH
+fi
 printf "\n**********\n*\n* FINISHED: Environment Variables.\n*\n**********\n\n"
 ```
 
@@ -28,22 +35,17 @@ printf "\n**********\n*\n* FINISHED: Build Dependencies.\n*\n**********\n\n"
 
 ---
 ### Clone this Repo Locally
-Clone this repo into a `~\1-BUILD-mmojo-server` directory.
+Clone this repo and repos this repo depends on into a `~\1-BUILD-mmojo-server` directory.
 ```
 cd ~
 git clone https://github.com/BradHutchings/llama-server-one.git $BUILD_DIR
-printf "\n**********\n*\n* FINISHED: Clone this Repo Locally.\n*\n**********\n\n"
-```
-
-Install repos this repo depends upon locally.
-```
 git clone https://github.com/nlohmann/json.git ~/$BUILD_DIR/nlohmann-json
 git clone https://github.com/google/minja.git ~/$BUILD_DIR/google-minja
 git clone https://github.com/yhirose/cpp-httplib.git ~/$BUILD_DIR/cpp-httplib
 git clone https://github.com/mackron/miniaudio.git ~/$BUILD_DIR/miniaudio
 git clone https://github.com/nothings/stb.git ~/$BUILD_DIR/stb
 sed -i -e 's/#if defined(_WIN32) || defined(__COSMOPOLITAN__)/#if defined(_WIN32)/g' ~/$BUILD_DIR/miniaudio/miniaudio.h
-printf "\n**********\n*\n* FINISHED: Install Additional Repos Locally.\n*\n**********\n\n"
+printf "\n**********\n*\n* FINISHED: Clone this Repo and Dependent Repos Locally.\n*\n**********\n\n"
 ```
 
 **Optional:** Use the `work-in-progress` branch where I implement and test my own changes and where I test upstream changes from `llama.cpp`.
@@ -63,15 +65,6 @@ sed -i -e "s/_generic//g" ggml/src/ggml-cpu/arch/cosmo/quants.c
 printf "\n**********\n*\n* FINISHED: Patch ggml-cpu/cosmo.\n*\n**********\n\n"
 ```
 
-<!--
-**Optional:** Patch `tools/server/server-ls1.cpp` for building `mmojo-server`. In the future, we'll move the Mmojo Completion UI into this repo and rename the repo, target, etc.
-```
-sed -i -e "s/\"llama-server-one\"/\"mmojo-server\"/g" tools/server/server-ls1.cpp 
-sed -i -e "s/\"llama-server-one-args\"/\"mmojo-server-args\"/g" tools/server/server-ls1.cpp 
-printf "\n**********\n*\n* FINISHED: Patch tools/server/server-ls1.cpp.\n*\n**********\n\n"
-```
--->
-
 ---
 ### Customize WebUI
 ```
@@ -86,20 +79,30 @@ printf "\n**********\n*\n* FINISHED: Customize WebUI.\n*\n**********\n\n"
 ```
 
 ---
-### OPTIONAL: Build llama.cpp
-We won't use what we build here, but it will validate that the source code for llama.cpp compiles. It takes a few minutes. We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
+### Build llama.cpp
+We use the old `Makefile` rather than CMake. We've updated the `Makefile` in this repo to build llama.cpp correctly.
 ```
 cd ~/$BUILD_DIR
-export LLAMA_MAKEFILE=1
-export LLAMA_SERVER_SSL=ON
+export PATH=$SAVE_PATH
+unset CC; export CC
+unset CXX; export CXX
+unset AR; export AR
+unset UNAME_S; export UNAME_S
+unset UNAME_P; export UNAME_P
+unset UNAME_M; export UNAME_M
 make clean
 make
+mkdir -p Builds-Platform
+printf "Copying builds to Builds-Platform.\n"
+cp mmojo-* llama-* Builds-Platform
+
 printf "\n**********\n*\n* FINISHED: Build llama.cpp.\n*\n**********\n\n"
 ```
 
 If the build is successful, it will end with this message:
 
-&nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Copying builds to Builds-Platform.**
 
 If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
 
@@ -107,9 +110,9 @@ If the build fails on the `master` branch, please post a note in the [Discussion
 
 #### List Directory
 
-At this point, you should see `llama-server` and other built binaries in the directory listing.
+At this point, you should see `mmojo-server` and other built binaries in the directory listing.
 ```
-ls -al llama-* mmojo-*
+ls -al Builds-Platform/*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
 
@@ -131,16 +134,16 @@ printf "\n**********\n*\n* FINISHED: Install Cosmo.\n*\n**********\n\n"
 ```
 
 ---
-### Prepare to Build llama.cpp with Cosmo
+### Prepare to Build openssl with Cosmo - Both platforms
 ```
-export PATH="$(pwd)/cosmocc/bin:$PATH"
+export PATH="$(pwd)/cosmocc/bin:$SAVE_PATH"
 export CC="cosmocc -I$(pwd)/cosmocc/include -L$(pwd)/cosmocc/lib"
 export CXX="cosmocc -I$(pwd)/cosmocc/include \
     -I$(pwd)/cosmocc/include/third_party/libcxx \
     -L$(pwd)/cosmocc/lib -L$(pwd)/openssl"
 export AR="cosmoar"
 export UNAME_S="cosmocc"
-export UNAME_P="cosmocc"
+export UNAME_P="cosmocc-cross"
 export UNAME_M="cosmocc"
 printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n**********\n\n"
 ```
@@ -163,44 +166,150 @@ printf "\n**********\n*\n* FINISHED: Build openssl with Cosmo.\n*\n**********\n\
 ```
 
 ---
-### Build mmojo-server with Cosmo
+### Build mmojo-server with Cosmo - Cross
 ```
 make clean
 make mmojo-server
+mkdir -p Builds-Cosmo
+printf "Copying builds to Builds-Cosmo.\n"
+cp mmojo-* Builds-Cosmo
 printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
+
+If the build is successful, it will end with this message:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Built mmojo-server.**<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Copying builds to Builds-Cosmo.**
+
 
 **Optional:** Build other llama.cpp binaries with Cosmo.
 ```
 make
+printf "Copying builds to Builds-Cosmo.\n"
+cp llama-* Builds-Cosmo
 printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"
 ```
 
-If the "Build other llama.cpp binaries" step is successful, it will end with this message:
+If the build is successful, it will end with this message:
 
-&nbsp;&nbsp;&nbsp;&nbsp;**NOTICE: The 'server' binary is deprecated. Please use 'llama-server' instead.**
-
-If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
-
-If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions) area.
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Copying builds to Builds-Cosmo.**
 
 #### List Directory
 
 At this point, you should see `mmojo-server` and other built binaries in the directory listing.
 ```
-ls -al llama-* mmojo-*
+ls -al Builds-Cosmo/*
 printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 ```
 
-#### Verify Zip Archive
+<!--
+---
+### Prepare to Build mmojo-server with Cosmo - x86_64
+```
+export PATH="$(pwd)/cosmocc/bin:$SAVE_PATH"
+export CC="x86_64-unknown-cosmo-cc -I$(pwd)/cosmocc/include -L$(pwd)/cosmocc/lib"
+export CXX="x86_64-unknown-cosmo-c++ -I$(pwd)/cosmocc/include \
+    -I$(pwd)/cosmocc/include/third_party/libcxx \
+    -L$(pwd)/cosmocc/lib -L$(pwd)/openssl"
+export AR="x86_64-linux-cosmo-ar"
+export UNAME_S="cosmocc"
+export UNAME_P="cosmocc-intel"
+export UNAME_M="cosmocc"
+printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n**********\n\n"
+```
+-->
 
-`mmojo-server` is actually a zip acrhive with an "Actually Portable Executable" (APE) loader prefix. Let's verify the zip archive part:
+<!--
+---
+### Build mmojo-server with Cosmo - x86_64
 ```
-unzip -l mmojo-server
-printf "\n**********\n*\n* FINISHED: Verify Zip Archive.\n*\n**********\n\n"
+make clean
+make mmojo-server
+mkdir -p Builds-Cosmo-x86_64
+printf "Copying builds to Builds-Cosmo-x86_64.\n"
+cp mmojo-* Builds-Cosmo-x86_64
+printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
 ```
+
+If the build is successful, it will end with this message:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Built mmojo-server.**
+
+**Optional:** Build other llama.cpp binaries with Cosmo.
+```
+make
+cp llama-* Builds-Cosmo-x86_64
+printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"
+```
+
+If the build is successful, it will end with this message:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
+
+#### List Directory
+
+At this point, you should see `mmojo-server` and other built binaries in the directory listing.
+```
+ls -al Builds-Cosmo-x86_64/*
+printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
+```
+-->
+
+<!--
+---
+### Prepare to Build mmojo-server with Cosmo - Aarch64
+```
+export PATH="$(pwd)/cosmocc/bin:$SAVE_PATH"
+export CC="aarch64-unknown-cosmo-cc -I$(pwd)/cosmocc/include -L$(pwd)/cosmocc/lib"
+export CXX="aarch64-unknown-cosmo-c++ -I$(pwd)/cosmocc/include \
+    -I$(pwd)/cosmocc/include/third_party/libcxx \
+    -L$(pwd)/cosmocc/lib -L$(pwd)/openssl"
+export AR="aarch64-linux-cosmo-ar"
+export UNAME_S="cosmocc"
+export UNAME_P="cosmocc-acorn"
+export UNAME_M="cosmocc"
+printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n**********\n\n"
+```
+
+---
+### Build mmojo-server with Cosmo - Aarch64
+```
+make clean
+make mmojo-server
+mkdir -p Builds-Cosmo-Aarch64
+printf "Copying builds to Builds-Cosmo-Aarch64.\n"
+cp mmojo-* Builds-Cosmo-Aarch64
+printf "\n**********\n*\n* FINISHED: Build mmojo-server with Cosmo\n*\n**********\n\n"
+```
+
+If the build is successful, it will end with this message:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Built mmojo-server.**
+
+**Optional:** Build other llama.cpp binaries with Cosmo.
+```
+make
+cp llama-* Builds-Cosmo-Aarch64
+printf "\n**********\n*\n* FINISHED: Build other llama.cpp binaries with Cosmo\n*\n**********\n\n"
+```
+
+If the build is successful, it will end with this message:
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Build of all targets is complete.**
+
+#### List Directory
+
+At this point, you should see `mmojo-server` and other built binaries in the directory listing.
+```
+ls -al Builds-Cosmo-Aarch64/*
+printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
+```
+-->
 
 ---
 ### Next step: Configure mmojo-server
 
 Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-mmojo-server.md](Configure-mmojo-server.md).
+
+Brad's environment-specifc instructions are here: [Configure-mmojo-server-merge.md](Configure-mmojo-server-merge.md).

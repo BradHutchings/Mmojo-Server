@@ -40,6 +40,7 @@ var generating = false;         // Replace this with a mode: kMode_Typing, kMode
 var replaying = false;
 var metadata = {};
 var contextWindowSize = 0;
+var tokenCount = 0;
 var modelName = "";
 
 var isMobile = (navigator.maxTouchPoints > 1) && (window.navigator.userAgent.includes("Mobi"));
@@ -393,8 +394,6 @@ function StopWordsSetFocus() {
 function Generate() {
     if (!generating && !replaying) {
         PushChange();
-
-        SetGenerating(true);
  
         var workAreaText = elements.workAreaText.value;
 
@@ -418,9 +417,19 @@ function Generate() {
 
         if (kLogging) console.log(workAreaText);
 
-        StartGenerating(workAreaText, temperature, tokens, stopWords);
+        if (tokenCount <= contextWindowSize) {
+            SetGenerating(true);
+            StartGenerating(workAreaText, temperature, tokens, stopWords);
+        }
+        else {
+            let problemText = "\n\n----------------------------------------\n\n" +
+                "The text in the work area (" + tokenCount + " tokens) exceeds the context window size (" + contextWindowSize + " tokens) for this model.\n\n" +
+                "Please remove some text from the work area or switch to a bigger model.";
+            elements.workAreaText.value = elements.workAreaText.value + problemText;
 
-        
+            ScrollToEnd();
+            PushChange();
+        }
     }
 }
 
@@ -458,7 +467,7 @@ var manualStop = false;
 var generatedContent = '';
 
 async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
-    let logThis = true;
+    let logThis = false;
 
     // show that we're working??
     SetStatus(kStatus_Evaluating);
@@ -721,6 +730,21 @@ function SetReplaying(value) {
 
 function StopReplaying() {
     SetReplaying(false);
+}
+
+function WorkAreaTextPaste() {
+    if (!generating && !replaying) {
+        // Force this to happen after the paste. If you double paste
+        // too quickly, it will get caught in the same change.
+        setTimeout(() => {
+            PushChange();
+        }, 500);
+    }
+    else {
+        event.preventDefault(); // Prevent the default paste behavior
+    }
+
+    ShowHideStatusButtons();
 }
 
 function ShowHideStatusButtons() {
@@ -1443,13 +1467,15 @@ async function CountTokens() {
             if (kLogging) console.log(tokens);
 
             if (Array.isArray(tokens)) {
-                if (kLogging) console.log("tokens is an array with " + tokens.length + " items.");
+                tokenCount = tokens.length;
+
+                if (kLogging) console.log("tokens is an array with " + tokenCount + " items.");
 
                 if (contextWindowSize > 1 ) {
-                    tokensHTML = "<b>Tokens:</b> " + + tokens.length + "&nbsp;/&nbsp;" + contextWindowSize;
+                    tokensHTML = "<b>Tokens:</b> " + tokenCount + "&nbsp;/&nbsp;" + contextWindowSize;
                 }
                 else {
-                    tokensHTML = "<b>Tokens:</b> " + + tokens.length;
+                    tokensHTML = "<b>Tokens:</b> " + tokenCount;
                 }
             }    
         }

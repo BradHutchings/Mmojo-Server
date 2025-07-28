@@ -113,7 +113,7 @@
 
         <div id="work-area" class="row">
             <textarea id="work-area-text" class="row-item" disabled onkeydown="WorkAreaTextKeyDown(event);" 
-                onclick="WorkAreaTextClicked(event);" onpaste="ShowHideStatusButtons();"
+                onclick="WorkAreaTextClicked(event);" onpaste="WorkAreaTextPaste(event);"
                 ondrop="ShowHideStatusButtons();"
                 placeholder=""></textarea>
 
@@ -141,9 +141,9 @@
 
         <div id="gutter" class="row">
             <img id="logo" src="images/completion-tool-flat-128.png" onclick="ShowAbout();"/>
-            <div id="link">Mmojo.net</div>
+            <div id="link"><b>Mmojo.net</b></div>
             <div id="gutter-space" class="space"></div>
-            <div id="copyright">&copy;2024-25 Brad Hutchings.<br/>All rights reserved.</div>
+            <div id="copyright">&copy;2024-25 Brad Hutchings. All rights reserved.</div>
         </div>
 
         <div id="preview"></div>

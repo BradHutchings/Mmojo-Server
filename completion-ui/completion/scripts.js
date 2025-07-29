@@ -150,6 +150,7 @@ function FindElements() {
 
     elements.status                 = document.getElementById("status");
     elements.statusText             = document.getElementById("status-text");
+    elements.statusETA              = document.getElementById("status-eta");
     elements.statusTokens           = document.getElementById("status-tokens");
     elements.statusStart            = document.getElementById("status-start");
     elements.statusStop             = document.getElementById("status-stop");
@@ -492,19 +493,21 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
     manualStop = false;
     generatedContent = '';
 
-    const response = await fetch(kCompletionsURL, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        signal: controller.signal,
-    });
-
-    ShowHideStatusButtons();
-
     try {
+        let startMS = Date.now();
+
+        const response = await fetch(kCompletionsURL, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            signal: controller.signal,
+        });
+
+        ShowHideStatusButtons();
+
         let responseDone = false;
         let leftover = ""; // Buffer for partially read lines
         let content = workAreaText;
@@ -559,21 +562,28 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
                         let n_past = lineData.data.prompt_processing.n_past;
                         let n_prompt_tokens = lineData.data.prompt_processing.n_prompt_tokens;
 
+                        let elapsedMS = Date.now() - startMS;
+                        let etaMS = ((elapsedMS * n_prompt_tokens) / n_past) - elapsedMS;
+
                         if (kLogging || logThis) console.log("n_past: " + n_past);
                         if (kLogging || logThis) console.log("n_prompt_tokens: " + n_prompt_tokens);
 
                         if (n_past < n_prompt_tokens) {
                             let status = kStatus_EvaluatingProgress + " " + n_past + " / " + n_prompt_tokens;
-                            SetStatus(status);
+
+                            HideElement(elements.statusTokens);
+                            SetStatus(status, etaMS);
                         }
                         else {
                             SetStatus(kStatus_EvaulatingFinishing);
+                            ShowElement(elements.statusTokens);
                         }
                     }
 
                     else if ((lineData.data.stop_type == "word") && lineData.data.stopping_word !== "") {
                         // if (kLogging) console.log("stopping_word: " + lineData.data.stopping_word);
                         SetStatus(kStatus_StoppedByWord.replace('[stopping_word]', lineData.data.stopping_word));
+                        ShowElement(elements.statusTokens);
             
                         content = content + lineData.data.stopping_word;
                         generatedContent = generatedContent + lineData.data.stopping_word;
@@ -587,6 +597,7 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
                     }
                     else if (lineData.data.stopped_eos) {
                         SetStatus(kStatus_FinishedGenerating);
+                        ShowElement(elements.statusTokens);
 
                         content = content + lineData.data.content;
                         generatedContent = generatedContent + lineData.data.content;
@@ -602,6 +613,7 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
                     }
                     else if (lineData.data.stopped_limit) {
                         SetStatus(kStatus_StoppedAfterGenerating.replace('[tokens_predicted]', lineData.data.tokens_predicted));
+                        ShowElement(elements.statusTokens);
                         
                         content = content + lineData.data.content;
                         generatedContent = generatedContent + lineData.data.content;
@@ -616,6 +628,7 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
                     }
                     else if (lineData.data.content !== undefined) {
                         SetStatus(kStatus_Generating);
+                        ShowElement(elements.statusTokens);
 
                         content = content + lineData.data.content;
                         generatedContent = generatedContent + lineData.data.content;
@@ -777,11 +790,32 @@ function ShowHideStatusButtons() {
     }
 }
 
-function SetStatus(status) {
-    var mode = "complete";
-    var status = ReplaceModeWords(status, mode);
-   
-    elements.statusText.innerHTML = "<b>Status:</b> " + status;
+function SetStatus(status, etaMS = 0) {
+    let showETA = false;
+    let eta = "";
+
+    if (etaMS > 0) {
+        let etaMinutes = Math.round((etaMS / 1000) / 60);
+
+        if (etaMinutes == 1) {
+            eta = "1 minute."
+            showETA = true;
+        }
+        else if (etaMinutes > 1) {
+            eta = "" + etaMinutes + " minutes."
+            showETA = true;
+        }
+    }
+
+    elements.statusText.innerHTML = "<b>Status:</b>&nbsp;" + status;
+    elements.statusETA.innerHTML = "<b>ETA:</b>&nbsp;" + eta;
+
+    if (showETA) {
+        ShowFlexElement(elements.statusETA);
+    }
+    else {
+        HideElement(elements.statusETA);
+    }
 }
 
 var generationStartedMS = 0;

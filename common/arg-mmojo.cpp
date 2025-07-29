@@ -3469,9 +3469,9 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
 
     // mmojo-server START
     add_opt(common_arg(
-        {"--batch-sleep-ms"},
+        {"--batch-sleep-ms"}, "N",
         "sleep time in milliseconds after processing each batch; to keep CPUs and GPUs cool.",
-        [](common_params & params, const std::string & value) {
+        [](common_params & params, int value) {
             params.n_batch_sleep_ms = value;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));

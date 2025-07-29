@@ -491,7 +491,6 @@ ul, li {
     color: var(--grey-dark);
     min-height: 1.6rem;
     user-select: none;
-    xx-margin-bottom: 0rem;
 }
 
 #status-text {
@@ -501,12 +500,21 @@ ul, li {
     color: var(--grey-black);
 }
 
+#status-eta {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 0.5rem;
+    flex-grow: 0;
+    color: var(--grey-black);
+    display: none;
+    visibility: hidden;
+}
+
 #status-tokens {
     margin-top: auto;
     margin-bottom: auto;
+    margin-left: 0.5rem;
     font-size: 1rem;
-    min-width: 4rem;
-    padding: 0.25rem 0.5rem;
     color: var(--grey-black);
 }
 

@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
     <script src="color-math.js"></script>
-    <script src="mode-words.js"></script>
 
     <title>Mmojo Completion</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, interactive-widget=resizes-content" />
@@ -131,6 +130,7 @@
 
         <div id="status" class="row">
             <div id="status-text"><b>Status:</b> The status goes here.</div>
+            <div id="status-eta"><b>ETA:</b> ETA goes here.</div>
             <div id="status-tokens"><b>Tokens:</b></div>
             <div id="status-space" class="space"></div>
             <button id="status-start" onclick="elements.workAreaText.focus(); Generate();">Start</button>

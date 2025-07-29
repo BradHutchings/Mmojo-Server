@@ -3483,9 +3483,9 @@ struct server_context {
                     // Send progress response if requested
                     send_progress_response(slot);
                     
-                    SLT_INF(slot, "%s", "Starting sleep after batch.");
-                    std::this_thread::sleep_for(std::chrono::seconds(5));
-                    SLT_INF(slot, "%s", "Finished sleep after batch.");
+                    SLT_INF(slot, "%s", "Starting sleep after batch.\n");
+                    std::this_thread::sleep_for(std::chrono::seconds(2));
+                    SLT_INF(slot, "%s", "Finished sleep after batch.\n");
                     // mmojo-server END
 
                     // entire prompt has been processed

@@ -512,11 +512,9 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
         let leftover = ""; // Buffer for partially read lines
         let content = workAreaText;
 
-        // const reader = response.body?.pipeThrough(new TextDecoderStream()).getReader();
-
         const reader = response.body.getReader();
         const decoder = new TextDecoder();  // text encoding.
-
+       
         while (!responseDone) {
     
             const chunk = await reader.read();
@@ -535,6 +533,7 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
             }
 
             if (chunk.done) {
+                if (kLogging || logThis || true) console.log("chunk.done");
                 responseDone = true;
             }
 
@@ -658,6 +657,7 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
                     "A problem was encountered while completing:\n\n" +
                     exc + "\n\n";
                 elements.workAreaText.value = elements.workAreaText.value + problemText;
+                ScrollToEnd();
             }
         }
     }

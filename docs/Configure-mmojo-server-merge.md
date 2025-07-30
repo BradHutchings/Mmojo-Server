@@ -147,6 +147,8 @@ model.gguf
 8
 --batch-size
 64
+--batch-sleep-ms
+0
 --path
 /zip/website
 --ssl-key-file

@@ -3823,7 +3823,6 @@ struct server_context {
         };
     }
     // mmojo-server END
-    }
 };
 
 static void log_server_request(const httplib::Request & req, const httplib::Response & res) {

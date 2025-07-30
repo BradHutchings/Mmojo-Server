@@ -3482,10 +3482,12 @@ struct server_context {
                     // mmojo-server START -- https://github.com/ggml-org/llama.cpp/pull/14731/files
                     // Send progress response if requested
                     send_progress_response(slot);
-                    
-                    SLT_INF(slot, "%s", "Starting sleep after batch.\n");
-                    std::this_thread::sleep_for(std::chrono::seconds(2));
-                    SLT_INF(slot, "%s", "Finished sleep after batch.\n");
+
+                    if (params_base.n_batch_sleep_ms > 0) {
+                        SLT_INF(slot, "Starting sleep %d ms after batch.\n", params_base.n_batch_sleep_ms);
+                        std::this_thread::sleep_for(std::chrono::milliseconds(params_base.n_batch_sleep_ms));
+                        SLT_INF(slot, "Finished sleep after batch.\n");
+                    }
                     // mmojo-server END
 
                     // entire prompt has been processed

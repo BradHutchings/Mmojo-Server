@@ -162,6 +162,9 @@ struct slot_params {
     std::string                  oaicompat_cmpl_id;
     common_chat_syntax           oaicompat_chat_syntax;
 
+    // Embeddings
+    int32_t embd_normalize = 2; // (-1=none, 0=max absolute int16, 1=taxicab, 2=Euclidean/L2, >2=p-norm)
+
     json to_json() const {
         std::vector<std::string> samplers;
         samplers.reserve(sampling.samplers.size());
@@ -286,7 +289,7 @@ struct server_task {
         params.stream           = json_value(data, "stream",             false);
         params.cache_prompt     = json_value(data, "cache_prompt",       true);
         params.return_tokens    = json_value(data, "return_tokens",      false);
-        
+
         // mmojo-server START -- https://github.com/ggml-org/llama.cpp/pull/14731/files
         params.include_prompt_progress = json_value(data, "include_prompt_progress", false);
         // mmojo-server END
@@ -986,7 +989,7 @@ struct server_task_result_cmpl_partial : server_task_result {
         if (!prob_output.probs.empty()) {
             res["completion_probabilities"] = completion_token_output::probs_vector_to_json({prob_output}, post_sampling_probs);
         }
-        
+
         // mmojo-server START -- https://github.com/ggml-org/llama.cpp/pull/14731/files
         // include prompt processing progress if this is a progress response
         if (is_progress_response) {
@@ -2718,7 +2721,7 @@ struct server_context {
 
             // normalize only when there is pooling
             if (llama_pooling_type(slot.ctx) != LLAMA_POOLING_TYPE_NONE) {
-                common_embd_normalize(embd, embd_res.data(), n_embd, 2);
+                common_embd_normalize(embd, embd_res.data(), n_embd, slot.params.embd_normalize);
                 res->embedding.push_back(embd_res);
                 break;
             } else {
@@ -3820,6 +3823,7 @@ struct server_context {
         };
     }
     // mmojo-server END
+    }
 };
 
 static void log_server_request(const httplib::Request & req, const httplib::Response & res) {
@@ -3884,7 +3888,7 @@ int main(int argc, char ** argv) {
     // User supplied args override argsFilename and zipArgsFilename args.
     #endif
     // mmojo-server END
-
+    
     // own arguments required by this example
     common_params params;
 
@@ -4834,6 +4838,14 @@ int main(int argc, char ** argv) {
             }
         }
 
+        int embd_normalize = 2; // default to Euclidean/L2 norm
+        if (body.count("embd_normalize") != 0) {
+            embd_normalize = body.at("embd_normalize");
+            if (llama_pooling_type(ctx_server.ctx) == LLAMA_POOLING_TYPE_NONE) {
+                SRV_DBG("embd_normalize is not supported by pooling type %d, ignoring it\n", llama_pooling_type(ctx_server.ctx));
+            }
+        }
+
         // create and queue the task
         json responses = json::array();
         bool error = false;
@@ -4849,6 +4861,7 @@ int main(int argc, char ** argv) {
 
                 // OAI-compat
                 task.params.oaicompat = oaicompat;
+                task.params.embd_normalize = embd_normalize;
 
                 tasks.push_back(std::move(task));
             }
@@ -5074,7 +5087,7 @@ int main(int argc, char ** argv) {
         return false;
     });
     // mmojo-server END
-
+    
     // register API routes
     svr->Get (params.api_prefix + "/health",              handle_health); // public endpoint (no API key check)
     svr->Get (params.api_prefix + "/metrics",             handle_metrics);

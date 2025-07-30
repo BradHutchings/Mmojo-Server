@@ -3486,7 +3486,7 @@ struct server_context {
                     if (params_base.n_batch_sleep_ms > 0) {
                         SLT_INF(slot, "Starting sleep %d ms after batch.\n", params_base.n_batch_sleep_ms);
                         std::this_thread::sleep_for(std::chrono::milliseconds(params_base.n_batch_sleep_ms));
-                        SLT_INF(slot, "Finished sleep after batch.\n");
+                        SLT_INF(slot, "%s", "Finished sleep after batch.\n");
                     }
                     // mmojo-server END
 

@@ -19,23 +19,23 @@ const kScriptModes = [kModeCueScript, kModeAppend, kModePrepend, kModeReplace];
 var elements = {};
 var textChanged = true;
 
-const generatedText_placeholder = 
+const completedText_placeholder = 
     "The Bookmark Maker makes web browser bookmarks and links for automating Completion Tool.\n\n" +
     "The settings are in the olive area at top:\n" +
     "    - Label lets you set the label for the bookmark so you don't have to rename it.\n" +
     "    - Temperature, Tokens, and Stop Words work as they do in Completion Tool.\n" +
-    "    - If the Auto-Generate checkbox is checked, opening the bookmark will cause the model to automatically start completing.\n" +
+    "    - If the Auto-Complete checkbox is checked, opening the bookmark will cause the model to automatically start completing.\n" +
     "    - Append will append the cue to what's in the work area. Use to make clarifying bookmarks.\n" +
     "    - Replace will update the work area text, replacing the text in the top peach area with text in the bottom peach area. Use to make clarifying bookmarks.\n" +
     "The top peach area if for your cue.\n\n" +
-    "The bottom peach area (this area) is for generated text you wish to play back. You can simulate the model responding with a known response.\n\n" +
+    "The bottom peach area (this area) is for completed text you wish to play back. You can simulate the model responding with a known response.\n\n" +
     "A bookmark link is continually updated at the top right of the olive area. " +
         "Click the link to open it in a new tab or drag the link to the Bookmarks Bar in your web browser.\n\n" +
     "Updated: " + kUpdated;
 
 function PageLoaded() {
     FindElements();
-    elements.generatedText.placeholder = generatedText_placeholder;
+    elements.completedText.placeholder = completedText_placeholder;
 
     UseHash(location.hash);
     updatingHash = false;
@@ -60,15 +60,15 @@ function FindElements() {
     elements.stopWordsBreak             = document.getElementById("stop-words-break");
     elements.stopWords                  = document.getElementById("stop-words");
     elements.mode                       = document.getElementById("mode");
-    elements.autoGenerateCheckbox       = document.getElementById("auto-generate-checkbox");
+    elements.autoCompleteCheckbox       = document.getElementById("auto-complete-checkbox");
 
     elements.bookmarkLabel              = document.getElementById("bookmark-label");
     elements.bookmark                   = document.getElementById("bookmark");
 
     elements.cueTextArea                = document.getElementById("cue-text-area");
     elements.cueText                    = document.getElementById("cue-text");
-    elements.generatedTextArea          = document.getElementById("generated-text-area");
-    elements.generatedText              = document.getElementById("generated-text");
+    elements.completedTextArea          = document.getElementById("completed-text-area");
+    elements.completedText              = document.getElementById("completed-text");
 
 }
 
@@ -87,7 +87,7 @@ function UpdateBookmark() {
     if (!elements.stopWordsCheckbox.checked) {
         stopWordsText = '';
     }
-    let autoGenerate = elements.autoGenerateCheckbox.checked;
+    let autoComplete = elements.autoCompleteCheckbox.checked;
     let mode = elements.mode.value;
 
     // let bookmarkTypeLink = elements.bookmarkTypeLink.checked;
@@ -100,17 +100,17 @@ function UpdateBookmark() {
     let bookmarkTypeScript = kScriptModes.includes(mode);
 
     let cue = elements.cueText.value
-    let generated = elements.generatedText.value
+    let completed = elements.completedText.value
 
     var data = {
         "label": label,
         "temperature": temperature,
         "tokens": tokens,
         "stop-words": stopWordsText,
-        "auto-generate": autoGenerate,
+        "auto-complete": autoComplete,
         "mode": mode,
         "cue": cue,
-        "generated": generated,
+        "completed": completed,
     }
 
     if (kLogging || logThis) console.log(data);
@@ -128,9 +128,9 @@ function UpdateBookmark() {
             label = label + cue.split(' ').slice(0,10).join(' ');
             label = label.replaceAll('\n', ' ');
         }
-        else if (generated != '') {
+        else if (completed != '') {
             label = 'Completed: ';
-            label = label + generated.split(' ').slice(0,10).join(' ');
+            label = label + completed.split(' ').slice(0,10).join(' ');
             label = label.replaceAll('\n', ' ');
         }
     }
@@ -255,9 +255,9 @@ function ClearBookmarkMaker() {
     let tokens = "";
     let stopWords = "";
     let mode = kModeCueLink;
-    let autoGenerate = false;
+    let autoComplete = false;
     let cue = "";
-    let generated = "";
+    let completed = "";
 
     elements.label.value = label;
     elements.temperature.value = temperature;
@@ -265,10 +265,10 @@ function ClearBookmarkMaker() {
     elements.stopWordsCheckbox.checked = (stopWords != '');
     elements.stopWords.value = stopWords;
     elements.mode.value = mode;
-    elements.autoGenerateCheckbox.checked = autoGenerate;
+    elements.autoCompleteCheckbox.checked = autoComplete;
 
     elements.cueText.value = cue;
-    elements.generatedText.value = generated;
+    elements.completedText.value = completed;
 
     UpdateBookmark();
 }
@@ -295,9 +295,9 @@ function UseHash(hash) {
     let tokens = null;
     let stopWords = null;
     let mode = kModeCueLink;
-    let autoGenerate = false;
+    let autoComplete = false;
     let cue = "";
-    let generated = "";
+    let completed = "";
 
     // If something goes wrong, restore the settings.
     let saveLabelValue = elements.label.value;
@@ -306,9 +306,9 @@ function UseHash(hash) {
     let saveStopWordsCheckboxValue = elements.stopWordsCheckbox.checked;
     let saveStopWordsValue = elements.stopWords.value;
     let saveModeValue = elements.mode.value;
-    let saveAutoGenerateValue = elements.autoGenerateCheckbox.checked;
+    let saveAutoCompleteValue = elements.autoCompleteCheckbox.checked;
     let saveCueTextValue = elements.cueText.value;
-    let saveGeneratedTextValue = elements.generatedText.value;
+    let saveCompletedTextValue = elements.completedText.value;
 
     try {
         var dataJson = decodeURIComponent(atob(hash.replace('#', '')));
@@ -321,7 +321,7 @@ function UseHash(hash) {
             if (kLogging || logThis) console.log(data);
 
             // content will be pasted in immediately.
-            // generated will be pasted in by replayer.
+            // completed will be pasted in by replayer.
 
             if ('label' in data) {
                 label = data['label'];
@@ -368,12 +368,12 @@ function UseHash(hash) {
                 elements.mode.value = kModeCueLink;
             }
 
-            if ('auto-generate' in data) {
-                autoGenerate = data['auto-generate'];
-                elements.autoGenerateCheckbox.checked = autoGenerate;
+            if ('auto-complete' in data) {
+                autoComplete = data['auto-complete'];
+                elements.autoCompleteCheckbox.checked = autoComplete;
             }
             else {
-                elements.autoGenerateCheckbox.checked = false;
+                elements.autoCompleteCheckbox.checked = false;
             }
 
             if ('cue' in data) {
@@ -384,12 +384,29 @@ function UseHash(hash) {
                 elements.cueText.value = '';
             }
 
-            if ('generated' in data) {
-                generated = data['generated'];
-                elements.generatedText.value = generated;
+            if ('completed' in data) {
+                completed = data['completed'];
+                elements.completedText.value = completed;
             }
             else {
-                elements.generatedText.value = '';
+                elements.completedText.value = '';
+            }
+
+            // convert old generate to complete.
+            if ('completed' in data) {
+                completed = data['completed'];
+                elements.completedText.value = completed;
+            }
+            else {
+                elements.completedText.value = '';
+            }
+
+            if ('auto-generate' in data) {
+                autoComplete = data['auto-generate'];
+                elements.autoCompleteCheckbox.checked = autoComplete;
+            }
+            else {
+                elements.autoCompleteCheckbox.checked = false;
             }
 
             // convert old append and replace to modes.
@@ -409,15 +426,15 @@ function UseHash(hash) {
 
             if (kLogging || logThis) console.log('- cue:');
             if (kLogging || logThis) console.log(cue);
-            if (kLogging || logThis) console.log('- generated:');
-            if (kLogging || logThis) console.log(generated);
+            if (kLogging || logThis) console.log('- completed:');
+            if (kLogging || logThis) console.log(completed);
         }
     }
     catch {
         if (kLogging || logThis) console.log("UseHash() catch");
 
         elements.cueText.value = saveCueTextValue;
-        elements.generatedText.value = saveGeneratedTextValue;
+        elements.completedText.value = saveCompletedTextValue;
 
         elements.label.value = saveLabelValue;
         elements.temperature.value = saveTemperatureValue;
@@ -425,11 +442,11 @@ function UseHash(hash) {
         elements.stopWordsCheckbox.checked = saveStopWordsCheckboxValue;
         elements.stopWords.value = saveStopWordsValue;
 
-        elements.autoGenerateCheckbox.checked = saveAutoGenerateValue;
+        elements.autoCompleteCheckbox.checked = saveAutoCompleteValue;
         elements.mode.value = saveModeValue;
 
         elements.cueText.value = saveCueTextValue;
-        elements.generatedText.value = saveGeneratedTextValue;
+        elements.completedText.value = saveCompletedTextValue;
     }
 
     elements.cueTextArea.focus();

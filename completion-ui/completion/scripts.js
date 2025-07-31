@@ -6,7 +6,7 @@ const isMmojoPage = true;
 const kLogging = false;
 const kMaxCopyPastes = 20;
 const kUpdated = '[[UPDATED]]';
-const kWaitToGenerate = 2000;
+const kWaitToComplete = 2000;
 const kReplayDelay = 25;
 
 // const kServerURL = "http://llama-cpp:8000";
@@ -23,10 +23,10 @@ const kStatus_Ready = "Ready.";
 const kStatus_Evaluating = "Evaluating.";
 const kStatus_EvaluatingProgress = "Evaluating ";
 const kStatus_EvaulatingFinishing = "Finishing evaluating.";
-const kStatus_Generating = "Generating.";
-const kStatus_FinishedGenerating = "Finished generating.";
+const kStatus_Completing = "Completing.";
+const kStatus_FinishedCompleting = "Finished completing.";
 const kStatus_StoppedByWord = "Stopped by \"[stopping_word]\".";
-const kStatus_StoppedAfterGenerating = "Stopped after generating [tokens_predicted] tokens.";
+const kStatus_StoppedAfterCompleting = "Stopped after completing [tokens_predicted] tokens.";
 const kStatus_StoppedByUser = "Stopped by you, the user.";
 
 const kModeCue = "cue";
@@ -35,8 +35,8 @@ const kModePrepend = "prepend";
 const kModeReplace = "replace";
 
 var elements = {};
-var controller = null;          // Rename: generatingController
-var generating = false;         // Replace this with a mode: kMode_Typing, kMode_Generating, kMode_Replaying
+var controller = null;          // Rename: completingController
+var completing = false;         // Replace this with a mode: kMode_Typing, kMode_Completing, kMode_Replaying
 var replaying = false;
 var metadata = {};
 var contextWindowSize = 0;
@@ -332,10 +332,10 @@ function ResizeCopyPaste() {
 function ClearCue() {
     let workAreaText = elements.workAreaText.value;
 
-    if ((generatedContent != '') && (workAreaText.endsWith(generatedContent))) {
-        elements.workAreaText.value = generatedContent.trimStart();
+    if ((completedContent != '') && (workAreaText.endsWith(completedContent))) {
+        elements.workAreaText.value = completedContent.trimStart();
         elements.workAreaText.focus();
-        generatedContent = "";
+        completedContent = "";
         EnableCopyPaste();
         PushChange();
     }
@@ -392,8 +392,8 @@ function StopWordsSetFocus() {
     elements.stopWords.selectionStart = elements.stopWords.selectionEnd = elements.stopWords.value.length;
 }
 
-function Generate() {
-    if (!generating && !replaying) {
+function Complete() {
+    if (!completing && !replaying) {
         PushChange();
  
         var workAreaText = elements.workAreaText.value;
@@ -419,8 +419,8 @@ function Generate() {
         if (kLogging) console.log(workAreaText);
 
         if (tokenCount <= contextWindowSize) {
-            SetGenerating(true);
-            StartGenerating(workAreaText, temperature, tokens, stopWords);
+            SetCompleting(true);
+            StartCompleting(workAreaText, temperature, tokens, stopWords);
         }
         else {
             let problemText = "\n\n----------------------------------------\n\n" +
@@ -434,14 +434,14 @@ function Generate() {
     }
 }
 
-function SetGenerating(value) {
-    if (generating != value) {
-        generating = value;
+function SetCompleting(value) {
+    if (completing != value) {
+        completing = value;
 
         ShowHideStatusButtons();
         EnableCopyPaste();
 
-        if (generating) {
+        if (completing) {
             //  elements.statusStop.focus();
         
             elements.workAreaText.readOnly = true;
@@ -465,9 +465,9 @@ function SetGenerating(value) {
 }
 
 var manualStop = false;
-var generatedContent = '';
+var completedContent = '';
 
-async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
+async function StartCompleting(workAreaText, temperature, tokens, stopWords) {
     let logThis = false;
 
     // show that we're working??
@@ -491,7 +491,7 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
 
     controller = new AbortController();
     manualStop = false;
-    generatedContent = '';
+    completedContent = '';
 
     try {
         let startMS = Date.now();
@@ -585,7 +585,7 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
                         ShowElement(elements.statusTokens);
             
                         content = content + lineData.data.stopping_word;
-                        generatedContent = generatedContent + lineData.data.stopping_word;
+                        completedContent = completedContent + lineData.data.stopping_word;
                         elements.workAreaText.value = content;
 
                         elements.workAreaText.focus();
@@ -595,11 +595,11 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
                         ShowHideStatusButtons();
                     }
                     else if (lineData.data.stopped_eos) {
-                        SetStatus(kStatus_FinishedGenerating);
+                        SetStatus(kStatus_FinishedCompleting);
                         ShowElement(elements.statusTokens);
 
                         content = content + lineData.data.content;
-                        generatedContent = generatedContent + lineData.data.content;
+                        completedContent = completedContent + lineData.data.content;
                         elements.workAreaText.value = content;
 
                         ScrollToEnd();
@@ -611,11 +611,11 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
                         ShowHideStatusButtons();
                     }
                     else if (lineData.data.stopped_limit) {
-                        SetStatus(kStatus_StoppedAfterGenerating.replace('[tokens_predicted]', lineData.data.tokens_predicted));
+                        SetStatus(kStatus_StoppedAfterCompleting.replace('[tokens_predicted]', lineData.data.tokens_predicted));
                         ShowElement(elements.statusTokens);
                         
                         content = content + lineData.data.content;
-                        generatedContent = generatedContent + lineData.data.content;
+                        completedContent = completedContent + lineData.data.content;
                         elements.workAreaText.value = content;
                         
                         ScrollToEnd();
@@ -626,11 +626,11 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
                         ShowHideStatusButtons();
                     }
                     else if (lineData.data.content !== undefined) {
-                        SetStatus(kStatus_Generating);
+                        SetStatus(kStatus_Completing);
                         ShowElement(elements.statusTokens);
 
                         content = content + lineData.data.content;
-                        generatedContent = generatedContent + lineData.data.content;
+                        completedContent = completedContent + lineData.data.content;
                         elements.workAreaText.value = content;
 
                         ScrollToEnd();
@@ -663,10 +663,10 @@ async function StartGenerating(workAreaText, temperature, tokens, stopWords) {
     }
 
     controller = null;
-    SetGenerating(false);
+    SetCompleting(false);
 }
 
-function StopGenerating() {
+function StopCompleting() {
     if (controller !== null) {
         controller.abort();
         controller = null;
@@ -674,22 +674,22 @@ function StopGenerating() {
 
         ShowHideStatusButtons();
         SetStatus(kStatus_StoppedByUser);
-        SetGenerating(false);
+        SetCompleting(false);
 
         elements.workAreaText.focus();
         ScrollToEnd();
     }
 }
 
-function Replay(generated) {
-    if (!replaying && !generating) {
+function Replay(completed) {
+    if (!replaying && !completing) {
         PushChange();
 
         SetReplaying(true);
         SetStatus("Replaying...");
  
         var workAreaText = elements.workAreaText.value;
-        var words = generated.split(' ');
+        var words = completed.split(' ');
         var i = 0;
 
         function type() {
@@ -704,11 +704,11 @@ function Replay(generated) {
                 setTimeout(type, kReplayDelay);
             }
             else {
-                elements.workAreaText.value = workAreaText + generated;
+                elements.workAreaText.value = workAreaText + completed;
                 ScrollToEnd();
 
                 SetReplaying(false);
-                generatedContent = generated;
+                completedContent = completed;
             }
         }
         
@@ -746,7 +746,7 @@ function StopReplaying() {
 }
 
 function WorkAreaTextPaste() {
-    if (!generating && !replaying) {
+    if (!completing && !replaying) {
         // Force this to happen after the paste. If you double paste
         // too quickly, it will get caught in the same change.
         setTimeout(() => {
@@ -761,28 +761,28 @@ function WorkAreaTextPaste() {
 }
 
 function ShowHideStatusButtons() {
-    if ((elements.workAreaText.value != '') && !generating) {
+    if ((elements.workAreaText.value != '') && !completing) {
         ShowElement(elements.statusStart);
     }
     else {
         HideElement(elements.statusStart);
     }
 
-    if (generating) {
+    if (completing) {
         ShowElement(elements.statusStop);
     }
     else {
         HideElement(elements.statusStop);
     }
 
-    if ((isMobile || true) && (undoStack.length > 0) && !generating) {
+    if ((isMobile || true) && (undoStack.length > 0) && !completing) {
         ShowElement(elements.statusUndo);
     }
     else {
         HideElement(elements.statusUndo);
     }
 
-    if ((isMobile || true) && (elements.workAreaText.value != '') && !generating) {
+    if ((isMobile || true) && (elements.workAreaText.value != '') && !completing) {
         ShowElement(elements.statusClear);
     }
     else {
@@ -818,23 +818,23 @@ function SetStatus(status, etaMS = 0) {
     }
 }
 
-var generationStartedMS = 0;
-const generationMinimumTimeMS = 1500;
+var completionStartedMS = 0;
+const completionMinimumTimeMS = 1500;
 
 function WorkAreaTextKeyDown(event) {
     let logThis = false;
     if (kLogging || logThis) console.log('WorkAreaTextKeyDown()');
     
-    // if we're generating, return true
-    if (generating) {
-        if (kLogging || logThis) console.log('- generating');
+    // if we're completing, return true
+    if (completing) {
+        if (kLogging || logThis) console.log('- completing');
         event.preventDefault();
 
-        // return key in the field should stop generating.
+        // return key in the field should stop completing.
         if (event.keyCode == 13) {
-            if ((Date.now() - generationStartedMS) >= generationMinimumTimeMS) {
+            if ((Date.now() - completionStartedMS) >= completionMinimumTimeMS) {
                 if (kLogging || logThis) console.log('- return');
-                StopGenerating();
+                StopCompleting();
             }
         }
     }
@@ -850,7 +850,7 @@ function WorkAreaTextKeyDown(event) {
         }
     }
 
-    // if we're not generating or replaying, and we get a return key, kick off generating.
+    // if we're not completing or replaying, and we get a return key, kick off completing.
     else if ((event.keyCode == 13) && !event.shiftKey) {
         if (kLogging || logThis) console.log("Enter key was pressed.");
 
@@ -860,15 +860,15 @@ function WorkAreaTextKeyDown(event) {
         }
         event.preventDefault();
 
-        generationStartedMS = Date.now();
+        completionStartedMS = Date.now();
         setTimeout(() => {
-            Generate();
+            Complete();
         }, 500);
     }
 
     else {
-        // This will change the content area, so forget generatedContent.
-        generatedContent = "";
+        // This will change the content area, so forget completedContent.
+        completedContent = "";
         var w = elements.content.offsetWidth;
         SetStatus((w >= 400) ? kStatus_TypeSomething : kStatus_Ready);
         EnableCopyPaste();
@@ -1016,7 +1016,7 @@ function PushChange() {
             workAreaText:       elements.workAreaText.value,
             selectionStart:     elements.workAreaText.selectionStart,
             selectionEnd:       elements.workAreaText.selectionEnd,
-            generatedContent:   generatedContent,
+            completedContent:   completedContent,
         }
         undoStack.push(item);
         redoStack.length = 0;
@@ -1049,13 +1049,13 @@ function UndoChange() {
             elements.workAreaText.value             = item.workAreaText;
             elements.workAreaText.selectionStart    = item.selectionStart;
             elements.workAreaText.selectionEnd      = item.selectionEnd;
-            generatedContent                        = item.generatedContent;
+            completedContent                        = item.completedContent;
         }
         else {
             elements.workAreaText.value = "";
             elements.workAreaText.selectionStart = 0;
             elements.workAreaText.selectionEnd = 0;
-            generatedContent = "";
+            completedContent = "";
         }
 
         if (kLogging) console.log(elements.workAreaText.value.length);
@@ -1078,7 +1078,7 @@ function RedoChange() {
         elements.workAreaText.value             = item.workAreaText;
         elements.workAreaText.selectionStart    = item.selectionStart;
         elements.workAreaText.selectionEnd      = item.selectionEnd;
-        generatedContent                        = item.generatedContent;
+        completedContent                        = item.completedContent;
 
         if (kLogging) console.log(elements.workAreaText.value.length);
         if (kLogging) LogUndoRedoStacks();
@@ -1230,26 +1230,26 @@ function ScrollToEnd() {
 
 function MakeHash() {
     let logThis = false;
-    if (kLogging || logThis) console.log("MakeHash(" + generated + ")");
+    if (kLogging || logThis) console.log("MakeHash(" + completed + ")");
     if (kLogging || logThis) console.trace();
 
     let result = '';
 
-    if (generatedContent === undefined) {
-        generatedContent = '';
+    if (completedContent === undefined) {
+        completedContent = '';
     }
 
     var workAreaText = elements.workAreaText.value;
     var cue = '';
-    var generated = '';
+    var completed = '';
 
-    if ((generatedContent != '') && (workAreaText.endsWith(generatedContent))) {
-        cue = workAreaText.substring(0, workAreaText.length - generatedContent.length);
-        generated = generatedContent;
+    if ((completedContent != '') && (workAreaText.endsWith(completedContent))) {
+        cue = workAreaText.substring(0, workAreaText.length - completedContent.length);
+        completed = completedContent;
     }
     else {
         cue = workAreaText;
-        generated = "";
+        completed = "";
     }
 
     let temperature = elements.temperature.value;
@@ -1258,14 +1258,14 @@ function MakeHash() {
     if (!elements.stopWordsCheckbox.checked) {
         stopWordsText = '';
     }
-    let autoGenerate = true;
+    let autoComplete = true;
     let append = false;
     let bookmarkTypeLink = true;
     let bookmarkTypeScript = false;
 
     var label = 'Completion Tool';
     if (cue != '') {
-        label = (generated != '') ? "Generated: " : "Generate: ";
+        label = (completed != '') ? "completed: " : "Complete: ";
     }
     label = label + workAreaText.split(' ').slice(0,10).join(' ');
 
@@ -1274,12 +1274,12 @@ function MakeHash() {
         "temperature": temperature,
         "tokens": tokens,
         "stop-words": stopWordsText,
-        "auto-generate": autoGenerate,
+        "auto-complete": autoComplete,
         "append": append,
         "bookmark-type-link": bookmarkTypeLink,
         "bookmark-type-script": bookmarkTypeScript,
         "cue": cue,
-        "generated": generated,
+        "completed": completed,
     }
 
     var dataJson = JSON.stringify(data);
@@ -1313,7 +1313,7 @@ function UseHash() {
     if (kLogging || logThis) console.log("UseHash()");
  
     if (controller !== null) {
-        StopGenerating();
+        StopCompleting();
     }
 
     let label = null;
@@ -1321,9 +1321,9 @@ function UseHash() {
     let tokens = null;
     let stopWords = null;
     let mode = kModeCue;
-    let autoGenerate = false;
+    let autoComplete = false;
     let cue = "";
-    let generated = "";
+    let completed = "";
 
     // If something goes wrong, restore the settings.
     let saveWorkAreaValue = elements.workAreaText.value;
@@ -1343,7 +1343,7 @@ function UseHash() {
             if (kLogging || logThis) console.log(data);
 
             // content will be pasted in immediately.
-            // generated will be pasted in by replayer.
+            // completed will be pasted in by replayer.
 
             if ('temperature' in data) {
                 temperature = data['temperature'];
@@ -1354,8 +1354,8 @@ function UseHash() {
             if ('stop-words' in data) {
                 stopWords = data['stop-words'];
             }
-            if ('auto-generate' in data) {
-                autoGenerate = data['auto-generate'];
+            if ('auto-complete' in data) {
+                autoComplete = data['auto-complete'];
             }
             if ('mode' in data) {
                 mode = data['mode'];
@@ -1375,14 +1375,14 @@ function UseHash() {
             if ('cue' in data) {
                 cue = data['cue'];
             }
-            if ('generated' in data) {
-                generated = data['generated'];
+            if ('completed' in data) {
+                completed = data['completed'];
             }
 
             if (kLogging || logThis) console.log('- cue:');
             if (kLogging || logThis) console.log(cue);
-            if (kLogging || logThis) console.log('- generated:');
-            if (kLogging || logThis) console.log(generated);
+            if (kLogging || logThis) console.log('- completed:');
+            if (kLogging || logThis) console.log(completed);
         }
 
         if (mode == kModeAppend) {
@@ -1394,13 +1394,13 @@ function UseHash() {
             PushChange();
         }
         else if (mode == kModeReplace) {
-            // Update contents of elements.workAreaText.value. Replace cue with generated.
+            // Update contents of elements.workAreaText.value. Replace cue with completed.
             let text = elements.workAreaText.value;
             if (cue != "") {
-                text = text.replaceAll(cue, generated);
+                text = text.replaceAll(cue, completed);
                 elements.workAreaText.value = text;
-                generated = "";
-                autoGenerate = false;
+                completed = "";
+                autoComplete = false;
                 PushChange();
             }
         }
@@ -1432,23 +1432,23 @@ function UseHash() {
         elements.stopWords.value = saveStopWordsValue;
 
         cue = null;
-        generated = null;
-        autoGenerate = false;
+        completed = null;
+        autoComplete = false;
     }
 
     elements.workAreaText.disabled = false;
     elements.workAreaText.focus();
     ScrollToEnd();
     
-    if ((generated == '') && (elements.workAreaText.value != '') && autoGenerate) {
+    if ((completed == '') && (elements.workAreaText.value != '') && autoComplete) {
         setTimeout(() => {
-            Generate();
-        }, kWaitToGenerate);
+            Complete();
+        }, kWaitToComplete);
     }
-    else if (generated != '') {
+    else if (completed != '') {
         setTimeout(() => {
-            Replay(generated);
-        }, kWaitToGenerate);
+            Replay(completed);
+        }, kWaitToComplete);
     }
 
     // show or hide stop words.

@@ -45,7 +45,7 @@
     visibility: inherit;
 }
 
-#auto-generate-checkbox {
+#auto-complete-checkbox {
     margin-right: 0.25rem;
     width: 1.2rem;
     height: 1.2rem;
@@ -81,13 +81,13 @@
     background: none;
 }
 
-#generated-text-area {
+#completed-text-area {
     flex-grow: 3;
     padding: 0rem 0rem 0rem 0rem;
     background: none;
 }
 
-#cue-text, #generated-text {
+#cue-text, #completed-text {
     overflow-x: hidden;
     overflow-y: auto;
     background-color: var(--color2);
@@ -97,7 +97,7 @@
     flex-grow: 1;
 }
 
-#cue-text::selection, #generated-text::selection {
+#cue-text::selection, #completed-text::selection {
     background-color: var(--color7);
     color: var(--color4);
 }

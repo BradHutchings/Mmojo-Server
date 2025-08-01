@@ -700,6 +700,7 @@ function Replay(completed) {
                 }
                 newText = newText + words[i];
                 elements.workAreaText.value += newText;
+                ScrollToEnd();
                 i++;
                 setTimeout(type, kReplayDelay);
             }
@@ -897,58 +898,6 @@ function WorkAreaTextClicked(event) {
     }
 
     return result;
-}
-
-function HandleColorWheel(event) {
-    var degrees = 30;
-
-    if (event.shiftKey) {
-        degrees = -degrees;
-    }
-
-    RotateColors(degrees);
-}
-
-function RotateColors(degrees) {
-    let root = document.querySelector(':root');
-    let computedStyle = getComputedStyle(root);
-
-    while (degrees < 0) {
-        degrees += 360;
-    }
-
-    let color1 = computedStyle.getPropertyValue('--color1')
-    let color2 = computedStyle.getPropertyValue('--color2')
-    let color3 = computedStyle.getPropertyValue('--color3')
-    let color4 = computedStyle.getPropertyValue('--color4')
-    let color5 = computedStyle.getPropertyValue('--color5')
-    let color6 = computedStyle.getPropertyValue('--color6')
-    let color7 = computedStyle.getPropertyValue('--color7')
-    let color8 = computedStyle.getPropertyValue('--color8')
-    let color9 = computedStyle.getPropertyValue('--color9')
-    let color10 = computedStyle.getPropertyValue('--color10')
-
-    color1 = rotateRGB(color1, degrees);
-    color2 = rotateRGB(color2, degrees);
-    color3 = rotateRGB(color3, degrees);
-    color4 = rotateRGB(color4, degrees);
-    color5 = rotateRGB(color5, degrees);
-    color6 = rotateRGB(color6, degrees);
-    color7 = rotateRGB(color7, degrees);
-    color8 = rotateRGB(color8, degrees);
-    color9 = rotateRGB(color9, degrees);
-    color10 = rotateRGB(color10, degrees);
-
-    root.style.setProperty('--color1', color1);
-    root.style.setProperty('--color2', color2);
-    root.style.setProperty('--color3', color3);
-    root.style.setProperty('--color4', color4);
-    root.style.setProperty('--color5', color5);
-    root.style.setProperty('--color6', color6);
-    root.style.setProperty('--color7', color7);
-    root.style.setProperty('--color8', color8);
-    root.style.setProperty('--color9', color9);
-    root.style.setProperty('--color10', color10);
 }
 
 function ToggleFullScreen() {
@@ -1382,18 +1331,10 @@ function UseHash() {
             // convert old generate to complete.
             if ('generated' in data) {
                 completed = data['generated'];
-                elements.completedText.value = completed;
-            }
-            else {
-                elements.completedText.value = '';
             }
 
             if ('auto-generate' in data) {
                 autoComplete = data['auto-generate'];
-                elements.autoCompleteCheckbox.checked = autoComplete;
-            }
-            else {
-                elements.autoCompleteCheckbox.checked = false;
             }
 
             if (kLogging || logThis) console.log('- cue:');
@@ -1422,6 +1363,7 @@ function UseHash() {
             }
         }
         else {
+            if (kLogging || logThis) console.log('Mode is cue.');
             elements.workAreaText.value = cue;
             PushChange();
         }
@@ -1441,6 +1383,8 @@ function UseHash() {
 
     }
     catch {
+        if (kLogging || logThis) console.log('completed != empty.');
+
         // If something goes wrong, restore the settings.
         elements.workAreaText.value = saveWorkAreaValue;
         elements.temperature.value = saveTemperatureValue;
@@ -1462,7 +1406,7 @@ function UseHash() {
             Complete();
         }, kWaitToComplete);
     }
-    else if (completed != '') {
+    else if ((completed != null) && (completed != '')) {
         setTimeout(() => {
             Replay(completed);
         }, kWaitToComplete);

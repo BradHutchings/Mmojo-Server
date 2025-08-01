@@ -48,7 +48,7 @@ body {
     display: flex;
 }
 
-label {
+label, #model-label, #updated-label {
     margin-right: 0.25rem;
     margin-top: auto;
     margin-bottom: auto;

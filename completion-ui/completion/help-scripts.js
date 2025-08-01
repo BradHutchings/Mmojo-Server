@@ -37,9 +37,9 @@ var instructions =
 
     "<hr />\n" +
     "<h3>Change the Model:</h3>\n" +
-    "<p>Use the Mmojo Admin page to change which large language model Mmojo uses:</p>\n" +
+    "<p>Use the Mmojo Controls page to change which large language model Mmojo uses:</p>\n" +
     "<ul>\n" +
-    "<li><a href=\"/admin\" target=\"_blank\">Mmojo Admin</a></li>\n" +
+    "<li><a href=\"/controls\" target=\"_blank\">Mmojo Controls</a></li>\n" +
     "</ul>\n" +
 
     "<hr />\n" +

@@ -11,8 +11,6 @@
 
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
-    <script src="color-math.js"></script>
-    <script src="mode-words.js"></script>
 
     <title>Mmojo Completion</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, interactive-widget=resizes-content" />
@@ -39,13 +37,11 @@
         </div>
 
         <div id="settings" class="row">
-            <label id="model-label" for="model">Model:</label>
+            <div id="model-label" for="model">Model:</div>
             <div id="model"></div>
             <div id="updated-space" class="space"></div>
-            <!--
-            <div id="updated-break" class="break"></div>
-            -->
-            <label id="updated-label" for="updated">Updated:</label>
+
+            <div id="updated-label" for="updated">Updated:</div>
             <div id="updated">Date</div>
             <div id="info-break" class="break"></div>
 
@@ -131,10 +127,11 @@
 
         <div id="status" class="row">
             <div id="status-text"><b>Status:</b> The status goes here.</div>
+            <div id="status-eta"><b>ETA:</b> ETA goes here.</div>
             <div id="status-tokens"><b>Tokens:</b></div>
             <div id="status-space" class="space"></div>
-            <button id="status-start" onclick="elements.workAreaText.focus(); Generate();">Start</button>
-            <button id="status-stop" onclick="elements.workAreaText.focus(); StopGenerating();">Stop</button>
+            <button id="status-start" onclick="elements.workAreaText.focus(); Complete();">Start</button>
+            <button id="status-stop" onclick="elements.workAreaText.focus(); StopCompleting();">Stop</button>
             <button id="status-undo" onclick="elements.workAreaText.focus(); UndoChange();">Undo</button>
             <button id="status-clear" onclick="elements.workAreaText.focus(); ClearWorkArea();">Clear</button>
         </div>

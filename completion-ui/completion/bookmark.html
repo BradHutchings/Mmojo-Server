@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="bookmark-styles.css">
     <script src="bookmark-scripts.js"></script>
-    <script src="mode-words.js"></script>
     <title>Mmojo Completion - Bookmark Maker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
 </head>
@@ -78,8 +77,8 @@
             </select>
 
             <div class="vertical-divider"></div>
-            <input id="auto-generate-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
-            <label for="auto-generate-checkbox">Auto-Generate</label>
+            <input id="auto-complete-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
+            <label for="auto-complete-checkbox">Auto-Complete</label>
 
             <div id="clear-space" class="space"></div>
             <button id="clear" class="clear-button" onclick="ClearBookmarkMaker();">Clear</button>
@@ -91,8 +90,8 @@
                 placeholder=""></textarea>
             </div>
 
-        <div id="generated-text-area" class="row">
-            <textarea id="generated-text" class="row-item"  onkeydown="TextChanged();"
+        <div id="completed-text-area" class="row">
+            <textarea id="completed-text" class="row-item"  onkeydown="TextChanged();"
                 placeholder=""></textarea>
 
         </div>

@@ -1115,7 +1115,7 @@ OBJ_LLAMA = \
 #	$(DIR_LLAMA)/llama-context.o \
 
 OBJ_COMMON = \
-	$(DIR_COMMON)/arg.o \
+	$(DIR_COMMON)/arg-mmojo.o \
 	$(DIR_COMMON)/build-info.o \
 	$(DIR_COMMON)/chat.o \
 	$(DIR_COMMON)/chat-parser.o \

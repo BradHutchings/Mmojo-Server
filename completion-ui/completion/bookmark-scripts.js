@@ -393,8 +393,8 @@ function UseHash(hash) {
             }
 
             // convert old generate to complete.
-            if ('completed' in data) {
-                completed = data['completed'];
+            if ('generated' in data) {
+                completed = data['generated'];
                 elements.completedText.value = completed;
             }
             else {

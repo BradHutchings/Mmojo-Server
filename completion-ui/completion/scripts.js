@@ -1379,6 +1379,23 @@ function UseHash() {
                 completed = data['completed'];
             }
 
+            // convert old generate to complete.
+            if ('generated' in data) {
+                completed = data['generated'];
+                elements.completedText.value = completed;
+            }
+            else {
+                elements.completedText.value = '';
+            }
+
+            if ('auto-generate' in data) {
+                autoComplete = data['auto-generate'];
+                elements.autoCompleteCheckbox.checked = autoComplete;
+            }
+            else {
+                elements.autoCompleteCheckbox.checked = false;
+            }
+
             if (kLogging || logThis) console.log('- cue:');
             if (kLogging || logThis) console.log(cue);
             if (kLogging || logThis) console.log('- completed:');

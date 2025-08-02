@@ -33,6 +33,7 @@ const kModeCue = "cue";
 const kModeAppend = "append";
 const kModePrepend = "prepend";
 const kModeReplace = "replace";
+const kModeReplaceRegEx = "replace-regex";
 
 var elements = {};
 var controller = null;          // Rename: completingController
@@ -1361,6 +1362,23 @@ function UseHash() {
                 completed = "";
                 autoComplete = false;
                 PushChange();
+            }
+        }
+        else if (mode == kModeReplaceRegEx) {
+            // Update contents of elements.workAreaText.value. Replace cue with completed.
+            let text = elements.workAreaText.value;
+            if (cue != "") {
+                try {
+                    let regex = new RegExp(cue, "gi");
+                    text = text.replace(regex, completed);
+                    elements.workAreaText.value = text;
+                    completed = "";
+                    autoComplete = false;
+                    PushChange();
+                }
+                catch (error) {
+                    if (kLogging || logThis) console.log('kModeReplaceRegEx error:' + error);
+                }
             }
         }
         else {

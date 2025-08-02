@@ -359,9 +359,11 @@ function UseHash(hash) {
 
             if ('mode' in data) {
                 mode = data['mode'];
-                if (!kLinkModes.includes(mode)) {
+                if (kLogging || logThis) console.log("mode: " + mode);
+                if (!kScriptModes.includes(mode)) {
                     mode = kModeCueLink;
                 }
+                if (kLogging || logThis) console.log("mode: " + mode);
                 elements.mode.value = mode;
             }
             else {

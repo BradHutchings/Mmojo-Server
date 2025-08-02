@@ -673,6 +673,7 @@ function StopCompleting() {
         manualStop = true;
 
         ShowHideStatusButtons();
+        ShowElement(elements.statusTokens);
         SetStatus(kStatus_StoppedByUser);
         SetCompleting(false);
 

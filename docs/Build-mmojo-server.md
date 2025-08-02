@@ -57,6 +57,7 @@ printf "\n**********\n*\n* FINISHED: Checkout work-in-progress.\n*\n**********\n
 
 Patch `ggml-cpu/cosmo` with latest generic ggml-cpu code.
 ```
+cd ~/$BUILD_DIR
 mkdir -p ggml/src/ggml-cpu/arch/cosmo
 cp ggml/src/ggml-cpu/repack.cpp ggml/src/ggml-cpu/arch/cosmo/
 cp ggml/src/ggml-cpu/quants.c ggml/src/ggml-cpu/arch/cosmo/
@@ -313,3 +314,4 @@ printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-mmojo-server.md](Configure-mmojo-server.md).
 
 Brad's environment-specifc instructions are here: [Configure-mmojo-server-merge.md](Configure-mmojo-server-merge.md).
+

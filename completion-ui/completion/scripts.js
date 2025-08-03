@@ -47,18 +47,29 @@ var modelName = "";
 var isMobile = (navigator.maxTouchPoints > 1) && (window.navigator.userAgent.includes("Mobi"));
 
 function ShowElement(elt) {
-    elt.style.display = 'inline-block';
-    elt.style.visibility = 'visible';
-}
-
-function ShowFlexElement(elt) {
-    elt.style.display = 'flex';
-    elt.style.visibility = 'visible';
+    if (elt.classList.contains("hidden")) {
+        elt.classList.remove("hidden");
+    }
 }
 
 function HideElement(elt) {
-    elt.style.display = 'none';
-    elt.style.visibility = 'hidden';
+    if (!elt.classList.contains("hidden")) {
+        elt.classList.add("hidden");
+    }
+}
+
+function ToggleShowElement(elt) {
+    if (elt.classList.contains("hidden")) {
+        elt.classList.remove("hidden");
+    }
+    else {
+        elt.classList.add("hidden");
+    }
+}
+
+function ElementIsShown(elt) {
+    let result = !elt.classList.contains("hidden");
+    return result;
 }
 
 var workAreaText_placeholder = 
@@ -92,7 +103,7 @@ function PageLoaded() {
 
     setTimeout(function() {
         HideElement(elements.gutter);
-        ShowFlexElement(elements.status);
+        ShowElement(elements.status);
     }, 2000);
 
     setTimeout(function() {
@@ -108,7 +119,7 @@ function PageResized() {
 function FindElements() {
     elements.body                   = document.body;
     elements.content                = document.getElementById("content");
-    elements.print                  = document.getElementById("print");
+    elements.printLayout            = document.getElementById("print-layout");
     elements.printPicture           = document.getElementById("print-picture");
     elements.printContent           = document.getElementById("print-content");
 
@@ -129,11 +140,12 @@ function FindElements() {
     elements.stopWordsLabel         = document.getElementById("stop-words-label");
     elements.stopWords              = document.getElementById("stop-words");
 
-    elements.printSizeBreak         = document.getElementById("print-size-break");
+    elements.printSettings          = document.getElementById("print-settings");
     elements.printSize              = document.getElementById("print-size");
     elements.pictureWidth           = document.getElementById("picture-width");
     elements.pictureUrlBreak        = document.getElementById("picture-url-break");
     elements.pictureUrl             = document.getElementById("picture-url");
+    elements.print                  = document.getElementById("print");
 
     elements.model                  = document.getElementById("model");
     elements.updated                = document.getElementById("updated");
@@ -153,11 +165,10 @@ function FindElements() {
     elements.statusTokens           = document.getElementById("status-tokens");
     elements.statusStart            = document.getElementById("status-start");
     elements.statusStop             = document.getElementById("status-stop");
-    elements.statusUndo                   = document.getElementById("status-undo");
+    elements.statusUndo             = document.getElementById("status-undo");
     elements.statusClear            = document.getElementById("status-clear");
 
     elements.gutter                 = document.getElementById("gutter");
-    elements.logo                   = document.getElementById("logo");
     elements.link                   = document.getElementById("link");
     elements.copyright              = document.getElementById("copyright");
 
@@ -346,6 +357,7 @@ function ClearWorkArea() {
 
     ClearUndoRedoStack();
     ShowHideStatusButtons();
+    SetStatusReady();
 }
 
 function EnableControls() {
@@ -826,7 +838,7 @@ function SetStatus(status, etaMS = 0) {
     elements.statusETA.innerHTML = "<b>ETA:</b>&nbsp;" + eta;
 
     if (showETA) {
-        ShowFlexElement(elements.statusETA);
+        ShowElement(elements.statusETA);
     }
     else {
         HideElement(elements.statusETA);
@@ -1158,31 +1170,13 @@ async function GetModelInfoFromServer() {
 }
 
 function ToggleSettings() {
-    try {
-        if (elements.settings.style.display == 'flex') {
-            HideElement(elements.settings);
-        }
-        else {
-            ShowFlexElement(elements.settings);
-        }
-    
-    }
-    catch {
-    }
+    ToggleShowElement(elements.settings);
+    HideElement(elements.printSettings);
 }
 
-function TogglePrint() {
-    try {
-        if (elements.print.style.display == 'inline-block') {
-            HideElement(elements.print);
-        }
-        else {
-            ShowElement(elements.print);
-        }    
-    }
-    catch {
-
-    }
+function TogglePrintSettings() {
+    ToggleShowElement(elements.printSettings)
+    HideElement(elements.settings);
 }
 
 function ScrollToEnd() {
@@ -1574,6 +1568,8 @@ function RestoreMmojoCompletion() {
 }
 
 function GetElapsedTimeString(ms) {
+    var logThis = false;
+
     let result = ""
     let seconds = Math.floor(ms / 1000);
     let minutes = Math.floor(seconds / 60);
@@ -1582,10 +1578,15 @@ function GetElapsedTimeString(ms) {
     seconds = seconds - (minutes * 60)
     minutes = minutes - (hours * 60);
 
+    if (kLogging || logThis) console.log("GetElapsedTimeString(" + ms + ")");
+    if (kLogging || logThis) console.log("-   hours: " + hours);
+    if (kLogging || logThis) console.log("- minutes: " + minutes);
+    if (kLogging || logThis) console.log("- seconds: " + seconds);
+
     if (hours > 0) {
         result = String(hours) + ":" + String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, '0');
     }
-    if (minutes > 0) {
+    else if (minutes > 0) {
         result = String(minutes) + ":" + String(seconds).padStart(2, '0');
     }
     else {

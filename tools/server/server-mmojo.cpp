@@ -2670,7 +2670,6 @@ struct server_context {
     }
     // mmojo-server END
 
-
     void send_final_response(server_slot & slot) {
         auto res = std::make_unique<server_task_result_cmpl_final>();
         res->id              = slot.id_task;
@@ -3506,7 +3505,7 @@ struct server_context {
 
                         // Send incremental progress updates during token processing
                         // send_progress_response(slot);
-                        // mmojo-server END
+                        // mmojo-server END                        
                     }
 
                     // SLT_INF(slot, "new cache_tokens: %s\n", slot.cache_tokens.str().c_str());
@@ -4470,9 +4469,6 @@ int main(int argc, char ** argv) {
 
             // process prompt
             std::vector<server_tokens> inputs;
-            if (oaicompat && !prompt.is_string()) {
-                throw std::runtime_error("prompt must be a string");
-            }
 
             if (oaicompat && has_mtmd) {
                 // multimodal
@@ -5116,8 +5112,8 @@ int main(int argc, char ** argv) {
         res.set_redirect("/chat");
         return false;
     });
-    // mmojo-server END
-
+    // mmojo-server END    
+    
     // register API routes
     svr->Get (params.api_prefix + "/health",              handle_health); // public endpoint (no API key check)
     svr->Get (params.api_prefix + "/metrics",             handle_metrics);

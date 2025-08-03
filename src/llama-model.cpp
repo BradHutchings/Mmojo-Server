@@ -899,6 +899,7 @@ void llama_model::load_hparams(llama_model_loader & ml) {
             } break;
         case LLM_ARCH_QWEN3:
             {
+                ml.get_key(LLM_KV_POOLING_TYPE, hparams.pooling_type, false);
                 ml.get_key(LLM_KV_ATTENTION_LAYERNORM_RMS_EPS, hparams.f_norm_rms_eps);
                 switch (hparams.n_layer) {
                     case 28: type = hparams.n_embd == 1024 ? LLM_TYPE_0_6B : LLM_TYPE_1_7B; break;
@@ -17597,6 +17598,7 @@ llama_memory_i * llama_model::create_memory(const llama_memory_params & params, 
                         /* recurrent_kv_size */ std::max((uint32_t) 1, cparams.n_seq_max),
                         /* n_seq_max         */ cparams.n_seq_max,
                         /* offload           */ cparams.offload_kqv,
+                        /* unified           */ cparams.kv_unified,
                         /* filter_attn       */ (arch == LLM_ARCH_FALCON_H1) ? [&](int32_t) { return true; } : (llama_memory_hybrid::layer_filter_cb)nullptr,
                         /* filter_recr       */ (arch == LLM_ARCH_FALCON_H1) ? [&](int32_t) { return true; } : (llama_memory_hybrid::layer_filter_cb)nullptr);
                 } else {

@@ -702,6 +702,9 @@ class TextModel(ModelBase):
         if chkhsh == "81212dc7cdb7e0c1074ca62c5aeab0d43c9f52b8a737be7b12a777c953027890":
             # ref: https://huggingface.co/moonshotai/Kimi-K2-Base
             res = "kimi-k2"
+        if chkhsh == "d4540891389ea895b53b399da6ac824becc30f2fba0e9ddbb98f92e55ca0e97c":
+            # ref: https://huggingface.co/Qwen/Qwen3-Embedding-0.6B
+            res = "qwen2"
         if chkhsh == "0ef9807a4087ebef797fc749390439009c3b9eda9ad1a097abbe738f486c01e5":
             # ref: https://huggingface.co/meta-llama/Meta-Llama-3-8B
             res = "llama-bpe"
@@ -849,6 +852,9 @@ class TextModel(ModelBase):
         if chkhsh == "2085e1638f6c377a0aa4ead21b27bb4cb941bf800df86ed391011769c1758dfb":
             # ref: https://huggingface.co/LGAI-EXAONE/EXAONE-4.0-32B
             res = "exaone4"
+        if chkhsh == "a1e163ecab2e718a4c829d1148b6e86824ec36163bb71941c3dca9cd5ac25756":
+            # ref: https://huggingface.co/JetBrains/Mellum-4b-base
+            res = "mellum"
 
         if res is None:
             logger.warning("\n")
@@ -6056,6 +6062,7 @@ class DeepseekModel(TextModel):
 
 @ModelBase.register("DeepseekV2ForCausalLM")
 @ModelBase.register("DeepseekV3ForCausalLM")
+@ModelBase.register("KimiVLForConditionalGeneration")
 class DeepseekV2Model(TextModel):
     model_arch = gguf.MODEL_ARCH.DEEPSEEK2
 
@@ -6158,6 +6165,13 @@ class DeepseekV2Model(TextModel):
     _experts: list[dict[str, Tensor]] | None = None
 
     def modify_tensors(self, data_torch: Tensor, name: str, bid: int | None) -> Iterable[tuple[str, Tensor]]:
+        # skip vision tensors and remove "language_model." for Kimi-VL
+        if "vision_tower" in name or "multi_modal_projector" in name:
+            return []
+
+        if name.startswith("language_model."):
+            name = name.replace("language_model.", "")
+
         # rename e_score_correction_bias tensors
         if name.endswith("e_score_correction_bias"):
             name = name.replace("e_score_correction_bias", "e_score_correction.bias")

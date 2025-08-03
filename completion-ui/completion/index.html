@@ -16,7 +16,10 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, interactive-widget=resizes-content" />
 </head>
 <body onload="PageLoaded();" onresize="PageResized();" onbeforeprint="LoadPrint();" onhashchange="HashChange();">
-    <div id="print">
+    <!--
+    
+    -->
+    <div id="print-layout">
         <img id="print-picture" />
 
         <div id="print-content">
@@ -30,13 +33,13 @@
             <div id="mmojo-completion" onclick="ClickMmojoCompletion();">Mmojo Completion</div>
             <img id="settings-icon" src="images/settings-64.png" onclick="ToggleSettings();" title="Toggle Settings" />
             <img id="chat-icon" src="images/chat-64.png" onclick="Chat();" title="Chat" />
-            <img id="print-icon" src="images/print-64.png" onclick="Print();" title="Print"/>
+            <img id="print-icon" src="images/print-64.png" onclick="TogglePrintSettings();" title="Print"/>
             <img id="bookmark-icon" src="images/bookmark-64.png" onclick="EditBookmark();" title="Bookmark Maker"/>
             <img id="full-screen-icon" src="images/fullscreen-64.png" onclick="ToggleFullScreen();" title="Toggle Full Screen"/>
             <img id="help-icon" src="images/help-64.png" onclick="Help();" title="Help"/>
         </div>
 
-        <div id="settings" class="row">
+        <div id="settings" class="row hidden">
             <div id="model-label" for="model">Model:</div>
             <div id="model"></div>
             <div id="updated-space" class="space"></div>
@@ -74,11 +77,12 @@
             <input id="stop-words-checkbox" type="checkbox" onchange="EnableControls(); StopWordsSetFocus();" />
             <label id="stop-words-checkbox-label" for="stop-words-checkbox">Stop Words</label>
 
-            <div id="stop-words-break" class="break"></div>
-            <label id="stop-words-label" for="stop-words">Stop Words:</label>
-            <input id="stop-words" type="text"/>
+            <div id="stop-words-break" class="break hidden"></div>
+            <label id="stop-words-label" for="stop-words" class="hidden">Stop Words:</label>
+            <input id="stop-words" type="text" class="hidden"/>
+        </div>
 
-            <div id="print-size-break" class="break"></div>
+        <div id="print-settings" class="row hidden">
             <label id="print-size-label" for="print-size">Print Size:</label>
             <select id="print-size">
                 <option value="1rem">Tiny</option>
@@ -101,10 +105,12 @@
                 <option value="50%">50%</option>
             </select>
 
+            <div id="print-space" class="space"></div>
+            <button id="print" onclick="Print();">Print</button>
+
             <div id="picture-url-break" class="break"></div>
             <label id="picture-url-label" for="picture-url">Picture URL:</label>
             <input id="picture-url" type="text" onchange="UpdatePicture();"/>
-
         </div>
 
         <div id="work-area" class="row">
@@ -116,18 +122,17 @@
             <div id="copy-paste" class="row-item" >
                 <div id="copy-paste-item" class="copy-paste-item">
                     <button class="copy-paste-button">Copy</button><br/>
-                    <button class="remove-button">Remove</button>
+                    <button class="remove-button hidden">Remove</button>
                 </div>
 
                 <div id="copy-paste-space" class="space"></div>
-                <button id="clear-cue" class="clear-button" onclick="elements.workAreaText.focus(); ClearCue();">Clear Cue</button>
+                <button id="clear-cue" class="clear-button hidden" onclick="elements.workAreaText.focus(); ClearCue();">Clear Cue</button>
             </div>
-
         </div>
 
-        <div id="status" class="row">
+        <div id="status" class="row hidden">
             <div id="status-text"><b>Status:</b> The status goes here.</div>
-            <div id="status-eta"><b>ETA:</b> ETA goes here.</div>
+            <div id="status-eta" class="hidden"><b>ETA:</b> ETA goes here.</div>
             <div id="status-tokens"><b>Tokens:</b></div>
             <div id="status-space" class="space"></div>
             <button id="status-start" onclick="elements.workAreaText.focus(); Complete();">Start</button>
@@ -137,13 +142,12 @@
         </div>
 
         <div id="gutter" class="row">
-            <img id="logo" src="images/completion-tool-flat-128.png" onclick="ShowAbout();"/>
             <div id="link"><b>Mmojo.net</b></div>
             <div id="gutter-space" class="space"></div>
             <div id="copyright">&copy;2024-25 Brad Hutchings. All rights reserved.</div>
         </div>
 
-        <div id="preview"></div>
+        <div id="preview" class="hidden"></div>
     </div>
 </body>
 </html>

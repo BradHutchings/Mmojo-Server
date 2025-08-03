@@ -24,15 +24,16 @@ const kStatus_Evaluating = "Evaluating.";
 const kStatus_EvaluatingProgress = "Evaluating ";
 const kStatus_EvaulatingFinishing = "Finishing evaluating.";
 const kStatus_Completing = "Completing.";
-const kStatus_FinishedCompleting = "Finished completing.";
+const kStatus_FinishedCompleting = "Finished completing in [elapsed_time].";
 const kStatus_StoppedByWord = "Stopped by \"[stopping_word]\".";
 const kStatus_StoppedAfterCompleting = "Stopped after completing [tokens_predicted] tokens.";
-const kStatus_StoppedByUser = "Stopped by you, the user.";
+const kStatus_StoppedByUser = "Stopped by you.";
 
 const kModeCue = "cue";
 const kModeAppend = "append";
 const kModePrepend = "prepend";
 const kModeReplace = "replace";
+const kModeReplaceRegEx = "replace-regex";
 
 var elements = {};
 var controller = null;          // Rename: completingController
@@ -84,9 +85,7 @@ function PageLoaded() {
         HideElement(elements.fullScreenIcon);
     }
 
-    var w = elements.content.offsetWidth;
-    SetStatus((w >= 400) ? kStatus_TypeSomething : kStatus_Ready);
-
+    SetStatusReady();
     ShowHideStatusButtons();
 
     UseHash();
@@ -457,8 +456,13 @@ function SetCompleting(value) {
             // elements.workAreaText.style.borderColor = "var(--color2)";
             elements.workAreaText.focus();
 
-            var w = elements.content.offsetWidth;
-            SetStatus((w >= 400) ? kStatus_TypeSomething : kStatus_Ready);
+            /*
+            setTimeout(() => {
+                if (!completing) {
+                    SetStatusReady();
+                }
+            }, 5000);
+            */
             PushChange();
         }
     }
@@ -495,7 +499,7 @@ async function StartCompleting(workAreaText, temperature, tokens, stopWords) {
 
     try {
         let startMS = Date.now();
-
+        
         const response = await fetch(kCompletionsURL, {
             method: 'POST',
             mode: 'cors',
@@ -533,7 +537,7 @@ async function StartCompleting(workAreaText, temperature, tokens, stopWords) {
             }
 
             if (chunk.done) {
-                if (kLogging || logThis || true) console.log("chunk.done");
+                if (kLogging || logThis) console.log("chunk.done");
                 responseDone = true;
             }
 
@@ -578,53 +582,62 @@ async function StartCompleting(workAreaText, temperature, tokens, stopWords) {
                             ShowElement(elements.statusTokens);
                         }
                     }
+                    else if (lineData.data.stop) {
+                        if (lineData.data.stop_type == "word") {
+                            // if (kLogging) console.log("stopping_word: " + lineData.data.stopping_word);
+                            SetStatus(kStatus_StoppedByWord.replace('[stopping_word]', lineData.data.stopping_word));
+                            ShowElement(elements.statusTokens);
+                
+                            content = content + lineData.data.stopping_word;
+                            completedContent = completedContent + lineData.data.stopping_word;
+                            elements.workAreaText.value = content;
 
-                    else if ((lineData.data.stop_type == "word") && lineData.data.stopping_word !== "") {
-                        // if (kLogging) console.log("stopping_word: " + lineData.data.stopping_word);
-                        SetStatus(kStatus_StoppedByWord.replace('[stopping_word]', lineData.data.stopping_word));
-                        ShowElement(elements.statusTokens);
-            
-                        content = content + lineData.data.stopping_word;
-                        completedContent = completedContent + lineData.data.stopping_word;
-                        elements.workAreaText.value = content;
+                            elements.workAreaText.focus();
+                            ScrollToEnd();
+                            
+                            controller = null;
+                            ShowHideStatusButtons();
+                        }
+                        else if (lineData.data.stop_type == "limit") {
+                            let status = kStatus_StoppedAfterCompleting.replace('[tokens_predicted]', lineData.data.tokens_predicted);
 
-                        elements.workAreaText.focus();
-                        ScrollToEnd();
-                        
-                        controller = null;
-                        ShowHideStatusButtons();
+                            SetStatus(status);
+                            ShowElement(elements.statusTokens);
+                            
+                            content = content + lineData.data.content;
+                            completedContent = completedContent + lineData.data.content;
+                            elements.workAreaText.value = content;
+                            
+                            ScrollToEnd();
+                            // elements.workAreaText.scrollTop = elements.workAreaText.scrollHeight
+                            // don't set selectionStart, selectionEnd?
+
+                            controller = null;
+                            ShowHideStatusButtons();
+                        }
+                        else if (lineData.data.stop_type == "eos") {
+                            let elapsedMS = Date.now() - startMS;
+                            let elapsedTime = GetElapsedTimeString(elapsedMS);
+                            let status = kStatus_FinishedCompleting.replace('[elapsed_time]', elapsedTime);
+                            if (kLogging || logThis) console.log("Completed:" + status);
+
+                            SetStatus(status);
+                            ShowElement(elements.statusTokens);
+
+                            content = content + lineData.data.content;
+                            completedContent = completedContent + lineData.data.content;
+                            elements.workAreaText.value = content;
+
+                            ScrollToEnd();
+                            // elements.workAreaText.scrollTop = elements.workAreaText.scrollHeight
+                            // don't set selectionStart, selectionEnd?
+
+                            if (kLogging || logThis) console.log("end of stream");
+                            controller = null;
+                            ShowHideStatusButtons();
+                        }
                     }
-                    else if (lineData.data.stopped_eos) {
-                        SetStatus(kStatus_FinishedCompleting);
-                        ShowElement(elements.statusTokens);
 
-                        content = content + lineData.data.content;
-                        completedContent = completedContent + lineData.data.content;
-                        elements.workAreaText.value = content;
-
-                        ScrollToEnd();
-                        // elements.workAreaText.scrollTop = elements.workAreaText.scrollHeight
-                        // don't set selectionStart, selectionEnd?
-
-                        if (kLogging || logThis) console.log("end of strem");
-                        controller = null;
-                        ShowHideStatusButtons();
-                    }
-                    else if (lineData.data.stopped_limit) {
-                        SetStatus(kStatus_StoppedAfterCompleting.replace('[tokens_predicted]', lineData.data.tokens_predicted));
-                        ShowElement(elements.statusTokens);
-                        
-                        content = content + lineData.data.content;
-                        completedContent = completedContent + lineData.data.content;
-                        elements.workAreaText.value = content;
-                        
-                        ScrollToEnd();
-                        // elements.workAreaText.scrollTop = elements.workAreaText.scrollHeight
-                        // don't set selectionStart, selectionEnd?
-
-                        controller = null;
-                        ShowHideStatusButtons();
-                    }
                     else if (lineData.data.content !== undefined) {
                         SetStatus(kStatus_Completing);
                         ShowElement(elements.statusTokens);
@@ -673,6 +686,7 @@ function StopCompleting() {
         manualStop = true;
 
         ShowHideStatusButtons();
+        ShowElement(elements.statusTokens);
         SetStatus(kStatus_StoppedByUser);
         SetCompleting(false);
 
@@ -735,8 +749,7 @@ function SetReplaying(value) {
             // elements.workAreaText.style.borderColor = "var(--color2)";
             elements.workAreaText.focus();
 
-            var w = elements.content.offsetWidth;
-            SetStatus((w >= 400) ? kStatus_TypeSomething : kStatus_Ready);
+            SetStatusReady();
             PushChange();
         }
     }
@@ -758,6 +771,7 @@ function WorkAreaTextPaste() {
         event.preventDefault(); // Prevent the default paste behavior
     }
 
+    SetStatusReady();
     ShowHideStatusButtons();
 }
 
@@ -819,6 +833,12 @@ function SetStatus(status, etaMS = 0) {
     }
 }
 
+function SetStatusReady() {
+    var w = elements.content.offsetWidth;
+    SetStatus((w >= 400) ? kStatus_TypeSomething : kStatus_Ready);
+}
+
+
 var completionStartedMS = 0;
 const completionMinimumTimeMS = 1500;
 
@@ -870,8 +890,7 @@ function WorkAreaTextKeyDown(event) {
     else {
         // This will change the content area, so forget completedContent.
         completedContent = "";
-        var w = elements.content.offsetWidth;
-        SetStatus((w >= 400) ? kStatus_TypeSomething : kStatus_Ready);
+        SetStatusReady();
         EnableCopyPaste();
     }
 
@@ -1362,6 +1381,23 @@ function UseHash() {
                 PushChange();
             }
         }
+        else if (mode == kModeReplaceRegEx) {
+            // Update contents of elements.workAreaText.value. Replace cue with completed.
+            let text = elements.workAreaText.value;
+            if (cue != "") {
+                try {
+                    let regex = new RegExp(cue, "gi");
+                    text = text.replace(regex, completed);
+                    elements.workAreaText.value = text;
+                    completed = "";
+                    autoComplete = false;
+                    PushChange();
+                }
+                catch (error) {
+                    if (kLogging || logThis) console.log('kModeReplaceRegEx error:' + error);
+                }
+            }
+        }
         else {
             if (kLogging || logThis) console.log('Mode is cue.');
             elements.workAreaText.value = cue;
@@ -1535,4 +1571,26 @@ function ClickMmojoCompletion() {
 function RestoreMmojoCompletion() {
     elements.mmojoCompletion.innerText = kMmojoCompletion;
     mmojoCompletionClicked = false;
+}
+
+function GetElapsedTimeString(ms) {
+    let result = ""
+    let seconds = Math.floor(ms / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+
+    seconds = seconds - (minutes * 60)
+    minutes = minutes - (hours * 60);
+
+    if (hours > 0) {
+        result = String(hours) + ":" + String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, '0');
+    }
+    if (minutes > 0) {
+        result = String(minutes) + ":" + String(seconds).padStart(2, '0');
+    }
+    else {
+        result = "0:" + String(seconds).padStart(2, '0');
+    }
+
+    return result;
 }

@@ -12,9 +12,10 @@ const kModeCueScript = "cue-script";
 const kModeAppend = "append";
 const kModePrepend = "prepend";
 const kModeReplace = "replace";
-const kModes = [kModeCueLink, kModeCueScript, kModeAppend, kModePrepend, kModeReplace];
+const kModeReplaceRegEx = "replace-regex";
+const kModes = [kModeCueLink, kModeCueScript, kModeAppend, kModePrepend, kModeReplace, kModeReplaceRegEx];
 const kLinkModes = [kModeCueLink];
-const kScriptModes = [kModeCueScript, kModeAppend, kModePrepend, kModeReplace];
+const kScriptModes = [kModeCueScript, kModeAppend, kModePrepend, kModeReplace, kModeReplaceRegEx];
 
 var elements = {};
 var textChanged = true;
@@ -359,9 +360,11 @@ function UseHash(hash) {
 
             if ('mode' in data) {
                 mode = data['mode'];
-                if (!kLinkModes.includes(mode)) {
+                if (kLogging || logThis) console.log("mode: " + mode);
+                if (!kModes.includes(mode)) {
                     mode = kModeCueLink;
                 }
+                if (kLogging || logThis) console.log("mode: " + mode);
                 elements.mode.value = mode;
             }
             else {

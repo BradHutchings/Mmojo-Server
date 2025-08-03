@@ -312,8 +312,8 @@ ul, li {
 }
 
 #settings {
-    display: none;
-    visibility: hidden;
+    xx-display: none;
+    xx-visibility: hidden;
 
     min-height: 1.4rem;
     flex-wrap: wrap;
@@ -362,13 +362,13 @@ ul, li {
 }
 
 #stop-words-break {
-    display: none;
-    visibility: hidden;
+    xx-display: none;
+    xx-visibility: hidden;
 }
 
 #stop-words-label {
-    display: none;
-    visibility: hidden;
+    xx-display: none;
+    xx-visibility: hidden;
 
     xxmargin-right: 0.25rem;
     xxmargin-top: auto;
@@ -376,12 +376,23 @@ ul, li {
 }
 
 #stop-words {
-    display: none;
-    visibility: hidden;
+    xx-display: none;
+    xx-visibility: hidden;
 
     margin-right: 1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+}
+
+#print-settings {
+    xx-display: none;
+    xx-visibility: hidden;
+
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color7);
+    color: var(--grey-dark);
 }
 
 #picture-url {
@@ -389,6 +400,13 @@ ul, li {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     width: 40rem;
+}
+
+#print {
+    font-size: 0.8rem;
+    min-width: 4rem;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.25rem;
 }
 
 #work-area {
@@ -442,8 +460,8 @@ ul, li {
 }
 
 .remove-button {
-    display: none;
-    visibility: hidden;
+    xx-display: none;
+    xx-visibility: hidden;
 
     font-size: 0.8rem;
     min-width: 4.2rem;
@@ -459,13 +477,13 @@ ul, li {
 }
 
 #clear-cue {
-    display: none;
-    visibility: hidden;
+    xx-display: none;
+    xx-visibility: hidden;
 }
 
 #preview {
-    display: none;
-    visibility: hidden;
+    xx-display: none;
+    xx-visibility: hidden;
     position: fixed;
     left: 40px;
     right: 200px;
@@ -483,8 +501,8 @@ ul, li {
 }
 
 #status {
-    display: none;
-    visibility: hidden;
+    xx-display: none;
+    xx-visibility: hidden;
     flex-wrap: nowrap;
 
     background-color: var(--color7);
@@ -501,13 +519,13 @@ ul, li {
 }
 
 #status-eta {
+    xx-display: none;
+    xx-visibility: hidden;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 0.5rem;
     flex-grow: 0;
     color: var(--grey-black);
-    display: none;
-    visibility: hidden;
 }
 
 #status-tokens {
@@ -533,18 +551,6 @@ ul, li {
     user-select: none;
 }
 
-#logo {
-    display: none;
-    visibility: hidden;
-
-    width: 1.2rem;
-    xx-height: 1.6rem;
-
-    margin-right: 0.50rem;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
 #link {
     text-align: left;
     margin-top: auto;
@@ -557,7 +563,7 @@ ul, li {
     margin-bottom: auto;
 }
 
-#print {
+#print-layout {
     display: none;
     visibility: hidden;
 }
@@ -582,7 +588,7 @@ ul, li {
         page-break-before: avoid;
     }
 
-    #print {
+    #print-layout {
         display: block;
         visibility: visible;
 
@@ -631,3 +637,6 @@ ul, li {
     }
 }
   
+.hidden {
+    display: none;
+}

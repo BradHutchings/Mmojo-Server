@@ -346,6 +346,7 @@ function ClearWorkArea() {
 
     ClearUndoRedoStack();
     ShowHideStatusButtons();
+    SetStatusReady();
 }
 
 function EnableControls() {

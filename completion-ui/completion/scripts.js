@@ -1232,9 +1232,9 @@ function MakeHash() {
 
     var label = 'Completion Tool';
     if (cue != '') {
-        label = (completed != '') ? "completed: " : "Complete: ";
+        label = (completed != '') ? "Completed: " : "Complete: ";
     }
-    label = label + workAreaText.split(' ').slice(0,10).join(' ');
+    label = label + workAreaText.split(' ').slice(0,5).join(' ');
 
     var data = {
         "label": label,
@@ -1598,3 +1598,4 @@ function GetElapsedTimeString(ms) {
 
     return result;
 }
+

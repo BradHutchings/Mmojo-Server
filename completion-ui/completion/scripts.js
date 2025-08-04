@@ -29,7 +29,8 @@ const kStatus_StoppedByWord = "Stopped by \"[stopping_word]\".";
 const kStatus_StoppedAfterCompleting = "Stopped after completing [tokens_predicted] tokens.";
 const kStatus_StoppedByUser = "Stopped by you.";
 
-const kModeCue = "cue";
+const kModeCueLink = "cue-link";
+const kModeCueScript = "cue-script";
 const kModeAppend = "append";
 const kModePrepend = "prepend";
 const kModeReplace = "replace";
@@ -1214,32 +1215,34 @@ function MakeHash() {
         completed = "";
     }
 
-    let temperature = elements.temperature.value;
-    let tokens = elements.tokens.value;
-    let stopWordsText = elements.stopWords.value;
-    if (!elements.stopWordsCheckbox.checked) {
-        stopWordsText = '';
+    let temperature = "";
+    let tokens = "";
+    let stopWordsText = "";
+
+    if (completed == "") {
+        temperature = elements.temperature.value;
+        tokens = elements.tokens.value;
+        stopWordsText = elements.stopWords.value;
+        if (!elements.stopWordsCheckbox.checked) {
+            stopWordsText = '';
+        }
     }
+    let mode = kModeCueLink;
     let autoComplete = true;
-    let append = false;
-    let bookmarkTypeLink = true;
-    let bookmarkTypeScript = false;
 
     var label = 'Completion Tool';
     if (cue != '') {
-        label = (completed != '') ? "completed: " : "Complete: ";
+        label = (completed != '') ? "Completed: " : "Complete: ";
     }
-    label = label + workAreaText.split(' ').slice(0,10).join(' ');
+    label = label + workAreaText.split(' ').slice(0,5).join(' ');
 
     var data = {
         "label": label,
         "temperature": temperature,
         "tokens": tokens,
         "stop-words": stopWordsText,
+        "mode": mode,
         "auto-complete": autoComplete,
-        "append": append,
-        "bookmark-type-link": bookmarkTypeLink,
-        "bookmark-type-script": bookmarkTypeScript,
         "cue": cue,
         "completed": completed,
     }
@@ -1282,7 +1285,7 @@ function UseHash() {
     let temperature = null;
     let tokens = null;
     let stopWords = null;
-    let mode = kModeCue;
+    let mode = kModeCueLink;
     let autoComplete = false;
     let cue = "";
     let completed = "";
@@ -1595,3 +1598,4 @@ function GetElapsedTimeString(ms) {
 
     return result;
 }
+

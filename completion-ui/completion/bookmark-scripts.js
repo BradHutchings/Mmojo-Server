@@ -400,16 +400,10 @@ function UseHash(hash) {
                 completed = data['generated'];
                 elements.completedText.value = completed;
             }
-            else {
-                elements.completedText.value = '';
-            }
 
             if ('auto-generate' in data) {
                 autoComplete = data['auto-generate'];
                 elements.autoCompleteCheckbox.checked = autoComplete;
-            }
-            else {
-                elements.autoCompleteCheckbox.checked = false;
             }
 
             // convert old append and replace to modes.

@@ -38,7 +38,7 @@ printf "\n**********\n*\n* FINISHED: Build Dependencies.\n*\n**********\n\n"
 Clone this repo and repos this repo depends on into a `~\1-BUILD-mmojo-server` directory.
 ```
 cd ~
-git clone https://github.com/BradHutchings/llama-server-one.git $BUILD_DIR
+git clone https://github.com/BradHutchings/mmojo-server.git $BUILD_DIR
 git clone https://github.com/nlohmann/json.git ~/$BUILD_DIR/nlohmann-json
 git clone https://github.com/google/minja.git ~/$BUILD_DIR/google-minja
 git clone https://github.com/yhirose/cpp-httplib.git ~/$BUILD_DIR/cpp-httplib
@@ -107,7 +107,7 @@ If the build is successful, it will end with this message:
 
 If the build fails and you've checked out the `work-in-progress` branch, well, it's in progess, so switch back to the `master` branch and build that.
 
-If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/llama-server-one/discussions) area.
+If the build fails on the `master` branch, please post a note in the [Discussions](https://github.com/BradHutchings/mmojo-server/discussions) area.
 
 #### List Directory
 
@@ -151,7 +151,7 @@ printf "\n**********\n*\n* FINISHED: Prepare to Build llama.cpp with Cosmo.\n*\n
 
 ---
 ### Build openssl with Cosmo
-We need cross-architectire `libssl` and `libcrypto` static libraries to support SSL in `llama-server-one`.
+We need cross-architectire `libssl` and `libcrypto` static libraries to support SSL in `mmojo-server`.
 ```
 cd ~/$BUILD_DIR
 cp -r /usr/include/openssl/ ./cosmocc/include/
@@ -314,4 +314,5 @@ printf "\n**********\n*\n* FINISHED: List Directory.\n*\n**********\n\n"
 Now that you've built `mmojo-server`, you're ready to configure it. Follow instructions in [Configure-mmojo-server.md](Configure-mmojo-server.md).
 
 Brad's environment-specifc instructions are here: [Configure-mmojo-server-merge.md](Configure-mmojo-server-merge.md).
+
 

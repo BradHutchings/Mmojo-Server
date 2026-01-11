@@ -48,6 +48,10 @@ echo "  Branding: $branding"
 echo "cloning in: $THIS_BUILD_DIR/"
 echo ""
 
+################################################################################
+# Clone the repos.
+################################################################################
+
 git clone https://github.com/ggml-org/llama.cpp $THIS_BUILD_DIR
 cd $THIS_BUILD_DIR
 git clone https://github.com/google/minja.git google-minja
@@ -58,22 +62,32 @@ git clone https://github.com/nlohmann/json.git nlohmann-json
 cp -r $BUILD_COSMOPOLITAN_DIR/cosmocc .
 cp -r $BUILD_OPENSSSL_DIR/openssl .
 
+################################################################################
+# Rollback cpp-httplib repo. No need to do this anymore. -Brad 2025-01-11
+################################################################################
+
 # cpp-httplib has still not fixed whatever problem they introduced. -Brad 2025-12-16
-cd cpp-httplib
+# cd cpp-httplib
 # git checkout 1d36013fc3aa14f39f5e8071be445e5a75fafff7 # worked!
 # git checkout dbd5ca4bf2da438da1c6dcd0ba7c725f7f2cc7b7 $ failed
-git checkout 143019a38cb88661ce78ca3799dc1c0779c6c563
 
-cd ..
+# git checkout 143019a38cb88661ce78ca3799dc1c0779c6c563 # Try this. -Brad 2026-01-10
+
+
+################################################################################
+# Rollback llama.cpp repo tp last tested working.
+################################################################################
+
+cd $THIS_BUILD_DIR
 # Roll the llama.cpp repo back to last known working.
-# Up through: https://github.com/ggml-org/llama.cpp/commit/706e3f93a60109a40f1224eaf4af0d59caa7c3ae
-# 706e3f93a60109a40f1224eaf4af0d59caa7c3ae
+# Up through: https://github.com/ggml-org/llama.cpp/commit/b1377188784f9aea26b8abde56d4aee8c733eec7
+# b1377188784f9aea26b8abde56d4aee8c733eec7
+
+# Verified: 2026-01-10
+git checkout b1377188784f9aea26b8abde56d4aee8c733eec7 
 
 # Verified: 2026-01-02
-git checkout 706e3f93a60109a40f1224eaf4af0d59caa7c3ae 
-
-# Verified: 2025-12-29
-# Previous: 3595ae5963f1583f53beecf9725c919d309e15da
+# Previous: 706e3f93a60109a40f1224eaf4af0d59caa7c3ae
 
 # To see where you're checked out:
 # git log -1

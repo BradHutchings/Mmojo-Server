@@ -32,6 +32,12 @@ Here are the things you need to do:
 **Get Started:** [201. Prepare WSL](201-Prepare-WSL.md)
 
 ---
+### Video Walkthrough
+This video walks through preparing WSL, creating the `mm-scripts` directory, cloning the Mmojo Server repo, setting the timezone, mounting the Mmojo Share, and installing dependencies.
+
+https://www.youtube.com/watch?v=gX4XR1H9WI8
+
+---
 [MIT License](/LICENSE)<br/>
 Copyright (c) 2025 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

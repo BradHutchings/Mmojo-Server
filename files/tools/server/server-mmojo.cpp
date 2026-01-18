@@ -190,94 +190,175 @@ static server_http_context::handler_t ex_wrapper(server_http_context::handler_t 
     };
 }
 
-int main(int argc, char ** argv) {
-    // Mmojo Server START
-    // This could be automated by looking for "int main(" and inserting this block immediately after. -Brad 2025-11-05
-        printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
+// Mmojo Server START
+// To automate, insert before: "int main(int argc, char ** argv) {"
+
+void main_mmojo_server_1(char* argv_0);
+void main_mmojo_server_2();
+void main_mmojo_server_3();
+
+std::filesystem::path executablePath;
+std::filesystem::path executableParentPath;
+std::filesystem::path workingDirectoryPath;
+
+std::filesystem::path argsPath;
+std::filesystem::path supportPath;
+std::filesystem::path supportArgsPath;
+std::filesystem::path zipPath;
+std::filesystem::path zipArgsPath;
+std::filesystem::path firstGgufPath;
+
+void main_mmojo_server_1(char* argv_0) {
+    printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
 
     // Keep the build from showing up as ape in the process list.
-        pthread_setname_np(pthread_self(), PROCESS_NAME);
+    pthread_setname_np(pthread_self(), PROCESS_NAME);
 
     //  Find paths we need.
-        std::filesystem::path executablePath;
-        std::filesystem::path executableParentPath;
-        std::filesystem::path workingDirectoryPath;
-        get_important_paths(argv[0], executablePath, workingDirectoryPath);
-        executableParentPath = executablePath.parent_path();
+    get_important_paths(argv_0, executablePath, workingDirectoryPath);
+    executableParentPath = executablePath.parent_path();
+
+    argsPath = executableParentPath;
+    argsPath /= ARGS_FILENAME;
     
-        // Args files if present. The names are different to remove confusion during packaging.
-        std::filesystem::path argsPath = executableParentPath;      argsPath /= ARGS_FILENAME;
-        std::filesystem::path supportPath = executableParentPath;   supportPath /= SUPPORT_DIRECTORY_NAME;
-        std::filesystem::path supportArgsPath = supportPath;        supportArgsPath /= ARGS_FILENAME;
-        std::filesystem::path zipPath = "/zip";
-        std::filesystem::path zipArgsPath = zipPath;                zipArgsPath /= ARGS_FILENAME;
+    supportPath = executableParentPath;
+    supportPath /= SUPPORT_DIRECTORY_NAME;
+  
+    supportArgsPath = supportPath;
+    supportArgsPath /= ARGS_FILENAME;
+    
+    zipPath = "/zip";
+    zipArgsPath = zipPath;
+    zipArgsPath /= ARGS_FILENAME;
 
     // Find a .gguf model to use as a last resort before going into router mode.
     // This makes the naked APEs possible.
-        std::filesystem::path firstGgufPath;
-
-        #ifdef COSMOCC
-        if (firstGgufPath.empty() && std::filesystem::exists(zipPath)) {
-            find_first_gguf(zipPath, firstGgufPath);
-        }
-        #endif
-        if (firstGgufPath.empty() && std::filesystem::exists(executableParentPath)) {
-            find_first_gguf(executableParentPath, firstGgufPath);
-        }
-        if (firstGgufPath.empty() && std::filesystem::exists(supportPath)) {
-            find_first_gguf(supportPath, firstGgufPath);
-        }
-        if (firstGgufPath.empty() && std::filesystem::exists(workingDirectoryPath)) {
-            find_first_gguf(workingDirectoryPath, firstGgufPath);
-        }
-
-    #if 1
-    // Path diagnostics
-        printf("\n");
-        printf("- Paths of things we care about:\n");
-        printf("  -       executablePath: %s\n", executablePath.c_str());
-        printf("  - executableParentPath: %s\n", executableParentPath.c_str());
-        printf("  - workingDirectoryPath: %s\n", workingDirectoryPath.c_str());
-        printf("  -             argsPath: %s\n", argsPath.c_str());
-        printf("  -          supportPath: %s\n", supportPath.c_str());
-        printf("  -      supportArgsPath: %s\n", supportArgsPath.c_str());
-        printf("  -              zipPath: %s\n", zipPath.c_str());
-        printf("  -          zipArgsPath: %s\n", zipArgsPath.c_str());
-        printf("  -        firstGgufPath: %s\n", firstGgufPath.c_str());
-
-        printf("\n");
-        printf("- These paths exist:\n");
-        if (std::filesystem::exists(executablePath)) {
-            printf("  -       executablePath exists: %s\n", executablePath.c_str());
-        }
-        if (std::filesystem::exists(executableParentPath)) {
-            printf("  - executableParentPath exists: %s\n", executableParentPath.c_str());
-        }
-        if (std::filesystem::exists(workingDirectoryPath)) {
-            printf("  - workingDirectoryPath exists: %s\n", workingDirectoryPath.c_str());
-        }
-        if (std::filesystem::exists(argsPath)) {
-            printf("  -             argsPath exists: %s\n", argsPath.c_str());
-        }
-        if (std::filesystem::exists(supportPath)) {
-            printf("  -          supportPath exists: %s\n", supportPath.c_str());
-        }
-        if (std::filesystem::exists(supportArgsPath)) {
-            printf("  -      supportArgsPath exists: %s\n", supportArgsPath.c_str());
-        }
-        if (std::filesystem::exists(zipPath)) {
-            printf("  -              zipPath exists: %s\n", zipPath.c_str());
-        }
-        if (std::filesystem::exists(zipArgsPath)) {
-            printf("  -          zipArgsPath exists: %s\n", zipArgsPath.c_str());
-        }  
-        if (std::filesystem::exists(firstGgufPath)) {
-            printf("  -        firstGgufPath exists: %s\n", firstGgufPath.c_str());
-        }  
+    #ifdef COSMOCC
+    if (firstGgufPath.empty() && std::filesystem::exists(zipPath)) {
+        find_first_gguf(zipPath, firstGgufPath);
+    }
     #endif
-  
+    if (firstGgufPath.empty() && std::filesystem::exists(executableParentPath)) {
+        find_first_gguf(executableParentPath, firstGgufPath);
+    }
+    if (firstGgufPath.empty() && std::filesystem::exists(supportPath)) {
+        find_first_gguf(supportPath, firstGgufPath);
+    }
+    if (firstGgufPath.empty() && std::filesystem::exists(workingDirectoryPath)) {
+        find_first_gguf(workingDirectoryPath, firstGgufPath);
+    }
+}
+
+void main_path_diagnostics() {
+    printf("\n");
+    printf("- Paths of things we care about:\n");
+    printf("  -       executablePath: %s\n", executablePath.c_str());
+    printf("  - executableParentPath: %s\n", executableParentPath.c_str());
+    printf("  - workingDirectoryPath: %s\n", workingDirectoryPath.c_str());
+    printf("  -             argsPath: %s\n", argsPath.c_str());
+    printf("  -          supportPath: %s\n", supportPath.c_str());
+    printf("  -      supportArgsPath: %s\n", supportArgsPath.c_str());
+    printf("  -              zipPath: %s\n", zipPath.c_str());
+    printf("  -          zipArgsPath: %s\n", zipArgsPath.c_str());
+    printf("  -        firstGgufPath: %s\n", firstGgufPath.c_str());
+
+    printf("\n");
+    printf("- These paths exist:\n");
+    if (std::filesystem::exists(executablePath)) {
+        printf("  -       executablePath exists: %s\n", executablePath.c_str());
+    }
+    if (std::filesystem::exists(executableParentPath)) {
+        printf("  - executableParentPath exists: %s\n", executableParentPath.c_str());
+    }
+    if (std::filesystem::exists(workingDirectoryPath)) {
+        printf("  - workingDirectoryPath exists: %s\n", workingDirectoryPath.c_str());
+    }
+    if (std::filesystem::exists(argsPath)) {
+        printf("  -             argsPath exists: %s\n", argsPath.c_str());
+    }
+    if (std::filesystem::exists(supportPath)) {
+        printf("  -          supportPath exists: %s\n", supportPath.c_str());
+    }
+    if (std::filesystem::exists(supportArgsPath)) {
+        printf("  -      supportArgsPath exists: %s\n", supportArgsPath.c_str());
+    }
+    if (std::filesystem::exists(zipPath)) {
+        printf("  -              zipPath exists: %s\n", zipPath.c_str());
+    }
+    if (std::filesystem::exists(zipArgsPath)) {
+        printf("  -          zipArgsPath exists: %s\n", zipArgsPath.c_str());
+    }  
+    if (std::filesystem::exists(firstGgufPath)) {
+        printf("  -        firstGgufPath exists: %s\n", firstGgufPath.c_str());
+    }  
+}
+
+void main_mmojo_server_2() {
+    printf("- Checking for missing model and model inside APE zip.\n");
+    
+    // If we have no model path at this point, use the firstGgufPath.
+    // I think I have all the possibilities for specifying a model covered here.
+    if ((params.model.path == "") && (params.model.url == "") && (params.model.docker_repo == "") &&  
+        (params.model.hf_repo == "") && (params.model.hf_file == "") && 
+        std::filesystem::exists(firstGgufPath)) {
+    
+        printf("  - Using firstGgufPath for model: %s\n", firstGgufPath.c_str());
+        params.model.path = firstGgufPath;
+    }
+    
+    #ifdef COSMOCC
+    const std::string zipPathSlash = "/zip/";
+    if (starts_with(params.model.path, zipPathSlash)) {
+        // if the gguf is in the zip file, we have to turn off use_map.
+        printf("  - The model file is in /zip, so turning off use_mmap.\n\n");
+        params.use_mmap = false;
+    }
+    #endif
+}
+
+void main_mmojo_server_3() {
+    // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
+    // fix params -- model, path, ssl-key-file, ssl-cert-file
+    // if they are relative paths, fix to absolute relative to working directory
+    if (supportPath != "") {
+        const std::string& supportRootPath = "/support/";
+      
+        if (starts_with(params.model.path, supportRootPath)) {
+            printf("\n");
+            printf("--model path starts with %s.\n",  supportRootPath.c_str());
+            params.model.path.replace(0, supportRootPath.length(), supportPath);
+            printf("  - new model path: %s\n", params.model.path.c_str());
+        }
+        if (starts_with(params.public_path, supportRootPath)) {
+            printf("\n");
+            printf("--path path starts with %s.\n",  supportRootPath.c_str());
+            params.public_path.replace(0, supportRootPath.length(), supportPath);
+            printf("  - new path path: %s\n", params.public_path.c_str());
+        }
+        if (starts_with(params.ssl_file_key, supportRootPath)) {
+            printf("\n");
+            printf("--ssl-key-file path starts with %s.\n",  supportRootPath.c_str());
+            params.ssl_file_key.replace(0, supportRootPath.length(), supportPath);
+            printf("  - new ssl-key-file path: %s\n", params.ssl_file_key.c_str());
+        }
+        if (starts_with(params.ssl_file_cert, supportRootPath)) {
+            printf("\n");
+            printf("--ssl-cert-file path starts with %s.\n",  supportRootPath.c_str());
+            params.ssl_file_cert.replace(0, supportRootPath.length(), supportPath);
+            printf("  - new ssl-cert-file path: %s\n", params.ssl_file_cert.c_str());
+        }
+    }
+}
+// Mmojo Server END
+
+int main(int argc, char ** argv) {
+    // Mmojo Server START
+    main_mmojo_server_1(argv[0]);
+    main_path_diagnostics();
+    
     // Implement an args file feature inspired by llamafile's.
     // It does not require Cosmo anymore, as the mmojo_args function is part of mmojo-server now.
+    // This is where we modify argc and argv!!
 
         // At this point, argc, argv represent:
         //     command (User supplied args)
@@ -319,29 +400,7 @@ int main(int argc, char ** argv) {
     }
 
     // Mmojo Server START
-        printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
-        printf("- Checking for missing model and model inside APE zip.\n");
-
-        // If we have no model path at this point, use the firstGgufPath.
-        // I think I have all the possibilities for specifying a model covered here.
-        if ((params.model.path == "") && (params.model.url == "") && (params.model.docker_repo == "") &&  
-            (params.model.hf_repo == "") && (params.model.hf_file == "") && 
-            std::filesystem::exists(firstGgufPath)) {
-
-            printf("  - Using firstGgufPath for model: %s\n", firstGgufPath.c_str());
-            params.model.path = firstGgufPath;
-        }
-
-        #ifdef COSMOCC
-        const std::string zipPathSlash = "/zip/";
-        if (starts_with(params.model.path, zipPathSlash)) {
-            // if the gguf is in the zip file, we have to turn off use_map.
-            printf("  - The model file is in /zip, so turning off use_mmap.\n\n");
-            params.use_mmap = false;
-        }
-        #endif
-
-        printf("\n\n----------END: " PRODUCT_NAME " -----------------------------------------------------\n\n");
+    main_mmojo_server_2();
     // Mmojo Server END
 
     // validate batch size for embeddings
@@ -367,38 +426,9 @@ int main(int argc, char ** argv) {
 
     // Mmojo Server START
     // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
-    // fix params -- model, path, ssl-key-file, ssl-cert-file
-    // if they are relative paths, fix to absolute relative to working directory
-    if (supportPath != "") {
-        const std::string& supportRootPath = "/support/";
-      
-        if (starts_with(params.model.path, supportRootPath)) {
-            printf("\n");
-            printf("--model path starts with %s.\n",  supportRootPath.c_str());
-            params.model.path.replace(0, supportRootPath.length(), supportPath);
-            printf("  - new model path: %s\n", params.model.path.c_str());
-        }
-        if (starts_with(params.public_path, supportRootPath)) {
-            printf("\n");
-            printf("--path path starts with %s.\n",  supportRootPath.c_str());
-            params.public_path.replace(0, supportRootPath.length(), supportPath);
-            printf("  - new path path: %s\n", params.public_path.c_str());
-        }
-        if (starts_with(params.ssl_file_key, supportRootPath)) {
-            printf("\n");
-            printf("--ssl-key-file path starts with %s.\n",  supportRootPath.c_str());
-            params.ssl_file_key.replace(0, supportRootPath.length(), supportPath);
-            printf("  - new ssl-key-file path: %s\n", params.ssl_file_key.c_str());
-        }
-        if (starts_with(params.ssl_file_cert, supportRootPath)) {
-            printf("\n");
-            printf("--ssl-cert-file path starts with %s.\n",  supportRootPath.c_str());
-            params.ssl_file_cert.replace(0, supportRootPath.length(), supportPath);
-            printf("  - new ssl-cert-file path: %s\n", params.ssl_file_cert.c_str());
-        }
-    }
+    main_mmojo_server_3();
     // Mmojo Server END
-  
+    
     common_init();
 
     // struct that contains llama context and inference

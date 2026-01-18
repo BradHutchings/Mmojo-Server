@@ -357,7 +357,7 @@ void main_mmojo_server_3(common_params& params) {
     if (supportPath != "") {
         const std::string& supportRootPath = "/support/";
         const std::string& supportPathSlash = supportPath;
-        supportPathSlash += "/";
+        supportPathSlash /= "/";
       
         if (starts_with(params.model.path, supportRootPath)) {
             printf("\n");

@@ -195,7 +195,7 @@ static server_http_context::handler_t ex_wrapper(server_http_context::handler_t 
 
 void main_mmojo_server_1(char* argv_0);
 void main_path_diagnostics();
-int main_args_files(int& argc, char **& argv);
+void main_args_files(int& argc, char **& argv);
 void main_mmojo_server_2(common_params& params);
 void main_mmojo_server_3(common_params& params);
 
@@ -293,7 +293,7 @@ void main_path_diagnostics() {
     }  
 }
 
-int main_args_files(int& argc, char **& argv) {
+void main_args_files(int& argc, char **& argv) {
     // Implement an args file feature inspired by llamafile's.
     // It does not require Cosmo anymore, as the mmojo_args function is part of mmojo-server now.
     // This is where we modify argc and argv!!
@@ -390,7 +390,7 @@ int main(int argc, char ** argv) {
     printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
     main_mmojo_server_1(argv[0]);
     main_path_diagnostics();
-    main_args_file(argc, argv);
+    main_args_files(argc, argv);
 
     #if 0
     // Implement an args file feature inspired by llamafile's.

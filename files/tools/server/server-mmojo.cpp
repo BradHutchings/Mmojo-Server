@@ -194,8 +194,9 @@ static server_http_context::handler_t ex_wrapper(server_http_context::handler_t 
 // To automate, insert before: "int main(int argc, char ** argv) {"
 
 void main_mmojo_server_1(char* argv_0);
-void main_mmojo_server_2();
-void main_mmojo_server_3();
+void main_path_diagnostics();
+void main_mmojo_server_2(common_params& params);
+void main_mmojo_server_3(common_params& params);
 
 std::filesystem::path executablePath;
 std::filesystem::path executableParentPath;
@@ -293,7 +294,7 @@ void main_path_diagnostics() {
     }  
 }
 
-void main_mmojo_server_2() {
+void main_mmojo_server_2(common_params& params) {
     printf("- Checking for missing model and model inside APE zip.\n");
     
     // If we have no model path at this point, use the firstGgufPath.
@@ -316,7 +317,7 @@ void main_mmojo_server_2() {
     #endif
 }
 
-void main_mmojo_server_3() {
+void main_mmojo_server_3(common_params& params) {
     // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
     // fix params -- model, path, ssl-key-file, ssl-cert-file
     // if they are relative paths, fix to absolute relative to working directory
@@ -400,7 +401,7 @@ int main(int argc, char ** argv) {
     }
 
     // Mmojo Server START
-    main_mmojo_server_2();
+    main_mmojo_server_2(params);
     // Mmojo Server END
 
     // validate batch size for embeddings
@@ -426,7 +427,7 @@ int main(int argc, char ** argv) {
 
     // Mmojo Server START
     // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
-    main_mmojo_server_3();
+    main_mmojo_server_3(params);
     // Mmojo Server END
     
     common_init();

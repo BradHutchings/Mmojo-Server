@@ -27,6 +27,8 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 
+cd $HOME
+
 branding=$1
 
 if [ "$branding" != "doghouse" ] && [ "$branding" != "llama-server" ]; then

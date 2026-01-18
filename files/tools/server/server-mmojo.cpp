@@ -356,29 +356,31 @@ void main_mmojo_server_3(common_params& params) {
     // if they are relative paths, fix to absolute relative to working directory
     if (supportPath != "") {
         const std::string& supportRootPath = "/support/";
+        const std::string& supportPathSlash = supportPath;
+        supportPathSlash += "/";
       
         if (starts_with(params.model.path, supportRootPath)) {
             printf("\n");
             printf("--model path starts with %s.\n",  supportRootPath.c_str());
-            params.model.path.replace(0, supportRootPath.length(), supportPath);
+            params.model.path.replace(0, supportRootPath.length(), supportPathSlash);
             printf("  - new model path: %s\n", params.model.path.c_str());
         }
         if (starts_with(params.public_path, supportRootPath)) {
             printf("\n");
             printf("--path path starts with %s.\n",  supportRootPath.c_str());
-            params.public_path.replace(0, supportRootPath.length(), supportPath);
+            params.public_path.replace(0, supportRootPath.length(), supportPathSlash);
             printf("  - new path path: %s\n", params.public_path.c_str());
         }
         if (starts_with(params.ssl_file_key, supportRootPath)) {
             printf("\n");
             printf("--ssl-key-file path starts with %s.\n",  supportRootPath.c_str());
-            params.ssl_file_key.replace(0, supportRootPath.length(), supportPath);
+            params.ssl_file_key.replace(0, supportRootPath.length(), supportPathSlash);
             printf("  - new ssl-key-file path: %s\n", params.ssl_file_key.c_str());
         }
         if (starts_with(params.ssl_file_cert, supportRootPath)) {
             printf("\n");
             printf("--ssl-cert-file path starts with %s.\n",  supportRootPath.c_str());
-            params.ssl_file_cert.replace(0, supportRootPath.length(), supportPath);
+            params.ssl_file_cert.replace(0, supportRootPath.length(), supportPathSlash);
             printf("  - new ssl-cert-file path: %s\n", params.ssl_file_cert.c_str());
         }
     }

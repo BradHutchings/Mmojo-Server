@@ -195,6 +195,7 @@ static server_http_context::handler_t ex_wrapper(server_http_context::handler_t 
 
 void main_mmojo_server_1(char* argv_0);
 void main_path_diagnostics();
+int main_args_files(int& argc, char **& argv);
 void main_mmojo_server_2(common_params& params);
 void main_mmojo_server_3(common_params& params);
 
@@ -210,8 +211,6 @@ std::filesystem::path zipArgsPath;
 std::filesystem::path firstGgufPath;
 
 void main_mmojo_server_1(char* argv_0) {
-    printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
-
     // Keep the build from showing up as ape in the process list.
     pthread_setname_np(pthread_self(), PROCESS_NAME);
 
@@ -294,6 +293,40 @@ void main_path_diagnostics() {
     }  
 }
 
+int main_args_files(int& argc, char **& argv) {
+    // Implement an args file feature inspired by llamafile's.
+    // It does not require Cosmo anymore, as the mmojo_args function is part of mmojo-server now.
+    // This is where we modify argc and argv!!
+
+    // At this point, argc, argv represent:
+    //     command (User supplied args)
+
+    if (std::filesystem::exists(argsPath)) {
+        argc = mmojo_args(argsPath.c_str(), &argv);
+    }
+
+    // At this point, argc, argv represent:
+    //     command (argsPath args) (User supplied args)
+
+    if (std::filesystem::exists(supportArgsPath)) {
+        argc = mmojo_args(supportArgsPath.c_str(), &argv);
+    }
+
+    // At this point, argc, argv represent:
+    //     command (supportArgsPath args) (argsPath args) (User supplied args)
+
+    #ifdef COSMOCC
+    if (std::filesystem::exists(zipArgsPath)) {
+        argc = mmojo_args(zipArgsPath.c_str(), &argv);
+    }
+
+    // At this point, argc, argv represent:
+    //     command (zipArgsPath args) (supportArgsPath args) (argsPath args) (User supplied args)
+    #endif
+
+    // Yep, this is counterintuitive, but how the mmojo_args command works.
+}
+
 void main_mmojo_server_2(common_params& params) {
     printf("- Checking for missing model and model inside APE zip.\n");
     
@@ -354,9 +387,12 @@ void main_mmojo_server_3(common_params& params) {
 
 int main(int argc, char ** argv) {
     // Mmojo Server START
+    printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
     main_mmojo_server_1(argv[0]);
     main_path_diagnostics();
-    
+    main_args_file(argc, argv);
+
+    #if 0
     // Implement an args file feature inspired by llamafile's.
     // It does not require Cosmo anymore, as the mmojo_args function is part of mmojo-server now.
     // This is where we modify argc and argv!!
@@ -388,9 +424,7 @@ int main(int argc, char ** argv) {
         #endif
     
         // Yep, this is counterintuitive, but how the mmojo_args command works.
-
-        printf("\n\n----------END: " PRODUCT_NAME  " -----------------------------------------------------\n\n");
-
+    #endif
     // Mmojo Server END
   
     // own arguments required by this example
@@ -428,6 +462,7 @@ int main(int argc, char ** argv) {
     // Mmojo Server START
     // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
     main_mmojo_server_3(params);
+    printf("\n\n----------END: " PRODUCT_NAME  " -----------------------------------------------------\n\n");
     // Mmojo Server END
     
     common_init();

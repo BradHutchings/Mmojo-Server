@@ -184,7 +184,7 @@ printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME $1 $2 $3 $4.\n*\n$STARS\n\n"
 #
 #  https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
 #
-#  Copyright (c) 2025 Brad Hutchings.
+#  Copyright (c) 2025-26 Brad Hutchings.
 #  --
 #  Brad Hutchings
 #  brad@bradhutchings.com

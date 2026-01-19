@@ -90,9 +90,9 @@ if [ "$processor" == "x86_64" ]; then
     # Recent discovery -- cosmo-cc and cosmo-c++ can figure out the -I and -L related to cosmo.
     # No need to specify them here.
     export CC="x86_64-w64-mingw32-gcc \
-        -nostdinc -O3 $ARCH_LEVEL_PARAM"
+        -O3 $ARCH_LEVEL_PARAM"
     export CXX="x86_64-w64-mingw32-g++ \
-        -DCOSMOCC=1 -nostdinc -nostdinc++ -O3 -Wno-format-truncation $ARCH_LEVEL_PARAM"
+        -DCOSMOCC=1 -O3 -Wno-format-truncation $ARCH_LEVEL_PARAM"
     export AR="x86_64-w64-mingw32-ld"
 fi
 

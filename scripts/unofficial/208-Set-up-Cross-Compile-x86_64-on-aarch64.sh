@@ -16,7 +16,7 @@ printf "\n**********\n*\n* FINISHED: 208-Set-up-Cross-Compile-x86_64-on-aarch64.
 #
 #  https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
 #
-#  Copyright (c) 2025 Brad Hutchings.
+#  Copyright (c) 2025-26 Brad Hutchings.
 #  --
 #  Brad Hutchings
 #  brad@bradhutchings.com

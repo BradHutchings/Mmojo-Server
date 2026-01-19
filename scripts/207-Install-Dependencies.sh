@@ -25,7 +25,8 @@ sudo apt install -y \
     libxrandr-dev libzstd-dev ninja-build npm pkg-config \
     python3 python3-pip python3-tk qt5-qmake qtbase5-dev \
     qtbase5-dev-tools qtcreator tk-dev wayland-protocols xz-utils \
-    zip zlib1g-dev cifs-utils mkcert git-lfs
+    zip zlib1g-dev cifs-utils mkcert git-lfs \
+    gcc-mingw-w64 g++-mingw-w64
 
 echo ""
 echo "Installing python packages to support convert_hf_to_gguf.py."

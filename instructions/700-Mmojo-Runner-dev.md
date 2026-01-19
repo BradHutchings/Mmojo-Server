@@ -70,3 +70,8 @@ mr-add-args.sh test-archive
 ---
 ### Adding builds
 - scripts to add them to the polyglot. This way, we can pass the polyglot from build station to build station to add pieces.
+
+---
+[MIT License](/LICENSE)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+[https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

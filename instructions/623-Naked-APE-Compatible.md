@@ -67,7 +67,7 @@ This script adds a Args file to the APE package. If you added certs and/or the M
 Now we can test run `mmojo-server`, listening on localhost:8080. This should be a script file.
 ```
 THIS_PACKAGE_DIR="$PACKAGE_DIR/$PACKAGE_COMPATIBLE_NAKED_APE"
-APP_FILE="$PACKAGE_MMOJO_SERVER_FILE-comp"
+APP_FILE="$PACKAGE_MMOJO_SERVER_APE_FILE-comp"
 cp $LOCAL_MODELS_DIR/Google-Gemma-1B-Instruct-v3-q8_0.gguf $THIS_PACKAGE_DIR
 $THIS_PACKAGE_DIR/$APP_FILE
 cd $HOME
@@ -95,7 +95,7 @@ If you're building in WSL, your Windows web browser should be able to connect to
 If you'd like it to listen on all available interfaces, you can connect from a browser on another computer. This should be a script file.
 ```
 THIS_PACKAGE_DIR="$PACKAGE_DIR/$PACKAGE_COMPATIBLE_NAKED_APE"
-APP_FILE="$PACKAGE_MMOJO_SERVER_FILE-comp"
+APP_FILE="$PACKAGE_MMOJO_SERVER_APE_FILE-comp"
 cp $LOCAL_MODELS_DIR/Google-Gemma-1B-Instruct-v3-q8_0.gguf $THIS_PACKAGE_DIR
 $THIS_PACKAGE_DIR/$APP_FILE --host 0.0.0.0
 cd $HOME
@@ -141,5 +141,5 @@ This script copies the packaged `mmojo-server` to your Mmojo Share.
 
 ---
 [MIT License](/LICENSE)<br/>
-Copyright (c) 2025 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

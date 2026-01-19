@@ -77,7 +77,7 @@ printf "\n**********\n*\n* FINISHED: mm-choose-build.sh.\n*\n**********\n\n"
 #
 #  https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
 #
-#  Copyright (c) 2025 Brad Hutchings.
+#  Copyright (c) 2025-26 Brad Hutchings.
 #  --
 #  Brad Hutchings
 #  brad@bradhutchings.com

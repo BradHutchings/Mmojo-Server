@@ -108,5 +108,5 @@ $MMOJO_SERVER_SCRIPTS/510-Test-Server.sh native "$CHOSEN_GPUS" 1 llama-server
 
 ---
 [MIT License](/LICENSE)<br/>
-Copyright (c) 2025 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

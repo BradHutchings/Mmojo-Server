@@ -10,6 +10,8 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 
+cd $HOME
+
 branding=$1
 
 if [ "$branding" != "doghouse" ] && [ "$branding" != "llama-server" ]; then
@@ -75,7 +77,7 @@ printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 #
 #  https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
 #
-#  Copyright (c) 2025 Brad Hutchings.
+#  Copyright (c) 2025-26 Brad Hutchings.
 #  --
 #  Brad Hutchings
 #  brad@bradhutchings.com

@@ -107,6 +107,11 @@ export BUILD_EXECUTABLE_PERFORMANT_AARCH64="build-executable-performant-aarch64"
 export BUILD_EXECUTABLE_NATIVE_X86_64="build-executable-native-x86_64"
 export BUILD_EXECUTABLE_NATIVE_AARCH64="build-executable-native-aarch64"
 
+export BUILD_MINGW_COMPATIBLE_X86_64="build-mingw-compatible-x86_64"
+export BUILD_MINGW_COMPATIBLE_AARCH64="build-mingw-compatible-aarch64"
+export BUILD_MINGW_PERFORMANT_X86_64="build-mingw-performant-x86_64"
+export BUILD_MINGW_PERFORMANT_AARCH64="build-mingw-performant-aarch64"
+
 echo "Setting Test paths."
 export TEST_WORKING_DIR="$HOME/500-TEST-working-directory"
 

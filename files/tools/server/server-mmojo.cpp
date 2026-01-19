@@ -356,8 +356,8 @@ void main_mmojo_server_3(common_params& params) {
     // if they are relative paths, fix to absolute relative to working directory
     if (supportPath != "") {
         const std::string& supportRootPath = "/support/";
-        std::filesystem::path supportPathSlash = supportPath;
-        supportPathSlash /= "/";
+        std::string supportPathSlash = supportPath;
+        supportPathSlash += "/";
       
         if (starts_with(params.model.path, supportRootPath)) {
             printf("\n");

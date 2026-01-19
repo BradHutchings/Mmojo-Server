@@ -100,29 +100,29 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
     }
 
     printf("  - Raw paths:\n");
-    printf("    - workingDirectoryPath: %s\n", workingDirectoryPath.c_str());
-    printf("    -       executablePath: %s\n", executablePath.c_str());
+    printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
 
     workingDirectoryPath = workingDirectoryPath.lexically_normal();
     executablePath = executablePath.lexically_normal();
 
     printf("  - Normalized paths:\n");
-    printf("    - workingDirectoryPath: %s\n", workingDirectoryPath.c_str());
-    printf("    -       executablePath: %s\n", executablePath.c_str());
+    printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
 }
 
 void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem::path& ggufPath) {
     ggufPath.clear();
     printf("\n");
-    printf("- find_first_gguf() in %s:\n", directoryPath.c_str());
+    printf("- find_first_gguf() in %s:\n", (const char*) directoryPath.c_str());
   
     DIR *dir;
     struct dirent *entry;
 
     // Open the directory
-    dir = opendir(directoryPath.c_str());
+    dir = opendir((const char*) directoryPath.c_str());
     if (dir != NULL) {
-        printf("  - Looking for .gguf in %s:\n", directoryPath.c_str());
+        printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
         while ((entry = readdir(dir)) != NULL) {
             const std::string& filename = entry->d_name;
             const std::string& extension = ".gguf";            
@@ -255,44 +255,44 @@ void main_mmojo_server_1(char* argv_0) {
 void main_path_diagnostics() {
     printf("\n");
     printf("- Paths of things we care about:\n");
-    printf("  -       executablePath: %s\n", executablePath.c_str());
-    printf("  - executableParentPath: %s\n", executableParentPath.c_str());
-    printf("  - workingDirectoryPath: %s\n", workingDirectoryPath.c_str());
-    printf("  -             argsPath: %s\n", argsPath.c_str());
-    printf("  -          supportPath: %s\n", supportPath.c_str());
-    printf("  -      supportArgsPath: %s\n", supportArgsPath.c_str());
-    printf("  -              zipPath: %s\n", zipPath.c_str());
-    printf("  -          zipArgsPath: %s\n", zipArgsPath.c_str());
-    printf("  -        firstGgufPath: %s\n", firstGgufPath.c_str());
+    printf("  -       executablePath: %s\n", (const char*) executablePath.c_str());
+    printf("  - executableParentPath: %s\n", (const char*) executableParentPath.c_str());
+    printf("  - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    printf("  -             argsPath: %s\n", (const char*) argsPath.c_str());
+    printf("  -          supportPath: %s\n", (const char*) supportPath.c_str());
+    printf("  -      supportArgsPath: %s\n", (const char*) supportArgsPath.c_str());
+    printf("  -              zipPath: %s\n", (const char*) zipPath.c_str());
+    printf("  -          zipArgsPath: %s\n", (const char*) zipArgsPath.c_str());
+    printf("  -        firstGgufPath: %s\n", (const char*) firstGgufPath.c_str());
 
     printf("\n");
     printf("- These paths exist:\n");
     if (std::filesystem::exists(executablePath)) {
-        printf("  -       executablePath exists: %s\n", executablePath.c_str());
+        printf("  -       executablePath exists: %s\n", (const char*) executablePath.c_str());
     }
     if (std::filesystem::exists(executableParentPath)) {
-        printf("  - executableParentPath exists: %s\n", executableParentPath.c_str());
+        printf("  - executableParentPath exists: %s\n", (const char*) executableParentPath.c_str());
     }
     if (std::filesystem::exists(workingDirectoryPath)) {
-        printf("  - workingDirectoryPath exists: %s\n", workingDirectoryPath.c_str());
+        printf("  - workingDirectoryPath exists: %s\n", (const char*) workingDirectoryPath.c_str());
     }
     if (std::filesystem::exists(argsPath)) {
-        printf("  -             argsPath exists: %s\n", argsPath.c_str());
+        printf("  -             argsPath exists: %s\n", (const char*) argsPath.c_str());
     }
     if (std::filesystem::exists(supportPath)) {
-        printf("  -          supportPath exists: %s\n", supportPath.c_str());
+        printf("  -          supportPath exists: %s\n", (const char*) supportPath.c_str());
     }
     if (std::filesystem::exists(supportArgsPath)) {
-        printf("  -      supportArgsPath exists: %s\n", supportArgsPath.c_str());
+        printf("  -      supportArgsPath exists: %s\n", (const char*) supportArgsPath.c_str());
     }
     if (std::filesystem::exists(zipPath)) {
-        printf("  -              zipPath exists: %s\n", zipPath.c_str());
+        printf("  -              zipPath exists: %s\n", (const char*) zipPath.c_str());
     }
     if (std::filesystem::exists(zipArgsPath)) {
-        printf("  -          zipArgsPath exists: %s\n", zipArgsPath.c_str());
+        printf("  -          zipArgsPath exists: %s\n", (const char*) zipArgsPath.c_str());
     }  
     if (std::filesystem::exists(firstGgufPath)) {
-        printf("  -        firstGgufPath exists: %s\n", firstGgufPath.c_str());
+        printf("  -        firstGgufPath exists: %s\n", (const char*) firstGgufPath.c_str());
     }  
 }
 
@@ -305,14 +305,14 @@ void main_args_files(int& argc, char **& argv) {
     //     command (User supplied args)
 
     if (std::filesystem::exists(argsPath)) {
-        argc = mmojo_args(argsPath.c_str(), &argv);
+        argc = mmojo_args((const char*) argsPath.c_str(), &argv);
     }
 
     // At this point, argc, argv represent:
     //     command (argsPath args) (User supplied args)
 
     if (std::filesystem::exists(supportArgsPath)) {
-        argc = mmojo_args(supportArgsPath.c_str(), &argv);
+        argc = mmojo_args((const char*) supportArgsPath.c_str(), &argv);
     }
 
     // At this point, argc, argv represent:
@@ -320,7 +320,7 @@ void main_args_files(int& argc, char **& argv) {
 
     #ifdef COSMOCC
     if (std::filesystem::exists(zipArgsPath)) {
-        argc = mmojo_args(zipArgsPath.c_str(), &argv);
+        argc = mmojo_args((const char*) zipArgsPath.c_str(), &argv);
     }
 
     // At this point, argc, argv represent:
@@ -339,7 +339,7 @@ void main_mmojo_server_2(common_params& params) {
         (params.model.hf_repo == "") && (params.model.hf_file == "") && 
         std::filesystem::exists(firstGgufPath)) {
     
-        printf("  - Using firstGgufPath for model: %s\n", firstGgufPath.c_str());
+        printf("  - Using firstGgufPath for model: %s\n", (const char*) firstGgufPath.c_str());
         params.model.path = firstGgufPath;
     }
     
@@ -364,27 +364,27 @@ void main_mmojo_server_3(common_params& params) {
       
         if (starts_with(params.model.path, supportRootPath)) {
             printf("\n");
-            printf("--model path starts with %s.\n",  supportRootPath.c_str());
-            params.model.path.replace(0, supportRootPath.length(), supportPathSlash.c_str());
-            printf("  - new model path: %s\n", params.model.path.c_str());
+            printf("--model path starts with %s.\n", (const char*) supportRootPath.c_str());
+            params.model.path.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
+            printf("  - new model path: %s\n", (const char*) params.model.path.c_str());
         }
         if (starts_with(params.public_path, supportRootPath)) {
             printf("\n");
-            printf("--path path starts with %s.\n",  supportRootPath.c_str());
-            params.public_path.replace(0, supportRootPath.length(), supportPathSlash.c_str());
-            printf("  - new path path: %s\n", params.public_path.c_str());
+            printf("--path path starts with %s.\n", (const char*) supportRootPath.c_str());
+            params.public_path.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
+            printf("  - new path path: %s\n", (const char*) params.public_path.c_str());
         }
         if (starts_with(params.ssl_file_key, supportRootPath)) {
             printf("\n");
-            printf("--ssl-key-file path starts with %s.\n",  supportRootPath.c_str());
-            params.ssl_file_key.replace(0, supportRootPath.length(), supportPathSlash.c_str());
-            printf("  - new ssl-key-file path: %s\n", params.ssl_file_key.c_str());
+            printf("--ssl-key-file path starts with %s.\n", (const char*) supportRootPath.c_str());
+            params.ssl_file_key.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
+            printf("  - new ssl-key-file path: %s\n", (const char*) params.ssl_file_key.c_str());
         }
         if (starts_with(params.ssl_file_cert, supportRootPath)) {
             printf("\n");
-            printf("--ssl-cert-file path starts with %s.\n",  supportRootPath.c_str());
-            params.ssl_file_cert.replace(0, supportRootPath.length(), supportPathSlash.c_str());
-            printf("  - new ssl-cert-file path: %s\n", params.ssl_file_cert.c_str());
+            printf("--ssl-cert-file path starts with %s.\n", (const char*) supportRootPath.c_str());
+            params.ssl_file_cert.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
+            printf("  - new ssl-cert-file path: %s\n", (const char*) params.ssl_file_cert.c_str());
         }
     }
 }
@@ -406,14 +406,14 @@ int main(int argc, char ** argv) {
         //     command (User supplied args)
 
         if (std::filesystem::exists(argsPath)) {
-            argc = mmojo_args(argsPath.c_str(), &argv);
+            argc = mmojo_args((const char*) argsPath.c_str(), &argv);
         }
 
         // At this point, argc, argv represent:
         //     command (argsPath args) (User supplied args)
 
         if (std::filesystem::exists(supportArgsPath)) {
-            argc = mmojo_args(supportArgsPath.c_str(), &argv);
+            argc = mmojo_args((const char*) supportArgsPath.c_str(), &argv);
         }
 
         // At this point, argc, argv represent:
@@ -421,7 +421,7 @@ int main(int argc, char ** argv) {
 
         #ifdef COSMOCC
         if (std::filesystem::exists(zipArgsPath)) {
-            argc = mmojo_args(zipArgsPath.c_str(), &argv);
+            argc = mmojo_args((const char*) zipArgsPath.c_str(), &argv);
         }
 
         // At this point, argc, argv represent:

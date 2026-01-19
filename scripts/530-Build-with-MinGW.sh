@@ -108,7 +108,7 @@ if [ "$processor" == "aarch64" ]; then
     export AR="cosmoar"
 fi
 
-if [ -v CC ]; then
+if [ -v CCZZZZZZ ]; then
     # The OpenSSL linking got moved to vendor/cpp-httplib/CMakeLists.txt.
     cp vendor/cpp-httplib/CMakeLists.txt vendor/cpp-httplib/CMakeLists-orig.txt
 

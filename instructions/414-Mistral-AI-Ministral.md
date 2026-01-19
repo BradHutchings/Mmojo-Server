@@ -92,3 +92,8 @@ This backs up all new models in the `$LOCAL_MODELS_DIR` directory to your Mmojo 
 - **Next:** This is the last step in this section.
 - **Previous:** [413. Meta Llama](413-Meta-Llama.md)
 - **Up:** [400. Gather Models](400-Gather-Models.md)
+
+---
+[MIT License](/LICENSE)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+[https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

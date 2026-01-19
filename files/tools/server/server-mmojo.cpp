@@ -35,7 +35,10 @@
 
 // Mmojo Server START
 // This could be automated by searching for "using json =" and inserting this block before.
+#if !defined(_WIN32)
 #include <linux/limits.h>
+#endif
+
 #include <sys/stat.h>
 #include <dirent.h>
 #include <unistd.h>

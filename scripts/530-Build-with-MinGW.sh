@@ -108,15 +108,15 @@ if [ "$processor" == "aarch64" ]; then
     export AR="cosmoar"
 fi
 
-if [ -v CCZZZZZZ ]; then
+if [ -v CC ]; then
     # The OpenSSL linking got moved to vendor/cpp-httplib/CMakeLists.txt.
     cp vendor/cpp-httplib/CMakeLists.txt vendor/cpp-httplib/CMakeLists-orig.txt
 
     # Make temporary change to CMake system so we link in static OpenSSL.
-    sed -i -e 's/PUBLIC OpenSSL::SSL OpenSSL::Crypto/PUBLIC libssl.a libcrypto.a/g' vendor/cpp-httplib/CMakeLists.txt
+    # sed -i -e 's/PUBLIC OpenSSL::SSL OpenSSL::Crypto/PUBLIC libssl.a libcrypto.a/g' vendor/cpp-httplib/CMakeLists.txt
     # Delete the rejection test for OpenSSL.
-    sed -i -e '/#include <openssl\/opensslv.h>/d' vendor/cpp-httplib/CMakeLists.txt
-    sed -i -e '/error bad version/d' vendor/cpp-httplib/CMakeLists.txt
+    # sed -i -e '/#include <openssl\/opensslv.h>/d' vendor/cpp-httplib/CMakeLists.txt
+    # sed -i -e '/error bad version/d' vendor/cpp-httplib/CMakeLists.txt
 
     # Prepare the build folder
     rm -r -f $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY
@@ -126,7 +126,7 @@ if [ -v CCZZZZZZ ]; then
 
     # Revert to original CMake system.
     # The OpenSSL linking got moved to vendor/cpp-httplib/CMakeLists.txt.
-    mv vendor/cpp-httplib/CMakeLists-orig.txt vendor/cpp-httplib/CMakeLists.txt
+    # mv vendor/cpp-httplib/CMakeLists-orig.txt vendor/cpp-httplib/CMakeLists.txt
 
     # Build
     cmake --build $BUILD_SUBDIRECTORY --config Release

@@ -31,6 +31,7 @@
 
 #if defined(_WIN32)
 #include <windows.h>
+#include <pthread.h>
 #endif
 
 // Mmojo Server START
@@ -340,7 +341,7 @@ void main_mmojo_server_2(common_params& params) {
         std::filesystem::exists(firstGgufPath)) {
     
         printf("  - Using firstGgufPath for model: %s\n", (const char*) firstGgufPath.c_str());
-        params.model.path = firstGgufPath;
+        params.model.path = (const char*) firstGgufPath.c_str();
     }
     
     #ifdef COSMOCC
@@ -359,7 +360,7 @@ void main_mmojo_server_3(common_params& params) {
     // if they are relative paths, fix to absolute relative to working directory
     if (supportPath != "") {
         const std::string& supportRootPath = "/support/";
-        std::string supportPathSlash = supportPath;
+        std::string supportPathSlash = (const char*) supportPath.c_str();
         supportPathSlash += "/";
       
         if (starts_with(params.model.path, supportRootPath)) {

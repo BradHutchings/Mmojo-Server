@@ -67,6 +67,20 @@ sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
 sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
 sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
 
+# Patch vendor/cpp-httplib for compatibility with MinGW. Inline member functions need to be
+# declared in class definitions.
+sed -i -e 's/bool is_readable(/inline bool is_readable(/g' vendor/cpp-httplib/httplib.h
+sed -i -e 's/bool wait_readable(/inline bool wait_readable(/g' vendor/cpp-httplib/httplib.h
+sed -i -e 's/bool wait_writable(/inline bool wait_writable(/g' vendor/cpp-httplib/httplib.h
+sed -i -e 's/ssize_t read(/inline ssize_t read(/g' vendor/cpp-httplib/httplib.h
+sed -i -e 's/ssize_t write(/inline ssize_t write(/g' vendor/cpp-httplib/httplib.h
+
+sed -i -e 's/bool is_readable(/inline bool is_readable(/g' vendor/cpp-httplib/httplib.cpp
+sed -i -e 's/bool wait_readable(/inline bool wait_readable(/g' vendor/cpp-httplib/httplib.cpp
+sed -i -e 's/bool wait_writable(/inline bool wait_writable(/g' vendor/cpp-httplib/httplib.cpp
+sed -i -e 's/ssize_t read(/inline ssize_t read(/g' vendor/cpp-httplib/httplib.cpp
+sed -i -e 's/ssize_t write(/inline ssize_t write(/g' vendor/cpp-httplib/httplib.cpp
+
 # Future: Just patch common/argc.cpp and eliminate common/argc-mmojo.cpp
 # Future: Move loading-mmojo.html to loading.html instead of mangling server-mmojo.cpp. Will this work with .hpp, etc?
 

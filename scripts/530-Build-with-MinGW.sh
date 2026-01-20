@@ -93,7 +93,7 @@ if [ "$processor" == "x86_64" ]; then
         -O3 $ARCH_LEVEL_PARAM"
     export CXX="x86_64-w64-mingw32-g++ \
         -O3 -Wno-format-truncation $ARCH_LEVEL_PARAM"
-    export AR="x86_64-w64-mingw32-ld"
+    # export AR="x86_64-w64-mingw32-ld"
 fi
 
 if [ "$processor" == "aarch64" ]; then

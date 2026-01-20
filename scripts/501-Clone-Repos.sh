@@ -6,6 +6,8 @@
 #   - https://github.com/ggml-org/llama.cpp
 # - Google minja (for llama.cpp) - chat templates
 #    - https://github.com/google/minja - 
+#
+# No longer need these -- see vendors subdirectory of llama.cpp.
 # - cpp-httplib (for llama.cpp)- HTTPS/HTTPS server library.
 #   - https://github.com/yhirose/cpp-httplib
 # - miniaudio (for llama.cpp)
@@ -57,10 +59,10 @@ echo ""
 git clone https://github.com/ggml-org/llama.cpp $THIS_BUILD_DIR
 cd $THIS_BUILD_DIR
 git clone https://github.com/google/minja.git google-minja
-git clone https://github.com/yhirose/cpp-httplib.git cpp-httplib
-git clone https://github.com/mackron/miniaudio.git miniaudio
-git clone https://github.com/nothings/stb.git stb
-git clone https://github.com/nlohmann/json.git nlohmann-json
+# git clone https://github.com/yhirose/cpp-httplib.git cpp-httplib
+# git clone https://github.com/mackron/miniaudio.git miniaudio
+# git clone https://github.com/nothings/stb.git stb
+# git clone https://github.com/nlohmann/json.git nlohmann-json
 cp -r $BUILD_COSMOPOLITAN_DIR/cosmocc .
 cp -r $BUILD_OPENSSSL_DIR/openssl .
 

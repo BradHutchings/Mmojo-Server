@@ -99,7 +99,7 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
         std::string executablePathString = argv_0;
         replaceAll(executablePathString, "\\", "\\\\");
         printf("  - executablePathString: %s\n", (const char*) executablePathString.c_str());
-        executablePath = executablePathString;
+        executablePath = (const char*) executablePathString.c_str();
         #else
         executablePath = argv_0;
         #endif
@@ -114,7 +114,7 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
             std::string workingDirectoryPathString = workingDirectory;
             replaceAll(workingDirectoryPathString, "\\", "\\\\");
             printf("  - workingDirectoryPathString: %s\n", (const char*) workingDirectoryPathString.c_str());
-            workingDirectoryPath = workingDirectoryPathString;
+            workingDirectoryPath = (const char*) workingDirectoryPathString.c_str();
             #else
             workingDirectoryPath = workingDirectory;
             #endif
@@ -127,15 +127,25 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
     }
 
     printf("  - Raw paths:\n");
+    #if defined(_WIN32)
+    wprintf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    wprintf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    #else
     printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
     printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    #endif
 
     workingDirectoryPath = workingDirectoryPath.lexically_normal();
     executablePath = executablePath.lexically_normal();
 
     printf("  - Normalized paths:\n");
+    #if defined(_WIN32)
+    wprintf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    wprintf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    #else
     printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
     printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    #endif
 }
 
 void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem::path& ggufPath) {

@@ -117,7 +117,7 @@ if [ -v CC ]; then
       -DCMAKE_VERBOSE_MAKEFILE=$VERBOSE $GGML_PARAMS
 
     # Build
-    cmake --build $BUILD_SUBDIRECTORY --config Release --verbose
+    cmake --build $BUILD_SUBDIRECTORY --config Release # --verbose
 
     # Show off what we built
     printf "\nBuild of MinGW $processor of llama.cpp is complete.\n\n"

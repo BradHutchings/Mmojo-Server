@@ -74,6 +74,17 @@ bool ends_with (const std::string &fullString, const std::string &ending) {
     } 
 }
 
+void replaceAll(std::string& str, const std::string& from, const std::string& to) {
+    if(from.empty())
+        return;
+    size_t start_pos = 0;
+    while((start_pos = str.find(from, start_pos)) != std::string::npos) {
+        str.replace(start_pos, from.length(), to);
+        // Move the search position forward by the length of the new substring
+        start_pos += to.length(); 
+    }
+}
+
 void get_important_paths(const char* argv_0, std::filesystem::path& executablePath, std::filesystem::path& workingDirectoryPath) {
     printf("\n");
     printf("- get_important_paths()\n");
@@ -83,7 +94,14 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
 
     if (argv_0 != NULL) {
         printf("  - argv_0: %s\n", argv_0);
+
+        #if defined(_WIN32)
+        std::string executablePathString = argv_0;
+        replaceAll(executablePathString, "\", "\\");
+        executablePath = executablePathString;
+        #else
         executablePath = argv_0;
+        #endif
 
         char workingDirectory[PATH_MAX];
         workingDirectory[0] = '\0';
@@ -91,7 +109,13 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
         if (getcwd(workingDirectory, sizeof(workingDirectory) - 1)) {
             printf("  - workingDirectory: %s\n", workingDirectory);
 
+            #if defined(_WIN32)
+            std::string workingDirectoryPathString = workingDirectory;
+            replaceAll(workingDirectoryPathString, "\", "\\");
+            workingDirectoryPath = workingDirectoryPathString;
+            #else
             workingDirectoryPath = workingDirectory;
+            #endif
         }
 
         if (!executablePath.has_root_path()) {

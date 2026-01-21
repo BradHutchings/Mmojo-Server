@@ -97,7 +97,8 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
 
         #if defined(_WIN32)
         std::string executablePathString = argv_0;
-        replaceAll(executablePathString, "\", "\\");
+        replaceAll(executablePathString, "\\", "\\\\");
+        printf("  - executablePathString: %s\n", (const char*) executablePathString.c_str());
         executablePath = executablePathString;
         #else
         executablePath = argv_0;
@@ -111,7 +112,8 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
 
             #if defined(_WIN32)
             std::string workingDirectoryPathString = workingDirectory;
-            replaceAll(workingDirectoryPathString, "\", "\\");
+            replaceAll(workingDirectoryPathString, "\\", "\\\\");
+            printf("  - workingDirectoryPathString: %s\n", (const char*) workingDirectoryPathString.c_str());
             workingDirectoryPath = workingDirectoryPathString;
             #else
             workingDirectoryPath = workingDirectory;

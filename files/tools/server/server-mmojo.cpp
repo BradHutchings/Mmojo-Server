@@ -376,22 +376,39 @@ void main_args_files(int& argc, char **& argv) {
     printf("\n");
     printf("- main_args_files()\n");
 
-  // Implement an args file feature inspired by llamafile's.
+    // Implement an args file feature inspired by llamafile's.
     // It does not require Cosmo anymore, as the mmojo_args function is part of mmojo-server now.
     // This is where we modify argc and argv!!
 
     // At this point, argc, argv represent:
     //     command (User supplied args)
 
+    #if defined(_WIN32)
+    using convert_type = std::codecvt_utf8<wchar_t>;
+    std::wstring_convert<convert_type, wchar_t> converter;
+    #endif
+  
     if (std::filesystem::exists(argsPath)) {
-        argc = mmojo_args((const char*) argsPath.c_str(), &argv);
+        #if defined(_WIN32)
+        const std::string& filename = converter.to_bytes(argsPath.c_str());
+        #else
+        const std::string& filename = (const char*) argsPath.c_str();
+        #endif
+      
+        argc = mmojo_args((const char*) filename.c_str(), &argv);
     }
 
     // At this point, argc, argv represent:
     //     command (argsPath args) (User supplied args)
 
     if (std::filesystem::exists(supportArgsPath)) {
-        argc = mmojo_args((const char*) supportArgsPath.c_str(), &argv);
+        #if defined(_WIN32)
+        const std::string& filename = converter.to_bytes(supportArgsPath.c_str());
+        #else
+        const std::string& filename = (const char*) supportArgsPath.c_str();
+        #endif
+
+        argc = mmojo_args((const char*) filename.c_str(), &argv);
     }
 
     // At this point, argc, argv represent:
@@ -399,6 +416,7 @@ void main_args_files(int& argc, char **& argv) {
 
     #ifdef COSMOCC
     if (std::filesystem::exists(zipArgsPath)) {
+        // We don't use MinGW to compile for Windows under COSMOCC
         argc = mmojo_args((const char*) zipArgsPath.c_str(), &argv);
     }
 

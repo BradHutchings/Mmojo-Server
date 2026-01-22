@@ -135,7 +135,9 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
     executablePath = executablePath.lexically_normal();
 
     #if defined(_WIN32)
+    std::string executablePathString = executablePath;
     replaceAll(executablePathString, "\\", "\\\\");
+    executablePath = executablePathString;
     #endif
   
     printf("  - Normalized paths:\n");

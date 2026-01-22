@@ -128,8 +128,8 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
 
     printf("  - Raw paths:\n");
     #if defined(_WIN32)
-    wprintf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
-    wprintf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    printf("    - workingDirectoryPath: %ls\n", (const char*) workingDirectoryPath.c_str());
+    printf("    -       executablePath: %ls\n", (const char*) executablePath.c_str());
     #else
     printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
     printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
@@ -140,8 +140,8 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
 
     printf("  - Normalized paths:\n");
     #if defined(_WIN32)
-    wprintf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
-    wprintf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    printf("    - workingDirectoryPath: %ls\n", (const char*) workingDirectoryPath.c_str());
+    printf("    -       executablePath: %ls\n", (const char*) executablePath.c_str());
     #else
     printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
     printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
@@ -151,7 +151,11 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
 void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem::path& ggufPath) {
     ggufPath.clear();
     printf("\n");
+    #if defined(_WIN32)
+    printf("- find_first_gguf() in %ls:\n", (const char*) directoryPath.c_str());
+    #else
     printf("- find_first_gguf() in %s:\n", (const char*) directoryPath.c_str());
+    #endif
   
     DIR *dir;
     struct dirent *entry;
@@ -177,7 +181,6 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
         perror("Error opening directory");
     }
 }
-
 // Mmojo Server END
 
 static std::function<void(int)> shutdown_handler;
@@ -254,7 +257,7 @@ void main_mmojo_server_1(char* argv_0) {
     printf("\n");
     printf("- main_mmojo_server_1(%s)\n", argv_0);
 
-  // Keep the build from showing up as ape in the process list.
+    // Keep the build from showing up as ape in the process list.
     pthread_setname_np(pthread_self(), PROCESS_NAME);
 
     //  Find paths we need.
@@ -297,45 +300,94 @@ void main_path_diagnostics() {
     printf("- main_path_diagnostics()\n");
 
     printf("\n");
-    printf("- Paths of things we care about:\n");
-    printf("  -       executablePath: %s\n", (const char*) executablePath.c_str());
-    printf("  - executableParentPath: %s\n", (const char*) executableParentPath.c_str());
-    printf("  - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
-    printf("  -             argsPath: %s\n", (const char*) argsPath.c_str());
-    printf("  -          supportPath: %s\n", (const char*) supportPath.c_str());
-    printf("  -      supportArgsPath: %s\n", (const char*) supportArgsPath.c_str());
-    printf("  -              zipPath: %s\n", (const char*) zipPath.c_str());
-    printf("  -          zipArgsPath: %s\n", (const char*) zipArgsPath.c_str());
-    printf("  -        firstGgufPath: %s\n", (const char*) firstGgufPath.c_str());
+    #if defined(_WIN32)
+    printf("  - Paths of things we care about:\n");
+    printf("    -       executablePath: %ls\n", (const char*) executablePath.c_str());
+    printf("    - executableParentPath: %ls\n", (const char*) executableParentPath.c_str());
+    printf("    - workingDirectoryPath: %ls\n", (const char*) workingDirectoryPath.c_str());
+    printf("    -             argsPath: %ls\n", (const char*) argsPath.c_str());
+    printf("    -          supportPath: %ls\n", (const char*) supportPath.c_str());
+    printf("    -      supportArgsPath: %ls\n", (const char*) supportArgsPath.c_str());
+    printf("    -              zipPath: %ls\n", (const char*) zipPath.c_str());
+    printf("    -          zipArgsPath: %ls\n", (const char*) zipArgsPath.c_str());
+    printf("    -        firstGgufPath: %ls\n", (const char*) firstGgufPath.c_str());
+    #else
+    printf("  - Paths of things we care about:\n");
+    printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    printf("    - executableParentPath: %s\n", (const char*) executableParentPath.c_str());
+    printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    printf("    -             argsPath: %s\n", (const char*) argsPath.c_str());
+    printf("    -          supportPath: %s\n", (const char*) supportPath.c_str());
+    printf("    -      supportArgsPath: %s\n", (const char*) supportArgsPath.c_str());
+    printf("    -              zipPath: %s\n", (const char*) zipPath.c_str());
+    printf("    -          zipArgsPath: %s\n", (const char*) zipArgsPath.c_str());
+    printf("    -        firstGgufPath: %s\n", (const char*) firstGgufPath.c_str());
+    #endif
 
     printf("\n");
     printf("- These paths exist:\n");
     if (std::filesystem::exists(executablePath)) {
-        printf("  -       executablePath exists: %s\n", (const char*) executablePath.c_str());
+        #if defined(_WIN32)
+        printf("    -       executablePath exists: %ls\n", (const char*) executablePath.c_str());
+        #else
+        printf("    -       executablePath exists: %s\n", (const char*) executablePath.c_str());
+        #endif
     }
     if (std::filesystem::exists(executableParentPath)) {
-        printf("  - executableParentPath exists: %s\n", (const char*) executableParentPath.c_str());
+        #if defined(_WIN32)
+        printf("    - executableParentPath exists: %ls\n", (const char*) executableParentPath.c_str());
+        #else
+        printf("    - executableParentPath exists: %s\n", (const char*) executableParentPath.c_str());
+        #endif
     }
     if (std::filesystem::exists(workingDirectoryPath)) {
-        printf("  - workingDirectoryPath exists: %s\n", (const char*) workingDirectoryPath.c_str());
+        #if defined(_WIN32)
+        printf("    - workingDirectoryPath exists: %ls\n", (const char*) workingDirectoryPath.c_str());
+        #else
+        printf("    - workingDirectoryPath exists: %s\n", (const char*) workingDirectoryPath.c_str());
+        #endif
     }
     if (std::filesystem::exists(argsPath)) {
-        printf("  -             argsPath exists: %s\n", (const char*) argsPath.c_str());
+        #if defined(_WIN32)
+        printf("    -             argsPath exists: %ls\n", (const char*) argsPath.c_str());
+        #else
+        printf("    -             argsPath exists: %s\n", (const char*) argsPath.c_str());
+        #endif
     }
     if (std::filesystem::exists(supportPath)) {
-        printf("  -          supportPath exists: %s\n", (const char*) supportPath.c_str());
+        #if defined(_WIN32)
+        printf("    -          supportPath exists: %ls\n", (const char*) supportPath.c_str());
+        #else
+        printf("    -          supportPath exists: %s\n", (const char*) supportPath.c_str());
+        #endif
     }
     if (std::filesystem::exists(supportArgsPath)) {
-        printf("  -      supportArgsPath exists: %s\n", (const char*) supportArgsPath.c_str());
+        #if defined(_WIN32)
+        printf("    -      supportArgsPath exists: %ls\n", (const char*) supportArgsPath.c_str());
+        #else
+        printf("    -      supportArgsPath exists: %s\n", (const char*) supportArgsPath.c_str());
+        #endif
     }
     if (std::filesystem::exists(zipPath)) {
-        printf("  -              zipPath exists: %s\n", (const char*) zipPath.c_str());
+        #if defined(_WIN32)
+        printf("    -              zipPath exists: %ls\n", (const char*) zipPath.c_str());
+        #else
+        printf("    -              zipPath exists: %s\n", (const char*) zipPath.c_str());
+        #endif
     }
     if (std::filesystem::exists(zipArgsPath)) {
-        printf("  -          zipArgsPath exists: %s\n", (const char*) zipArgsPath.c_str());
+        #if defined(_WIN32)
+        printf("    -          zipArgsPath exists: %ls\n", (const char*) zipArgsPath.c_str());
+        #else
+        printf("    -          zipArgsPath exists: %s\n", (const char*) zipArgsPath.c_str());
+        #endif
     }  
     if (std::filesystem::exists(firstGgufPath)) {
-        printf("  -        firstGgufPath exists: %s\n", (const char*) firstGgufPath.c_str());
+        #if defined(_WIN32)
+        printf("    -        firstGgufPath exists: %ls\n", (const char*) firstGgufPath.c_str());
+        #else
+        printf("    -        firstGgufPath exists: %s\n", (const char*) firstGgufPath.c_str());
+        #endif
     }  
 }
 

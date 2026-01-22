@@ -302,7 +302,7 @@ void main_path_diagnostics() {
     printf("- main_path_diagnostics()\n");
 
     printf("\n");
-    mmojo_printf("  - Paths of things we care about:\n");
+    printf("  - Paths of things we care about:\n");
     mmojo_printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
     mmojo_printf("    - executableParentPath: %s\n", (const char*) executableParentPath.c_str());
     mmojo_printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());

@@ -150,7 +150,7 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
 
     // Open the directory
     #if defined(_WIN32)
-    dir = _wopendir((const char*) directoryPath.c_str());
+    dir = _wopendir((const wchar_t*) directoryPath.c_str());
     #else
     dir = opendir((const char*) directoryPath.c_str());
     #endif

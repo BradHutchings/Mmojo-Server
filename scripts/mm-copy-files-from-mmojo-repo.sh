@@ -3,13 +3,23 @@
 ################################################################################
 # This script copies the Mmojo Server files to the specified build directory.
 #
+# FUTURE: Don't take a branding parameter. Loop over the build folders. If a
+# build folder exists, copy and sed files.
+#
 # See licensing note at end.
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
+printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 cd $HOME
+
+build_folders=("$BUILD_DIR" "$DOGHOUSE_BUILD_DIR" "$LLAMA_SERVER_BUILD_DIR")
+
+for build_folder in "${build_folders[@]}"; do
+    echo "Build folder: $build_folder"
+done
+echo "----------"
 
 branding=$1
 

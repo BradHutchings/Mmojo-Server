@@ -546,7 +546,7 @@ int main(int argc, char ** argv) {
   
     printf("checkpoint 3\n");
 
-    #if 1
+    #if 0
     // for consistency between server router mode and single-model mode, we set the same model name as alias
     if (params.model_alias.empty() && !params.model.name.empty()) {
         params.model_alias = params.model.name;

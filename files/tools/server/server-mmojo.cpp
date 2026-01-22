@@ -420,10 +420,17 @@ void main_mmojo_server_2(common_params& params) {
     if ((params.model.path == "") && (params.model.url == "") && (params.model.docker_repo == "") &&  
         (params.model.hf_repo == "") && (params.model.hf_file == "") && 
         std::filesystem::exists(firstGgufPath)) {
-    
-        printf("  - Using firstGgufPath for model: %s\n", (const char*) firstGgufPath.c_str());
-        params.model.path = (const char*) firstGgufPath.c_str();
-    }
+
+        using convert_type = std::codecvt_utf8<wchar_t>;
+        std::wstring_convert<convert_type, wchar_t> converter;
+        const std::string& firstGgufPathString = converter.to_bytes(firstGgufPath.c_str());
+
+        printf("  - Using firstGgufPath for model: %s\n", (const char*) firstGgufPathString.c_str());
+        params.model.path = (const char*) firstGgufPathString.c_str();
+
+        // printf("  - Using firstGgufPath for model: %s\n", (const char*) firstGgufPath.c_str());
+        // params.model.path = (const char*) firstGgufPath.c_str();
+}
     
     #ifdef COSMOCC
     const std::string zipPathSlash = "/zip/";

@@ -55,6 +55,7 @@
 // pre C++20 helpers.
 bool starts_with (const std::string &fullString, const std::string &beginning);
 bool ends_with (const std::string &fullString, const std::string &ending);
+void replaceAll(std::string& str, const std::string& from, const std::string& to);
 void get_important_paths(const char* argv_0, std::filesystem::path& executablePath, std::filesystem::path& workingDirectoryPath);
 void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem::path& ggufPath);
 void mmojo_printf(const char* format, const char* stringParam);
@@ -160,7 +161,7 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
                 const std::string& filename = converter.to_bytes(entry->d_name);
                 const std::string& extension = ".gguf";            
                 const std::string& slash = "/";
-                mmojo_printf("    - Considering: %s", entry->d_name);
+                mmojo_printf("    - Considering: %s", (const char*) entry->d_name);
                 printf("    - Considering: %s", filename.c_str());
                 if (ends_with(filename, extension)) {
                     mmojo_printf("  - %s\n", entry->d_name);

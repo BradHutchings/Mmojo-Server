@@ -55,6 +55,7 @@ bool starts_with (const std::string &fullString, const std::string &beginning);
 bool ends_with (const std::string &fullString, const std::string &ending);
 void get_important_paths(const char* argv_0, std::filesystem::path& executablePath, std::filesystem::path& workingDirectoryPath);
 void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem::path& ggufPath);
+void mmojo_printf(const char* format, const char* stringParam);
 
 bool starts_with (const std::string &fullString, const std::string &beginning) {
     if (fullString.length() >= beginning.length()) {
@@ -93,12 +94,12 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
     workingDirectoryPath.clear();
 
     if (argv_0 != NULL) {
-        printf("  - argv_0: %s\n", argv_0);
+        mmojo_printf("  - argv_0: %s\n", argv_0);
 
         #if defined(_WIN32)
         std::string executablePathString = argv_0;
         replaceAll(executablePathString, "\\", "\\\\");
-        printf("  - executablePathString: %s\n", (const char*) executablePathString.c_str());
+        mmojo_printf("  - executablePathString: %s\n", (const char*) executablePathString.c_str());
         executablePath = (const char*) executablePathString.c_str();
         #else
         executablePath = argv_0;
@@ -108,12 +109,12 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
         workingDirectory[0] = '\0';
 
         if (getcwd(workingDirectory, sizeof(workingDirectory) - 1)) {
-            printf("  - workingDirectory: %s\n", workingDirectory);
+            mmojo_printf("  - workingDirectory: %s\n", workingDirectory);
 
             #if defined(_WIN32)
             std::string workingDirectoryPathString = workingDirectory;
             replaceAll(workingDirectoryPathString, "\\", "\\\\");
-            printf("  - workingDirectoryPathString: %s\n", (const char*) workingDirectoryPathString.c_str());
+            mmojo_printf("  - workingDirectoryPathString: %s\n", (const char*) workingDirectoryPathString.c_str());
             workingDirectoryPath = (const char*) workingDirectoryPathString.c_str();
             #else
             workingDirectoryPath = workingDirectory;
@@ -127,35 +128,43 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
     }
 
     printf("  - Raw paths:\n");
-    #if defined(_WIN32)
-    printf("    - workingDirectoryPath: %ls\n", (const char*) workingDirectoryPath.c_str());
-    printf("    -       executablePath: %ls\n", (const char*) executablePath.c_str());
-    #else
-    printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
-    printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
-    #endif
+    mmojo_printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    mmojo_printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+
+    // #if defined(_WIN32)
+    // printf("    - workingDirectoryPath: %ls\n", (const char*) workingDirectoryPath.c_str());
+    // printf("    -       executablePath: %ls\n", (const char*) executablePath.c_str());
+    // #else
+    // printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    // printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    // #endif
 
     workingDirectoryPath = workingDirectoryPath.lexically_normal();
     executablePath = executablePath.lexically_normal();
 
     printf("  - Normalized paths:\n");
-    #if defined(_WIN32)
-    printf("    - workingDirectoryPath: %ls\n", (const char*) workingDirectoryPath.c_str());
-    printf("    -       executablePath: %ls\n", (const char*) executablePath.c_str());
-    #else
-    printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
-    printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
-    #endif
+    mmojo_printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    mmojo_printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+
+    // #if defined(_WIN32)
+    // printf("    - workingDirectoryPath: %ls\n", (const char*) workingDirectoryPath.c_str());
+    // printf("    -       executablePath: %ls\n", (const char*) executablePath.c_str());
+    // #else
+    // printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    // printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    // #endif
 }
 
 void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem::path& ggufPath) {
     ggufPath.clear();
     printf("\n");
-    #if defined(_WIN32)
-    printf("- find_first_gguf() in %ls:\n", (const char*) directoryPath.c_str());
-    #else
-    printf("- find_first_gguf() in %s:\n", (const char*) directoryPath.c_str());
-    #endif
+    mmojo_printf("- find_first_gguf() in %s:\n", (const char*) directoryPath.c_str());
+  
+    // #if defined(_WIN32)
+    // printf("- find_first_gguf() in %ls:\n", (const char*) directoryPath.c_str());
+    // #else
+    // printf("- find_first_gguf() in %s:\n", (const char*) directoryPath.c_str());
+    // #endif
   
     DIR *dir;
     struct dirent *entry;
@@ -163,13 +172,13 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
     // Open the directory
     dir = opendir((const char*) directoryPath.c_str());
     if (dir != NULL) {
-        printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
+        mmojo_printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
         while ((entry = readdir(dir)) != NULL) {
             const std::string& filename = entry->d_name;
             const std::string& extension = ".gguf";            
             const std::string& slash = "/";
             if (ends_with(filename, extension)) {
-                printf("  - %s\n", entry->d_name);
+                mmojo_printf("  - %s\n", entry->d_name);
                 ggufPath = directoryPath;
                 ggufPath /= entry->d_name;
                 break;
@@ -181,6 +190,15 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
         perror("Error opening directory");
     }
 }
+
+void mmojo_printf(const char* format, const char* stringParam) {
+    std::string formatString = format;
+    #if defined(_WIN32)
+    replaceAll(formatString, "%s", "%ls");
+    #endif
+    printf(formatString.c_str(), stringParam);
+}
+
 // Mmojo Server END
 
 static std::function<void(int)> shutdown_handler;

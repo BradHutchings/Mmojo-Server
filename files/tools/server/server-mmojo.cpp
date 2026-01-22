@@ -394,7 +394,8 @@ void main_args_files(int& argc, char **& argv) {
         #else
         const std::string& filename = (const char*) argsPath.c_str();
         #endif
-      
+
+        printf("  - using argsPath: %s\n, (const char*) filename.c_str());
         argc = mmojo_args((const char*) filename.c_str(), &argv);
     }
 
@@ -408,6 +409,7 @@ void main_args_files(int& argc, char **& argv) {
         const std::string& filename = (const char*) supportArgsPath.c_str();
         #endif
 
+        printf("  - using argsPath: %s\n, (const char*) filename.c_str());
         argc = mmojo_args((const char*) filename.c_str(), &argv);
     }
 
@@ -439,15 +441,17 @@ void main_mmojo_server_2(common_params& params) {
         (params.model.hf_repo == "") && (params.model.hf_file == "") && 
         std::filesystem::exists(firstGgufPath)) {
 
+        #if defined(_WIN32)
         using convert_type = std::codecvt_utf8<wchar_t>;
         std::wstring_convert<convert_type, wchar_t> converter;
         const std::string& firstGgufPathString = converter.to_bytes(firstGgufPath.c_str());
 
         printf("  - Using firstGgufPath for model: %s\n", (const char*) firstGgufPathString.c_str());
         params.model.path = (const char*) firstGgufPathString.c_str();
-
-        // printf("  - Using firstGgufPath for model: %s\n", (const char*) firstGgufPath.c_str());
-        // params.model.path = (const char*) firstGgufPath.c_str();
+        #else
+        printf("  - Using firstGgufPath for model: %s\n", (const char*) firstGgufPath.c_str());
+        params.model.path = (const char*) firstGgufPath.c_str();
+        #endif
 }
     
     #ifdef COSMOCC

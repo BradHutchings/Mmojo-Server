@@ -507,8 +507,8 @@ void main_mmojo_server_3(common_params& params) {
 int main(int argc, char ** argv) {
     // Mmojo Server START
     printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
-    main_mmojo_server_1(argv[0]);
-    main_path_diagnostics();
+    // main_mmojo_server_1(argv[0]);
+    // main_path_diagnostics();
     // main_args_files(argc, argv);
     // Mmojo Server END
   

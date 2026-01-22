@@ -120,10 +120,11 @@ if [ -v CC ]; then
     # cmake --build $BUILD_SUBDIRECTORY --config Release # --verbose
 
 
-LAST_BUILD_COMMAND=".last-build-command.sh"
-LAST_BUILD_COMMAND_PATH="$HOME/$LAST_BUILD_COMMAND"
+# LAST_BUILD_COMMAND=".last-build-command.sh"
+# LAST_BUILD_COMMAND_PATH="$HOME/$LAST_BUILD_COMMAND"
 cat << EOF > "$LAST_BUILD_COMMAND_PATH"
 cd $THIS_BUILD_DIR
+echo "Building: $branding - $BUILD_SUBDIRECTORY"
 cmake --build $BUILD_SUBDIRECTORY --config Release # --verbose
 EOF
 chmod a+x "$LAST_BUILD_COMMAND_PATH"

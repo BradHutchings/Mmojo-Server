@@ -147,7 +147,7 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
 
     #if defined(_WIN32)
         _WDIR *dir;
-        struct dirent *entry;
+        struct _wdirent *entry;
         dir = _wopendir((const wchar_t*) directoryPath.c_str());
   
         if (dir != NULL) {

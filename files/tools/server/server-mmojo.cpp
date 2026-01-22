@@ -144,35 +144,57 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
     ggufPath.clear();
     printf("\n");
     mmojo_printf("- find_first_gguf() in %s:\n", (const char*) directoryPath.c_str());
-    
-    DIR *dir;
-    struct dirent *entry;
 
-    // Open the directory
     #if defined(_WIN32)
-    dir = _wopendir((const wchar_t*) directoryPath.c_str());
-    #else
-    dir = opendir((const char*) directoryPath.c_str());
-    #endif
+        _WDIR *dir;
+        struct dirent *entry;
+        dir = _wopendir((const wchar_t*) directoryPath.c_str());
   
-    if (dir != NULL) {
-        mmojo_printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
-        while ((entry = readdir(dir)) != NULL) {
-            const std::string& filename = entry->d_name;
-            const std::string& extension = ".gguf";            
-            const std::string& slash = "/";
-            if (ends_with(filename, extension)) {
-                mmojo_printf("  - %s\n", entry->d_name);
-                ggufPath = directoryPath;
-                ggufPath /= entry->d_name;
-                break;
+        if (dir != NULL) {
+            mmojo_printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
+            while ((entry = _wreaddir(dir)) != NULL) {
+                const std::string& filename = entry->d_name;
+                const std::string& extension = ".gguf";            
+                const std::string& slash = "/";
+                mmojo_print("    - Considering: %s", entry->d_name);
+                if (ends_with(filename, extension)) {
+                    mmojo_printf("  - %s\n", entry->d_name);
+                    ggufPath = directoryPath;
+                    ggufPath /= entry->d_name;
+                    break;
+                }
             }
+            _wclosedir(dir);
         }
-        closedir(dir);
-    }
-    else {
-        perror("Error opening directory");
-    }
+        else {
+            perror("Error opening directory");
+        }
+
+    #else
+        DIR *dir;
+        struct dirent *entry;
+        dir = opendir((const char*) directoryPath.c_str());
+      
+        if (dir != NULL) {
+            mmojo_printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
+            while ((entry = readdir(dir)) != NULL) {
+                const std::string& filename = entry->d_name;
+                const std::string& extension = ".gguf";            
+                const std::string& slash = "/";
+                mmojo_print("    - Considering: %s", entry->d_name);
+                if (ends_with(filename, extension)) {
+                    mmojo_printf("  - %s\n", entry->d_name);
+                    ggufPath = directoryPath;
+                    ggufPath /= entry->d_name;
+                    break;
+                }
+            }
+            closedir(dir);
+        }
+        else {
+            perror("Error opening directory");
+        }
+    #endif
 }
 
 void mmojo_printf(const char* format, const char* stringParam) {

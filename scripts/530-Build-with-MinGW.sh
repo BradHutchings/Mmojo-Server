@@ -119,7 +119,7 @@ if [ -v CC ]; then
     # Build
     # cmake --build $BUILD_SUBDIRECTORY --config Release # --verbose
 
-$LAST_BUILD_COMMAND="$HOME/.last-build-command.sh"
+LAST_BUILD_COMMAND="$HOME/.last-build-command.sh"
 cat << EOF > "$HOME/$LAST_BUILD_COMMAND"
 cd $THIS_BUILD_DIR
 cmake --build $BUILD_SUBDIRECTORY --config Release # --verbose

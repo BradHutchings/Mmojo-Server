@@ -509,7 +509,7 @@ int main(int argc, char ** argv) {
     printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
     main_mmojo_server_1(argv[0]);
     main_path_diagnostics();
-    main_args_files(argc, argv);
+    // main_args_files(argc, argv);
     // Mmojo Server END
   
     // own arguments required by this example
@@ -520,10 +520,12 @@ int main(int argc, char ** argv) {
     }
 
     // Mmojo Server START
-    main_mmojo_server_2(params);
+    // main_mmojo_server_2(params);
+    params.model.path = "D:\projects\Mmojo MinGW\Google-Gemma-4B-Instruct-v3-q8_0.gguf";
     printf("checkpoint 1\n");
     // Mmojo Server END
 
+    #if 0
     // validate batch size for embeddings
     // embeddings require all tokens to be processed in a single ubatch
     // see https://github.com/ggml-org/llama.cpp/issues/12836
@@ -532,6 +534,7 @@ int main(int argc, char ** argv) {
         LOG_WRN("%s: setting n_batch = n_ubatch = %d to avoid assertion failure\n", __func__, params.n_ubatch);
         params.n_batch = params.n_ubatch;
     }
+    #endif
 
     printf("checkpoint 2\n");
 
@@ -556,7 +559,7 @@ int main(int argc, char ** argv) {
     // Mmojo Server START
     // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
     printf("checkpoint 4\n");
-    main_mmojo_server_3(params);
+    // main_mmojo_server_3(params);
     printf("\n\n----------END: " PRODUCT_NAME  " -----------------------------------------------------\n\n");
     // Mmojo Server END
     

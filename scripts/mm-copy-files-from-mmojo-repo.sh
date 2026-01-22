@@ -31,6 +31,11 @@ echo ""
 # This copies the $MMOJO_SERVER_FILES tree into the $BUILD_DIR tree.
 cp -r $MMOJO_SERVER_FILES/* $THIS_BUILD_DIR/
 
+# In tools/server/server-context-mmojo.cpp, replace "defer(" with "defer_task(" to make Cosmo STL happy.
+sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
+sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
+sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
+
 cd $HOME
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"

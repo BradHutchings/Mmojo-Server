@@ -33,6 +33,7 @@
 #include <windows.h>
 #include <pthread.h>
 #include <dirent.h>
+#include <codecvt>
 #endif
 
 // Mmojo Server START
@@ -153,10 +154,14 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
         if (dir != NULL) {
             mmojo_printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
             while ((entry = _wreaddir(dir)) != NULL) {
-                const std::string& filename = entry->d_name;
+                using convert_type = std::codecvt_utf8<wchar_t>;
+                std::wstring_convert<convert_type, wchar_t> converter;
+
+                const std::string& filename = converter.to_bytes(entry->d_name);
                 const std::string& extension = ".gguf";            
                 const std::string& slash = "/";
-                mmojo_print("    - Considering: %s", entry->d_name);
+                mmojo_printf("    - Considering: %s", entry->d_name);
+                printf("    - Considering: %s", filename.c_str());
                 if (ends_with(filename, extension)) {
                     mmojo_printf("  - %s\n", entry->d_name);
                     ggufPath = directoryPath;

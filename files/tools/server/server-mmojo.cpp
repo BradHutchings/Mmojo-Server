@@ -32,6 +32,7 @@
 #if defined(_WIN32)
 #include <windows.h>
 #include <pthread.h>
+#include <dirent.h>
 #endif
 
 // Mmojo Server START
@@ -133,12 +134,6 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
 
     workingDirectoryPath = workingDirectoryPath.lexically_normal();
     executablePath = executablePath.lexically_normal();
-
-    #if defined(_WIN32)
-    std::string executablePathString = (const char*) executablePath.c_str();
-    replaceAll(executablePathString, "\\", "\\\\");
-    executablePath = executablePathString;
-    #endif
   
     printf("  - Normalized paths:\n");
     mmojo_printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
@@ -154,7 +149,12 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
     struct dirent *entry;
 
     // Open the directory
+    #if defined(_WIN32)
+    dir = _wopendir((const char*) directoryPath.c_str());
+    #else
     dir = opendir((const char*) directoryPath.c_str());
+    #endif
+  
     if (dir != NULL) {
         mmojo_printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
         while ((entry = readdir(dir)) != NULL) {

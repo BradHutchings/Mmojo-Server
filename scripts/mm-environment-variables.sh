@@ -112,6 +112,10 @@ export BUILD_MINGW_COMPATIBLE_AARCH64="build-mingw-compatible-aarch64"
 export BUILD_MINGW_PERFORMANT_X86_64="build-mingw-performant-x86_64"
 export BUILD_MINGW_PERFORMANT_AARCH64="build-mingw-performant-aarch64"
 
+# Split out build commands so we can edit locally, build the delta.
+export LAST_BUILD_COMMAND=".last-build-command.sh"
+export LAST_BUILD_COMMAND_PATH="$HOME/$LAST_BUILD_COMMAND"
+
 echo "Setting Test paths."
 export TEST_WORKING_DIR="$HOME/500-TEST-working-directory"
 

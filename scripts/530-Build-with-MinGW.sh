@@ -117,7 +117,14 @@ if [ -v CC ]; then
       -DCMAKE_VERBOSE_MAKEFILE=$VERBOSE $GGML_PARAMS
 
     # Build
-    cmake --build $BUILD_SUBDIRECTORY --config Release # --verbose
+    # cmake --build $BUILD_SUBDIRECTORY --config Release # --verbose
+
+$LAST_BUILD_COMMAND="$HOME/.last-build-command.sh"
+cat << EOF > "$HOME/$LAST_BUILD_COMMAND"
+cd $THIS_BUILD_DIR
+cmake --build $BUILD_SUBDIRECTORY --config Release # --verbose
+EOF
+chmod a+x "$LAST_BUILD_COMMAND"
 
     # Show off what we built
     printf "\nBuild of MinGW $processor of llama.cpp is complete.\n\n"

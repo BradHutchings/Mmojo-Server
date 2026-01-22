@@ -395,7 +395,7 @@ void main_args_files(int& argc, char **& argv) {
         const std::string& filename = (const char*) argsPath.c_str();
         #endif
 
-        printf("  - using argsPath: %s\n, (const char*) filename.c_str());
+        printf("  - using argsPath: %s\n", (const char*) filename.c_str());
         argc = mmojo_args((const char*) filename.c_str(), &argv);
     }
 
@@ -409,7 +409,7 @@ void main_args_files(int& argc, char **& argv) {
         const std::string& filename = (const char*) supportArgsPath.c_str();
         #endif
 
-        printf("  - using argsPath: %s\n, (const char*) filename.c_str());
+        printf("  - using argsPath: %s\n", (const char*) filename.c_str());
         argc = mmojo_args((const char*) filename.c_str(), &argv);
     }
 

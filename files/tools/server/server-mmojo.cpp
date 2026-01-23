@@ -102,7 +102,7 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
         #if defined(_WIN32)
         std::string executablePathString = argv_0;
         replaceAll(executablePathString, "\\", "\\\\");
-        printf("  - executablePathString: %s\n", (const char*) executablePathString.c_str());
+        //  printf("  - executablePathString: %s\n", (const char*) executablePathString.c_str());
         executablePath = (const char*) executablePathString.c_str();
         #else
         executablePath = argv_0;
@@ -117,7 +117,7 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
             #if defined(_WIN32)
             std::string workingDirectoryPathString = workingDirectory;
             replaceAll(workingDirectoryPathString, "\\", "\\\\");
-            printf("  - workingDirectoryPathString: %s\n", (const char*) workingDirectoryPathString.c_str());
+            //  printf("  - workingDirectoryPathString: %s\n", (const char*) workingDirectoryPathString.c_str());
             workingDirectoryPath = (const char*) workingDirectoryPathString.c_str();
             #else
             workingDirectoryPath = workingDirectory;
@@ -161,8 +161,8 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
                 const std::string& filename = converter.to_bytes(entry->d_name);
                 const std::string& extension = ".gguf";            
                 const std::string& slash = "/";
-                mmojo_printf("    - Considering (entry): %s\n", (const char*) entry->d_name);
-                printf("    - Considering (filename): %s\n", filename.c_str());
+                //  mmojo_printf("    - Considering (entry): %s\n", (const char*) entry->d_name);
+                //  printf("    - Considering (filename): %s\n", filename.c_str());
                 if (ends_with(filename, extension)) {
                     mmojo_printf("  - %s\n", (const char*) entry->d_name);
                     ggufPath = directoryPath;
@@ -478,25 +478,25 @@ void main_mmojo_server_3(common_params& params) {
       
         if (starts_with(params.model.path, supportRootPath)) {
             printf("\n");
-            printf("--model path starts with %s.\n", (const char*) supportRootPath.c_str());
+            mmojo_printf("--model path starts with %s.\n", (const char*) supportRootPath.c_str());
             params.model.path.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
             printf("  - new model path: %s\n", (const char*) params.model.path.c_str());
         }
         if (starts_with(params.public_path, supportRootPath)) {
             printf("\n");
-            printf("--path path starts with %s.\n", (const char*) supportRootPath.c_str());
+            mmojo_printf("--path path starts with %s.\n", (const char*) supportRootPath.c_str());
             params.public_path.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
             printf("  - new path path: %s\n", (const char*) params.public_path.c_str());
         }
         if (starts_with(params.ssl_file_key, supportRootPath)) {
             printf("\n");
-            printf("--ssl-key-file path starts with %s.\n", (const char*) supportRootPath.c_str());
+            mmojo_printf("--ssl-key-file path starts with %s.\n", (const char*) supportRootPath.c_str());
             params.ssl_file_key.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
             printf("  - new ssl-key-file path: %s\n", (const char*) params.ssl_file_key.c_str());
         }
         if (starts_with(params.ssl_file_cert, supportRootPath)) {
             printf("\n");
-            printf("--ssl-cert-file path starts with %s.\n", (const char*) supportRootPath.c_str());
+            mmojo_printf("--ssl-cert-file path starts with %s.\n", (const char*) supportRootPath.c_str());
             params.ssl_file_cert.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
             printf("  - new ssl-cert-file path: %s\n", (const char*) params.ssl_file_cert.c_str());
         }
@@ -507,9 +507,9 @@ void main_mmojo_server_3(common_params& params) {
 int main(int argc, char ** argv) {
     // Mmojo Server START
     printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
-    // main_mmojo_server_1(argv[0]);
-    // main_path_diagnostics();
-    // main_args_files(argc, argv);
+    main_mmojo_server_1(argv[0]);
+    main_path_diagnostics();
+    main_args_files(argc, argv);
     // Mmojo Server END
   
     // own arguments required by this example
@@ -520,13 +520,13 @@ int main(int argc, char ** argv) {
     }
 
     // Mmojo Server START
-    // main_mmojo_server_2(params);
-    params.model.path = "D:\\projects\\Mmojo MinGW\\Google-Gemma-4B-Instruct-v3-q8_0.gguf";
-    params.use_mmap = false;
+    main_mmojo_server_2(params);
+    //  params.model.path = "D:\\projects\\Mmojo MinGW\\Google-Gemma-4B-Instruct-v3-q8_0.gguf";
+    //  params.use_mmap = false;
     printf("checkpoint 1\n");
     // Mmojo Server END
 
-    #if 0
+    #if 1
     // validate batch size for embeddings
     // embeddings require all tokens to be processed in a single ubatch
     // see https://github.com/ggml-org/llama.cpp/issues/12836
@@ -539,7 +539,7 @@ int main(int argc, char ** argv) {
 
     printf("checkpoint 2\n");
 
-    #if 0
+    #if 1
     if (params.n_parallel < 0) {
         LOG_INF("%s: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true\n", __func__);
 
@@ -550,7 +550,7 @@ int main(int argc, char ** argv) {
   
     printf("checkpoint 3\n");
 
-    #if 0
+    #if 1
     // for consistency between server router mode and single-model mode, we set the same model name as alias
     if (params.model_alias.empty() && !params.model.name.empty()) {
         params.model_alias = params.model.name;
@@ -560,7 +560,7 @@ int main(int argc, char ** argv) {
     // Mmojo Server START
     // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
     printf("checkpoint 4\n");
-    // main_mmojo_server_3(params);
+    main_mmojo_server_3(params);
     printf("\n\n----------END: " PRODUCT_NAME  " -----------------------------------------------------\n\n");
     // Mmojo Server END
     

@@ -523,10 +523,9 @@ int main(int argc, char ** argv) {
     main_mmojo_server_2(params);
     //  params.model.path = "D:\\projects\\Mmojo MinGW\\Google-Gemma-4B-Instruct-v3-q8_0.gguf";
     //  params.use_mmap = false;
-    printf("checkpoint 1\n");
+    //  printf("checkpoint 1\n");
     // Mmojo Server END
 
-    #if 1
     // validate batch size for embeddings
     // embeddings require all tokens to be processed in a single ubatch
     // see https://github.com/ggml-org/llama.cpp/issues/12836
@@ -535,32 +534,27 @@ int main(int argc, char ** argv) {
         LOG_WRN("%s: setting n_batch = n_ubatch = %d to avoid assertion failure\n", __func__, params.n_ubatch);
         params.n_batch = params.n_ubatch;
     }
-    #endif
 
-    printf("checkpoint 2\n");
+    //  printf("checkpoint 2\n");
 
-    #if 1
     if (params.n_parallel < 0) {
-        // Does this cause memory corruption with MinGW compile?
+        // Does this LOG_INF cause memory corruption with MinGW compile? YES.
         // LOG_INF("%s: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true\n", __func__);
 
         params.n_parallel = 4;
         params.kv_unified = true;
     }
-    #endif
   
-    printf("checkpoint 3\n");
+    //  printf("checkpoint 3\n");
 
-    #if 1
     // for consistency between server router mode and single-model mode, we set the same model name as alias
     if (params.model_alias.empty() && !params.model.name.empty()) {
         params.model_alias = params.model.name;
     }
-    #endif
 
     // Mmojo Server START
     // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
-    printf("checkpoint 4\n");
+    //  printf("checkpoint 4\n");
     main_mmojo_server_3(params);
     printf("\n\n----------END: " PRODUCT_NAME  " -----------------------------------------------------\n\n");
     // Mmojo Server END

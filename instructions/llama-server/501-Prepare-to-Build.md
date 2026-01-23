@@ -39,6 +39,18 @@ This script clones the llama.cpp repo and repos upon which it depends into the `
 If you'd like additional source code enhancements from Mmojo Server, you should patch and customize with the two scripts below. If not, you should stop here and start building.
 
 ---
+### Patch llama.cpp Source Code and Build Code, Customize for Doghouse
+This looks like lots of fun.
+- View the script: <a href="../../scripts/501-Patch-llama-cpp.sh" target="_blank">501-Patch-llama-cpp.sh</a>.
+- View the script: <a href="../../scripts/llama-server/501-Customize-llama-cpp.sh" target="_blank">501-Customize-llama-cpp.sh</a>.
+- Run the scripts.
+  ```
+  $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh llama-server
+  $LLAMA_SERVER_SCRIPTS/501-Customize-llama-cpp.sh
+  ```
+
+<!--
+---
 ### Optional: Patch llama.cpp Source Code and Build Code
 If you want to build Actual Portable Executable (APE) files with Cosmopolitan or package conveniently for distribution, you need to patch some of the llama.cpp code with this script.
 - View the script: <a href="../../scripts/501-Patch-llama-cpp.sh" target="_blank">501-Patch-llama-cpp.sh</a>.
@@ -46,6 +58,7 @@ If you want to build Actual Portable Executable (APE) files with Cosmopolitan or
   ```
   $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh llama-server
   ```
+-->
 
 ---
 ### Optional: Customize WebUI

@@ -522,6 +522,7 @@ int main(int argc, char ** argv) {
     // Mmojo Server START
     // main_mmojo_server_2(params);
     params.model.path = "D:\\projects\\Mmojo MinGW\\Google-Gemma-4B-Instruct-v3-q8_0.gguf";
+    params.use_mmap = false;
     printf("checkpoint 1\n");
     // Mmojo Server END
 

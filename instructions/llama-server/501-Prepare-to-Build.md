@@ -90,6 +90,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 $MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh llama-server
 $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh llama-server
+$LLAMA_SERVER_SCRIPTS/501-Customize-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh llama-server
 ```
 

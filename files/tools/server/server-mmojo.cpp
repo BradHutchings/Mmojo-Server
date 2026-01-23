@@ -541,7 +541,8 @@ int main(int argc, char ** argv) {
 
     #if 1
     if (params.n_parallel < 0) {
-        LOG_INF("%s: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true\n", __func__);
+        // Does this cause memory corruption with MinGW compile?
+        // LOG_INF("%s: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true\n", __func__);
 
         params.n_parallel = 4;
         params.kv_unified = true;

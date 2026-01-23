@@ -39,6 +39,18 @@ This script clones the llama.cpp repo and repos upon which it depends into the `
 If you'd like additional source code enhancements from Mmojo Server, you should patch and customize with the two scripts below. If not, you should stop here and start building.
 
 ---
+### Patch llama.cpp Source Code and Build Code, Customize for Doghouse
+This looks like lots of fun.
+- View the script: <a href="../../scripts/501-Patch-llama-cpp.sh" target="_blank">501-Patch-llama-cpp.sh</a>.
+- View the script: <a href="../../scripts/llama-server/501-Customize-llama-cpp.sh" target="_blank">501-Customize-llama-cpp.sh</a>.
+- Run the scripts.
+  ```
+  $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh llama-server
+  $LLAMA_SERVER_SCRIPTS/501-Customize-llama-cpp.sh
+  ```
+
+<!--
+---
 ### Optional: Patch llama.cpp Source Code and Build Code
 If you want to build Actual Portable Executable (APE) files with Cosmopolitan or package conveniently for distribution, you need to patch some of the llama.cpp code with this script.
 - View the script: <a href="../../scripts/501-Patch-llama-cpp.sh" target="_blank">501-Patch-llama-cpp.sh</a>.
@@ -46,6 +58,7 @@ If you want to build Actual Portable Executable (APE) files with Cosmopolitan or
   ```
   $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh llama-server
   ```
+-->
 
 ---
 ### Optional: Customize WebUI
@@ -56,6 +69,7 @@ If you want to customize the WebUI to use **llama-server** as the title, run thi
   $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh llama-server
   ```
 
+<!--
 #### Uh. Oh. npm Spit Out Errors
 
 You may have an earlier version of `npm` and `nodejs` installed on your build machine than are required for that customization step. If you're running Linux or macOS, these steps should clean that up. This reinstall is already in this step: [207. Install Dependencies](../207-Install-Dependencies.md). I'm leaving this workaround here until I'm sure it's not needed.
@@ -67,6 +81,7 @@ sudo apt install nodejs npm -y
 sudo npm install -g node@latest
 sudo npm install -g npm@latest
 ```
+-->
 
 ---
 ### SHORTCUT: Run All the Above Scripts 
@@ -77,6 +92,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 $MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh llama-server
 $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh llama-server
+$LLAMA_SERVER_SCRIPTS/501-Customize-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh llama-server
 ```
 

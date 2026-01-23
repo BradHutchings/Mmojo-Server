@@ -7,16 +7,6 @@
 # - Google minja (for llama.cpp) - chat templates
 #    - https://github.com/google/minja - 
 #
-# No longer need these -- see vendors subdirectory of llama.cpp.
-# - cpp-httplib (for llama.cpp)- HTTPS/HTTPS server library.
-#   - https://github.com/yhirose/cpp-httplib
-# - miniaudio (for llama.cpp)
-#   - https://github.com/mackron/miniaudio
-# - stb (for llama.cpp)
-#   - https://github.com/nothings/stb
-# - json (for llama.cpp)
-#   - https://github.com/nlohmann/json
-#
 # It rolls back the llama.cpp cloned repo to a recent known release where our 
 # patches have been tested.
 #
@@ -59,24 +49,8 @@ echo ""
 git clone https://github.com/ggml-org/llama.cpp $THIS_BUILD_DIR
 cd $THIS_BUILD_DIR
 git clone https://github.com/google/minja.git google-minja
-# git clone https://github.com/yhirose/cpp-httplib.git cpp-httplib
-# git clone https://github.com/mackron/miniaudio.git miniaudio
-# git clone https://github.com/nothings/stb.git stb
-# git clone https://github.com/nlohmann/json.git nlohmann-json
 cp -r $BUILD_COSMOPOLITAN_DIR/cosmocc .
 cp -r $BUILD_OPENSSSL_DIR/openssl .
-
-################################################################################
-# Rollback cpp-httplib repo. No need to do this anymore. -Brad 2025-01-11
-################################################################################
-
-# cpp-httplib has still not fixed whatever problem they introduced. -Brad 2025-12-16
-# cd cpp-httplib
-# git checkout 1d36013fc3aa14f39f5e8071be445e5a75fafff7 # worked!
-# git checkout dbd5ca4bf2da438da1c6dcd0ba7c725f7f2cc7b7 $ failed
-
-# git checkout 143019a38cb88661ce78ca3799dc1c0779c6c563 # Try this. -Brad 2026-01-10
-
 
 ################################################################################
 # Rollback llama.cpp repo tp last tested working.

@@ -25,6 +25,9 @@ if [ -d "$MMOJO_SERVER_DIR" ]; then
   chmod -f a+x $DOGHOUSE_SCRIPTS/4*.sh
   chmod -f a+x $DOGHOUSE_SCRIPTS/5*.sh
   chmod -f a+x $DOGHOUSE_SCRIPTS/6*.sh
+  chmod -f a+x $LLAMA_SERVER_SCRIPTS/4*.sh
+  chmod -f a+x $LLAMA_SERVER_SCRIPTS/5*.sh
+  chmod -f a+x $LLAMA_SERVER_SCRIPTS/6*.sh
 
   ### Links don't work - end up modifying repo files on chmod.
   cp $MMOJO_SERVER_SCRIPTS/mm-*.sh $HOME_SCRIPTS

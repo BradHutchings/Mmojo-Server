@@ -32,6 +32,8 @@
 #if defined(_WIN32)
 #include <windows.h>
 #include <pthread.h>
+#include <dirent.h>
+#include <codecvt>
 #endif
 
 // Mmojo Server START
@@ -53,8 +55,10 @@
 // pre C++20 helpers.
 bool starts_with (const std::string &fullString, const std::string &beginning);
 bool ends_with (const std::string &fullString, const std::string &ending);
+void replaceAll(std::string& str, const std::string& from, const std::string& to);
 void get_important_paths(const char* argv_0, std::filesystem::path& executablePath, std::filesystem::path& workingDirectoryPath);
 void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem::path& ggufPath);
+void mmojo_printf(const char* format, const char* stringParam);
 
 bool starts_with (const std::string &fullString, const std::string &beginning) {
     if (fullString.length() >= beginning.length()) {
@@ -74,6 +78,17 @@ bool ends_with (const std::string &fullString, const std::string &ending) {
     } 
 }
 
+void replaceAll(std::string& str, const std::string& from, const std::string& to) {
+    if(from.empty())
+        return;
+    size_t start_pos = 0;
+    while((start_pos = str.find(from, start_pos)) != std::string::npos) {
+        str.replace(start_pos, from.length(), to);
+        // Move the search position forward by the length of the new substring
+        start_pos += to.length(); 
+    }
+}
+
 void get_important_paths(const char* argv_0, std::filesystem::path& executablePath, std::filesystem::path& workingDirectoryPath) {
     printf("\n");
     printf("- get_important_paths()\n");
@@ -83,7 +98,15 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
 
     if (argv_0 != NULL) {
         printf("  - argv_0: %s\n", argv_0);
+
+        #if defined(_WIN32)
+        std::string executablePathString = argv_0;
+        replaceAll(executablePathString, "\\", "\\\\");
+        //  printf("  - executablePathString: %s\n", (const char*) executablePathString.c_str());
+        executablePath = (const char*) executablePathString.c_str();
+        #else
         executablePath = argv_0;
+        #endif
 
         char workingDirectory[PATH_MAX];
         workingDirectory[0] = '\0';
@@ -91,7 +114,14 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
         if (getcwd(workingDirectory, sizeof(workingDirectory) - 1)) {
             printf("  - workingDirectory: %s\n", workingDirectory);
 
+            #if defined(_WIN32)
+            std::string workingDirectoryPathString = workingDirectory;
+            replaceAll(workingDirectoryPathString, "\\", "\\\\");
+            //  printf("  - workingDirectoryPathString: %s\n", (const char*) workingDirectoryPathString.c_str());
+            workingDirectoryPath = (const char*) workingDirectoryPathString.c_str();
+            #else
             workingDirectoryPath = workingDirectory;
+            #endif
         }
 
         if (!executablePath.has_root_path()) {
@@ -101,45 +131,84 @@ void get_important_paths(const char* argv_0, std::filesystem::path& executablePa
     }
 
     printf("  - Raw paths:\n");
-    printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
-    printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    mmojo_printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    mmojo_printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
 
     workingDirectoryPath = workingDirectoryPath.lexically_normal();
     executablePath = executablePath.lexically_normal();
-
+  
     printf("  - Normalized paths:\n");
-    printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
-    printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    mmojo_printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    mmojo_printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
 }
 
 void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem::path& ggufPath) {
     ggufPath.clear();
     printf("\n");
-    printf("- find_first_gguf() in %s:\n", (const char*) directoryPath.c_str());
-  
-    DIR *dir;
-    struct dirent *entry;
+    mmojo_printf("- find_first_gguf() in %s:\n", (const char*) directoryPath.c_str());
 
-    // Open the directory
-    dir = opendir((const char*) directoryPath.c_str());
-    if (dir != NULL) {
-        printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
-        while ((entry = readdir(dir)) != NULL) {
-            const std::string& filename = entry->d_name;
-            const std::string& extension = ".gguf";            
-            const std::string& slash = "/";
-            if (ends_with(filename, extension)) {
-                printf("  - %s\n", entry->d_name);
-                ggufPath = directoryPath;
-                ggufPath /= entry->d_name;
-                break;
+    #if defined(_WIN32)
+        _WDIR *dir;
+        struct _wdirent *entry;
+        dir = _wopendir((const wchar_t*) directoryPath.c_str());
+  
+        if (dir != NULL) {
+            mmojo_printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
+            while ((entry = _wreaddir(dir)) != NULL) {
+                using convert_type = std::codecvt_utf8<wchar_t>;
+                std::wstring_convert<convert_type, wchar_t> converter;
+
+                const std::string& filename = converter.to_bytes(entry->d_name);
+                const std::string& extension = ".gguf";            
+                const std::string& slash = "/";
+                //  mmojo_printf("    - Considering (entry): %s\n", (const char*) entry->d_name);
+                //  printf("    - Considering (filename): %s\n", filename.c_str());
+                if (ends_with(filename, extension)) {
+                    mmojo_printf("  - %s\n", (const char*) entry->d_name);
+                    ggufPath = directoryPath;
+                    ggufPath /= entry->d_name;
+                    break;
+                }
             }
+            _wclosedir(dir);
         }
-        closedir(dir);
-    }
-    else {
-        perror("Error opening directory");
-    }
+        else {
+            perror("Error opening directory");
+        }
+
+    #else
+        DIR *dir;
+        struct dirent *entry;
+        dir = opendir((const char*) directoryPath.c_str());
+      
+        if (dir != NULL) {
+            mmojo_printf("  - Looking for .gguf in %s:\n", (const char*) directoryPath.c_str());
+            while ((entry = readdir(dir)) != NULL) {
+                const std::string& filename = entry->d_name;
+                const std::string& extension = ".gguf";            
+                const std::string& slash = "/";
+                mmojo_print("    - Considering: %s", entry->d_name);
+                if (ends_with(filename, extension)) {
+                    mmojo_printf("  - %s\n", entry->d_name);
+                    ggufPath = directoryPath;
+                    ggufPath /= entry->d_name;
+                    break;
+                }
+            }
+            closedir(dir);
+        }
+        else {
+            perror("Error opening directory");
+        }
+    #endif
+}
+
+void mmojo_printf(const char* format, const char* stringParam) {
+    std::string formatString = format;
+    #if defined(_WIN32)
+    replaceAll(formatString, "%s", "%ls");
+    #endif
+    printf(formatString.c_str(), stringParam);
 }
 
 // Mmojo Server END
@@ -215,6 +284,9 @@ std::filesystem::path zipArgsPath;
 std::filesystem::path firstGgufPath;
 
 void main_mmojo_server_1(char* argv_0) {
+    printf("\n");
+    printf("- main_mmojo_server_1(%s)\n", argv_0);
+
     // Keep the build from showing up as ape in the process list.
     pthread_setname_np(pthread_self(), PROCESS_NAME);
 
@@ -255,49 +327,55 @@ void main_mmojo_server_1(char* argv_0) {
 
 void main_path_diagnostics() {
     printf("\n");
-    printf("- Paths of things we care about:\n");
-    printf("  -       executablePath: %s\n", (const char*) executablePath.c_str());
-    printf("  - executableParentPath: %s\n", (const char*) executableParentPath.c_str());
-    printf("  - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
-    printf("  -             argsPath: %s\n", (const char*) argsPath.c_str());
-    printf("  -          supportPath: %s\n", (const char*) supportPath.c_str());
-    printf("  -      supportArgsPath: %s\n", (const char*) supportArgsPath.c_str());
-    printf("  -              zipPath: %s\n", (const char*) zipPath.c_str());
-    printf("  -          zipArgsPath: %s\n", (const char*) zipArgsPath.c_str());
-    printf("  -        firstGgufPath: %s\n", (const char*) firstGgufPath.c_str());
+    printf("- main_path_diagnostics()\n");
+
+    printf("\n");
+    printf("  - Paths of things we care about:\n");
+    mmojo_printf("    -       executablePath: %s\n", (const char*) executablePath.c_str());
+    mmojo_printf("    - executableParentPath: %s\n", (const char*) executableParentPath.c_str());
+    mmojo_printf("    - workingDirectoryPath: %s\n", (const char*) workingDirectoryPath.c_str());
+    mmojo_printf("    -             argsPath: %s\n", (const char*) argsPath.c_str());
+    mmojo_printf("    -          supportPath: %s\n", (const char*) supportPath.c_str());
+    mmojo_printf("    -      supportArgsPath: %s\n", (const char*) supportArgsPath.c_str());
+    mmojo_printf("    -              zipPath: %s\n", (const char*) zipPath.c_str());
+    mmojo_printf("    -          zipArgsPath: %s\n", (const char*) zipArgsPath.c_str());
+    mmojo_printf("    -        firstGgufPath: %s\n", (const char*) firstGgufPath.c_str());
 
     printf("\n");
     printf("- These paths exist:\n");
     if (std::filesystem::exists(executablePath)) {
-        printf("  -       executablePath exists: %s\n", (const char*) executablePath.c_str());
+        mmojo_printf("    -       executablePath exists: %s\n", (const char*) executablePath.c_str());
     }
     if (std::filesystem::exists(executableParentPath)) {
-        printf("  - executableParentPath exists: %s\n", (const char*) executableParentPath.c_str());
+        mmojo_printf("    - executableParentPath exists: %s\n", (const char*) executableParentPath.c_str());
     }
     if (std::filesystem::exists(workingDirectoryPath)) {
-        printf("  - workingDirectoryPath exists: %s\n", (const char*) workingDirectoryPath.c_str());
+        mmojo_printf("    - workingDirectoryPath exists: %s\n", (const char*) workingDirectoryPath.c_str());
     }
     if (std::filesystem::exists(argsPath)) {
-        printf("  -             argsPath exists: %s\n", (const char*) argsPath.c_str());
+        mmojo_printf("    -             argsPath exists: %s\n", (const char*) argsPath.c_str());
     }
     if (std::filesystem::exists(supportPath)) {
-        printf("  -          supportPath exists: %s\n", (const char*) supportPath.c_str());
+        mmojo_printf("    -          supportPath exists: %s\n", (const char*) supportPath.c_str());
     }
     if (std::filesystem::exists(supportArgsPath)) {
-        printf("  -      supportArgsPath exists: %s\n", (const char*) supportArgsPath.c_str());
+        mmojo_printf("    -      supportArgsPath exists: %s\n", (const char*) supportArgsPath.c_str());
     }
     if (std::filesystem::exists(zipPath)) {
-        printf("  -              zipPath exists: %s\n", (const char*) zipPath.c_str());
+        mmojo_printf("    -              zipPath exists: %s\n", (const char*) zipPath.c_str());
     }
     if (std::filesystem::exists(zipArgsPath)) {
-        printf("  -          zipArgsPath exists: %s\n", (const char*) zipArgsPath.c_str());
+        mmojo_printf("    -          zipArgsPath exists: %s\n", (const char*) zipArgsPath.c_str());
     }  
     if (std::filesystem::exists(firstGgufPath)) {
-        printf("  -        firstGgufPath exists: %s\n", (const char*) firstGgufPath.c_str());
+        mmojo_printf("    -        firstGgufPath exists: %s\n", (const char*) firstGgufPath.c_str());
     }  
 }
 
 void main_args_files(int& argc, char **& argv) {
+    printf("\n");
+    printf("- main_args_files()\n");
+
     // Implement an args file feature inspired by llamafile's.
     // It does not require Cosmo anymore, as the mmojo_args function is part of mmojo-server now.
     // This is where we modify argc and argv!!
@@ -305,15 +383,34 @@ void main_args_files(int& argc, char **& argv) {
     // At this point, argc, argv represent:
     //     command (User supplied args)
 
+    #if defined(_WIN32)
+    using convert_type = std::codecvt_utf8<wchar_t>;
+    std::wstring_convert<convert_type, wchar_t> converter;
+    #endif
+  
     if (std::filesystem::exists(argsPath)) {
-        argc = mmojo_args((const char*) argsPath.c_str(), &argv);
+        #if defined(_WIN32)
+        const std::string& filename = converter.to_bytes(argsPath.c_str());
+        #else
+        const std::string& filename = (const char*) argsPath.c_str();
+        #endif
+
+        printf("  - using argsPath: %s\n", (const char*) filename.c_str());
+        argc = mmojo_args((const char*) filename.c_str(), &argv);
     }
 
     // At this point, argc, argv represent:
     //     command (argsPath args) (User supplied args)
 
     if (std::filesystem::exists(supportArgsPath)) {
-        argc = mmojo_args((const char*) supportArgsPath.c_str(), &argv);
+        #if defined(_WIN32)
+        const std::string& filename = converter.to_bytes(supportArgsPath.c_str());
+        #else
+        const std::string& filename = (const char*) supportArgsPath.c_str();
+        #endif
+
+        printf("  - using argsPath: %s\n", (const char*) filename.c_str());
+        argc = mmojo_args((const char*) filename.c_str(), &argv);
     }
 
     // At this point, argc, argv represent:
@@ -321,6 +418,7 @@ void main_args_files(int& argc, char **& argv) {
 
     #ifdef COSMOCC
     if (std::filesystem::exists(zipArgsPath)) {
+        // We don't use MinGW to compile for Windows under COSMOCC
         argc = mmojo_args((const char*) zipArgsPath.c_str(), &argv);
     }
 
@@ -332,16 +430,28 @@ void main_args_files(int& argc, char **& argv) {
 }
 
 void main_mmojo_server_2(common_params& params) {
-    printf("- Checking for missing model and model inside APE zip.\n");
+    printf("\n");
+    printf("- main_mmojo_server_2()\n");
+
+    printf("  - Checking for missing model and model inside APE zip.\n");
     
     // If we have no model path at this point, use the firstGgufPath.
     // I think I have all the possibilities for specifying a model covered here.
     if ((params.model.path == "") && (params.model.url == "") && (params.model.docker_repo == "") &&  
         (params.model.hf_repo == "") && (params.model.hf_file == "") && 
         std::filesystem::exists(firstGgufPath)) {
-    
+
+        #if defined(_WIN32)
+        using convert_type = std::codecvt_utf8<wchar_t>;
+        std::wstring_convert<convert_type, wchar_t> converter;
+        const std::string& firstGgufPathString = converter.to_bytes(firstGgufPath.c_str());
+
+        printf("  - Using firstGgufPath for model: %s\n", (const char*) firstGgufPathString.c_str());
+        params.model.path = (const char*) firstGgufPathString.c_str();
+        #else
         printf("  - Using firstGgufPath for model: %s\n", (const char*) firstGgufPath.c_str());
         params.model.path = (const char*) firstGgufPath.c_str();
+        #endif
     }
     
     #ifdef COSMOCC
@@ -355,7 +465,10 @@ void main_mmojo_server_2(common_params& params) {
 }
 
 void main_mmojo_server_3(common_params& params) {
-    // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
+    printf("\n");
+    printf("- main_mmojo_server_3()\n");
+
+  // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
     // fix params -- model, path, ssl-key-file, ssl-cert-file
     // if they are relative paths, fix to absolute relative to working directory
     if (supportPath != "") {
@@ -365,25 +478,25 @@ void main_mmojo_server_3(common_params& params) {
       
         if (starts_with(params.model.path, supportRootPath)) {
             printf("\n");
-            printf("--model path starts with %s.\n", (const char*) supportRootPath.c_str());
+            mmojo_printf("--model path starts with %s.\n", (const char*) supportRootPath.c_str());
             params.model.path.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
             printf("  - new model path: %s\n", (const char*) params.model.path.c_str());
         }
         if (starts_with(params.public_path, supportRootPath)) {
             printf("\n");
-            printf("--path path starts with %s.\n", (const char*) supportRootPath.c_str());
+            mmojo_printf("--path path starts with %s.\n", (const char*) supportRootPath.c_str());
             params.public_path.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
             printf("  - new path path: %s\n", (const char*) params.public_path.c_str());
         }
         if (starts_with(params.ssl_file_key, supportRootPath)) {
             printf("\n");
-            printf("--ssl-key-file path starts with %s.\n", (const char*) supportRootPath.c_str());
+            mmojo_printf("--ssl-key-file path starts with %s.\n", (const char*) supportRootPath.c_str());
             params.ssl_file_key.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
             printf("  - new ssl-key-file path: %s\n", (const char*) params.ssl_file_key.c_str());
         }
         if (starts_with(params.ssl_file_cert, supportRootPath)) {
             printf("\n");
-            printf("--ssl-cert-file path starts with %s.\n", (const char*) supportRootPath.c_str());
+            mmojo_printf("--ssl-cert-file path starts with %s.\n", (const char*) supportRootPath.c_str());
             params.ssl_file_cert.replace(0, supportRootPath.length(), (const char*) supportPathSlash.c_str());
             printf("  - new ssl-cert-file path: %s\n", (const char*) params.ssl_file_cert.c_str());
         }
@@ -397,40 +510,6 @@ int main(int argc, char ** argv) {
     main_mmojo_server_1(argv[0]);
     main_path_diagnostics();
     main_args_files(argc, argv);
-
-    #if 0
-    // Implement an args file feature inspired by llamafile's.
-    // It does not require Cosmo anymore, as the mmojo_args function is part of mmojo-server now.
-    // This is where we modify argc and argv!!
-
-        // At this point, argc, argv represent:
-        //     command (User supplied args)
-
-        if (std::filesystem::exists(argsPath)) {
-            argc = mmojo_args((const char*) argsPath.c_str(), &argv);
-        }
-
-        // At this point, argc, argv represent:
-        //     command (argsPath args) (User supplied args)
-
-        if (std::filesystem::exists(supportArgsPath)) {
-            argc = mmojo_args((const char*) supportArgsPath.c_str(), &argv);
-        }
-
-        // At this point, argc, argv represent:
-        //     command (supportArgsPath args) (argsPath args) (User supplied args)
-
-        #ifdef COSMOCC
-        if (std::filesystem::exists(zipArgsPath)) {
-            argc = mmojo_args((const char*) zipArgsPath.c_str(), &argv);
-        }
-
-        // At this point, argc, argv represent:
-        //     command (zipArgsPath args) (supportArgsPath args) (argsPath args) (User supplied args)
-        #endif
-    
-        // Yep, this is counterintuitive, but how the mmojo_args command works.
-    #endif
     // Mmojo Server END
   
     // own arguments required by this example
@@ -454,12 +533,15 @@ int main(int argc, char ** argv) {
     }
 
     if (params.n_parallel < 0) {
-        LOG_INF("%s: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true\n", __func__);
+        // Mmojo Server START
+        // Does this LOG_INF cause memory corruption with MinGW compile? YES.
+        // LOG_INF("%s: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true\n", __func__);
+        // Mmojo Server END
 
         params.n_parallel = 4;
         params.kv_unified = true;
     }
-
+  
     // for consistency between server router mode and single-model mode, we set the same model name as alias
     if (params.model_alias.empty() && !params.model.name.empty()) {
         params.model_alias = params.model.name;

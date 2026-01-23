@@ -36,7 +36,7 @@ fi
 THIS_BUILD_DIR=$BUILD_DIR
 if [ "$branding" == "doghouse" ]; then
     THIS_BUILD_DIR=$DOGHOUSE_BUILD_DIR
-elif [ "$llama-server" == "doghouse" ]; then
+elif [ "$branding" == "llama-server" ]; then
     THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
 fi
 
@@ -117,7 +117,17 @@ if [ -v CC ]; then
       -DCMAKE_VERBOSE_MAKEFILE=$VERBOSE $GGML_PARAMS
 
     # Build
-    cmake --build $BUILD_SUBDIRECTORY --config Release --verbose
+    # cmake --build $BUILD_SUBDIRECTORY --config Release # --verbose
+
+
+# LAST_BUILD_COMMAND=".last-build-command.sh"
+# LAST_BUILD_COMMAND_PATH="$HOME/$LAST_BUILD_COMMAND"
+cat << EOF > "$LAST_BUILD_COMMAND_PATH"
+cd $THIS_BUILD_DIR
+echo "Building: $branding - $BUILD_SUBDIRECTORY"
+cmake --build $BUILD_SUBDIRECTORY --config Release # --verbose
+EOF
+chmod a+x "$LAST_BUILD_COMMAND_PATH"
 
     # Show off what we built
     printf "\nBuild of MinGW $processor of llama.cpp is complete.\n\n"

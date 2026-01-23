@@ -521,9 +521,6 @@ int main(int argc, char ** argv) {
 
     // Mmojo Server START
     main_mmojo_server_2(params);
-    //  params.model.path = "D:\\projects\\Mmojo MinGW\\Google-Gemma-4B-Instruct-v3-q8_0.gguf";
-    //  params.use_mmap = false;
-    //  printf("checkpoint 1\n");
     // Mmojo Server END
 
     // validate batch size for embeddings
@@ -535,18 +532,16 @@ int main(int argc, char ** argv) {
         params.n_batch = params.n_ubatch;
     }
 
-    //  printf("checkpoint 2\n");
-
     if (params.n_parallel < 0) {
+        // Mmojo Server START
         // Does this LOG_INF cause memory corruption with MinGW compile? YES.
         // LOG_INF("%s: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true\n", __func__);
+        // Mmojo Server END
 
         params.n_parallel = 4;
         params.kv_unified = true;
     }
   
-    //  printf("checkpoint 3\n");
-
     // for consistency between server router mode and single-model mode, we set the same model name as alias
     if (params.model_alias.empty() && !params.model.name.empty()) {
         params.model_alias = params.model.name;
@@ -554,7 +549,6 @@ int main(int argc, char ** argv) {
 
     // Mmojo Server START
     // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
-    //  printf("checkpoint 4\n");
     main_mmojo_server_3(params);
     printf("\n\n----------END: " PRODUCT_NAME  " -----------------------------------------------------\n\n");
     // Mmojo Server END

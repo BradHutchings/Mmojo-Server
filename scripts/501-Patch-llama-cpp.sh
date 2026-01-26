@@ -67,6 +67,9 @@ sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
 sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
 sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
 
+# Patch vendor/miniaudio/miniaudio.h for bad cosmo build assumptions
+sed -i -e 's/__COSMOPOLITAN__/__COSMOPOLITAN__XXX/g' vendor/miniaudio/miniaudio.h
+
 # Patch vendor/cpp-httplib for compatibility with MinGW. Inline member functions need to be
 # declared in class definitions.
 sed -i -e 's/bool is_readable(/inline bool is_readable(/g' vendor/cpp-httplib/httplib.h

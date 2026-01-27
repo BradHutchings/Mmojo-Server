@@ -260,17 +260,23 @@ bool server_http_context::init(const common_params & params) {
     });
 
     // Mmojo Server START
-    svr->set_post_routing_handler([](const httplib::Request & req, httplib::Response & res) {
-        if (ends_with(req.path, ".html") {
+    srv->set_post_routing_handler([](const httplib::Request & req, httplib::Response & res) {
+        std::string cacheControlValue = "max-age=3600";
+        std::string noCache = "no-cache, no-store, must-revalidate";
+      
+        if (ends_with(req.path, ".html")) {
             LOG_INF("Request ends with .html\n");
+            cacheControlValue = noCache;
         }
-        if (ends_with(req.path, ".js") {
+        if (ends_with(req.path, ".js")) {
             LOG_INF("Request ends with .js\n");
+            cacheControlValue = noCache;
         }
-        if (ends_with(req.path, ".css") {
+        if (ends_with(req.path, ".css")) {
             LOG_INF("Request ends with .js\n");
+            cacheControlValue = noCache;
         }
-        res.set_header("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.set_header("Cache-Control", cacheControlValue);
     });    
     // Mmojo Server END
   

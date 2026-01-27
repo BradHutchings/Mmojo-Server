@@ -31,9 +31,6 @@
 
 #if defined(_WIN32)
 #include <windows.h>
-#include <pthread.h>
-#include <dirent.h>
-#include <codecvt>
 #endif
 
 // Mmojo Server START
@@ -511,7 +508,7 @@ int main(int argc, char ** argv) {
     main_path_diagnostics();
     main_args_files(argc, argv);
     // Mmojo Server END
-  
+
     // own arguments required by this example
     common_params params;
 
@@ -541,7 +538,7 @@ int main(int argc, char ** argv) {
         params.n_parallel = 4;
         params.kv_unified = true;
     }
-  
+
     // for consistency between server router mode and single-model mode, we set the same model name as alias
     if (params.model_alias.empty() && !params.model.name.empty()) {
         params.model_alias = params.model.name;
@@ -552,7 +549,7 @@ int main(int argc, char ** argv) {
     main_mmojo_server_3(params);
     printf("\n\n----------END: " PRODUCT_NAME  " -----------------------------------------------------\n\n");
     // Mmojo Server END
-    
+
     common_init();
 
     // struct that contains llama context and inference
@@ -598,6 +595,7 @@ int main(int argc, char ** argv) {
         routes.post_completions            = models_routes->proxy_post;
         routes.post_completions_oai        = models_routes->proxy_post;
         routes.post_chat_completions       = models_routes->proxy_post;
+        routes.post_responses_oai          = models_routes->proxy_post;
         routes.post_anthropic_messages     = models_routes->proxy_post;
         routes.post_anthropic_count_tokens = models_routes->proxy_post;
         routes.post_infill                 = models_routes->proxy_post;
@@ -634,6 +632,7 @@ int main(int argc, char ** argv) {
     ctx_http.post("/chat/completions",    ex_wrapper(routes.post_chat_completions));
     ctx_http.post("/v1/chat/completions", ex_wrapper(routes.post_chat_completions));
     ctx_http.post("/api/chat",            ex_wrapper(routes.post_chat_completions)); // ollama specific endpoint
+    ctx_http.post("/v1/responses",        ex_wrapper(routes.post_responses_oai));
     ctx_http.post("/v1/messages",         ex_wrapper(routes.post_anthropic_messages)); // anthropic messages API
     ctx_http.post("/v1/messages/count_tokens", ex_wrapper(routes.post_anthropic_count_tokens)); // anthropic token counting
     ctx_http.post("/infill",              ex_wrapper(routes.post_infill));

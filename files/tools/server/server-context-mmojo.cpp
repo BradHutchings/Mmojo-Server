@@ -3725,12 +3725,15 @@ void server_routes::init_routes() {
     this->get_models = [this](const server_http_req &) {
         auto res = create_response(true);
 
+        // Mmojo Server START
+        // Comment out the "bool ctx_server" line. Assume our use to get the model meta is safe during sleeping.
+        // We might want to read it while awake and cache it though. -Brad 2026-01-27
+      
         // this endpoint can be accessed during sleeping
         // the next LOC is to avoid someone accidentally use ctx_server
-        bool ctx_server; // do NOT delete this line
-        GGML_UNUSED(ctx_server);
+        //  bool ctx_server; // do NOT delete this line
+        //  GGML_UNUSED(ctx_server);
       
-        // Mmojo Server START
         json model_meta = nullptr;
         // We lost is_ready() around 2025-12-29. -Brad
         //  if (is_ready()) {

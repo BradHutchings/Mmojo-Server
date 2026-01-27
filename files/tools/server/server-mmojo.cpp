@@ -187,7 +187,7 @@ void find_first_gguf(const std::filesystem::path& directoryPath, std::filesystem
                 const std::string& filename = entry->d_name;
                 const std::string& extension = ".gguf";            
                 const std::string& slash = "/";
-                mmojo_print("    - Considering: %s", entry->d_name);
+                //  mmojo_printf("    - Considering: %s\n", entry->d_name);
                 if (ends_with(filename, extension)) {
                     mmojo_printf("  - %s\n", entry->d_name);
                     ggufPath = directoryPath;

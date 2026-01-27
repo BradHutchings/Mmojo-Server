@@ -621,7 +621,9 @@ async function StartCompleting(workAreaText, temperature, tokens, stopWords) {
 						let elapsedMS = Date.now() - script.completionStartedMS;
 						let estimatedMS = (processed > 0) ? (elapsedMS * total) / processed : 0;
 						if (estimatedMS > 0) {
-			            	estimatedMS += (10 * 10000);
+							// Add 10 seconds
+			            	estimatedMS += (10 * 1000);
+							// Round up nearest 10 seconds. That's why it's 10000.
 			            	estimatedMS = 10000 * Math.ceil(estimatedMS / 10000);
 						}
 

@@ -259,6 +259,21 @@ bool server_http_context::init(const common_params & params) {
         return httplib::Server::HandlerResponse::Unhandled;
     });
 
+    // Mmojo Server START
+    svr->set_post_routing_handler([](const httplib::Request & req, httplib::Response & res) {
+        if (ends_with(req.path, ".html") {
+            LOG_INF("Request ends with .html\n");
+        }
+        if (ends_with(req.path, ".js") {
+            LOG_INF("Request ends with .js\n");
+        }
+        if (ends_with(req.path, ".css") {
+            LOG_INF("Request ends with .js\n");
+        }
+        res.set_header("Cache-Control", "no-cache, no-store, must-revalidate");
+    });    
+    // Mmojo Server END
+  
     int n_threads_http = params.n_threads_http;
     if (n_threads_http < 1) {
         // +2 threads for monitoring endpoints

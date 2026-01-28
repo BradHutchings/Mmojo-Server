@@ -47,25 +47,34 @@ if ! grep -q "#include <algorithm>" "src/llama-hparams.cpp" ; then
   sed -i '4i #include <algorithm>' src/llama-hparams.cpp
 fi
 
-# Update the CMake files.
-sed -i -e 's/arg.cpp/arg-mmojo.cpp/g' common/CMakeLists.txt
-sed -i -e 's/common.cpp/common-mmojo.cpp/g' common/CMakeLists.txt
-sed -i -e '/log.h/a \    mmojo-args.h\n\    mmojo-args.c' common/CMakeLists.txt
-# Not bothering with zipalign for now. -Brad 2025-11-23
-# sed -i -e 's/add_subdirectory(server)/add_subdirectory(server)\n\tif (COSMOCC)\n\t\tadd_subdirectory(zipalign)\n\tendif()/g' tools/CMakeLists.txt
-sed -i -e 's/server.cpp/server-mmojo.cpp/g' tools/server/CMakeLists.txt
-sed -i -e 's/server-context.cpp/server-context-mmojo.cpp/g' tools/server/CMakeLists.txt
-sed -i -e 's/server-http.cpp/server-http-mmojo.cpp/g' tools/server/CMakeLists.txt
-sed -i -e "s/set(TARGET llama-server)/set(TARGET $EXECUTABLE_FILE)/g" tools/server/CMakeLists.txt
-sed -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt
+if [ "$branding" == "" ] || [ "$branding" == "doghouse" ]; then
+    # Update the CMake files.
+    sed -i -e 's/arg.cpp/arg-mmojo.cpp/g' common/CMakeLists.txt
+    sed -i -e 's/common.cpp/common-mmojo.cpp/g' common/CMakeLists.txt
+    sed -i -e '/log.h/a \    mmojo-args.h\n\    mmojo-args.c' common/CMakeLists.txt
+    # Not bothering with zipalign for now. -Brad 2025-11-23
+    # sed -i -e 's/add_subdirectory(server)/add_subdirectory(server)\n\tif (COSMOCC)\n\t\tadd_subdirectory(zipalign)\n\tendif()/g' tools/CMakeLists.txt
+    sed -i -e 's/server.cpp/server-mmojo.cpp/g' tools/server/CMakeLists.txt
+    sed -i -e 's/server-context.cpp/server-context-mmojo.cpp/g' tools/server/CMakeLists.txt
+    sed -i -e 's/server-http.cpp/server-http-mmojo.cpp/g' tools/server/CMakeLists.txt
+    sed -i -e "s/set(TARGET llama-server)/set(TARGET $EXECUTABLE_FILE)/g" tools/server/CMakeLists.txt
+    sed -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt
+
+    # In tools/server/server-context-mmojo.cpp, replace "defer(" with "defer_task(" to make Cosmo STL happy.
+    sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
+    sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
+    sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
+fi
+
+if [ "$branding" == "llama-server" ]; then
+    # In tools/server/server-context.cpp, replace "defer(" with "defer_task(" to make Cosmo STL happy.
+    sed -i -e 's/defer(/defer_task(/g' tools/server/server-context.cpp
+    sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
+    sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
+fi
 
 # Thread priority patch for MinGW cross-compiler:
 sed -i -e 's/THREAD_POWER_THROTTLING/PROCESS_POWER_THROTTLING/g' ggml/src/ggml-cpu/ggml-cpu.c
-
-# In tools/server/server-context-mmojo.cpp, replace "defer(" with "defer_task(" to make Cosmo STL happy.
-sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
-sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
-sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
 
 # Patch vendor/miniaudio/miniaudio.h for bad cosmo build assumptions
 sed -i -e 's/__COSMOPOLITAN__/__COSMOPOLITAN__XXX/g' vendor/miniaudio/miniaudio.h

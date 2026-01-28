@@ -3,10 +3,6 @@
 **llama-server** is the project upon which Mmojo Server builds. [Read more about llama-server](500-Build-llana-server.md).
 
 ---
-### About llama-server
-**llama-server** is the project upon which Mmojo Server builds. [Read more about llama-server](500-Build-llana-server.md).
-
----
 ### About this Step
 In the following three steps, we will build `llama-server` and other llama.cpp targets to run on the CPU of your build environment, with optional GPU support.
 - **Compatible** builds run on a wide range of x86_64 and aarch64 processors.
@@ -39,21 +35,21 @@ $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS" llama-serv
 ```
 
 ---
-### SHORTCUT: Test Compatible Executable Mmojo Server
+### SHORTCUT: Test Compatible Executable llama-server
 After you build all the APEs, you can test the compatible executable:
 ```
 $MMOJO_SERVER_SCRIPTS/510-Test-Server.sh compatible "$CHOSEN_GPUS" 1 llama-server
 ```
 
 ---
-### SHORTCUT: Test Performant Executable Mmojo Server
+### SHORTCUT: Test Performant Executable llama-server
 After you build all the APEs, you can test the performant executable:
 ```
 $MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$CHOSEN_GPUS" 1 llama-server
 ```
 
 ---
-### SHORTCUT: Test Native Executable Mmojo Server
+### SHORTCUT: Test Native Executable llama-server
 After you build all the APEs, you can test the native executable:
 ```
 $MMOJO_SERVER_SCRIPTS/510-Test-Server.sh native "$CHOSEN_GPUS" 1 llama-server

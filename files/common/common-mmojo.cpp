@@ -939,7 +939,7 @@ std::string fs_get_cache_directory() {
         cache_directory = std::getenv("LOCALAPPDATA");
 #elif defined(__EMSCRIPTEN__)
         GGML_ABORT("not implemented on this platform");
-      
+
 // Mmojo Server START
 // This could be automated by searching for "error Unknown architecture" and inserting the block 2 lines before. -Brad 2025-11-05
 #elif defined(COSMOCC)
@@ -955,7 +955,7 @@ std::string fs_get_cache_directory() {
         }
         
 // Mmojo Server END
-      
+
 #else
 #  error Unknown architecture
 #endif

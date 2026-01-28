@@ -276,6 +276,10 @@ bool server_http_context::init(const common_params & params) {
             //  LOG_INF("Request ends with .css\n");
             cacheControlValue = noCache;
         }
+        if (ends_with(req.path, ".json")) {
+            //  LOG_INF("Request ends with .json\n");
+            cacheControlValue = noCache;
+        }
         res.set_header("Cache-Control", cacheControlValue);
     });    
     // Mmojo Server END

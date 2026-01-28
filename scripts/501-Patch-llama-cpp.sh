@@ -38,9 +38,13 @@ cp -r $MMOJO_SERVER_FILES/* $THIS_BUILD_DIR/
 
 cd $THIS_BUILD_DIR
 
+#-------------------------------------------------------------------------------
 # Cosmo compatibility
+#-------------------------------------------------------------------------------
+
 # Patch vendor/miniaudio/miniaudio.h for bad cosmo build assumptions
 sed -i -e 's/__COSMOPOLITAN__/__COSMOPOLITAN__XXX/g' vendor/miniaudio/miniaudio.h
+
 # Cosmo headers needed.
 if ! grep -q "#include <cstdlib>" "tools/mtmd/deprecation-warning.cpp" ; then
   sed -i '3i #include <cstdlib>' tools/mtmd/deprecation-warning.cpp
@@ -48,6 +52,15 @@ fi
 if ! grep -q "#include <algorithm>" "src/llama-hparams.cpp" ; then
   sed -i '4i #include <algorithm>' src/llama-hparams.cpp
 fi
+
+# In tools/server .cpp files, replace "defer(" with "defer_task(" to make Cosmo STL happy.
+sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
+sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
+sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
+
+#-------------------------------------------------------------------------------
+# Mmojo Server and Doghouse specific
+#-------------------------------------------------------------------------------
 
 if [ "$branding" == "" ] || [ "$branding" == "doghouse" ]; then
     # Update the CMake files.
@@ -61,28 +74,29 @@ if [ "$branding" == "" ] || [ "$branding" == "doghouse" ]; then
     sed -i -e 's/server-http.cpp/server-http-mmojo.cpp/g' tools/server/CMakeLists.txt
     sed -i -e "s/set(TARGET llama-server)/set(TARGET $EXECUTABLE_FILE)/g" tools/server/CMakeLists.txt
     sed -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt
-
-    # In tools/server/server-context-mmojo.cpp, replace "defer(" with "defer_task(" to make Cosmo STL happy.
-    sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
-    sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
-    sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
 fi
+
+#-------------------------------------------------------------------------------
+# llama-server specific
+#-------------------------------------------------------------------------------
 
 if [ "$branding" == "llama-server" ]; then
     # Update the CMake files.
+    sed -i -e 's/common.cpp/common-mmojo.cpp/g' common/CMakeLists.txt
     sed -i -e 's/server-context.cpp/server-context-mmojo.cpp/g' tools/server/CMakeLists.txt
-
-    # In tools/server/server-context.cpp, replace "defer(" with "defer_task(" to make Cosmo STL happy.
-    sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
-    sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
-    sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
 fi
 
+#-------------------------------------------------------------------------------
 # Thread priority patch for MinGW cross-compiler:
+#-------------------------------------------------------------------------------
+
 sed -i -e 's/THREAD_POWER_THROTTLING/PROCESS_POWER_THROTTLING/g' ggml/src/ggml-cpu/ggml-cpu.c
 
+#-------------------------------------------------------------------------------
 # Patch vendor/cpp-httplib for compatibility with MinGW. Inline member functions need to be
 # declared in class definitions.
+#-------------------------------------------------------------------------------
+
 sed -i -e 's/bool is_readable(/inline bool is_readable(/g' vendor/cpp-httplib/httplib.h
 sed -i -e 's/bool wait_readable(/inline bool wait_readable(/g' vendor/cpp-httplib/httplib.h
 sed -i -e 's/bool wait_writable(/inline bool wait_writable(/g' vendor/cpp-httplib/httplib.h
@@ -95,8 +109,10 @@ sed -i -e 's/bool wait_writable(/inline bool wait_writable(/g' vendor/cpp-httpli
 sed -i -e 's/ssize_t read(/inline ssize_t read(/g' vendor/cpp-httplib/httplib.cpp
 sed -i -e 's/ssize_t write(/inline ssize_t write(/g' vendor/cpp-httplib/httplib.cpp
 
+#-------------------------------------------------------------------------------
 # Future: Just patch common/argc.cpp and eliminate common/argc-mmojo.cpp
 # Future: Move loading-mmojo.html to loading.html instead of mangling server-mmojo.cpp. Will this work with .hpp, etc?
+#-------------------------------------------------------------------------------
 
 cd $HOME
 

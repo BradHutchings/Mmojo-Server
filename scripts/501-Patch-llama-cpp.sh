@@ -42,6 +42,8 @@ cd $THIS_BUILD_DIR
 # Cosmo compatibility
 #-------------------------------------------------------------------------------
 
+# --- Here is where to patch common/common.cpp with common/common.cpp.patch-1
+
 # Patch vendor/miniaudio/miniaudio.h for bad cosmo build assumptions
 sed -i -e 's/__COSMOPOLITAN__/__COSMOPOLITAN__XXX/g' vendor/miniaudio/miniaudio.h
 
@@ -74,6 +76,8 @@ if [ "$branding" == "" ] || [ "$branding" == "doghouse" ]; then
     sed -i -e 's/server-http.cpp/server-http-mmojo.cpp/g' tools/server/CMakeLists.txt
     sed -i -e "s/set(TARGET llama-server)/set(TARGET $EXECUTABLE_FILE)/g" tools/server/CMakeLists.txt
     sed -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt
+
+    # --- Here is where to patch common/common.h with common/common.h.patch-1
 fi
 
 #-------------------------------------------------------------------------------

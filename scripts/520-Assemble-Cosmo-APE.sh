@@ -31,7 +31,7 @@ if [ "$branding" == "doghouse" ]; then
 	THIS_BUILD_DIR=$DOGHOUSE_BUILD_DIR
     EXECUTABLE_FILE=$PACKAGE_DOGHOUSE_FILE
     APE_FILE=$PACKAGE_DOGHOUSE_APE_FILE
-elif [ "$llama-server" == "doghouse" ]; then
+elif [ "$branding" == "llama-server" ]; then
     THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
     EXECUTABLE_FILE=$PACKAGE_LLAMA_SERVER_FILE
     APE_FILE=$PACKAGE_LLAMA_SERVER_APE_FILE

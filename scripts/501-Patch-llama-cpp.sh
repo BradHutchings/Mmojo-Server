@@ -73,7 +73,7 @@ if [ "$branding" == "llama-server" ]; then
     sed -i -e 's/server-context.cpp/server-context-mmojo.cpp/g' tools/server/CMakeLists.txt
 
     # In tools/server/server-context.cpp, replace "defer(" with "defer_task(" to make Cosmo STL happy.
-    sed -i -e 's/defer(/defer_task(/g' tools/server/server-context.cpp
+    sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
     sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
     sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
 fi

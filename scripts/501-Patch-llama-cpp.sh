@@ -39,7 +39,9 @@ cp -r $MMOJO_SERVER_FILES/* $THIS_BUILD_DIR/
 cd $THIS_BUILD_DIR
 
 # Cosmo compatibility
-sed -i -e 's/#if defined(_WIN32) || defined(__COSMOPOLITAN__)/#if defined(_WIN32)/g' miniaudio/miniaudio.h
+# Patch vendor/miniaudio/miniaudio.h for bad cosmo build assumptions
+sed -i -e 's/__COSMOPOLITAN__/__COSMOPOLITAN__XXX/g' vendor/miniaudio/miniaudio.h
+# Cosmo headers needed.
 if ! grep -q "#include <cstdlib>" "tools/mtmd/deprecation-warning.cpp" ; then
   sed -i '3i #include <cstdlib>' tools/mtmd/deprecation-warning.cpp
 fi
@@ -75,9 +77,6 @@ fi
 
 # Thread priority patch for MinGW cross-compiler:
 sed -i -e 's/THREAD_POWER_THROTTLING/PROCESS_POWER_THROTTLING/g' ggml/src/ggml-cpu/ggml-cpu.c
-
-# Patch vendor/miniaudio/miniaudio.h for bad cosmo build assumptions
-sed -i -e 's/__COSMOPOLITAN__/__COSMOPOLITAN__XXX/g' vendor/miniaudio/miniaudio.h
 
 # Patch vendor/cpp-httplib for compatibility with MinGW. Inline member functions need to be
 # declared in class definitions.

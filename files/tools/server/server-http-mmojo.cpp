@@ -265,15 +265,15 @@ bool server_http_context::init(const common_params & params) {
         std::string noCache = "no-cache, no-store, must-revalidate";
       
         if (ends_with(req.path, ".html") || ends_with(req.path, "/")) {
-            LOG_INF("Request ends with .html\n");
+            //  LOG_INF("Request ends with .html\n");
             cacheControlValue = noCache;
         }
         if (ends_with(req.path, ".js")) {
-            LOG_INF("Request ends with .js\n");
+            //  LOG_INF("Request ends with .js\n");
             cacheControlValue = noCache;
         }
         if (ends_with(req.path, ".css")) {
-            LOG_INF("Request ends with .css\n");
+            //  LOG_INF("Request ends with .css\n");
             cacheControlValue = noCache;
         }
         res.set_header("Cache-Control", cacheControlValue);

@@ -102,7 +102,7 @@ Now, poweroff the WSL instance:
 sudo poweroff
 ```
 
-The **Terminal** app will revert back to a PowerShell prompt.
+**IMPORTANT:** Wait for the **Terminal** app will revert back to a PowerShell prompt.
 
 *Note: This would be a good place to set up hostname and networking for the instance if we wanted to do that.*
 

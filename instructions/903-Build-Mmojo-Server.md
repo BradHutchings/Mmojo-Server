@@ -24,7 +24,7 @@ Proceed from left to right and run the steps in each tab. This will get you a na
 
 ---
 ### Proceed
-- **Next:** Whatever is next.
+- **Next:** [904. Install Moltbot](904-Install-Moltbot.md)
 - **Previous:** [902. Prepare WSL - Moltbot](902-Prepare-WSL-Moltbot.md)
 - **Up:** [900. Deploy Moltbot](900-Deploy-Moltbot.md)
 

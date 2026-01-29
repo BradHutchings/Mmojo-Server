@@ -86,6 +86,16 @@ Defaults        env_reset,timestamp_timeout=-1
 `Ctrl-X`, then `Y`, then `Enter` to save and exit.
 
 ---
+### Customize Shell Prompt
+You can prepend `(Moltbot)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
+```
+cat << EOF >> .bashrc
+PS1="(Moltbot)-$PS1"
+EOF
+. .bashrc
+```
+
+---
 ### Power Off the WSL Instance
 Now, poweroff the WSL instance:
 ```

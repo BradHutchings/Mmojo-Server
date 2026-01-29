@@ -8,7 +8,7 @@ Your installation will be private and self-contained on the computer on which yo
 ### Deploy Moltbot
 Here are the deployment steps:
 - [901. Prepare WSL - Mmojo Server](901-Prepare-WSL-Mmojo-Server.md) - You will create a WSL instance for Mmojo Server.
-- [902. Prepare WSL - Moltbot](901-Prepare-WSL-Moltbot.md) - You will create a WSL instance for Moltbot.
+- [902. Prepare WSL - Moltbot](902-Prepare-WSL-Moltbot.md) - You will create a WSL instance for Moltbot.
 - Install Mmojo Server from Hugging Face.
 - Install Moltbot - Quick Install.
 - Configure Moltbot to use Mmojo Server.

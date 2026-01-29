@@ -89,12 +89,10 @@ Defaults        env_reset,timestamp_timeout=-1
 
 ---
 ### Customize Shell Prompt
-You can prepend `(Moltbot)-` to the shell prompt so you can easily indentify which WSL instance you're working with. The script below also makes sure the `moltbot` command is available.
+You can prepend `(Moltbot)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
 ```
-$HOME/.npm-global/bin/clawdbot
 cat << EOF >> .bashrc
 PS1="(Moltbot)-$PS1"
-alias moltbot="clawdbot"
 EOF
 . .bashrc
 ```

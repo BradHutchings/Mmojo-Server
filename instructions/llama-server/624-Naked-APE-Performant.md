@@ -5,7 +5,7 @@
 ---
 ### About this Step
 
-Let's prepare an Actual Portable Executable (APE) for distribution. You will start with the APE file you built, remove extraneous timezone files from it, add certificates, add a `.gguf` model file, and add a configuration file. You will test run it.
+Let's prepare an Actual Portable Executable (APE) for distribution. You will start with the APE file you built, remove extraneous timezone files from it, add certificates, and add a configuration file. You will test run it.
 
 **Naked** means there is no gguf file in this APE. You can just deploy a naked APE with a gguf file in the same folder &mdash; maybe even a hard or soft link &mdash; or zip a gguf onto a naked APE to get a fully contained server.
 

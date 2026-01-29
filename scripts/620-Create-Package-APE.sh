@@ -21,7 +21,7 @@ if [ "$attire" != "attired" ] && [ "$attire" != "naked" ]; then
     attire="attired"
 fi
 
-if [ "$branding" != "doghouse" ]; then
+if [ "$branding" != "doghouse" ] && [ "$branding" != "llama-server" ]; then
     branding=""
 fi
 
@@ -47,6 +47,11 @@ if [ "$branding" == "doghouse" ]; then
     THIS_BUILD_DIR="$DOGHOUSE_BUILD_DIR/$BUILD_SUBDIRECTORY"
     APE_FILE="$PACKAGE_DOGHOUSE_APE_FILE"
     ZIP_FILE="$PACKAGE_DOGHOUSE_ZIP_FILE"
+elif [ "$branding" == "llama-server" ]; then
+    THIS_PACKAGE_DIR="$LLAMA_SERVER_PACKAGE_DIR/$PACKAGE_SUBDIRECTORY"
+    THIS_BUILD_DIR="$LLAMA_SERVER_BUILD_DIR/$BUILD_SUBDIRECTORY"
+    APE_FILE="$PACKAGE_LLAMA_SERVER_APE_FILE"
+    ZIP_FILE="$PACKAGE_LLAMA_SERVER_ZIP_FILE"
 fi
 
 if [ -v CHOSEN_MODEL_MNEMONIC ]; then

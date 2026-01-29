@@ -62,8 +62,10 @@ Congratulations! Onboarding is complete.
 Run the `clawdbot` command to add its parent directory to the `$PATH` in `.bashrc`. Add an alias so you can use `moltbot`. Source the `.bashrc` file.
 ```
 ./.npm-global/bin/clawdbot
+cat << EOF >> $HOME/.bashrc
 alias moltbot="clawdbot"
-. .bashrc
+EOF
+. $HOME/.bashrc
 ```
 
 ---

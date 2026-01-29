@@ -143,7 +143,7 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 ### Proceed
 - **Next:** [902. Prepare WSL - Moltbot](902-Prepare-WSL-Moltbot.md)
 - **Previous:** This is the first step in this section.
-- **Up:** [200. Prepare Build Environment](200-Prepare-Build-Environment.md)
+- **Up:** [900. Deploy Moltbot](900-Deploy-Moltbot.md)
 
 ---
 [MIT License](/LICENSE)<br/>

@@ -87,6 +87,7 @@ fi
 if [ "$branding" == "llama-server" ]; then
     # Update the CMake files.
     sed -i -e 's/common.cpp/common-mmojo.cpp/g' common/CMakeLists.txt
+    sed -i -e 's/server.cpp/server-mmojo.cpp/g' tools/server/CMakeLists.txt
     sed -i -e 's/server-context.cpp/server-context-mmojo.cpp/g' tools/server/CMakeLists.txt
 fi
 

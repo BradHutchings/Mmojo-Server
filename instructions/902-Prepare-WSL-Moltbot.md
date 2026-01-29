@@ -143,7 +143,7 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 ### Proceed
 - **Next:** This is the end until we write more.
 - **Previous:** [901. Prepare WSL Mmojo Server](901-Prepare-WSL-Mmojo-Server.md).
-- **Up:** [1900. Run Moltbot](1000-Run-Moltbot.md)
+- **Up:** [900. Deploy Moltbot](900-Deploy-Moltbot.md)
 
 ---
 [MIT License](/LICENSE)<br/>

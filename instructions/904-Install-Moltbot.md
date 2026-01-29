@@ -5,7 +5,7 @@ You will install Moltbot in the `Moltbot` WSL instance.
 ### Install Molbot
 Switch to the `Terminal` window with the `(Moltbot)` prompt.
 
-<img width="460" height="219" alt="image" src="https://github.com/user-attachments/assets/dec084f1-9fa4-4431-a425-ea9efaa96dba" />
+<img width="460" height="219" alt="image" src="https://github.com/user-attachments/assets/dec084f1-9fa4-4431-a425-ea9efaa96dba" /><br/>
 
 Now, run this command from the [Moltbot website](https://clawd.bot) to download and install Moltbot.
 ```

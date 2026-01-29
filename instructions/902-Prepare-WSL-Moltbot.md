@@ -112,12 +112,12 @@ In 2025, advanced Windows users like you have a startup drive for Windows stuff 
 
 The **Terminal** app should show a PowerShell prompt. Create a destination directory on the `D:` drive:
 ```
-mkdir -p D:\wsl
+mkdir D:\wsl-moltbot
 ```
 
 Wait a couple minutes for WSL to completely shut down the instance you just created. Then move its virtual drive:
 ```
-wsl --manage Moltbot --move D:\wsl
+wsl --manage Moltbot --move D:\wsl-moltbot
 ```
 
 If you get a `WSL_E_DISTRO_NOT_STOPPED` or an `ERROR_SHARING_VIOLATION`, wait a minute, then try again.

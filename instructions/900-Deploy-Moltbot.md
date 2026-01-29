@@ -13,6 +13,8 @@ Here are the deployment steps:
 - Install Moltbot - Quick Install.
 - Configure Moltbot to use Mmojo Server.
 
+- **Get Started:** [901. Prepare WSL - Mmojo Server](901-Prepare-WSL-Mmojo-Server.md)
+
 ---
 [MIT License](/LICENSE)<br/>
 Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>

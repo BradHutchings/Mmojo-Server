@@ -1,4 +1,4 @@
-## 201. Prepare WSL
+## 902. Prepare WSL - Moltbot
 
 ### About this Step
 Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for Moltbot.
@@ -142,8 +142,8 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 ---
 ### Proceed
 - **Next:** This is the end until we write more.
-- **Previous:** [1001. Prepare WSL Mmojo Server](1001-Prepare-WSL-Mmojo-Server.md).
-- **Up:** [1000. Run Moltbot](1000-Run-Moltbot.md)
+- **Previous:** [901. Prepare WSL Mmojo Server](901-Prepare-WSL-Mmojo-Server.md).
+- **Up:** [1900. Run Moltbot](1000-Run-Moltbot.md)
 
 ---
 [MIT License](/LICENSE)<br/>

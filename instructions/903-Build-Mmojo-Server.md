@@ -20,7 +20,7 @@ Go to your `MmojoServer` WSL terminal.
 
 Proceed from left to right and run the steps in each tab. This will get you a native platform build running in the `MmojoServer` WSL instance. You can connect to it from a browser:
 
-<a href="http://127.0.0.1:8080" target="_blank">Open Mmojo Connect in a new tab</a>.
+[Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
 ---
 ### Proceed

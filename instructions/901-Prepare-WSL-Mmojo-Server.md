@@ -87,10 +87,10 @@ Defaults        env_reset,timestamp_timeout=-1
 
 ---
 ### Customize Shell Prompt
-You can prepend `(Moltbot)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
+You can prepend `(Mmojo)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
 ```
 cat << EOF >> .bashrc
-PS1="(Moltbot)-$PS1"
+PS1="(Mmojo)-$PS1"
 EOF
 . .bashrc
 ```

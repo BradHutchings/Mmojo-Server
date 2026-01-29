@@ -85,9 +85,14 @@ cat << EOF > $ARGS_FILE
 8
 --batch-size
 64
+EOF
+
+    if [ "$branding" == "" ] || [ "$branding" == "doghouse" ]; then
+cat << EOF >> $ARGS_FILE
 --batch-sleep-ms
 0
 EOF
+    fi
 
     if [ $ADDED_CERTS ]; then
 cat << EOF >> $ARGS_FILE

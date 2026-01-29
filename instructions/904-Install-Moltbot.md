@@ -58,8 +58,17 @@ Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 Congratulations! Onboarding is complete.
 
 ---
+### Additional Configuration
+Run the `clawdbot` command to add its parent directory to the `$PATH` in `.bashrc`. Add an alias so you can use `moltbot`. Source the `.bashrc` file.
+```
+./.npm-global/bin/clawdbot
+alias moltbot="clawdbot"
+. .bashrc
+```
+
+---
 ### Connect to Moltbot
-Find the `Dashboard ready` section of the configure output. 
+Scroll up to find the `Dashboard ready` section of the configure output. 
 
 <img width="777" height="291" alt="image" src="https://github.com/user-attachments/assets/b0951a76-a2fd-4a10-bf61-b403eb01bcde" />
 

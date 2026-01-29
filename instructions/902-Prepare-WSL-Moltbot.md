@@ -151,7 +151,7 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 
 ---
 ### Proceed
-- **Next:** This is the end until we write more.
+- **Next:** [903. Build Mmojo Server](903-Build-Mmojo-Server.md)
 - **Previous:** [901. Prepare WSL Mmojo Server](901-Prepare-WSL-Mmojo-Server.md).
 - **Up:** [900. Deploy Moltbot](900-Deploy-Moltbot.md)
 

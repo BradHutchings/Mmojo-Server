@@ -184,7 +184,7 @@ ls -al $THIS_PACKAGE_DIR
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** [623. Naked APE (Compatible)](623-Naked-APE-Compatible.md)
 - **Previous:** [621. APE (Compatible)](621-APE-Compatible.md)
 - **Up:** [600. Package llama-server](600-Package-llama-server.md)
 

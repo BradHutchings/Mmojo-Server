@@ -125,7 +125,7 @@ wsl --manage OpenClaw --move D:\wsl-openclaw
 If you get a `WSL_E_DISTRO_NOT_STOPPED` or an `ERROR_SHARING_VIOLATION`, wait a minute, then try again.
 
 ---
-### Pin Moltbot to the Taskbar
+### Pin OpenClaw to the Taskbar
 Click your **Start** menu. Search for:
 ```
 OpenClaw

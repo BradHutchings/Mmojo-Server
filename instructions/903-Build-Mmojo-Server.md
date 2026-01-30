@@ -64,16 +64,18 @@ $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```
 
-Choose a model:
+Choose a model and GPUs:
 ```
 unset CHOSEN_MODEL
 unset CHOSEN_MODEL_MNEMONIC
+unset CHOSEN_GPUS
 . mm-choose-model.sh
+. mm-choose-gpus.sh
 ```
 
 Build native Mmojo Server:
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native 
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 ```
 
 Make a run folder:

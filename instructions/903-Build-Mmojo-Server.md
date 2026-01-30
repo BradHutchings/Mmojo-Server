@@ -48,19 +48,51 @@ Install dependencies:
 $MMOJO_SERVER_SCRIPTS/207-Install-Dependencies.sh
 ```
 
----
-### Open These Steps in New Tabs
-Right-click each of these steps in order, and open in new tabs:
-- [401. Download Models](401-Download-Models.md) - Download popular `.gguf` models from Hugging Face.
-- [501. Prepare to Build](501-Prepare-to-Build.md) - Clone llama.cpp repo, fix some things, and copy some things.
-- [502. Prepare to Test](502-Prepare-to-Test.md) - Set some environment variables to customize test runs.
-- [513. Platform (Native)](513-Platform-Native.md) - Build `mmojo-server` highly optimized for the CPU of the build environment platform.<br/><br/>
+Download models:
+```
+$MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
+mm-download-models.sh 4
+```
 
 ---
-### Run Steps in Order
-Go to your `MmojoServer` WSL terminal.
+### Build Native Mmojo Server
+Prepare to build:
+```
+$MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh
+$MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
+$MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
+```
 
-Proceed from left to right and run the steps in each tab. This will get you a native platform build running in the `MmojoServer` WSL instance. You can connect to it from a browser:
+Choose a model:
+```
+unset CHOSEN_MODEL
+unset CHOSEN_MODEL_MNEMONIC
+. mm-choose-model.sh
+```
+
+Build native Mmojo Server:
+```
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native 
+```
+
+Make a run folder:
+```
+RUN_FOLDER="$HOME/Mmojo-Server"
+mkdir -p $RUN_FOLDER
+cp $BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_FOLDER
+# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
+# copy a .gguf in
+```
+
+---
+### Launch mmojo-server
+
+Launch `mmojo-server`:
+```
+$RUN_FOLDER/$PACKAGE_MMOJO_SERVER_FILE
+```
+
+Connect to Mmojo Complete from a browser:
 
 [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 

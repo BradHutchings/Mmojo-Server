@@ -51,6 +51,7 @@ $MMOJO_SERVER_SCRIPTS/207-Install-Dependencies.sh
 Download models:
 ```
 $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
+$MMOJO_SERVER_SCRIPTS/401-Download-Model-Map.sh
 mm-download-models.sh 4
 ```
 

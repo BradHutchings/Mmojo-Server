@@ -93,8 +93,8 @@ if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_
 Launch `mmojo-server`:
 ```
 RUN_FOLDER="$HOME/Mmojo-Server"
-$RUN_FOLDER/$PACKAGE_MMOJO_SERVER_FILE --path "Mmojo-Complete" --batch-size 128 \
-    --threads-http 8 --ctx-size 20000 
+$RUN_FOLDER/$PACKAGE_MMOJO_SERVER_FILE --path "Mmojo-Complete" --host 0.0.0.0 --port 8080 \
+    --batch-size 128 --threads-http 8 --ctx-size 20000 
 ```
 
 Connect to Mmojo Complete from a browser:

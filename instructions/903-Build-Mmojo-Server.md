@@ -92,7 +92,7 @@ cp -r $BUILD_DIR/Mmojo-Server $RUN_FOLDER
 
 Launch `mmojo-server`:
 ```
-$RUN_FOLDER/$PACKAGE_MMOJO_SERVER_FILE
+$RUN_FOLDER/$PACKAGE_MMOJO_SERVER_FILE --path "Mmojo-Server"
 ```
 
 Connect to Mmojo Complete from a browser:

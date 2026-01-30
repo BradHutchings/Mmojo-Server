@@ -3,12 +3,12 @@
 You will install OpenClaw in the `OpenClaw` WSL instance.
 
 ---
-### Install Moltbot
-Switch to the `Terminal` window with the `(Moltbot)` prompt.
+### Install OpenClaw
+Switch to the `Terminal` window with the `(OpenClaw)` prompt.
 
 <img width="460" height="219" alt="image" src="https://github.com/user-attachments/assets/dec084f1-9fa4-4431-a425-ea9efaa96dba" /><br/>
 
-Now, run this command from the [Moltbot website](https://clawd.bot) to download and install Moltbot.
+Now, run this command from the [OpenClaw website](https://openclaw.ai) to download and install OpenClaw.
 ```
 curl -fsSL https://openclaw.ai/install.sh | bash
 ```
@@ -78,7 +78,7 @@ Control-click the `Dashboard link (with token)`.
 
 <img width="716" height="368" alt="image" src="https://github.com/user-attachments/assets/6800706c-b82a-4978-9e13-c270b955dbf2" />
 
-You will see what is still labeled as the **Clawdbot Gateway Dashboard**, indicating that Moltbot is running and you can connect to it from a web browser on your computer.
+You will see what is still labeled as the **Clawdbot Gateway Dashboard**, indicating that OpenClaw is running and you can connect to it from a web browser on your computer.
 
 ---
 ### Proceed

@@ -1,6 +1,6 @@
-## 904. Install Moltbot
+## 904. Install OpenClaw
 ### About this Step
-You will install Moltbot in the `Moltbot` WSL instance.
+You will install OpenClaw in the `OpenClaw` WSL instance.
 
 ---
 ### Install Moltbot
@@ -10,12 +10,12 @@ Switch to the `Terminal` window with the `(Moltbot)` prompt.
 
 Now, run this command from the [Moltbot website](https://clawd.bot) to download and install Moltbot.
 ```
-curl -fsSL https://molt.bot/install.sh | bash
+curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
 ---
-### Complete Moltbot Onboarding
-You will complete Moltbot onboarding right now to get it running quickly. You will connect it to Mmojo Server and set up services later.
+### Complete OpenClaw Onboarding
+You will complete OpenClaw onboarding right now to get it running quickly. You will connect it to Mmojo Server and set up services later.
 
 <img width="607" height="60" alt="image" src="https://github.com/user-attachments/assets/6b1c2fb1-7d48-4d64-87a0-b8dbf687547c" />
 
@@ -69,7 +69,7 @@ EOF
 ```
 
 ---
-### Connect to Moltbot
+### Connect to OpenClaw
 Scroll up to find the `Dashboard ready` section of the configure output. 
 
 <img width="777" height="291" alt="image" src="https://github.com/user-attachments/assets/b0951a76-a2fd-4a10-bf61-b403eb01bcde" />
@@ -84,7 +84,7 @@ You will see what is still labeled as the **Clawdbot Gateway Dashboard**, indica
 ### Proceed
 - **Next:** Whatever is next.
 - **Previous:** [903. Build Mmojo Server](903-Build-Mmojo-Server.md)
-- **Up:** [900. Deploy Moltbot](900-Deploy-Moltbot.md)
+- **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
 
 ---
 [MIT License](/LICENSE)<br/>

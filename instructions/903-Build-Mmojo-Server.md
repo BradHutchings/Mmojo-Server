@@ -79,13 +79,12 @@ $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native
 Make a run folder:
 ```
 RUN_FOLDER="$HOME/Mmojo-Server"
-# if [ -d "$RUN_FOLDER" ]; then rm -r -f "$RUN_FOLDER"; fi
 mkdir -p $RUN_FOLDER
 rm -r -f "$RUN_FOLDER"/*
 cp $BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_FOLDER
-cp -r $BUILD_DIR/Mmojo-Server $RUN_FOLDER
+cp -r $BUILD_DIR/Mmojo-Complete $RUN_FOLDER
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" $RUN_FOLDER
+if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" $RUN_FOLDER; fi
 ```
 
 ---
@@ -93,7 +92,7 @@ if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_
 
 Launch `mmojo-server`:
 ```
-$RUN_FOLDER/$PACKAGE_MMOJO_SERVER_FILE --path "Mmojo-Server"
+$RUN_FOLDER/$PACKAGE_MMOJO_SERVER_FILE --path "Mmojo-Complete"
 ```
 
 Connect to Mmojo Complete from a browser:

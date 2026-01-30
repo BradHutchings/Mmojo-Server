@@ -151,9 +151,9 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 
 ---
 ### Proceed
-- **Next:** [902. Prepare WSL - Moltbot](902-Prepare-WSL-Moltbot.md)
+- **Next:** [902. Prepare WSL - OpenClaw](902-Prepare-WSL-OpenClaw.md)
 - **Previous:** This is the first step in this section.
-- **Up:** [900. Deploy Moltbot](900-Deploy-Moltbot.md)
+- **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
 
 ---
 [MIT License](/LICENSE)<br/>

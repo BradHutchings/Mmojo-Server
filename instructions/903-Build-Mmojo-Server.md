@@ -79,8 +79,10 @@ $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native
 Make a run folder:
 ```
 RUN_FOLDER="$HOME/Mmojo-Server"
+if [ -d "$RUN_FOLDER" ]; then rm -r -f "$RUN_FOLDER"; fi
 mkdir -p $RUN_FOLDER
 cp $BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_FOLDER
+cp -r $BUILD_DIR/Mmojo-Server $RUN_FOLDER
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 # copy a .gguf in
 ```

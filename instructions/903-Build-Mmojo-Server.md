@@ -51,7 +51,7 @@ $MMOJO_SERVER_SCRIPTS/207-Install-Dependencies.sh
 Install CUDA and Vulkan support:
 ```
 sudo apt install -y nvidia-cuda-toolkit
-sudo apt install libvulkan-dev glslc vulkan-tools
+sudo apt install -y libvulkan-dev glslc vulkan-tools
 ```
 
 Download models:

@@ -97,6 +97,10 @@ Hit the `ENTER` key.
 
 Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 
+<img width="361" height="107" alt="image" src="https://github.com/user-attachments/assets/dc6a95b5-8bdc-44ee-8e0b-f09f52c3a75e" />
+
+Use the <code>&darr;</code> key to choose `Open the Web UI`, then hit the `ENTER` key.
+
 <img width="764" height="80" alt="image" src="https://github.com/user-attachments/assets/7d8780e5-e6a8-4234-b0e3-76c71d952f1e" />
 
 Congratulations! Onboarding is complete.

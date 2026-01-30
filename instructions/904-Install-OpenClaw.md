@@ -59,13 +59,10 @@ Congratulations! Onboarding is complete.
 
 ---
 ### Additional Configuration
-Run the `clawdbot` command to add its parent directory to the `$PATH` in `.bashrc`. Add an alias so you can use `moltbot`. Source the `.bashrc` file.
+Source the `.bashrc` file. Run `openclaw` to make sure it is available.
 ```
-./.npm-global/bin/clawdbot
-cat << EOF >> $HOME/.bashrc
-alias moltbot="clawdbot"
-EOF
 . $HOME/.bashrc
+openclaw
 ```
 
 ---

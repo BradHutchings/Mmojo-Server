@@ -6,7 +6,7 @@ You will install OpenClaw in the `OpenClaw` WSL instance.
 ### Install OpenClaw
 Switch to the `Terminal` window with the `(OpenClaw)` prompt.
 
-<img width="460" height="219" alt="image" src="https://github.com/user-attachments/assets/dec084f1-9fa4-4431-a425-ea9efaa96dba" /><br/>
+<img width="356" height="125" alt="image" src="https://github.com/user-attachments/assets/c37cc113-8b61-4957-a08a-a17cb043fb2e" />
 
 Now, run this command from the [OpenClaw website](https://openclaw.ai) to download and install OpenClaw.
 ```

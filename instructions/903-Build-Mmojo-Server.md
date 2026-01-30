@@ -101,9 +101,9 @@ Connect to Mmojo Complete from a browser:
 
 ---
 ### Proceed
-- **Next:** [904. Install Moltbot](904-Install-Moltbot.md)
-- **Previous:** [902. Prepare WSL - Moltbot](902-Prepare-WSL-Moltbot.md)
-- **Up:** [900. Deploy Moltbot](900-Deploy-Moltbot.md)
+- **Next:** [904. Install OpenClaw](904-Install-OpenClaw.md)
+- **Previous:** [902. Prepare WSL - OpenClaw](902-Prepare-WSL-OpenClaw.md)
+- **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
 
 ---
 [MIT License](/LICENSE)<br/>

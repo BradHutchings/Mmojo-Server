@@ -48,7 +48,7 @@ cd $HOME
 cat /etc/wsl.conf
 ```
 
-Append `[interop]` and `[wsl2]` sections to `/etc/wsl.conf`:
+Append a `[interop]` section to `/etc/wsl.conf`:
 ```
 cp /etc/wsl.conf ./wsl.conf
 cat << EOF >> wsl.conf
@@ -56,9 +56,6 @@ cat << EOF >> wsl.conf
 [interop]
 enabled=false
 appendWindowsPath=false
-
-[wsl2]
-vmIdleTimeout=-1
 EOF
 sudo mv ./wsl.conf /etc/wsl.conf
 ```

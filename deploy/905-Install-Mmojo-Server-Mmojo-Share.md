@@ -1,4 +1,4 @@
-## 906. Install Mmojo Server - Mmojo Share
+## 905. Install Mmojo Server - Mmojo Share
 
 ### About this Step
 In this step, we will install Mmojo Server, using an existing build on your Mmojo Share. If you would prefer to install Mmojo Server from Hugging Face or build it from scratch, jump to one of these steps:
@@ -11,8 +11,8 @@ In this step, we will install Mmojo Server, using an existing build on your Mmoj
 
 ---
 ### Proceed
-- **Next:** [907. Build Mmojo Server](907-Build-Mmojo-Server.md)
-- **Previous:** [905. Install Mmojo Server - Hugging Face](905-Install-Mmojo-Server-Hugging-Face.md)
+- **Next:** [906. Build Mmojo Server](906-Build-Mmojo-Server.md)
+- **Previous:** [904. Install Mmojo Server - Hugging Face](904-Install-Mmojo-Server-Hugging-Face.md)
 - **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
 
 ---

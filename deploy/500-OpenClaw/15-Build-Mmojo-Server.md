@@ -82,20 +82,8 @@ if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_
 ```
 
 ---
-### Launch mmojo-server
-
-Launch `mmojo-server`:
-```
-$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE 
-```
-
-Connect to Mmojo Complete from a browser:
-
-[Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
-
----
 ### Proceed
-- **Next:** [20. Deploy OpenClaw](20-Deploy-OpenClaw.md)
+- **Next:** [16. Run Mmojo Server](16-Run-Mmojo-Server.md)
 - **Previous:** [14. Copy Mmojo Server from Mmojo Share](14-Copy-Mmojo-Server-from-Mmojo-Share.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 

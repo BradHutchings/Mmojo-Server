@@ -58,14 +58,27 @@ $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 
 Make a run folder:
 ```
-RUN_FOLDER="$HOME/Mmojo-Server"
-mkdir -p $RUN_FOLDER
-rm -r -f "$RUN_FOLDER"/*
+mkdir -p $RUN_DIR
+rm -r -f "$RUN_DIR"/*
 BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
-cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_FOLDER
-cp -r $BUILD_DIR/Mmojo-Complete $RUN_FOLDER
+cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
+cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" $RUN_FOLDER; fi
+cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+--path
+"$RUN_FOLDER/Mmojo-Complete"
+--host
+0.0.0.0
+--port
+8080
+--batch-size
+1924
+--threads-http
+8
+--ctx-size
+32768 
+EOF
+if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" $RUN_DIR; fi
 ```
 
 ---
@@ -73,9 +86,7 @@ if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_
 
 Launch `mmojo-server`:
 ```
-RUN_FOLDER="$HOME/Mmojo-Server"
-$RUN_FOLDER/$PACKAGE_MMOJO_SERVER_FILE --path "$RUN_FOLDER/Mmojo-Complete" --host 0.0.0.0 --port 8080 \
-    --batch-size 128 --threads-http 8 --ctx-size 32768 
+$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE 
 ```
 
 Connect to Mmojo Complete from a browser:

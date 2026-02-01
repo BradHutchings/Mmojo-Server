@@ -12,7 +12,7 @@ Instructions here.
 ### Proceed
 - **Next:** This is the last step in this section.
 - **Previous:** [23. Connect to Mmojo Server](23-Connect-to-Mmojo-Server.md)
-- **Up:** [00. Deploy OpenClaw (WSL)](00-Deploy-OpenClaw-WSL.md)
+- **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---
 [MIT License](/LICENSE)<br/>

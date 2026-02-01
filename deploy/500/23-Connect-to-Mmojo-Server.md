@@ -12,7 +12,7 @@ Instructions here.
 ### Proceed
 - **Next:** [24. Test OpenClaw](24-Test-OpenClaw.md)
 - **Previous:** [22. Install OpenClaw](22-Install-OpenClaw.md)
-- **Up:** [00. Deploy OpenClaw (WSL)](00-Deploy-OpenClaw-WSL.md)
+- **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---
 [MIT License](/LICENSE)<br/>

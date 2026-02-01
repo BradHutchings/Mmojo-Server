@@ -13,7 +13,7 @@ Here are your options:
 ### Proceed
 - **Next:** [921. Install Mmojo Server - Hugging Face](921-Install-Mmojo-Server-Hugging-Face.md)
 - **Previous:** [913. Prepare WSL - OpenClaw](913-Prepare-WSL-OpenClaw.md)
-- **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
+- **Up:** [900. Deploy OpenClaw (WSL)](900-Deploy-OpenClaw-WSL.md)
 
 ---
 [MIT License](/LICENSE)<br/>

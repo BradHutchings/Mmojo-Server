@@ -17,6 +17,10 @@ This recipe deploys OpenClaw and Mmojo Server on a single, stand-alone Windows 1
 ---
 ### Recommendations
 The following are recommended for smoothest sailing through this recipe:
+- A second (fast) disk for WSL instance storage.
+  - 4 TB recommended.
+  - It's not a WSL instance exclusive disk. Store other data on it too.
+  - This will keep your startup disk from getting full unexpectedly.
 - Mmojo Share configured and accessible on your network.
   - This is a good place to store builds and models so you don't have to download them from Hugging Face.
 - Familiarity with WSL.

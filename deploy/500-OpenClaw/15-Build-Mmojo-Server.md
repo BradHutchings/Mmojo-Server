@@ -56,7 +56,7 @@ Build native Mmojo Server:
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 ```
 
-Make a run folder:
+Make a run folder. This is a good candidate for an mm-script.
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*

@@ -131,7 +131,7 @@ MmojoServer
 Add it to the **Taskbar**.
 
 ---
-### Launch MmojoServer
+### Launch MmojoServer WSL Instance
 
 Launch and log into your new instance by clicking the icon you just added to the **Taskbar**.
 
@@ -145,11 +145,52 @@ You'll be prompted for your `sudo` password:
 admin123!
 ```
 
-Leave the `Terminal` window open for installing or building Mmojo Server.
+---
+### Create mm-scripts Directory
+The ``mm-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
+```
+export HOME_SCRIPTS="$HOME/mm-scripts"
+TILDE_SCRIPTS="~/mm-scripts"
+mkdir -p $HOME_SCRIPTS
+
+if [[ "${PATH}" != *"${HOME_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_SCRIPTS}"* ]]; then
+cat << EOF >> $HOME/.bashrc
+export PATH="\$PATH:$HOME_SCRIPTS"
+EOF
+fi
+
+source $HOME/.bashrc
+echo $PATH
+```
 
 ---
-### Start from Scratch Often
-It's OK to start from scratch and do it often. There is a lot going on to build and package Mmojo Server. There are a lot of moving parts. When you get stuck, save your sanity and start over.
+### Clone the Mmojo Server Repository
+The Mmojo Server Github repositort has scripts and tools for installing and building Mmojo Server.
+```
+export MMOJO_SERVER_DIR="$HOME/200-mmojo-server"
+export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
+cd $HOME
+if [ "$MMOJO_SERVER_DIR" ]; then
+  rm -r -f $MMOJO_SERVER_DIR
+fi
+mkdir -p $MMOJO_SERVER_DIR
+git clone https://github.com/BradHutchings/mmojo-server.git $MMOJO_SERVER_DIR
+. $MMOJO_SERVER_SCRIPTS/mm-environment-variables.sh
+. $MMOJO_SERVER_SCRIPTS/mm-update-local-mmojo-server-repo.sh
+if ! grep -q "mm-env=" "$HOME/.bashrc"; then
+cat << EOF1 >> $HOME/.bashrc
+alias mm-env=". mm-environment-variables.sh"
+mm-env
+EOF1
+source $HOME/.bashrc
+fi
+```
+
+---
+### Great  Job!
+Leave the `Terminal` window open for installing or building Mmojo Server.
+
+It's OK to start from scratch and do it often. There is a lot going on to deploy Mmojo Server. There are a lot of moving parts. When you get stuck, save your sanity and start over.
 
 ---
 ### Proceed

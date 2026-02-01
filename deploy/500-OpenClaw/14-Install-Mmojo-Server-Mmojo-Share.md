@@ -1,4 +1,4 @@
-## 13. Install Mmojo Server - Mmojo Share
+## 14. Install Mmojo Server - Mmojo Share
 
 ### THIS STEP IS NOT IMPLEMENTED YET.
 Please proceed to the next step.
@@ -15,8 +15,8 @@ In this step, we will install Mmojo Server, using an existing build on your Mmoj
 
 ---
 ### Proceed
-- **Next:** [14. Build Mmojo Server](14-Build-Mmojo-Server.md)
-- **Previous:** [12. Install Mmojo Server - Hugging Face](12-Install-Mmojo-Server-Hugging-Face.md)
+- **Next:** [15. Build Mmojo Server](15-Build-Mmojo-Server.md)
+- **Previous:** [13. Install Mmojo Server - Hugging Face](13-Install-Mmojo-Server-Hugging-Face.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

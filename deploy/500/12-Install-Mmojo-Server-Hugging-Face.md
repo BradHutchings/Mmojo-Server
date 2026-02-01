@@ -1,5 +1,9 @@
 ## 12. Install Mmojo Server - Hugging Face
 
+### THIS STEP IS NOT IMPLEMENTED YET.
+Please proceed to the next step.
+
+---
 ### About this Step
 In this step, we will install Mmojo Server from Hugging Face. If you would prefer to install Mmojo Server from your Mmojo Share or build it from scratch, skip ahread to one of these steps:
 - Install from Mmojo Share.

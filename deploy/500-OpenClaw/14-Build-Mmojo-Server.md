@@ -1,4 +1,4 @@
-## 14. Build Mmojo Server
+## 15. Build Mmojo Server
 
 ### About this Step
 If you didn't install Mmojo Server from Hugging Face downloads or from builds on your Mmojo Share, you can build it quickly with the steps on this page.
@@ -20,7 +20,7 @@ sudo apt install -y libvulkan-dev glslc vulkan-tools
 ### Download Models
 Download models. These may take 20 minutes or so to download.
 
-Might be good to get these from Mmojo Share? Mount Mmojo Share should be step 12. Maybe we paste in a model map with models that can use tools and/or work OK with OpenClaw.
+Might be good to get these from Mmojo Share? Mount Mmojo Share should be step 12.
 ```
 $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
 cat << EOF > $LOCAL_DOWNLOAD_MODEL_MAP
@@ -85,7 +85,7 @@ Connect to Mmojo Complete from a browser:
 ---
 ### Proceed
 - **Next:** [20. Deploy OpenClaw](20-Deploy-OpenClaw.md)
-- **Previous:** [13. Install Mmojo Server - Mmojo Share](13-Install-Mmojo-Server-Mmojo-Share.md)
+- **Previous:** [14. Install Mmojo Server - Mmojo Share](14-Install-Mmojo-Server-Mmojo-Share.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

@@ -1,4 +1,4 @@
-## 924. Test OpenClaw
+## 24. Test OpenClaw
 ### About this Step
 You perform a few tests to demonstrate that OpenClaw is using your Mmojo Server for it's large language model (LLM) server.
 
@@ -11,8 +11,8 @@ Instructions here.
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [923. Connect to Mmojo Server](923-Connect-to-Mmojo-Server.md)
-- **Up:** [900. Deploy OpenClaw (WSL)](900-Deploy-OpenClaw-WSL.md)
+- **Previous:** [23. Connect to Mmojo Server](23-Connect-to-Mmojo-Server.md)
+- **Up:** [00. Deploy OpenClaw (WSL)](00-Deploy-OpenClaw-WSL.md)
 
 ---
 [MIT License](/LICENSE)<br/>

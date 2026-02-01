@@ -1,4 +1,4 @@
-## 903. Prepare WSL - OpenClaw
+## 921. Prepare WSL - OpenClaw
 
 ### About this Step
 Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for OpenClaw.
@@ -154,8 +154,8 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 
 ---
 ### Proceed
-- **Next:** [904. Install Mmojo Server](904-Install-Mmojo-Server.md)
-- **Previous:** [902. Prepare WSL Mmojo Server](902-Prepare-WSL-Mmojo-Server.md).
+- **Next:** [922. Install OpenClaw](922-Install-OpenClaw.md)
+- **Previous:** [920. Deploy OpenClaw](920-Deploy-OpenClaw.md)
 - **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
 
 ---

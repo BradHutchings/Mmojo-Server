@@ -156,7 +156,7 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 ### Proceed
 - **Next:** [922. Install OpenClaw](922-Install-OpenClaw.md)
 - **Previous:** [920. Deploy OpenClaw](920-Deploy-OpenClaw.md)
-- **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
+- **Up:** [900. Deploy OpenClaw (WSL)](900-Deploy-OpenClaw-WSL.md)
 
 ---
 [MIT License](/LICENSE)<br/>

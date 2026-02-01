@@ -129,7 +129,7 @@ You will see what is still labeled as the **Clawdbot Gateway Dashboard**, indica
 ### Proceed
 - **Next:** [932. Connect to Mmojo Server](932-Connect-to-Mmojo-Server.md)
 - **Previous:** [921. Prepare WSL - OpenClaw](921-Prepare-WSL-OpenClaw.md)
-- **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
+- **Up:** [900. Deploy OpenClaw (WSL)](900-Deploy-OpenClaw-WSL.md)
 
 ---
 [MIT License](/LICENSE)<br/>

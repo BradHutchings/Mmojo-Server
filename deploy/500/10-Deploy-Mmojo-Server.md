@@ -13,7 +13,7 @@ Here are your options:
 ### Proceed
 - **Next:** [11. Prepare WSL - Mmojo Server](11-Prepare-WSL-Mmojo-Server.md)
 - **Previous:** [01. Cleanup WSL Instances](01-Cleanup-WSL-Instances.md)
-- **Up:** [00. Deploy OpenClaw (WSL)](00-Deploy-OpenClaw-WSL.md)
+- **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---
 [MIT License](/LICENSE)<br/>

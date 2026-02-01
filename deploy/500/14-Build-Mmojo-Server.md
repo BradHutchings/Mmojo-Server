@@ -4,45 +4,7 @@
 If you didn't install Mmojo Server from Hugging Face downloads or from builds on your Mmojo Share, you can build it quickly with the steps on this page.
 
 ---
-### Scripts, Repo, Dependencies
-
-Create the `mm-scripts` directory:
-```
-export HOME_SCRIPTS="$HOME/mm-scripts"
-TILDE_SCRIPTS="~/mm-scripts"
-mkdir -p $HOME_SCRIPTS
-
-if [[ "${PATH}" != *"${HOME_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_SCRIPTS}"* ]]; then
-cat << EOF >> $HOME/.bashrc
-export PATH="\$PATH:$HOME_SCRIPTS"
-EOF
-fi
-
-source $HOME/.bashrc
-echo $PATH
-```
-
-Clone Mmojo Server Repo:
-```
-export MMOJO_SERVER_DIR="$HOME/200-mmojo-server"
-export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
-cd $HOME
-if [ "$MMOJO_SERVER_DIR" ]; then
-  rm -r -f $MMOJO_SERVER_DIR
-fi
-mkdir -p $MMOJO_SERVER_DIR
-git clone https://github.com/BradHutchings/mmojo-server.git $MMOJO_SERVER_DIR
-. $MMOJO_SERVER_SCRIPTS/mm-environment-variables.sh
-. $MMOJO_SERVER_SCRIPTS/mm-update-local-mmojo-server-repo.sh
-if ! grep -q "mm-env=" "$HOME/.bashrc"; then
-cat << EOF1 >> $HOME/.bashrc
-alias mm-env=". mm-environment-variables.sh"
-mm-env
-EOF1
-source $HOME/.bashrc
-fi
-```
-
+### Install Dependencies and GPU Support
 Install dependencies:
 ```
 $MMOJO_SERVER_SCRIPTS/207-Install-Dependencies.sh
@@ -54,7 +16,9 @@ sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libvulkan-dev glslc vulkan-tools
 ```
 
-Download models:
+---
+### Download Models
+Download models. Might be good to get these from Mmojo Share? Mount Mmojo Share should be step 12. Maybe we paste in a model map with models that can use tools and/or work OK with OpenClaw.
 ```
 $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
 $MMOJO_SERVER_SCRIPTS/401-Download-Model-Map.sh

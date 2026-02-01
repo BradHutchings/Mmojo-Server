@@ -72,14 +72,6 @@ if [ -e "$VULKAN_SETUP_ENV" ]; then
   source $VULKAN_SETUP_ENV
 fi
 
-# THESE WILL GET FOLDED INTO $LOCAL_MODELS_DIR
-export MODELS_DIR="$HOME/300-MODELS"
-export MODEL_MAP="$MODELS_DIR/model-map.txt"
-
-# THIS WILL GET FOLDED INTO $LOCAL_MODELS_DIR
-echo "Setting Convert Models paths."
-export CONVERT_MODELS_DIR="$HOME/400-CONVERT-MODELS"
-
 echo "Setting Local and Share Models paths."
 export LOCAL_MODELS_DIR="$HOME/400-MODELS"
 export LOCAL_MODEL_MAP="$LOCAL_MODELS_DIR/model-map.txt"

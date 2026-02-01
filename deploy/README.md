@@ -4,8 +4,8 @@ There will be deployment instructions for deploying Mmojo Server. These instruct
 Here is a tentative list of planned deployments:
 - [100. Deploy Mmojo Server APE on Supported Platforms](100/README.md) - Placehold page.
 - [200. Deploy Mmojo Server on Windows (WSL)](200/README.md) - Placehold page.
-- 300\. Deploy Mmojo Server on Debian / Ubuntu
-- 400\. Deploy Mmojo Server on macOS
+- [300. Deploy Mmojo Server on Debian / Ubuntu](300/README.md) - Placehold page.
+- [400. Deploy Mmojo Server on macOS](400/README.md) - Placehold page.
 
 Here are deployments that are in progress or completed:
 - [500. Deploy OpenClaw (WSL)](500/README.md) - Deploy and OpenClaw server with Mmojo Server in WSL instances.

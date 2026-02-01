@@ -7,7 +7,8 @@ Your installation will be private and self-contained on the computer on which yo
 ---
 ### Deploy OpenClaw
 Here are the deployment steps:
-- [01. Cleanup WSL Instances](01-Cleanup-WSL-Instances.md) - You will delete existing instances so you have a fresh canvas to work with.
+- [01. Prerequisites](01-Prerequisites.md) - What you need to deploy OpenClaw.
+- [02. Cleanup WSL Instances](02-Cleanup-WSL-Instances.md) - You will delete existing instances so you have a fresh canvas to work with.
 
 - [10. Deploy Mmojo Server](10-Deploy-Mmojo-Server.md) - In this subsection, you will install or build Mmojo Server for use with OpenClaw.
   

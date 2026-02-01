@@ -26,7 +26,7 @@ Here are the deployment steps:
   - [24. Test OpenClaw](24-Test-OpenClaw.md) - Perform simple tests with OpenClaw.
     <br/><br/>
 
-**Get Started:** [01. Cleanup WSL Instances](01-Cleanup-WSL-Instances.md)
+**Get Started:** [01. Prerequisites](01-Prerequisites.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

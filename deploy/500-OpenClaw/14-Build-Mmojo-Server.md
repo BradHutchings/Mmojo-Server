@@ -5,12 +5,12 @@ If you didn't install Mmojo Server from Hugging Face downloads or from builds on
 
 ---
 ### Install Dependencies and GPU Support
-Install dependencies:
+Install dependencies. These may take 20 minutes or so to download and install.
 ```
 $MMOJO_SERVER_SCRIPTS/207-Install-Dependencies.sh
 ```
 
-Install CUDA and Vulkan support:
+Install CUDA and Vulkan support. These may take 10 minutes or so to download and install.
 ```
 sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libvulkan-dev glslc vulkan-tools
@@ -18,7 +18,9 @@ sudo apt install -y libvulkan-dev glslc vulkan-tools
 
 ---
 ### Download Models
-Download models. Might be good to get these from Mmojo Share? Mount Mmojo Share should be step 12. Maybe we paste in a model map with models that can use tools and/or work OK with OpenClaw.
+Download models. These may take 20 minutes or so to download.
+
+Might be good to get these from Mmojo Share? Mount Mmojo Share should be step 12. Maybe we paste in a model map with models that can use tools and/or work OK with OpenClaw.
 ```
 $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
 $MMOJO_SERVER_SCRIPTS/401-Download-Model-Map.sh

@@ -23,6 +23,9 @@ The following are recommended for smoothest sailing through this recipe:
   - 4 TB recommended.
   - It's not a WSL instance exclusive disk. Store other data on it too.
   - This will keep your startup disk from getting full unexpectedly.
+- An NVIDIA GPU with more VRAM will allow you to run bigger models.
+  - OpenClaw doesn't seem to run very well yet with 3B and 8B models.
+  - Bigger models seem to more reliable.
 - Mmojo Share configured and accessible on your network.
   - This is a good place to store builds and models so you don't have to download them from Hugging Face.
 - Familiarity with WSL.

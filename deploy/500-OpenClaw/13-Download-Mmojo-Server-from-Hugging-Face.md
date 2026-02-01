@@ -1,4 +1,4 @@
-## 13. Install Mmojo Server - Hugging Face
+## 13. Download Mmojo Server from Hugging Face
 
 ### THIS STEP IS NOT IMPLEMENTED YET.
 Please proceed to the next step.
@@ -15,7 +15,7 @@ In this step, we will install Mmojo Server from Hugging Face. If you would prefe
 
 ---
 ### Proceed
-- **Next:** [14. Install Mmojo Server - Mmojo Share](14-Install-Mmojo-Server-Mmojo-Share.md)
+- **Next:** [14. Copy Mmojo Server from Mmojo Share](14-Copy-Mmojo-Server-from-Mmojo-Share.md)
 - **Previous:** [12. Mount Mmojo Share](12-Mount-Mmojo-Share.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 

@@ -20,6 +20,7 @@ Unregister ("delete") the instance:
 ```
 wsl --unregister MmojoServer
 wsl --unregister OpenClaw
+
 ```
 
 If you previously pinned `MmojoServer` and/or `OpenClaw` to your **Taskbar**, unpin them. The existing pinned shortcuts will not launch the new instances you will create.

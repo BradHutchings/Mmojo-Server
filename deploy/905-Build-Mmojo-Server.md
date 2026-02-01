@@ -1,7 +1,7 @@
-## 903. Build Mmojo Server
+## 905. Build Mmojo Server
 
 ### About this Step
-This will be replaced with downloading the right Mmojo Server binary and .gguf model from Hugging Face. But since I don't know what it is as I write this guide, I'm offering a roadmap to quickly getting a Mmojo Server running from code.
+If you didn't install Mmojo Server from Hugging Face downloads or from builds on your Mmojo Share, you can build it quickly with the steps on this page.
 
 ---
 ### Scripts, Repo, Dependencies
@@ -103,7 +103,7 @@ Launch `mmojo-server`:
 ```
 RUN_FOLDER="$HOME/Mmojo-Server"
 $RUN_FOLDER/$PACKAGE_MMOJO_SERVER_FILE --path "$RUN_FOLDER/Mmojo-Complete" --host 0.0.0.0 --port 8080 \
-    --batch-size 128 --threads-http 8 --ctx-size 20000 
+    --batch-size 128 --threads-http 8 --ctx-size 32768 
 ```
 
 Connect to Mmojo Complete from a browser:
@@ -112,8 +112,8 @@ Connect to Mmojo Complete from a browser:
 
 ---
 ### Proceed
-- **Next:** [904. Install OpenClaw](904-Install-OpenClaw.md)
-- **Previous:** [902. Prepare WSL - OpenClaw](902-Prepare-WSL-OpenClaw.md)
+- **Next:** [906. Install OpenClaw](906-Install-OpenClaw.md)
+- **Previous:** [904. Install Mmojo Server](904-Install-Mmojo-Server.md)
 - **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
 
 ---

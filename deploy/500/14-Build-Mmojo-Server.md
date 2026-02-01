@@ -1,4 +1,4 @@
-## 914. Build Mmojo Server
+## 14. Build Mmojo Server
 
 ### About this Step
 If you didn't install Mmojo Server from Hugging Face downloads or from builds on your Mmojo Share, you can build it quickly with the steps on this page.
@@ -112,9 +112,9 @@ Connect to Mmojo Complete from a browser:
 
 ---
 ### Proceed
-- **Next:** [920. Deploy OpenClaw](920-Deploy-OpenClaw.md)
-- **Previous:** [913. Install Mmojo Server - Mmojo Share](913-Install-Mmojo-Server-Mmojo-Share.md)
-- **Up:** [900. Deploy OpenClaw (WSL)](900-Deploy-OpenClaw-WSL.md)
+- **Next:** [20. Deploy OpenClaw](20-Deploy-OpenClaw.md)
+- **Previous:** [13. Install Mmojo Server - Mmojo Share](13-Install-Mmojo-Server-Mmojo-Share.md)
+- **Up:** [00. Deploy OpenClaw (WSL)](00-Deploy-OpenClaw-WSL.md)
 
 ---
 [MIT License](/LICENSE)<br/>

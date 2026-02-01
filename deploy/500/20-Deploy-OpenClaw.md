@@ -16,6 +16,6 @@ In this subsection, we will install and configure OpenClaw, connect it to your M
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---
-[MIT License](/LICENSE)<br/>
+[MIT-Style License](/LICENSE)<br/>
 Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

@@ -13,7 +13,7 @@ In this step, we will install Mmojo Server, using an existing build on your Mmoj
 ### Proceed
 - **Next:** [914. Build Mmojo Server](914-Build-Mmojo-Server.md)
 - **Previous:** [912. Install Mmojo Server - Hugging Face](912-Install-Mmojo-Server-Hugging-Face.md)
-- **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
+- **Up:** [900. Deploy OpenClaw (WSL)](900-Deploy-OpenClaw-WSL.md)
 
 ---
 [MIT License](/LICENSE)<br/>

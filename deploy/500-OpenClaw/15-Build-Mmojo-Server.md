@@ -96,7 +96,7 @@ Connect to Mmojo Complete from a browser:
 ---
 ### Proceed
 - **Next:** [20. Deploy OpenClaw](20-Deploy-OpenClaw.md)
-- **Previous:** [14. Install Mmojo Server - Mmojo Share](14-Install-Mmojo-Server-Mmojo-Share.md)
+- **Previous:** [14. Copy Mmojo Server from Mmojo Share](14-Copy-Mmojo-Server-from-Mmojo-Share.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

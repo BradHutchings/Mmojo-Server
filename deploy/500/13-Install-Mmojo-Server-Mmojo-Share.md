@@ -16,6 +16,6 @@ In this step, we will install Mmojo Server, using an existing build on your Mmoj
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---
-[MIT License](/LICENSE)<br/>
+[MIT-Style License](/LICENSE)<br/>
 Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

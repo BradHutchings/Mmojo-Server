@@ -10,7 +10,7 @@ Here are the deployment steps:
 - [901. Cleanup WSL Instances](901-Cleanup-WSL-Instances.md) - You will delete existing instances so you have a fresh canvas to work with.
 - [902. Prepare WSL - Mmojo Server](902-Prepare-WSL-Mmojo-Server.md) - You will create a WSL instance for Mmojo Server.
 - [903. Prepare WSL - OpenClaw](903-Prepare-WSL-OpenClaw.md) - You will create a WSL instance for OpenClaw.
-- [910. Install Mmojo Server](910-Install-Mmojo-Server.md) - In this subsection, you will install or build Mmojo Server for use with OpenClaw.
+- [910. Deploy Mmojo Server](910-Deploy-Mmojo-Server.md) - In this subsection, you will install or build Mmojo Server for use with OpenClaw.
   - [911. Install Mmojo Server - Hugging Face](911-Install-Mmojo-Server-Hugging-Face.md) - In this subsection, you will download Mmojo Server from Hugging Face and install it for use with OpenClaw.
   - [912. Install Mmojo Server - Mmojo Share](911-Install-Mmojo-Server-Mmojo-Share.md) - In this subsection, you will copy a previously built Mmojo Server from your Mmojo Share and install it for use with OpenClaw.
   - [913. Build Mmojo Server](913-Build-Mmojo-Server.md) - You will build a Mmojo Server for testing with OpenClaw quickly.

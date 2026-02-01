@@ -13,7 +13,7 @@ In this step, we will install Mmojo Server from Hugging Face. If you would prefe
 ### Proceed
 - **Next:** [13. Install Mmojo Server - Mmojo Share](13-Install-Mmojo-Server-Mmojo-Share.md)
 - **Previous:** [11. Prepare WSL - Mmojo Server](11-Prepare-WSL-Mmojo-Server.md)
-- **Up:** [00. Deploy OpenClaw (WSL)](00-Deploy-OpenClaw-WSL.md)
+- **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---
 [MIT License](/LICENSE)<br/>

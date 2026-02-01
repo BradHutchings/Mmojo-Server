@@ -1,4 +1,4 @@
-## 902. Prepare WSL - Mmojo Server
+## 911. Prepare WSL - Mmojo Server
 
 ### About this Step
 Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for Mmojo Server deployment.
@@ -153,8 +153,8 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 
 ---
 ### Proceed
-- **Next:** [903. Prepare WSL - OpenClaw](903-Prepare-WSL-OpenClaw.md)
-- **Previous:** [901. Cleanup WSL Instances](901-Cleanup-WSL-Instances.md)
+- **Next:** [912. Install Mmojo Server - Hugging Face](912-Install-Mmojo-Server-Hugging-Face.md)
+- **Previous:** [910. Deploy Mmojo Server](910-Deploy-Mmojo-Server.md)
 - **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
 
 ---

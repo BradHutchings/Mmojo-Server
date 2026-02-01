@@ -146,8 +146,8 @@ admin123!
 ```
 
 ---
-### Create mm-scripts Directory
-The ``mm-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
+### Create `mm-scripts` Directory
+The `mm-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
 ```
 export HOME_SCRIPTS="$HOME/mm-scripts"
 TILDE_SCRIPTS="~/mm-scripts"

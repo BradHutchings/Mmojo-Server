@@ -8,7 +8,7 @@ Here is a tentative list of planned deployments:
 - 400\. Deploy Mmojo Server on macOS
 
 Here are deployments that are in progress or completed:
-- [500. Deploy OpenClaw (WSL)](500/00-Deploy-OpenClaw-WSL.md) - Deploy and OpenClaw server with Mmojo Server in WSL instances.
+- [500. Deploy OpenClaw (WSL)](500/README.md) - Deploy and OpenClaw server with Mmojo Server in WSL instances.
 
 ---
 [MIT License](/LICENSE)<br/>

@@ -11,8 +11,8 @@ Here are your options:
 
 ---
 ### Proceed
-- **Next:** [21. Install Mmojo Server - Hugging Face](21-Install-Mmojo-Server-Hugging-Face.md)
-- **Previous:** [13. Prepare WSL - OpenClaw](13-Prepare-WSL-OpenClaw.md)
+- **Next:** [11. Install Mmojo Server - Hugging Face](11-Install-Mmojo-Server-Hugging-Face.md)
+- **Previous:** [01. Cleanup WSL Instances](01-Cleanup-WSL-Instances.md)
 - **Up:** [00. Deploy OpenClaw (WSL)](00-Deploy-OpenClaw-WSL.md)
 
 ---

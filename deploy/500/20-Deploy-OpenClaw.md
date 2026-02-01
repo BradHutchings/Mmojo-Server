@@ -13,7 +13,7 @@ In this subsection, we will install and configure OpenClaw, connect it to your M
 ### Proceed
 - **Next:** [21. Prepare WSL - OpenClaw](21-Prepare-WSL-OpenClaw.md)
 - **Previous:** [14. Build Mmojo Server](14-Build-Mmojo-Server.md)
-- **Up:** [00. Deploy OpenClaw (WSL)](00-Deploy-OpenClaw-WSL.md)
+- **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---
 [MIT License](/LICENSE)<br/>

@@ -155,7 +155,7 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 ### Proceed
 - **Next:** [912. Install Mmojo Server - Hugging Face](912-Install-Mmojo-Server-Hugging-Face.md)
 - **Previous:** [910. Deploy Mmojo Server](910-Deploy-Mmojo-Server.md)
-- **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
+- **Up:** [900. Deploy OpenClaw (WSL)](900-Deploy-OpenClaw-WSL.md)
 
 ---
 [MIT License](/LICENSE)<br/>

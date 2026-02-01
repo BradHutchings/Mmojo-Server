@@ -7,7 +7,7 @@ Here is a tentative list of planned deployments:
 - Deploy Mmojo Server on Debian / Ubuntu
 
 Here are deployments that are in progress or completed:
-- [900. Deploy OpenClaw (WSL)](900-Deploy-OpenClaw-WSL) - Deploy and OpenClaw server with Mmojo Server in WSL instances.
+- [900. Deploy OpenClaw (WSL)](900-Deploy-OpenClaw-WSL.md) - Deploy and OpenClaw server with Mmojo Server in WSL instances.
 
 ---
 [MIT License](/LICENSE)<br/>

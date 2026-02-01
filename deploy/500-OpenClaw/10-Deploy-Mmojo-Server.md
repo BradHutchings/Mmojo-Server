@@ -13,7 +13,7 @@ Here are your options:
 ---
 ### Proceed
 - **Next:** [11. Prepare WSL - Mmojo Server](11-Prepare-WSL-Mmojo-Server.md)
-- **Previous:** [01. Cleanup WSL Instances](01-Cleanup-WSL-Instances.md)
+- **Previous:** [02. Cleanup WSL Instances](02-Cleanup-WSL-Instances.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

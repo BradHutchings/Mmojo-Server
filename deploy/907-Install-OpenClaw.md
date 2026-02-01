@@ -1,4 +1,4 @@
-## 906. Install OpenClaw
+## 907. Install OpenClaw
 ### About this Step
 You will install OpenClaw in the `OpenClaw` WSL instance.
 
@@ -127,8 +127,8 @@ You will see what is still labeled as the **Clawdbot Gateway Dashboard**, indica
 
 ---
 ### Proceed
-- **Next:** Whatever is next.
-- **Previous:** [905. Build Mmojo Server](905-Build-Mmojo-Server.md)
+- **Next:** This is the last step in this section.
+- **Previous:** [906. Build Mmojo Server](906-Build-Mmojo-Server.md)
 - **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
 
 ---

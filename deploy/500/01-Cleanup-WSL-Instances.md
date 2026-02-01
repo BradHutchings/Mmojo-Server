@@ -27,7 +27,7 @@ If you previously pinned `MmojoServer` and/or `OpenClaw` to your **Taskbar**, un
 
 ---
 ### Proceed
-- **Next:** [10. Deploy Mmojo Server](02-Deploy-Mmojo-Server.md)
+- **Next:** [10. Deploy Mmojo Server](10-Deploy-Mmojo-Server.md)
 - **Previous:** This is the first step in this section.
 - **Up:** [00. Deploy OpenClaw (WSL)](00-Deploy-OpenClaw-WSL.md)
 

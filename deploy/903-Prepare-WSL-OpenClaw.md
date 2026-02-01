@@ -1,11 +1,9 @@
-## 902. Prepare WSL - OpenClaw
+## 903. Prepare WSL - OpenClaw
 
 ### About this Step
 Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for OpenClaw.
 
-**Note:** `OpenClaw` is currently in the midst of a rename from `Clawdbot`. Tool names in these scripts will change, probably soon. If scripts or snippets break, come back in a few hours. They will be updated.
-
-Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\` for file system paths. Linux shells use a forward slash `/` for paths and a backslash `\` for escaping characters like `$` in strings. I mostly use the Linux style slashes in these instructions because they're for Linux.
+Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\` for file system paths. Linux shells use a forward slash `/` for paths and a backslash `\` for escaping characters like `$` in strings. I mostly use the Linux style slashes (`/`) in these instructions because they're for Linux.
 
 **Where:** Perform this step with and inside your WSL environment on Windows.
 
@@ -147,14 +145,17 @@ You'll be prompted for your `sudo` password:
 admin123!
 ```
 
+Leave the Terminal window open for installing or building OpenClaw.
+
+
 ---
 ### Start from Scratch Often
 It's OK to start from scratch and do it often. There is a lot going on to build and package Mmojo Server. There are a lot of moving parts. When you get stuck, save your sanity and start over.
 
 ---
 ### Proceed
-- **Next:** [903. Build Mmojo Server](903-Build-Mmojo-Server.md)
-- **Previous:** [901. Prepare WSL Mmojo Server](901-Prepare-WSL-Mmojo-Server.md).
+- **Next:** [904. Install Mmojo Server](904-Install-Mmojo-Server.md)
+- **Previous:** [902. Prepare WSL Mmojo Server](902-Prepare-WSL-Mmojo-Server.md).
 - **Up:** [900. Deploy OpenClaw](900-Deploy-OpenClaw.md)
 
 ---

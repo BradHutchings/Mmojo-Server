@@ -1,4 +1,4 @@
-## 01. Cleanup WSL Instances
+## 02. Cleanup WSL Instances
 
 ### About this Step
 Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's cleanup your WSL environment to prepare for a fresh installation of Mmojo Server and OpenClaw. Skip this step if you're not starting from scratch.

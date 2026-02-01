@@ -2,8 +2,8 @@
 There will be deployment instructions for deploying Mmojo Server. These instructions will be organized by deployment scenario. Each section will include instructions for deploying Mmojo Server from Hugging Face download, deploying from a previous build saved to your Mmojo Share, or performing a quick and dirty Mmojo Server build in a new environment.
 
 Here is a tentative list of planned deployments:
-- 100\. Deploy Mmojo Server APE on Supported Platforms
-- 200\. Deploy Mmojo Server on Windows (WSL)
+- [100. Deploy Mmojo Server APE on Supported Platforms](100/README.md)
+- [200. Deploy Mmojo Server on Windows (WSL)](200/README.md)
 - 300\. Deploy Mmojo Server on Debian / Ubuntu
 - 400\. Deploy Mmojo Server on macOS
 

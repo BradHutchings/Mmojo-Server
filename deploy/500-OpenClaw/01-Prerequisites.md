@@ -4,7 +4,7 @@ This step contains prerequisites for deploying OpenClaw and Mmojo Server using t
 
 ---
 ### Requirements
-This recipe deploys on a single, stand-alone Windows 10/11 PC or laptop:
+This recipe deploys OpenClaw and Mmojo Server on a single, stand-alone Windows 10/11 PC or laptop:
 - x86_64 CPU
   - There are portions of this recipe that will not work on ARM CPUs without adjustment.
 - 32 GB RAM

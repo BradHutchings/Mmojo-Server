@@ -13,11 +13,13 @@ If you have previous `MmojoServer` and/or `OpenClaw` WSL instances, let's delete
 
 Open a **Terminal** (or **PowerShell**) window. Verify that your instances exist and are stopped:
 ```
+# PowerShell
 wsl --list --verbose
 ```
 
 Unregister ("delete") the instance:
 ```
+# PowerShell
 wsl --unregister MmojoServer
 wsl --unregister OpenClaw
 

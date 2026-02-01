@@ -1,4 +1,4 @@
-## 923. Connect to Mmojo Server
+## 23. Connect to Mmojo Server
 ### About this Step
 You will edit the configuration of OpenClaw so that it uses your Mmojo Server instance as its large language model (LLM).
 
@@ -10,9 +10,9 @@ Instructions here.
 
 ---
 ### Proceed
-- **Next:** [924. Test OpenClaw](924-Test-OpenClaw.md)
-- **Previous:** [922. Install OpenClaw](922-Install-OpenClaw.md)
-- **Up:** [900. Deploy OpenClaw (WSL)](900-Deploy-OpenClaw-WSL.md)
+- **Next:** [24. Test OpenClaw](24-Test-OpenClaw.md)
+- **Previous:** [22. Install OpenClaw](22-Install-OpenClaw.md)
+- **Up:** [00. Deploy OpenClaw (WSL)](00-Deploy-OpenClaw-WSL.md)
 
 ---
 [MIT License](/LICENSE)<br/>

@@ -17,6 +17,7 @@ Here are the deployment steps:
   - [13. Download Mmojo Server from Hugging Face](13-Download-Mmojo-Server-from-Hugging-Face.md) - In this subsection, you will download Mmojo Server from Hugging Face and install it for use with OpenClaw.
   - [14. Copy Mmojo Server from Mmojo Share](14-Copy-Mmojo-Server-from-Mmojo-Share.md) - In this subsection, you will copy a previously built Mmojo Server from your Mmojo Share and install it for use with OpenClaw.
   - [15. Build Mmojo Server](15-Build-Mmojo-Server.md) - You will build a Mmojo Server for testing with OpenClaw quickly.
+  - [16. Run Mmojo Server](16-Run-Mmojo-Server.md) - Run and quickly test Mmojo Server.
 
 - [20. Deploy OpenClaw](20-Deploy-OpenClaw.md) - You will install, configure, and test OpenClaw.
   

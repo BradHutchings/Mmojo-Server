@@ -40,7 +40,7 @@ URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo
 ```
 
 <details>
-  <summary>Alternatively, set the URL for the Mmojo Server package that runs on all x86_64 CPUs. Use this if the Mmojo Server you download with the `URL` setting above gives you errors when you run it.</summary>
+  <summary>Alternatively, set the URL for the Mmojo Server package that runs on all x86_64 CPUs. Use this if the Mmojo Server you download with the URL setting above gives you errors when you run it.</summary>
   
 ```
 URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86-comp-cud.zip"

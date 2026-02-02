@@ -1,6 +1,6 @@
 ## 13. Download Mmojo Server from Hugging Face
 ### About this Step (OPTIONAL)
-In this step, we will download Mmojo Server from Hugging Face. If you would prefer to copy Mmojo Server from your Mmojo Share or build it from scratch, skip ahead to one of these steps:
+In this step, we will download Mmojo Server from Hugging Face. If you would prefer to copy Mmojo Server from your Mmojo Share or build it from source code, skip ahead to one of these steps:
 - [14. Copy Mmojo Server from Mmojo Share](14-Copy-Mmojo-Server-from-Mmojo-Share.md)
 - [15. Build Mmojo Server](15-Build-Mmojo-Server.md)
 

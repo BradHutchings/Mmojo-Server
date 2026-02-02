@@ -48,7 +48,7 @@ unset CHOSEN_GPUS
 . mm-choose-gpus.sh
 ```
 
-Build native Mmojo Server:
+Build native Mmojo Server tuned to the CPU of your PC:
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 ```

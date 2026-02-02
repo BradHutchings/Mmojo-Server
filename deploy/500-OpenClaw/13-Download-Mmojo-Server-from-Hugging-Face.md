@@ -70,14 +70,16 @@ URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo
 
 Download Mmojo Server from Hugging Face and unzip it in the `$HOME/Mmojo-Server` directory:
 ```
-mkdir -p $RUN_DIR
-cd $RUN_DIR
-rm -r -f "$RUN_DIR"/*
-wget $URL -O "mmojo-server.zip"
-unzip "mmojo-server.zip"
-rm "mmojo-server.zip"
-cd $HOME
-ls -al $RUN_DIR
+if test -n "$RUN_DIR"; then
+  mkdir -p $RUN_DIR
+  cd $RUN_DIR
+  rm -r -f "$RUN_DIR"/*
+  wget $URL -O "mmojo-server.zip"
+  unzip "mmojo-server.zip"
+  rm "mmojo-server.zip"
+  cd $HOME
+  ls -al $RUN_DIR
+fi
 ```
 
 ---

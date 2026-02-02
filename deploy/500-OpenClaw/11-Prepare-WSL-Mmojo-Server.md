@@ -197,6 +197,15 @@ source $HOME/.bashrc
 fi
 ```
 
+<details>
+  <summary><b>Optional:</b> If you're Brad working on writing these instructions, switch to the work-in-progress branch.</summary>
+  
+```
+mm-work-in-progress
+mm-env
+```
+</details>
+
 ---
 ### Great  Job!
 Leave the `Terminal` window open for installing or building Mmojo Server.

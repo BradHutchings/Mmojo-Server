@@ -231,7 +231,7 @@ You will see what is still labeled as the **Clawdbot Gateway Dashboard**, indica
 
 ---
 ### Proceed
-- **Next:** [23. Connect to Mmojo Server](23-Connect-to-Mmojo-Server.md)
+- **Next:** [23. Connect OpenClaw to Mmojo Server](23-Connect-OpenClaw-to-Mmojo-Server.md)
 - **Previous:** [21. Prepare WSL - OpenClaw](21-Prepare-WSL-OpenClaw.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 

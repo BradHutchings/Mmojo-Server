@@ -91,6 +91,7 @@ ls -al $RUN_DIR
 ```
 
 It should look like:
+
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---

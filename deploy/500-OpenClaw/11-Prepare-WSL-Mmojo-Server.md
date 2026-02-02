@@ -48,7 +48,7 @@ cd $HOME
 cat /etc/wsl.conf
 ```
 
-Append a `[interop]` section to `/etc/wsl.conf`:
+Append an `[interop]` section and an `[automount]` section to `/etc/wsl.conf`:
 ```
 cp /etc/wsl.conf ./wsl.conf
 cat << EOF >> wsl.conf

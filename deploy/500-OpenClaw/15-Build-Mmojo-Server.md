@@ -68,7 +68,7 @@ cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --path
-"$RUN_FOLDER/Mmojo-Complete"
+"$RUN_DIR/Mmojo-Complete"
 --host
 0.0.0.0
 --port

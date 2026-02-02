@@ -4,9 +4,21 @@ You perform a few tests to demonstrate that OpenClaw is using your Mmojo Server 
 
 ---
 ### Test OpenClaw
-Instructions here.
+Click the **Chat** button at the top of the left panel.
 
+The chat panel appears.
 
+Click the **New session** button at the bottom right of the chat panel.
+
+You should see some activity in the MmojoServer window.
+
+Ask it to tell you a joke.
+
+At this time, skills don't seem to work very well.
+
+```
+/skill weather San Diego, CA
+```
 
 ---
 ### Proceed

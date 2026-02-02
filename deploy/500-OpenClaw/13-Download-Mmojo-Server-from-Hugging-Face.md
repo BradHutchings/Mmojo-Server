@@ -71,6 +71,8 @@ if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_
 
 **Future:** The `choose-model.sh` script will copy the chosen model to `$RUN_DIR` if `$RUN_DIR` exists.
 
+Skip to: [16. Run Mmojo Server](16-Run-Mmojo-Server.md)
+
 ---
 ### Proceed
 - **Next:** [14. Copy Mmojo Server from Mmojo Share](14-Copy-Mmojo-Server-from-Mmojo-Share.md)

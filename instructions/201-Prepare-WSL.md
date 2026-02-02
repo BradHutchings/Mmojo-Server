@@ -5,8 +5,6 @@ Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directl
 
 Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\` for file system paths. Linux shells use a forward slash `/` for paths and a backslash `\` for escaping characters like `$` in strings. I mostly use the Linux style slashes in these instructions because they're for Linux.
 
-**Where:** Perform this step with and inside your WSL environment on Windows.
-
 ---
 ### Delete your Existing `MmojoServerBuild` WSL Instance
 If you have a previous `MmojoServerBuild` WSL instance, let's delete it. We're going to start from scratch with a new one.
@@ -39,7 +37,7 @@ admin123!
 ```
 
 ---
-### Disable `[interop]`
+### Disable `[interop]` and `[automount]`
 Let's diable interoperability with the host Windows environment so we don't have our WSL `$PATH` polluted and won't have problems launching APE files inside WSL.
 
 Check that `/etc/wsl.conf` doesn't already have an `[interop]` section:
@@ -48,7 +46,7 @@ cd $HOME
 cat /etc/wsl.conf
 ```
 
-Append a `[interop]` section to `/etc/wsl.conf`:
+Append an `[interop]` section and an `[automount]` section to `/etc/wsl.conf`:
 ```
 cp /etc/wsl.conf ./wsl.conf
 cat << EOF >> wsl.conf
@@ -56,6 +54,9 @@ cat << EOF >> wsl.conf
 [interop]
 enabled=false
 appendWindowsPath=false
+
+[automount]
+enabled = false
 EOF
 sudo mv ./wsl.conf /etc/wsl.conf
 ```
@@ -69,6 +70,8 @@ Check that `/etc/wsl.conf` now has an `[interop]` section:
 ```
 cat /etc/wsl.conf
 ```
+
+Note: The drive directories will remain under `/mnt`, but the drives will not be mounted on those directories.
 
 ---
 ### Remove sudo Timeout
@@ -93,6 +96,14 @@ cat << EOF >> .bashrc
 PS1="(MmojoServerBuild)-$PS1"
 EOF
 . .bashrc
+```
+
+---
+### Run apt update and upgrade
+Update linux:
+```
+sudo apt update
+sudo apt upgrade -y
 ```
 
 ---

@@ -98,6 +98,8 @@ unset CHOSEN_MODEL_MNEMONIC
 if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" $RUN_DIR; fi
 ```
 
+**Future:** The `choose-model.sh` script will copy the chosen model to `$RUN_DIR` if `$RUN_DIR` exists.
+
 ---
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:

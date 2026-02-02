@@ -1,7 +1,7 @@
 ## 15. Build Mmojo Server
 
 ### About this Step
-If you didn't install Mmojo Server from Hugging Face downloads or from builds on your Mmojo Share, you can build it quickly with the steps on this page.
+If you didn't download Mmojo Server from Hugging Face, or copy Mmojo Server from your Mmojo Share, you can build it quickly with the steps on this page.
 
 ---
 ### Install Dependencies and GPU Support

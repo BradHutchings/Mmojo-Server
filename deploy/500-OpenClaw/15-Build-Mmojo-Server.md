@@ -42,7 +42,7 @@ $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```
 
-Choose a model and GPUs:
+Choose a model and GPUs. I'd suggest choosing **IBM Granite 8B Instruct** for the model, and **CUDA** for the GPU.
 ```
 unset CHOSEN_MODEL
 unset CHOSEN_MODEL_MNEMONIC

@@ -101,6 +101,14 @@ EOF
 ```
 
 ---
+### Run apt update and upgrade
+Update linux:
+```
+sudo apt update
+sudo apt upgrade -y
+```
+
+---
 ### Power Off the WSL Instance
 Now, poweroff the WSL instance:
 ```

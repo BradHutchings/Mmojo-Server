@@ -16,6 +16,22 @@ Connect to Mmojo Complete from a browser:
 [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
 ---
+### Stop Mmojo Server, Exit WSL Instance
+Due to some weirdness with WSL when moving instances to other drives, you should stop Mmojo Server and exit its WSL instance. You will be moving the WSL instance for OpenClaw to your second drive, and WSL won't do that if *any* WSL instance is running.
+
+There are two ways you can do this:
+1. **The easy way:**
+
+   Close the WSL window where Mmojo Server is running. WSL will notice you have no sessions open and shut down the instance.
+   
+2. **The hard but maybe better way**:
+
+   `CTRL-C` (maybe twice) to stop `mmojo-server`. Then leave the connection to the WSL instance:
+   ```
+   exit
+   ```
+
+---
 ### Proceed
 - **Next:** [20. Deploy OpenClaw](20-Deploy-OpenClaw.md)
 - **Previous:** [15. Build Mmojo Server](15-Build-Mmojo-Server.md)

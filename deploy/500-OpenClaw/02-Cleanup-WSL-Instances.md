@@ -12,14 +12,14 @@ Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\`
 If you have previous `MmojoServer` and/or `OpenClaw` WSL instances, let's delete them. We're going to start from scratch with new instances.
 
 Open a **Terminal** (or **PowerShell**) window. Verify that your instances exist and are stopped:
+
 ```
-# PowerShell
 wsl --list --verbose
 ```
 
 Unregister ("delete") the instance:
+
 ```
-# PowerShell
 wsl --unregister MmojoServer
 wsl --unregister OpenClaw
 

@@ -103,10 +103,7 @@ EOF
 ### Choose a Model
 Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
 ```
-unset CHOSEN_MODEL
-unset CHOSEN_MODEL_MNEMONIC
 . mm-choose-model.sh
-if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" $RUN_DIR; fi
 ```
 
 **Future:** The `choose-model.sh` script will copy the chosen model to `$RUN_DIR` if `$RUN_DIR` exists.

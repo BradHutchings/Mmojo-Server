@@ -69,7 +69,6 @@ Make a run directory. This is a good candidate for an mm-script.
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
-# BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
 cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
 cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
@@ -81,7 +80,7 @@ cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --port
 8080
 --batch-size
-1924
+2048
 --threads-http
 8
 --ctx-size

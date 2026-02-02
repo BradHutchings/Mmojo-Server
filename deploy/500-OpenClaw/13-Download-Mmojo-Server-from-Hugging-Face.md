@@ -36,8 +36,40 @@ mm-download-models.sh 4
 
 ---
 ### Download Mmojo Server from Hugging Face
-(Instructions here.)
 
+Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs:
+```
+URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86-perf-cud.zip"
+```
+
+Alternatively, set the URL for the Mmojo Server package that runs on all x86_64 CPUs:
+```
+URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86-comp-cud.zip"
+```
+
+Download Mmojo Server from Hugging Face and unzip it in the `$HOME/Mmojo-Server` directory:
+```
+mkdir -p $RUN_DIR
+cd $RUN_DIR
+rm -r -f "$RUN_DIR"/*
+wget $URL -O "mmojo-server.zip"
+unzip "mmojo-server.zip"
+rm "mmojo-server.zip"
+cd $HOME
+ls -al $RUN_DIR
+```
+
+---
+### Choose a Model
+Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
+```
+unset CHOSEN_MODEL
+unset CHOSEN_MODEL_MNEMONIC
+. mm-choose-model.sh
+if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" $RUN_DIR; fi
+```
+
+**Future:** The `choose-model.sh` script will copy the chosen model to `$RUN_DIR` if `$RUN_DIR` exists.
 
 ---
 ### Proceed

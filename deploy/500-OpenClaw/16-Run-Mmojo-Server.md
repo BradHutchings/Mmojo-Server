@@ -18,7 +18,7 @@ Connect to Mmojo Complete from a browser:
 ---
 ### Proceed
 - **Next:** [20. Deploy OpenClaw](20-Deploy-OpenClaw.md)
-- **Previous:** [16. Run Mmojo Server](16-Run-Mmojo-Server.md)
+- **Previous:** [15. Build Mmojo Server](15-Build-Mmojo-Server.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

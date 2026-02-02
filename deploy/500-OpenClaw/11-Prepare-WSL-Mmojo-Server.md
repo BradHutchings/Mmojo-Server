@@ -73,6 +73,8 @@ Check that `/etc/wsl.conf` now has an `[interop]` section:
 cat /etc/wsl.conf
 ```
 
+Note: The drive directories will remain under `/mnt`, but the drives will not be mounted on those directories.
+
 ---
 ### Remove sudo Timeout
 You will use the `sudo` command often, so let's make it not expire.

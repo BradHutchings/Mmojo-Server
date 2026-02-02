@@ -56,7 +56,9 @@ Build native Mmojo Server:
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 ```
 
-Make a run folder. This is a good candidate for an mm-script.
+---
+### Create a Run Directory
+Make a run directory. This is a good candidate for an mm-script.
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
@@ -80,6 +82,16 @@ cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 EOF
 if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" $RUN_DIR; fi
 ```
+
+---
+### Review Your Work
+Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
+```
+ls -al $RUN_DIR
+```
+
+It should look like:
+<img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
 ### Proceed

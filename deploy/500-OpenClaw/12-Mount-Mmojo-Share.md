@@ -13,7 +13,7 @@ In this step, you will mount your Mmojo Share, if you have one.
 
 ---
 ### Proceed
-- **Next:** [13. Download Hugging Face from Mmojo Share](13-Download-Mmojo-Server-from-Hugging-Face.md)
+- **Next:** [13. Download Mmojo Server from Hugging Face](13-Download-Mmojo-Server-from-Hugging-Face.md)
 - **Previous:** [11. Prepare WSL - Mmojo Server](11-Prepare-WSL-Mmojo-Server.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 

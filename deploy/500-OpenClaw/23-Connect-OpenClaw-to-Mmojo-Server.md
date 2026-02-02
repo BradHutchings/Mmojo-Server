@@ -61,6 +61,10 @@ Copy this block, and replace the `"agents" > "default" > "models"` block:
 
 ```
 
+Click the **Save** button at the top right.
+
+Click the **Update** button at the top right. Wait for updating to complete.
+
 ---
 ### Proceed
 - **Next:** [24. Test OpenClaw](24-Test-OpenClaw.md)

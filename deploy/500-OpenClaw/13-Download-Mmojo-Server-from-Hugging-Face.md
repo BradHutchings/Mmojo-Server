@@ -66,7 +66,7 @@ Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be cop
 . mm-choose-model.sh
 ```
 
-**Future:** The `choose-model.sh` script will copy the chosen model to `$RUN_DIR` if `$RUN_DIR` exists.
+Mmojo Server is installed and you are ready to run it!
 
 Skip to: [16. Run Mmojo Server](16-Run-Mmojo-Server.md)
 

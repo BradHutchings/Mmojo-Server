@@ -11,7 +11,7 @@ Instructions here.
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [23. Connect to Mmojo Server](23-Connect-to-Mmojo-Server.md)
+- **Previous:** [23. Connect OpenClaw to Mmojo Server](23-Connect-OpenClaw-to-Mmojo-Server.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

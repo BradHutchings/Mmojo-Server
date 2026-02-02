@@ -71,37 +71,55 @@ Hit the `Y` key.
 
 Hit the `N` key.
 
+**Preferred node manager for skill installs**
+
 <img width="423" height="103" alt="image" src="https://github.com/user-attachments/assets/05513603-a480-486f-8e3a-48174bc81422" />
 
 Hit the `ENTER` key.
+
+**Install missing skill dependencies**
 
 <img width="573" height="148" alt="image" src="https://github.com/user-attachments/assets/09b8380e-950d-40f6-9cd5-f698586626ee" />
 
 Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 
+**Enable Hooks (THIS MIGHT BE A DUPLICATE)**
+
 <img width="235" height="117" alt="image" src="https://github.com/user-attachments/assets/2b8fafc0-9774-453e-8a45-161be4ec86b1" />
 
 Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
+
+**Set GOOGLE_PLACES_API_KEY for goplaces?**
 
 <img width="402" height="67" alt="image" src="https://github.com/user-attachments/assets/45b0c208-d68f-4b73-a3c4-a8f1f29a0ba8" />
 
 Hit the `ENTER` key.
 
+**Set GOOGLE_PLACES_API_KEY for local-places?**
+
 <img width="435" height="72" alt="image" src="https://github.com/user-attachments/assets/2339b8eb-a43e-4484-8519-d1e3932fc8a6" />
 
 Hit the `ENTER` key.
+
+**Set GEMINI_API_KEY for nano-banana-pro?**
 
 <img width="399" height="69" alt="image" src="https://github.com/user-attachments/assets/1e7f96cb-9716-4c98-a480-b3f4ba32d393" />
 
 Hit the `ENTER` key.
 
+**Set NOTION_API_KEY for notion?**
+
 <img width="335" height="67" alt="image" src="https://github.com/user-attachments/assets/31c9661e-fba7-44da-bc45-0d2b9632f7a7" />
 
 Hit the `ENTER` key.
 
+**Set OPENAI_API_KEY for openai-image-gen?**
+
 <img width="406" height="73" alt="image" src="https://github.com/user-attachments/assets/802ebddb-be97-403d-b75e-66883e4bfdfa" />
 
 Hit the `ENTER` key.
+
+**Set OPENAI_API_KEY for openai-whisper-api?**
 
 <img width="433" height="67" alt="image" src="https://github.com/user-attachments/assets/1bd70a9f-3ac0-419e-aa81-1d8a583c3749" />
 

@@ -1,4 +1,4 @@
-## 23. Connect to Mmojo Server
+## 23. Connect OpenClaw to Mmojo Server
 ### About this Step
 You will edit the configuration of OpenClaw so that it uses your Mmojo Server instance as its large language model (LLM).
 

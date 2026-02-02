@@ -201,7 +201,7 @@ fi
   <summary><b>Optional:</b> If you're Brad working on writing these instructions, switch to the work-in-progress branch.</summary>
   
 ```
-mm-work-in-progress
+mm-work-in-progress-branch.sh
 mm-env
 ```
 </details>

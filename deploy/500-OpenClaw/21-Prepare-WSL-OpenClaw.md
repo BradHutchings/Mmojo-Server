@@ -5,8 +5,6 @@ Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directl
 
 Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\` for file system paths. Linux shells use a forward slash `/` for paths and a backslash `\` for escaping characters like `$` in strings. I mostly use the Linux style slashes (`/`) in these instructions because they're for Linux.
 
-**Where:** Perform this step with and inside your WSL environment on Windows.
-
 ---
 ### Delete your Existing `OpenClaw` WSL Instance
 If you have a previous `OpenClaw` WSL instance, let's delete it. We're going to start from scratch with a new one.

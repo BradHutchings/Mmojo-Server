@@ -17,11 +17,15 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 ### Complete OpenClaw Onboarding
 You will complete OpenClaw onboarding right now to get it running quickly. You will connect it to Mmojo Server and set up services later.
 
+---
+
 **I understand this is powerful and inherently risky? Continue?**
 
 <img width="607" height="60" alt="image" src="https://github.com/user-attachments/assets/6b1c2fb1-7d48-4d64-87a0-b8dbf687547c" />
 
 Hit the `Y` key.
+
+---
 
 **Onboarding mode**
 
@@ -29,11 +33,15 @@ Hit the `Y` key.
 
 Hit the `ENTER` key.
 
+---
+
 **Model/auth provider**
 
 <img width="238" height="302" alt="image" src="https://github.com/user-attachments/assets/76102749-6c0a-48e8-8a21-531d587c637a" />
 
 Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
+
+---
 
 **Filter models by provider**
 
@@ -41,11 +49,15 @@ Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` k
 
 Hit the `ENTER` key.
 
+---
+
 **Default model**
 
 <img width="502" height="88" alt="image" src="https://github.com/user-attachments/assets/ea4f5cef-fedc-4a9a-aba2-efb28fbc2175" />
 
 Use the <code>&darr;</code> key to choose `Enter model manually`, then hit the `ENTER` key.
+
+---
 
 **Default model**
 
@@ -53,11 +65,15 @@ Use the <code>&darr;</code> key to choose `Enter model manually`, then hit the `
 
 Hit the `ENTER` key. You will fix the default model later.
 
+---
+
 **Select channel (QuickStart)**
 
 <img width="688" height="386" alt="image" src="https://github.com/user-attachments/assets/79ec0122-0d4c-4697-bc55-116901f2920f" />
 
 Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
+
+---
 
 **Configure skills now? (recommended)**
 
@@ -65,11 +81,15 @@ Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` k
 
 Hit the `Y` key.
 
+---
+
 **Show Homebrew install command?**
 
 <img width="357" height="65" alt="image" src="https://github.com/user-attachments/assets/738027be-0d3a-49aa-8cb5-52bd12d16528" />
 
 Hit the `N` key.
+
+---
 
 **Preferred node manager for skill installs**
 
@@ -77,17 +97,23 @@ Hit the `N` key.
 
 Hit the `ENTER` key.
 
+---
+
 **Install missing skill dependencies**
 
 <img width="573" height="148" alt="image" src="https://github.com/user-attachments/assets/09b8380e-950d-40f6-9cd5-f698586626ee" />
 
 Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 
-**Enable Hooks (THIS MIGHT BE A DUPLICATE)**
+---
+
+**Enable Hooks (THIS MIGHT BE OUT OF PLACE - DUPLICATE BELOW)**
 
 <img width="235" height="117" alt="image" src="https://github.com/user-attachments/assets/2b8fafc0-9774-453e-8a45-161be4ec86b1" />
 
 Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
+
+---
 
 **Set GOOGLE_PLACES_API_KEY for goplaces?**
 
@@ -95,11 +121,15 @@ Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 
 Hit the `ENTER` key.
 
+---
+
 **Set GOOGLE_PLACES_API_KEY for local-places?**
 
 <img width="435" height="72" alt="image" src="https://github.com/user-attachments/assets/2339b8eb-a43e-4484-8519-d1e3932fc8a6" />
 
 Hit the `ENTER` key.
+
+---
 
 **Set GEMINI_API_KEY for nano-banana-pro?**
 
@@ -107,11 +137,15 @@ Hit the `ENTER` key.
 
 Hit the `ENTER` key.
 
+---
+
 **Set NOTION_API_KEY for notion?**
 
 <img width="335" height="67" alt="image" src="https://github.com/user-attachments/assets/31c9661e-fba7-44da-bc45-0d2b9632f7a7" />
 
 Hit the `ENTER` key.
+
+---
 
 **Set OPENAI_API_KEY for openai-image-gen?**
 
@@ -119,23 +153,39 @@ Hit the `ENTER` key.
 
 Hit the `ENTER` key.
 
+---
+
 **Set OPENAI_API_KEY for openai-whisper-api?**
 
 <img width="433" height="67" alt="image" src="https://github.com/user-attachments/assets/1bd70a9f-3ac0-419e-aa81-1d8a583c3749" />
 
 Hit the `ENTER` key.
 
+---
+
+**Set ELEVENLABS_API_KEY for sag?**
+
 <img width="339" height="64" alt="image" src="https://github.com/user-attachments/assets/9200d83f-681b-4f89-b848-e1e12ffdbb3d" />
 
 Hit the `ENTER` key.
+
+---
+
+**Enable Hooks (THIS MIGHT BE OUT OF PLACE - DUPLICATE ABOVE)**
 
 <img width="326" height="123" alt="image" src="https://github.com/user-attachments/assets/8fead834-6497-4361-88ee-d90de8fc9126" />
 
 Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 
+---
+
+**How do you want to hatch your bot?**
+
 <img width="361" height="107" alt="image" src="https://github.com/user-attachments/assets/dc6a95b5-8bdc-44ee-8e0b-f09f52c3a75e" />
 
 Use the <code>&darr;</code> key to choose `Open the Web UI`, then hit the `ENTER` key.
+
+**Onboarding complete.**
 
 <img width="764" height="80" alt="image" src="https://github.com/user-attachments/assets/7d8780e5-e6a8-4234-b0e3-76c71d952f1e" />
 

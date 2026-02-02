@@ -42,12 +42,9 @@ $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```
 
-Choose a model and GPUs. I'd suggest choosing **IBM Granite 8B Instruct** for the model, and **CUDA** for the GPU.
+Choose a model and GPUs. I'd suggest **CUDA**.
 ```
-unset CHOSEN_MODEL
-unset CHOSEN_MODEL_MNEMONIC
 unset CHOSEN_GPUS
-. mm-choose-model.sh
 . mm-choose-gpus.sh
 ```
 
@@ -80,6 +77,15 @@ cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --ctx-size
 32768 
 EOF
+```
+
+---
+### Choose a Model
+Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
+```
+unset CHOSEN_MODEL
+unset CHOSEN_MODEL_MNEMONIC
+. mm-choose-model.sh
 if [ -f "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" ]; then cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" $RUN_DIR; fi
 ```
 

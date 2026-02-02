@@ -39,7 +39,7 @@ admin123!
 ```
 
 ---
-### Disable `[interop]`
+### Disable `[interop]` and `[automount]`
 Let's diable interoperability with the host Windows environment so we don't have our WSL `$PATH` polluted and won't have problems launching APE files inside WSL.
 
 Check that `/etc/wsl.conf` doesn't already have an `[interop]` section:
@@ -56,6 +56,9 @@ cat << EOF >> wsl.conf
 [interop]
 enabled=false
 appendWindowsPath=false
+
+[automount]
+enabled = false
 EOF
 sudo mv ./wsl.conf /etc/wsl.conf
 ```

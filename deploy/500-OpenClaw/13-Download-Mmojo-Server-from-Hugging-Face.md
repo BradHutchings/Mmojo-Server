@@ -12,6 +12,8 @@ sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libvulkan-dev glslc vulkan-tools
 ```
 
+**Future:** Find client libraries to install rather than developer tools.
+
 ---
 ### Download Models
 Download models. These may take 20 minutes or so to download.

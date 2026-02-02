@@ -3,6 +3,18 @@
 You will edit the configuration of OpenClaw so that it uses your Mmojo Server instance as its large language model (LLM).
 
 ---
+### Start Mmojo Server
+
+Click the MmojoServer WSL Shortcut that you added to your Taskbar. This will launch the WSL instance and open a Terminal window.
+
+Paste this into the Terminal window to launch `mmojo-server` again:
+```
+$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE
+```
+
+Leave the WSL instance Terminal window open and visible on your screen.
+
+---
 ### Connect OpenClaw to Mmojo Server
 Go to your browser tab that shows the **OpenClaw Control** page.
 

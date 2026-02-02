@@ -14,7 +14,25 @@ sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libvulkan-dev glslc vulkan-tools
 ```
 
-**Future:** Find client libraries to install rather than developer tools.
+<details>
+  <summary><b>Future:</b> Find client libraries to install rather than developer tools.</summary>
+  <br/>
+  <b>Source:</b> https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/ubuntu.html
+  <br/><br/>
+
+```
+# open kernel modules
+apt install nvidia-open -y
+```
+
+Or:
+
+```
+# proprietary kernel modules
+apt install cuda-drivers -y
+```
+</details>
+
 
 ---
 ### Download Models

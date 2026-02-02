@@ -104,6 +104,7 @@ Update linux:
 ```
 sudo apt update
 sudo apt upgrade -y
+sudo apt install unzip -y
 ```
 
 ---

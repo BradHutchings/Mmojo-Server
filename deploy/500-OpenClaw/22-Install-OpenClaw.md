@@ -185,11 +185,29 @@ Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 
 Use the <code>&darr;</code> key to choose `Open the Web UI`, then hit the `ENTER` key.
 
+---
+
 **Onboarding complete.**
 
 <img width="764" height="80" alt="image" src="https://github.com/user-attachments/assets/7d8780e5-e6a8-4234-b0e3-76c71d952f1e" />
 
-Congratulations! Onboarding is complete.
+You're not quite done yet.
+
+---
+
+**Install shell completion script?**
+
+<img width="351" height="70" alt="image" src="https://github.com/user-attachments/assets/639e47de-e32b-4659-ad84-aed51493983f" />
+
+Hit the `N` key.
+
+---
+
+Your shell prompt appears.
+
+<img width="343" height="70" alt="image" src="https://github.com/user-attachments/assets/8e7c8ed9-e49b-48b2-9a64-f7af9affb812" />
+
+Now you're done.
 
 ---
 ### Additional Configuration

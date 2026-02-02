@@ -2,6 +2,8 @@
 ### About this Step
 This step contains prerequisites for deploying OpenClaw and Mmojo Server using this recipe. We will install each in its own Windows Subsystem for Linux (WSL) instance.
 
+**Skip Ahead:** [02. Cleanup WSL Instances](02-Cleanup-WSL-Instances.md)
+
 ---
 ### Requirements
 This recipe deploys OpenClaw and Mmojo Server on a single, stand-alone Windows 10/11 PC or laptop:

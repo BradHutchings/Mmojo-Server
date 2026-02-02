@@ -55,11 +55,20 @@ BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
 ```
 
 <details>
-  <summary>Alternatively, build a more compatible Mmojo Server:</summary>
+  <summary>Alternatively, build a more compatible Mmojo Server. It will run on most x86_64 CPUs.</summary>
   
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
 BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
+```
+</details>
+
+<details>
+  <summary>Alternatively, build a performant Mmojo Server. It will run on recent x86_64 CPUs.</summary>
+  
+```
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
+BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$CHOSEN_GPUS"
 ```
 </details>
 

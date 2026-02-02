@@ -44,7 +44,7 @@ Copy this block and paste it after the `"messages"` block:
 Copy this block, and replace the `"agents" > "default" > "models"` block:
 ```
       "model": {
-        "primary": "lmstudio/default"
+        "primary": "mmojo/default"
       },
 
 ```

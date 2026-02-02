@@ -46,7 +46,7 @@ cd $HOME
 cat /etc/wsl.conf
 ```
 
-Append a `[interop]` section to `/etc/wsl.conf`:
+Append an `[interop]` section and an `[automount]` section to `/etc/wsl.conf`:
 ```
 cp /etc/wsl.conf ./wsl.conf
 cat << EOF >> wsl.conf
@@ -71,6 +71,8 @@ Check that `/etc/wsl.conf` now has an `[interop]` section:
 cat /etc/wsl.conf
 ```
 
+Note: The drive directories will remain under `/mnt`, but the drives will not be mounted on those directories.
+
 ---
 ### Remove sudo Timeout
 You will use the `sudo` command often, so let's make it not expire.
@@ -94,6 +96,14 @@ cat << EOF >> .bashrc
 PS1="(OpenClaw)-$PS1"
 EOF
 . .bashrc
+```
+
+---
+### Run apt update and upgrade
+Update linux:
+```
+sudo apt update
+sudo apt upgrade -y
 ```
 
 ---
@@ -132,7 +142,7 @@ OpenClaw
 Add it to the **Taskbar**.
 
 ---
-### Launch OpenClaw
+### Launch OpenClaw WSL Instance
 
 Launch and log into your new instance by clicking the icon you just added to the **Taskbar**.
 
@@ -146,7 +156,7 @@ You'll be prompted for your `sudo` password:
 admin123!
 ```
 
-Leave the Terminal window open for installing or building OpenClaw.
+Leave the Terminal window open for installing OpenClaw.
 
 
 ---

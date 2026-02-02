@@ -53,6 +53,11 @@ Build native Mmojo Server:
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 ```
 
+Alternatively, build a more compatible Mmojo Server:
+```
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
+```
+
 ---
 ### Create a Run Directory
 Make a run directory. This is a good candidate for an mm-script.

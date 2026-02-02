@@ -17,37 +17,55 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 ### Complete OpenClaw Onboarding
 You will complete OpenClaw onboarding right now to get it running quickly. You will connect it to Mmojo Server and set up services later.
 
+**I understand this is powerful and inherently risky? Continue?**
+
 <img width="607" height="60" alt="image" src="https://github.com/user-attachments/assets/6b1c2fb1-7d48-4d64-87a0-b8dbf687547c" />
 
 Hit the `Y` key.
+
+**Onboarding mode**
 
 <img width="608" height="77" alt="image" src="https://github.com/user-attachments/assets/de92b7b5-a0f8-4e53-be85-042e38a4d096" />
 
 Hit the `ENTER` key.
 
+**Model/auth provider**
+
 <img width="238" height="302" alt="image" src="https://github.com/user-attachments/assets/76102749-6c0a-48e8-8a21-531d587c637a" />
 
 Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
+
+**Filter models by provider**
 
 <img width="290" height="152" alt="image" src="https://github.com/user-attachments/assets/6cb2cf56-f950-4a13-8c77-7608b1fbb5cc" />
 
 Hit the `ENTER` key.
 
+**Default model**
+
 <img width="502" height="88" alt="image" src="https://github.com/user-attachments/assets/ea4f5cef-fedc-4a9a-aba2-efb28fbc2175" />
 
 Use the <code>&darr;</code> key to choose `Enter model manually`, then hit the `ENTER` key.
+
+**Default model**
 
 <img width="283" height="61" alt="image" src="https://github.com/user-attachments/assets/a066c210-cd76-48d0-b313-c078dbc69181" />
 
 Hit the `ENTER` key. You will fix the default model later.
 
+**Select channel (QuickStart)**
+
 <img width="688" height="386" alt="image" src="https://github.com/user-attachments/assets/79ec0122-0d4c-4697-bc55-116901f2920f" />
 
 Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
 
+**Configure skills now? (recommended)**
+
 <img width="363" height="68" alt="image" src="https://github.com/user-attachments/assets/9645fd0d-54d8-48d4-bcc9-6d2a1a7109fc" />
 
 Hit the `Y` key.
+
+**Show Homebrew install command?**
 
 <img width="357" height="65" alt="image" src="https://github.com/user-attachments/assets/738027be-0d3a-49aa-8cb5-52bd12d16528" />
 

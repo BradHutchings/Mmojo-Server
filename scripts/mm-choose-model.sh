@@ -36,6 +36,12 @@ if [ -v CHOSEN_MODEL ]; then
   echo ""
   echo "You chose: $CHOSEN_MODEL - $CHOSEN_MODEL_MNEMONIC"
   echo ""
+
+  if [ -d "$RUN_DIR" ]; then
+      rm -f "$RUN_DIR"*.gguf
+      echo "Copying chosen model to $RUN_DIR."
+      cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" "$RUN_DIR"
+  fi
 fi
 
 cd $HOME

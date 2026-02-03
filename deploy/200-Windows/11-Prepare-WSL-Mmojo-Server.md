@@ -217,7 +217,7 @@ It's OK to start from scratch and do it often. There is a lot going on to deploy
 ### Proceed
 - **Next:** [12. Mount Mmojo Share](12-Mount-Mmojo-Share.md)
 - **Previous:** [10. Deploy Mmojo Server](10-Deploy-Mmojo-Server.md)
-- **Up:** [Deploy OpenClaw (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

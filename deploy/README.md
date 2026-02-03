@@ -2,8 +2,8 @@
 There will be deployment instructions for deploying Mmojo Server. These instructions will be organized by deployment scenario. Each section will include instructions for deploying Mmojo Server from Hugging Face download, deploying from a previous build saved to your Mmojo Share, or performing a quick and dirty Mmojo Server build in a new environment.
 
 Here are deployments that are in progress or completed:
-- [200. Deploy Mmojo Server on Windows (WSL)](200-Windows_WSL/README.md) - Placehold page.
-- [500. Deploy OpenClaw (WSL)](500-OpenClaw/README.md) - Deploy and OpenClaw server with Mmojo Server in WSL instances.
+- [200. Deploy Mmojo Server on Windows (WSL)](200-Windows-WSL/README.md) - Deploy Mmojo Server in WSL instance.
+- [500. Deploy OpenClaw (WSL)](500-OpenClaw/README.md) - Deploy OpenClaw server with Mmojo Server in WSL instances.
 
 Here is a tentative list of planned deployments:
 - [100. Deploy Mmojo Server APE on Supported Platforms](100-APE/README.md) - Placehold page.

@@ -115,7 +115,7 @@ fi
 
 ---
 ### Proceed
-- **Next:** [09. Start, Stop, Set Model](09-Start-Stop-Set-Model.md)
+- **Next:** [09. Start, Stop, Choose Model](09-Start-Stop-Choose-Model.md)
 - **Previous:** [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

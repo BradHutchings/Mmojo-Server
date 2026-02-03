@@ -1,8 +1,10 @@
 ## About Mmojo Server
 
-**[Build Mmojo Server Now!](instructions/-Start-Here-TOC.md)**
+**[Deploy Mmojo Server (Windows WSL)](deploy/200-Windows-WSL/README.md)**
 
-**[Deploy Mmojo Server + OpenClaw](https://github.com/BradHutchings/Mmojo-Server/blob/main/deploy/500-OpenClaw/README.md)**
+**[Deploy Mmojo Server + OpenClaw (Windows WSL)](deploy/500-OpenClaw/README.md)**
+
+**[Build Mmojo Server Now!](instructions/-Start-Here-TOC.md)**
 
 Welcome to Mmojo Server version 2! This project makes building and packaging the LLM server and other software from llama.cpp easy and approachable, with some carefully selected extensions and enhancements. Highlights:
 - Build and package Actual Portable Executable (APE) files that run on Linux, Windows, macOS operating systems across x86_64 and aarch64 (ARM64) architectures.

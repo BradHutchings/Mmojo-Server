@@ -102,7 +102,7 @@ EOF
 
 ---
 ### Run apt update and upgrade
-Update linux:
+Update linux and install `unzip`:
 ```
 sudo apt update
 sudo apt upgrade -y

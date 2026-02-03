@@ -21,7 +21,7 @@ Here are the steps:
 ### Proceed
 - **Next:** [11. Prepare WSL - Mmojo Server](11-Prepare-WSL-Mmojo-Server.md)
 - **Previous:** [02. Cleanup WSL Instance](02-Cleanup-WSL-Instance.md)
-- **Up:** [Deploy OpenClaw (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

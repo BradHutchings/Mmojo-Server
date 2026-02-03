@@ -11,7 +11,7 @@ This recipe deploys Mmojo Server on a single, stand-alone Windows 10/11 PC or la
 - x86_64 CPU
   - There are portions of this recipe that will not work on ARM CPUs without adjustment.
   - I will add side notes in the future for use on ARM CPUs.
-  - So-called "AI" laptops and desktops are not helpful. Mmojo Server (llama.cpp) needs GPUs.
+  - So-called "AI" laptops and desktops are not helpful. Mmojo Server (llama.cpp) uses GPUs when available.
 - 32 GB RAM
   - Mmojo Server needs plenty of RAM to run an 8B paramter model.
 - Windows 10/11 support WSL and have the feature enabled.

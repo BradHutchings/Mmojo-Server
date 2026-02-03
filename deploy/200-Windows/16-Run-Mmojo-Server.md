@@ -39,7 +39,7 @@ There are two ways you can do this:
 ### Proceed
 - **Next:** [20. Deploy OpenClaw](20-Deploy-OpenClaw.md)
 - **Previous:** [15. Build Mmojo Server](15-Build-Mmojo-Server.md)
-- **Up:** [Deploy OpenClaw (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

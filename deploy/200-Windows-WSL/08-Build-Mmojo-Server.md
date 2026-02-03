@@ -25,7 +25,7 @@ $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```
 
-Choose GPUs for your build. I'd suggest **CUDA**.
+Choose GPUs for your build. I suggest **CUDA**.
 ```
 unset CHOSEN_GPUS
 . mm-choose-gpus.sh

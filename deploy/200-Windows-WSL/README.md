@@ -1,5 +1,5 @@
 ## Deploy Mmojo Server on Windows (WSL)
-### About this Section (200)
+### About this Section (200-Windows-WSL)
 In this section, you will setup a WSL environment on Windows and deploy Mmojo Server in it. This is the prefered way to run Mmojo Server on a Windows PC.
 
 **THIS IS A DRAFT OF THIS RECIPE.** Some pieces aren't implemented yet. If you're careful, you should end up with a "working" installation.. -Brad 2026-02-01

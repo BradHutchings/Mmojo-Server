@@ -1,6 +1,6 @@
 ## 10. Deploy Mmojo Server
 ### About this Subsection
-You need to Mmojo Server running to serve as the large language model (LLM) server for OpenClaw. We can install one from Hugging Face or your Mmojo Share. We can also build one in place.
+You need Mmojo Server running to serve as the large language model (LLM) server for OpenClaw. You can download Mmojo Server from Hugging Face or copy Mmojo Server from your Mmojo Share. You can also build Mmojo Server in place.
 
 **Get Started:** [11. Prepare WSL - Mmojo Server](11-Prepare-WSL-Mmojo-Server.md)
 

@@ -49,10 +49,13 @@ sed -i -e 's/__COSMOPOLITAN__/__COSMOPOLITAN__XXX/g' vendor/miniaudio/miniaudio.
 
 # Cosmo headers needed.
 if ! grep -q "#include <cstdlib>" "tools/mtmd/deprecation-warning.cpp" ; then
-  sed -i '3i #include <cstdlib>' tools/mtmd/deprecation-warning.cpp
+  sed -i '3i #include <cstdlib>' "tools/mtmd/deprecation-warning.cpp"
 fi
 if ! grep -q "#include <algorithm>" "src/llama-hparams.cpp" ; then
-  sed -i '4i #include <algorithm>' src/llama-hparams.cpp
+  sed -i '4i #include <algorithm>' "src/llama-hparams.cpp"
+fi
+if ! grep -q "#include <algorithm>" "common/ngram-mod.cpp" ; then
+  sed -i '2i #include <algorithm>' "common/ngram-mod.cpp"
 fi
 
 # In tools/server .cpp files, replace "defer(" with "defer_task(" to make Cosmo STL happy.

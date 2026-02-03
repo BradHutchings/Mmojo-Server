@@ -36,7 +36,7 @@ ls -al /mnt/mmojo
 ### Proceed
 - **Next:** [13. Download Mmojo Server from Hugging Face](13-Download-Mmojo-Server-from-Hugging-Face.md)
 - **Previous:** [11. Prepare WSL - Mmojo Server](11-Prepare-WSL-Mmojo-Server.md)
-- **Up:** [Deploy OpenClaw (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

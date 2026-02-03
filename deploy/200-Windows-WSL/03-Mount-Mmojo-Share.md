@@ -3,7 +3,7 @@
 In this step, you will mount your Mmojo Share, if you have one. You can skip this step if you don't have a Mmojo Share.
 
 **Skip Ahead:** 
-- [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md)
+- [04. Download Models from Hugging Face](04-Download-Models-from-Hugging-Face.md)
 
 ---
 ### Create Mmojo Share Mount Point and Mount Script
@@ -34,7 +34,7 @@ ls -al /mnt/mmojo
 
 ---
 ### Proceed
-- **Next:** [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md)
+- **Next:** [04. Download Models from Hugging Face](04-Download-Models-from-Hugging-Face.md)
 - **Previous:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

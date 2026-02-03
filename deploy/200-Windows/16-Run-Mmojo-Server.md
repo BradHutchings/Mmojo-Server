@@ -37,7 +37,7 @@ There are two ways you can do this:
 
 ---
 ### Proceed
-- **Next:** [20. Deploy OpenClaw](20-Deploy-OpenClaw.md)
+- **Next:** This is the last step in this section.
 - **Previous:** [15. Build Mmojo Server](15-Build-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

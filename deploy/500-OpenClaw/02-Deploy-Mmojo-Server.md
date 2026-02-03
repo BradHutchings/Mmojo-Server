@@ -12,6 +12,22 @@ Open this deployment guide in a new tab:
 Complete that guide. When you are finished, you will have a Mmojo Server running in its own WSL instance.
 
 ---
+### Stop Mmojo Server, Exit WSL Instance
+Due to some weirdness with WSL when moving instances to other drives, you should stop Mmojo Server and exit its WSL instance. You will be moving the WSL instance for OpenClaw to your second drive, and WSL won't do that if *any* WSL instance is running.
+
+There are two ways you can do this:
+1. **The easy way:**
+
+   Close the WSL window where Mmojo Server is running. WSL will notice you have no sessions open and shut down the instance.
+   
+2. **The hard but maybe better way**:
+
+   `CTRL-C` (maybe twice) to stop `mmojo-server`. Then leave the connection to the WSL instance:
+   ```
+   exit
+   ```
+
+---
 ### Proceed
 - **Next:** [03. Prepare WSL - OpenClaw](03-Prepare-WSL-OpenClaw.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)

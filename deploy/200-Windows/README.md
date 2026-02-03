@@ -10,7 +10,7 @@ In this section, you will setup a WSL environment on Windows and deploy Mmojo Se
 ### Deploy Mmojo Server
 Here are the deployment steps:
 - [01. Prerequisites](01-Prerequisites.md) - What you need to deploy OpenClaw.
-- [02. Cleanup WSL Instances](02-Cleanup-WSL-Instances.md) - You will delete existing instances so you have a fresh canvas to work with.
+- [02. Cleanup WSL Instance](02-Cleanup-WSL-Instance.md) - You will delete existing instances so you have a fresh canvas to work with.
 
 - [10. Deploy Mmojo Server](10-Deploy-Mmojo-Server.md) - In this subsection, you will install or build Mmojo Server for use with OpenClaw.
   

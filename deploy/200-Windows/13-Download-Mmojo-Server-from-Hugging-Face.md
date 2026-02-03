@@ -97,7 +97,7 @@ Skip to: [16. Run Mmojo Server](16-Run-Mmojo-Server.md)
 ### Proceed
 - **Next:** [14. Copy Mmojo Server from Mmojo Share](14-Copy-Mmojo-Server-from-Mmojo-Share.md)
 - **Previous:** [12. Mount Mmojo Share](12-Mount-Mmojo-Share.md)
-- **Up:** [Deploy OpenClaw (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

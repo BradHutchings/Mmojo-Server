@@ -22,14 +22,14 @@ sudo apt install -y libvulkan-dev glslc vulkan-tools
 
 ```
 # open kernel modules
-apt install nvidia-open -y
+sudo apt install nvidia-open -y
 ```
 
 Or:
 
 ```
 # proprietary kernel modules
-apt install cuda-drivers -y
+sudo apt install cuda-drivers -y
 ```
 </details>
 

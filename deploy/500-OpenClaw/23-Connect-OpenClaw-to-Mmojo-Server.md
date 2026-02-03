@@ -53,7 +53,7 @@ Copy this block and paste it after the `"messages"` block:
 
 ```
 
-Copy this block, and replace the `"agents" > "default" > "models"` block:
+Copy this block, and replace the `"agents" > "defaults" > "models"` block:
 ```
       "model": {
         "primary": "mmojo/default"

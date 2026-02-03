@@ -1,13 +1,13 @@
-## 201. Prepare WSL
+## 11. Prepare WSL - Mmojo Server
 
 ### About this Step
-Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for Mmojo Server development.
+Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for Mmojo Server deployment.
 
 Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\` for file system paths. Linux shells use a forward slash `/` for paths and a backslash `\` for escaping characters like `$` in strings. I mostly use the Linux style slashes in these instructions because they're for Linux.
 
 ---
-### Delete your Existing `MmojoServerBuild` WSL Instance
-If you have a previous `MmojoServerBuild` WSL instance, let's delete it. We're going to start from scratch with a new one.
+### Delete your Existing `MmojoServer` WSL Instance
+If you have a previous `MmojoServer` WSL instance, let's delete it. We're going to start from scratch with a new one.
 
 Open a **Terminal** (or **PowerShell**) window. Verify that your instance exists and is stopped:
 ```
@@ -16,16 +16,16 @@ wsl --list --verbose
 
 Unregister ("delete") the instance:
 ```
-wsl --unregister MmojoServerBuild
+wsl --unregister MmojoServer
 ```
 
-If you previously pinned `MmojoServerBuild` to your **Taskbar**, unpin it. The existing pinned shortcut one will not launch the new instance you will create.
+If you previously pinned `MmojoServer` to your **Taskbar**, unpin it. The existing pinned shortcut one will not launch the new instance you will create.
 
 ---
-### Create New `MmojoServerBuild` WSL Instance
+### Create New `MmojoServer` WSL Instance
 Still in the **Terminal**, register a new instance:
 ```
-wsl --install Ubuntu --name MmojoServerBuild
+wsl --install Ubuntu --name MmojoServer
 ```
 
 A Ubuntu instance will be downloaded and installed. After a couple of minutes, you will be prompted for a user name and password. I like to use `linux` and `admin123!`.
@@ -90,10 +90,10 @@ Defaults        env_reset,timestamp_timeout=-1
 
 ---
 ### Customize Shell Prompt
-You can prepend `(MmojoServerBuild)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
+You can prepend `(MmojoServer)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
 ```
 cat << EOF >> .bashrc
-PS1="(MmojoServerBuild)-$PS1"
+PS1="(MmojoServer)-$PS1"
 EOF
 . .bashrc
 ```
@@ -124,26 +124,26 @@ In 2025, advanced Windows users like you have a startup drive for Windows stuff 
 
 The **Terminal** app should show a PowerShell prompt. Create a destination directory on the `D:` drive:
 ```
-mkdir D:\wsl-mmojo-server-build
+mkdir D:\wsl-mmojo-server
 ```
 
 Wait a couple minutes for WSL to completely shut down the instance you just created. Then move its virtual drive:
 ```
-wsl --manage MmojoServerBuild --move D:\wsl-mmojo-server-build
+wsl --manage MmojoServer --move D:\wsl-mmojo-server
 ```
 
 If you get a `WSL_E_DISTRO_NOT_STOPPED` or an `ERROR_SHARING_VIOLATION`, wait a minute, then try again.
 
 ---
-### Pin MmojoServerBuild to the Taskbar
+### Pin MmojoServer to the Taskbar
 Click your **Start** menu. Search for:
 ```
-MmojoServerBuild
+MmojoServer
 ```
 Add it to the **Taskbar**.
 
 ---
-### Launch MmojoServerBuild
+### Launch MmojoServer WSL Instance
 
 Launch and log into your new instance by clicking the icon you just added to the **Taskbar**.
 
@@ -158,16 +158,68 @@ admin123!
 ```
 
 ---
-### Start from Scratch Often
-It's OK to start from scratch and do it often. There is a lot going on to build and package Mmojo Server. There are a lot of moving parts. When you get stuck, save your sanity and start over.
+### Create `mm-scripts` Directory
+The `mm-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
+```
+export HOME_SCRIPTS="$HOME/mm-scripts"
+TILDE_SCRIPTS="~/mm-scripts"
+mkdir -p $HOME_SCRIPTS
+
+if [[ "${PATH}" != *"${HOME_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_SCRIPTS}"* ]]; then
+cat << EOF >> $HOME/.bashrc
+export PATH="\$PATH:$HOME_SCRIPTS"
+EOF
+fi
+
+source $HOME/.bashrc
+echo $PATH
+```
+
+---
+### Clone the Mmojo Server Repository
+The Mmojo Server Github repositort has scripts and tools for installing and building Mmojo Server.
+```
+export MMOJO_SERVER_DIR="$HOME/200-mmojo-server"
+export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
+cd $HOME
+if [ "$MMOJO_SERVER_DIR" ]; then
+  rm -r -f $MMOJO_SERVER_DIR
+fi
+mkdir -p $MMOJO_SERVER_DIR
+git clone https://github.com/BradHutchings/mmojo-server.git $MMOJO_SERVER_DIR
+. $MMOJO_SERVER_SCRIPTS/mm-environment-variables.sh
+. $MMOJO_SERVER_SCRIPTS/mm-update-local-mmojo-server-repo.sh
+if ! grep -q "mm-env=" "$HOME/.bashrc"; then
+cat << EOF1 >> $HOME/.bashrc
+alias mm-env=". mm-environment-variables.sh"
+mm-env
+EOF1
+source $HOME/.bashrc
+fi
+```
+
+<details>
+  <summary><b>Optional:</b> If you're Brad working on writing these instructions, switch to the work-in-progress branch.</summary>
+  
+```
+mm-work-in-progress-branch.sh
+mm-env
+```
+</details>
+
+---
+### Great  Job!
+Leave the `Terminal` window open for installing or building Mmojo Server.
+
+It's OK to start from scratch and do it often. There is a lot going on to deploy Mmojo Server. There are a lot of moving parts. When you get stuck, save your sanity and start over.
 
 ---
 ### Proceed
-- **Next:** [202. Prepare macOS](202-Prepare-macOS.md)
-- **Previous:** This is the first step in this section.
-- **Up:** [200. Prepare Build Environment](200-Prepare-Build-Environment.md)
+- **Next:** [12. Mount Mmojo Share](12-Mount-Mmojo-Share.md)
+- **Previous:** [10. Deploy Mmojo Server](10-Deploy-Mmojo-Server.md)
+- **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---
-[MIT License](/LICENSE)<br/>
+[MIT-Style License](/LICENSE)<br/>
 Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

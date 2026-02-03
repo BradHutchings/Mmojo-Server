@@ -1,4 +1,4 @@
-## 21. Prepare WSL - OpenClaw
+## 03. Prepare WSL - OpenClaw
 
 ### About this Step
 Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for OpenClaw.
@@ -40,7 +40,7 @@ admin123!
 ### Disable `[interop]` and `[automount]`
 Let's disable interoperability with the host Windows environment so we don't have our WSL `$PATH` polluted and won't have problems launching APE files inside WSL.
 
-**Most important:** OpenClaw will not have access to any of your documents on your computer's disks, outside of the WSL environment. This is a safe approach for experimenting with OpenClaw.
+**Most important:** Disabling `automount` ensures that OpenClaw will not have access to any of your documents on your computer's disks, outside of the WSL environment. This is a safe approach for experimenting with OpenClaw.
 
 Check that `/etc/wsl.conf` doesn't already have an `[interop]` section:
 ```
@@ -102,7 +102,7 @@ EOF
 
 ---
 ### Run apt update and upgrade
-Update linux:
+Update linux and install `unzip`:
 ```
 sudo apt update
 sudo apt upgrade -y
@@ -168,8 +168,8 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 
 ---
 ### Proceed
-- **Next:** [22. Install OpenClaw](22-Install-OpenClaw.md)
-- **Previous:** [20. Deploy OpenClaw](20-Deploy-OpenClaw.md)
+- **Next:** [04. Install OpenClaw](04-Install-OpenClaw.md)
+- **Previous:** [02. Deploy Mmojo Server](02-Deploy-Mmojo-Server.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

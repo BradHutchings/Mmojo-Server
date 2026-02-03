@@ -1,23 +1,15 @@
-## 16. Run Mmojo Server
-
+## 02. Cleanup WSL Instances
 ### About this Step
-Now that you have Mmojo Server installed in the `$HOME/Mmojo-Server` directory, you can run it.
+In this step, you will open the deployment guide for deploying Mmojo Server on Windows (WSL), you will complete the guide. You will return here.
 
 ---
-### Launch mmojo-server
+### Deploy Mmojo Server
 
-Launch `mmojo-server`:
-```
-$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE 
-```
+Open this deployment guide in a new tab:
 
-Connect to Mmojo Complete from a browser:
+- [Deploy Mmojo Server on Windows (WSL)](../200-Windows-WSL/README.md)
 
-[Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
-
-You should see the Mmojo Complete user interface:
-
-<img width="543" height="400" alt="image" src="https://github.com/user-attachments/assets/31055741-4697-441e-a3e3-a191401a7e8c" />
+Complete that guide. When you are finished, you will have a Mmojo Server running in its own WSL instance.
 
 ---
 ### Stop Mmojo Server, Exit WSL Instance
@@ -37,8 +29,8 @@ There are two ways you can do this:
 
 ---
 ### Proceed
-- **Next:** [20. Deploy OpenClaw](20-Deploy-OpenClaw.md)
-- **Previous:** [15. Build Mmojo Server](15-Build-Mmojo-Server.md)
+- **Next:** [03. Prepare WSL - OpenClaw](03-Prepare-WSL-OpenClaw.md)
+- **Previous:** [01. Prerequisites](01-Prerequisites.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

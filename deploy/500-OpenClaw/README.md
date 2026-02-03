@@ -12,24 +12,12 @@ Your installation will be private and self-contained on the computer on which yo
 ### Deploy OpenClaw
 Here are the deployment steps:
 - [01. Prerequisites](01-Prerequisites.md) - What you need to deploy OpenClaw.
-- [02. Cleanup WSL Instances](02-Cleanup-WSL-Instances.md) - You will delete existing instances so you have a fresh canvas to work with.
-
-- [10. Deploy Mmojo Server](10-Deploy-Mmojo-Server.md) - In this subsection, you will install or build Mmojo Server for use with OpenClaw.
-  
-  - [11. Prepare WSL - Mmojo Server](11-Prepare-WSL-Mmojo-Server.md) - You will create a WSL instance for Mmojo Server.
-  - [12. Mount Mmojo Share](12-Mount-Mmojo-Share.md) - If you have a Mmojo Share, mount it.
-  - [13. Download Mmojo Server from Hugging Face](13-Download-Mmojo-Server-from-Hugging-Face.md) - In this subsection, you will download Mmojo Server from Hugging Face and install it for use with OpenClaw.
-  - [14. Copy Mmojo Server from Mmojo Share](14-Copy-Mmojo-Server-from-Mmojo-Share.md) - In this subsection, you will copy a previously built Mmojo Server from your Mmojo Share and install it for use with OpenClaw.
-  - [15. Build Mmojo Server](15-Build-Mmojo-Server.md) - You will build a Mmojo Server for testing with OpenClaw quickly.
-  - [16. Run Mmojo Server](16-Run-Mmojo-Server.md) - Run and quickly test Mmojo Server.
-
-- [20. Deploy OpenClaw](20-Deploy-OpenClaw.md) - You will install, configure, and test OpenClaw.
-  
-  - [21. Prepare WSL - OpenClaw](21-Prepare-WSL-OpenClaw.md) - You will create a WSL instance for OpenClaw.
-  - [22. Install OpenClaw](22-Install-OpenClaw.md) - Install OpenClaw and perform Quick Configuration.
-  - [23. Connect OpenClaw to Mmojo Server](23-Connect-OpenClaw-to-Mmojo-Server.md) - Connect OpenClaw to Mmojo Server.
-  - [24. Test OpenClaw](24-Test-OpenClaw.md) - Perform simple tests with OpenClaw.
-    <br/><br/>
+- [02. Deploy Mmojo Server](02-Deploy-Mmojo-Server.md) - You will use another deploy guide to deploy Mmojo Server.  
+- [03. Prepare WSL - OpenClaw](03-Prepare-WSL-OpenClaw.md) - You will create a WSL instance for OpenClaw.
+- [04. Install OpenClaw](04-Install-OpenClaw.md) - Install OpenClaw and perform Quick Configuration.
+- [05. Connect OpenClaw to Mmojo Server](05-Connect-OpenClaw-to-Mmojo-Server.md) - Connect OpenClaw to Mmojo Server.
+- [06. Test OpenClaw](06-Test-OpenClaw.md) - Perform simple tests with OpenClaw.
+  <br/><br/>
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
 

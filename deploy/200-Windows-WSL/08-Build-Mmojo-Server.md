@@ -1,4 +1,4 @@
-## 15. Build Mmojo Server
+## 08. Build Mmojo Server
 
 ### About this Step
 If you didn't download Mmojo Server from Hugging Face, or copy Mmojo Server from your Mmojo Share, you can build it quickly with the steps on this page.
@@ -17,23 +17,6 @@ sudo apt install -y libvulkan-dev glslc vulkan-tools
 ```
 
 ---
-### Download Models
-Download models. These may take 20 minutes or so to download.
-
-Might be good to get these from Mmojo Share? Mount Mmojo Share should be step 12.
-```
-$MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
-cat << EOF > $LOCAL_DOWNLOAD_MODEL_MAP
-# This is our map between actual model filenames and filenames for mmojo-server with the model embedded.
-Google-Gemma-270M-Instruct-v3-q8_0.gguf Goo-Gem-270M-Ins-v3
-Google-Gemma-1B-Instruct-v3-q8_0.gguf Goo-Gem-1B-Ins-v3
-IBM-Granite-2B-Instruct-v3.3-q8_0.gguf IBM-Gra-2B-Ins-v3.3
-IBM-Granite-8B-Instruct-v3.3-q8_0.gguf IBM-Gra-8B-Ins-v3.3
-EOF
-mm-download-models.sh 4
-```
-
----
 ### Build Native Mmojo Server
 Prepare to build:
 ```
@@ -42,9 +25,8 @@ $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```
 
-Choose a model and GPUs. I'd suggest **CUDA**.
+Choose GPUs for your build. I suggest **CUDA**.
 ```
-unset CHOSEN_GPUS
 . mm-choose-gpus.sh
 ```
 
@@ -60,6 +42,7 @@ BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
 BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
+ZIP_FILE="Mmojo-Server-x86-comp$CHOSEN_GPUS.zip"
 ```
 </details>
 
@@ -69,6 +52,7 @@ BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
 BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$CHOSEN_GPUS"
+ZIP_FILE="Mmojo-Server-x86-perf$CHOSEN_GPUS.zip"
 ```
 </details>
 
@@ -83,7 +67,9 @@ cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --path
-"$RUN_DIR/Mmojo-Complete"
+/app/Mmojo-Complete
+--default-ui-endpoint
+chat
 --host
 0.0.0.0
 --port
@@ -96,8 +82,6 @@ cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 32768 
 EOF
 ```
-
-**Future:** The `--path` path will be `/app/Mmojo-Complete`. Needs an addition to Mmojo Server code to do that. Then we'll have directory independence.
 
 ---
 ### Choose a Model
@@ -120,10 +104,22 @@ It should look like:
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
+### (OPTIONAL) Make a .zip File
+Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
+```
+if test -n "$RUN_DIR"; then
+  cd "$RUN_DIR"
+  zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete
+  mv $ZIP_FILE $HOME
+  cd $HOME
+fi
+```
+
+---
 ### Proceed
-- **Next:** [16. Run Mmojo Server](16-Run-Mmojo-Server.md)
-- **Previous:** [14. Copy Mmojo Server from Mmojo Share](14-Copy-Mmojo-Server-from-Mmojo-Share.md)
-- **Up:** [Deploy OpenClaw (WSL)](README.md)
+- **Next:** [09. Run Mmojo Server](09-Run-Mmojo-Server.md)
+- **Previous:** [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md)
+- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

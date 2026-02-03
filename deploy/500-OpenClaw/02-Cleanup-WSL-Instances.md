@@ -6,7 +6,7 @@ Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directl
 Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\` for file system paths. Linux shells use a forward slash `/` for paths and a backslash `\` for escaping characters like `$` in strings. I mostly use the Linux style slashes (`/`) in these instructions because they're for Linux.
 
 ---
-### Delete your Existing `MmojoServer`and `OpenClaw` WSL Instances
+### Delete your Existing `MmojoServer` and `OpenClaw` WSL Instances
 If you have previous `MmojoServer` and/or `OpenClaw` WSL instances, let's delete them. We're going to start from scratch with new instances.
 
 Open a **Terminal** (or **PowerShell**) window. Verify that your instances exist and are stopped:

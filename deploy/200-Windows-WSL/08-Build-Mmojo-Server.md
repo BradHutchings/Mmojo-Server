@@ -90,8 +90,6 @@ Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be cop
 . mm-choose-model.sh
 ```
 
-**Future:** The `choose-model.sh` script will copy the chosen model to `$RUN_DIR` if `$RUN_DIR` exists.
-
 ---
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
@@ -117,7 +115,7 @@ fi
 
 ---
 ### Proceed
-- **Next:** [09. Run Mmojo Server](09-Run-Mmojo-Server.md)
+- **Next:** [09. Start, Stop, Set Model](09-Start-Stop-Set-Model.md)
 - **Previous:** [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

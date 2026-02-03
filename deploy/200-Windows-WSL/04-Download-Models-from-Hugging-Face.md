@@ -21,7 +21,7 @@ EOF
 mm-download-models.sh 4
 ```
 
-**Future:** It would be better to offer a collection of generic models, download a couple at a time. These are geared toward OpenClaw.
+**Future:** It would be better to offer a collection of generic models, download a couple at a time. These are geared toward OpenClaw. Setup the downloads file with a few optional sets. Then download 4 at a time until all are downloaded.
 
 ---
 ### Proceed

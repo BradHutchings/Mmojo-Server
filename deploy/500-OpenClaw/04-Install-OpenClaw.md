@@ -1,4 +1,4 @@
-## 22. Install OpenClaw
+## 04. Install OpenClaw
 ### About this Step
 You will install OpenClaw in the `OpenClaw` WSL instance.
 
@@ -225,8 +225,8 @@ You will see the **OpenClaw Gateway Dashboard**, indicating that OpenClaw is run
 
 ---
 ### Proceed
-- **Next:** [23. Connect OpenClaw to Mmojo Server](23-Connect-OpenClaw-to-Mmojo-Server.md)
-- **Previous:** [21. Prepare WSL - OpenClaw](21-Prepare-WSL-OpenClaw.md)
+- **Next:** [05. Connect OpenClaw to Mmojo Server](05-Connect-OpenClaw-to-Mmojo-Server.md)
+- **Previous:** [03. Prepare WSL - OpenClaw](03-Prepare-WSL-OpenClaw.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

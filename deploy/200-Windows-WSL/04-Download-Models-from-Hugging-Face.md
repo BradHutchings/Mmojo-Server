@@ -1,4 +1,4 @@
-## 04. Download Mmojo Server from Hugging Face
+## 04. Download Models from Hugging Face
 ### About this Step (OPTIONAL)
 In this step, we will download models for use with Mmojo Server from Hugging Face. If you would prefer to copy models from your Mmojo Share, you can skip ahead.
 

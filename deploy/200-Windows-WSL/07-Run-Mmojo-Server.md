@@ -1,4 +1,4 @@
-## 16. Run Mmojo Server
+## 07. Run Mmojo Server
 
 ### About this Step
 Now that you have Mmojo Server installed in the `$HOME/Mmojo-Server` directory, you can run it.
@@ -38,7 +38,7 @@ There are two ways you can do this:
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [15. Build Mmojo Server](15-Build-Mmojo-Server.md)
+- **Previous:** [07. Build Mmojo Server](07-Build-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

@@ -2,7 +2,7 @@
 ### About this Section (200)
 In this section, you will setup a WSL environment on Windows and deploy Mmojo Server in it. This is the prefered way to run Mmojo Server on a Windows PC.
 
-**THIS IS A DRAFT OF THIS RECIPE.** Some pieces aren't implemented yet. If you're careful, you should end up with a "working" installation and at the very least, be able to use the OpenClaw web control page to chat with your Mmojo Server. -Brad 2026-02-01
+**THIS IS A DRAFT OF THIS RECIPE.** Some pieces aren't implemented yet. If you're careful, you should end up with a "working" installation.. -Brad 2026-02-01
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
 

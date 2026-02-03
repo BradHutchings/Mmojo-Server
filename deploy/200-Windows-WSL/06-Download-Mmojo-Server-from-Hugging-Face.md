@@ -70,7 +70,7 @@ ls -al $RUN_DIR
 
 Mmojo Server is installed and you are ready to run it!
 
-Skip to: [09. Run Mmojo Server](09-Run-Mmojo-Server.md)
+**Skip to:** [09. Run Mmojo Server](09-Run-Mmojo-Server.md)
 
 ---
 ### Proceed

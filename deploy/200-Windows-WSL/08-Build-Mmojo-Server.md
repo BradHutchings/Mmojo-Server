@@ -42,7 +42,7 @@ BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
 BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
-ZIP_FILE="Mmojo-Server-x86-comp-cud.zip"
+ZIP_FILE="Mmojo-Server-x86-comp$CHOSEN_GPUS.zip"
 ```
 </details>
 
@@ -52,7 +52,7 @@ ZIP_FILE="Mmojo-Server-x86-comp-cud.zip"
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
 BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$CHOSEN_GPUS"
-ZIP_FILE="Mmojo-Server-x86-perf-cud.zip"
+ZIP_FILE="Mmojo-Server-x86-perf$CHOSEN_GPUS.zip"
 ```
 </details>
 

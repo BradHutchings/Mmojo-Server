@@ -3,7 +3,7 @@
 In this step, you will mount your Mmojo Share, if you have one. You can skip this step if you don't have a Mmojo Share.
 
 **Skip Ahead:** 
-- [13. Download Mmojo Server from Hugging Face](13-Download-Mmojo-Server-from-Hugging-Face.md)
+- [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md)
 
 ---
 ### Create Mmojo Share Mount Point and Mount Script

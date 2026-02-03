@@ -12,7 +12,7 @@ Here are the deployment steps:
 - [01. Prerequisites](01-Prerequisites.md) - What you need to deploy OpenClaw.  
 - [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md) - You will create a WSL instance for Mmojo Server.
 - [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md) - If you have a Mmojo Share, mount it.
-- [04. Download Models from Hugging Face](04-Download-Models-from-Hugging-Face.md] - You will download models for use with Mmoho Server from Hugging Face.
+- [04. Download Models from Hugging Face](04-Download-Models-from-Hugging-Face.md) - You will download models for use with Mmoho Server from Hugging Face.
 - [05. Copy Models from Mmojo Share](05-Copy-Models-from-Mmojo-Share.md) - You will copy models for use with Mmoho Server from your Mmojo Share.
 - [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md) - You will download Mmojo Server from Hugging Face and install it.
 - [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md) - You will copy a previously built Mmojo Server from your Mmojo Share and install it.

@@ -7,12 +7,11 @@ Please proceed to the next step.
 - [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md)
 
 ---
-### About this Step
-In this step, we will install Mmojo Server, using an existing build on your Mmojo Share. If you would prefer to install Mmojo Server from Hugging Face or build it from scratch, jump to one of these steps:
-- Install from Hugging Face.
-- Build from scratch.
+### About this Step (Optional)
+In this step, you will copy models for use with Mmojo Server from your Mmojo Share.
 
-### Copy from Mmojo Share
+---
+### Copy Models from Mmojo Share
 (Instructions here.)
 
 

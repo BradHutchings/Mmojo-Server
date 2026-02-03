@@ -20,14 +20,10 @@ sudo apt install -y libvulkan-dev glslc vulkan-tools
   <b>Source:</b> https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/ubuntu.html
   <br/><br/>
 
+  These did not work:
 ```
 # open kernel modules
 sudo apt install nvidia-open -y
-```
-
-Or:
-
-```
 # proprietary kernel modules
 sudo apt install cuda-drivers -y
 ```

@@ -498,6 +498,36 @@ void main_mmojo_server_3(common_params& params) {
             printf("  - new ssl-cert-file path: %s\n", (const char*) params.ssl_file_cert.c_str());
         }
     }
+    if (executableParentPath != "") {
+        const std::string& executableRootPath = "/app/";
+        std::string executableParentPathSlash = (const char*) executableParentPath.c_str();
+        executableParentPathSlash += "/";
+      
+        if (starts_with(params.model.path, executableRootPath)) {
+            printf("\n");
+            mmojo_printf("--model path starts with %s.\n", (const char*) executableRootPath.c_str());
+            params.model.path.replace(0, executableRootPath.length(), (const char*) executableParentPathSlash.c_str());
+            printf("  - new model path: %s\n", (const char*) params.model.path.c_str());
+        }
+        if (starts_with(params.public_path, executableRootPath)) {
+            printf("\n");
+            mmojo_printf("--path path starts with %s.\n", (const char*) executableRootPath.c_str());
+            params.public_path.replace(0, executableRootPath.length(), (const char*) executableParentPathSlash.c_str());
+            printf("  - new path path: %s\n", (const char*) params.public_path.c_str());
+        }
+        if (starts_with(params.ssl_file_key, executableRootPath)) {
+            printf("\n");
+            mmojo_printf("--ssl-key-file path starts with %s.\n", (const char*) executableRootPath.c_str());
+            params.ssl_file_key.replace(0, executableRootPath.length(), (const char*) executableParentPathSlash.c_str());
+            printf("  - new ssl-key-file path: %s\n", (const char*) params.ssl_file_key.c_str());
+        }
+        if (starts_with(params.ssl_file_cert, executableRootPath)) {
+            printf("\n");
+            mmojo_printf("--ssl-cert-file path starts with %s.\n", (const char*) executableRootPath.c_str());
+            params.ssl_file_cert.replace(0, executableRootPath.length(), (const char*) executableParentPathSlash.c_str());
+            printf("  - new ssl-cert-file path: %s\n", (const char*) params.ssl_file_cert.c_str());
+        }
+    }
 }
 // Mmojo Server END
 

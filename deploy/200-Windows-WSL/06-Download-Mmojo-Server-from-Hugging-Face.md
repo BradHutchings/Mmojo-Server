@@ -3,8 +3,8 @@
 In this step, we will download Mmojo Server from Hugging Face. If you would prefer to copy Mmojo Server from your Mmojo Share or build it from source code, you can skip ahead.
 
 **Skip Ahead:**
-- [05. Copy Mmojo Server from Mmojo Share](05-Copy-Mmojo-Server-from-Mmojo-Share.md)
-- [06. Build Mmojo Server](06-Build-Mmojo-Server.md)
+- [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md)
+- [08. Build Mmojo Server](08-Build-Mmojo-Server.md)
 
 ---
 ### Install GPU Support

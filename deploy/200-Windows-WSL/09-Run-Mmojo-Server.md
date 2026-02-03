@@ -1,10 +1,9 @@
-## 09. Run Mmojo Server
-
+## 09. Start, Stop, Choose Model
 ### About this Step
-Now that you have Mmojo Server installed in the `$HOME/Mmojo-Server` directory, you can run it.
+This step has controls for starting Mmojo Server, stopping Mmojo Server, and setting the model.
 
 ---
-### Launch mmojo-server
+### Start Mmojo Server
 
 Launch `mmojo-server`:
 ```
@@ -34,6 +33,13 @@ There are two ways you can do this:
    ```
    exit
    ```
+
+---
+### Choose Model
+Choose a model. It will be copied to your `$HOME/Mmojo-Server` directory.
+```
+. mm-choose-model.sh
+```
 
 ---
 ### Proceed

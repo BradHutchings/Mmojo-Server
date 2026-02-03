@@ -81,8 +81,6 @@ chat
 EOF
 ```
 
-**Future:** The `--path` path will be `/app/Mmojo-Complete`. Needs an addition to Mmojo Server code to do that. Then we'll have directory independence.
-
 ---
 ### Choose a Model
 Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.

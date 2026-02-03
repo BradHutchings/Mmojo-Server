@@ -36,7 +36,7 @@ There are two ways you can do this:
 
 ---
 ### Choose Model
-Choose a model. It will be copied to your `$HOME/Mmojo-Server` directory.
+Choose a model. It will be copied to your `$HOME/Mmojo-Server` directory. You can only choose a model while Mmojo Server is stopped.
 ```
 . mm-choose-model.sh
 ```

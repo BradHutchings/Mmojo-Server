@@ -17,7 +17,7 @@ Here are the deployment steps:
 - [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md) - Option: You will download Mmojo Server from Hugging Face and install it.
 - [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md) - Option: You will copy a previously built Mmojo Server from your Mmojo Share and install it.
 - [08. Build Mmojo Server](08-Build-Mmojo-Server.md) - Option: You will build a Mmojo Server quickly.
-- [09. Start, Stop, Set Model](09-Start-Stop-Set-Model.md) - Run and quickly test Mmojo Server.
+- [09. Start, Stop, Choose Model](09-Start-Stop-Choose-Model.md) - Run and quickly test Mmojo Server.
   <br/><br/>
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)

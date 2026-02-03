@@ -9,7 +9,6 @@ In this step, we will download models for use with Mmojo Server from Hugging Fac
 ### Download Models
 Download models. These may take 20 minutes or so to download.
 
-Might be good to get these from Mmojo Share? Mount Mmojo Share should be step 12.
 ```
 $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
 cat << EOF > $LOCAL_DOWNLOAD_MODEL_MAP

@@ -2,7 +2,7 @@
 
 **[Deploy Mmojo Server (Windows WSL)](deploy/200-Windows-WSL/README.md)**
 
-**[Deploy Mmojo Server + OpenClaw (Windows WSL)](deploy/500-OpenClaw/README.md)**
+**[Deploy OpenClaw (Windows WSL)](deploy/500-OpenClaw/README.md)**
 
 **[Build Mmojo Server Now!](instructions/-Start-Here-TOC.md)**
 

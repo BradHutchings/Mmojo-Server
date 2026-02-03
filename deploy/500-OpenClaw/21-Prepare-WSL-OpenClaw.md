@@ -164,7 +164,7 @@ Leave the Terminal window open for installing OpenClaw.
 
 ---
 ### Start from Scratch Often
-It's OK to start from scratch and do it often. There is a lot going on to build and package Mmojo Server. There are a lot of moving parts. When you get stuck, save your sanity and start over.
+It's OK to start from scratch and do it often. There is a lot going on to build and configure OpenClaw. There are a lot of moving parts. When you get stuck, save your sanity and start over.
 
 ---
 ### Proceed

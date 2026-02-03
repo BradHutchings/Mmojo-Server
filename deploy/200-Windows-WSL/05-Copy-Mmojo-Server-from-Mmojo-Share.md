@@ -1,10 +1,10 @@
-## 14. Copy Mmojo Server from Mmojo Share
+## 05. Copy Mmojo Server from Mmojo Share
 
 ### THIS STEP IS NOT IMPLEMENTED YET.
 Please proceed to the next step.
 
-**Skip to:**
-- [15. Build Mmojo Server](15-Build-Mmojo-Server.md)
+**Skip Ahead:**
+- [06. Build Mmojo Server](06-Build-Mmojo-Server.md)
 
 ---
 ### About this Step
@@ -18,8 +18,8 @@ In this step, we will install Mmojo Server, using an existing build on your Mmoj
 
 ---
 ### Proceed
-- **Next:** [15. Build Mmojo Server](15-Build-Mmojo-Server.md)
-- **Previous:** [13. Download Mmojo Server from Hugging Face](13-Download-Mmojo-Server-from-Hugging-Face.md)
+- **Next:** [06. Build Mmojo Server](06-Build-Mmojo-Server.md)
+- **Previous:** [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

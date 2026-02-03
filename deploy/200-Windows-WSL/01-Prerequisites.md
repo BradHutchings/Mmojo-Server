@@ -2,7 +2,7 @@
 ### About this Step
 This step contains prerequisites for deploying Mmojo Server using this recipe. We will install Mmojo Server in its own Windows Subsystem for Linux (WSL) instance.
 
-**Skip Ahead:** [02. Cleanup WSL Instance](02-Cleanup-WSL-Instance.md)
+**Skip Ahead:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
 
 ---
 ### Requirements
@@ -33,7 +33,7 @@ The following are recommended for smoothest sailing through this recipe:
 
 ---
 ### Proceed
-- **Next:** [02. Cleanup WSL Instance](02-Cleanup-WSL-Instance.md)
+- **Next:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
 - **Previous:** This is the first step in this section.
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

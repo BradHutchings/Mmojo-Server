@@ -219,7 +219,9 @@ Control-click the `Dashboard link (with token)`.
 
 <img width="716" height="368" alt="image" src="https://github.com/user-attachments/assets/6800706c-b82a-4978-9e13-c270b955dbf2" />
 
-You will see what is still labeled as the **Clawdbot Gateway Dashboard**, indicating that OpenClaw is running and you can connect to it from a web browser on your computer.
+**Note**: The picture above needs to be updated.
+
+You will see the **OpenClaw Gateway Dashboard**, indicating that OpenClaw is running and you can connect to it from a web browser on your computer.
 
 ---
 ### Proceed

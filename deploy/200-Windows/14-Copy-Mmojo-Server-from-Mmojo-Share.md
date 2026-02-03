@@ -20,7 +20,7 @@ In this step, we will install Mmojo Server, using an existing build on your Mmoj
 ### Proceed
 - **Next:** [15. Build Mmojo Server](15-Build-Mmojo-Server.md)
 - **Previous:** [13. Download Mmojo Server from Hugging Face](13-Download-Mmojo-Server-from-Hugging-Face.md)
-- **Up:** [Deploy OpenClaw (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

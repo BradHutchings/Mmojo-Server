@@ -42,6 +42,7 @@ BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
 BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
+ZIP_FILE="Mmojo-Server-x86-comp-cud.zip"
 ```
 </details>
 
@@ -51,6 +52,7 @@ BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
 BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$CHOSEN_GPUS"
+ZIP_FILE="Mmojo-Server-x86-perf-cud.zip"
 ```
 </details>
 
@@ -100,6 +102,18 @@ ls -al $RUN_DIR
 It should look like:
 
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
+
+---
+### Make a .zip File (OPTIONAL)
+Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
+```
+if test -n "$RUN_DIR"; then
+  cd "$RUN_DIR"
+  zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete
+  mv $ZIP_FILE $HOME
+  cd $HOME
+fi
+```
 
 ---
 ### Proceed

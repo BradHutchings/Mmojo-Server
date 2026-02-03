@@ -65,7 +65,7 @@ cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --path
-"$RUN_DIR/Mmojo-Complete"
+"/app/Mmojo-Complete"
 --default-ui-endpoint
 chat
 --host

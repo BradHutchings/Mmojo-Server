@@ -163,7 +163,7 @@ Hit the `ENTER` key.
 
 ---
 
-**Enable Hooks (THIS MIGHT BE OUT OF PLACE - DUPLICATE ABOVE)**
+**Enable Hooks?**
 
 <img width="326" height="123" alt="image" src="https://github.com/user-attachments/assets/8fead834-6497-4361-88ee-d90de8fc9126" />
 

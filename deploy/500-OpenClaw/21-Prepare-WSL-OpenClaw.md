@@ -38,7 +38,9 @@ admin123!
 
 ---
 ### Disable `[interop]` and `[automount]`
-Let's diable interoperability with the host Windows environment so we don't have our WSL `$PATH` polluted and won't have problems launching APE files inside WSL.
+Let's disable interoperability with the host Windows environment so we don't have our WSL `$PATH` polluted and won't have problems launching APE files inside WSL.
+
+**Most imnportant:** OpenClaw will not have access to any of your documents on your computer's disks, outside of the WSL environment. This is a safe approach for experimenting with OpenClaw.
 
 Check that `/etc/wsl.conf` doesn't already have an `[interop]` section:
 ```

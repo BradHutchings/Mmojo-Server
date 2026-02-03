@@ -29,7 +29,7 @@ If you previously pinned `MmojoServer` to your **Taskbar**, unpin it. The existi
 ### Proceed
 - **Next:** [10. Deploy Mmojo Server](10-Deploy-Mmojo-Server.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)
-- **Up:** [Deploy OpenClaw (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

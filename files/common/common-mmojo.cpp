@@ -1,20 +1,3 @@
-/*
-  common-mmojo.cpp is a derivative for common/common.cpp.
-
-  This file has been modified to implement Mmojo Server specific
-  Modifications are surrounded by:
-    // Mmojo Server START
-    // Mmojo Server END
-    
-  Original server.cpp file:
-      https://raw.githubusercontent.com/ggml-org/llama.cpp/refs/heads/master/common/common.cpp
-
-  -Brad 2025-12-05
-  --
-  Brad Hutchings
-  brad@bradhutchings.com
-*/
-
 #if defined(_MSC_VER)
 #define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
 #endif
@@ -1131,7 +1114,10 @@ common_init_result::common_init_result(common_params & params) :
     if (params.fit_params) {
         LOG_INF("%s: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on\n", __func__);
         llama_params_fit(params.model.path.c_str(), &mparams, &cparams,
-            params.tensor_split, params.tensor_buft_overrides.data(), params.fit_params_target.data(), params.fit_params_min_ctx,
+            params.tensor_split,
+            params.tensor_buft_overrides.data(),
+            params.fit_params_target.data(),
+            params.fit_params_min_ctx,
             params.verbosity >= 4 ? GGML_LOG_LEVEL_DEBUG : GGML_LOG_LEVEL_ERROR);
     }
 
@@ -1240,10 +1226,6 @@ void common_init_result::reset_samplers() {
 
 std::vector<llama_adapter_lora_ptr> & common_init_result::lora() {
     return pimpl->lora;
-}
-
-void common_init_result::free_context() {
-    pimpl->context.reset();
 }
 
 common_init_result_ptr common_init_from_params(common_params & params) {

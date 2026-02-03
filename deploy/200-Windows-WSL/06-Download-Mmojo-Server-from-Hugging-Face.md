@@ -1,4 +1,4 @@
-## 04. Download Mmojo Server from Hugging Face
+## 06. Download Mmojo Server from Hugging Face
 ### About this Step (OPTIONAL)
 In this step, we will download Mmojo Server from Hugging Face. If you would prefer to copy Mmojo Server from your Mmojo Share or build it from source code, you can skip ahead.
 
@@ -91,12 +91,12 @@ Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be cop
 
 Mmojo Server is installed and you are ready to run it!
 
-Skip to: [07. Run Mmojo Server](07-Run-Mmojo-Server.md)
+Skip to: [09. Run Mmojo Server](09-Run-Mmojo-Server.md)
 
 ---
 ### Proceed
-- **Next:** [05. Copy Mmojo Server from Mmojo Share](05-Copy-Mmojo-Server-from-Mmojo-Share.md)
-- **Previous:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
+- **Next:** [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md)
+- **Previous:** [05. Copy Models from Mmojo Share](05-Copy-Models-from-Mmojo-Share.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

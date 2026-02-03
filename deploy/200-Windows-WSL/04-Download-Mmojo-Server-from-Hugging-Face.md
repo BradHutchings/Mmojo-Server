@@ -91,7 +91,7 @@ Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be cop
 
 Mmojo Server is installed and you are ready to run it!
 
-Skip to: [16. Run Mmojo Server](16-Run-Mmojo-Server.md)
+Skip to: [07. Run Mmojo Server](07-Run-Mmojo-Server.md)
 
 ---
 ### Proceed

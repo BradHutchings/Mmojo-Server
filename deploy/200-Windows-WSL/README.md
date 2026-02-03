@@ -12,10 +12,12 @@ Here are the deployment steps:
 - [01. Prerequisites](01-Prerequisites.md) - What you need to deploy OpenClaw.  
 - [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md) - You will create a WSL instance for Mmojo Server.
 - [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md) - If you have a Mmojo Share, mount it.
-- [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md) - In this subsection, you will download Mmojo Server from Hugging Face and install it for use with OpenClaw.
-- [05. Copy Mmojo Server from Mmojo Share](05-Copy-Mmojo-Server-from-Mmojo-Share.md) - In this subsection, you will copy a previously built Mmojo Server from your Mmojo Share and install it for use with OpenClaw.
-- [06. Build Mmojo Server](06-Build-Mmojo-Server.md) - You will build a Mmojo Server for testing with OpenClaw quickly.
-- [07. Run Mmojo Server](07-Run-Mmojo-Server.md) - Run and quickly test Mmojo Server.
+- [04. Download Models from Hugging Face](04-Download-Models-from-Hugging-Face.md] - You will download models for use with Mmoho Server from Hugging Face.
+- [05. Copy Models from Mmojo Share](05-Copy-Models-from-Mmojo-Share.md) - You will copy models for use with Mmoho Server from your Mmojo Share.
+- [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md) - You will download Mmojo Server from Hugging Face and install it.
+- [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md) - You will copy a previously built Mmojo Server from your Mmojo Share and install it.
+- [08. Build Mmojo Server](08-Build-Mmojo-Server.md) - You will build a Mmojo Server for testing with OpenClaw quickly.
+- [09. Run Mmojo Server](09-Run-Mmojo-Server.md) - Run and quickly test Mmojo Server.
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
 

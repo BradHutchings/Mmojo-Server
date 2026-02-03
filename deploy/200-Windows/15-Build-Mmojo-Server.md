@@ -123,7 +123,7 @@ It should look like:
 ### Proceed
 - **Next:** [16. Run Mmojo Server](16-Run-Mmojo-Server.md)
 - **Previous:** [14. Copy Mmojo Server from Mmojo Share](14-Copy-Mmojo-Server-from-Mmojo-Share.md)
-- **Up:** [Deploy OpenClaw (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

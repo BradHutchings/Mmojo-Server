@@ -107,14 +107,6 @@ Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 
 ---
 
-**Enable Hooks (THIS MIGHT BE OUT OF PLACE - DUPLICATE BELOW)**
-
-<img width="235" height="117" alt="image" src="https://github.com/user-attachments/assets/2b8fafc0-9774-453e-8a45-161be4ec86b1" />
-
-Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
-
----
-
 **Set GOOGLE_PLACES_API_KEY for goplaces?**
 
 <img width="402" height="67" alt="image" src="https://github.com/user-attachments/assets/45b0c208-d68f-4b73-a3c4-a8f1f29a0ba8" />

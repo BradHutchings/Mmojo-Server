@@ -1,4 +1,4 @@
-## 12. Mount Mmojo Share
+## 03. Mount Mmojo Share
 ### About this Step (OPTIONAL)
 In this step, you will mount your Mmojo Share, if you have one. You can skip this step if you don't have a Mmojo Share.
 
@@ -34,8 +34,8 @@ ls -al /mnt/mmojo
 
 ---
 ### Proceed
-- **Next:** [13. Download Mmojo Server from Hugging Face](13-Download-Mmojo-Server-from-Hugging-Face.md)
-- **Previous:** [11. Prepare WSL - Mmojo Server](11-Prepare-WSL-Mmojo-Server.md)
+- **Next:** [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md)
+- **Previous:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

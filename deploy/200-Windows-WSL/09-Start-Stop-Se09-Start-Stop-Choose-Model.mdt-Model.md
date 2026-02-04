@@ -1,4 +1,4 @@
-## 09. Start, Stop, Set Model
+## 09. Start, Stop, Choose Model
 ### About this Step
 This step has controls for starting Mmojo Server, stopping Mmojo Server, and setting the model.
 
@@ -33,8 +33,13 @@ There are two ways you can do this:
    ```
    exit
    ```
+
 ---
-### Set Model
+### Choose Model
+Choose a model. It will be copied to your `$HOME/Mmojo-Server` directory. You can only choose a model while Mmojo Server is stopped.
+```
+. mm-choose-model.sh
+```
 
 ---
 ### Proceed

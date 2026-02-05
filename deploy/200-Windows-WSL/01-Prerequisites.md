@@ -25,12 +25,10 @@ The following are recommended for smoothest sailing through this recipe:
   - This will keep your startup disk from getting full unexpectedly.
 - Modern NVIDIA GPU with at least 4 GB VRAM
   - WSL only supports a bridge to NVIDIA GPUs.
-- Mmojo Share configured and accessible on your network.
-  - This is a good place to store builds and models so you don't have to download them from Hugging Face.
 - Familiarity with WSL.
   - The WSL specific instructsions can be confusing for new users of WSL. I will be adding video walkthroughs to help you out.
-- Familiarity with Mmojo Server build process.
-  - If you're managed to build one, deploying with OpenClaw will be easy.
+- Mmojo Share configured and accessible on your network.
+  - This is a good place to store builds and models so you don't have to download them from Hugging Face.
 
 ---
 ### Proceed

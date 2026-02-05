@@ -85,7 +85,7 @@ EOF
 
 ---
 ### Choose a Model
-Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
+Choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
 ```
 . mm-choose-model.sh
 ```

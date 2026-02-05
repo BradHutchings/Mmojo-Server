@@ -280,6 +280,10 @@ bool server_http_context::init(const common_params & params) {
             //  LOG_INF("Request ends with .json\n");
             cacheControlValue = noCache;
         }
+        if (starts_with(req.path, "/v1/")) {
+            //  LOG_INF("Request is an API call.\n");
+            cacheControlValue = noCache;
+        }
         res.set_header("Cache-Control", cacheControlValue);
     });    
     // Mmojo Server END

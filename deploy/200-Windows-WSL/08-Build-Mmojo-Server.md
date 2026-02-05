@@ -84,13 +84,6 @@ EOF
 ```
 
 ---
-### Choose a Model
-Choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
-```
-. mm-choose-model.sh
-```
-
----
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```

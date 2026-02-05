@@ -263,6 +263,7 @@ bool server_http_context::init(const common_params & params) {
     srv->set_post_routing_handler([](const httplib::Request & req, httplib::Response & res) {
         std::string cacheControlValue = "max-age=3600";
         std::string noCache = "no-cache, no-store, must-revalidate";
+        //  LOG_INF("routing handler: %s\n", req.path.c_str());
       
         if (ends_with(req.path, ".html") || ends_with(req.path, "/")) {
             //  LOG_INF("Request ends with .html\n");
@@ -278,6 +279,10 @@ bool server_http_context::init(const common_params & params) {
         }
         if (ends_with(req.path, ".json")) {
             //  LOG_INF("Request ends with .json\n");
+            cacheControlValue = noCache;
+        }
+        if (starts_with(req.path, "/v1/")) {
+            //  LOG_INF("Request is an API call.\n");
             cacheControlValue = noCache;
         }
         res.set_header("Cache-Control", cacheControlValue);

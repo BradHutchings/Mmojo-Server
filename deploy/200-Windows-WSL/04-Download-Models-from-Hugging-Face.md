@@ -15,13 +15,12 @@ cat << EOF > $LOCAL_DOWNLOAD_MODEL_MAP
 # This is our map between actual model filenames and filenames for mmojo-server with the model embedded.
 Google-Gemma-270M-Instruct-v3-q8_0.gguf Goo-Gem-270M-Ins-v3
 Google-Gemma-1B-Instruct-v3-q8_0.gguf Goo-Gem-1B-Ins-v3
-IBM-Granite-2B-Instruct-v3.3-q8_0.gguf IBM-Gra-2B-Ins-v3.3
-IBM-Granite-8B-Instruct-v3.3-q8_0.gguf IBM-Gra-8B-Ins-v3.3
+Google-Gemma-4B-Instruct-v3-q8_0.gguf Goo-Gem-4B-Ins-v3
 EOF
 mm-download-models.sh 4
 ```
 
-**Future:** It would be better to offer a collection of generic models, download a couple at a time. These are geared toward OpenClaw. Setup the downloads file with a few optional sets. Then download 4 at a time until all are downloaded.
+**Future:** It would be better to offer a collection of generic models, download a couple at a time. The Google Gemma models are good to get started with. Setup the downloads file with a few optional sets. Then download 4 at a time until all are downloaded.
 
 ---
 ### Proceed

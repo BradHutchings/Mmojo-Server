@@ -60,14 +60,6 @@ if test -n "$RUN_DIR"; then
 fi
 ```
 
----
-### Choose a Model
-Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
-```
-. mm-choose-model.sh
-ls -al $RUN_DIR
-```
-
 Mmojo Server is installed and you are ready to run it!
 
 **Skip to:** [09. Start, Stop, Choose Model](09-Start-Stop-Choose-Model.md)

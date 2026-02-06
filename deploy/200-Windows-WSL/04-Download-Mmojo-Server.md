@@ -1,4 +1,4 @@
-## 04. Download Mmojo Server from Hugging Face
+## 04. Download Mmojo Server
 ### About this Step (OPTIONAL)
 In this step, we will download Mmojo Server from Hugging Face. If you would prefer to build it from source code, you can skip ahead.
 

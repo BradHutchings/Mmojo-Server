@@ -1,4 +1,4 @@
-## 09. Start, Stop, Choose Model
+## 06. Start, Stop, Choose Model
 ### About this Step
 This step has controls for starting Mmojo Server, stopping Mmojo Server, and setting the model.
 
@@ -44,7 +44,7 @@ There are two ways you can do this:
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [08. Build Mmojo Server](08-Build-Mmojo-Server.md)
+- **Previous:** [05. Build Mmojo Server](05-Build-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

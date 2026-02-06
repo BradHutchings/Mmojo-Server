@@ -11,7 +11,7 @@ The default set of models contains Google Gemma 270M, 1B, and 4B. Run this comma
 $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
 ```
 
-**Optional:** There are more recent Gemma E2B and E4B models. Run this script to add them.
+**Optional:** There are more recent Gemma E2B and E4B models. Run this script to add them to the model download queue.
 ```
 cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
 Google-Gemma-E2B-Instruct-v3n-q8_0.gguf Goo-Gem-E2B-Ins-v3n
@@ -19,7 +19,7 @@ Google-Gemma-E4B-Instruct-v3n-q8_0.gguf Goo-Gem-E4B-Ins-v3n
 EOF
 ```
 
-**Optional:** IBM Granite models implement so-called "thinking" and "tool calling". Run this script to add them.
+**Optional:** IBM Granite models implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
 ```
 cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
 IBM-Granite-2B-Instruct-v3.3-q8_0.gguf IBM-Gra-2B-Ins-v3.3

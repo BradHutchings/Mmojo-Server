@@ -51,7 +51,7 @@ for key in "${!mnemonics[@]}"; do
 
     if [ -f "$LOCAL_MODELS_DIR/$key" ]; then
         echo "File already exists in $LOCAL_MODELS_DIR."
-    elif [ "$count" -ge "0" ]; then
+    elif [ "$count" -gt "0" ]; then
         if [ "$downloaded" -ge "$count" ]; then
             echo "Already downloaded $count models."
         fi

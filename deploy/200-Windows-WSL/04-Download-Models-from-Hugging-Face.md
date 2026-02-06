@@ -1,9 +1,13 @@
-## 04. Download Models from Hugging Face
+## 03. Download Models from Hugging Face
 ### About this Step (OPTIONAL)
+In this step, we will download models for use with Mmojo Server from Hugging Face.
+
+<!--
 In this step, we will download models for use with Mmojo Server from Hugging Face. If you would prefer to copy models from your Mmojo Share, you can skip ahead.
 
 **Skip Ahead:**
 - [05. Copy Models from Mmojo Share](05-Copy-Models-from-Mmojo-Share.md)
+-->
 
 ---
 ### Download Models
@@ -22,15 +26,16 @@ mm-download-models.sh 4
 
 **Future:** It would be better to offer a collection of generic models, download a couple at a time. The Google Gemma models are good to get started with. Setup the downloads file with a few optional sets. Then download 4 at a time until all are downloaded.
 
+<!--
 **Skip Ahead:**
 With models downloaded from Hugging Face, you can skip ahead to downloading Mmojo Server from Hugging Face.
 - [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md)
-
+-->
 
 ---
 ### Proceed
-- **Next:** [05. Copy Models from Mmojo Share](05-Copy-Models-from-Mmojo-Share.md)
-- **Previous:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
+- **Next:** [04. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md)
+- **Previous:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

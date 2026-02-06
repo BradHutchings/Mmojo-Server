@@ -61,7 +61,7 @@ fi
 
 Mmojo Server is installed and you are ready to run it!
 
-**Skip to:** [06. Start, Stop, Choose Model](09-Start-Stop-Choose-Model.md)
+**Skip to:** [06. Control Mmojo Server](09-Control-Mmojo-Server.md)
 
 ---
 ### Proceed

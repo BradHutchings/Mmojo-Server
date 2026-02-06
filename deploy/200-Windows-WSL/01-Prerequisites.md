@@ -27,8 +27,11 @@ The following are recommended for smoothest sailing through this recipe:
   - WSL only supports a bridge to NVIDIA GPUs.
 - Familiarity with WSL.
   - The WSL specific instructsions can be confusing for new users of WSL. I will be adding video walkthroughs to help you out.
+ 
+<!--
 - Mmojo Share configured and accessible on your network.
   - This is a good place to store builds and models so you don't have to download them from Hugging Face.
+-->
 
 ---
 ### Proceed

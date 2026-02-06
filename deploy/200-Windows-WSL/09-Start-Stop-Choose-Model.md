@@ -14,6 +14,10 @@ First, choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It wil
 
 Launch `mmojo-server`:
 ```
+mm-start-mmojo-server.sh
+```
+
+```
 $RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE 
 ```
 

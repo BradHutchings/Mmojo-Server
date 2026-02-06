@@ -14,7 +14,7 @@ First, choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It wil
 
 Launch `mmojo-server`:
 ```
-$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE 
+mm-start-mmojo-server.sh
 ```
 
 Connect to Mmojo Complete from a browser:

@@ -10,8 +10,8 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
 
-printf "\n\$RUN_DIR: $RUN_DIR\n\n"
-printf "\n\$PACKAGE_MMOJO_SERVER_FILE: $PACKAGE_MMOJO_SERVER_FILE\n\n"
+# printf "\n\$RUN_DIR: $RUN_DIR\n\n"
+# printf "\n\$PACKAGE_MMOJO_SERVER_FILE: $PACKAGE_MMOJO_SERVER_FILE\n\n"
 
 if [ -d "$RUN_DIR" ]; then
     if [ -f "$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE" ]; then

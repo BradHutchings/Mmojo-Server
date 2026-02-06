@@ -15,18 +15,18 @@ Complete that guide. When you are finished, you will have a Mmojo Server running
 ### Download Models (Hugging Face)
 Download models that OpenClaw can work with from Hugging Face. These may take 20 minutes or so to download.
 
-Paste these commands into the Mmojo Server WSL terminal:
+IBM Granite models implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
 ```
-$MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
 cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
-# This is our map between actual model filenames and filenames for mmojo-server with the model embedded.
 IBM-Granite-2B-Instruct-v3.3-q8_0.gguf IBM-Gra-2B-Ins-v3.3
 IBM-Granite-8B-Instruct-v3.3-q8_0.gguf IBM-Gra-8B-Ins-v3.3
 EOF
-mm-download-models.sh 2
 ```
 
-**Future:** Option for copying from Mmojo Share if you have one.
+Now download all the models you added to the queue.
+```
+mm-download-models.sh
+```
 
 ---
 ### Stop Mmojo Server, Exit WSL Instance

@@ -149,7 +149,9 @@ Add it to the **Taskbar**.
 ---
 ### Launch OpenClaw WSL Instance
 
-Launch and log into your new instance by clicking the icon you just added to the **Taskbar**.
+<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/1184dbb5-ff97-41a0-8b25-3a652f05d690" />
+
+Launch your new instance by clicking the icon you just added to the **Taskbar**.
 
 Now, let's get a `sudo` password in, so we don't have to enter it again this session.
 ```

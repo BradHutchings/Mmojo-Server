@@ -2,6 +2,9 @@
 ### About this Step (OPTION)
 If you didn't download Mmojo Server from Hugging Face, you can build it quickly with the steps on this page.
 
+**Jump Back:**
+- [04. Download Mmojo Server](04-Download-Mmojo-Server.md)
+
 <!--
 If you didn't download Mmojo Server from Hugging Face, or copy Mmojo Server from your Mmojo Share, you can build it quickly with the steps on this page.
 -->

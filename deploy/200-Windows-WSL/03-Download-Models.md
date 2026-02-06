@@ -15,7 +15,7 @@ Download models. These may take 20 minutes or so to download.
 
 ```
 $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
-cat << EOF > $LOCAL_DOWNLOAD_MODEL_MAP
+cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
 # This is our map between actual model filenames and filenames for mmojo-server with the model embedded.
 Google-Gemma-270M-Instruct-v3-q8_0.gguf Goo-Gem-270M-Ins-v3
 Google-Gemma-1B-Instruct-v3-q8_0.gguf Goo-Gem-1B-Ins-v3

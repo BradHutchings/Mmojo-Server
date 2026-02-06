@@ -215,7 +215,7 @@ It's OK to start from scratch and do it often. There is a lot going on to deploy
 
 ---
 ### Proceed
-- **Next:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
+- **Next:** [03. Download Models from Hugging Face](04-Download-Models-from-Hugging-Face.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

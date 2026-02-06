@@ -34,7 +34,7 @@ With models downloaded from Hugging Face, you can skip ahead to downloading Mmoj
 
 ---
 ### Proceed
-- **Next:** [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md)
+- **Next:** [04. Download Mmojo Server](04-Download-Mmojo-Server.md)
 - **Previous:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

@@ -175,7 +175,7 @@ export ARCH_AARCH64_NATIVE="native"
 # export ZIPALIGN="$HOME/tools/mm-zipalign"
 
 # Run directory for deployment only
-RUN_DIR="$HOME/Mmojo-Server"
+export RUN_DIR="$HOME/Mmojo-Server"
 
 # Run this script when user starts a session.
 SEARCH_STRING="\. mm-environment-variables.sh"

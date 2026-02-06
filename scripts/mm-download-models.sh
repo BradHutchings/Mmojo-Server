@@ -11,7 +11,7 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 
 count=$1
 if [ -z "$count" ] || [[ "$count" -lt 1 ]]; then
-    count=1
+    count=0
 fi
 
 DownloadModel() {
@@ -51,8 +51,10 @@ for key in "${!mnemonics[@]}"; do
 
     if [ -f "$LOCAL_MODELS_DIR/$key" ]; then
         echo "File already exists in $LOCAL_MODELS_DIR."
-    elif [ "$downloaded" -ge "$count" ]; then
-        echo "Already downloaded $count models."
+    elif [ "$count" -ge "0" ]; then
+        if [ "$downloaded" -ge "$count" ]; then
+            echo "Already downloaded $count models."
+        fi
     else
         DownloadModel $key $mnemonic
         # echo "Downloading: $key -- $mnemonic"

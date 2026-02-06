@@ -147,7 +147,9 @@ Add it to the **Taskbar**.
 ---
 ### Launch MmojoServer WSL Instance
 
-Launch and log into your new instance by clicking the icon you just added to the **Taskbar**.
+<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/9770555c-7f9c-408d-ab99-e209c0ad2db1" />
+
+Launch your new instance by clicking the icon you just added to the **Taskbar**.
 
 Now, let's get a `sudo` password in, so we don't have to enter it again this session.
 ```

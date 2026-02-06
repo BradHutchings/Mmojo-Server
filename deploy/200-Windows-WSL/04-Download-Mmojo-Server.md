@@ -66,7 +66,7 @@ Mmojo Server is installed and you are ready to run it!
 ---
 ### Proceed
 - **Next:**  [05. Build Mmojo Server](05-Build-Mmojo-Server.md)
-- **Previous:** [03. Download Models from Hugging Face](03-Download-Models-from-Hugging-Face.md)
+- **Previous:** [03. Download Models](03-Download-Models.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

@@ -1,4 +1,4 @@
-## 07. Copy Mmojo Server from Mmojo Share
+## 13. Copy Mmojo Server from Mmojo Share
 
 ### THIS STEP IS NOT IMPLEMENTED YET.
 Please proceed to the next step.
@@ -20,8 +20,8 @@ In this step, you will copy Mmojo Server from your Mmojo Share and install it, u
 
 ---
 ### Proceed
-- **Next:** [08. Build Mmojo Server](08-Build-Mmojo-Server.md)
-- **Previous:** [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md)
+- **Next:** This is the last step in this section.
+- **Previous:** [12. Copy Models from Mmojo Share](12-Copy-Models-from-Mmojo-Share.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

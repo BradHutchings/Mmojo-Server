@@ -1,8 +1,13 @@
-## 08. Build Mmojo Server
+## 05. Build Mmojo Server
+### About this Step (OPTION)
+If you didn't download Mmojo Server from Hugging Face, you can build it quickly with the steps on this page.
 
-### About this Step
+**Jump Back:**
+- [04. Download Mmojo Server](04-Download-Mmojo-Server.md)
+
+<!--
 If you didn't download Mmojo Server from Hugging Face, or copy Mmojo Server from your Mmojo Share, you can build it quickly with the steps on this page.
-
+-->
 ---
 ### Install Dependencies and GPU Support
 Install dependencies. These may take 20 minutes or so to download and install.
@@ -108,8 +113,8 @@ fi
 
 ---
 ### Proceed
-- **Next:** [09. Start, Stop, Choose Model](09-Start-Stop-Choose-Model.md)
-- **Previous:** [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md)
+- **Next:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
+- **Previous:** [04. Download Mmojo Server](04-Download-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

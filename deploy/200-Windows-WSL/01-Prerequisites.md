@@ -16,6 +16,8 @@ This recipe deploys Mmojo Server on a single, stand-alone Windows 10/11 PC or la
   - Mmojo Server needs plenty of RAM to run an 8B paramter model.
 - Windows 10/11 support WSL and have the feature enabled.
 
+**While these steps are similar for general stand-alone Debian / Ubunut Linux and may look workable for macOS, they are not intended for use on such systems.**
+
 ---
 ### Recommendations
 The following are recommended for smoothest sailing through this recipe:
@@ -27,8 +29,11 @@ The following are recommended for smoothest sailing through this recipe:
   - WSL only supports a bridge to NVIDIA GPUs.
 - Familiarity with WSL.
   - The WSL specific instructsions can be confusing for new users of WSL. I will be adding video walkthroughs to help you out.
+ 
+<!--
 - Mmojo Share configured and accessible on your network.
   - This is a good place to store builds and models so you don't have to download them from Hugging Face.
+-->
 
 ---
 ### Proceed

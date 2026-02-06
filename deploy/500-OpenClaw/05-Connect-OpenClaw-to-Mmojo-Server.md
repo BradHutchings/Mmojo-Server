@@ -5,16 +5,18 @@ You will edit the configuration of OpenClaw so that it uses your Mmojo Server in
 ---
 ### Start Mmojo Server
 
+<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/9770555c-7f9c-408d-ab99-e209c0ad2db1" />
+
 Click the MmojoServer WSL Shortcut that you added to your Taskbar. This will launch the WSL instance and open a Terminal window.
 
 Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
 ```
-. mm-choose-model.sh
+mm-choose-model.sh
 ```
 
 Launch `mmojo-server`:
 ```
-$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE
+mm-start-mmojo-server.sh
 ```
 
 Leave the WSL instance Terminal window open and visible on your screen.

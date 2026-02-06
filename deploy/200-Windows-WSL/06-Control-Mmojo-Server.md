@@ -1,12 +1,12 @@
-## 09. Start, Stop, Choose Model
+## 06. Control Mmojo Server
 ### About this Step
-This step has controls for starting Mmojo Server, stopping Mmojo Server, and setting the model.
+This step has controls for choosing a mode, starting Mmojo Server, and stopping Mmojo Server.
 
 ---
 ### Choose a Model
 First, choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
 ```
-. mm-choose-model.sh
+mm-choose-model.sh
 ```
 
 ---
@@ -44,7 +44,7 @@ There are two ways you can do this:
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [08. Build Mmojo Server](08-Build-Mmojo-Server.md)
+- **Previous:** [05. Build Mmojo Server](05-Build-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

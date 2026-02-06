@@ -19,6 +19,8 @@ Unregister ("delete") the instance:
 wsl --unregister MmojoServer
 ```
 
+<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/9770555c-7f9c-408d-ab99-e209c0ad2db1" />
+
 If you previously pinned `MmojoServer` to your **Taskbar**, unpin it. The existing pinned shortcut one will not launch the new instance you will create.
 
 ---
@@ -145,7 +147,9 @@ Add it to the **Taskbar**.
 ---
 ### Launch MmojoServer WSL Instance
 
-Launch and log into your new instance by clicking the icon you just added to the **Taskbar**.
+<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/9770555c-7f9c-408d-ab99-e209c0ad2db1" />
+
+Launch your new instance by clicking the icon you just added to the **Taskbar**.
 
 Now, let's get a `sudo` password in, so we don't have to enter it again this session.
 ```
@@ -215,7 +219,7 @@ It's OK to start from scratch and do it often. There is a lot going on to deploy
 
 ---
 ### Proceed
-- **Next:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
+- **Next:** [03. Download Models](03-Download-Models.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

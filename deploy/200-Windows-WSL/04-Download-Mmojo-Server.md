@@ -1,10 +1,9 @@
-## 06. Download Mmojo Server from Hugging Face
-### About this Step (OPTIONAL)
-In this step, we will download Mmojo Server from Hugging Face. If you would prefer to copy Mmojo Server from your Mmojo Share or build it from source code, you can skip ahead.
+## 04. Download Mmojo Server
+### About this Step (OPTION)
+In this step, we will download Mmojo Server from Hugging Face. If you would prefer to build it from source code, you can skip ahead.
 
 **Skip Ahead:**
-- [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md)
-- [08. Build Mmojo Server](08-Build-Mmojo-Server.md)
+- [05. Build Mmojo Server](05-Build-Mmojo-Server.md)
 
 ---
 ### Install GPU Support
@@ -62,12 +61,12 @@ fi
 
 Mmojo Server is installed and you are ready to run it!
 
-**Skip to:** [09. Start, Stop, Choose Model](09-Start-Stop-Choose-Model.md)
+**Skip to:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
 
 ---
 ### Proceed
-- **Next:** [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md)
-- **Previous:** [05. Copy Models from Mmojo Share](05-Copy-Models-from-Mmojo-Share.md)
+- **Next:**  [05. Build Mmojo Server](05-Build-Mmojo-Server.md)
+- **Previous:** [03. Download Models](03-Download-Models.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

@@ -201,6 +201,8 @@ Your shell prompt appears.
 
 Now you're done.
 
+**Note:** if your command prompt doesn't appear and configuration looks like it is stuck, hit `CTRL-C`. This seems to be the outcome on 2026-02-06. -Brad
+
 ---
 ### Additional Configuration
 Source the `.bashrc` file. Run `openclaw` to make sure it is available.
@@ -211,6 +213,15 @@ openclaw
 
 ---
 ### Connect to OpenClaw
+```
+openclaw dashboard --no-open
+```
+
+<img width="696" height="346" alt="image" src="https://github.com/user-attachments/assets/9fb8908c-1d63-4ea4-846a-12494a93ac05" />
+
+Control-click the top link in the output.
+
+<!--
 Scroll up to find the `Dashboard ready` section of the configure output. 
 
 <img width="777" height="291" alt="image" src="https://github.com/user-attachments/assets/b0951a76-a2fd-4a10-bf61-b403eb01bcde" />
@@ -220,6 +231,7 @@ Control-click the `Dashboard link (with token)`.
 <img width="716" height="368" alt="image" src="https://github.com/user-attachments/assets/6800706c-b82a-4978-9e13-c270b955dbf2" />
 
 **Note**: The picture above needs to be updated.
+-->
 
 You will see the **OpenClaw Gateway Dashboard**, indicating that OpenClaw is running and you can connect to it from a web browser on your computer.
 

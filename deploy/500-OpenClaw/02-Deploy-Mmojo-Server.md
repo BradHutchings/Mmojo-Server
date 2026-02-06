@@ -15,6 +15,7 @@ Complete that guide. When you are finished, you will have a Mmojo Server running
 ### Download Models (Hugging Face)
 Download models that OpenClaw can work with from Hugging Face. These may take 20 minutes or so to download.
 
+Paste these commands into the Mmojo Server WSL terminal:
 ```
 $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
 cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP

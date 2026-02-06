@@ -1,10 +1,7 @@
-## 05. Copy Models from Mmojo Share
+## 12. Copy Models from Mmojo Share
 
 ### THIS STEP IS NOT IMPLEMENTED YET.
 Please proceed to the next step.
-
-**Skip Ahead:**
-- [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md)
 
 ---
 ### About this Step (Optional)
@@ -17,8 +14,8 @@ In this step, you will copy models for use with Mmojo Server from your Mmojo Sha
 
 ---
 ### Proceed
-- **Next:** [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md)
-- **Previous:** [04. Download Models from Hugging Face](04-Download-Models-from-Hugging-Face.md)
+- **Next:** [13. Copy  Mmojo Server from Mmojo Share](13-Copy-Mmojo-Server-from-Mmojo-Share.md)
+- **Previous:** [11. Mount Mmojo Share](11-Mount-Mmojo-Share.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

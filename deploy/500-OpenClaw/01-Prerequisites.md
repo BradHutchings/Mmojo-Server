@@ -18,7 +18,7 @@ This recipe deploys OpenClaw and Mmojo Server on a single, stand-alone Windows 1
   - WSL only supports a bridge to NVIDIA GPUs.
 - Windows 10/11 support WSL and have the feature enabled.
 
-While these steps are similar for general stand-alone Debian / Ubunut Linux and may look workable for macOS, they are not intended for use on such systems.
+**While these steps are similar for general stand-alone Debian / Ubunut Linux and may look workable for macOS, they are not intended for use on such systems.**
 
 
 ---

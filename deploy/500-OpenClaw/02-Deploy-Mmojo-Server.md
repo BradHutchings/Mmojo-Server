@@ -12,6 +12,22 @@ Open this deployment guide in a new tab:
 Complete that guide. When you are finished, you will have a Mmojo Server running in its own WSL instance.
 
 ---
+### Download Models (Hugging Face)
+Download models that OpenClaw can work with from Hugging Face. These may take 20 minutes or so to download.
+
+```
+$MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
+cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
+# This is our map between actual model filenames and filenames for mmojo-server with the model embedded.
+IBM-Granite-2B-Instruct-v3.3-q8_0.gguf IBM-Gra-2B-Ins-v3.3
+IBM-Granite-8B-Instruct-v3.3-q8_0.gguf IBM-Gra-8B-Ins-v3.3
+EOF
+mm-download-models.sh 2
+```
+
+**Future:** Option for copying from Mmojo Share if you have one.
+
+---
 ### Stop Mmojo Server, Exit WSL Instance
 Due to some weirdness with WSL when moving instances to other drives, you should stop Mmojo Server and exit its WSL instance. You will be moving the WSL instance for OpenClaw to your second drive, and WSL won't do that if *any* WSL instance is running.
 

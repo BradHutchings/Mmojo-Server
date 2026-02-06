@@ -1,5 +1,5 @@
 ## 03. Download Models
-### About this Step (OPTIONAL)
+### About this Step
 In this step, we will download models for use with Mmojo Server from Hugging Face.
 
 <!--

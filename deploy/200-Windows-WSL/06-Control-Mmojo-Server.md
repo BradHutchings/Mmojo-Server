@@ -1,4 +1,4 @@
-## 06. Conrol Mmojo Server
+## 06. Control Mmojo Server
 ### About this Step
 This step has controls for choosing a mode, starting Mmojo Server, and stopping Mmojo Server.
 

@@ -19,6 +19,8 @@ Unregister ("delete") the instance:
 wsl --unregister OpenClaw
 ```
 
+<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/1184dbb5-ff97-41a0-8b25-3a652f05d690" />
+
 If you previously pinned `OpenClaw` to your **Taskbar**, unpin it. The existing pinned shortcut one will not launch the new instance you will create.
 
 ---

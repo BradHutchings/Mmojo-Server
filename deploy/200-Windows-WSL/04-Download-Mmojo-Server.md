@@ -61,7 +61,7 @@ fi
 
 Mmojo Server is installed and you are ready to run it!
 
-**Skip to:** [06. Control Mmojo Server](09-Control-Mmojo-Server.md)
+**Skip to:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
 
 ---
 ### Proceed

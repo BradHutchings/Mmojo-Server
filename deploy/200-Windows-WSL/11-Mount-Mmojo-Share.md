@@ -1,5 +1,5 @@
 ## 11. Mount Mmojo Share
-### About this Step (OPTIONAL)
+### About this Step
 In this step, you will mount your Mmojo Share, if you have one.
 
 ---

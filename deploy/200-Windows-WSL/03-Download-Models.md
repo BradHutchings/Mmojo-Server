@@ -2,35 +2,37 @@
 ### About this Step
 In this step, we will download models for use with Mmojo Server from Hugging Face.
 
-<!--
-In this step, we will download models for use with Mmojo Server from Hugging Face. If you would prefer to copy models from your Mmojo Share, you can skip ahead.
-
-**Skip Ahead:**
-- [05. Copy Models from Mmojo Share](05-Copy-Models-from-Mmojo-Share.md)
--->
-
 ---
 ### Download Models
 Download models. These may take 20 minutes or so to download.
 
+The default set of models contains Google Gemma 270M, 1B, and 4B. This is a great set to get started with!
+```
+$MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
+mm-download-models.sh 4
+```
+
+Additional, more recent Google Gemma models.
 ```
 $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
 cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
 # This is our map between actual model filenames and filenames for mmojo-server with the model embedded.
-Google-Gemma-270M-Instruct-v3-q8_0.gguf Goo-Gem-270M-Ins-v3
-Google-Gemma-1B-Instruct-v3-q8_0.gguf Goo-Gem-1B-Ins-v3
-Google-Gemma-4B-Instruct-v3-q8_0.gguf Goo-Gem-4B-Ins-v3
+Google-Gemma-E2B-Instruct-v3n-q8_0.gguf Goo-Gem-E2B-Ins-v3n
+Google-Gemma-E4B-Instruct-v3n-q8_0.gguf Goo-Gem-E4B-Ins-v3n
 EOF
-mm-download-models.sh 4
+mm-download-models.sh 5
 ```
 
-**Future:** It would be better to offer a collection of generic models, download a couple at a time. The Google Gemma models are good to get started with. Setup the downloads file with a few optional sets. Then download 4 at a time until all are downloaded.
-
-<!--
-**Skip Ahead:**
-With models downloaded from Hugging Face, you can skip ahead to downloading Mmojo Server from Hugging Face.
-- [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md)
--->
+IBM Granite models implement so-called "thinking" and "tool calling".
+```
+$MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
+cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
+# This is our map between actual model filenames and filenames for mmojo-server with the model embedded.
+IBM-Granite-2B-Instruct-v3.3-q8_0.gguf IBM-Gra-2B-Ins-v3.3
+IBM-Granite-8B-Instruct-v3.3-q8_0.gguf IBM-Gra-8B-Ins-v3.3
+EOF
+mm-download-models.sh 5
+```
 
 ---
 ### Proceed

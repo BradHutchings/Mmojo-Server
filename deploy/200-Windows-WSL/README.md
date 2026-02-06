@@ -12,7 +12,7 @@ Here are the deployment steps:
 - [03. Download Models from Hugging Face](03-Download-Models-from-Hugging-Face.md) - Download models for use with Mmoho Server from Hugging Face.
 - [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md) - **Option:** Download Mmojo Server from Hugging Face and install it.
 - [05. Build Mmojo Server](05-Build-Mmojo-Server.md) - **Option:** Build a Mmojo Server quickly.
-- [06. Choose Model, Start, Stop](06-Choose-Model-Start-Stop.md) - Run and quickly test Mmojo Server.
+- [06. Control Mmojo Server](06-Control-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
   <br/><br/>
 
 <!--
@@ -27,7 +27,7 @@ Here are the deployment steps:
 - [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md) - Option: You will download Mmojo Server from Hugging Face and install it.
 - [07. Copy Mmojo Server from Mmojo Share](07-Copy-Mmojo-Server-from-Mmojo-Share.md) - Option: You will copy a previously built Mmojo Server from your Mmojo Share and install it.
 - [08. Build Mmojo Server](08-Build-Mmojo-Server.md) - Option: You will build a Mmojo Server quickly.
-- [09. Choose Model, Start, Stop](09-Choose-Model-Start-Stop.md) - Run and quickly test Mmojo Server.
+- [09. Control Mmojo Server](09-Control-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
   <br/><br/>
 --?
 

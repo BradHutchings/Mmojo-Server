@@ -17,10 +17,6 @@ Launch `mmojo-server`:
 mm-start-mmojo-server.sh
 ```
 
-```
-$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE 
-```
-
 Connect to Mmojo Complete from a browser:
 
 [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.

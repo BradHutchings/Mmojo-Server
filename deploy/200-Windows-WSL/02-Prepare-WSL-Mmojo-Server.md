@@ -19,6 +19,8 @@ Unregister ("delete") the instance:
 wsl --unregister MmojoServer
 ```
 
+<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/9770555c-7f9c-408d-ab99-e209c0ad2db1" />
+
 If you previously pinned `MmojoServer` to your **Taskbar**, unpin it. The existing pinned shortcut one will not launch the new instance you will create.
 
 ---

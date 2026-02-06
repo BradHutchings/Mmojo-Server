@@ -1,6 +1,6 @@
-## 06. Start, Stop, Choose Model
+## 06. Conrol Mmojo Server
 ### About this Step
-This step has controls for starting Mmojo Server, stopping Mmojo Server, and setting the model.
+This step has controls for choosing a mode, starting Mmojo Server, and stopping Mmojo Server.
 
 ---
 ### Choose a Model

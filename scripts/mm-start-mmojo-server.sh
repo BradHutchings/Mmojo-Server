@@ -19,7 +19,7 @@ if [ -d "$RUN_DIR" ]; then
 
     fi
 else
-    echo "The run directory < $RUN_DIR > does not exist. 
+    echo "The run directory < $RUN_DIR > does not exist."
 fi
 
 cd $HOME

@@ -215,7 +215,7 @@ It's OK to start from scratch and do it often. There is a lot going on to deploy
 
 ---
 ### Proceed
-- **Next:** [03. Download Models](04-Download-Models.md)
+- **Next:** [03. Download Models](03-Download-Models.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

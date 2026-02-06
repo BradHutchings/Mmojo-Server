@@ -114,7 +114,7 @@ fi
 ---
 ### Proceed
 - **Next:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
-- **Previous:** [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md)
+- **Previous:** [04. Download Mmojo Server](04-Download-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

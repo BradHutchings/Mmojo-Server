@@ -111,8 +111,8 @@ fi
 
 ---
 ### Proceed
-- **Next:** [06. Start, Stop, Choose Model](09-Start-Stop-Choose-Model.md)
-- **Previous:** [04. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md)
+- **Next:** [06. Start, Stop, Choose Model](06-Start-Stop-Choose-Model.md)
+- **Previous:** [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

@@ -22,6 +22,11 @@ mm-download-models.sh 4
 
 **Future:** It would be better to offer a collection of generic models, download a couple at a time. The Google Gemma models are good to get started with. Setup the downloads file with a few optional sets. Then download 4 at a time until all are downloaded.
 
+**Skip Ahead:**
+With models downloaded from Hugging Face, you can skip ahead to downloading Mmojo Server from Hugging Face.
+- [06. Download Mmojo Server from Hugging Face](06-Download-Mmojo-Server-from-Hugging-Face.md)
+
+
 ---
 ### Proceed
 - **Next:** [05. Copy Models from Mmojo Share](05-Copy-Models-from-Mmojo-Share.md)

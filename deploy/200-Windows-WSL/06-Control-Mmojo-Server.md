@@ -6,7 +6,7 @@ This step has controls for choosing a mode, starting Mmojo Server, and stopping 
 ### Choose a Model
 First, choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
 ```
-. mm-choose-model.sh
+mm-choose-model.sh
 ```
 
 ---

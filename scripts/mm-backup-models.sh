@@ -35,15 +35,16 @@ fi
 
 BackupModel() {
     MODEL_FILE=$1
-    MODEL_MNEMONIC=$2
+    # MODEL_MNEMONIC=$2
     if [ ! -f "$MMOJO_SHARE_MODELS_DIR/$MODEL_FILE" ]; then 
         echo ""
-        echo "Backing up $MODEL_FILE ($MODEL_MNEMONIC) to $MMOJO_SHARE_MODELS_DIR."
+        echo "Backing up $MODEL_FILE to $MMOJO_SHARE_MODELS_DIR."
+        # echo "Backing up $MODEL_FILE ($MODEL_MNEMONIC) to $MMOJO_SHARE_MODELS_DIR."
         sudo rsync -ah --progress "$LOCAL_MODELS_DIR/$MODEL_FILE" "$MMOJO_SHARE_MODELS_DIR/$MODEL_FILE"
         sudo chmod a-x "$MMOJO_SHARE_MODELS_DIR/$MODEL_FILE"
-sudo cat << EOF >> $MMOJO_SHARE_MODEL_MAP
-$MODEL_FILE $MODEL_MNEMONIC
-EOF
+# sudo cat << EOF >> $MMOJO_SHARE_MODEL_MAP
+# $MODEL_FILE $MODEL_MNEMONIC
+# EOF
         backed_up_one=1
     fi
 }
@@ -53,21 +54,27 @@ if [[ $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]] && [ -d $MMOJO_SHARE_MODELS_DIR ] &
         # if a model in the LOCAL_MODEL_MAP isn't in the MMOJO_SHARE_MODEL_MAP, copy the model, copy to the share and 
         # add to the share MODEL_MAP.
 
-    unset mnemonics
-    declare -A mnemonics
-
-    while IFS=$' ' read -r gguf mnemonic ; do
-        if [[ "$gguf" != "#" ]] && [[ -n "$gguf" ]]; then
-            mnemonics["${gguf}"]="${mnemonic}"
+    for file in "$LOCAL_MODELS_DIR"/*; do
+        if [ -f "$file" ]; then
+            BackupModel $file
         fi
-    done < "$LOCAL_MODEL_MAP"
+    for
 
-    for key in "${!mnemonics[@]}"; do
-        # echo ""
-        # echo "key: $key"
-        # echo "mnemonic: ${mnemonics["$key"]}"
-        BackupModel $key ${mnemonics["$key"]}
-    done
+    #unset mnemonics
+    #declare -A mnemonics
+
+   # while IFS=$' ' read -r gguf mnemonic ; do
+    #    if [[ "$gguf" != "#" ]] && [[ -n "$gguf" ]]; then
+   #         mnemonics["${gguf}"]="${mnemonic}"
+   #     fi
+   # done < "$LOCAL_MODEL_MAP"
+
+   # for key in "${!mnemonics[@]}"; do
+   #     # echo ""
+   #     # echo "key: $key"
+   #     # echo "mnemonic: ${mnemonics["$key"]}"
+   #     BackupModel $key ${mnemonics["$key"]}
+    #done
 fi
 
 if [ "$backed_up_one" == "0" ]; then

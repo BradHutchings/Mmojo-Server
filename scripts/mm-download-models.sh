@@ -61,6 +61,10 @@ for key in "${!ggufs[@]}"; do
     fi
 done
 
+if [ "$downloaded" -gt "0" ]; then
+    mm-backup-models.sh
+fi
+
 cd $HOME
 
 echo -e "\nLocal models directory:"

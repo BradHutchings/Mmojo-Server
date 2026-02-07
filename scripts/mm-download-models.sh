@@ -32,7 +32,7 @@ while IFS=$' ' read -r gguf ; do
   if [[ "$gguf" != "#" ]] && [[ -n "$gguf" ]]; then
     ggufs["${gguf}"]="1"
   fi
-done < "$LOCAL_DOWNLOAD_MODEL_MAP"
+done < "$LOCAL_MODEL_QUEUE"
 
 for key in "${!ggufs[@]}"; do
     echo ""

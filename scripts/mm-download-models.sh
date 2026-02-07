@@ -19,7 +19,9 @@ DownloadModel() {
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/models/$MODEL_FILE?download=true"
     if [ ! -f $MODEL_FILE ]; then
         echo "Downloading $MODEL_FILE to $LOCAL_MODELS_DIR."
-        wget $URL --show-progress --quiet -O $MODEL_FILE
+        $DOWNLOAD_FILE_NAME="$MODEL_FILE.download"
+        wget $URL --show-progress --quiet -O $DOWNLOAD_FILE_NAME
+        mv $DOWNLOAD_FILE_NAME $MODEL_FILE
     fi
 }
 

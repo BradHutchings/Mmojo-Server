@@ -14,18 +14,36 @@ $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
 **Optional:** There are more recent Gemma E2B and E4B models. Run this script to add them to the model download queue.
 ```
 cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
+Google-Gemma-E2B-Instruct-v3n-q8_0.gguf
+Google-Gemma-E4B-Instruct-v3n-q8_0.gguf
+EOF
+```
+
+<!--
+```
+cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
 Google-Gemma-E2B-Instruct-v3n-q8_0.gguf Goo-Gem-E2B-Ins-v3n
 Google-Gemma-E4B-Instruct-v3n-q8_0.gguf Goo-Gem-E4B-Ins-v3n
 EOF
 ```
+-->
 
 **Optional:** IBM Granite models implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
+```
+cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
+IBM-Granite-2B-Instruct-v3.3-q8_0.gguf
+IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
+EOF
+```
+
+<!--
 ```
 cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
 IBM-Granite-2B-Instruct-v3.3-q8_0.gguf IBM-Gra-2B-Ins-v3.3
 IBM-Granite-8B-Instruct-v3.3-q8_0.gguf IBM-Gra-8B-Ins-v3.3
 EOF
 ```
+-->
 
 Now download all the models you added to the queue.
 ```

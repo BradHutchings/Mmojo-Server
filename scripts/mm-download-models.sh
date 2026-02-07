@@ -46,6 +46,7 @@ for key in "${!ggufs[@]}"; do
         echo "File already exists in $LOCAL_MODELS_DIR."
         
     elif [ -f "$FILE_ON_MMOJO_SHARE" ]; then
+        echo "Copying $key from your Mmojo Share."
         sudo rsync -ah --progress "$FILE_ON_MMOJO_SHARE" "$LOCAL_MODELS_DIR/$key" 
         sudo chmod a-x "$LOCAL_MODELS_DIR/$key"
         

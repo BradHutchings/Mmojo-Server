@@ -21,12 +21,12 @@ DownloadModel() {
         echo "Downloading $MODEL_FILE to $LOCAL_MODELS_DIR."
         wget $URL --show-progress --quiet -O $MODEL_FILE
         if [ -f $MODEL_FILE ]; then
-            if [ -f "$LOCAL_MODEL_MAP" ]; then
-                sed -i -e "/$MODEL_FILE/d" $LOCAL_MODEL_MAP
-            fi
-sudo cat << EOF >> $LOCAL_MODEL_MAP
-$MODEL_FILE
-EOF
+            # if [ -f "$LOCAL_MODEL_MAP" ]; then
+            #    sed -i -e "/$MODEL_FILE/d" $LOCAL_MODEL_MAP
+            # fi
+# sudo cat << EOF >> $LOCAL_MODEL_MAP
+# $MODEL_FILE
+# EOF
         fi
     fi
 }

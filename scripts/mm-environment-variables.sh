@@ -28,7 +28,7 @@ export HOME_SCRIPTS="$HOME/mm-scripts"
 export TILDE_SCRIPTS="~/mm-scripts"
 
 echo "Setting mmojo-server paths."
-export MMOJO_SERVER_DIR="$HOME/200-mmojo-server"
+export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server"
 export MMOJO_SERVER_FILES="$MMOJO_SERVER_DIR/files"
 export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
 

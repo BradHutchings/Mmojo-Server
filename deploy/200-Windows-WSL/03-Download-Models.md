@@ -27,10 +27,9 @@ IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
 EOF
 ```
 
-Now download all the models you added to the queue.
+Now download all the models you added to the queue. If any of the models are available on your Mmojo Share, they will be copied from there.
 ```
 mm-download-models.sh
-mm-backup-models.sh
 ```
 
 ---

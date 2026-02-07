@@ -40,8 +40,15 @@ for key in "${!ggufs[@]}"; do
     echo ""
     echo "Considering: $key"
 
+    FILE_ON_MMOJO_SHARE="$MMOJO_SHARE_MODELS_DIR/$key
+
     if [ -f "$LOCAL_MODELS_DIR/$key" ]; then
         echo "File already exists in $LOCAL_MODELS_DIR."
+        
+    elif [ -f "$FILE_ON_MMOJO_SHARE" ]; then
+        sudo rsync -ah --progress "$FILE_ON_MMOJO_SHARE" "$LOCAL_MODELS_DIR/$key" 
+        sudo chmod a-x "$LOCAL_MODELS_DIR/$key"
+        
     elif [ "$count" -gt "0" ]; then
         if [ "$downloaded" -ge "$count" ]; then
             echo "Already downloaded $count models."

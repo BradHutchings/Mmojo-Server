@@ -48,6 +48,7 @@ EOF
 Now download all the models you added to the queue.
 ```
 mm-download-models.sh
+mm-backup-models.sh
 ```
 
 **Future:** If you have a Mmojo Share setup, this will try copying from there before downloading from Hugging Face. It will mount the Mmojo Share if it's not mounted. If it downloads from Hugging Face and a Mmojo Share is availeble, it will backup the model to the Mmojo Share.

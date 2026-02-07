@@ -15,7 +15,7 @@ cd $HOME
 backed_up_one=0
 
 if [ ! -d "$MMOJO_SHARE_MOUNT_POINT" ]; then
-    echo "You have not created your Mmojo Share mount point."
+    # echo "You have not created your Mmojo Share mount point."
     exit 1
 fi
 

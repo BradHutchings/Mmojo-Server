@@ -58,7 +58,7 @@ if [[ $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]] && [ -d $MMOJO_SHARE_MODELS_DIR ] &
         if [ -f "$file" ]; then
             BackupModel $file
         fi
-    for
+    done
 
     #unset mnemonics
     #declare -A mnemonics

@@ -49,7 +49,8 @@ BackupModel() {
     fi
 }
 
-if [[ $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]] && [ -d $MMOJO_SHARE_MODELS_DIR ] && [ -f $LOCAL_MODEL_MAP ]; then
+# if [[ $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]] && [ -d $MMOJO_SHARE_MODELS_DIR ] && [ -f $LOCAL_MODEL_MAP ]; then
+if [[ $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]] && [ -d $MMOJO_SHARE_MODELS_DIR ]; then
     # iterate over the local LOCAL_MODEL_MAP
         # if a model in the LOCAL_MODEL_MAP isn't in the MMOJO_SHARE_MODEL_MAP, copy the model, copy to the share and 
         # add to the share MODEL_MAP.

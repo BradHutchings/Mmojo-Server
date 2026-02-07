@@ -10,7 +10,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-# export MMOJO_SERVER_DIR="$HOME/200-mmojo-server"
+# export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server"
 # export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
 cd $HOME
 if [ "$MMOJO_SERVER_DIR" ]; then

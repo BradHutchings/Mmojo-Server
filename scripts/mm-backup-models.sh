@@ -56,7 +56,7 @@ if [[ $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]] && [ -d $MMOJO_SHARE_MODELS_DIR ]; 
         # add to the share MODEL_MAP.
 
     cd $LOCAL_MODELS_DIR
-    for file in *; do
+    for file in *.gguf; do
         if [ -f "$file" ]; then
             BackupModel $file
         fi

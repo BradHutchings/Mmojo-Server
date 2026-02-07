@@ -23,41 +23,20 @@ DownloadModel() {
     fi
 }
 
-DownloadModelSave() {
-    MODEL_FILE=$1
-    MODEL_MNEMONIC=$2
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/models/$MODEL_FILE?download=true"
-    if [ ! -f $MODEL_FILE ]; then
-        echo "Downloading $MODEL_FILE to $LOCAL_MODELS_DIR."
-        wget $URL --show-progress --quiet -O $MODEL_FILE
-        if [ -f $MODEL_FILE ]; then
-            if [ -f "$LOCAL_MODEL_MAP" ]; then
-                sed -i -e "/$MODEL_FILE/d" $LOCAL_MODEL_MAP
-            fi
-sudo cat << EOF >> $LOCAL_MODEL_MAP
-$MODEL_FILE $MODEL_MNEMONIC
-EOF
-        fi
-    fi
-}
-
 cd $LOCAL_MODELS_DIR
 downloaded=0
-unset mnemonics
-declare -A mnemonics
+unset ggufs
+declare -A ggufs
 
-while IFS=$' ' read -r gguf mnemonic ; do
+while IFS=$' ' read -r gguf ; do
   if [[ "$gguf" != "#" ]] && [[ -n "$gguf" ]]; then
-    mnemonics["${gguf}"]="${mnemonic}"
+    ggufs["${gguf}"]="1"
   fi
 done < "$LOCAL_DOWNLOAD_MODEL_MAP"
 
-for key in "${!mnemonics[@]}"; do
-    mnemonic=${mnemonics["$key"]}
-
+for key in "${!ggufs[@]}"; do
     echo ""
     echo "Considering: $key"
-    # echo "Considering: $key -- $mnemonic"
 
     if [ -f "$LOCAL_MODELS_DIR/$key" ]; then
         echo "File already exists in $LOCAL_MODELS_DIR."
@@ -67,8 +46,6 @@ for key in "${!mnemonics[@]}"; do
         fi
     else
         DownloadModel $key
-        # DownloadModel $key $mnemonic
-        # echo "Downloading: $key -- $mnemonic"
         if [ -f "$LOCAL_MODELS_DIR/$key" ]; then
             ((downloaded++))
         fi

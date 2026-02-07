@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ################################################################################
-# This script backs up the models in the 400-MODELS directory to Mmojo Share.
+# This script backs up the models in the $HOME/mm-models directory to Mmojo Share.
 # It only backs up models that are not on the share.
 #
 # See licensing note at end.
@@ -10,7 +10,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-# export MMOJO_SERVER_DIR="$HOME/200-mmojo-server"
+# export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server"
 # export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
 cd $HOME
 if [ "$MMOJO_SERVER_DIR" ]; then

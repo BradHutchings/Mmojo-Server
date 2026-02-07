@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ################################################################################
-# This script backs up the models in the 400-MODELS directory to Mmojo Share.
-# It only backs up models that are not on the share.
+# This script backs up the models in the $HOME/mm-models directory to Mmojo 
+# Share. It only backs up models that are not on the share.
 #
 # See licensing note at end.
 ################################################################################

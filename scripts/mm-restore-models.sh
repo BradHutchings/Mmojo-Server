@@ -1,8 +1,9 @@
 #!/bin/bash
 
 ################################################################################
-# This script restores models from the Mmojo Share to the 400-MODELS directory.
-# It only restores models listed in restore-model-map.txt on the Mmojo Share.
+# This script restores models from the Mmojo Share to the $HOME/mm-models
+# directory. It only restores models listed in restore-model-map.txt on the 
+# Mmojo Share.
 #
 # See licensing note at end.
 ################################################################################

@@ -73,13 +73,22 @@ if [ -e "$VULKAN_SETUP_ENV" ]; then
 fi
 
 echo "Setting Local and Share Models paths."
-export LOCAL_MODELS_DIR="$HOME/400-MODELS"
+export MOOELS_DIR_NAME="mm-models"
+
+export LOCAL_MODELS_DIR="$HOME/$MOOELS_DIR_NAME"
 export LOCAL_MODEL_MAP="$LOCAL_MODELS_DIR/model-map.txt"
 export LOCAL_DOWNLOAD_MODEL_MAP="$LOCAL_MODELS_DIR/download-model-map.txt"
 
-export MMOJO_SHARE_MODELS_DIR="$MMOJO_SHARE_MOUNT_POINT/models"
+export MMOJO_SHARE_MODELS_DIR="$MMOJO_SHARE_MOUNT_POINT/$MOOELS_DIR_NAME"
 export MMOJO_SHARE_MODEL_MAP="$MMOJO_SHARE_MODELS_DIR/model-map.txt"
 export MMOJO_SHARE_RESTORE_MODEL_MAP="$MMOJO_SHARE_MODELS_DIR/restore-model-map.txt"
+
+echo "Setting Local and Share Download paths."
+export DOWNLOADS_DIR_NAME="mm-downloads"
+
+export LOCAL_DOWNLOADS_DIR="$HOME/$DOWNLOADS_DIR_NAME"
+
+export MMOJO_SHARE_DOWNLOADS_DIR="$MMOJO_SHARE_MOUNT_POINT/$DOWNLOADS_DIR_NAME"
 
 echo "Setting Build paths."
 export BUILD_DIR="$HOME/500-BUILD-mmojo-server"

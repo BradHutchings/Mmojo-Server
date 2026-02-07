@@ -55,7 +55,8 @@ if [[ $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]] && [ -d $MMOJO_SHARE_MODELS_DIR ]; 
         # if a model in the LOCAL_MODEL_MAP isn't in the MMOJO_SHARE_MODEL_MAP, copy the model, copy to the share and 
         # add to the share MODEL_MAP.
 
-    for file in "$LOCAL_MODELS_DIR"/*; do
+    cd $LOCAL_MODELS_DIR
+    for file in *; do
         if [ -f "$file" ]; then
             BackupModel $file
         fi
@@ -82,6 +83,8 @@ if [ "$backed_up_one" == "0" ]; then
     echo ""
     echo "There are no new models to back up."
 fi
+
+cd $HOME
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

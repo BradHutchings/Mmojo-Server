@@ -37,8 +37,7 @@ if [ -v CHOSEN_MODEL ]; then
 
   if [ -d "$RUN_DIR" ]; then
       rm -f "$RUN_DIR"/*.gguf
-      echo "Copying chosen model to $RUN_DIR."
-      # cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" "$RUN_DIR"
+      echo "Soft linking $CHOSEN_MODEL to $RUN_DIR."
       ln -s "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" "$RUN_DIR/$CHOSEN_MODEL"
   fi
 fi

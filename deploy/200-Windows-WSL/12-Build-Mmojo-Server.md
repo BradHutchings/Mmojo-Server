@@ -1,4 +1,4 @@
-## 05. Build Mmojo Server
+## 12. Build Mmojo Server
 ### About this Step (OPTION)
 If you didn't download Mmojo Server from Hugging Face, you can build it quickly with the steps on this page.
 

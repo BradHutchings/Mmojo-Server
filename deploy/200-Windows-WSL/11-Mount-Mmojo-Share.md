@@ -1,6 +1,10 @@
 ## 11. Mount Mmojo Share
 ### About this Step
-In this step, you will mount your Mmojo Share, if you have one.
+In this step, you will mount your Mmojo Share, if you have one. Your Mmojo Share can be any SMB file share on your computer or your network. You will need it's host address, share name, username, and password.
+
+Your Mmojo Share will be used to automatcally store models that you download from Hugging Face so that you only have to download them once. That will save you a lot of time.
+
+If you don't have an SMB file share available to use on your computer or network, you can skip this step.
 
 ---
 ### Create Mmojo Share Mount Point and Mount Script

@@ -36,6 +36,7 @@ Build native Mmojo Server tuned to the specific CPU of your PC:
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
+ZIP_FILE="Mmojo-Server-x86-native$CHOSEN_GPUS.zip"
 ```
 
 <details>
@@ -102,6 +103,7 @@ Brad makes .zip files for the Hugging Face downloads. They are moved to your `$H
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
+  # TODO: If we're on aarch64, change the $ZIP_FILE from -x86- to -arm-
   zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete
   mv $ZIP_FILE $HOME
   cd $HOME

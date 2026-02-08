@@ -1,4 +1,4 @@
-## 03. Download Models
+## 04. Download Models
 ### About this Step
 In this step, we will download models for use with Mmojo Server from Hugging Face. If you have setup a Mmojo Share and the models are already available there, the models will be copied from your Mmojo Share instead.
 
@@ -34,8 +34,8 @@ mm-download-models.sh
 
 ---
 ### Proceed
-- **Next:** [04. Download Mmojo Server](04-Download-Mmojo-Server.md)
-- **Previous:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
+- **Next:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
+- **Previous:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

@@ -69,7 +69,9 @@ fi
 cd $HOME
 
 echo -e "\nLocal models directory:"
-ls -al $LOCAL_MODELS_DIR/*.gguf
+if [ -f "/home/linux/mm-models/"*.gguf ]; then
+    ls -al $LOCAL_MODELS_DIR/*.gguf
+fi
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 

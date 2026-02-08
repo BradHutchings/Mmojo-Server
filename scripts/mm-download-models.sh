@@ -68,12 +68,13 @@ if [ "$downloaded" -gt "0" ]; then
     mm-backup-models.sh
 fi
 
-cd $HOME
-
+cd $LOCAL_MODELS_DIR
 echo -e "\nLocal models directory:"
-# if [ -f "$LOCAL_MODELS_DIR/"*.gguf ]; then
-    ls -al $LOCAL_MODELS_DIR/*.gguf
+# if [ -f *.gguf ]; then
+    ls -al *.gguf
 # fi
+
+cd $HOME
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 

@@ -9,11 +9,15 @@ In this section, you will setup a WSL environment on Windows and deploy Mmojo Se
 Here are the deployment steps:
 - [01. Prerequisites](01-Prerequisites.md) - What you need to deploy Mmojo Server in a WSL instance.  
 - [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md) - Create a WSL instance for Mmojo Server.
-- [03. Download Models from Hugging Face](03-Download-Models-from-Hugging-Face.md) - Download models for use with Mmoho Server from Hugging Face.
-- [04. Download Mmojo Server from Hugging Face](04-Download-Mmojo-Server-from-Hugging-Face.md) - **Option:** Download Mmojo Server from Hugging Face and install it.
-- [05. Build Mmojo Server](05-Build-Mmojo-Server.md) - **Option:** Build a Mmojo Server quickly.
+- [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md) - If you have a Mmojo Share, mount it.
+- [04. Download Models](03-Download-Models.md) - Download models for use with Mmojo Server from Hugging Face, or copy from your Mmojo Share.
+- [05. Download Mmojo Server](04-Download-Mmojo-Server.md) - **Option:** Download Mmojo Server from Hugging Face and install it.
 - [06. Control Mmojo Server](06-Control-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
   <br/><br/>
+
+<!--
+- [11. Build Mmojo Server](11-Build-Mmojo-Server.md) - **Option:** Build a Mmojo Server quickly.
+-->
 
 <!--
 ---

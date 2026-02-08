@@ -17,6 +17,9 @@ Here are the deployment steps:
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
 
+---
+### Build Mmojo Server
+
 You can also build Mmojo Server using abbreviated instructions. Do this after you have downloaded models.
 - [11. Build Mmojo Server](11-Build-Mmojo-Server.md) - **Optional:** Build a Mmojo Server quickly.
   <br/><br/>

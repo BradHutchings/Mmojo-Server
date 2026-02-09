@@ -12,7 +12,7 @@ However, there is an easy cheat code! We can use nginx (pronounced "engine ex") 
 ### Install nginx - Chocolatey
 If you have the [Chocolatey package manager](https://chocolatey.org/) installed, you can use it to install the latest version.
 
-(picture of open as admin from Taskbar here.)
+<img width="131" height="97" alt="image" src="https://github.com/user-attachments/assets/d9940c1a-8fea-4efa-bc0f-8c4740067537" />
 
 Open a `Terminal` or `PowerShell` window as Administrator.
 ```
@@ -31,7 +31,7 @@ cd c:\tools\nginx-*
 ### Install nginx - Download from nginx.org
 If you don't have Chocolatey installed, you can download directly from [nginx.org](https://nginx.org/en/download.html). These commands will download and install a recent version.
 
-(picture of open as admin from Taskbar here.)
+<img width="131" height="97" alt="image" src="https://github.com/user-attachments/assets/d9940c1a-8fea-4efa-bc0f-8c4740067537" />
 
 Open a `Terminal` or `PowerShell` window as Administrator.
 

@@ -32,6 +32,7 @@ This script creates the `$MODELS_DIR` and adds a simple model map to it:
   $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
   ```
 
+<!--
 <details>
   <summary><b>Optional: Download Model Map.</b></summary>
 
@@ -44,13 +45,14 @@ This script downloads the model map from Hugging Face:
   $MMOJO_SERVER_SCRIPTS/401-Download-Model-Map.sh
   ```
 </details>
+-->
 
 <details>
-  <summary><b>Optional: Edit the Model Map.</b></summary>
+  <summary><b>Optional: Edit the Model Queue</b></summary>
 
-All these models will take a long time to download, so you can edit the model map and remove models you don't want to download now.
+All these models will take a long time to download, so you can edit the model queue and remove models you don't want to download now.
 ```
-nano $LOCAL_MODEL_MAP
+nano $LOCAL_MODEL_QUEUE
 ```
 </details>
 

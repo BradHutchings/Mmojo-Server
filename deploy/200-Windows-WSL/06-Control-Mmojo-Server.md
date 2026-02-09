@@ -4,7 +4,7 @@ This step has controls for choosing a mode, starting Mmojo Server, and stopping 
 
 ---
 ### Choose a Model
-First, choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
+First, choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It will be soft-linked in your `$HOME/Mmojo-Server` directory.
 ```
 mm-choose-model.sh
 ```
@@ -44,7 +44,7 @@ There are two ways you can do this:
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [05. Build Mmojo Server](05-Build-Mmojo-Server.md)
+- **Previous:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

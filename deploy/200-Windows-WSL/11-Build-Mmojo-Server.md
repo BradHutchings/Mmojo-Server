@@ -1,13 +1,10 @@
-## 05. Build Mmojo Server
-### About this Step (OPTION)
-If you didn't download Mmojo Server from Hugging Face, you can build it quickly with the steps on this page.
+## 11. Build Mmojo Server
+### About this Step (Optional)
+If you would prefer to build Mmojo Server optimized for the CPU on your computer, you can build it with the steps on this page. The Mmojo Server you build with the instructions on this page will take advantage of all available features of your computer's CPU. It can also work with your computer's NVIDIA GPU if it has one.
 
 **Jump Back:**
-- [04. Download Mmojo Server](04-Download-Mmojo-Server.md)
+- [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
 
-<!--
-If you didn't download Mmojo Server from Hugging Face, or copy Mmojo Server from your Mmojo Share, you can build it quickly with the steps on this page.
--->
 ---
 ### Install Dependencies and GPU Support
 Install dependencies. These may take 20 minutes or so to download and install.
@@ -39,6 +36,7 @@ Build native Mmojo Server tuned to the specific CPU of your PC:
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
+ZIP_FILE="Mmojo-Server-x86-native$CHOSEN_GPUS.zip"
 ```
 
 <details>
@@ -100,11 +98,12 @@ It should look like:
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
-### (OPTIONAL) Make a .zip File
+### (Optional) Make a .zip File
 Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
+  # TODO: If we're on aarch64, change the $ZIP_FILE from -x86- to -arm-
   zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete
   mv $ZIP_FILE $HOME
   cd $HOME
@@ -114,7 +113,7 @@ fi
 ---
 ### Proceed
 - **Next:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
-- **Previous:** [04. Download Mmojo Server](04-Download-Mmojo-Server.md)
+- **Previous:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

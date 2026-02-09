@@ -16,58 +16,65 @@ fi
 
 DownloadModel() {
     MODEL_FILE=$1
-    MODEL_MNEMONIC=$2
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/models/$MODEL_FILE?download=true"
     if [ ! -f $MODEL_FILE ]; then
         echo "Downloading $MODEL_FILE to $LOCAL_MODELS_DIR."
-        wget $URL --show-progress --quiet -O $MODEL_FILE
-        if [ -f $MODEL_FILE ]; then
-            if [ -f "$LOCAL_MODEL_MAP" ]; then
-                sed -i -e "/$MODEL_FILE/d" $LOCAL_MODEL_MAP
-            fi
-sudo cat << EOF >> $LOCAL_MODEL_MAP
-$MODEL_FILE $MODEL_MNEMONIC
-EOF
-        fi
+        DOWNLOAD_FILE_NAME=".$MODEL_FILE.download"
+        wget $URL --show-progress --quiet -O $DOWNLOAD_FILE_NAME
+        mv $DOWNLOAD_FILE_NAME $MODEL_FILE
     fi
 }
 
 cd $LOCAL_MODELS_DIR
 downloaded=0
-unset mnemonics
-declare -A mnemonics
+unset ggufs
+declare -A ggufs
 
-while IFS=$' ' read -r gguf mnemonic ; do
-  if [[ "$gguf" != "#" ]] && [[ -n "$gguf" ]]; then
-    mnemonics["${gguf}"]="${mnemonic}"
-  fi
-done < "$LOCAL_DOWNLOAD_MODEL_MAP"
+if [ -f "$LOCAL_MODEL_QUEUE" ]; then
+    while IFS=$' ' read -r gguf ; do
+        if [[ "$gguf" != "#" ]] && [[ -n "$gguf" ]]; then
+            ggufs["${gguf}"]="1"
+        fi
+    done < "$LOCAL_MODEL_QUEUE"
+fi
 
-for key in "${!mnemonics[@]}"; do
-    mnemonic=${mnemonics["$key"]}
-
+for key in "${!ggufs[@]}"; do
     echo ""
-    echo "Considering: $key -- $mnemonic"
+    echo "Considering: $key"
+
+    FILE_ON_MMOJO_SHARE="$MMOJO_SHARE_MODELS_DIR/$key"
 
     if [ -f "$LOCAL_MODELS_DIR/$key" ]; then
         echo "File already exists in $LOCAL_MODELS_DIR."
+        
+    elif [ -f "$FILE_ON_MMOJO_SHARE" ]; then
+        echo "Copying $key from your Mmojo Share."
+        sudo rsync -ah --progress "$FILE_ON_MMOJO_SHARE" "$LOCAL_MODELS_DIR/$key" 
+        sudo chmod a-x "$LOCAL_MODELS_DIR/$key"
+        
     elif [ "$count" -gt "0" ]; then
         if [ "$downloaded" -ge "$count" ]; then
             echo "Already downloaded $count models."
         fi
     else
-        DownloadModel $key $mnemonic
-        # echo "Downloading: $key -- $mnemonic"
+        DownloadModel $key
         if [ -f "$LOCAL_MODELS_DIR/$key" ]; then
             ((downloaded++))
         fi
     fi
 done
 
-cd $HOME
+if [ "$downloaded" -gt "0" ]; then
+    mm-backup-models.sh
+fi
 
+cd $LOCAL_MODELS_DIR
 echo -e "\nLocal models directory:"
-ls -al $LOCAL_MODELS_DIR/*.gguf
+# if [ -f *.gguf ]; then
+    ls -al *.gguf
+# fi
+
+cd $HOME
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 

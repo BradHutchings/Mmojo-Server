@@ -14,11 +14,11 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 mkdir -p $LOCAL_MODELS_DIR
 cd $LOCAL_MODELS_DIR
 
-if ! test -f "$LOCAL_DOWNLOAD_MODEL_MAP"; then
-cat << EOF > "$LOCAL_DOWNLOAD_MODEL_MAP"
-Google-Gemma-270M-Instruct-v3-q8_0.gguf Goo-Gem-1B-Ins-v3
-Google-Gemma-1B-Instruct-v3-q8_0.gguf Goo-Gem-1B-Ins-v3
-Google-Gemma-4B-Instruct-v3-q8_0.gguf Goo-Gem-4B-Ins-v3
+if ! test -f "$LOCAL_MODEL_QUEUE"; then
+cat << EOF > "$LOCAL_MODEL_QUEUE"
+Google-Gemma-270M-Instruct-v3-q8_0.gguf
+Google-Gemma-1B-Instruct-v3-q8_0.gguf
+Google-Gemma-4B-Instruct-v3-q8_0.gguf
 EOF
 fi
 

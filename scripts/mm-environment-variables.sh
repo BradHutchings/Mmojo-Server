@@ -76,12 +76,15 @@ echo "Setting Local and Share Models paths."
 export MOOELS_DIR_NAME="mm-models"
 
 export LOCAL_MODELS_DIR="$HOME/$MOOELS_DIR_NAME"
-export LOCAL_MODEL_MAP="$LOCAL_MODELS_DIR/model-map.txt"
-export LOCAL_DOWNLOAD_MODEL_MAP="$LOCAL_MODELS_DIR/download-model-map.txt"
+export LOCAL_MODEL_QUEUE="$LOCAL_MODELS_DIR/model-queue.txt"
 
 export MMOJO_SHARE_MODELS_DIR="$MMOJO_SHARE_MOUNT_POINT/$MOOELS_DIR_NAME"
-export MMOJO_SHARE_MODEL_MAP="$MMOJO_SHARE_MODELS_DIR/model-map.txt"
-export MMOJO_SHARE_RESTORE_MODEL_MAP="$MMOJO_SHARE_MODELS_DIR/restore-model-map.txt"
+
+# Get rid of these.
+# export LOCAL_DOWNLOAD_MODEL_MAP="$LOCAL_MODEL_QUEUE"
+# export LOCAL_MODEL_MAP="$LOCAL_MODELS_DIR/model-map.txt"
+# export MMOJO_SHARE_MODEL_MAP="$MMOJO_SHARE_MODELS_DIR/model-map.txt"
+# export MMOJO_SHARE_RESTORE_MODEL_MAP="$MMOJO_SHARE_MODELS_DIR/restore-model-map.txt"
 
 echo "Setting Local and Share Download paths."
 export DOWNLOADS_DIR_NAME="mm-downloads"

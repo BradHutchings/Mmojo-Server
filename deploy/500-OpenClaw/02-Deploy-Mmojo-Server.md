@@ -17,9 +17,9 @@ Download models that OpenClaw can work with from Hugging Face. These may take 20
 
 IBM Granite models implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
 ```
-cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
-IBM-Granite-2B-Instruct-v3.3-q8_0.gguf IBM-Gra-2B-Ins-v3.3
-IBM-Granite-8B-Instruct-v3.3-q8_0.gguf IBM-Gra-8B-Ins-v3.3
+cat << EOF >> $LOCAL_MODEL_QUEUE
+IBM-Granite-2B-Instruct-v3.3-q8_0.gguf
+IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
 EOF
 ```
 

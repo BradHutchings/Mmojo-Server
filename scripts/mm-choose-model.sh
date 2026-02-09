@@ -11,7 +11,6 @@ SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
 
 unset CHOSEN_MODEL
-unset CHOSEN_MODEL_MNEMONIC
 
 echo ""
 echo "These models are available to package:"
@@ -32,15 +31,14 @@ select filename in *.gguf; do
 done
 
 if [ -v CHOSEN_MODEL ]; then
-  export CHOSEN_MODEL_MNEMONIC=$(grep $CHOSEN_MODEL $LOCAL_MODEL_MAP | awk '{print $2}')
   echo ""
-  echo "You chose: $CHOSEN_MODEL - $CHOSEN_MODEL_MNEMONIC"
+  echo "You chose: $CHOSEN_MODEL"
   echo ""
 
   if [ -d "$RUN_DIR" ]; then
       rm -f "$RUN_DIR"/*.gguf
-      echo "Copying chosen model to $RUN_DIR."
-      cp "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" "$RUN_DIR"
+      echo "Soft linking $CHOSEN_MODEL to $RUN_DIR."
+      ln -s "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" "$RUN_DIR/$CHOSEN_MODEL"
   fi
 fi
 

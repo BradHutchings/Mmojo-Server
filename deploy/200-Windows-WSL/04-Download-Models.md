@@ -1,6 +1,6 @@
-## 03. Download Models
+## 04. Download Models
 ### About this Step
-In this step, we will download models for use with Mmojo Server from Hugging Face.
+In this step, we will download models for use with Mmojo Server from Hugging Face. If you have setup a Mmojo Share and the models are already available there, the models will be copied from your Mmojo Share instead.
 
 ---
 ### Download Models
@@ -13,29 +13,29 @@ $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
 
 **Optional:** There are more recent Gemma E2B and E4B models. Run this script to add them to the model download queue.
 ```
-cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
-Google-Gemma-E2B-Instruct-v3n-q8_0.gguf Goo-Gem-E2B-Ins-v3n
-Google-Gemma-E4B-Instruct-v3n-q8_0.gguf Goo-Gem-E4B-Ins-v3n
+cat << EOF >> $LOCAL_MODEL_QUEUE
+Google-Gemma-E2B-Instruct-v3n-q8_0.gguf
+Google-Gemma-E4B-Instruct-v3n-q8_0.gguf
 EOF
 ```
 
 **Optional:** IBM Granite models implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
 ```
-cat << EOF >> $LOCAL_DOWNLOAD_MODEL_MAP
-IBM-Granite-2B-Instruct-v3.3-q8_0.gguf IBM-Gra-2B-Ins-v3.3
-IBM-Granite-8B-Instruct-v3.3-q8_0.gguf IBM-Gra-8B-Ins-v3.3
+cat << EOF >> $LOCAL_MODEL_QUEUE
+IBM-Granite-2B-Instruct-v3.3-q8_0.gguf
+IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
 EOF
 ```
 
-Now download all the models you added to the queue.
+Now download all the models you added to the queue. If any of the models are available on your Mmojo Share, they will be copied from there.
 ```
 mm-download-models.sh
 ```
 
 ---
 ### Proceed
-- **Next:** [04. Download Mmojo Server](04-Download-Mmojo-Server.md)
-- **Previous:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
+- **Next:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
+- **Previous:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

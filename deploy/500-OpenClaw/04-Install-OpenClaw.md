@@ -111,7 +111,7 @@ Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 
 <img width="402" height="67" alt="image" src="https://github.com/user-attachments/assets/45b0c208-d68f-4b73-a3c4-a8f1f29a0ba8" />
 
-Hit the `ENTER` key.
+Hit the `N` key.
 
 ---
 
@@ -119,7 +119,7 @@ Hit the `ENTER` key.
 
 <img width="435" height="72" alt="image" src="https://github.com/user-attachments/assets/2339b8eb-a43e-4484-8519-d1e3932fc8a6" />
 
-Hit the `ENTER` key.
+Hit the `N` key.
 
 ---
 
@@ -127,7 +127,7 @@ Hit the `ENTER` key.
 
 <img width="399" height="69" alt="image" src="https://github.com/user-attachments/assets/1e7f96cb-9716-4c98-a480-b3f4ba32d393" />
 
-Hit the `ENTER` key.
+Hit the `N` key.
 
 ---
 
@@ -135,7 +135,7 @@ Hit the `ENTER` key.
 
 <img width="335" height="67" alt="image" src="https://github.com/user-attachments/assets/31c9661e-fba7-44da-bc45-0d2b9632f7a7" />
 
-Hit the `ENTER` key.
+Hit the `N` key.
 
 ---
 
@@ -143,7 +143,7 @@ Hit the `ENTER` key.
 
 <img width="406" height="73" alt="image" src="https://github.com/user-attachments/assets/802ebddb-be97-403d-b75e-66883e4bfdfa" />
 
-Hit the `ENTER` key.
+Hit the `N` key.
 
 ---
 
@@ -151,7 +151,7 @@ Hit the `ENTER` key.
 
 <img width="433" height="67" alt="image" src="https://github.com/user-attachments/assets/1bd70a9f-3ac0-419e-aa81-1d8a583c3749" />
 
-Hit the `ENTER` key.
+Hit the `N` key.
 
 ---
 
@@ -159,7 +159,7 @@ Hit the `ENTER` key.
 
 <img width="339" height="64" alt="image" src="https://github.com/user-attachments/assets/9200d83f-681b-4f89-b848-e1e12ffdbb3d" />
 
-Hit the `ENTER` key.
+Hit the `N` key.
 
 ---
 
@@ -181,27 +181,15 @@ Use the <code>&darr;</code> key to choose `Open the Web UI`, then hit the `ENTER
 
 **Onboarding complete.**
 
-<img width="764" height="80" alt="image" src="https://github.com/user-attachments/assets/7d8780e5-e6a8-4234-b0e3-76c71d952f1e" />
+<img width="682" height="147" alt="image" src="https://github.com/user-attachments/assets/fdc95d95-5247-4b38-ac60-3f398f8d4939" />
 
-You're not quite done yet.
+You're not quite done yet. At this point it looks like the installer is stuck. You will not see your familiar `(OpenClaw-` shell prompt.
 
----
+Hit `CTRL-C`.
 
-**Install shell completion script?**
-
-<img width="351" height="70" alt="image" src="https://github.com/user-attachments/assets/639e47de-e32b-4659-ad84-aed51493983f" />
-
-Hit the `N` key.
-
----
+<img width="671" height="70" alt="image" src="https://github.com/user-attachments/assets/782a4b07-f15c-49a4-a15f-9225736832fe" />
 
 Your shell prompt appears.
-
-<img width="343" height="70" alt="image" src="https://github.com/user-attachments/assets/8e7c8ed9-e49b-48b2-9a64-f7af9affb812" />
-
-Now you're done.
-
-**Note:** if your command prompt doesn't appear and configuration looks like it is stuck, hit `CTRL-C`. This seems to be the outcome on 2026-02-06. -Brad
 
 ---
 ### Additional Configuration

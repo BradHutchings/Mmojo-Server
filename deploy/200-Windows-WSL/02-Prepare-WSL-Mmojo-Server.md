@@ -9,6 +9,8 @@ Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\`
 ### Delete your Existing `MmojoServer` WSL Instance
 If you have a previous `MmojoServer` WSL instance, let's delete it. We're going to start from scratch with a new one.
 
+<img width="131" height="97" alt="image" src="https://github.com/user-attachments/assets/d9940c1a-8fea-4efa-bc0f-8c4740067537" />
+
 Open a **Terminal** (or **PowerShell**) window. Verify that your instance exists and is stopped:
 ```
 wsl --list --verbose

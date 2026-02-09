@@ -12,9 +12,9 @@ However, there is an easy cheat code! We can use nginx (pronounced "engine ex") 
 ### Install nginx - Chocolatey
 If you have the [Chocolatey package manager](https://chocolatey.org/) installed, you can use it to install the latest version.
 
-(picture of open as admin from Taskbar here.)
+<img width="351" height="372" alt="image" src="https://github.com/user-attachments/assets/03e4b8fc-3a78-46f1-9216-8dd07ae8a2a7" />
 
-Open a `Terminal` or `PowerShell` window as Administrator.
+Open a **Terminal** or **PowerShell** window as Administrator. I right-clicked the `Terminal` icon in my Taskbar, right-clciked **Terminal** in the menu, then clicked **Run as administrator**.
 ```
 choco install -y nginx
 ```
@@ -31,9 +31,9 @@ cd c:\tools\nginx-*
 ### Install nginx - Download from nginx.org
 If you don't have Chocolatey installed, you can download directly from [nginx.org](https://nginx.org/en/download.html). These commands will download and install a recent version.
 
-(picture of open as admin from Taskbar here.)
+<img width="351" height="372" alt="image" src="https://github.com/user-attachments/assets/03e4b8fc-3a78-46f1-9216-8dd07ae8a2a7" />
 
-Open a `Terminal` or `PowerShell` window as Administrator.
+Open a **Terminal** or **PowerShell** window as Administrator. I right-clicked the `Terminal` icon in my Taskbar, right-clciked **Terminal** in the menu, then clicked **Run as administrator**.
 
 Following are instructions to download and install a recent version.
 

@@ -4,12 +4,14 @@ In this section, you will deploy the open source OpenClaw agent platform. You wi
 
 Your installation will be private and self-contained on the computer on which you are running OpenClaw. Of course, the agents you run can reach out anywhere on the Internet and leak all of your private and sensitive information, so you should proceed cautiously.
 
-If you need assistance via Zoom call and screen sharing, I offer a one-hour hands on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this thing work. [Email me if interested](mailto:brad@BradHutchings.com?subject=Mmojo%20Server%20Install%20Help).
+<!-- SPONSOR --> 
+If you need assistance via Zoom call and screen sharing, I offer a one-hour hands on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this thing work. [Email me if interested](mailto:brad@BradHutchings.com?subject=OpenClaw%20Install%20Help).
 
 -Brad<br/>
 \--<br/>
 Brad Hutchings<br/>
 brad@BradHutchings.com<br/><br/>
+<!-- END SPONSOR -->
 
 **OPENCLAW TEAM KEEPS BREAKING THINGS.** I'm testing new builds soon after they are released and patching up instructions as I can figure them out. -Brad 2025-02-06
 

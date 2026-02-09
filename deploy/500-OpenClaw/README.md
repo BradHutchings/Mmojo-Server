@@ -4,6 +4,8 @@ In this section, you will deploy the open source OpenClaw agent platform. You wi
 
 Your installation will be private and self-contained on the computer on which you are running OpenClaw. Of course, the agents you run can reach out anywhere on the Internet and leak all of your private and sensitive information, so you should proceed cautiously.
 
+**Note:** OpenClaw does not work well with small models, even models that are capable of tool calling and so-called "reasoning". I, Brad Hutchings, do not think that AI agents are a workable thing, period. I wrote [an article about it](https://mmojo.net/2026/02/06/llms-good-for-and-bad-for/). However, I think it is instructive for people working their way through whether and how to use this technology to play with OpenClaw as a learning experience. Small models keep the price of that learning experience low, and surface the problems quickly! As I collect specific things that don't work well with this approach, I'll write another article about OpenClaw specifically.
+
 <!-- SPONSOR --> 
 If you need assistance via Zoom call and screen sharing, I offer a one-hour hands-on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this thing work. [Email me if interested](mailto:brad@BradHutchings.com?subject=OpenClaw%20Install%20Help).
 
@@ -13,7 +15,7 @@ Brad Hutchings<br/>
 brad@BradHutchings.com<br/><br/>
 <!-- END SPONSOR -->
 
-**OPENCLAW TEAM KEEPS BREAKING THINGS.** I'm testing new builds soon after they are released and patching up instructions as I can figure them out. -Brad 2025-02-06
+**OPENCLAW TEAM KEEPS BREAKING THINGS.** I'm testing new builds soon after they are released and patching up instructions as I can figure them out. -Brad 2025-02-09
 
 **THIS IS A DRAFT OF THIS RECIPE.** Some pieces aren't implemented yet. If you're careful, you should end up with a "working" installation and at the very least, be able to use the OpenClaw web control page to chat with your Mmojo Server. -Brad 2026-02-01
 

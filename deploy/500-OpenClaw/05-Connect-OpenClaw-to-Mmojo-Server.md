@@ -25,15 +25,15 @@ Leave the WSL instance Terminal window open and visible on your screen.
 ### Connect OpenClaw to Mmojo Server
 Go to your browser tab that shows the **OpenClaw Control** page.
 
-(picture here)
+<img width="165" height="97" alt="image" src="https://github.com/user-attachments/assets/b3c9ec48-cbb5-418e-aaeb-0406dec1f55b" />
 
 Click **Config** in the left panel.
 
-(picture of panel with Raw button circled)
+<img width="302" height="84" alt="image" src="https://github.com/user-attachments/assets/5b133cf6-8e5a-4d30-9148-e3a76ce50c33" />
 
 Click the **Raw** button at the bottom-left of the **Config** panel.
 
-(picture of json cofig)
+<img width="780" height="329" alt="image" src="https://github.com/user-attachments/assets/87ba53a1-7915-420f-bf26-987366f8c668" />
 
 Copy this block and paste it after the `"messages"` block:
 ```
@@ -68,7 +68,11 @@ Copy this block, and replace the `"agents" > "defaults" > "model"` block:
 
 ```
 
-Click the **Save** button at the top right.
+<img width="338" height="67" alt="image" src="https://github.com/user-attachments/assets/711345a1-0691-4afd-bd0b-b658e7656c9c" />
+
+Click the **Save** button at the top right. Wait for saving to complete.
+
+<img width="336" height="58" alt="image" src="https://github.com/user-attachments/assets/76439e79-eb15-4c12-88bc-b3cf4dc25c1e" />
 
 Click the **Update** button at the top right. Wait for updating to complete.
 

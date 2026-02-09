@@ -28,6 +28,33 @@ cd c:\tools\nginx-*
 ```
 
 ---
+### Install nginx - Download from nginx.org
+If you don't have Chocolatey installed, you can download directly from [nginx.org](https://nginx.org/en/download.html). These commands will download and install a recent version.
+
+(picture of open as admin from Taskbar here.)
+
+Open a `Terminal` or `PowerShell` window as Administrator.
+
+Following are instructions to download and install a recent version.
+
+Download and unzip a recent nginx.
+```
+$toolsDir = "C:\tools"
+mkdir $toolsDir
+$nginxZipFile = "nginx-1.28.2.zip"
+$url = "https://nginx.org/download/$nginxZipFile"
+$outputPath = "$toolsDir\$nginxZipFile"
+Invoke-WebRequest -Uri $url -OutFile $outputPath
+Expand-Archive -Path $outputPath -DestinationPath $toolsDir
+```
+
+Go to that directory. You need that directory to be the working directory when you start nginx.
+
+```
+cd c:\tools\nginx-*
+```
+
+---
 ### Configure nginx
 Assuming you have Visual Studio Code installed, you can use it to edit the configuration file.
 

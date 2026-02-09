@@ -72,6 +72,8 @@ Copy this block, and replace the `"agents" > "defaults" > "model"` block:
 
 Click the **Save** button at the top right. Wait for saving to complete.
 
+<img width="336" height="58" alt="image" src="https://github.com/user-attachments/assets/76439e79-eb15-4c12-88bc-b3cf4dc25c1e" />
+
 Click the **Update** button at the top right. Wait for updating to complete.
 
 ---

@@ -1,8 +1,6 @@
 ## 07. Port Forward to Mmojo Server
-### About this Step
+### About this Step (Optional)
 **THIS STEP IS STILL UNDER CONSTRUCTION, STILL EXPERIMENTAL. IT IS NOT LINKED INTO THE MAIN STEP FLOW OF THIS GUIDE.**
-
-**THIS STEP IS OPTIONAL. YOU ONLY NEED TO DO THIS IF YOU WANT OTHER COMPUTERS ON YOUR NETWORK TO ACCESS MMOJO SERVER.**
 
 Mmojo Server runs in an WSL instance on your computer. It can accept connections from other process running on your computer, including from other WSL instances. This makes WSL an effective sandbox.
 

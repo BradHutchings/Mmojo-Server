@@ -2,6 +2,13 @@
 ### About this Section (200-Windows-WSL)
 In this section, you will setup a WSL environment on Windows and deploy Mmojo Server in it. This is the prefered way to run Mmojo Server on a Windows PC.
 
+If you need assistance via Zoom call and screen sharing, I offer a one-hour hands on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this thing work. [Email me if interested](mailto:brad@BradHutchings.com?subject=Mmojo%20Server%20Install%20Help).
+
+-Brad<br/>
+\--<br/>
+Brad Hutchings<br/>
+brad@BradHutchings.com<br/><br/>
+
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
 
 ---

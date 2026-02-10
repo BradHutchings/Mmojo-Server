@@ -133,7 +133,7 @@ Brad makes .zip files for the Hugging Face downloads. They are moved to your `$H
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
   # TODO: If we're on aarch64, change the $ZIP_FILE from -x86- to -arm-
-  zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete
+  zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete $TOUCH_FILE
   mv $ZIP_FILE $HOME
   cd $HOME
 fi

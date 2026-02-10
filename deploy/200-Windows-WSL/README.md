@@ -22,6 +22,7 @@ Here are the deployment steps:
 - [04. Download Models](04-Download-Models.md) - Download models for use with Mmojo Server from Hugging Face, or copy from your Mmojo Share.
 - [05. Download Mmojo Server](05-Download-Mmojo-Server.md) - Download Mmojo Server from Hugging Face and install it.
 - [06. Control Mmojo Server](06-Control-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
+- [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
   <br/><br/>
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
@@ -29,7 +30,7 @@ Here are the deployment steps:
 ---
 ### Port Forward to Mmojo Server
 If you want Mmojo Server to accept connections from other computers on your network, you can set that up:
-- [07. Port Forward to Mmojo Server](07-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
+- [08. Port Forward to Mmojo Server](08-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
 
 
 ---

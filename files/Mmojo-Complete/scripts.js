@@ -1705,21 +1705,6 @@ function Help() {
     window.open('help.html', '_blank');
 }
 
-function ClickMmojoComplete() {
-    if (!script.mmojoCompleteClicked) {
-        script.mmojoCompleteClicked = true;
-        elements.mmojoComplete.innerText = script.modelName;
-        setTimeout(function() {
-            RestoreMmojoComplete();
-        }, 5000);
-    }
-}
-
-function RestoreMmojoComplete() {
-    elements.mmojoComplete.innerText = kMmojoComplete;
-    script.mmojoCompleteClicked = false;
-}
-
 function GetElapsedTimeString(ms) {
     var logThis = false;
 

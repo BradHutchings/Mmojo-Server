@@ -28,7 +28,7 @@ export HOME_SCRIPTS="$HOME/mm-scripts"
 export TILDE_SCRIPTS="~/mm-scripts"
 
 echo "Setting mmojo-server paths."
-export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server"
+export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server-repo"
 export MMOJO_SERVER_FILES="$MMOJO_SERVER_DIR/files"
 export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
 
@@ -56,7 +56,8 @@ export MOUNT_MMOJO_SHARE_SCRIPT="mm-mount-mmojo-share.sh"
 
 # Prefix is 300- so we can wipe them out quickly, and changing script numbers doesn't mess stuff up.
 echo "Setting Build Pieces paths."
-export CERTIFICATES_DIR="$HOME/300-CERTIFICATES"
+# export CERTIFICATES_DIR="$HOME/300-CERTIFICATES"
+export CERTIFICATES_DIR="$HOME/mm-certificates"
 export BUILD_COSMOPOLITAN_DIR="$HOME/300-BUILD-cosmopolitan"
 export COSMOCC_DIR="$BUILD_COSMOPOLITAN_DIR/cosmocc"
 export BUILD_OPENSSSL_DIR="$HOME/300-BUILD-openssl"
@@ -188,7 +189,7 @@ export ARCH_AARCH64_NATIVE="native"
 # export ZIPALIGN="$HOME/tools/mm-zipalign"
 
 # Run directory for deployment only
-export RUN_DIR="$HOME/Mmojo-Server"
+export RUN_DIR="$HOME/mm-mmojo-server"
 
 # Run this script when user starts a session.
 SEARCH_STRING="\. mm-environment-variables.sh"

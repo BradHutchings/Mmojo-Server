@@ -15,7 +15,13 @@ fi
 
 Now, close your Mmojo Server WSL window, wait a few moments, then click the Mmojo Server icon in your Taskbar to see autostart in action.
 
-I told you it was a short step!
+---
+### Bookmark Mmojo Complete
+While you're setting things up, bookmark Mmojo Complete in your web browser.
+
+[Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
+
+I told you this was a short step!
 
 ---
 ### Proceed

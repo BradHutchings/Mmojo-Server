@@ -286,7 +286,6 @@ struct common_params_speculative {
 
     uint16_t ngram_size_n     = 12; // ngram size for lookup
     uint16_t ngram_size_m     = 48; // mgram size for speculative tokens
-    uint16_t ngram_check_rate =  1; // check rate for ngram lookup
     uint16_t ngram_min_hits   =  1; // minimum hits at ngram/mgram lookup for mgram to be proposed
 
     std::shared_ptr<common_ngram_mod> ngram_mod;
@@ -378,7 +377,7 @@ struct common_params {
     int32_t n_predict             =    -1; // max. number of new tokens to predict, -1 == no limit
     int32_t n_ctx                 =     0; // context size, 0 == context the model was trained with
     int32_t n_batch               =  2048; // logical batch size for prompt processing (must be >=32 to use BLAS)
-
+    
     // Mmojo Server START
     // This could be automated by searching for "int32_t n_batch " and inserting this block immediately below. -Brad 2025-11-05
     int32_t n_batch_sleep_ms          =     0; // delay in milliseconds after processing each batch.

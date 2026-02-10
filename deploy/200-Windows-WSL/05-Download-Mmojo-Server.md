@@ -30,7 +30,12 @@ sudo apt install cuda-drivers -y
 
 Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs:
 ```
-URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86-perf-cud.zip"
+URL=""
+if [ $(uname -m) == "x86_64" ]; then
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-perf-cud.zip"
+elif [ $(uname -m) == "aarch64" ]; then
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-perf-cud.zip"
+fi
 ```
 
 <details>
@@ -38,13 +43,18 @@ URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo
   <br/>
   
 ```
-URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86-comp-cud.zip"
+URL=""
+if [ $(uname -m) == "x86_64" ]; then
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-comp-cud.zip"
+elif [ $(uname -m) == "aarch64" ]; then
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-comp-cud.zip"
+fi
 ```
 </details>
 
 Download Mmojo Server from Hugging Face and unzip it in the `$HOME/Mmojo-Server` directory:
 ```
-if test -n "$RUN_DIR"; then
+if (test -n "$RUN_DIR") && [ "$URL" -ne "" ]; then
   mkdir -p $RUN_DIR
   cd $RUN_DIR
   rm -r -f "$RUN_DIR"/*

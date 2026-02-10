@@ -35,8 +35,15 @@ Choose GPUs for your build. I suggest **CUDA**.
 Build native Mmojo Server tuned to the specific CPU of your PC:
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
-BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
-ZIP_FILE="Mmojo-Server-x86-native$CHOSEN_GPUS.zip"
+BUILD_SUBDIR=""
+ZIP_FILE=""
+if [ $(uname -m) == "x86_64" ]; then
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
+    ZIP_FILE="Mmojo-Server-x86_64-native$CHOSEN_GPUS.zip"
+elif [ $(uname -m) == "aarch64" ]; then
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$CHOSEN_GPUS"
+    ZIP_FILE="Mmojo-Server-aarch64-native$CHOSEN_GPUS.zip"
+fi
 ```
 
 <details>
@@ -44,8 +51,15 @@ ZIP_FILE="Mmojo-Server-x86-native$CHOSEN_GPUS.zip"
   
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
-BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
-ZIP_FILE="Mmojo-Server-x86-comp$CHOSEN_GPUS.zip"
+BUILD_SUBDIR=""
+ZIP_FILE=""
+if [ $(uname -m) == "x86_64" ]; then
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
+    ZIP_FILE="Mmojo-Server-x86_64-comp$CHOSEN_GPUS.zip"
+elif [ $(uname -m) == "aarch64" ]; then
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$CHOSEN_GPUS"
+    ZIP_FILE="Mmojo-Server-aarch64-comp$CHOSEN_GPUS.zip"
+fi
 ```
 </details>
 
@@ -53,9 +67,16 @@ ZIP_FILE="Mmojo-Server-x86-comp$CHOSEN_GPUS.zip"
   <summary>Alternatively, build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
-BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$CHOSEN_GPUS"
-ZIP_FILE="Mmojo-Server-x86-perf$CHOSEN_GPUS.zip"
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
+BUILD_SUBDIR=""
+ZIP_FILE=""
+if [ $(uname -m) == "x86_64" ]; then
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$CHOSEN_GPUS"
+    ZIP_FILE="Mmojo-Server-x86_64-perf$CHOSEN_GPUS.zip"
+elif [ $(uname -m) == "aarch64" ]; then
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$CHOSEN_GPUS"
+    ZIP_FILE="Mmojo-Server-aarch64-perf$CHOSEN_GPUS.zip"
+fi
 ```
 </details>
 

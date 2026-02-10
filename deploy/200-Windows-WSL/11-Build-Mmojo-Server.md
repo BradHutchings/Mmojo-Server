@@ -112,7 +112,7 @@ chat
 --ctx-size
 32768 
 EOF
-touch "$RUN_DIR/TOUCH_FILE"
+touch "$RUN_DIR/$TOUCH_FILE"
 ```
 
 ---

@@ -67,7 +67,7 @@ fi
   <summary>Alternatively, build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
 BUILD_SUBDIR=""
 ZIP_FILE=""
 if [ $(uname -m) == "x86_64" ]; then

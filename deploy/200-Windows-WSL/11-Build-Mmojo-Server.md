@@ -37,12 +37,15 @@ Build native Mmojo Server tuned to the specific CPU of your PC:
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 BUILD_SUBDIR=""
 ZIP_FILE=""
+TOUCH_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
     ZIP_FILE="Mmojo-Server-x86_64-native$CHOSEN_GPUS.zip"
+    TOUCH_FILE="build-x86_64-native$CHOSEN_GPUS"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$CHOSEN_GPUS"
     ZIP_FILE="Mmojo-Server-aarch64-native$CHOSEN_GPUS.zip"
+    TOUCH_FILE="build-aarch64-native$CHOSEN_GPUS"
 fi
 ```
 
@@ -56,9 +59,11 @@ ZIP_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
     ZIP_FILE="Mmojo-Server-x86_64-comp$CHOSEN_GPUS.zip"
+    TOUCH_FILE="build-x86_64-comp$CHOSEN_GPUS"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$CHOSEN_GPUS"
     ZIP_FILE="Mmojo-Server-aarch64-comp$CHOSEN_GPUS.zip"
+    TOUCH_FILE="build-aarch64-comp$CHOSEN_GPUS"
 fi
 ```
 </details>
@@ -73,9 +78,11 @@ ZIP_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$CHOSEN_GPUS"
     ZIP_FILE="Mmojo-Server-x86_64-perf$CHOSEN_GPUS.zip"
+    TOUCH_FILE="build-x86_64-perf$CHOSEN_GPUS"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$CHOSEN_GPUS"
     ZIP_FILE="Mmojo-Server-aarch64-perf$CHOSEN_GPUS.zip"
+    TOUCH_FILE="build-aarch64-perf$CHOSEN_GPUS"
 fi
 ```
 </details>
@@ -105,6 +112,7 @@ chat
 --ctx-size
 32768 
 EOF
+touch "$RUN_DIR/TOUCH_FILE"
 ```
 
 ---

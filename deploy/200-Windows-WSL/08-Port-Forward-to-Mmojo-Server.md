@@ -1,4 +1,4 @@
-## 07. Port Forward to Mmojo Server
+## 08. Port Forward to Mmojo Server
 ### About this Step (Optional)
 **THIS STEP IS STILL UNDER CONSTRUCTION, STILL EXPERIMENTAL.**
 
@@ -115,7 +115,7 @@ It is important that you use http, not https.
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
+- **Previous:** [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

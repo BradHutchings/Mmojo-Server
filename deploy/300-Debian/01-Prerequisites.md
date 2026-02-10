@@ -39,7 +39,7 @@ The following are recommended for smoothest sailing through this recipe:
 ### Proceed
 - **Next:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
 - **Previous:** This is the first step in this section.
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Debian](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

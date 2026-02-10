@@ -17,7 +17,7 @@ const kCompletionsURL = kServerURL + "/completion";
 const kModelsURL = kServerURL + "/v1/models"
 const kTokenizeURL = kServerURL + "/tokenize"
 
-const kMmojoComplete = "Mmojo Complete";
+const kMmojoComplete = "Mmojo Complete is Private.";
 
 const kStatusMode = Object.freeze({
     preparing:                          1,      // page loading, not ready for editing.
@@ -1711,7 +1711,7 @@ function ClickMmojoComplete() {
         elements.mmojoComplete.innerText = script.modelName;
         setTimeout(function() {
             RestoreMmojoComplete();
-        }, 3000);
+        }, 5000);
     }
 }
 

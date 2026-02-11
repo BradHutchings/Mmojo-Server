@@ -1,6 +1,6 @@
 ## 07. Autostart Mmojo Server
 ### About this Step (Optional)
-**NEEDS TO BE UPDATED TO USE CRON, START AT STARTUP.**
+**NEEDS TO BE UPDATED TO USE CRON, START AT STARTUP, STRIP OUT WSL STUFF.**
 
 In this short step, we're going to modify the Mmojo Server WSL instance so that it automatically starts Mmojo Server. This will enable a workflow where you click the Mmojo Server icon in the Taskbar to launch it, and close to window to stop it. This is easier than digging for the `mm-start-mmojo-server.sh` command and typing or pasting it in every time you want Mmojo Server running.
 

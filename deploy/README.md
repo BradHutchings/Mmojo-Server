@@ -6,6 +6,17 @@ Here are deployments that are in progress or completed:
 - [300. Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](300-Debian-Ubuntu-Pi/README.md) - Deploy Mmojo Server on Debian, Ubuntu, and Raspberry Pi 5.
 - [500. Deploy OpenClaw (WSL)](500-OpenClaw/README.md) - Deploy OpenClaw server with Mmojo Server in WSL instances.
 
+<!-- SPONSOR --> 
+If you need assistance via Zoom call and screen sharing, I offer a one-hour hands-on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this stuff work. [Email me if interested](mailto:brad@BradHutchings.com?subject=Mmojo%20Server%20Install%20Help).
+
+-Brad<br/>
+\--<br/>
+Brad Hutchings<br/>
+brad@BradHutchings.com<br/><br/>
+<!-- END SPONSOR -->
+
+---
+### Future Deployments
 Here is a tentative list of planned deployments:
 - [100. Deploy Mmojo Server APE on Supported Platforms](100-APE/README.md) - Placehold page.
 - [400. Deploy Mmojo Server on macOS](400-macOS/README.md) - Placehold page.

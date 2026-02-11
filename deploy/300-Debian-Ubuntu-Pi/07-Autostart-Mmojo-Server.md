@@ -29,7 +29,7 @@ I told you this was a short step!
 ### Proceed
 - **Next:** This is the last step in this section.
 - **Previous:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

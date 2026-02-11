@@ -25,7 +25,7 @@ mm-env
 ---
 ### Choose a `doghouse` Build to Package
 This script has you choose one of the `doghouse` apps you've built.
-- View the script: <a href="../scripts/mm-choose-build.sh" target="_blank">mm-choose-build.sh</a>.
+- View the script: <a href="../scripts/mm-use-build.sh" target="_blank">mm-use-build.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
@@ -34,7 +34,7 @@ This script has you choose one of the `doghouse` apps you've built.
   unset CHOSEN_BUILD
   unset CHOSEN_BUILD_PATH
   unset CHOSEN_BUILD_INFO
-  . mm-choose-build.sh
+  . mm-use-build.sh
   ```
 
 ---

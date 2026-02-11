@@ -1,6 +1,6 @@
 ## 11. Build Mmojo Server
 ### About this Step (Optional)
-**NEEDS REWRITE TO HANDLE WSL (Cuda) and DEBIAN (Cude+Vulkan)
+**NEEDS REVIEW AND REWRITE TO HANDLE DEBIAN ISSUES, MAKE PI SPECIFIC NATIVE BUILD.**
 
 If you would prefer to build Mmojo Server optimized for the CPU on your computer, you can build it with the steps on this page. The Mmojo Server you build with the instructions on this page will take advantage of all available features of your computer's CPU. It can also work with your computer's NVIDIA GPU if it has one.
 
@@ -145,7 +145,7 @@ fi
 ### Proceed
 - **Next:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
 - **Previous:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

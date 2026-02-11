@@ -8,6 +8,7 @@ Install CUDA and Vulkan support. These may take 10 minutes or so to download and
 ```
 sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libvulkan-dev glslc vulkan-tools
+echo "NOTE: Install CUDA and Vulkan tools finished."
 ```
 
 <details>
@@ -28,18 +29,22 @@ sudo apt install cuda-drivers -y
 ---
 ### Download Mmojo Server from Hugging Face
 
-Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs:
+Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs, Apple M* processors (assuming you're running Debian Linux), and Raspberry Pi 5. It's unknown whether it runs on other vendors' aarch64 (arm64) PCs.
 ```
 URL=""
-if [ $(uname -m) == "x86_64" ]; then
+if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-rpi5-cud.zip"
+elif [ $(uname -m) == "x86_64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-perf-cud.zip"
 elif [ $(uname -m) == "aarch64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-perf-cud.zip"
 fi
 ```
 
+**Future:** Might just download the "compatible" version for aarch64 (arm64) by default. It's tough to figure out what processors are out there. -Brad 2025-02-11
+
 <details>
-  <summary>Alternatively, set the URL for the Mmojo Server package that runs on all x86_64 CPUs. Use this if the Mmojo Server you download with the URL setting above gives you errors when you run it.</summary>
+  <summary>Alternatively, set the URL for the Mmojo Server package that runs on all x86_64 and aarch64 (arm64) CPUs. Use this if the Mmojo Server you download with the URL setting above gives you errors when you run it.</summary>
   <br/>
   
 ```
@@ -54,7 +59,7 @@ fi
 
 Download Mmojo Server from Hugging Face and unzip it in the `$HOME/Mmojo-Server` directory:
 ```
-if (test -n "$RUN_DIR") && [ "$URL" -ne "" ]; then
+if (test -n "$RUN_DIR") && [ "$URL" != "" ]; then
   mkdir -p $RUN_DIR
   cd $RUN_DIR
   rm -r -f "$RUN_DIR"/*
@@ -74,7 +79,7 @@ Mmojo Server is installed and you are ready to run it!
 ### Proceed
 - **Next:**  [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
 - **Previous:** [04. Download Models](04-Download-Models.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

@@ -13,7 +13,7 @@ This recipe deploys Mmojo Server on a single, stand-alone Windows 10/11 PC or la
 - 16 GB RAM
   - Mmojo Server needs plenty of RAM to run an 8B parameter model.
   - 24 GB RAM or more will let you run other tasks comfortably while running an 8B parameter model.
-- Windows 10/11 support WSL and have the feature enabled.
+- Windows 10/11 Home and Pro support WSL. You may have to enable features in your BIOS or within Windows to enable WSL.
 
 **While these steps are similar for general stand-alone Debian / Ubunut Linux and may look workable for macOS, they are not intended for use on such systems.**
 

@@ -29,7 +29,7 @@ sudo apt install cuda-drivers -y
 ---
 ### Download Mmojo Server from Hugging Face
 
-Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs:
+Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs. It is currently unkown if this build runs on any aarch64 (arm64) Windows computers.
 ```
 URL=""
 if [ $(uname -m) == "x86_64" ]; then
@@ -40,7 +40,7 @@ fi
 ```
 
 <details>
-  <summary>Alternatively, set the URL for the Mmojo Server package that runs on all x86_64 CPUs. Use this if the Mmojo Server you download with the URL setting above gives you errors when you run it.</summary>
+  <summary>Alternatively, set the URL for the Mmojo Server package that runs on all x86_64 and aarch64 (arm64) CPUs. Use this if the Mmojo Server you download with the URL setting above gives you errors when you run it.</summary>
   <br/>
   
 ```

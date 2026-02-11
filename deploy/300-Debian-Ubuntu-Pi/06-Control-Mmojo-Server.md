@@ -2,7 +2,7 @@
 ### About this Step
 **NEEDS TO BE EDITED TO STRIP OUT WSL SPECIFICS**
 
-This step has controls for choosing a mode, starting Mmojo Server, and stopping Mmojo Server.
+This step has controls for choosing a model, starting Mmojo Server, and stopping Mmojo Server.
 
 ---
 ### Choose a Model

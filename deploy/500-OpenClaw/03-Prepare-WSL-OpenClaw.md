@@ -9,7 +9,13 @@ Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\`
 ### Delete your Existing `OpenClaw` WSL Instance
 If you have a previous `OpenClaw` WSL instance, let's delete it. We're going to start from scratch with a new one.
 
-Open a **Terminal** (or **PowerShell**) window. Verify that your instance exists and is stopped:
+<img width="131" height="97" alt="image" src="https://github.com/user-attachments/assets/d9940c1a-8fea-4efa-bc0f-8c4740067537" />
+
+Open a **Terminal** (or **PowerShell**) window. 
+
+<img width="243" height="76" alt="image" src="https://github.com/user-attachments/assets/d86d6c60-1da3-48ad-a76c-b1ad78f30e7e" />
+
+Take note of the PowerShell prompt. Verify that your instance exists and is stopped:
 ```
 wsl --list --verbose
 ```
@@ -109,6 +115,7 @@ Update linux and install `unzip`:
 sudo apt update
 sudo apt upgrade -y
 sudo apt install unzip -y
+echo "NOTE: apt update, upgrade, and install unzip finished."
 ```
 
 ---
@@ -139,21 +146,17 @@ wsl --manage OpenClaw --move D:\wsl-openclaw
 If you get a `WSL_E_DISTRO_NOT_STOPPED` or an `ERROR_SHARING_VIOLATION`, wait a minute, then try again.
 
 ---
-### Pin OpenClaw to the Taskbar
-Click your **Start** menu. Search for:
+### Reconnect to MmojoServer WSL Instance
+<img width="647" height="65" alt="image" src="https://github.com/user-attachments/assets/521a650c-b914-4e55-900d-d07536929991" />
+
+Let's reconnect to the MmojoServer WSL instance in the Terminal window.
 ```
-OpenClaw
+wsl -d "OpenClaw"
 ```
-Add it to the **Taskbar**.
 
----
-### Launch OpenClaw WSL Instance
+<img width="357" height="44" alt="image" src="https://github.com/user-attachments/assets/282a0b69-63fb-4153-bf79-248b7a4129ab" />
 
-<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/1184dbb5-ff97-41a0-8b25-3a652f05d690" />
-
-Launch your new instance by clicking the icon you just added to the **Taskbar**.
-
-Now, let's get a `sudo` password in, so we don't have to enter it again this session.
+You will see your `(MmojoServer)-` prompt again. Now, let's get a `sudo` password in, so we don't have to enter it again this session.
 ```
 sudo echo "OpenClaw!"
 ```
@@ -163,11 +166,18 @@ You'll be prompted for your `sudo` password:
 admin123!
 ```
 
-Leave the Terminal window open for installing OpenClaw.
-
+---
+### Pin OpenClaw to the Taskbar
+Click your **Start** menu. Search for:
+```
+OpenClaw
+```
+Add it to the **Taskbar**.
 
 ---
-### Start from Scratch Often
+### Great  Job!
+Leave the Terminal window open for installing OpenClaw.
+
 It's OK to start from scratch and do it often. There is a lot going on to build and configure OpenClaw. There are a lot of moving parts. When you get stuck, save your sanity and start over.
 
 ---

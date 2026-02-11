@@ -1,17 +1,16 @@
-## 02. Prepare Debian - Mmojo Server
+## 02. Prepare Debian
 ### About this Step
-**NEEDS TO BE EDITED TO DEAL WITH DEBIAN CONCERNS**
-
-Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for Mmojo Server deployment.
+You will do some basic preparation for Mmojo Server deployment.
 
 Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\` for file system paths. Linux shells use a forward slash `/` for paths and a backslash `\` for escaping characters like `$` in strings. I mostly use the Linux style slashes in these instructions because they're for Linux.
 
+<!--
 ---
 ### Create a mmojo Account (Optional)
 (You should have a separate server or VM with fresh Debian or Ubuntu installation to run Mmojo Server.)
 
 (Instructions to create a separate account if you're running on a shared server.)
-
+-->
 ---
 ### Remove sudo Timeout
 You will use the `sudo` command often, so let's make it not expire.

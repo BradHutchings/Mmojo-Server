@@ -31,7 +31,7 @@ $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 
 Choose GPUs for your build. I suggest **CUDA**.
 ```
-. mm-choose-gpus.sh
+. mm-use-gpus.sh
 ```
 
 Build native Mmojo Server tuned to the specific CPU of your PC:

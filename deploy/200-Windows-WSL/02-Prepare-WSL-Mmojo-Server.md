@@ -156,7 +156,15 @@ wsl -d "MmojoServer"
 
 <img width="357" height="44" alt="image" src="https://github.com/user-attachments/assets/282a0b69-63fb-4153-bf79-248b7a4129ab" />
 
-You will see your `(MmojoServer)-` prompt again.
+You will see your `(MmojoServer)-` prompt again. Now, let's get a `sudo` password in, so we don't have to enter it again this session.
+```
+sudo echo "MmojoServer!"
+```
+
+You'll be prompted for your `sudo` password:
+```
+admin123!
+```
 
 ---
 ### Create `mm-scripts` Directory

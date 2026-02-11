@@ -8,8 +8,10 @@ This step contains prerequisites for deploying Mmojo Server using this recipe. W
 ---
 ### Requirements
 This recipe deploys Mmojo Server on a single, stand-alone Windows 10/11 PC or laptop:
-- x86_64 or AARCH64 (ARM64) CPU
-  - So-called "AI" laptops and desktops are not helpful. Mmojo Server (llama.cpp) for WSL uses NVIDIA GPUs when available.
+- x86_64 CPU
+  - There are portions of this recipe that will not work on ARM CPUs without adjustment.
+  - I will add side notes in the future for use on ARM CPUs.
+  - So-called "AI" laptops and desktops are not helpful. Mmojo Server (llama.cpp) uses GPUs when available.
 - 32 GB RAM
   - Mmojo Server needs plenty of RAM to run an 8B paramter model.
 - Windows 10/11 support WSL and have the feature enabled.
@@ -27,14 +29,17 @@ The following are recommended for smoothest sailing through this recipe:
   - WSL only supports a bridge to NVIDIA GPUs.
 - Familiarity with WSL.
   - The WSL specific instructsions can be confusing for new users of WSL. I will be adding video walkthroughs to help you out.
-- File share on your network that you can use as a Mmojo Share.
-  - This is a good place to store builds and models so you don't have to download them from Hugging Face.
  
+<!--
+- Mmojo Share configured and accessible on your network.
+  - This is a good place to store builds and models so you don't have to download them from Hugging Face.
+-->
+
 ---
 ### Proceed
 - **Next:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
 - **Previous:** This is the first step in this section.
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Debian](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

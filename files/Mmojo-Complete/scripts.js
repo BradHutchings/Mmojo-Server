@@ -17,7 +17,7 @@ const kCompletionsURL = kServerURL + "/completion";
 const kModelsURL = kServerURL + "/v1/models"
 const kTokenizeURL = kServerURL + "/tokenize"
 
-const kMmojoComplete = "Mmojo Complete";
+const kMmojoComplete = "Mmojo Complete is Private.";
 
 const kStatusMode = Object.freeze({
     preparing:                          1,      // page loading, not ready for editing.
@@ -1703,21 +1703,6 @@ function Print() {
 
 function Help() {
     window.open('help.html', '_blank');
-}
-
-function ClickMmojoComplete() {
-    if (!script.mmojoCompleteClicked) {
-        script.mmojoCompleteClicked = true;
-        elements.mmojoComplete.innerText = script.modelName;
-        setTimeout(function() {
-            RestoreMmojoComplete();
-        }, 3000);
-    }
-}
-
-function RestoreMmojoComplete() {
-    elements.mmojoComplete.innerText = kMmojoComplete;
-    script.mmojoCompleteClicked = false;
 }
 
 function GetElapsedTimeString(ms) {

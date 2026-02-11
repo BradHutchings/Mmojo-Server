@@ -126,6 +126,8 @@ sudo poweroff
 ### Move the WSL `.vhdx` Virual Disk
 In 2025, advanced Windows users like you have a startup drive for Windows stuff and applications and a separate (fast, larger) drive for your data. The virtual disk for your WSL instance will get pretty big, i.e. 50 GB or 100 GB. You should move it to another drive.
 
+<img width="437" height="61" alt="image" src="https://github.com/user-attachments/assets/6fe4401e-4984-4a6c-804b-c8e608c4ebde" />
+
 The **Terminal** app should show a PowerShell prompt. Create a destination directory on the `D:` drive:
 ```
 mkdir D:\wsl-mmojo-server
@@ -139,29 +141,17 @@ wsl --manage MmojoServer --move D:\wsl-mmojo-server
 If you get a `WSL_E_DISTRO_NOT_STOPPED` or an `ERROR_SHARING_VIOLATION`, wait a minute, then try again.
 
 ---
-### Pin MmojoServer to the Taskbar
-Click your **Start** menu. Search for:
+### Reconnect to MmojoServer WSL Instance
+<img width="647" height="65" alt="image" src="https://github.com/user-attachments/assets/521a650c-b914-4e55-900d-d07536929991" />
+
+Let's reconnect to the MmojoServer WSL instance in the Terminal window.
 ```
-MmojoServer
-```
-Add it to the **Taskbar**.
-
----
-### Launch MmojoServer WSL Instance
-
-<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/9770555c-7f9c-408d-ab99-e209c0ad2db1" />
-
-Launch your new instance by clicking the icon you just added to the **Taskbar**.
-
-Now, let's get a `sudo` password in, so we don't have to enter it again this session.
-```
-sudo echo "Mmojo Server!"
+wsl -d "MmojoServer"
 ```
 
-You'll be prompted for your `sudo` password:
-```
-admin123!
-```
+<img width="357" height="44" alt="image" src="https://github.com/user-attachments/assets/282a0b69-63fb-4153-bf79-248b7a4129ab" />
+
+You will see your `(MmojoServer)-` prompt again.
 
 ---
 ### Create `mm-scripts` Directory
@@ -185,7 +175,7 @@ echo $PATH
 ### Clone the Mmojo Server Repository
 The Mmojo Server Github repositort has scripts and tools for installing and building Mmojo Server.
 ```
-export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server"
+export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server-repo"
 export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
 cd $HOME
 if [ "$MMOJO_SERVER_DIR" ]; then
@@ -212,6 +202,14 @@ mm-work-in-progress-branch.sh
 mm-env
 ```
 </details>
+
+---
+### Pin MmojoServer to the Taskbar
+Click your **Start** menu. Search for:
+```
+MmojoServer
+```
+Add it to the **Taskbar**.
 
 ---
 ### Great  Job!

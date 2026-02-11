@@ -8,6 +8,7 @@ Install CUDA and Vulkan support. These may take 10 minutes or so to download and
 ```
 sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libvulkan-dev glslc vulkan-tools
+echo "NOTE: Install cuda and vulkan tools finished."
 ```
 
 <details>

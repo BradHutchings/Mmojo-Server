@@ -45,7 +45,7 @@ There are two ways you can do this:
 ### Proceed
 - **Next:** [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md)
 - **Previous:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

@@ -11,7 +11,11 @@ If you have a previous `MmojoServer` WSL instance, let's delete it. We're going 
 
 <img width="131" height="97" alt="image" src="https://github.com/user-attachments/assets/d9940c1a-8fea-4efa-bc0f-8c4740067537" />
 
-Open a **Terminal** (or **PowerShell**) window. Verify that your instance exists and is stopped:
+Open a **Terminal** (or **PowerShell**) window. 
+
+<img width="243" height="76" alt="image" src="https://github.com/user-attachments/assets/d86d6c60-1da3-48ad-a76c-b1ad78f30e7e" />
+
+Take note of the PowerShell prompt. Verify that your instance exists and is stopped:
 ```
 wsl --list --verbose
 ```

@@ -1,6 +1,6 @@
 ## 11. Build Mmojo Server
 ### About this Step (Optional)
-**NEEDS REWRITE TO HANDLE WSL (Cuda) and DEBIAN (Cude+Vulkan)
+**NEEDS REVIEW AND REWRITE TO HANDLE DEBIAN ISSUES**
 
 If you would prefer to build Mmojo Server optimized for the CPU on your computer, you can build it with the steps on this page. The Mmojo Server you build with the instructions on this page will take advantage of all available features of your computer's CPU. It can also work with your computer's NVIDIA GPU if it has one.
 

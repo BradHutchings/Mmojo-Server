@@ -6,6 +6,12 @@ Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directl
 Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\` for file system paths. Linux shells use a forward slash `/` for paths and a backslash `\` for escaping characters like `$` in strings. I mostly use the Linux style slashes in these instructions because they're for Linux.
 
 ---
+### Create a mmojo Account (Optional)
+(You should have a separate server or VM with fresh Debian or Ubuntu installation to run Mmojo Server.)
+
+(Instructions to create a separate account if you're running on a shared server.)
+
+---
 ### Remove sudo Timeout
 You will use the `sudo` command often, so let's make it not expire.
 ```

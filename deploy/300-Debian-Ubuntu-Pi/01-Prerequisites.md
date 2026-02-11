@@ -1,11 +1,19 @@
 ## 01. Prerequisites
 ### About this Step
-**NEEDS TO BE WRITTEN TO REMOVE WSL CONCERNS**
-
-This step contains prerequisites for deploying Mmojo Server using this recipe. We will install Mmojo Server in its own Windows Subsystem for Linux (WSL) instance.
+This step contains prerequisites for deploying Mmojo Server using this recipe. We will install Mmojo Server in a home directory of a dedicated Linux account on your device.
 
 **Skip Ahead:**
 - [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
+
+### Requirements
+This recipe deploys Mmojo Server on a single, stand-alone PC or laptop running a Debian based Linux operating system:
+- x86_64 or AARCH64 (ARM64) CPU
+  - So-called "AI" laptops and desktops are not helpful. Mmojo Server (llama.cpp) for Debian can use NVIDIA GPUs.
+  - You can build a custom Mmojo Server for your PC that supports GPUs which have Vulkan interfaces, e.g. AMD.
+- 16 GB RAM
+  - Mmojo Server needs plenty of RAM to run an 8B parameter model.
+  - 24 GB RAM or more will let you run other tasks comfortably while running an 8B parameter model.
+- Windows 10/11 support WSL and have the feature enabled.
 
 ---
 ### Requirements
@@ -18,19 +26,15 @@ This recipe deploys Mmojo Server on a single, stand-alone Windows 10/11 PC or la
   - Mmojo Server needs plenty of RAM to run an 8B paramter model.
 - Windows 10/11 support WSL and have the feature enabled.
 
-**While these steps are similar for general stand-alone Debian / Ubunut Linux and may look workable for macOS, they are not intended for use on such systems.**
+**While these steps may look workable for macOS, they are not intended for use on such systems.**
 
 ---
 ### Recommendations
 The following are recommended for smoothest sailing through this recipe:
-- A second (fast) disk for WSL instance storage.
-  - 4 TB recommended.
-  - It's not a WSL instance exclusive disk. Store other data on it too.
-  - This will keep your startup disk from getting full unexpectedly.
 - Modern NVIDIA GPU with at least 4 GB VRAM
   - WSL only supports a bridge to NVIDIA GPUs.
-- Familiarity with WSL.
-  - The WSL specific instructsions can be confusing for new users of WSL. I will be adding video walkthroughs to help you out.
+- Familiarity with Linux and command-line.
+  - I will be adding video walkthroughs to help you out.
  
 <!--
 - Mmojo Share configured and accessible on your network.

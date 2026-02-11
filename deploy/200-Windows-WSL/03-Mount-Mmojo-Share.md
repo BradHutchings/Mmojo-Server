@@ -19,7 +19,6 @@ This script creates a mount point for the Mmojo Share and a script for mounting 
 - Run the script. 
   ```
   $MMOJO_SERVER_SCRIPTS/206-Create-Mmojo-Share-Mount-Point.sh
-  echo "NOTE: Create Mmojo Share mount point finished."
   ```
 
 ---

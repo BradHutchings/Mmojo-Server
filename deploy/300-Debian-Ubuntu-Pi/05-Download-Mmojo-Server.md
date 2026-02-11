@@ -29,7 +29,7 @@ sudo apt install cuda-drivers -y
 ---
 ### Download Mmojo Server from Hugging Face
 
-Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs, Apple M* processors (assuming you're running Debian Linux), and Raspberry Pi 5. It's unknown whether it runs on other vendoes' aarch64 (arm64) PCs.
+Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs, Apple M* processors (assuming you're running Debian Linux), and Raspberry Pi 5. It's unknown whether it runs on other vendors' aarch64 (arm64) PCs.
 ```
 URL=""
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then

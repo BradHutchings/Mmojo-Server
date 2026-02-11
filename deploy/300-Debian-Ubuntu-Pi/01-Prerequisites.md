@@ -37,7 +37,7 @@ The following are recommended for smoothest sailing through this recipe:
 
 ---
 ### Proceed
-- **Next:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
+- **Next:** [02. Prepare Debian Mmojo Server](02-Prepare-Debian-Mmojo-Server.md)
 - **Previous:** This is the first step in this section.
 - **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 

@@ -8,9 +8,9 @@ This step contains prerequisites for deploying Mmojo Server using this recipe. W
 ---
 ### Requirements
 This recipe deploys Mmojo Server on a single, stand-alone Windows 10/11 PC or laptop:
-- x86_64 or AARCH64 (ARM64) CPU
+- x86_64 or AARCH64 (ARM64) CPU.
   - So-called "AI" laptops and desktops are not helpful. Mmojo Server (llama.cpp) for WSL uses NVIDIA GPUs when available.
-- 16 GB RAM
+- 16 GB RAM.
   - Mmojo Server needs plenty of RAM to run an 8B parameter model.
   - 24 GB RAM or more will let you run other tasks comfortably while running an 8B parameter model.
 - Windows 10/11 Home and Pro support WSL. You may have to enable features in your BIOS or within Windows to enable WSL.
@@ -24,7 +24,7 @@ The following are recommended for smoothest sailing through this recipe:
   - 4 TB recommended.
   - It's not a WSL instance exclusive disk. Store other data on it too.
   - This will keep your startup disk from getting full unexpectedly.
-- Modern NVIDIA GPU with at least 4 GB VRAM
+- Modern NVIDIA GPU with at least 4 GB VRAM.
   - WSL only supports a bridge to NVIDIA GPUs.
 - Familiarity with WSL.
   - The WSL specific instructsions can be confusing for new users of WSL. I will be adding video walkthroughs to help you out.

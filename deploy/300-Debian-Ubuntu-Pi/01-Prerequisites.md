@@ -1,5 +1,6 @@
 ## 01. Prerequisites
 ### About this Step
+**NEEDS TO BE WRITTEN TO REMOVE WSL CONCERNS**
 This step contains prerequisites for deploying Mmojo Server using this recipe. We will install Mmojo Server in its own Windows Subsystem for Linux (WSL) instance.
 
 **Skip Ahead:**

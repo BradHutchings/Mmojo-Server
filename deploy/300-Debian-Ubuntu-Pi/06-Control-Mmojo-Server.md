@@ -1,10 +1,12 @@
 ## 06. Control Mmojo Server
 ### About this Step
+**NEEDS TO BE EDITED TO STRIP OUT WSL SPECIFICS**
+
 This step has controls for choosing a mode, starting Mmojo Server, and stopping Mmojo Server.
 
 ---
 ### Choose a Model
-First, choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It will be soft-linked in your `$HOME/Mmojo-Server` directory.
+First, choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It will be soft-linked in your `$HOME/mm-mmojo-server` directory.
 ```
 mm-choose-model.sh
 ```

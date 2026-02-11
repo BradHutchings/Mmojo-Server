@@ -41,6 +41,8 @@ elif [ $(uname -m) == "aarch64" ]; then
 fi
 ```
 
+**Future:** Might just download the "compatible" version for aarch64 (arm64) by default. It's tough to figure out what processors are out there. -Brad 2025-02-11
+
 <details>
   <summary>Alternatively, set the URL for the Mmojo Server package that runs on all x86_64 and aarch64 (arm64) CPUs. Use this if the Mmojo Server you download with the URL setting above gives you errors when you run it.</summary>
   <br/>

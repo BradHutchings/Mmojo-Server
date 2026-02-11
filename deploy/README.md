@@ -7,7 +7,7 @@ Here are deployments that are in progress or completed:
 
 Here is a tentative list of planned deployments:
 - [100. Deploy Mmojo Server APE on Supported Platforms](100-APE/README.md) - Placehold page.
-- [300. Deploy Mmojo Server on Debian / Ubuntu](300-Debian/README.md) - Placehold page.
+- [300. Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](300-Debian-Ubuntu-Pi/README.md) - Placehold page.
 - [400. Deploy Mmojo Server on macOS](400-macOS/README.md) - Placehold page.
 
 ---

@@ -9,18 +9,6 @@ This isn't so much a step, as it is a reference to the scripts that were copied 
 
 ---
 ### Reference
-- `mm-choose-build.sh` &mdash; User chooses an available build for use by a package script.
-  - Sets shell variables `$CHOSEN_BUILD`, `$CHOSEN_BUILD_PATH`, and `$CHOSEN_BUILD_INFO`.
-  - Call with a `. ` preceeding because you need to set variables in the shell instance you are running.
-    ```
-    . mm-choose-build.sh
-    ```
-- `mm-choose-gpus.sh` &mdash; User chooses a subset of available installed GPU developer libraries for use by a build script.
-  - Sets shell variables `$CHOSEN_GPUS` and `$CHOSEN_GPUS_NAMES`.
-  - Call with a `. ` preceeding because you need to set variables in the shell instance you are running.
-    ```
-    . mm-choose-gpus.sh
-    ```
 - `mm-choose-model.sh` &mdash; User chooses a model from the `$HOME/$LOCAL_MODELS_DIR` directory for use by a test or package script.
   - Sets shell variables `$CHOSEN_MODEL` and `$CHOSEN_MODEL_MNEMONIC`.
   - Call with a `. ` preceeding because you need to set variables in the shell instance you are running.
@@ -28,6 +16,18 @@ This isn't so much a step, as it is a reference to the scripts that were copied 
     . mm-choose-model.sh
     ```
     <br/>
+- `mm-use-build.sh` &mdash; User chooses an available build for use by a package script.
+  - Sets shell variables `$CHOSEN_BUILD`, `$CHOSEN_BUILD_PATH`, and `$CHOSEN_BUILD_INFO`.
+  - Call with a `. ` preceeding because you need to set variables in the shell instance you are running.
+    ```
+    . mm-use-build.sh
+    ```
+- `mm-use-gpus.sh` &mdash; User chooses a subset of available installed GPU developer libraries for use by a build script.
+  - Sets shell variables `$CHOSEN_GPUS` and `$CHOSEN_GPUS_NAMES`.
+  - Call with a `. ` preceeding because you need to set variables in the shell instance you are running.
+    ```
+    . mm-use-gpus.sh
+    ```
 
 - `mm-delete-builds.sh` &mdash; Deletes the `$BUILD_DIR` directory and the `$DOGHOUSE_BUILD_DIR`.
 - `mm-delete-packages.sh` &mdash; Deletes the `$PACKAGE_DIR ` directory and the `$DOGHOUSE_PACKAGE_DIR`.

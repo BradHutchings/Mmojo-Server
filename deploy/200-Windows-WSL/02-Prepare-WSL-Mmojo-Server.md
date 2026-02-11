@@ -147,6 +147,21 @@ MmojoServer
 Add it to the **Taskbar**.
 
 ---
+### Reconnect to MmojoServer WSL Instance
+
+(picture here of recent commands)
+
+Let's reconnect to the MmojoServer WSL instance in the Terminal window.
+```
+wsl -d "MmojoServer"
+```
+
+(picture of new prompt)
+
+You will see your `(MmojoServer)-` prompt again.
+
+<!--
+---
 ### Launch MmojoServer WSL Instance
 
 <img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/9770555c-7f9c-408d-ab99-e209c0ad2db1" />
@@ -162,6 +177,7 @@ You'll be prompted for your `sudo` password:
 ```
 admin123!
 ```
+-->
 
 ---
 ### Create `mm-scripts` Directory

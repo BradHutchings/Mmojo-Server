@@ -40,7 +40,7 @@ ls -al /mnt/mmojo
 ### Proceed
 - **Next:** [04. Download Models](04-Download-Models.md)
 - **Previous:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Debian](README.md)
+- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

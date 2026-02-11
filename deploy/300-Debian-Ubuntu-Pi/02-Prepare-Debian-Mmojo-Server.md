@@ -1,6 +1,7 @@
 ## 02. Prepare Debian - Mmojo Server
 ### About this Step
-**THESE INSTRUCTIONS ARE STILL IN PROGRESS**
+**NEEDS TO BE EDITED TO DEAL WITH DEBIAN CONCERNS**
+
 Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for Mmojo Server deployment.
 
 Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\` for file system paths. Linux shells use a forward slash `/` for paths and a backslash `\` for escaping characters like `$` in strings. I mostly use the Linux style slashes in these instructions because they're for Linux.

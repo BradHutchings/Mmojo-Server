@@ -28,7 +28,7 @@ mm-env
 ### SHORTCUT: Build Compatible, Performant, and Native Executables with Optional GPU Support
 Before using this shortcut, please work through the steps of building the compatible, performant, and native executables a few times so that you can become familiar with what they do.
 ```
-. mm-choose-gpus.sh
+. mm-use-gpus.sh
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS" llama-server
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS" llama-server
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS" llama-server

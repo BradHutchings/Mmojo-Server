@@ -8,6 +8,7 @@ Install CUDA and Vulkan support. These may take 10 minutes or so to download and
 ```
 sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libvulkan-dev glslc vulkan-tools
+echo "NOTE: Install CUDA and Vulkan tools finished."
 ```
 
 <details>
@@ -54,7 +55,7 @@ fi
 
 Download Mmojo Server from Hugging Face and unzip it in the `$HOME/Mmojo-Server` directory:
 ```
-if (test -n "$RUN_DIR") && [ "$URL" -ne "" ]; then
+if (test -n "$RUN_DIR") && [ "$URL" != "" ]; then
   mkdir -p $RUN_DIR
   cd $RUN_DIR
   rm -r -f "$RUN_DIR"/*

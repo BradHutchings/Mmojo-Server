@@ -21,13 +21,13 @@ mm-env
 ### Choose GPUs to Include in Build
 This script has you choose GPU support to include in the build. If you've already chosen GPUs, you do not have to choose them again.
 
-- View the script: <a href="../scripts/mm-choose-gpus.sh" target="_blank">mm-choose-gpus.sh</a>.
+- View the script: <a href="../scripts/mm-use-gpus.sh" target="_blank">mm-use-gpus.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
 - Run the script.
   ```
-  . mm-choose-gpus.sh
+  . mm-use-gpus.sh
   ```
 
 *I will make this easier to navigate soon! -Brad*
@@ -69,7 +69,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-. mm-choose-gpus.sh
+. mm-use-gpus.sh
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
 $MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$CHOSEN_GPUS" "$TEST_WITH_CHAT_UI"
 ```
@@ -81,7 +81,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-. mm-choose-gpus.sh
+. mm-use-gpus.sh
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
 $MMOJO_SERVER_SCRIPTS/510-Copy-Executables-to-Share.sh performant "$CHOSEN_GPUS"
 $MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$CHOSEN_GPUS" "$TEST_WITH_CHAT_UI"

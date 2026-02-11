@@ -16,6 +16,7 @@ Install CUDA and Vulkan support. These may take 10 minutes or so to download and
 ```
 sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libvulkan-dev glslc vulkan-tools
+echo "NOTE: Install CUDA and Vulkan tools finished."
 ```
 
 ---
@@ -29,7 +30,7 @@ $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 
 Choose GPUs for your build. I suggest **CUDA**.
 ```
-. mm-choose-gpus.sh
+. mm-use-gpus.sh
 ```
 
 Build native Mmojo Server tuned to the specific CPU of your PC:

@@ -7,7 +7,7 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n**********\n*\n* STARTED: mm-choose-build.sh.\n*\n**********\n\n"
+printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 unset CHOSEN_BUILD
 unset CHOSEN_BUILD_PATH
@@ -109,7 +109,7 @@ echo "$CHOSEN_BUILD - $CHOSEN_BUILD_INFO - $CHOSEN_BUILD_PATH"
 
 cd $HOME
 
-printf "\n**********\n*\n* FINISHED: mm-choose-build.sh.\n*\n**********\n\n"
+printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by

@@ -17,7 +17,7 @@ brad@BradHutchings.com<br/><br/>
 ### Deploy Mmojo Server
 Here are the deployment steps:
 - [01. Prerequisites](01-Prerequisites.md) - What you need to deploy Mmojo Server in a WSL instance.  
-- [02. Prepare Debian Mmojo Server](02-Prepare-Debian-Mmojo-Server.md) - Prepare your Debian host for Mmojo Server.
+- [02. Prepare Debian](02-Prepare-Debian.md) - Prepare your Debian host for Mmojo Server.
 - [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md) - If you have a Mmojo Share, mount it.
 - [04. Download Models](04-Download-Models.md) - Download models for use with Mmojo Server from Hugging Face, or copy from your Mmojo Share.
 - [05. Download Mmojo Server](05-Download-Mmojo-Server.md) - Download Mmojo Server from Hugging Face and install it.

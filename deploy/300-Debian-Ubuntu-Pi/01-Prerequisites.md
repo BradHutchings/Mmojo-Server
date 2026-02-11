@@ -13,18 +13,6 @@ This recipe deploys Mmojo Server on a single, stand-alone PC or laptop running a
 - 16 GB RAM
   - Mmojo Server needs plenty of RAM to run an 8B parameter model.
   - 24 GB RAM or more will let you run other tasks comfortably while running an 8B parameter model.
-- Windows 10/11 support WSL and have the feature enabled.
-
----
-### Requirements
-This recipe deploys Mmojo Server on a single, stand-alone Windows 10/11 PC or laptop:
-- x86_64 CPU
-  - There are portions of this recipe that will not work on ARM CPUs without adjustment.
-  - I will add side notes in the future for use on ARM CPUs.
-  - So-called "AI" laptops and desktops are not helpful. Mmojo Server (llama.cpp) uses GPUs when available.
-- 32 GB RAM
-  - Mmojo Server needs plenty of RAM to run an 8B paramter model.
-- Windows 10/11 support WSL and have the feature enabled.
 
 **While these steps may look workable for macOS, they are not intended for use on such systems.**
 
@@ -35,12 +23,9 @@ The following are recommended for smoothest sailing through this recipe:
   - WSL only supports a bridge to NVIDIA GPUs.
 - Familiarity with Linux and command-line.
   - I will be adding video walkthroughs to help you out.
- 
-<!--
-- Mmojo Share configured and accessible on your network.
+- File share on your network that you can use as a Mmojo Share.
   - This is a good place to store builds and models so you don't have to download them from Hugging Face.
--->
-
+ 
 ---
 ### Proceed
 - **Next:** [02. Prepare Debian](02-Prepare-Debian.md)

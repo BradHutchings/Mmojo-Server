@@ -9,7 +9,13 @@ Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\`
 ### Delete your Existing `OpenClaw` WSL Instance
 If you have a previous `OpenClaw` WSL instance, let's delete it. We're going to start from scratch with a new one.
 
-Open a **Terminal** (or **PowerShell**) window. Verify that your instance exists and is stopped:
+<img width="131" height="97" alt="image" src="https://github.com/user-attachments/assets/d9940c1a-8fea-4efa-bc0f-8c4740067537" />
+
+Open a **Terminal** (or **PowerShell**) window. 
+
+<img width="243" height="76" alt="image" src="https://github.com/user-attachments/assets/d86d6c60-1da3-48ad-a76c-b1ad78f30e7e" />
+
+Take note of the PowerShell prompt. Verify that your instance exists and is stopped:
 ```
 wsl --list --verbose
 ```
@@ -109,6 +115,7 @@ Update linux and install `unzip`:
 sudo apt update
 sudo apt upgrade -y
 sudo apt install unzip -y
+echo "NOTE: apt update, upgrade, and install unzip finished."
 ```
 
 ---
@@ -124,7 +131,9 @@ sudo poweroff
 
 ---
 ### Move the WSL `.vhdx` Virual Disk
-In 2025, advanced Windows users like you have a startup drive for Windows stuff and applications and a separate (fast, larger) drive for your data. The virtual disk for your WSL instance will get pretty big, i.e. 50 GB or 100 GB. You should move it to another drive.
+In 2026, advanced Windows users like you have a startup drive for Windows stuff and applications and a separate (fast, larger) drive for your data. The virtual disk for your WSL instance will get pretty big, i.e. 50 GB or 100 GB. You should move it to another drive.
+
+<img width="404" height="63" alt="image" src="https://github.com/user-attachments/assets/7ee2a1eb-7ddb-4f0f-8378-75b45077aea3" />
 
 The **Terminal** app should show a PowerShell prompt. Create a destination directory on the `D:` drive:
 ```
@@ -139,21 +148,17 @@ wsl --manage OpenClaw --move D:\wsl-openclaw
 If you get a `WSL_E_DISTRO_NOT_STOPPED` or an `ERROR_SHARING_VIOLATION`, wait a minute, then try again.
 
 ---
-### Pin OpenClaw to the Taskbar
-Click your **Start** menu. Search for:
+### Reconnect to OpenClaw WSL Instance
+<img width="574" height="64" alt="image" src="https://github.com/user-attachments/assets/91681471-562c-43fe-9e21-40d7bd13d755" />
+
+Let's reconnect to the OpenClaw WSL instance in the Terminal window.
 ```
-OpenClaw
+wsl -d "OpenClaw"
 ```
-Add it to the **Taskbar**.
 
----
-### Launch OpenClaw WSL Instance
+<img width="335" height="44" alt="image" src="https://github.com/user-attachments/assets/84adb52e-74f0-4299-b8af-627322448f30" />
 
-<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/1184dbb5-ff97-41a0-8b25-3a652f05d690" />
-
-Launch your new instance by clicking the icon you just added to the **Taskbar**.
-
-Now, let's get a `sudo` password in, so we don't have to enter it again this session.
+You will see your `(OpenClaw)-` prompt again. Now, let's get a `sudo` password in, so we don't have to enter it again this session.
 ```
 sudo echo "OpenClaw!"
 ```
@@ -163,11 +168,18 @@ You'll be prompted for your `sudo` password:
 admin123!
 ```
 
-Leave the Terminal window open for installing OpenClaw.
-
+---
+### Pin OpenClaw to the Taskbar
+Click your **Start** menu. Search for:
+```
+OpenClaw
+```
+Add it to the **Taskbar**.
 
 ---
-### Start from Scratch Often
+### Great  Job!
+Leave the Terminal window open for installing OpenClaw.
+
 It's OK to start from scratch and do it often. There is a lot going on to build and configure OpenClaw. There are a lot of moving parts. When you get stuck, save your sanity and start over.
 
 ---

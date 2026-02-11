@@ -7,10 +7,10 @@ This step contains prerequisites for deploying Mmojo Server using this recipe. W
 
 ### Requirements
 This recipe deploys Mmojo Server on a single, stand-alone PC or laptop running a Debian based Linux operating system:
-- x86_64 or AARCH64 (ARM64) CPU
+- x86_64 or AARCH64 (ARM64) CPU.
   - So-called "AI" laptops and desktops are not helpful. Mmojo Server (llama.cpp) for Debian that I offer for download can use NVIDIA GPUs.
   - You can build a custom Mmojo Server for your PC that supports GPUs which have Vulkan interfaces, e.g. AMD.
-- 16 GB RAM
+- 16 GB RAM.
   - Mmojo Server needs plenty of RAM to run an 8B parameter model.
   - 24 GB RAM or more will let you run other tasks comfortably while running an 8B parameter model.
 
@@ -19,7 +19,7 @@ This recipe deploys Mmojo Server on a single, stand-alone PC or laptop running a
 ---
 ### Recommendations
 The following are recommended for smoothest sailing through this recipe:
-- Modern NVIDIA GPU with at least 4 GB VRAM
+- Modern NVIDIA GPU with at least 4 GB VRAM.
   - WSL only supports a bridge to NVIDIA GPUs.
 - Familiarity with Linux and command-line.
   - I will be adding video walkthroughs to help you out.

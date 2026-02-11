@@ -131,7 +131,9 @@ sudo poweroff
 
 ---
 ### Move the WSL `.vhdx` Virual Disk
-In 2025, advanced Windows users like you have a startup drive for Windows stuff and applications and a separate (fast, larger) drive for your data. The virtual disk for your WSL instance will get pretty big, i.e. 50 GB or 100 GB. You should move it to another drive.
+In 2026, advanced Windows users like you have a startup drive for Windows stuff and applications and a separate (fast, larger) drive for your data. The virtual disk for your WSL instance will get pretty big, i.e. 50 GB or 100 GB. You should move it to another drive.
+
+<img width="404" height="63" alt="image" src="https://github.com/user-attachments/assets/7ee2a1eb-7ddb-4f0f-8378-75b45077aea3" />
 
 The **Terminal** app should show a PowerShell prompt. Create a destination directory on the `D:` drive:
 ```
@@ -146,17 +148,17 @@ wsl --manage OpenClaw --move D:\wsl-openclaw
 If you get a `WSL_E_DISTRO_NOT_STOPPED` or an `ERROR_SHARING_VIOLATION`, wait a minute, then try again.
 
 ---
-### Reconnect to MmojoServer WSL Instance
-<img width="647" height="65" alt="image" src="https://github.com/user-attachments/assets/521a650c-b914-4e55-900d-d07536929991" />
+### Reconnect to OpenClaw WSL Instance
+<img width="574" height="64" alt="image" src="https://github.com/user-attachments/assets/91681471-562c-43fe-9e21-40d7bd13d755" />
 
-Let's reconnect to the MmojoServer WSL instance in the Terminal window.
+Let's reconnect to the OpenClaw WSL instance in the Terminal window.
 ```
 wsl -d "OpenClaw"
 ```
 
-<img width="357" height="44" alt="image" src="https://github.com/user-attachments/assets/282a0b69-63fb-4153-bf79-248b7a4129ab" />
+<img width="335" height="44" alt="image" src="https://github.com/user-attachments/assets/84adb52e-74f0-4299-b8af-627322448f30" />
 
-You will see your `(MmojoServer)-` prompt again. Now, let's get a `sudo` password in, so we don't have to enter it again this session.
+You will see your `(OpenClaw)-` prompt again. Now, let's get a `sudo` password in, so we don't have to enter it again this session.
 ```
 sudo echo "OpenClaw!"
 ```

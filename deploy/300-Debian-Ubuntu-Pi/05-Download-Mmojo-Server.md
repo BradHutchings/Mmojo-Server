@@ -77,7 +77,7 @@ Mmojo Server is installed and you are ready to run it!
 ### Proceed
 - **Next:**  [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
 - **Previous:** [04. Download Models](04-Download-Models.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

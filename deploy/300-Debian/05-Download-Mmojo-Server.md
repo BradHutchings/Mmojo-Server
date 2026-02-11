@@ -32,7 +32,9 @@ sudo apt install cuda-drivers -y
 Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs:
 ```
 URL=""
-if [ $(uname -m) == "x86_64" ]; then
+if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-rpi5-cud.zip"
+elif [ $(uname -m) == "x86_64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-perf-cud.zip"
 elif [ $(uname -m) == "aarch64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-perf-cud.zip"

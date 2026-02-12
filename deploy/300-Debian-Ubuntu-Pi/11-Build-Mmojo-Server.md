@@ -121,6 +121,33 @@ EOF
 touch "$RUN_DIR/$TOUCH_FILE"
 ```
 
+<details>
+  <summary>Alternatively, create a Run Directory where Mmojo Server runs in chat mode..</summary>
+<br/>
+    
+Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
+```
+mkdir -p $RUN_DIR
+rm -r -f "$RUN_DIR"/*
+cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
+cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
+# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+--host
+0.0.0.0
+--port
+8080
+--batch-size
+2048
+--threads-http
+8
+--ctx-size
+32768 
+EOF
+touch "$RUN_DIR/$TOUCH_FILE"
+```
+</details>
+
 ---
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:

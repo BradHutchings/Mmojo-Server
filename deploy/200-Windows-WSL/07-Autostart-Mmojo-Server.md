@@ -39,7 +39,7 @@ sudo poweroff
 
 Wait a minute or so. Then launch the MmojoServer WSL instance from your Taskbar.
 
-(picture of Mmojo Server startup message.)
+<img width="597" height="121" alt="image" src="https://github.com/user-attachments/assets/294b776b-2dc7-4ae7-a60c-4c47d7daa101" />
 
 You will see a message about Mmojo Server being started or already running.
 

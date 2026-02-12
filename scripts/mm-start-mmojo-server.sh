@@ -34,7 +34,7 @@ else
 fi
 
 if [ -f "$MMOJO_SERVER_EXEC" ]; then
-    if [ $runInBackground ]; then
+    if ($runInBackground); then
         echo "Will run in background."
     else
         echo "Will run in foreground."

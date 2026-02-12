@@ -44,8 +44,8 @@ TOUCH_FILE=""
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
     unset $CHOSEN_GPUS
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PI5_AARCH64"
-    ZIP_FILE="Mmojo-Server-x86_64-pi5.zip"
-    TOUCH_FILE="build-x86_64-pi5"
+    ZIP_FILE="Mmojo-Server-aarch64-pi5.zip"
+    TOUCH_FILE="build-aarch64-pi5"
 elif [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
     ZIP_FILE="Mmojo-Server-x86_64-native$CHOSEN_GPUS.zip"

@@ -1,7 +1,5 @@
 ## 08. Port Forward to Mmojo Server
 ### About this Step (Optional)
-**THIS STEP IS STILL UNDER CONSTRUCTION, STILL EXPERIMENTAL.**
-
 Mmojo Server runs in an WSL instance on your computer. It can accept connections from other process running on your computer, including from other WSL instances. This makes WSL an effective sandbox.
 
 If you want Mmojo Server running in WSL to accept connections from other computers on your network, you need to set up port-forwarding so inbound traffic is directed from an inbound port to port 8080 internally, where Mmojo Serevr is listening. Setting this up with the Windows network stack is complicated.

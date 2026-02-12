@@ -74,13 +74,13 @@ if (test -n "$RUN_DIR") && [ "$URL" != "" ]; then
 fi
 ```
 
-Mmojo Server is installed and you are ready to run it!
+Mmojo Server is installed. You are ready to run it!
 
-**Skip to:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
+**Skip to:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 
 ---
 ### Proceed
-- **Next:**  [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
+- **Next:**  [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 - **Previous:** [04. Download Models](04-Download-Models.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

@@ -13,7 +13,7 @@ SCRIPT_NAME=$(basename -- "$0")
 rm -f "$HOME/Desktop/Mmojo Server ON"
 rm -f "$HOME/Desktop/Mmojo Server OFF"
 
-cat << EOF > "$HOME/Desktop/Start-Mmojo-Server.sh"
+cat << 'EOF' > "$HOME/Desktop/Start-Mmojo-Server.sh"
 #!/bin/bash
 
 # When this is run by double clicking on the Desktop, it doesn't have the environment set up.
@@ -31,7 +31,7 @@ sh $check
 sleep 5s
 EOF
 
-cat << EOF > "$HOME/Desktop/Stop-Mmojo-Server.sh"
+cat << 'EOF' > "$HOME/Desktop/Stop-Mmojo-Server.sh"
 #!/bin/bash
 
 # When this is run by double clicking on the Desktop, it doesn't have the environment set up.
@@ -50,7 +50,7 @@ sh $check
 sleep 5s
 EOF
 
-cat << EOF > "$HOME/Desktop/Check-Mmojo-Server.sh"
+cat << 'EOF' > "$HOME/Desktop/Check-Mmojo-Server.sh"
 #!/bin/bash
 
 SCRIPT_DIR="$(dirname -- "$(realpath -- "$0")")"

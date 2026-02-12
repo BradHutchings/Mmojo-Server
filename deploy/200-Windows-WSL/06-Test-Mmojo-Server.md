@@ -17,6 +17,12 @@ Launch `mmojo-server`:
 mm-start-mmojo-server.sh
 ```
 
+If you get a message about an illegal instruction, it's because you installed a performant version of Mmojo Server. Your computer's CPU, sadly, does not support that version. Go back to the download step and try the alternative compatible version.
+
+- [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
+
+---
+### Connect to Mmojo Complete
 Connect to Mmojo Complete from a browser:
 
 [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
@@ -27,7 +33,7 @@ You should see the Mmojo Complete user interface:
 
 ---
 ### Stop Mmojo Server
-Hit `CTRL-C` on your keyboard to stop Mmojo Server.
+Go back to the Terminal window and hit `CTRL-C` on your keyboard to stop Mmojo Server. You may need to hit it twice.
 
 (picture here.)
 

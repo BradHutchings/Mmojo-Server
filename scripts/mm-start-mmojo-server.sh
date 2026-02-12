@@ -34,7 +34,7 @@ else
 fi
 
 mmojoServerRunning=$(pgrep "mmojo-server")
-if ! $mmojoServerRunning ; then
+if [ "$mmojoServerRunning" != "" ] ; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
         if ($runInBackground); then
             echo "Starting mmojo-server in the background."

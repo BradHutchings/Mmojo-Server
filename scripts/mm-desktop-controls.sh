@@ -13,6 +13,7 @@ SCRIPT_NAME=$(basename -- "$0")
 rm -f "$HOME/Desktop/Mmojo Server ON"
 rm -f "$HOME/Desktop/Mmojo Server OFF"
 
+# 'EOF' means don't substitute $ variables.
 cat << 'EOF' > "$HOME/Desktop/Start-Mmojo-Server.sh"
 #!/bin/bash
 
@@ -31,6 +32,7 @@ sh $check
 sleep 5s
 EOF
 
+# 'EOF' means don't substitute $ variables.
 cat << 'EOF' > "$HOME/Desktop/Stop-Mmojo-Server.sh"
 #!/bin/bash
 
@@ -50,6 +52,7 @@ sh $check
 sleep 5s
 EOF
 
+# 'EOF' means don't substitute $ variables.
 cat << 'EOF' > "$HOME/Desktop/Check-Mmojo-Server.sh"
 #!/bin/bash
 

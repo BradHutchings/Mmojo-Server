@@ -29,6 +29,23 @@ While you're setting things up, bookmark Mmojo Complete in your web browser.
 I told you this was a short step!
 
 ---
+### Test Autostart
+Poweroff the WSL instance:
+```
+sudo poweroff
+```
+
+<img width="243" height="76" alt="image" src="https://github.com/user-attachments/assets/d86d6c60-1da3-48ad-a76c-b1ad78f30e7e" />
+
+Wait a minute or so. Then launch the MmojoServer WSL instance from your Taskbar.
+
+(picture of Mmojo Server startup message.)
+
+You will see a message about Mmojo Server being started or already running.
+
+Leave the WSL window open for as long as you want to run Mmojo Server. When you close it, Mmojo Server will stop automatically within a minute, probably sooner.
+
+---
 ### Proceed
 - **Next:** This is the last step in this section.
 - **Previous:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)

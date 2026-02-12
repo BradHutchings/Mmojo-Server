@@ -14,6 +14,7 @@ background=$1
 runInBackground=false;
 
 if [ "$background" != "" ]; then
+    echo "Got background parameter."
     runInBackground=true;
 fi
 

@@ -80,7 +80,7 @@ fi
 
 # A special exception for Raspberry Pi 5
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
-    BUILD_SUBDIRECTORY="$BUILD_EXECUTABLE_PI5_AARCH64"
+    BUILD_SUBDIRECTORY="$BUILD_EXECUTABLE_RPI5_AARCH64"
     ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_NATIVE "
     GGML_PARAMS=""
     gpus=""

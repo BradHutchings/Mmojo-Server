@@ -35,7 +35,7 @@ Poweroff the WSL instance:
 sudo poweroff
 ```
 
-<img width="243" height="76" alt="image" src="https://github.com/user-attachments/assets/d86d6c60-1da3-48ad-a76c-b1ad78f30e7e" />
+<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/9770555c-7f9c-408d-ab99-e209c0ad2db1" />
 
 Wait a minute or so. Then launch the MmojoServer WSL instance from your Taskbar.
 

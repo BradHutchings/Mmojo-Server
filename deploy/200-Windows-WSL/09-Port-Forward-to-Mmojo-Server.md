@@ -113,7 +113,7 @@ It is important that you use http, not https.
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md)
+- **Previous:** [08. Change Model](08-Change-Model.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

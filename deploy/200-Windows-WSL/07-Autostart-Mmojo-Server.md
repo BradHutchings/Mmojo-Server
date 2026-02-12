@@ -1,5 +1,5 @@
 ## 07. Autostart Mmojo Server
-### About this Step (Optional)
+### About this Step
 In this short step, we're going to modify the Mmojo Server WSL instance so that it automatically starts Mmojo Server. This will enable a workflow where you click the Mmojo Server icon in the Taskbar to launch it, and close to window to stop it. This is easier than digging for the `mm-start-mmojo-server.sh` command and typing or pasting it in every time you want Mmojo Server running.
 
 ---
@@ -31,7 +31,7 @@ I told you this was a short step!
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
+- **Previous:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

@@ -37,7 +37,6 @@ Choose GPUs for your build if you're not building for Raspberry Pi 5.
 
 Build native Mmojo Server tuned to the specific CPU of your PC:
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 BUILD_SUBDIR=""
 ZIP_FILE=""
 TOUCH_FILE=""
@@ -55,6 +54,7 @@ elif [ $(uname -m) == "aarch64" ]; then
     ZIP_FILE="Mmojo-Server-aarch64-native$CHOSEN_GPUS.zip"
     TOUCH_FILE="build-aarch64-native$CHOSEN_GPUS"
 fi
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 ```
 
 <details>

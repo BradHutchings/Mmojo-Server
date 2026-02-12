@@ -34,7 +34,8 @@ else
 fi
 
 mmojoServerRunning=$(pgrep "mmojo-server")
-echo "\$mmojoServerRunning: $mmojoServerRunning"
+# echo "\$mmojoServerRunning: $mmojoServerRunning"
+
 if [ -z "$mmojoServerRunning" ] ; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
         if ($runInBackground); then
@@ -45,7 +46,7 @@ if [ -z "$mmojoServerRunning" ] ; then
         fi
     fi
 else
-    echo "Mmojo Server is already running."
+    echo "Mmojo Server is already running with process id: $mmojoServerRunning."
 fi
 
 cd $HOME

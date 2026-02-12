@@ -21,7 +21,7 @@ Here are the deployment steps:
 - [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md) - If you have a Mmojo Share, mount it.
 - [04. Download Models](04-Download-Models.md) - Download models for use with Mmojo Server from Hugging Face, or copy from your Mmojo Share.
 - [05. Download Mmojo Server](05-Download-Mmojo-Server.md) - Download Mmojo Server from Hugging Face and install it.
-- [06. Control Mmojo Server](06-Control-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
+- [06. Test Mmojo Server](06-Test-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
 - [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
   <br/><br/>
 

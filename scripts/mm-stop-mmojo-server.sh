@@ -8,7 +8,7 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
+# printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
 
 mmojoServerRunning=$(pgrep "mmojo-server")
 # echo "\$mmojoServerRunning: $mmojoServerRunning"
@@ -20,7 +20,7 @@ else
     kill $mmojoServerRunning
 fi
 
-printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"
+# printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"
 
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by

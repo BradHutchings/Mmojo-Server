@@ -14,7 +14,6 @@ background=$1
 runInBackground=false;
 
 if [ "$background" != "" ]; then
-    echo "Got background parameter."
     runInBackground=true;
 fi
 
@@ -37,7 +36,7 @@ if [ -f "$MMOJO_SERVER_EXEC" ]; then
     if ($runInBackground); then
         echo "Will run in background."
     else
-        echo "Will run in foreground."
+        "$MMOJO_SERVER_EXEC"
     fi
 fi
 

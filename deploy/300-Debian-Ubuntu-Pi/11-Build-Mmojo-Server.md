@@ -30,7 +30,7 @@ $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```
 
-Choose GPUs for your build. I suggest **CUDA**.
+Choose GPUs for your build if you're not building for Raspberry Pi 5.
 ```
 . mm-use-gpus.sh
 ```

@@ -32,12 +32,16 @@ else
     echo "The run directory < $RUN_DIR > does not exist."
 fi
 
-if [ -f "$MMOJO_SERVER_EXEC" ]; then
-    if ($runInBackground); then
-        echo "Will run in background."
-    else
-        "$MMOJO_SERVER_EXEC"
+if !$(pgrep "mmojo-server"); then
+    if [ -f "$MMOJO_SERVER_EXEC" ]; then
+        if ($runInBackground); then
+            echo "Will run in background."
+        else
+            "$MMOJO_SERVER_EXEC"
+        fi
     fi
+else
+    echo "Mmojo Server is already running."
 fi
 
 cd $HOME

@@ -10,19 +10,34 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
 
+background=$1
+runInBackground=false;
+
+if [ "$background" != "" ]; then
+    runInBackground=true;
+fi
+
 # printf "\n\$RUN_DIR: $RUN_DIR\n\n"
 # printf "\n\$PACKAGE_MMOJO_SERVER_FILE: $PACKAGE_MMOJO_SERVER_FILE\n\n"
 
+MMOJO_SERVER_EXEC=""
+
 if [ -d "$RUN_DIR" ]; then
     if [ -f "$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE" ]; then
-        "$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE"
-        
+        MMOJO_SERVER_EXEC="$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE"
     elif [ -f "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE" ]; then
-        "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-
+        MMOJO_SERVER_EXEC="$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
     fi
 else
     echo "The run directory < $RUN_DIR > does not exist."
+fi
+
+if [ -f "$MMOJO_SERVER_EXEC" ]; then
+    if [ $runInBackground ]; then
+        echo "Will run in background."
+    else
+        echo "Will run in foreground."
+    fi
 fi
 
 cd $HOME

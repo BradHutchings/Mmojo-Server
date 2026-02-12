@@ -70,6 +70,10 @@ fi
 sleep 5s
 EOF
 
+chmod a+x "$HOME/Desktop/Start-Mmojo-Server.sh"
+chmod a+x "$HOME/Desktop/Stop-Mmojo-Server.sh"
+chmod a+x "$HOME/Desktop/Check-Mmojo-Server.sh"
+
 # printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"
 
 ################################################################################

@@ -28,6 +28,7 @@ if [ -d "$RUN_DIR" ]; then
     elif [ -f "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE" ]; then
         MMOJO_SERVER_EXEC="$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
     fi
+    MMOJO_SERVER_LOG="$MMOJO_SERVER_EXEC.log"
 else
     echo "The run directory < $RUN_DIR > does not exist."
 fi
@@ -35,7 +36,8 @@ fi
 if $(! pgrep "mmojo-server"); then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
         if ($runInBackground); then
-            echo "Will run in background."
+            echo "Starting mmojo-server in the background."
+            nohup "$MMOJO_SERVER_EXEC" > "$MMOJO_SERVER_LOG" 2>&1 &
         else
             "$MMOJO_SERVER_EXEC"
         fi

@@ -1,8 +1,6 @@
 ## 11. Build Mmojo Server
 ### About this Step (Optional)
-**NEEDS REVIEW AND REWRITE TO HANDLE DEBIAN ISSUES, MAKE PI SPECIFIC NATIVE BUILD.**
-
-If you would prefer to build Mmojo Server optimized for the CPU on your computer, you can build it with the steps on this page. The Mmojo Server you build with the instructions on this page will take advantage of all available features of your computer's CPU. It can also work with your computer's NVIDIA GPU if it has one.
+If you would prefer to build Mmojo Server optimized for the CPU on your computer, you can build it with the steps on this page. The Mmojo Server you build with the instructions on this page will take advantage of all available features of your computer's CPU. It can also work with your computer's NVIDIA GPU or GPU supported by Vulkan if it has one. Note with with Windows Subsystem for Linux (WSL), only NVIDIA GPUs are available for Mmojo Server to use.
 
 **Jump Back:**
 - [05. Download Mmojo Server](05-Download-Mmojo-Server.md)

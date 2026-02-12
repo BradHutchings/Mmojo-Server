@@ -33,7 +33,7 @@ Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs, Apple 
 ```
 URL=""
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-rpi5-cud.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-rpi5.zip"
 elif [ $(uname -m) == "x86_64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-perf-cud.zip"
 elif [ $(uname -m) == "aarch64" ]; then

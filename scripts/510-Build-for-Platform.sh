@@ -78,6 +78,14 @@ if [ $processor == "aarch64" ]; then
     fi
 fi
 
+# A special exception for Raspberry Pi 5
+if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
+    BUILD_SUBDIRECTORY="$BUILD_EXECUTABLE_RPI5_AARCH64"
+    ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_NATIVE "
+    GGML_PARAMS=""
+    gpus=""
+fi
+
 if [[ "$gpus" == *"cud"* ]]; then
     GGML_PARAMS+=" -DGGML_CUDA=ON";
     # CUDA version reference: https://developer.nvidia.com/cuda-gpus

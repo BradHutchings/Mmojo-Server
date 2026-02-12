@@ -1,12 +1,13 @@
 ## 11. Build Mmojo Server
 ### About this Step (Optional)
-**NEEDS REVIEW AND REWRITE TO HANDLE DEBIAN ISSUES, MAKE PI SPECIFIC NATIVE BUILD.**
+If you would prefer to build Mmojo Server optimized for the CPU on your computer, you can build it with the steps on this page. The Mmojo Server you build with the instructions on this page will take advantage of all available features of your computer's CPU. It can also work with your computer's NVIDIA GPU or GPU supported by Vulkan if it has one.
 
-If you would prefer to build Mmojo Server optimized for the CPU on your computer, you can build it with the steps on this page. The Mmojo Server you build with the instructions on this page will take advantage of all available features of your computer's CPU. It can also work with your computer's NVIDIA GPU if it has one.
+**Note:**  With Windows Subsystem for Linux (WSL), only NVIDIA GPUs are available for Mmojo Server to use.
 
 **Jump Back:**
-- [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-
+- Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
+- Deploy Mmojo Server on Windows (WSL): [05. Download Mmojo Server](../200-Windows-WSL/05-Download-Mmojo-Server.md)
+ 
 ---
 ### Install Dependencies and GPU Support
 Install dependencies. These may take 20 minutes or so to download and install.
@@ -18,6 +19,7 @@ Install CUDA and Vulkan support. These may take 10 minutes or so to download and
 ```
 sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libvulkan-dev glslc vulkan-tools
+echo "NOTE: Install CUDA and Vulkan tools finished."
 ```
 
 ---
@@ -29,18 +31,22 @@ $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```
 
-Choose GPUs for your build. I suggest **CUDA**.
+Choose GPUs for your build if you're not building for Raspberry Pi 5.
 ```
 . mm-use-gpus.sh
 ```
 
 Build native Mmojo Server tuned to the specific CPU of your PC:
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 BUILD_SUBDIR=""
 ZIP_FILE=""
 TOUCH_FILE=""
-if [ $(uname -m) == "x86_64" ]; then
+if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
+    unset $CHOSEN_GPUS
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_RPI5_AARCH64"
+    ZIP_FILE="Mmojo-Server-aarch64-rpi5.zip"
+    TOUCH_FILE="build-aarch64-rpi5"
+elif [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
     ZIP_FILE="Mmojo-Server-x86_64-native$CHOSEN_GPUS.zip"
     TOUCH_FILE="build-x86_64-native$CHOSEN_GPUS"
@@ -49,6 +55,7 @@ elif [ $(uname -m) == "aarch64" ]; then
     ZIP_FILE="Mmojo-Server-aarch64-native$CHOSEN_GPUS.zip"
     TOUCH_FILE="build-aarch64-native$CHOSEN_GPUS"
 fi
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 ```
 
 <details>
@@ -91,7 +98,7 @@ fi
 
 ---
 ### Create a Run Directory
-Make a run directory. This is a good candidate for an mm-script.
+Create a run directory.
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
@@ -116,6 +123,35 @@ chat
 EOF
 touch "$RUN_DIR/$TOUCH_FILE"
 ```
+
+**Future:** This is a good candidate for an mm-script.
+
+<details>
+  <summary>Alternatively, create a run directory where Mmojo Server runs in chat mode..</summary>
+<br/>
+    
+Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
+```
+mkdir -p $RUN_DIR
+rm -r -f "$RUN_DIR"/*
+cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
+cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
+# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+--host
+0.0.0.0
+--port
+8080
+--batch-size
+2048
+--threads-http
+8
+--ctx-size
+32768 
+EOF
+touch "$RUN_DIR/$TOUCH_FILE"
+```
+</details>
 
 ---
 ### Review Your Work
@@ -143,9 +179,15 @@ fi
 
 ---
 ### Proceed
-- **Next:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
-- **Previous:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+- **Next:**
+  - Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
+  - Deploy Mmojo Server on Windows (WSL): [06. Control Mmojo Server](../200-Windows-WSL/06-Control-Mmojo-Server.md)
+- **Previous:**
+  - Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
+  - Deploy Mmojo Server on Windows (WSL): [05. Download Mmojo Server](../200-Windows-WSL/05-Download-Mmojo-Server.md)
+- **Up:**
+  - [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+  - [Deploy Mmojo Server on Windows (WSL)](../200-Windows-WSL/README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

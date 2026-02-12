@@ -2,6 +2,13 @@
 ### About this Step
 In this step, we will download Mmojo Server from Hugging Face.
 
+<details>
+  <summary><b>Alternatively:</b> If you are a developer, you can build your own Mmojo Server.</summary>
+  <br/>
+  
+- [11. Build Mmojo Server](11-Build-Mmojo-Server.md)
+</details>
+
 ---
 ### Install GPU Support
 Install CUDA and Vulkan support. These may take 10 minutes or so to download and install.
@@ -40,7 +47,7 @@ fi
 ```
 
 <details>
-  <summary>Alternatively, set the URL for the Mmojo Server package that runs on all x86_64 and aarch64 (arm64) CPUs. Use this if the Mmojo Server you download with the URL setting above gives you errors when you run it.</summary>
+  <summary><b>Alternatively:</b>, set the URL for the Mmojo Server package that runs on all x86_64 and aarch64 (arm64) CPUs. Use this if the Mmojo Server you download with the URL setting above gives you errors when you run it.</summary>
   <br/>
   
 ```

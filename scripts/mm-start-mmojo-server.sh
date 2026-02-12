@@ -8,7 +8,7 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
+# printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
 
 background=$1
 runInBackground=false;
@@ -49,7 +49,7 @@ else
     echo "Mmojo Server is already running with process id: $mmojoServerRunning."
 fi
 
-printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"
+# printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"
 
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by

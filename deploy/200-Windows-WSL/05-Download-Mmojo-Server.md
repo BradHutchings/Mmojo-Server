@@ -6,7 +6,7 @@ In this step, we will download Mmojo Server from Hugging Face.
   <summary><b>Alternatively:</b> If you are a developer, you can build your own Mmojo Server.</summary>
   <br/>
   
-- [11. Build Mmojo Server](11-Build-Mmojo-Server.md)
+- [11. Build Mmojo Server](../300-Debian-Ubuntu-Pi/11-Build-Mmojo-Server.md)
 </details>
 
 ---

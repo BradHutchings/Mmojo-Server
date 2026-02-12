@@ -33,7 +33,7 @@ else
     echo "The run directory < $RUN_DIR > does not exist."
 fi
 
-mmojoServerRunning=(pgrep "mmojo-server")
+mmojoServerRunning=$(pgrep "mmojo-server")
 if ! $mmojoServerRunning ; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
         if ($runInBackground); then

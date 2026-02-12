@@ -95,7 +95,7 @@ fi
 
 ---
 ### Create a Run Directory
-Make a run directory. This is a good candidate for an mm-script.
+Create a run directory.
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
@@ -121,8 +121,10 @@ EOF
 touch "$RUN_DIR/$TOUCH_FILE"
 ```
 
+**Future:** This is a good candidate for an mm-script.
+
 <details>
-  <summary>Alternatively, create a Run Directory where Mmojo Server runs in chat mode..</summary>
+  <summary>Alternatively, create a run directory where Mmojo Server runs in chat mode..</summary>
 <br/>
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad

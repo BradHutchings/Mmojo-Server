@@ -8,11 +8,13 @@ Run this command:
 ```
 if ! grep -q "mm-start-mmojo-server.sh" "$HOME/.bashrc"; then
 cat << EOF >> $HOME/.bashrc
+
 echo "Starting Mmojo Server."
 mm-start-mmojo-server.sh background
 echo "Close all MmojoServer WSL windows to stop Mmojo Server."
 echo "Or, type the command: << mm-stop-mmojo-server.sh >>. (No << >>.)"
 echo ""
+EOF
 fi
 ```
 

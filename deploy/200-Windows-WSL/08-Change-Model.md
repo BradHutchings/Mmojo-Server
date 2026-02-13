@@ -38,7 +38,7 @@ Connect to Mmojo Server again in your browser:
 
 <img width="313" height="64" alt="image" src="https://github.com/user-attachments/assets/f0bf286e-4a10-4bb4-a80b-ad707f2f9311" />
 
-Click the Settings icon (lefmost icon top right) to reveal the Setting panel, which shows the model your Mmojo Server is running.
+Click the Settings icon &mdash; lefmost icon top right &mdash;  to reveal the Setting panel, which shows the model your Mmojo Server is running.
 
 <img width="422" height="151" alt="image" src="https://github.com/user-attachments/assets/c3b767c8-54a7-4c8d-93f0-7d542ef2f2a6" />
 

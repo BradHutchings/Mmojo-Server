@@ -4,6 +4,10 @@ In this short step, we're going to stop Mmojo Server while keeping the WSL sessi
 
 ---
 ### Stop Mmojo Server
+<img width="301" height="31" alt="image" src="https://github.com/user-attachments/assets/6941f4e7-9f69-4d00-b6fc-ab03ebaeccf3" />
+
+You should still see the `(MmojoServer)` prompt in your Terminal window.
+
 Run this command:
 ```
 mm-stop-mmojo-server.sh

@@ -21,7 +21,7 @@ mm-choose-model.sh
 
 Start `mmojo-server`:
 ```
-mm-start-mmojo-server.sh
+mm-start-mmojo-server.sh background
 ```
 
 ---

@@ -1,6 +1,6 @@
 ## 07. Autostart Mmojo Server
 ### About this Step
-In this short step, we're going to modify the Mmojo Server WSL instance so that it automatically starts Mmojo Server. This will enable a workflow where you click the Mmojo Server icon in the Taskbar to launch it and close to window to stop it. 
+In this short step, we're going to modify the Mmojo Server WSL instance so that it automatically starts Mmojo Server and has some useful command aliases for managing it. This will enable a workflow where you click the Mmojo Server icon in the Taskbar to launch it and close to window to stop it. 
 
 ---
 ### Autostart Mmojo Server

@@ -50,11 +50,11 @@ You're probably wondering how you're going to remember those commands so you can
 
 All three commands start with `mm-`. In fact, many commands you used in this setup start with `mm-`. These commands live in the `$HOME/mm-scripts` directory, and that directory is in your `$PATH`.
 
-You can use tab complete with a few characters to find these commands:
-- `mm-sta` + `[TAB]` &rarr; `mm-start-mmojo-server.sh`
-- `mm-ch` + `[TAB]` &rarr; `mm-choose-model.sh`
-- `mm-sto` + `[TAB]` &rarr; `mm-stop-mmojo-server.sh`
-
+You can use these aliases we added to your `.bashrc` in the Autostart step:
+- `mm-stop`   --> `mm-stop-mmojo-server.sh`
+- `mm-choose` --> `mm-choose-model.sh`
+- `mm-start`  --> `mm-start-mmojo-server.sh background`  # Runs in background.
+- `mm-debug`  --> `mm-start-mmojo-server.sh`             # Runs in foreground with output.
 ---
 ### Sign out of Mmojo Server
 You've completed all of the necessary setup and learned the important tricks! Let's powrer off the Mmojo Server WSL instance:

@@ -45,17 +45,6 @@ Click the Settings icon &mdash; lefmost icon top right &mdash;  to reveal the Se
 Click the Setting icon again to make the Settings panel disappear.
 
 ---
-### Tricks for Everyday Use
-You're probably wondering how you're going to remember those commands so you can change your model. Here's how.
-
-All three commands start with `mm-`. In fact, many commands you used in this setup start with `mm-`. These commands live in the `$HOME/mm-scripts` directory, and that directory is in your `$PATH`.
-
-You can use these aliases you added to your `.bashrc` in the Autostart step:
-- `mm-stop`   --> `mm-stop-mmojo-server.sh`
-- `mm-choose` --> `mm-choose-model.sh`
-- `mm-start`  --> `mm-start-mmojo-server.sh background`  # Runs in background.
-- `mm-debug`  --> `mm-start-mmojo-server.sh`             # Runs in foreground with output.
----
 ### Power Off Mmojo Server
 You've completed all of the necessary setup and learned the important tricks! Let's powrer off the Mmojo Server WSL instance:
 ```

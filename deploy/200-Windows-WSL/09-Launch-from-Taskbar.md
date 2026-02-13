@@ -9,7 +9,7 @@ Describe here
 
 ---
 ### Proceed
-- **Next:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
+- **Next:** [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) (Optional)
 - **Previous:** [08. Change Model](08-Change-Model.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

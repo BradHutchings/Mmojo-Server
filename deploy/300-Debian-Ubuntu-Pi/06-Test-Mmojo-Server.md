@@ -1,6 +1,7 @@
-## 06. Control Mmojo Server
+## 06. Test Mmojo Server
 ### About this Step
-This step has controls for choosing a model, starting Mmojo Server, and stopping Mmojo Server.
+In this step, you will choose a model and test Mmojo Server.
+
 
 ---
 ### Choose a Model
@@ -17,6 +18,8 @@ Launch `mmojo-server`:
 mm-start-mmojo-server.sh
 ```
 
+---
+### Connect to Mmojo Complete
 Connect to Mmojo Complete from a browser:
 
 [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
@@ -27,7 +30,11 @@ You should see the Mmojo Complete user interface:
 
 ---
 ### Stop Mmojo Server
-`CTRL-C` (maybe twice) to stop `mmojo-server`.
+Go back to the Terminal window and hit `CTRL-C` on your keyboard to stop Mmojo Server. You may need to hit it twice.
+
+<img width="385" height="98" alt="image" src="https://github.com/user-attachments/assets/6ce39db5-85e7-44fc-ae1e-3b922c5785e5" />
+
+You will see your command prompt.
 
 ---
 ### Proceed

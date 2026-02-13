@@ -46,7 +46,9 @@ wsl --list --verbose
 ### Congratulations!
 You did it. You installed Mmojo Server on your Windows PC or laptop, made it work, learned how to manage it, and practiced starting and stopping it!
 
-Enjoy Mmojo Server for regular use!
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/0f9de046-7ae2-4000-82f6-e14490297c4e" />
+
+Enjoy Mmojo Server for regular use! Also, enjoy a good latter. You earned it!
 
 ---
 ### Proceed

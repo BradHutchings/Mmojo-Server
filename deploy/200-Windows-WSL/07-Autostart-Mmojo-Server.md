@@ -47,7 +47,7 @@ Leave the WSL window open for as long as you want to run Mmojo Server. When you 
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** [08. Change Model](08-Change-Model.md)
 - **Previous:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

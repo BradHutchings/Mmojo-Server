@@ -28,7 +28,7 @@ Start `mmojo-server`:
 mm-start-mmojo-server.sh background
 ```
 
-Notice that `background` paramter. It can be anything. That tells Mmojo Server to run quietly as a background proess. If you'd like to see its startup and operational output, which can be helpful for tracking down problems, omit the parameter.
+Notice that `background` parameter. It can be anything. That tells Mmojo Server to run quietly as a background proess. If you'd like to see its startup and operational output, which can be helpful for tracking down problems, omit the parameter.
 
 ---
 ### Connect and Verify

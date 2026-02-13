@@ -15,7 +15,7 @@ mm-stop-mmojo-server.sh
 
 ---
 ### Choose a Model
-Choose a model. Try Google-Gemma-270M-Instruct-v3-q8_0.gguf. It will be soft-linked in your `$HOME/mm-mmojo-server` directory.
+Choose a model. Try **Google-Gemma-270M-Instruct-v3-q8_0.gguf**. It will be soft-linked in your `$HOME/mm-mmojo-server` directory.
 ```
 mm-choose-model.sh
 ```

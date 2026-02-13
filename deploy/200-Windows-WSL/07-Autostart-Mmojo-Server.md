@@ -30,8 +30,6 @@ EOF
 fi
 ```
 
-Now, close your Mmojo Server WSL window, wait a few moments, then click the Mmojo Server icon in your Taskbar to see autostart in action.
-
 ---
 ### Bookmark Mmojo Complete
 While you're setting things up, bookmark Mmojo Complete in your web browser.

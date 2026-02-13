@@ -106,7 +106,7 @@ Go to another computer on your network, and open a web browser. Now connect to:
 
 In my case, I would connect to:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://seventeen.local:8080
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http&colon;//seventeen.local:8080
 
 It is important that you use http, not https. 
 

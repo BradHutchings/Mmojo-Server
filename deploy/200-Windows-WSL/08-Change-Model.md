@@ -31,7 +31,7 @@ mm-start-mmojo-server.sh background
 Notice that `background` parameter. It can be anything. That tells Mmojo Server to run quietly as a background proess. If you'd like to see its startup and operational output, which can be helpful for tracking down problems, omit the parameter.
 
 ---
-### Connect and Verify
+### Connect and Verify Model Change
 Connect to Mmojo Server again in your browser:
 
 - [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.

@@ -29,7 +29,7 @@ $MMOJO_SERVER_SCRIPTS/303-Clone-Build-openssl.sh
 ```
 
 ---
-### Build Native Mmojo Server
+### Build Compatible and Performant Mmojo Server APEs/
 Prepare to build:
 ```
 $MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh
@@ -39,48 +39,16 @@ $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 
 Build performant Mmojo Server APE:
 ```
-BUILD_SUBDIR=""
-ZIP_FILE=""
-TOUCH_FILE=""
-if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
-    unset $CHOSEN_GPUS
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_RPI5_AARCH64"
-    ZIP_FILE="Mmojo-Server-aarch64-rpi5.zip"
-    TOUCH_FILE="build-aarch64-rpi5"
-elif [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
-    ZIP_FILE="Mmojo-Server-x86_64-native$CHOSEN_GPUS.zip"
-    TOUCH_FILE="build-x86_64-native$CHOSEN_GPUS"
-elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$CHOSEN_GPUS"
-    ZIP_FILE="Mmojo-Server-aarch64-native$CHOSEN_GPUS.zip"
-    TOUCH_FILE="build-aarch64-native$CHOSEN_GPUS"
-fi
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
+$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh X86_64 compatible
+$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh aarch64 compatible
+$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh compatible
+$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh X86_64 performant
+$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh aarch64 performant
+$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant
 ```
-
-<details>
-  <summary>Alternatively, build a more compatible Mmojo Server APE..</summary>
-  
-```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
-BUILD_SUBDIR=""
-ZIP_FILE=""
-if [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
-    ZIP_FILE="Mmojo-Server-x86_64-comp$CHOSEN_GPUS.zip"
-    TOUCH_FILE="build-x86_64-comp$CHOSEN_GPUS"
-elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$CHOSEN_GPUS"
-    ZIP_FILE="Mmojo-Server-aarch64-comp$CHOSEN_GPUS.zip"
-    TOUCH_FILE="build-aarch64-comp$CHOSEN_GPUS"
-fi
-```
-</details>
-
 ---
 ### Create a Run Directory
-Create a run directory.
+Create a run directory. **NEED TO FIGURE OUT HOW TO CHOOSE COMPATIBLE OR PERFORMANT BUILD.**
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*

@@ -15,9 +15,9 @@ alias mm-start="mm-start-mmojo-server.sh background"
 alias mm-debug="mm-start-mmojo-server.sh"
 
 echo "Starting Mmojo Server."
-mm-start-mmojo-server.sh background
+mm-start
 echo "Close all MmojoServer WSL windows to stop Mmojo Server."
-echo "Or, type the command: << mm-stop-mmojo-server.sh >>. (No << >>.)"
+echo "Or, type the alias: << mm-stop >>."
 echo ""
 echo "Useful command aliases:"
 echo "- mm-stop   --> mm-stop-mmojo-server.sh"

@@ -48,7 +48,7 @@ $MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant
 ```
 ---
 ### Create a Run Directory
-Create a run directory. **NEED TO FIGURE OUT HOW TO CHOOSE COMPATIBLE OR PERFORMANT BUILD.**
+Create a run directory. **NEED TO FIGURE OUT HOW TO CHOOSE COMPATIBLE OR PERFORMANT BUILD. MAYBE BOTH?? EXEs too?**
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
@@ -117,6 +117,8 @@ It should look like:
 ---
 ### (Optional) Make a .zip File
 Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
+
+**CHOOSE LINUX OR WINDOWS**
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"

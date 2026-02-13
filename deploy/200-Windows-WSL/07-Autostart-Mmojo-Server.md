@@ -47,7 +47,7 @@ wsl --list --verbose
 
 <img width="422" height="122" alt="image" src="https://github.com/user-attachments/assets/13c55d36-ef9d-4882-9429-42e35c9dea07" />
 
-MmojoServer WSL instance should show stopped. If it is not, wait a few more moments and run that command again.
+The MmojoServer WSL instance should show stopped. If it is not, wait a few more moments and run that command again.
 
 Now, let's start your MmojoServer WSL instance and connect to it again:
 

@@ -37,6 +37,8 @@ You should see the Mmojo Complete user interface:
 
 <img width="543" height="400" alt="image" src="https://github.com/user-attachments/assets/31055741-4697-441e-a3e3-a191401a7e8c" />
 
+Bookmark Mmojo Complete in your browser while you're there.
+
 ---
 ### Stop Mmojo Server
 Go back to the Terminal window and hit `CTRL-C` on your keyboard to stop Mmojo Server. You may need to hit it twice.

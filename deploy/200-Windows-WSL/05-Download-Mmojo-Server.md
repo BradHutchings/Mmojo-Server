@@ -74,7 +74,7 @@ if (test -n "$RUN_DIR") && [ "$URL" != "" ]; then
 fi
 ```
 
-Mmojo Server is installed. You are ready to run it!
+Mmojo Server is installed. You are ready to test it!
 
 **Skip to:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 

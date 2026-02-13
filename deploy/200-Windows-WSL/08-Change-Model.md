@@ -69,7 +69,7 @@ You will see your PowerShell prompt.
 
 ---
 ### Proceed
-- **Next:** [09. Port Forward to Mmojo Server](09-Port-Forward-to-Mmojo-Server.md) (Optional)
+- **Next:** [09. Launch from Taskbar](09-Launch-from-Taskbar.md)
 - **Previous:** [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

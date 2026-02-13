@@ -35,7 +35,7 @@ You should see the Mmojo Complete user interface:
 ### Stop Mmojo Server
 Go back to the Terminal window and hit `CTRL-C` on your keyboard to stop Mmojo Server. You may need to hit it twice.
 
-(picture here.)
+<img width="385" height="98" alt="image" src="https://github.com/user-attachments/assets/6ce39db5-85e7-44fc-ae1e-3b922c5785e5" />
 
 You will see your command prompt.
 

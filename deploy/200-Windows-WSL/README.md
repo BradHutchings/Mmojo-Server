@@ -24,6 +24,7 @@ Here are the deployment steps:
 - [06. Test Mmojo Server](06-Test-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
 - [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
 - [08. Change Model](08-Change-Model.md) - Stop Mmojo Server, choose a new model, start Mmojo Server.
+- [09. Launch from Taskbar](09-Launch-from-Taskbar.md) - Make sure Mmojo Server works for day to day use.
   <br/><br/>
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
@@ -31,7 +32,7 @@ Here are the deployment steps:
 ---
 ### Port Forward to Mmojo Server
 If you want Mmojo Server to accept connections from other computers on your network, you can set that up:
-- [09. Port Forward to Mmojo Server](09-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
+- [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
 
 
 ---

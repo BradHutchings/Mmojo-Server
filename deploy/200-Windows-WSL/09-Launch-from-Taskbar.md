@@ -48,7 +48,7 @@ You did it. You installed Mmojo Server on your Windows PC or laptop, made it wor
 
 <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/0f9de046-7ae2-4000-82f6-e14490297c4e" />
 
-Enjoy Mmojo Server for regular use! Also, enjoy a good latter. You earned it!
+Enjoy Mmojo Server for regular use! Also, enjoy a nice latte. You earned it!
 
 ---
 ### Proceed

@@ -33,6 +33,7 @@ Update linux and install `unzip`:
 sudo apt update
 sudo apt upgrade -y
 sudo apt install unzip -y
+echo "NOTE: apt update, upgrade, and install unzip finished."
 ```
 
 ---

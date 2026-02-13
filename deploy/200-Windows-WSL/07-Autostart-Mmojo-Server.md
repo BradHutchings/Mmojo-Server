@@ -8,7 +8,6 @@ Run this command:
 ```
 if ! grep -q "mm-start-mmojo-server.sh" "$HOME/.bashrc"; then
 cat << EOF >> $HOME/.bashrc
-
 alias mm-stop="mm-stop-mmojo-server.sh"
 alias mm-choose="mm-choose-model.sh"
 alias mm-start="mm-start-mmojo-server.sh background"

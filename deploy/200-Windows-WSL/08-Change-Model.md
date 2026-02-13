@@ -50,7 +50,7 @@ You're probably wondering how you're going to remember those commands so you can
 
 All three commands start with `mm-`. In fact, many commands you used in this setup start with `mm-`. These commands live in the `$HOME/mm-scripts` directory, and that directory is in your `$PATH`.
 
-You can use these aliases we added to your `.bashrc` in the Autostart step:
+You can use these aliases you added to your `.bashrc` in the Autostart step:
 - `mm-stop`   --> `mm-stop-mmojo-server.sh`
 - `mm-choose` --> `mm-choose-model.sh`
 - `mm-start`  --> `mm-start-mmojo-server.sh background`  # Runs in background.

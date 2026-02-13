@@ -62,6 +62,11 @@ You've completed all of the necessary setup and learned the important tricks! Le
 sudo poweroff
 ```
 
+You'll be prompted for your `sudo` password:
+```
+admin123!
+```
+
 <img width="434" height="66" alt="image" src="https://github.com/user-attachments/assets/e42b8af8-cafb-45ee-8e00-06aa8e5626f5" />
 
 You will see your PowerShell prompt.

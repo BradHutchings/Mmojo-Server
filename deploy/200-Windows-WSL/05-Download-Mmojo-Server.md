@@ -34,8 +34,7 @@ sudo apt install cuda-drivers -y
 </details>
 
 ---
-### Download Mmojo Server from Hugging Face
-
+### Set Mmojo Server Download URL
 Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs. It is currently unkown if this build runs on any aarch64 (arm64) Windows computers.
 ```
 URL=""
@@ -60,6 +59,10 @@ fi
 ```
 </details>
 
+Future: Might just download the "compatible" version for aarch64 (arm64) by default. It's tough to figure out what processors are out there. -Brad 2025-02-11
+
+---
+### Download Mmojo Server from Hugging Face
 Download Mmojo Server from Hugging Face and unzip it in the `$HOME/Mmojo-Server` directory:
 ```
 if (test -n "$RUN_DIR") && [ "$URL" != "" ]; then
@@ -74,13 +77,13 @@ if (test -n "$RUN_DIR") && [ "$URL" != "" ]; then
 fi
 ```
 
-Mmojo Server is installed and you are ready to run it!
+Mmojo Server is installed. You are ready to test it!
 
-**Skip to:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
+**Skip to:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 
 ---
 ### Proceed
-- **Next:**  [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
+- **Next:**  [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 - **Previous:** [04. Download Models](04-Download-Models.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

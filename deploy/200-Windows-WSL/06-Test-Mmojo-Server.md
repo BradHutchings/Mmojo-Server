@@ -1,6 +1,6 @@
-## 06. Control Mmojo Server
+## 06. Test Mmojo Server
 ### About this Step
-This step has controls for choosing a mode, starting Mmojo Server, and stopping Mmojo Server.
+In this step, you will choose a model and test Mmojo Server.
 
 ---
 ### Choose a Model
@@ -17,6 +17,12 @@ Launch `mmojo-server`:
 mm-start-mmojo-server.sh
 ```
 
+If you get a message about an illegal instruction, it's because you installed a performant version of Mmojo Server. Your computer's CPU, sadly, does not support that version. Go back to the download step and try the alternative compatible version.
+
+- [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
+
+---
+### Connect to Mmojo Complete
 Connect to Mmojo Complete from a browser:
 
 [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
@@ -26,20 +32,12 @@ You should see the Mmojo Complete user interface:
 <img width="543" height="400" alt="image" src="https://github.com/user-attachments/assets/31055741-4697-441e-a3e3-a191401a7e8c" />
 
 ---
-### Stop Mmojo Server, Exit WSL Instance
-Due to some weirdness with WSL when moving instances to other drives, you should stop Mmojo Server and exit its WSL instance. You will be moving the WSL instance for OpenClaw to your second drive, and WSL won't do that if *any* WSL instance is running.
+### Stop Mmojo Server
+Go back to the Terminal window and hit `CTRL-C` on your keyboard to stop Mmojo Server. You may need to hit it twice.
 
-There are two ways you can do this:
-1. **The easy way:**
+<img width="385" height="98" alt="image" src="https://github.com/user-attachments/assets/6ce39db5-85e7-44fc-ae1e-3b922c5785e5" />
 
-   Close the WSL window where Mmojo Server is running. WSL will notice you have no sessions open and shut down the instance.
-   
-2. **The hard but maybe better way**:
-
-   `CTRL-C` (maybe twice) to stop `mmojo-server`. Then leave the connection to the WSL instance:
-   ```
-   exit
-   ```
+You will see your command prompt.
 
 ---
 ### Proceed

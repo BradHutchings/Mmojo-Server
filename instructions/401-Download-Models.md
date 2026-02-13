@@ -23,13 +23,13 @@ mm-env
 ---
 ### Create Models Directory
 This script creates the `$MODELS_DIR` and adds a simple model map to it:
-- View the script: <a href="../scripts/401-Create-Models-Directory.sh" target="_blank">401-Create-Models-Directory.sh</a>.
+- View the script: <a href="../scripts/mm-create-models-directory.sh" target="_blank">mm-create-models-directory.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
+  $MMOJO_SERVER_SCRIPTS/mm-create-models-directory.sh
   ```
 
 <!--
@@ -83,7 +83,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
+$MMOJO_SERVER_SCRIPTS/mm-create-models-directory.sh
 mm-download-models.sh 2
 ```
 
@@ -105,7 +105,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
+$MMOJO_SERVER_SCRIPTS/mm-create-models-directory.sh
 $MMOJO_SERVER_SCRIPTS/401-Download-Model-Map.sh
 mm-download-models.sh 2
 ```

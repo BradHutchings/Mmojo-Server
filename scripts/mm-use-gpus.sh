@@ -42,7 +42,7 @@ if (( has_hip == 1 && has_vulkan == 1 )); then                   gpu_combos+=("H
 if (( has_vulkan == 1 )); then                                   gpu_combos+=("VULKAN");                 fi
 if (( has_metal == 1 )); then                                    gpu_combos+=("METAL");                  fi
 
-if [ ${#gpu_combos[@]} > 0 ]; then
+if [ ${#gpu_combos[@]} -gt "0" ]; then
     echo "Please pick the GPU combination you want your build to support:"
     select choice in "${gpu_combos[@]}"; do
         break

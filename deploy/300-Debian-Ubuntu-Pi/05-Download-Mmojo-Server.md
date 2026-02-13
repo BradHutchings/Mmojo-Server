@@ -34,8 +34,7 @@ sudo apt install cuda-drivers -y
 </details>
 
 ---
-### Download Mmojo Server from Hugging Face
-
+### Set Mmojo Server Download URL
 Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs, Apple M* processors (assuming you're running Debian Linux), and Raspberry Pi 5. It's unknown whether it runs on other vendors' aarch64 (arm64) PCs.
 ```
 URL=""
@@ -47,8 +46,6 @@ elif [ $(uname -m) == "aarch64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-perf-cud.zip"
 fi
 ```
-
-**Future:** Might just download the "compatible" version for aarch64 (arm64) by default. It's tough to figure out what processors are out there. -Brad 2025-02-11
 
 <details>
   <summary><b>Alternatively:</b>, set the URL for the Mmojo Server package that runs on all x86_64 and aarch64 (arm64) CPUs. Use this if the Mmojo Server you download with the URL setting above gives you an illegal instruction error when you run it.</summary>
@@ -64,6 +61,10 @@ fi
 ```
 </details>
 
+**Future:** Might just download the "compatible" version for aarch64 (arm64) by default. It's tough to figure out what processors are out there. -Brad 2025-02-11
+
+---
+### Download Mmojo Server from Hugging Face
 Download Mmojo Server from Hugging Face and unzip it in the `$HOME/Mmojo-Server` directory:
 ```
 if (test -n "$RUN_DIR") && [ "$URL" != "" ]; then
@@ -84,7 +85,7 @@ Mmojo Server is installed and you are ready to run it!
 
 ---
 ### Proceed
-- **Next:**  [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
+- **Next:**  [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 - **Previous:** [04. Download Models](04-Download-Models.md)
 - **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 

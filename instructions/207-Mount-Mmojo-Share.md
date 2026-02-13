@@ -7,13 +7,13 @@ The Mmojo Share is a file share where I keep files for local access and complete
 ---
 ### Create Mmojo Share Mount Point and Mount Script
 This script creates a mount point for the Mmojo Share and a script for mounting the Mmojo Share:
-- View script: <a href="../scripts/206-Create-Mmojo-Share-Mount-Point.sh" target="_blank">206-Create-Mmojo-Share-Mount-Point.sh</a>.
+- View script: <a href="../scripts/mm-create-mmojo-share-mount-point.sh" target="_blank">mm-create-mmojo-share-mount-point.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/206-Create-Mmojo-Share-Mount-Point.sh
+  mm-create-mmojo-share-mount-point.sh
   ```
 
 ---

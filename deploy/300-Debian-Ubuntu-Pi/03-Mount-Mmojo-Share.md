@@ -13,7 +13,7 @@ If you don't have an SMB file share available to use on your computer or network
 ### Create Mmojo Share Mount Point and Mount Script
 This script creates a mount point for the Mmojo Share and a script for mounting the Mmojo Share:
 ```
-$MMOJO_SERVER_SCRIPTS/206-Create-Mmojo-Share-Mount-Point.sh
+mm-create-mmojo-share-mount-point.sh
 ```
 
 ---

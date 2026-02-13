@@ -8,7 +8,7 @@ Download models. These may take 20 minutes or so to download.
 
 The default set of models contains Google Gemma 270M, 1B, and 4B. Run this command to create the model download queue.
 ```
-$MMOJO_SERVER_SCRIPTS/401-Create-Models-Directory.sh
+mm-create-models-directory.sh
 ```
 
 **Optional:** There are more recent Gemma E2B and E4B models. Run this script to add them to the model download queue.

@@ -56,7 +56,7 @@ You can use these aliases you added to your `.bashrc` in the Autostart step:
 - `mm-start`  --> `mm-start-mmojo-server.sh background`  # Runs in background.
 - `mm-debug`  --> `mm-start-mmojo-server.sh`             # Runs in foreground with output.
 ---
-### Sign out of Mmojo Server
+### Power Off Mmojo Server
 You've completed all of the necessary setup and learned the important tricks! Let's powrer off the Mmojo Server WSL instance:
 ```
 sudo poweroff

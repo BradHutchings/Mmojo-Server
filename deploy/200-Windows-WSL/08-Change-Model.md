@@ -1,4 +1,4 @@
-## 07. Change Model
+## 08. Change Model
 ### About this Step
 In this short step, we're going to stop Mmojo Server while keeping the WSL session open, choose a new model, then start Mmojo Sever.
 

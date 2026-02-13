@@ -60,6 +60,8 @@ fi
 ```
 </details>
 
+Future: Might just download the "compatible" version for aarch64 (arm64) by default. It's tough to figure out what processors are out there. -Brad 2025-02-11
+
 Download Mmojo Server from Hugging Face and unzip it in the `$HOME/Mmojo-Server` directory:
 ```
 if (test -n "$RUN_DIR") && [ "$URL" != "" ]; then

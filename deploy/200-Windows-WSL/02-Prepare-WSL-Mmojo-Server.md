@@ -106,6 +106,10 @@ EOF
 . .bashrc
 ```
 
+<img width="331" height="32" alt="image" src="https://github.com/user-attachments/assets/0610c9f1-e5b3-4a1d-b5f8-73a056d2fa1f" />
+
+Notice your new prompt.
+
 ---
 ### Run apt update and upgrade
 Update linux and install `unzip`:

@@ -24,7 +24,7 @@ Now, close your Mmojo Server WSL window, wait a few moments, then click the Mmoj
 ### Bookmark Mmojo Complete
 While you're setting things up, bookmark Mmojo Complete in your web browser.
 
-[Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
+- [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
 I told you this was a short step!
 
@@ -35,13 +35,31 @@ Poweroff the WSL instance:
 sudo poweroff
 ```
 
-<img width="158" height="97" alt="image" src="https://github.com/user-attachments/assets/9770555c-7f9c-408d-ab99-e209c0ad2db1" />
+<img width="434" height="66" alt="image" src="https://github.com/user-attachments/assets/e42b8af8-cafb-45ee-8e00-06aa8e5626f5" />
 
-Wait a minute or so. Then launch the MmojoServer WSL instance from your Taskbar.
+You will see your PowerShell prompt. Wait a few moments, then check that your WSL instance is not running.
+
+```
+wsl --list --verbose
+```
+
+<img width="422" height="122" alt="image" src="https://github.com/user-attachments/assets/13c55d36-ef9d-4882-9429-42e35c9dea07" />
+
+MmojoServer WSL instance should show stopped. If it is not, wait a few more moments and run that command again.
+
+Now, let's start your MmojoServer WSL instance and connect to it again:
+
+```
+wsl -d "MmojoServer"
+```
 
 <img width="597" height="121" alt="image" src="https://github.com/user-attachments/assets/294b776b-2dc7-4ae7-a60c-4c47d7daa101" />
 
-You will see a message about Mmojo Server being started or already running. It's fine if it says it's already running. WSL made a previous connection to your instance before the one displayed in the window.
+You will see a message about Mmojo Server being started or already running. It's fine if it says it's already running. WSL made a previous connection to your instance before the one displayed in the Terminal window.
+
+Connect to Mmojo Server again in your browser to verify that Mmojo Server is running and available:
+
+- [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
 Leave the WSL window open for as long as you want to run Mmojo Server. When you close it, Mmojo Server will stop automatically within a minute, probably sooner.
 

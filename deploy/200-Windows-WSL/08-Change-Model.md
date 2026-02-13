@@ -26,7 +26,7 @@ mm-start-mmojo-server.sh
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** [09. Port Forward to Mmojo Server](09-Port-Forward-to-Mmojo-Server.md) (Optional)
 - **Previous:** [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

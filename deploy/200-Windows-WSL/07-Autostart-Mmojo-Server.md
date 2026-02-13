@@ -41,7 +41,7 @@ Wait a minute or so. Then launch the MmojoServer WSL instance from your Taskbar.
 
 <img width="597" height="121" alt="image" src="https://github.com/user-attachments/assets/294b776b-2dc7-4ae7-a60c-4c47d7daa101" />
 
-You will see a message about Mmojo Server being started or already running.
+You will see a message about Mmojo Server being started or already running. It's fine if it says it's already running. WSL made a previous connection to your instance before the one displayed in the window.
 
 Leave the WSL window open for as long as you want to run Mmojo Server. When you close it, Mmojo Server will stop automatically within a minute, probably sooner.
 

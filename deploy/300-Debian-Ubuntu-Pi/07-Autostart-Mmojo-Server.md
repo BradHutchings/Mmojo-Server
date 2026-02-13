@@ -28,7 +28,7 @@ I told you this was a short step!
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
+- **Previous:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 
 ---

@@ -42,6 +42,7 @@ You can verify that your MmojoServer instance is not running by opening a Termin
 wsl --list --verbose
 ```
 
+---
 ### Congratulations!
 You did it. You installed Mmojo Server on your Windows PC or laptop, made it work, learned how to manage it, and practiced starting and stopping it!
 

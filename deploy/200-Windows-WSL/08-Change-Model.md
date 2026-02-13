@@ -27,6 +27,9 @@ Start `mmojo-server`:
 ```
 mm-start-mmojo-server.sh background
 ```
+
+Notice that `background` paramter. It can be anything. That tells Mmojo Server to run quietly as a background proess. If you'd like to see its startup and operational output, which can be helpful for tracking down problems, omit the parameter.
+
 ---
 ### Connect and Verify
 Connect to Mmojo Server again in your browser:
@@ -40,6 +43,29 @@ Click the Settings icon (lefmost icon top right) to reveal the Setting panel, wh
 <img width="422" height="151" alt="image" src="https://github.com/user-attachments/assets/c3b767c8-54a7-4c8d-93f0-7d542ef2f2a6" />
 
 Click the Setting icon again to make the Settings panel disappear.
+
+---
+### Tricks for Everyday Use
+You're probably wondering how you're going to remember those commands so you can change your model. Here's how.
+
+All three commands start with `mm-`. In fact, many commands you used in this setup start with `mm-`. These commands live in the `$HOME/mm-scripts` directory, and that directory is in your `$PATH`.
+
+You can use tab complete with a few characters to find these commands:
+- `mm-sta` + `[TAB]` &rarr; `mm-start-mmojo-server.sh`
+- `mm-ch` + `[TAB]` &rarr; `mm-choose-model.sh`
+- `mm-sto` + `[TAB]` &rarr; `mm-stop-mmojo-server.sh`
+
+---
+### Sign out of Mmojo Server
+You've completed all of the necessary setup and learned the important tricks! Let's powrer off the Mmojo Server WSL instance:
+```
+sudo poweroff
+```
+
+<img width="434" height="66" alt="image" src="https://github.com/user-attachments/assets/e42b8af8-cafb-45ee-8e00-06aa8e5626f5" />
+
+You will see your PowerShell prompt.
+
 
 ---
 ### Proceed

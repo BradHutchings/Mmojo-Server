@@ -17,6 +17,8 @@ Launch `mmojo-server`:
 mm-start-mmojo-server.sh
 ```
 
+This starts Mmojo Server in a debug mode with messages displayed on screen so you can see what it's doing.
+
 If you get a message about an illegal instruction, it's because you installed a performant version of Mmojo Server. Your computer's CPU, sadly, does not support that version. Go back to the download step and try the alternative compatible version.
 
 - [05. Download Mmojo Server](05-Download-Mmojo-Server.md)

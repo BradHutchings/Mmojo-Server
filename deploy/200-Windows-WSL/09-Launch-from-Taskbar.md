@@ -13,6 +13,12 @@ Click the MmojoServer WSL icon that you previously added to the Taskbar.
 A Terminal window will open, connected to your Mmojo Server WSL instance. You'll see a message about the Mmojo Server process being started or already running, followed by some useful command aliases for managing things.
 
 ---
+### Connect to Mmojo Server
+Connect to Mmojo Server again in your browser:
+
+- [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
+
+---
 ### Tricks for Everyday Use
 You're probably wondering how you're going to remember the commands so you can change your model. Here's how.
 
@@ -25,6 +31,21 @@ You can use these aliases you added to your `.bashrc` in the Autostart step:
 - `mm-debug`  --> `mm-start-mmojo-server.sh`             # Runs in foreground with output.
 
 Notice that you are reminded of these when you start a session with your MmojoServer WSL instance.
+
+---
+### Stop Mmojo Server
+Stop Mmojo Server by closing all Terminal windows connected to it. Typically, that will be one window. WSL will shut it down soon after all sessions are closed.
+
+You can verify that your MmojoServer instance is not running by opening a Terminal and listing available instances. Paste this into a PowerShell prompt:
+
+```
+wsl --list --verbose
+```
+
+### Congratulations!
+You did it. You installed Mmojo Server on your Windows PC or laptop, made it work, learned how to manage it, and practiced starting and stopping it!
+
+Enjoy Mmojo Server for regular use!
 
 ---
 ### Proceed

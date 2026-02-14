@@ -32,7 +32,7 @@ This script uses cmake CMake to build llama-server with `cosmocc` for x86_64. No
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh X86_64 performant llama-server
+  mm-build-with-cosmo.sh X86_64 performant llama-server
   ```
 
 <details>
@@ -67,7 +67,7 @@ This script uses cmake CMake to build llama-server with `cosmocc` for x86_64. No
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh aarch64 performant llama-server
+  mm-build-with-cosmo.sh aarch64 performant llama-server
   ```
 
 <details>
@@ -148,8 +148,8 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh X86_64 performant llama-server
-$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh aarch64 performant llama-server
+mm-build-with-cosmo.sh X86_64 performant llama-server
+mm-build-with-cosmo.sh aarch64 performant llama-server
 $MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant llama-server
 $MMOJO_SERVER_SCRIPTS/520-Test-Cosmo-APE.sh performant 1 llama-server
 ```
@@ -161,9 +161,9 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh X86_64 performant llama-server
+mm-build-with-cosmo.sh X86_64 performant llama-server
 $MMOJO_SERVER_SCRIPTS/520-Copy-Cosmo-Build-to-Mmojo-Share.sh X86_64 performant llama-server
-$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh aarch64 performant llama-server
+mm-build-with-cosmo.sh aarch64 performant llama-server
 $MMOJO_SERVER_SCRIPTS/520-Copy-Cosmo-Build-to-Mmojo-Share.sh aarch64 performant llama-server
 $MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant llama-server
 $MMOJO_SERVER_SCRIPTS/520-Copy-Cosmo-APE-to-Mmojo-Share.sh performant llama-server

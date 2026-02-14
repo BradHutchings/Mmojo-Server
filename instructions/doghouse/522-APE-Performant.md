@@ -72,10 +72,10 @@ If your build environment is aarch64, you can test this build. Requires previous
 ---
 ### Assemble doghouse Actual Portable Executable (APE)
 Now that we have x86_64 and aarch64 (ARM64) builds, we can assemble them into an Actual Portable Executable (APE) file.
-- View the script: <a href="../../scripts/520-Assemble-Cosmo-APE.sh" target="_blank">520-Assemble-Cosmo-APE.sh</a>.
+- View the script: <a href="../../scripts/mm-build-cosmo-ape.sh" target="_blank">mm-build-cosmo-ape.sh</a>.
 - Run the script:
   ```
-  $MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant doghouse
+  mm-build-cosmo-ape.sh performant doghouse
 
   ```
 
@@ -105,7 +105,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 mm-build-with-cosmo.sh X86_64 performant doghouse
 mm-build-with-cosmo.sh aarch64 performant doghouse
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant doghouse
+mm-build-cosmo-ape.sh performant doghouse
 $MMOJO_SERVER_SCRIPTS/520-Test-Cosmo-APE.sh performant command-line 1 doghouse
 ```
 

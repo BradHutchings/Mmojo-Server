@@ -12,7 +12,7 @@ If you would prefer to build Mmojo Server optimized for the CPU on your computer
 ### Install Dependencies and GPU Support
 Install dependencies. These may take 20 minutes or so to download and install.
 ```
-$MMOJO_SERVER_SCRIPTS/207-Install-Dependencies.sh
+mm-install-dependencies.sh
 ```
 
 Install CUDA and Vulkan support. These may take 10 minutes or so to download and install.

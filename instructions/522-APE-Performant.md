@@ -28,7 +28,7 @@ This script uses cmake CMake to build Mmojo Server with `cosmocc` for x86_64. No
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh X86_64 performant
+  mm-build-with-cosmo.sh X86_64 performant
   ```
 
 <details>
@@ -63,7 +63,7 @@ This script uses cmake CMake to build Mmojo Server with `cosmocc` for x86_64. No
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh aarch64 performant
+  mm-build-with-cosmo.sh aarch64 performant
   ```
 
 <details>
@@ -144,8 +144,8 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh X86_64 performant
-$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh aarch64 performant
+mm-build-with-cosmo.sh X86_64 performant
+mm-build-with-cosmo.sh aarch64 performant
 $MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant
 $MMOJO_SERVER_SCRIPTS/520-Test-Cosmo-APE.sh performant "$TEST_WITH_CHAT_UI"
 ```
@@ -157,9 +157,9 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh X86_64 performant
+mm-build-with-cosmo.sh X86_64 performant
 $MMOJO_SERVER_SCRIPTS/520-Copy-Cosmo-Build-to-Mmojo-Share.sh X86_64 performant
-$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh aarch64 performant
+mm-build-with-cosmo.sh aarch64 performant
 $MMOJO_SERVER_SCRIPTS/520-Copy-Cosmo-Build-to-Mmojo-Share.sh aarch64 performant
 $MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant
 $MMOJO_SERVER_SCRIPTS/520-Copy-Cosmo-APE-to-Mmojo-Share.sh performant

@@ -94,14 +94,14 @@ mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
 COMPATIBLE_APE="$BUILD_DIR/$BUILD_COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
 if [ -f "$COMPATIBLE_APE" ]; then
-   cp $COMPATIBLE_APE $RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-compatible"
+   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-compatible"
+   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-compatible.exe"
 fi
 PERFORMANT_APE="$BUILD_DIR/$BUILD_COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
 if [ -f "$PERFORMANT_APE" ]; then
-   cp $PERFORMANT_APE $RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant"
+   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant"
+   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant.exe"
 fi
-
-cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --host
@@ -115,7 +115,6 @@ cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --ctx-size
 32768 
 EOF
-touch "$RUN_DIR/$TOUCH_FILE"
 ```
 </details>
 
@@ -134,12 +133,13 @@ It should look like:
 ### (Optional) Make a .zip File
 Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
 
-**CHOOSE LINUX OR WINDOWS**
+**CHOOSE LINUX/MACOS OR WINDOWS - WILL STRIP OUT THE .EXE OR NO EXTENSION - CAN WE JUST KEEP .EXE?**
 ```
+ZIP_FILE="mmojo-server-ape.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
   # TODO: If we're on aarch64, change the $ZIP_FILE from -x86- to -arm-
-  zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete $TOUCH_FILE
+  zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete
   mv $ZIP_FILE $HOME
   cd $HOME
 fi

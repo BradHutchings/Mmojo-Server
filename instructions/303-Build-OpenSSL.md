@@ -24,13 +24,13 @@ mm-env
 Clone openssl repo into a `$BUILD_OPENSSSL_DIR` directory, then build openssl with cosmo. Build this once, and leave the `$BUILD_OPENSSSL_DIR` directory between builds.
 
 This script clones the openssl repo to `$BUILD_OPENSSSL_DIR`, then builds it:
-- View the script: <a href="../scripts/303-Clone-Build-openssl.sh" target="_blank">303-Clone-Build-openssl.sh</a>.
+- View the script: <a href="../scripts/mm-build-openssl-with-cosmopolitan.sh" target="_blank">mm-build-openssl-with-cosmopolitan.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/303-Clone-Build-openssl.sh
+  mm-build-openssl-with-cosmopolitan.sh
   ```
 
 ---

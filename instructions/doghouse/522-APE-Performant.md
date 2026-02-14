@@ -32,7 +32,7 @@ This script uses CMake to build Doghouse with `cosmocc` for x86_64. Note that we
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh X86_64 performant doghouse
+  mm-build-with-cosmo.sh X86_64 performant doghouse
   ```
 
 <details>
@@ -55,7 +55,7 @@ This script uses CMake to build Doghouse with `cosmocc` for x86_64. Note that we
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh aarch64 performant doghouse
+  mm-build-with-cosmo.sh aarch64 performant doghouse
   ```
 
 <details>
@@ -103,8 +103,8 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh X86_64 performant doghouse
-$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh aarch64 performant doghouse
+mm-build-with-cosmo.sh X86_64 performant doghouse
+mm-build-with-cosmo.sh aarch64 performant doghouse
 $MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant doghouse
 $MMOJO_SERVER_SCRIPTS/520-Test-Cosmo-APE.sh performant command-line 1 doghouse
 ```

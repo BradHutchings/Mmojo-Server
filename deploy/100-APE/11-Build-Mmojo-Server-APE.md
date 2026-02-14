@@ -19,13 +19,13 @@ mm-install-dependencies.sh
 ---
 ### Build Cosmopolitan Library and Tools
 ```
-$MMOJO_SERVER_SCRIPTS/302-Clone-Build-Cosmopolian.sh
+mm-build-cosmopolitan.sh
 ```
 
 ---
 ### Build OpenSSL with Cosmopolitan
 ```
-$MMOJO_SERVER_SCRIPTS/303-Clone-Build-openssl.sh
+mm-build-openssl-with-cosmopolitan.sh
 ```
 
 ---

@@ -27,10 +27,10 @@ Before using this shortcut, please work through the steps of building the compat
 ```
 mm-build-with-cosmo.sh X86_64 compatible llama-server
 mm-build-with-cosmo.sh aarch64 compatible llama-server
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh compatible llama-server
+mm-build-cosmo-ape.sh compatible llama-server
 mm-build-with-cosmo.sh X86_64 performant llama-server
 mm-build-with-cosmo.sh aarch64 performant llama-server
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant llama-server
+mm-build-cosmo-ape.sh performant llama-server
 ```
 
 ---

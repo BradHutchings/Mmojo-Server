@@ -13,7 +13,7 @@ If you would prefer to build your own Mmojo Server Actual Portable Executable (A
 ### Install Dependencies
 Install dependencies. These may take 20 minutes or so to download and install.
 ```
-$MMOJO_SERVER_SCRIPTS/207-Install-Dependencies.sh
+mm-install-dependencies.sh
 ```
 
 ---

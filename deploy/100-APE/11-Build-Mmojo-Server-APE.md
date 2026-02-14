@@ -39,12 +39,12 @@ $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 
 Build performant Mmojo Server APE:
 ```
-$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh X86_64 compatible
-$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh aarch64 compatible
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh compatible
-$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh X86_64 performant
-$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh aarch64 performant
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant
+mm-build-with-cosmo.sh X86_64 compatible
+mm-build-with-cosmo.sh aarch64 compatible
+mm-build-cosmo-ape.sh compatible
+mm-build-with-cosmo.sh X86_64 performant
+mm-build-with-cosmo.sh aarch64 performant
+mm-build-cosmo-ape.sh performant
 ```
 ---
 ### Create a Run Directory

@@ -27,10 +27,10 @@ Before using this shortcut, please work through the steps of building the compat
 ```
 mm-build-with-cosmo.sh X86_64 compatible doghouse
 mm-build-with-cosmo.sh aarch64 compatible doghouse
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh compatible doghouse
+mm-build-cosmo-ape.sh compatible doghouse
 mm-build-with-cosmo.sh X86_64 performant doghouse
 mm-build-with-cosmo.sh aarch64 performant doghouse
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant doghouse
+mm-build-cosmo-ape.sh performant doghouse
 ```
 
 ---

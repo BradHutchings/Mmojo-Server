@@ -37,7 +37,7 @@ $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```
 
-Build performant Mmojo Server APE:
+Build compatible and performant Mmojo Server APE:
 ```
 mm-build-with-cosmo.sh X86_64 compatible
 mm-build-with-cosmo.sh aarch64 compatible
@@ -52,16 +52,16 @@ Create a run directory. **NEED TO FIGURE OUT HOW TO CHOOSE COMPATIBLE OR PERFORM
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
-
 COMPATIBLE_APE="$BUILD_DIR/$BUILD_COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
 if [ -f "$COMPATIBLE_APE" ]; then
-   cp $COMPATIBLE_APE $RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-compatible"
+   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-compatible"
+   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-compatible.exe"
 fi
 PERFORMANT_APE="$BUILD_DIR/$BUILD_COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
 if [ -f "$PERFORMANT_APE" ]; then
-   cp $PERFORMANT_APE $RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant"
+   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant"
+   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant.exe"
 fi
-
 cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
@@ -80,7 +80,6 @@ chat
 --ctx-size
 32768 
 EOF
-touch "$RUN_DIR/$TOUCH_FILE"
 ```
 
 **Future:** This is a good candidate for an mm-script.

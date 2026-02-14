@@ -23,10 +23,10 @@ Before using this shortcut, please work through the steps of building the compat
 ```
 mm-build-with-cosmo.sh X86_64 compatible
 mm-build-with-cosmo.sh aarch64 compatible
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh compatible
+mm-build-cosmo-ape.sh compatible
 mm-build-with-cosmo.sh X86_64 performant
 mm-build-with-cosmo.sh aarch64 performant
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant
+mm-build-cosmo-ape.sh performant
 ```
 
 ---

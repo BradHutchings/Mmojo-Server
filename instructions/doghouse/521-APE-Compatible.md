@@ -27,13 +27,13 @@ mm-env
 ---
 ### Build Doghouse for x86_64
 This script uses CMake to build Doghouse with `cosmocc` for x86_64. Note that we make a temporary change to `common/CMakeLists.txt` to statically link with OpenSSL libraries.
-- View the script: <a href="../../scripts/520-Build-with-Cosmo.sh" target="_blank">520-Build-with-Cosmo.sh</a>.
+- View the script: <a href="../../scripts/mm-build-with-cosmo.sh" target="_blank">mm-build-with-cosmo.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh X86_64 compatible doghouse
+  $MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh X86_64 compatible doghouse
   ```
 
 <details>
@@ -50,13 +50,13 @@ If your build environment is x86_64, you can test this build. Requires previousl
 ---
 ### Build Doghouse for aarch64 (arm64)
 This script uses CMake to build Doghouse with `cosmocc` for x86_64. Note that we make a temporary change to `common/CMakeLists.txt` to statically link with OpenSSL libraries.
-- View the script: <a href="../../scripts/520-Build-with-Cosmo.sh" target="_blank">520-Build-with-Cosmo.sh</a>.
+- View the script: <a href="../../scripts/mm-build-with-cosmo.sh" target="_blank">mm-build-with-cosmo.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh aarch64 compatible doghouse
+  $MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh aarch64 compatible doghouse
   ```
 
 <details>
@@ -104,8 +104,8 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh X86_64 compatible doghouse
-$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh aarch64 compatible doghouse
+$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh X86_64 compatible doghouse
+$MMOJO_SERVER_SCRIPTS/mm-build-with-cosmo.sh aarch64 compatible doghouse
 $MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh compatible doghouse
 $MMOJO_SERVER_SCRIPTS/520-Test-Cosmo-APE.sh compatible command-line 1 doghouse
 ```

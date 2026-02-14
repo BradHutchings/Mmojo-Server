@@ -7,10 +7,10 @@ Install system package updates, then install packages we will need for our build
 ---
 ### Install Dependencies
 This script installs system updates and dependencies you will need:
-- View script: <a href="../scripts/mm-environment-variables.sh" target="_blank">mm-environment-variables.sh</a>.
+- View script: <a href="../scripts/mm-install-dependencies.sh" target="_blank">mm-install-dependencies.sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/mm-environment-variables.sh
+  mm-install-dependencies.sh
   ```
 
 <!--

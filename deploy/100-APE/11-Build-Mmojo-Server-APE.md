@@ -130,8 +130,16 @@ It should look like:
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
+### Choose a Model (Optional)
+
+---
 ### (Optional) Make a .zip File
 Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
+
+Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gemma 270M Instruct v3**.
+```
+mm-choose-model.sh
+```
 
 **CHOOSE LINUX/MACOS OR WINDOWS - WILL STRIP OUT THE .EXE OR NO EXTENSION - CAN WE JUST KEEP .EXE?**
 ```
@@ -139,9 +147,8 @@ ZIP_FILE="mmojo-server-ape.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
   # TODO: If we're on aarch64, change the $ZIP_FILE from -x86- to -arm-
-  zip -r $ZIP_FILE \
-      "$PACKAGE_MMOJO_SERVER_APE_FILE"* \
-      mmojo-server-args Mmojo-Complete
+  zip -r $ZIP_FILE "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete
+  zip -0 $ZIP_FILE *.gguf
   mv $ZIP_FILE $HOME
   cd $HOME
 fi

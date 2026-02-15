@@ -153,6 +153,7 @@ export PACKAGE_FILES="$MMOJO_SERVER_DIR/files/package"
 export PACKAGE_FILES_APE_CONNECT="$PACKAGE_FILES/ape-connect.html"
 export PACKAGE_FILES_APE_READ_ME="$PACKAGE_FILES/ape-read-me.html"
 export PACKAGE_FILES_ORGANIC_READ_ME="$PACKAGE_FILES/organic-read-me.html"
+export PACKAGE_FILES_ORGANIC_CHAT="$PACKAGE_FILES/organic-chat.html"
 export PACKAGE_FILES_ORGANIC_MODELS="$PACKAGE_FILES/organic-models.html"
 
 echo "Setting Doghouse paths and filenames."

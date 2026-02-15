@@ -1,4 +1,4 @@
-## Build Executable for Debian
+## Build ELF Executable for Debian Linux
 **THE BUILD SSECTION IS UNDER CONSTRUCTION. THESE INSTRUCTIONS PROBABLY DON'T WORK.**
 
 ---

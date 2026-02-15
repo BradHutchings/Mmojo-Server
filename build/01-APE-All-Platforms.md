@@ -54,7 +54,7 @@ mm-build-cosmo-ape.sh performant
 
 ---
 ### Create a Run Directory
-Create a run directory. **NEED TO FIGURE OUT HOW TO CHOOSE COMPATIBLE OR PERFORMANT BUILD. MAYBE BOTH?? EXEs too?**
+Create a run directory:
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
@@ -70,7 +70,7 @@ if [ -f "$PERFORMANT_APE" ]; then
 fi
 ```
 
-Create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with the Mmojo Complete UI.
+Create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with the Mmojo Complete UI:
 ```
 cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file

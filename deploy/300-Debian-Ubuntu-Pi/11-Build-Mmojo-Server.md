@@ -28,7 +28,7 @@ Prepare to build:
 ```
 mm-prepare-clone-repo.sh
 mm-prepare-patch-llama-cpp.sh
-$MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
+mm-prepare-customize-webui-sh
 ```
 
 Choose GPUs for your build if you're not building for Raspberry Pi 5.

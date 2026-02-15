@@ -50,6 +50,13 @@ EOF
 **Future:** These are good candidate for mm-scripts.
 
 ---
+### Choose a Model
+Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gemma 270M Instruct v3**.
+```
+mm-choose-model.sh
+```
+
+---
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
@@ -61,13 +68,8 @@ It should look like:
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
-### (Optional) Make a .zip File
+### Make a .zip File
 Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
-
-Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gemma 270M Instruct v3**.
-```
-mm-choose-model.sh
-```
 
 Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ```

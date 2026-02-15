@@ -34,7 +34,7 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 
 ---
 ### Build Mmojo Server
-Prepare to build:
+Prepare to build Mmojo Server (llama.cpp with patches and extensions):
 ```
 mm-prepare-clone-llama-cpp.sh
 mm-prepare-patch-llama-cpp.sh

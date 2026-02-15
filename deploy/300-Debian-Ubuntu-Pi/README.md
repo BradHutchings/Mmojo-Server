@@ -29,11 +29,12 @@ Here are the deployment steps:
 
 ---
 ### Build Mmojo Server
-You can also build Mmojo Server using abbreviated instructions. Do this after you have downloaded models.
-- [11. Build Mmojo Server](11-Build-Mmojo-Server.md) - **Optional:** Build a Mmojo Server quickly.
-  <br/><br/>
+You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
 
+Use this recipe:
+- [02. Build ELF Executable for Debian Linux](/build/02-ELF-Debian.md)
 
+Before building, please work through all of the deploy steps above.
 
 ---
 [MIT-Style License](/LICENSE)<br/>

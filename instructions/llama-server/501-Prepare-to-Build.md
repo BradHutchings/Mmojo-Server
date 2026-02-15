@@ -63,10 +63,10 @@ If you want to build Actual Portable Executable (APE) files with Cosmopolitan or
 ---
 ### Optional: Customize WebUI
 If you want to customize the WebUI to use **llama-server** as the title, run this script.
-- View the script: <a href="../../scripts/501-Customize-webui.sh" target="_blank">501-Customize-webui.sh</a>.
+- View the script: <a href="../../scripts/mm-prepare-customize-webui-sh" target="_blank">mm-prepare-customize-webui-sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh llama-server
+  mm-prepare-customize-webui-sh llama-server
   ```
 
 <!--
@@ -93,7 +93,7 @@ I really think you should run through these scripts one at a time the first few 
 mm-prepare-clone-repo.sh llama-server
 mm-prepare-patch-llama-cpp.sh llama-server
 $LLAMA_SERVER_SCRIPTS/501-Customize-llama-cpp.sh
-$MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh llama-server
+mm-prepare-customize-webui-sh llama-server
 ```
 
 ---

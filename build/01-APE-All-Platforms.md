@@ -31,7 +31,7 @@ mm-build-openssl-with-cosmopolitan.sh
 ```
 
 ---
-### Build Compatible and Performant Mmojo Server APEs/
+### Build Compatible and Performant Mmojo Server APEs
 Prepare to build:
 ```
 mm-prepare-clone-repo.sh

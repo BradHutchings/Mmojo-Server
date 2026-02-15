@@ -190,7 +190,7 @@ fi
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** [03. Build ELF Executable for Red Hat Enterprise Linux](03-ELF-RHEL.md)
 - **Previous:** [01. Build APE for All Platforms](01-APE-All-Platforms.md)
 - **Up:** [Build Mmojo Server](README.md)
 

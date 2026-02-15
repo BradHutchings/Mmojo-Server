@@ -21,6 +21,7 @@ fi
 cp "$PACKAGE_FILES_ORGANIC_READ_ME" "$RUN_DIR/Read-Me.html"
 cp "$PACKAGE_FILES_ORGANIC_CONNECT" "$RUN_DIR/Connect-to-Mmojo.html"
 cp "$PACKAGE_FILES_ORGANIC_CHAT" "$RUN_DIR/Chat-with-Mmojo.html"
+cp "$MMOJO_SERVER_DIR/LICENSE" "$RUN_DIR/LICENSE"
 mkdir -p "$RUN_DIR/models"
 cp "$PACKAGE_FILES_ORGANIC_MODELS" "$RUN_DIR/models/Using-Models.html"
 touch "$RUN_DIR/0-TRY-THESE-IN-ORDER"
@@ -77,7 +78,7 @@ Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ZIP_FILE="Mmojo-Organic.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r $ZIP_FILE *"$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" 0-*
+  zip -r $ZIP_FILE *"$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" 0-* LICENSE
   zip -r $ZIP_FILE models/*.html
   zip -0 -r $ZIP_FILE models/*.gguf
   zip -0 $ZIP_FILE *.gguf

@@ -52,13 +52,13 @@ mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
 PERFORMANT_APE="$BUILD_DIR/$BUILD_COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
 if [ -f "$PERFORMANT_APE" ]; then
-   cp "$PERFORMANT_APE" "$RUN_DIR/1-$PACKAGE_MMOJO_SERVER_APE_FILE-performant.exe"
-   cp "$PERFORMANT_APE" "$RUN_DIR/2-$PACKAGE_MMOJO_SERVER_APE_FILE-performant"
+   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
+   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
 fi
 COMPATIBLE_APE="$BUILD_DIR/$BUILD_COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
 if [ -f "$COMPATIBLE_APE" ]; then
-   cp "$COMPATIBLE_APE" "$RUN_DIR/3-$PACKAGE_MMOJO_SERVER_APE_FILE-compatible.exe"
-   cp "$COMPATIBLE_APE" "$RUN_DIR/4-$PACKAGE_MMOJO_SERVER_APE_FILE-compatible"
+   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
+   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
 fi
 cat << EOF > "$RUN_DIR/Connect-to-Mmojo.html"
 <html><head>
@@ -139,7 +139,7 @@ Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ZIP_FILE="Mmojo-Server-All-Platforms.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r $ZIP_FILE *"$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" 0-*
+  zip -r $ZIP_FILE "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" 0-*
   zip -0 $ZIP_FILE *.gguf
   mv $ZIP_FILE $HOME
   cd $HOME

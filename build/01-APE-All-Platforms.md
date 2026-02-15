@@ -49,6 +49,7 @@ mm-build-with-cosmo.sh X86_64 performant
 mm-build-with-cosmo.sh aarch64 performant
 mm-build-cosmo-ape.sh performant
 ```
+
 ---
 ### Create a Run Directory
 Create a run directory. **NEED TO FIGURE OUT HOW TO CHOOSE COMPATIBLE OR PERFORMANT BUILD. MAYBE BOTH?? EXEs too?**
@@ -65,6 +66,12 @@ if [ -f "$PERFORMANT_APE" ]; then
    cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant"
    cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant.exe"
 fi
+```
+
+**Future:** This is a good candidate for an mm-script.
+
+Create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with the Mmojo Complete UI.
+```
 cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
@@ -83,28 +90,15 @@ chat
 --ctx-size
 32768 
 EOF
+
 ```
 
-**Future:** This is a good candidate for an mm-script.
-
 <details>
-  <summary>Alternatively, create a run directory where Mmojo Server runs in chat mode..</summary>
+  <summary>Alternatively, create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with chat UI.</summary>
 <br/>
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 ```
-mkdir -p $RUN_DIR
-rm -r -f "$RUN_DIR"/*
-COMPATIBLE_APE="$BUILD_DIR/$BUILD_COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
-if [ -f "$COMPATIBLE_APE" ]; then
-   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-compatible"
-   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-compatible.exe"
-fi
-PERFORMANT_APE="$BUILD_DIR/$BUILD_COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
-if [ -f "$PERFORMANT_APE" ]; then
-   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant"
-   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant.exe"
-fi
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --host

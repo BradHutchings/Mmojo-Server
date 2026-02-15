@@ -20,12 +20,14 @@ mm-prepare-install-dependencies.sh
 
 ---
 ### Build Cosmopolitan Library and Tools
+The Cosmopolitan library and tools allow you to build and assemble cross-platform, cross-processor binaries that run anywhere. These assembled files are called Actual Portable Executable (APE) files. The applications are statically linked and compressed into a zip archive.
 ```
 mm-build-cosmopolitan.sh
 ```
 
 ---
 ### Build OpenSSL with Cosmopolitan
+Since you can't dynamically link to the runtime computer's OpenSSL shared library, it needs to be linked statically into the APE builds. Build that static library from latest source here.
 ```
 mm-build-openssl-with-cosmopolitan.sh
 ```

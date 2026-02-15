@@ -1,4 +1,4 @@
-## 03. Build Mach for macOS
+## 05. Build Mach for macOS
 **THE BUILD SSECTION IS UNDER CONSTRUCTION. THESE INSTRUCTIONS PROBABLY DON'T WORK.**
 
 ---

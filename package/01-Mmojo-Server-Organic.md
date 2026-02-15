@@ -19,9 +19,9 @@ if [ -f "$COMPATIBLE_APE" ]; then
    cp "$COMPATIBLE_APE" "$RUN_DIR/4-$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
 fi
 cp "$PACKAGE_FILES_APE_CONNECT" "$RUN_DIR/Connect-to-Mmojo.html"
-cp "$PACKAGE_FILES_APE_READ_ME_ORGANIC" "$RUN_DIR/Read-Me.html"
+cp "$PACKAGE_FILES_ORGANIC_READ_ME" "$RUN_DIR/Read-Me.html"
 mkdir -p "$RUN_DIR/models"
-cp $PACKAGE_FILES_ORGANIC_MODELS "$RUN_DIR/models/Using-Models.html"
+cp "$PACKAGE_FILES_ORGANIC_MODELS" "$RUN_DIR/models/Using-Models.html"
 touch "$RUN_DIR/0-TRY-THESE-IN-ORDER"
 ```
 

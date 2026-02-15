@@ -34,13 +34,14 @@ Here are the deployment steps:
 If you want Mmojo Server to accept connections from other computers on your network, you can set that up:
 - [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
 
-
 ---
 ### Build Mmojo Server
-You can also build Mmojo Server using abbreviated instructions from the Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi
-recipe. Do this after you have downloaded models.
-- [11. Build Mmojo Server](../300-Debian-Ubuntu-Pi/11-Build-Mmojo-Server.md) - **Optional:** Build a Mmojo Server quickly.
-  <br/><br/>
+You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
+
+Use this recipe:
+- [02. Build ELF Executable for Debian Linux](/build/02-ELF-Debian.md)
+
+Before building, please work through all of the deploy steps above.
 
 ---
 [MIT-Style License](/LICENSE)<br/>

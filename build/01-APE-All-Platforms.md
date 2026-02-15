@@ -36,7 +36,7 @@ Prepare to build:
 ```
 mm-prepare-clone-repo.sh
 mm-prepare-patch-llama-cpp.sh
-mm-prepare-customize-webui-sh
+mm-prepare-customize-webui.sh
 ```
 
 Build compatible and performant Mmojo Server APE:

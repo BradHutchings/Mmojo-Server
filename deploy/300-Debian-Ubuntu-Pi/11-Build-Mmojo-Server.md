@@ -26,7 +26,7 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 ### Build Native Mmojo Server
 Prepare to build:
 ```
-$MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh
+mm-prepare-clone-repo.sh
 $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```

@@ -7,10 +7,10 @@ Install system package updates, then install packages we will need for our build
 ---
 ### Install Dependencies
 This script installs system updates and dependencies you will need:
-- View script: <a href="../scripts/mm-install-dependencies.sh" target="_blank">mm-install-dependencies.sh</a>.
+- View script: <a href="../scripts/mm-prepare-install-dependencies.sh" target="_blank">mm-prepare-install-dependencies.sh</a>.
 - Run the script.
   ```
-  mm-install-dependencies.sh
+  mm-prepare-install-dependencies.sh
   ```
 
 <!--

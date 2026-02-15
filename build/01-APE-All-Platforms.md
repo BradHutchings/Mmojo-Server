@@ -70,8 +70,6 @@ if [ -f "$PERFORMANT_APE" ]; then
 fi
 ```
 
-**Future:** This is a good candidate for an mm-script.
-
 Create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with the Mmojo Complete UI.
 ```
 cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
@@ -92,11 +90,10 @@ chat
 --ctx-size
 32768 
 EOF
-
 ```
 
 <details>
-  <summary>Alternatively, create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with chat UI.</summary>
+  <summary>Alternatively, create a <code>mmojo-server-args</code> file in the <code>$RUN_DIR</code> to launch Mmojo Server with chat UI.</summary>
 <br/>
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
@@ -116,6 +113,8 @@ cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 EOF
 ```
 </details>
+
+**Future:** These are good candidate for mm-scripts.
 
 ---
 ### Review Your Work

@@ -41,11 +41,11 @@ If you'd like additional source code enhancements from Mmojo Server, you should 
 ---
 ### Patch llama.cpp Source Code and Build Code, Customize for Doghouse
 This looks like lots of fun.
-- View the script: <a href="../../scripts/501-Patch-llama-cpp.sh" target="_blank">501-Patch-llama-cpp.sh</a>.
+- View the script: <a href="../../scripts/mm-prepare-patch-llama-cpp.sh" target="_blank">mm-prepare-patch-llama-cpp.sh</a>.
 - View the script: <a href="../../scripts/llama-server/501-Customize-llama-cpp.sh" target="_blank">501-Customize-llama-cpp.sh</a>.
 - Run the scripts.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh llama-server
+  mm-prepare-patch-llama-cpp.sh llama-server
   $LLAMA_SERVER_SCRIPTS/501-Customize-llama-cpp.sh
   ```
 
@@ -53,10 +53,10 @@ This looks like lots of fun.
 ---
 ### Optional: Patch llama.cpp Source Code and Build Code
 If you want to build Actual Portable Executable (APE) files with Cosmopolitan or package conveniently for distribution, you need to patch some of the llama.cpp code with this script.
-- View the script: <a href="../../scripts/501-Patch-llama-cpp.sh" target="_blank">501-Patch-llama-cpp.sh</a>.
+- View the script: <a href="../../scripts/mm-prepare-patch-llama-cpp.sh" target="_blank">mm-prepare-patch-llama-cpp.sh</a>.
 - Run the scripts.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh llama-server
+  mm-prepare-patch-llama-cpp.sh llama-server
   ```
 -->
 
@@ -91,7 +91,7 @@ I really think you should run through these scripts one at a time the first few 
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
 mm-prepare-clone-repo.sh llama-server
-$MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh llama-server
+mm-prepare-patch-llama-cpp.sh llama-server
 $LLAMA_SERVER_SCRIPTS/501-Customize-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh llama-server
 ```

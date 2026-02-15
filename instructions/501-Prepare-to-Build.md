@@ -56,10 +56,10 @@ Rollback the `tools/server/webui` to the pre-Svelte version. The new Svelte UI d
 -->
 
 Customize the web UI, rebuild all the web files.
-- View the script: <a href="../scripts/501-Customize-webui.sh" target="_blank">501-Customize-webui.sh</a>.
+- View the script: <a href="../scripts/mm-prepare-customize-webui-sh" target="_blank">mm-prepare-customize-webui-sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
+  mm-prepare-customize-webui-sh
   ```
 
 <!--
@@ -85,7 +85,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 mm-prepare-clone-repo.sh
 mm-prepare-patch-llama-cpp.sh
-$MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
+mm-prepare-customize-webui-sh
 ```
 
 ---

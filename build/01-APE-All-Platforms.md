@@ -4,13 +4,6 @@ In this step, you will build an Actual Portable Executable (APE) file that will 
 
 These build steps work well in a Debian Linux operating system like Ubuntu or Raspberry Pi.
 
-<!--
-**Jump Back:** (Does this make sense here?)
-- Deploy Mmojo Server APE: ???
-- **(remove)** Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-- **(remove)** Deploy Mmojo Server on Windows (WSL): [05. Download Mmojo Server](../200-Windows-WSL/05-Download-Mmojo-Server.md)
--->
-
 ---
 ### Install Dependencies
 Install dependencies. These may take 20 minutes or so to download and install.

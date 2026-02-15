@@ -27,7 +27,7 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 Prepare to build:
 ```
 mm-prepare-clone-repo.sh
-$MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
+mm-prepare-patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```
 

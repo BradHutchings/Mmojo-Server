@@ -34,9 +34,9 @@ mm-build-openssl-with-cosmopolitan.sh
 
 ---
 ### Build Compatible and Performant Mmojo Server APEs
-Prepare to build llama.cpp:
+Prepare to build Mmojo Server (llama.cpp with patches and extensions):
 ```
-mm-prepare-clone-repo.sh
+mm-prepare-clone-llama-cpp.sh
 mm-prepare-patch-llama-cpp.sh
 mm-prepare-customize-webui.sh
 ```

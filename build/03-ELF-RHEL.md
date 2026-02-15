@@ -1,4 +1,4 @@
-## 03. ELF Build Executable for RHEL (Red Hat Enterprise Linux)
+## 03. Build ELF Executable for Red Hat Enterprise Linux
 **THE BUILD SSECTION IS UNDER CONSTRUCTION. THESE INSTRUCTIONS PROBABLY DON'T WORK.**
 
 ---

@@ -23,13 +23,13 @@ mm-env
 Clone llama.cpp repo and repos upon which it depends into a `$BUILD_LLAMA_CPP_DIR` directory.
 
 This script clones the llama.cpp repo and repos upon which it depends into the `$BUILD_LLAMA_CPP_DIR` directory:
-- View the script: <a href="../scripts/501-Clone-Repos.sh" target="_blank">501-Clone-Repos.sh</a>.
+- View the script: <a href="../scripts/mm-prepare-clone-repo.sh" target="_blank">mm-prepare-clone-repo.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh
+  mm-prepare-clone-repo.sh
   ```
 
 ---
@@ -83,7 +83,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh
+mm-prepare-clone-repo.sh
 $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```

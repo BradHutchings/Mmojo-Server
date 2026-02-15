@@ -1,6 +1,6 @@
-## Build APE for All Platforms - Packaging
+## Package - Mmojo Server Organic
 ### About this Step
-This is a separate packaging step for APE builds. It's how I package the **Mmojo Server - Start Local** zip file and disk.
+This is a separate packaging step for APE builds. It's how I package the **Mmojo Server Organic** zip file and disk.
 
 ---
 ### Create a Run Directory

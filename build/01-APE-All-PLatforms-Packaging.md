@@ -36,7 +36,7 @@ cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --default-ui-endpoint
 chat
 --host
-0.0.0.0
+127.0.0.1
 --port
 8080
 --batch-size
@@ -47,28 +47,6 @@ chat
 32768 
 EOF
 ```
-
-<details>
-  <summary><b>Alternatively:</b> Create a <code>mmojo-server-args</code> file in the <code>$RUN_DIR</code> to launch Mmojo Server with chat UI.</summary>
-<br/>
-    
-Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
-```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
---host
-0.0.0.0
---port
-8080
---batch-size
-2048
---threads-http
-8
---ctx-size
-32768 
-EOF
-```
-</details>
 
 **Future:** These are good candidate for mm-scripts.
 

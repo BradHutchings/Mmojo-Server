@@ -21,6 +21,7 @@ fi
 cp $PACKAGE_FILES_APE_CONNECT "$RUN_DIR/Connect-to-Mmojo.html"
 cp $PACKAGE_FILES_APE_READ_ME_ORGANIC "$RUN_DIR/Read-Me.html"
 mkdir -p "$RUN_DIR/models"
+cp $PACKAGE_FILES_ORGANIC_MODELS "$RUN_DIR/models/Using-Models.html"
 touch "$RUN_DIR/0-TRY-THESE-IN-ORDER"
 ```
 
@@ -74,7 +75,8 @@ ZIP_FILE="Mmojo-Server-Organic.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
   zip -r $ZIP_FILE *"$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" 0-*
-  zip -0 -r $ZIP_FILE models
+  zip -r $ZIP_FILE models/*.html
+  zip -0 -r $ZIP_FILE models/*.gguf
   zip -0 $ZIP_FILE *.gguf
   mv $ZIP_FILE $HOME
   cd $HOME

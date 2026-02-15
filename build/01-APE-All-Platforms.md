@@ -60,11 +60,8 @@ if [ -f "$COMPATIBLE_APE" ]; then
    cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
    cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
 fi
-cat << EOF > "$RUN_DIR/Connect-to-Mmojo.html"
-<html><head>
-<meta http-equiv="refresh" content="0; url=http://localhost:8080" />
-</head><body></body></html>
-EOF
+cp $PACKAGE_FILES_APE_CONNECT "$RUN_DIR/Connect-to-Mmojo.html"
+cp $PACKAGE_FILES_APE_READ_ME "$RUN_DIR/Read-Me.html"
 touch "$RUN_DIR/0-TRY-THESE-IN-ORDER"
 ```
 

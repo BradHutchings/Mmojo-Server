@@ -99,7 +99,7 @@ Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --host
-0.0.0.0
+127.0.0.1
 --port
 8080
 --batch-size

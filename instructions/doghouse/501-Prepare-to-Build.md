@@ -49,10 +49,10 @@ This looks like lots of fun.
 ---
 ### Customize WebUI
 Customize the web UI, rebuild all the web files.
-- View the script: <a href="../../scripts/501-Customize-webui.sh" target="_blank">501-Customize-webui.sh</a>.
+- View the script: <a href="../../scripts/mm-prepare-customize-webui-sh" target="_blank">mm-prepare-customize-webui-sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh doghouse
+  mm-prepare-customize-webui-sh doghouse
   ```
 
 <!--
@@ -79,7 +79,7 @@ I really think you should run through these scripts one at a time the first few 
 mm-prepare-clone-repo.sh doghouse
 mm-prepare-patch-llama-cpp.sh doghouse
 $DOGHOUSE_SCRIPTS/501-Customize-llama-cpp.sh
-$MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh doghouse
+mm-prepare-customize-webui-sh doghouse
 ```
 
 ---

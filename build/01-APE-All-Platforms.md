@@ -67,9 +67,10 @@ if [ -f "$COMPATIBLE_APE" ]; then
    cp "$COMPATIBLE_APE" "$RUN_DIR/3-$PACKAGE_MMOJO_SERVER_APE_FILE-compatible.exe"
    cp "$COMPATIBLE_APE" "$RUN_DIR/4-$PACKAGE_MMOJO_SERVER_APE_FILE-compatible"
 fi
-cat << EOF > "$RUN_DIR/Connect-to-Mmojo.url"
-[InternetShortcut]
-URL=http://localhost:8080/
+cat << EOF > "$RUN_DIR/Connect-to-Mmojo.html"
+<html><head>
+<meta http-equiv="refresh" content="0; url=http://localhost:8080" />
+</head><body></body></html>
 EOF
 touch "$RUN_DIR/0-TRY-THESE-IN-ORDER"
 ```
@@ -145,7 +146,7 @@ Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ZIP_FILE="Mmojo-Server-All-Platforms.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r $ZIP_FILE *"$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".url" 0-*
+  zip -r $ZIP_FILE *"$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" 0-*
   zip -0 $ZIP_FILE *.gguf
   mv $ZIP_FILE $HOME
   cd $HOME

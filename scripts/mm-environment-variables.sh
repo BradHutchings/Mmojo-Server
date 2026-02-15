@@ -149,6 +149,10 @@ export PACKAGE_MMOJO_SERVER_EXE_FILE="mmojo-server.exe"
 export PACKAGE_MMOJO_SERVER_ARGS_FILE="mmojo-server-args"
 export PACKAGE_MMOJO_SERVER_SUPPORT_DIR="mmojo-server-support"
 
+export PACKAGE_FILES="$MMOJO_SERVER_DIR/files/package"
+export PACKAGE_FILES_APE_CONNECT="$PACKAGE_FILES/ape-connect.html"
+export PACKAGE_FILES_APE_READ_ME="$PACKAGE_FILES/ape-read-me.html"
+
 echo "Setting Doghouse paths and filenames."
 export DOGHOUSE_FILES="$MMOJO_SERVER_DIR/files/doghouse"
 export DOGHOUSE_SCRIPTS="$MMOJO_SERVER_DIR/scripts/doghouse"

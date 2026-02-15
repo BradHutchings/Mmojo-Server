@@ -142,6 +142,8 @@ export PACKAGE_SEAS="seas"
 
 export PACKAGE_MMOJO_SERVER_FILE="mmojo-server"
 export PACKAGE_MMOJO_SERVER_APE_FILE="mmojo-server-ape"
+export PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE="mmojo-server-ape-compatible"
+export PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE="mmojo-server-ape-performant"
 export PACKAGE_MMOJO_SERVER_ZIP_FILE="mmojo-server.zip"
 export PACKAGE_MMOJO_SERVER_EXE_FILE="mmojo-server.exe"
 export PACKAGE_MMOJO_SERVER_ARGS_FILE="mmojo-server-args"

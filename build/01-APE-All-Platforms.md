@@ -57,16 +57,21 @@ Create a run directory:
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
-COMPATIBLE_APE="$BUILD_DIR/$BUILD_COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
-if [ -f "$COMPATIBLE_APE" ]; then
-   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-compatible"
-   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-compatible.exe"
-fi
 PERFORMANT_APE="$BUILD_DIR/$BUILD_COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
 if [ -f "$PERFORMANT_APE" ]; then
-   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant"
-   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE-performant.exe"
+   cp "$PERFORMANT_APE" "$RUN_DIR/1-$PACKAGE_MMOJO_SERVER_APE_FILE-performant.exe"
+   cp "$PERFORMANT_APE" "$RUN_DIR/2-$PACKAGE_MMOJO_SERVER_APE_FILE-performant"
 fi
+COMPATIBLE_APE="$BUILD_DIR/$BUILD_COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
+if [ -f "$COMPATIBLE_APE" ]; then
+   cp "$COMPATIBLE_APE" "$RUN_DIR/3-$PACKAGE_MMOJO_SERVER_APE_FILE-compatible.exe"
+   cp "$COMPATIBLE_APE" "$RUN_DIR/4-$PACKAGE_MMOJO_SERVER_APE_FILE-compatible"
+fi
+cat << EOF > "$RUN_DIR/Mmojo Complete.url"
+[InternetShortcut]
+URL=http://localhost:8080/
+EOF
+touch "$RUN_DIR/0-TRY THESE IN ORDER."
 ```
 
 Create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with the Mmojo Complete UI:

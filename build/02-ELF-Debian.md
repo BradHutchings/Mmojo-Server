@@ -184,6 +184,7 @@ Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gem
 mm-choose-model.sh
 ```
 
+Make a `.zip` file and move it to your `$HOME` directory:
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"

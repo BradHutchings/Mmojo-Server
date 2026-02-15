@@ -9,7 +9,7 @@ In this step, you will build for Arch Linux.
 
 ---
 ### Proceed
-- **Previous:** [05. Build Mach-O Executable for macOS](05-Mach-O-macOS.md)
+- **Next:** [05. Build Mach-O Executable for macOS](05-Mach-O-macOS.md)
 - **Previous:** [03. Build ELF Executable for Red Hat Enterprise Linux](03-ELF-RHEL.md)
 - **Up:** [Build Mmojo Server](README.md)
 

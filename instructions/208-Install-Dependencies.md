@@ -7,10 +7,10 @@ Install system package updates, then install packages we will need for our build
 ---
 ### Install Dependencies
 This script installs system updates and dependencies you will need:
-- View script: <a href="../scripts/207-Install-Dependencies.sh" target="_blank">207-Install-Dependencies.sh</a>.
+- View script: <a href="../scripts/mm-prepare-install-dependencies.sh" target="_blank">mm-prepare-install-dependencies.sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/207-Install-Dependencies.sh
+  mm-prepare-install-dependencies.sh
   ```
 
 <!--

@@ -21,12 +21,12 @@ mm-env
 ### SHORTCUT: Build Compatible and Performant APEs
 Before using this shortcut, please work through the steps of building the compatible and performant APEs a few times so that you can become familiar with what they do.
 ```
-$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh X86_64 compatible
-$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh aarch64 compatible
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh compatible
-$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh X86_64 performant
-$MMOJO_SERVER_SCRIPTS/520-Build-with-Cosmo.sh aarch64 performant
-$MMOJO_SERVER_SCRIPTS/520-Assemble-Cosmo-APE.sh performant
+mm-build-with-cosmo.sh X86_64 compatible
+mm-build-with-cosmo.sh aarch64 compatible
+mm-build-cosmo-ape.sh compatible
+mm-build-with-cosmo.sh X86_64 performant
+mm-build-with-cosmo.sh aarch64 performant
+mm-build-cosmo-ape.sh performant
 ```
 
 ---

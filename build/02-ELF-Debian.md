@@ -1,18 +1,28 @@
-## 11. Build Mmojo Server
-### About this Step (Optional)
-If you would prefer to build Mmojo Server optimized for the CPU on your computer, you can build it with the steps on this page. The Mmojo Server you build with the instructions on this page will take advantage of all available features of your computer's CPU. It can also work with your computer's NVIDIA GPU or GPU supported by Vulkan if it has one.
+## Build ELF Executable for Debian Linux
+### About this Step
+In this step, you will build an executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:
+- **Compatible:** Runs on most systems that use a CPU from your computer's CPU family. 
+- **Performant:** Runs on systems that use a recent CPU from your computer's CPU family.
+  - For x86_64, these are x86_64 CPUs that support "level 3" flags, as defined by the gnu cc compiler.
+  - For aarch64 (arm64), these are aarch64 CPUs that support ??? flags, as defined by the gnu cc compiler. These include all Apple M-series CPUs.
+- **Native:** Runs on systems with a CPU that includes all of the CPU flags your computer's CPU includes. This includes your computer.
 
-**Note:**  With Windows Subsystem for Linux (WSL), only NVIDIA GPUs are available for Mmojo Server to use.
+Windows Subsystem for Linux (WSL) supports NVIDIA GPUs through CUDA libraries. If you're building for WSL, be sure to enable CUDA below.
 
-**Jump Back:**
-- Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-- Deploy Mmojo Server on Windows (WSL): [05. Download Mmojo Server](../200-Windows-WSL/05-Download-Mmojo-Server.md)
+These build steps work well in a Debian Linux operating system like Ubuntu or Raspberry Pi, or in a Ubuntu WSL instance on Windows 10 or 11.
+
+<!--
+**Jump Back:** (Does this make sense here?)
+- Deploy Mmojo Server APE: ???
+- **(remove)** Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
+- **(remove)** Deploy Mmojo Server on Windows (WSL): [05. Download Mmojo Server](../200-Windows-WSL/05-Download-Mmojo-Server.md)
+ -->
  
 ---
 ### Install Dependencies and GPU Support
 Install dependencies. These may take 20 minutes or so to download and install.
 ```
-$MMOJO_SERVER_SCRIPTS/207-Install-Dependencies.sh
+mm-prepare-install-dependencies.sh
 ```
 
 Install CUDA and Vulkan support. These may take 10 minutes or so to download and install.
@@ -23,12 +33,12 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 ```
 
 ---
-### Build Native Mmojo Server
-Prepare to build:
+### Build Mmojo Server
+Prepare to build Mmojo Server (llama.cpp with patches and extensions):
 ```
-$MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh
-$MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
-$MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
+mm-prepare-clone-llama-cpp.sh
+mm-prepare-patch-llama-cpp.sh
+mm-prepare-customize-webui.sh
 ```
 
 Choose GPUs for your build if you're not building for Raspberry Pi 5.
@@ -59,7 +69,7 @@ $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
 ```
 
 <details>
-  <summary>Alternatively, build a more compatible Mmojo Server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
+  <summary><b>Alternatively:</b> Build a more compatible Mmojo Server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
@@ -78,7 +88,7 @@ fi
 </details>
 
 <details>
-  <summary>Alternatively, build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
+  <summary><b>Alternatively:</b> Build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
@@ -98,11 +108,18 @@ fi
 
 ---
 ### Create a Run Directory
-Create a run directory.
+Create a run directory:
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
 cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
+cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
+# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
+touch "$RUN_DIR/$TOUCH_FILE"
+```
+
+Create a mmojo-server-args file in the $RUN_DIR to launch Mmojo Server with the Mmojo Complete UI:
+```
 cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
@@ -121,21 +138,14 @@ chat
 --ctx-size
 32768 
 EOF
-touch "$RUN_DIR/$TOUCH_FILE"
 ```
 
-**Future:** This is a good candidate for an mm-script.
-
 <details>
-  <summary>Alternatively, create a run directory where Mmojo Server runs in chat mode..</summary>
+  <summary><b>Alternatively:</b> Create a <code>mmojo-server-args</code> file in the <code>$RUN_DIR</code> to launch Mmojo Server with chat UI.</summary>
 <br/>
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 ```
-mkdir -p $RUN_DIR
-rm -r -f "$RUN_DIR"/*
-cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
-cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --host
@@ -149,9 +159,10 @@ cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --ctx-size
 32768 
 EOF
-touch "$RUN_DIR/$TOUCH_FILE"
 ```
 </details>
+
+**Future:** These are good candidate for mm-scripts.
 
 ---
 ### Review Your Work
@@ -167,11 +178,18 @@ It should look like:
 ---
 ### (Optional) Make a .zip File
 Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
+
+Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gemma 270M Instruct v3**.
+```
+mm-choose-model.sh
+```
+
+Make a `.zip` file and move it to your `$HOME` directory:
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  # TODO: If we're on aarch64, change the $ZIP_FILE from -x86- to -arm-
   zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete $TOUCH_FILE
+  zip -0 $ZIP_FILE *.gguf
   mv $ZIP_FILE $HOME
   cd $HOME
 fi
@@ -179,15 +197,9 @@ fi
 
 ---
 ### Proceed
-- **Next:**
-  - Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
-  - Deploy Mmojo Server on Windows (WSL): [06. Control Mmojo Server](../200-Windows-WSL/06-Control-Mmojo-Server.md)
-- **Previous:**
-  - Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-  - Deploy Mmojo Server on Windows (WSL): [05. Download Mmojo Server](../200-Windows-WSL/05-Download-Mmojo-Server.md)
-- **Up:**
-  - [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
-  - [Deploy Mmojo Server on Windows (WSL)](../200-Windows-WSL/README.md)
+- **Next:** This is the last step in this section.
+- **Previous:** [01. Build APE for All Platforms](01-APE-All-Platforms.md)
+- **Up:** [Build Mmojo Server](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

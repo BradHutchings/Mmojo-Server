@@ -26,33 +26,33 @@ mm-env
 Clone llama.cpp repo and repos upon which it depends into a `$DOGHOUSE_BUILD_DIR` directory.
 
 This script clones the llama.cpp repo and repos upon which it depends into the `$DOGHOUSE_BUILD_DIR` directory:
-- View the script: <a href="../../scripts/501-Clone-Repos.sh" target="_blank">501-Clone-Repos.sh</a>.
+- View the script: <a href="../../scripts/mm-prepare-clone-llama-cpp.sh" target="_blank">mm-prepare-clone-llama-cpp.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh doghouse
+  mm-prepare-clone-llama-cpp.sh doghouse
   ```
 
 ---
 ### Patch llama.cpp Source Code and Build Code, Customize for Doghouse
 This looks like lots of fun.
-- View the script: <a href="../../scripts/501-Patch-llama-cpp.sh" target="_blank">501-Patch-llama-cpp.sh</a>.
+- View the script: <a href="../../scripts/mm-prepare-patch-llama-cpp.sh" target="_blank">mm-prepare-patch-llama-cpp.sh</a>.
 - View the script: <a href="../../scripts/doghouse/501-Customize-llama-cpp.sh" target="_blank">501-Customize-llama-cpp.sh</a>.
 - Run the scripts.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh doghouse
+  mm-prepare-patch-llama-cpp.sh doghouse
   $DOGHOUSE_SCRIPTS/501-Customize-llama-cpp.sh
   ```
 
 ---
 ### Customize WebUI
 Customize the web UI, rebuild all the web files.
-- View the script: <a href="../../scripts/501-Customize-webui.sh" target="_blank">501-Customize-webui.sh</a>.
+- View the script: <a href="../../scripts/mm-prepare-customize-webui-sh" target="_blank">mm-prepare-customize-webui-sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh doghouse
+  mm-prepare-customize-webui-sh doghouse
   ```
 
 <!--
@@ -76,10 +76,10 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh doghouse
-$MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh doghouse
+mm-prepare-clone-llama-cpp.sh doghouse
+mm-prepare-patch-llama-cpp.sh doghouse
 $DOGHOUSE_SCRIPTS/501-Customize-llama-cpp.sh
-$MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh doghouse
+mm-prepare-customize-webui-sh doghouse
 ```
 
 ---

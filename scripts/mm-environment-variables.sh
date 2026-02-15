@@ -54,20 +54,17 @@ export MMOJO_SHARE_PACKAGES_ZIP="$MMOJO_SHARE_PACKAGES/zip"
 
 export MOUNT_MMOJO_SHARE_SCRIPT="mm-mount-mmojo-share.sh"
 
-# Prefix is 300- so we can wipe them out quickly, and changing script numbers doesn't mess stuff up.
 echo "Setting Build Pieces paths."
-# export CERTIFICATES_DIR="$HOME/300-CERTIFICATES"
 export CERTIFICATES_DIR="$HOME/mm-certificates"
-export BUILD_COSMOPOLITAN_DIR="$HOME/300-BUILD-cosmopolitan"
+export BUILD_COSMOPOLITAN_DIR="$HOME/mm-build-cosmopolitan"
 export COSMOCC_DIR="$BUILD_COSMOPOLITAN_DIR/cosmocc"
-export BUILD_OPENSSSL_DIR="$HOME/300-BUILD-openssl"
-export INSTALL_CUDA_TOOLKIT_DIR="$HOME/300-INSTALL-cuda-toolkit"
-export BUILD_VULKAN_SDK_DIR="$HOME/300-BUILD-vulkan-sdk"
+export BUILD_OPENSSSL_DIR="$HOME/mm-build-openssl"
+
+export BUILD_VULKAN_SDK_DIR="$HOME/mm-build-vulkan-sdk"
 export VULKAN_VERSION="1.4.328.1"
 if [[ -z "${VULKAN_SIMULTANEOUS_COMPILES}" ]]; then
   export VULKAN_SIMULTANEOUS_COMPILES=4
 fi
-
 VULKAN_SETUP_ENV="$BUILD_VULKAN_SDK_DIR/$VULKAN_VERSION/setup-env.sh"
 if [ -e "$VULKAN_SETUP_ENV" ]; then
   source $VULKAN_SETUP_ENV

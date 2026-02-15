@@ -17,6 +17,12 @@ Launch `mmojo-server`:
 mm-start-mmojo-server.sh
 ```
 
+This starts Mmojo Server in a debug mode with messages displayed on screen so you can see what it's doing. As you can see, it is doing a lot 😆.
+
+<img width="499" height="104" alt="image" src="https://github.com/user-attachments/assets/38d2f22c-96dc-4f6c-9bf1-248c19db18be" />
+
+This `all slots are idle` message tells you that Mmojo Server is ready to use.
+
 If you get a message about an illegal instruction, it's because you installed a performant version of Mmojo Server. Your computer's CPU, sadly, does not support that version. Go back to the download step and try the alternative compatible version.
 
 - [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
@@ -30,6 +36,8 @@ Connect to Mmojo Complete from a browser:
 You should see the Mmojo Complete user interface:
 
 <img width="543" height="400" alt="image" src="https://github.com/user-attachments/assets/31055741-4697-441e-a3e3-a191401a7e8c" />
+
+Bookmark Mmojo Complete in your browser while you're there.
 
 ---
 ### Stop Mmojo Server

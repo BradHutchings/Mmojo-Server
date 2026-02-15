@@ -24,6 +24,7 @@ Here are the deployment steps:
 - [06. Test Mmojo Server](06-Test-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
 - [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
 - [08. Change Model](08-Change-Model.md) - Stop Mmojo Server, choose a new model, start Mmojo Server.
+- [09. Launch from Taskbar](09-Launch-from-Taskbar.md) - Make sure Mmojo Server works for day to day use.
   <br/><br/>
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
@@ -31,15 +32,16 @@ Here are the deployment steps:
 ---
 ### Port Forward to Mmojo Server
 If you want Mmojo Server to accept connections from other computers on your network, you can set that up:
-- [09. Port Forward to Mmojo Server](09-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
-
+- [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
 
 ---
 ### Build Mmojo Server
-You can also build Mmojo Server using abbreviated instructions from the Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi
-recipe. Do this after you have downloaded models.
-- [11. Build Mmojo Server](../300-Debian-Ubuntu-Pi/11-Build-Mmojo-Server.md) - **Optional:** Build a Mmojo Server quickly.
-  <br/><br/>
+You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
+
+Use this recipe:
+- [02. Build ELF Executable for Debian Linux](/build/02-ELF-Debian.md)
+
+Before building, please work through all of the deploy steps above.
 
 ---
 [MIT-Style License](/LICENSE)<br/>

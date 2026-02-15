@@ -1,4 +1,4 @@
-## 08. Port Forward to Mmojo Server
+## 10. Port Forward to Mmojo Server
 ### About this Step (Optional)
 Mmojo Server runs in an WSL instance on your computer. It can accept connections from other process running on your computer, including from other WSL instances. This makes WSL an effective sandbox.
 
@@ -113,7 +113,7 @@ It is important that you use http, not https.
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [08. Change Model](08-Change-Model.md)
+- **Previous:** [09. Launch from Taskbar](09-Launch-from-Taskbar.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

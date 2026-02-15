@@ -73,7 +73,7 @@ Brad makes .zip files for the Hugging Face downloads. They are moved to your `$H
 
 Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ```
-ZIP_FILE="Mmojo-Server-Organic.zip"
+ZIP_FILE="Mmojo-Organic.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
   zip -r $ZIP_FILE *"$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" 0-*

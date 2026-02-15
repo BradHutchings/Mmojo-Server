@@ -35,10 +35,10 @@ This script clones the llama.cpp repo and repos upon which it depends into the `
 ---
 ### Patch llama.cpp Source Code and Build Code
 This looks like lots of fun.
-- View the script: <a href="../scripts/501-Patch-llama-cpp.sh" target="_blank">501-Patch-llama-cpp.sh</a>.
+- View the script: <a href="../scripts/mm-prepare-patch-llama-cpp.sh" target="_blank">mm-prepare-patch-llama-cpp.sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
+  mm-prepare-patch-llama-cpp.sh
   ```
 
 ---
@@ -84,7 +84,7 @@ I really think you should run through these scripts one at a time the first few 
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
 mm-prepare-clone-repo.sh
-$MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
+mm-prepare-patch-llama-cpp.sh
 $MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
 ```
 

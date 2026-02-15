@@ -141,7 +141,6 @@ Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ZIP_FILE="mmojo-server-ape.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  # TODO: If we're on aarch64, change the $ZIP_FILE from -x86- to -arm-
   zip -r $ZIP_FILE "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete
   zip -0 $ZIP_FILE *.gguf
   mv $ZIP_FILE $HOME

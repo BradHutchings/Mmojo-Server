@@ -97,7 +97,7 @@ EOF
 ```
 
 <details>
-  <summary>Alternatively, create a <code>mmojo-server-args</code> file in the <code>$RUN_DIR</code> to launch Mmojo Server with chat UI.</summary>
+  <summary><b>Alternatively:</b> Create a <code>mmojo-server-args</code> file in the <code>$RUN_DIR</code> to launch Mmojo Server with chat UI.</summary>
 <br/>
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad

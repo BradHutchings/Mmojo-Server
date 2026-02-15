@@ -40,13 +40,6 @@ mm-prepare-patch-llama-cpp.sh
 mm-prepare-customize-webui-sh
 ```
 
-Old:
-```
-$MMOJO_SERVER_SCRIPTS/501-Clone-Repos.sh
-$MMOJO_SERVER_SCRIPTS/501-Patch-llama-cpp.sh
-$MMOJO_SERVER_SCRIPTS/501-Customize-webui.sh
-```
-
 Build compatible and performant Mmojo Server APE:
 ```
 mm-build-with-cosmo.sh X86_64 compatible

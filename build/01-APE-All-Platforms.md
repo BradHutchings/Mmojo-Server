@@ -127,9 +127,6 @@ It should look like:
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
-### Choose a Model (Optional)
-
----
 ### (Optional) Make a .zip File
 Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
 
@@ -138,7 +135,7 @@ Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gem
 mm-choose-model.sh
 ```
 
-**CHOOSE LINUX/MACOS OR WINDOWS - WILL STRIP OUT THE .EXE OR NO EXTENSION - CAN WE JUST KEEP .EXE?**
+Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ```
 ZIP_FILE="mmojo-server-ape.zip"
 if test -n "$RUN_DIR"; then
@@ -151,17 +148,13 @@ if test -n "$RUN_DIR"; then
 fi
 ```
 
+**Future:** Figure out if we need both files, with `.exe` and withot. WIll macOS run the `.exe`?
+
 ---
 ### Proceed
-- **Next:**
-  - Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [06. Control Mmojo Server](06-Control-Mmojo-Server.md)
-  - Deploy Mmojo Server on Windows (WSL): [06. Control Mmojo Server](../200-Windows-WSL/06-Control-Mmojo-Server.md)
-- **Previous:**
-  - Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-  - Deploy Mmojo Server on Windows (WSL): [05. Download Mmojo Server](../200-Windows-WSL/05-Download-Mmojo-Server.md)
-- **Up:**
-  - [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
-  - [Deploy Mmojo Server on Windows (WSL)](../200-Windows-WSL/README.md)
+- **Next:** [02. Build ELF Executable for Debian Linux](02-ELF-Debian.md)
+- **Previous:** This is the first step in this section.
+- **Up:** [Build Mmojo Server](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

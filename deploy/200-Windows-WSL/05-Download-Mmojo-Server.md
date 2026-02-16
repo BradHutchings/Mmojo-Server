@@ -2,13 +2,6 @@
 ### About this Step
 In this step, we will download Mmojo Server from Hugging Face.
 
-<details>
-  <summary><b>Alternatively:</b> If you are a developer, you can build your own Mmojo Server.</summary>
-  <br/>
-  
-- [11. Build Mmojo Server](../300-Debian-Ubuntu-Pi/11-Build-Mmojo-Server.md)
-</details>
-
 ---
 ### Install GPU Support
 Install CUDA and Vulkan support. These may take 10 minutes or so to download and install.

@@ -28,9 +28,6 @@ This isn't so much a step, as it is a reference to the scripts that were copied 
     ```
     . mm-use-gpus.sh
     ```
-
-- `mm-delete-builds.sh` &mdash; Deletes the `$BUILD_DIR` directory and the `$DOGHOUSE_BUILD_DIR`.
-- `mm-delete-packages.sh` &mdash; Deletes the `$PACKAGE_DIR ` directory and the `$DOGHOUSE_PACKAGE_DIR`.
    <br/><br/>
 
 - `mm-environment-variables.sh` &mdash; Sets up shell variables, paths, subdirectories used by scripts to organize building and packaging.

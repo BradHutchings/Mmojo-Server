@@ -128,7 +128,7 @@ Brad makes .zip files for the Hugging Face downloads. They are moved to your `$H
 
 Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gemma 270M Instruct v3**.
 ```
-mm-choose-model.sh
+mm-model-choose.sh
 ```
 
 Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:

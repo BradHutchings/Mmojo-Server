@@ -22,11 +22,11 @@ This isn't so much a step, as it is a reference to the scripts that were copied 
     ```
     . mm-use-build.sh
     ```
-- `mm-use-gpus.sh` &mdash; User chooses a subset of available installed GPU developer libraries for use by a build script.
+- `mm-gpus-choose.sh` &mdash; User chooses a subset of available installed GPU developer libraries for use by a build script.
   - Sets shell variables `$CHOSEN_GPUS` and `$CHOSEN_GPUS_NAMES`.
   - Call with a `. ` preceeding because you need to set variables in the shell instance you are running.
     ```
-    . mm-use-gpus.sh
+    . mm-gpus-choose.sh
     ```
    <br/><br/>
 

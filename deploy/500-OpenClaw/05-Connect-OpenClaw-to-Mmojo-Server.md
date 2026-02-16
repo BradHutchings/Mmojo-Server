@@ -11,7 +11,7 @@ Click the MmojoServer WSL Shortcut that you added to your Taskbar. This will lau
 
 Choose a model. I'd suggest choosing **IBM Granite 8B Instruct**. It will be copied to your `$HOME/Mmojo-Server` directory.
 ```
-mm-choose-model.sh
+mm-model-choose.sh
 ```
 
 Launch `mmojo-server`:

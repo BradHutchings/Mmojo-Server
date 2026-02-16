@@ -14,7 +14,7 @@ mm-model-choose.sh
 
 Launch `mmojo-server`:
 ```
-mm-start-mmojo-server.sh
+mm-mmojo-server-start.sh
 ```
 
 This starts Mmojo Server in a debug mode with messages displayed on screen so you can see what it's doing. As you can see, it is doing a lot 😆.

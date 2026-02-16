@@ -19,7 +19,7 @@ cat << 'EOF' > "$HOME/Desktop/Start-Mmojo-Server.sh"
 
 # When this is run by double clicking on the Desktop, it doesn't have the environment set up.
 . $HOME/mm-scripts/mm-environment-variables.sh
-$HOME/mm-scripts/mm-start-mmojo-server.sh background
+$HOME/mm-scripts/mm-mmojo-server-start.sh background
 
 echo $(dirname -- "${BASH_SOURCE[0]}")
 # echo ${BASH_SOURCE[0]}
@@ -38,7 +38,7 @@ cat << 'EOF' > "$HOME/Desktop/Stop-Mmojo-Server.sh"
 
 # When this is run by double clicking on the Desktop, it doesn't have the environment set up.
 . $HOME/mm-scripts/mm-environment-variables.sh
-$HOME/mm-scripts/mm-stop-mmojo-server.sh
+$HOME/mm-scripts/mm-mmojo-server-stop.sh
 sleep 5s
 
 echo $(dirname -- "${BASH_SOURCE[0]}")

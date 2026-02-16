@@ -4,13 +4,6 @@ In this step, you will build an Actual Portable Executable (APE) file that will 
 
 These build steps work well in a Debian Linux operating system like Ubuntu or Raspberry Pi.
 
-<!--
-**Jump Back:** (Does this make sense here?)
-- Deploy Mmojo Server APE: ???
-- **(remove)** Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi: [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-- **(remove)** Deploy Mmojo Server on Windows (WSL): [05. Download Mmojo Server](../200-Windows-WSL/05-Download-Mmojo-Server.md)
--->
-
 ---
 ### Install Dependencies
 Install dependencies. These may take 20 minutes or so to download and install.
@@ -59,19 +52,16 @@ mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
 PERFORMANT_APE="$BUILD_DIR/$BUILD_COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
 if [ -f "$PERFORMANT_APE" ]; then
-   cp "$PERFORMANT_APE" "$RUN_DIR/1-$PACKAGE_MMOJO_SERVER_APE_FILE-performant.exe"
-   cp "$PERFORMANT_APE" "$RUN_DIR/2-$PACKAGE_MMOJO_SERVER_APE_FILE-performant"
+   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
+   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
 fi
 COMPATIBLE_APE="$BUILD_DIR/$BUILD_COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
 if [ -f "$COMPATIBLE_APE" ]; then
-   cp "$COMPATIBLE_APE" "$RUN_DIR/3-$PACKAGE_MMOJO_SERVER_APE_FILE-compatible.exe"
-   cp "$COMPATIBLE_APE" "$RUN_DIR/4-$PACKAGE_MMOJO_SERVER_APE_FILE-compatible"
+   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
+   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
 fi
-cat << EOF > "$RUN_DIR/Connect-to-Mmojo.html"
-<html><head>
-<meta http-equiv="refresh" content="0; url=http://localhost:8080" />
-</head><body></body></html>
-EOF
+cp $PACKAGE_FILES_APE_CONNECT "$RUN_DIR/Connect-to-Mmojo.html"
+cp $PACKAGE_FILES_APE_READ_ME "$RUN_DIR/Read-Me.html"
 touch "$RUN_DIR/0-TRY-THESE-IN-ORDER"
 ```
 
@@ -85,7 +75,7 @@ cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --default-ui-endpoint
 chat
 --host
-0.0.0.0
+127.0.0.1
 --port
 8080
 --batch-size
@@ -106,7 +96,7 @@ Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --host
-0.0.0.0
+127.0.0.1
 --port
 8080
 --batch-size
@@ -143,10 +133,10 @@ mm-choose-model.sh
 
 Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ```
-ZIP_FILE="Mmojo-Server-All-Platforms.zip"
+ZIP_FILE="Mmojo-Server-ape.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r $ZIP_FILE *"$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" 0-*
+  zip -r $ZIP_FILE "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" 0-*
   zip -0 $ZIP_FILE *.gguf
   mv $ZIP_FILE $HOME
   cd $HOME

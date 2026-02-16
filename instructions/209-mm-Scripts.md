@@ -4,16 +4,16 @@ This isn't so much a step, as it is a reference to the scripts that were copied 
 - They all have the prefix `mm-`.
 - They are available on the command line without specifying their path because we added `$HOME/mm-scripts` to your `$PATH` in your `.bashrc` file.
 - They are utility scripts.
-- They are freshly copied when you clone the Mmojo Server GitHub repo, when you update it with the `mm-update-local-mmojo-server-repo.sh` script, or when you switch branched with the `mm-work-in-progress-branch.sh` or `mm-main-branch.sh` scripts.
+- They are freshly copied when you clone the Mmojo Server GitHub repo, when you update it with the `mm-repo-update-local.sh` script, or when you switch branched with the `mm-work-in-progress-branch.sh` or `mm-repo-branch-main.sh` scripts.
 - `mm` are the first two letters in **Mmojo**.
 
 ---
 ### Reference
-- `mm-choose-model.sh` &mdash; User chooses a model from the `$HOME/$LOCAL_MODELS_DIR` directory for use by a test or package script.
+- `mm-model-choose.sh` &mdash; User chooses a model from the `$HOME/$LOCAL_MODELS_DIR` directory for use by a test or package script.
   - Sets shell variables `$CHOSEN_MODEL` and `$CHOSEN_MODEL_MNEMONIC`.
   - Call with a `. ` preceeding because you need to set variables in the shell instance you are running.
     ```
-    . mm-choose-model.sh
+    . mm-model-choose.sh
     ```
     <br/>
 - `mm-use-build.sh` &mdash; User chooses an available build for use by a package script.
@@ -28,9 +28,6 @@ This isn't so much a step, as it is a reference to the scripts that were copied 
     ```
     . mm-use-gpus.sh
     ```
-
-- `mm-delete-builds.sh` &mdash; Deletes the `$BUILD_DIR` directory and the `$DOGHOUSE_BUILD_DIR`.
-- `mm-delete-packages.sh` &mdash; Deletes the `$PACKAGE_DIR ` directory and the `$DOGHOUSE_PACKAGE_DIR`.
    <br/><br/>
 
 - `mm-environment-variables.sh` &mdash; Sets up shell variables, paths, subdirectories used by scripts to organize building and packaging.
@@ -44,8 +41,8 @@ This isn't so much a step, as it is a reference to the scripts that were copied 
 - `mm-mount-mmojo-share.sh` &mdash; Mounts your Mmojo Share at `/mnt/mmojo`. You customized this script previously. It is not overwritten when updating the local Mmojo Server repo or switching branches on it.
   <br/><br/>
   
-- `mm-update-local-mmojo-server-repo.sh` &mdash; Updates the local Mmojo Server repo, copies `mm-` scripts to `$HOME/mm-scripts`.
-- `mm-main-branch.sh` &mdash; Switches to the `main` branch of the local Mmojo Server repo, copies `mm-` scripts to `$HOME/mm-scripts`.
+- `mm-repo-update-local.sh` &mdash; Updates the local Mmojo Server repo, copies `mm-` scripts to `$HOME/mm-scripts`.
+- `mm-repo-branch-main.sh` &mdash; Switches to the `main` branch of the local Mmojo Server repo, copies `mm-` scripts to `$HOME/mm-scripts`.
 - `mm-work-in-progress-branch.sh` &mdash; Switches to the `eork-in-progress` branch of the local Mmojo Server repo, copies `mm-` scripts to `$HOME/mm-scripts`.
    - You probably do not want to be on this branch unless you're working with Brad on whatever he is working on.
    - Danger: The actual `work-in-progress` branch is deleted and re-created ever time that branch is merged into the `main` branch. You may need to re-clone the repo and switch to the `work-in-progress` branch to continue using it.

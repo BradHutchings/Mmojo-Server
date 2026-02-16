@@ -6,7 +6,7 @@ In this step, you will choose a model and test Mmojo Server.
 ### Choose a Model
 First, choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It will be soft-linked in your `$HOME/Mmojo-Server` directory.
 ```
-mm-choose-model.sh
+mm-model-choose.sh
 ```
 
 ---
@@ -14,7 +14,7 @@ mm-choose-model.sh
 
 Launch `mmojo-server`:
 ```
-mm-start-mmojo-server.sh
+mm-mmojo-server-start.sh
 ```
 
 This starts Mmojo Server in a debug mode with messages displayed on screen so you can see what it's doing. As you can see, it is doing a lot 😆.

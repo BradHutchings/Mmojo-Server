@@ -11,7 +11,7 @@ In this step, we will download the latest convert script from the llama.cpp repo
   
 Have you updated your local clone of the Mmojo Server Repo today? If not, run this first:
 ```
-mm-update-local-mmojo-server-repo.sh
+mm-repo-update-local.sh
 mm-env
 ```
 </details>

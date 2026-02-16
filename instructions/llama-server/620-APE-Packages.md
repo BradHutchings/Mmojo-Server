@@ -17,7 +17,7 @@ In the following five steps, we will package llama-server for deployment as actu
   
 Have you updated your local clone of the Mmojo Server Repo today? If not, run this first:
 ```
-mm-update-local-mmojo-server-repo.sh
+mm-repo-update-local.sh
 mm-env
 ```
 </details>

@@ -25,7 +25,7 @@ EOF
 
 Now download all the models you added to the queue.
 ```
-mm-download-models.sh
+mm-models-download.sh
 ```
 
 ---

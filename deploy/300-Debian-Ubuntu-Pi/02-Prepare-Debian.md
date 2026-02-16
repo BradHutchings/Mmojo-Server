@@ -67,7 +67,7 @@ fi
 mkdir -p $MMOJO_SERVER_DIR
 git clone https://github.com/BradHutchings/mmojo-server.git $MMOJO_SERVER_DIR
 . $MMOJO_SERVER_SCRIPTS/mm-environment-variables.sh
-. $MMOJO_SERVER_SCRIPTS/mm-update-local-mmojo-server-repo.sh
+. $MMOJO_SERVER_SCRIPTS/mm-repo-update-local.sh
 if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc
 alias mm-env=". mm-environment-variables.sh"

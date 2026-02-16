@@ -11,7 +11,7 @@ I plan to add into my regular mix and provide custom build instructions in the f
 - macOS on Mac Mini M4.
 - RHEL, CentOS Stream, Oracle Linux, etc. for x86_64 in a virtual machine.
 
-You only need to prepare each build environment once. You can update your local clone of the Mmojo Server Repo with a command we install: `mm-update-local-mmojo-server-repo.sh`. You still may want to rebuild your build environments from scratch occasionally.
+You only need to prepare each build environment once. You can update your local clone of the Mmojo Server Repo with a command we install: `mm-repo-update-local.sh`. You still may want to rebuild your build environments from scratch occasionally.
 
 If you have already prepared your build environments, skip ahead to: 
 - [300. Gather Build Pieces](300-Gather-Build-Pieces.md)

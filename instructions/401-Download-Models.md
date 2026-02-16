@@ -23,13 +23,13 @@ mm-env
 ---
 ### Create Models Directory
 This script creates the `$MODELS_DIR` and adds a simple model map to it:
-- View the script: <a href="../scripts/mm-create-models-directory.sh" target="_blank">mm-create-models-directory.sh</a>.
+- View the script: <a href="../scripts/mm-models-create-directory.sh" target="_blank">mm-models-create-directory.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/mm-create-models-directory.sh
+  $MMOJO_SERVER_SCRIPTS/mm-models-create-directory.sh
   ```
 
 <!--
@@ -59,20 +59,20 @@ nano $LOCAL_MODEL_QUEUE
 ---
 ### Download Models
 This script downloads two models from Hugging Face:
-- View the script: <a href="../scripts/mm-download-models.sh" target="_blank">mm-download-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-download.sh" target="_blank">mm-models-download.sh</a>.
 - Run the script.
   ```
-  mm-download-models.sh 2
+  mm-models-download.sh 2
   ```
 
 <details>
   <summary><b>Optional: Backup models to Mmojo Share</b></summary>
 
 This backs up all new models in the `$LOCAL_MODELS_DIR` directory to your Mmojo Share.
-- View the script: <a href="../scripts/mm-backup-models.sh" target="_blank">mm-backup-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-backup.sh" target="_blank">mm-models-backup.sh</a>.
 - Run the script.
   ```
-  mm-backup-models.sh
+  mm-models-backup.sh
   ```
 </details>
 
@@ -83,18 +83,18 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/mm-create-models-directory.sh
-mm-download-models.sh 2
+$MMOJO_SERVER_SCRIPTS/mm-models-create-directory.sh
+mm-models-download.sh 2
 ```
 
 <details>
   <summary><b>Optional: Backup models to Mmojo Share</b></summary>
 
 This backs up all new models in the `$LOCAL_MODELS_DIR` directory to your Mmojo Share.
-- View the script: <a href="../scripts/mm-backup-models.sh" target="_blank">mm-backup-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-backup.sh" target="_blank">mm-models-backup.sh</a>.
 - Run the script.
   ```
-  mm-backup-models.sh
+  mm-models-backup.sh
   ```
 </details>
 
@@ -105,19 +105,19 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/mm-create-models-directory.sh
+$MMOJO_SERVER_SCRIPTS/mm-models-create-directory.sh
 $MMOJO_SERVER_SCRIPTS/401-Download-Model-Map.sh
-mm-download-models.sh 2
+mm-models-download.sh 2
 ```
 
 <details>
   <summary><b>Optional: Backup models to Mmojo Share</b></summary>
 
 This backs up all new models in the `$LOCAL_MODELS_DIR` directory to your Mmojo Share.
-- View the script: <a href="../scripts/mm-backup-models.sh" target="_blank">mm-backup-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-backup.sh" target="_blank">mm-models-backup.sh</a>.
 - Run the script.
   ```
-  mm-backup-models.sh
+  mm-models-backup.sh
   ```
 </details>
 

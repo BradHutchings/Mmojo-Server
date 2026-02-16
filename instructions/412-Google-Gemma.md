@@ -37,10 +37,10 @@ $MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
   <summary><b>Optional: Backup models to Mmojo Share</b></summary>
 
 This backs up all new models in the `$LOCAL_MODELS_DIR` directory to your Mmojo Share.
-- View the script: <a href="../scripts/mm-backup-models.sh" target="_blank">mm-backup-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-backup.sh" target="_blank">mm-models-backup.sh</a>.
 - Run the script.
   ```
-  mm-backup-models.sh
+  mm-models-backup.sh
   ```
 </details>
 
@@ -63,10 +63,10 @@ $MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
   <summary><b>Optional: Backup models to Mmojo Share</b></summary>
 
 This backs up all new models in the `$LOCAL_MODELS_DIR` directory to your Mmojo Share.
-- View the script: <a href="../scripts/mm-backup-models.sh" target="_blank">mm-backup-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-backup.sh" target="_blank">mm-models-backup.sh</a>.
 - Run the script.
   ```
-  mm-backup-models.sh
+  mm-models-backup.sh
   ```
 </details>
 
@@ -89,10 +89,10 @@ $MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
   <summary><b>Optional: Backup models to Mmojo Share</b></summary>
 
 This backs up all new models in the `$LOCAL_MODELS_DIR` directory to your Mmojo Share.
-- View the script: <a href="../scripts/mm-backup-models.sh" target="_blank">mm-backup-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-backup.sh" target="_blank">mm-models-backup.sh</a>.
 - Run the script.
   ```
-  mm-backup-models.sh
+  mm-models-backup.sh
   ```
 </details>
 
@@ -115,10 +115,10 @@ $MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
   <summary><b>Optional: Backup models to Mmojo Share</b></summary>
 
 This backs up all new models in the `$LOCAL_MODELS_DIR` directory to your Mmojo Share.
-- View the script: <a href="../scripts/mm-backup-models.sh" target="_blank">mm-backup-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-backup.sh" target="_blank">mm-models-backup.sh</a>.
 - Run the script.
   ```
-  mm-backup-models.sh
+  mm-models-backup.sh
   ```
 </details>
 
@@ -141,10 +141,10 @@ $MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
   <summary><b>Optional: Backup models to Mmojo Share</b></summary>
 
 This backs up all new models in the `$LOCAL_MODELS_DIR` directory to your Mmojo Share.
-- View the script: <a href="../scripts/mm-backup-models.sh" target="_blank">mm-backup-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-backup.sh" target="_blank">mm-models-backup.sh</a>.
 - Run the script.
   ```
-  mm-backup-models.sh
+  mm-models-backup.sh
   ```
 </details>
 
@@ -167,10 +167,10 @@ $MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
   <summary><b>Optional: Backup models to Mmojo Share</b></summary>
 
 This backs up all new models in the `$LOCAL_MODELS_DIR` directory to your Mmojo Share.
-- View the script: <a href="../scripts/mm-backup-models.sh" target="_blank">mm-backup-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-backup.sh" target="_blank">mm-models-backup.sh</a>.
 - Run the script.
   ```
-  mm-backup-models.sh
+  mm-models-backup.sh
   ```
 </details>
 

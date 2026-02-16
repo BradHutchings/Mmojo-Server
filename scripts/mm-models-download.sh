@@ -65,7 +65,7 @@ for key in "${!ggufs[@]}"; do
 done
 
 if [ "$downloaded" -gt "0" ]; then
-    mm-backup-models.sh
+    mm-models-backup.sh
 fi
 
 cd $LOCAL_MODELS_DIR

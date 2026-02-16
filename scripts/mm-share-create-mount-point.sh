@@ -13,8 +13,10 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 # Haven't installed system updates and dependencies yet.
 #--------------------------------------------------------------------------------
 
-echo "Installing cifs-utils."
-sudo apt install -y cifs-utils
+if [ $(cat /etc/os-release | grep "debian") != "" ]; then
+    echo "Installing cifs-utils."
+    sudo apt install -y cifs-utils
+fi
 
 #----------------------------------------
 # Create mount point: /mnt/mmojo

@@ -10,7 +10,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
 
-unset CHOSEN_MODEL
+unset MODEL_CHOICE
 
 echo ""
 echo "These models are available to package:"
@@ -20,25 +20,25 @@ cd $LOCAL_MODELS_DIR
 select filename in *.gguf; do
   case $filename in
     "")
-      echo "That was not a valid choice. \$CHOSEN_MODEL has been unset."
+      echo "That was not a valid choice. \$MODEL_CHOICE has been unset."
       break
       ;;
     *)
-      export CHOSEN_MODEL=$filename
+      export MODEL_CHOICE=$filename
       break
       ;;
   esac
 done
 
-if [ -v CHOSEN_MODEL ]; then
+if [ -v MODEL_CHOICE ]; then
   echo ""
-  echo "You chose: $CHOSEN_MODEL"
+  echo "You chose: $MODEL_CHOICE"
   echo ""
 
   if [ -d "$RUN_DIR" ]; then
       rm -f "$RUN_DIR"/*.gguf
-      echo "Soft linking $CHOSEN_MODEL to $RUN_DIR."
-      ln -s "$LOCAL_MODELS_DIR/$CHOSEN_MODEL" "$RUN_DIR/$CHOSEN_MODEL"
+      echo "Soft linking $MODEL_CHOICE to $RUN_DIR."
+      ln -s "$LOCAL_MODELS_DIR/$MODEL_CHOICE" "$RUN_DIR/$MODEL_CHOICE"
   fi
 fi
 

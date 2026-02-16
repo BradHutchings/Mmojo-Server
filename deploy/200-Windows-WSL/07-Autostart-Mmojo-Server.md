@@ -6,13 +6,13 @@ In this short step, we're going to modify the Mmojo Server WSL instance so that 
 ### Autostart Mmojo Server
 Run this command:
 ```
-if ! grep -q "mm-start-mmojo-server.sh" "$HOME/.bashrc"; then
+if ! grep -q "mm-mmojo-server-start.sh" "$HOME/.bashrc"; then
 cat << EOF >> $HOME/.bashrc
 
-alias mm-stop="mm-stop-mmojo-server.sh"
-alias mm-choose="mm-choose-model.sh"
-alias mm-start="mm-start-mmojo-server.sh background"
-alias mm-debug="mm-start-mmojo-server.sh"
+alias mm-stop="mm-mmojo-server-stop.sh"
+alias mm-model="mm-model-choose.sh"
+alias mm-start="mm-mmojo-server-start.sh background"
+alias mm-debug="mm-mmojo-server-start.sh"
 
 echo "Starting Mmojo Server."
 mm-start
@@ -21,10 +21,10 @@ echo "Close all MmojoServer WSL windows to stop Mmojo Server."
 echo "Or, type the alias: << mm-stop >>."
 echo ""
 echo "Useful command aliases:"
-echo "- mm-stop   --> mm-stop-mmojo-server.sh"
-echo "- mm-choose --> mm-choose-model.sh"
-echo "- mm-start  --> mm-start-mmojo-server.sh background  # Runs in background."
-echo "- mm-debug  --> mm-start-mmojo-server.sh             # Runs in foreground with output."
+echo "- mm-stop  --> mm-mmojo-server-stop.sh"
+echo "- mm-model --> mm-model-choose.sh"
+echo "- mm-start --> mm-mmojo-server-start.sh background  # Runs in background."
+echo "- mm-debug --> mm-mmojo-server-start.sh             # Runs in foreground with output."
 echo ""
 EOF
 fi

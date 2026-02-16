@@ -28,31 +28,31 @@ mm-env
 ### SHORTCUT: Build Compatible, Performant, and Native Executables with Optional GPU Support
 Before using this shortcut, please work through the steps of building the compatible, performant, and native executables a few times so that you can become familiar with what they do.
 ```
-. mm-use-gpus.sh
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS" llama-server
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS" llama-server
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS" llama-server
+. mm-gpus-choose.sh
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$GPUS_CHOICE" llama-server
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$GPUS_CHOICE" llama-server
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$GPUS_CHOICE" llama-server
 ```
 
 ---
 ### SHORTCUT: Test Compatible Executable llama-server
 After you build all the APEs, you can test the compatible executable:
 ```
-$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh compatible "$CHOSEN_GPUS" 1 llama-server
+$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh compatible "$GPUS_CHOICE" 1 llama-server
 ```
 
 ---
 ### SHORTCUT: Test Performant Executable llama-server
 After you build all the APEs, you can test the performant executable:
 ```
-$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$CHOSEN_GPUS" 1 llama-server
+$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$GPUS_CHOICE" 1 llama-server
 ```
 
 ---
 ### SHORTCUT: Test Native Executable llama-server
 After you build all the APEs, you can test the native executable:
 ```
-$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh native "$CHOSEN_GPUS" 1 llama-server
+$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh native "$GPUS_CHOICE" 1 llama-server
 ```
 
 ---

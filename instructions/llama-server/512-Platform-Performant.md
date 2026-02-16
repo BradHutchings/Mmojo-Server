@@ -25,13 +25,13 @@ mm-env
 ### Choose GPUs to Include in Build
 This script has you choose GPU support to include in the build. If you've already chosen GPUs, you do not have to choose them again.
 
-- View the script: <a href="../scripts/mm-use-gpus.sh" target="_blank">mm-use-gpus.sh</a>.
+- View the script: <a href="../scripts/mm-gpus-choose.sh" target="_blank">mm-gpus-choose.sh</a>.
   - *On Github, you may need to right-click and choose "Open link in new tab" to open the "View script" links in a new tab.*
     <br/>
     <br/>
 - Run the script.
   ```
-  . mm-use-gpus.sh
+  . mm-gpus-choose.sh
   ```
 
 *I will make this easier to navigate soon! -Brad*
@@ -42,7 +42,7 @@ This script uses cmake to build Mmojo Server:
 - View the script: <a href="../scripts/510-Build-for-Platform.sh" target="_blank">510-Build-for-Platform.sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS" llama-server
+  $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$GPUS_CHOICE" llama-server
   ```
 
 ---
@@ -51,7 +51,7 @@ Requires previously downloaded model to the `$LOCAL_MODELS_DIR` directory. We te
 - View the script: <a href="../scripts/510-Test-Server.sh" target="_blank">510-Test-Server.sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$CHOSEN_GPUS" 1 llama-server
+  $MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$GPUS_CHOICE" 1 llama-server
   ```
 
 ---
@@ -62,7 +62,7 @@ Copy these builds to your Mmojo Share for packaging later.
 - View the script: <a href="../scripts/510-Copy-Executables-to-Share.sh" target="_blank">510-Copy-Executables-to-Share.sh</a>.
 - Run the script:
   ```
-  $MMOJO_SERVER_SCRIPTS/510-Copy-Executables-to-Share.sh performant "$CHOSEN_GPUS" llama-server
+  $MMOJO_SERVER_SCRIPTS/510-Copy-Executables-to-Share.sh performant "$GPUS_CHOICE" llama-server
   ```
 </details>
 
@@ -73,9 +73,9 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-. mm-use-gpus.sh
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS" llama-server
-$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$CHOSEN_GPUS" 1 llama-server
+. mm-gpus-choose.sh
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$GPUS_CHOICE" llama-server
+$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$GPUS_CHOICE" 1 llama-server
 ```
 
 ---
@@ -85,10 +85,10 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-. mm-use-gpus.sh
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS" llama-server
-$MMOJO_SERVER_SCRIPTS/510-Copy-Executables-to-Share.sh performant "$CHOSEN_GPUS" llama-server
-$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$CHOSEN_GPUS" 1 llama-server
+. mm-gpus-choose.sh
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$GPUS_CHOICE" llama-server
+$MMOJO_SERVER_SCRIPTS/510-Copy-Executables-to-Share.sh performant "$GPUS_CHOICE" llama-server
+$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$GPUS_CHOICE" 1 llama-server
 ```
 
 ---

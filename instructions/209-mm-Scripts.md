@@ -38,7 +38,7 @@ This isn't so much a step, as it is a reference to the scripts that were copied 
   - The convenient `mm-env` alias set in your `.bashrc` file calls the script with a `. ` preceeding it.
      <br/><br/>
 
-- `mm-mount-mmojo-share.sh` &mdash; Mounts your Mmojo Share at `/mnt/mmojo`. You customized this script previously. It is not overwritten when updating the local Mmojo Server repo or switching branches on it.
+- `mm-share-mount.sh` &mdash; Mounts your Mmojo Share at `/mnt/mmojo`. You customized this script previously. It is not overwritten when updating the local Mmojo Server repo or switching branches on it.
   <br/><br/>
   
 - `mm-repo-update-local.sh` &mdash; Updates the local Mmojo Server repo, copies `mm-` scripts to `$HOME/mm-scripts`.

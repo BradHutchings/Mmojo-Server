@@ -4,7 +4,7 @@ This isn't so much a step, as it is a reference to the scripts that were copied 
 - They all have the prefix `mm-`.
 - They are available on the command line without specifying their path because we added `$HOME/mm-scripts` to your `$PATH` in your `.bashrc` file.
 - They are utility scripts.
-- They are freshly copied when you clone the Mmojo Server GitHub repo, when you update it with the `mm-update-local-mmojo-server-repo.sh` script, or when you switch branched with the `mm-work-in-progress-branch.sh` or `mm-main-branch.sh` scripts.
+- They are freshly copied when you clone the Mmojo Server GitHub repo, when you update it with the `mm-repo-update-local.sh` script, or when you switch branched with the `mm-work-in-progress-branch.sh` or `mm-main-branch.sh` scripts.
 - `mm` are the first two letters in **Mmojo**.
 
 ---
@@ -44,7 +44,7 @@ This isn't so much a step, as it is a reference to the scripts that were copied 
 - `mm-mount-mmojo-share.sh` &mdash; Mounts your Mmojo Share at `/mnt/mmojo`. You customized this script previously. It is not overwritten when updating the local Mmojo Server repo or switching branches on it.
   <br/><br/>
   
-- `mm-update-local-mmojo-server-repo.sh` &mdash; Updates the local Mmojo Server repo, copies `mm-` scripts to `$HOME/mm-scripts`.
+- `mm-repo-update-local.sh` &mdash; Updates the local Mmojo Server repo, copies `mm-` scripts to `$HOME/mm-scripts`.
 - `mm-main-branch.sh` &mdash; Switches to the `main` branch of the local Mmojo Server repo, copies `mm-` scripts to `$HOME/mm-scripts`.
 - `mm-work-in-progress-branch.sh` &mdash; Switches to the `eork-in-progress` branch of the local Mmojo Server repo, copies `mm-` scripts to `$HOME/mm-scripts`.
    - You probably do not want to be on this branch unless you're working with Brad on whatever he is working on.

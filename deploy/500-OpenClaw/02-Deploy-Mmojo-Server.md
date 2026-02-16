@@ -23,6 +23,15 @@ IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
 EOF
 ```
 
+Here are some newer Granite models:
+```
+cat << EOF >> $LOCAL_MODEL_QUEUE
+IBM-Granite-350M-v4.0-q8_0.gguf
+IBM-Granite-Micro-3B-v4.0-q8_0.gguf
+IBM-Granite-Tiny-Preview-7B-v4.0-q8_0.gguf
+EOF
+```
+
 Now download all the models you added to the queue.
 ```
 mm-models-download.sh

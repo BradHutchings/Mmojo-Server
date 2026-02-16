@@ -27,11 +27,11 @@ if [ ! -d "$MMOJO_SHARE_MOUNT_POINT" ]; then
 fi
 
 #----------------------------------------
-# Create a `mm-mount-mmojo-share.sh` script.
+# Create a `mm-share-mount.sh` script.
 #----------------------------------------
-echo "Copying $MOUNT_MMOJO_SHARE_SCRIPT script."
-cp "$MMOJO_SERVER_SCRIPTS/-$MOUNT_MMOJO_SHARE_SCRIPT" "$HOME_SCRIPTS/$MOUNT_MMOJO_SHARE_SCRIPT"
-chmod a+x "$HOME_SCRIPTS/$MOUNT_MMOJO_SHARE_SCRIPT"
+echo "Copying $MMOJO_SHARE_MOUNT_SCRIPT script."
+cp "$MMOJO_SERVER_SCRIPTS/-$MMOJO_SHARE_MOUNT_SCRIPT" "$HOME_SCRIPTS/$MMOJO_SHARE_MOUNT_SCRIPT"
+chmod a+x "$HOME_SCRIPTS/$MMOJO_SHARE_MOUNT_SCRIPT"
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

@@ -36,7 +36,7 @@ mm-prepare-customize-webui.sh
 
 Choose GPUs for your build if you're not building for Raspberry Pi 5.
 ```
-. mm-use-gpus.sh
+. mm-gpus-choose.sh
 ```
 
 Build native Mmojo Server tuned to the specific CPU of your PC:
@@ -45,37 +45,37 @@ BUILD_SUBDIR=""
 ZIP_FILE=""
 TOUCH_FILE=""
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
-    unset $CHOSEN_GPUS
+    unset $GPUS_CHOICE
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_RPI5_AARCH64"
     ZIP_FILE="Mmojo-Server-aarch64-rpi5.zip"
     TOUCH_FILE="build-aarch64-rpi5"
 elif [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$CHOSEN_GPUS"
-    ZIP_FILE="Mmojo-Server-x86_64-native$CHOSEN_GPUS.zip"
-    TOUCH_FILE="build-x86_64-native$CHOSEN_GPUS"
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
+    ZIP_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
+    TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$CHOSEN_GPUS"
-    ZIP_FILE="Mmojo-Server-aarch64-native$CHOSEN_GPUS.zip"
-    TOUCH_FILE="build-aarch64-native$CHOSEN_GPUS"
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
+    ZIP_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
+    TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
 fi
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$GPUS_CHOICE"
 ```
 
 <details>
   <summary><b>Alternatively:</b> Build a more compatible Mmojo Server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$GPUS_CHOICE"
 BUILD_SUBDIR=""
 ZIP_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$CHOSEN_GPUS"
-    ZIP_FILE="Mmojo-Server-x86_64-comp$CHOSEN_GPUS.zip"
-    TOUCH_FILE="build-x86_64-comp$CHOSEN_GPUS"
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
+    ZIP_FILE="Mmojo-Server-x86_64-comp$GPUS_CHOICE.zip"
+    TOUCH_FILE="build-x86_64-comp$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$CHOSEN_GPUS"
-    ZIP_FILE="Mmojo-Server-aarch64-comp$CHOSEN_GPUS.zip"
-    TOUCH_FILE="build-aarch64-comp$CHOSEN_GPUS"
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
+    ZIP_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
+    TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
 fi
 ```
 </details>
@@ -84,17 +84,17 @@ fi
   <summary><b>Alternatively:</b> Build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$GPUS_CHOICE"
 BUILD_SUBDIR=""
 ZIP_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$CHOSEN_GPUS"
-    ZIP_FILE="Mmojo-Server-x86_64-perf$CHOSEN_GPUS.zip"
-    TOUCH_FILE="build-x86_64-perf$CHOSEN_GPUS"
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
+    ZIP_FILE="Mmojo-Server-x86_64-perf$GPUS_CHOICE.zip"
+    TOUCH_FILE="build-x86_64-perf$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$CHOSEN_GPUS"
-    ZIP_FILE="Mmojo-Server-aarch64-perf$CHOSEN_GPUS.zip"
-    TOUCH_FILE="build-aarch64-perf$CHOSEN_GPUS"
+    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
+    ZIP_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
+    TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
 fi
 ```
 </details>

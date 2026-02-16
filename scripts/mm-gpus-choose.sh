@@ -12,8 +12,8 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-unset CHOSEN_GPUS
-unset CHOSEN_GPUS_NAMES
+unset GPUS_CHOICE
+unset GPUS_CHOICE_NAMES
 
 gpu_combos=()
 has_cuda=0
@@ -61,8 +61,8 @@ if [ ${#gpu_combos[@]} -gt "0" ]; then
         echo "GPUs: $gpus"
     fi
     
-    export CHOSEN_GPUS=$gpus
-    export CHOSEN_GPUS_NAMES=$choice
+    export GPUS_CHOICE=$gpus
+    export GPUS_CHOICE_NAMES=$choice
 else
     echo "Could not find dev kits for CUDA, HIP, or VULKAN."
 fi

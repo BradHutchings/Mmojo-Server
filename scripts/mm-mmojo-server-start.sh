@@ -33,7 +33,7 @@ else
     echo "The run directory < $RUN_DIR > does not exist."
 fi
 
-mmojoServerRunning=$(pgrep "mmojo-server")
+mmojoServerRunning=$(pgrep -x "mmojo-server")
 # echo "\$mmojoServerRunning: $mmojoServerRunning"
 
 if [ -z "$mmojoServerRunning" ] ; then

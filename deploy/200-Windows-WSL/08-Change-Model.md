@@ -10,14 +10,14 @@ You should still see the `(MmojoServer)` prompt in your Terminal window.
 
 Run this command:
 ```
-mm-stop.sh
+mm-stop
 ```
 
 ---
 ### Choose a Model
 Choose a model. Try **Google-Gemma-270M-Instruct-v3-q8_0.gguf**. It will be soft-linked in your `$HOME/mm-mmojo-server` directory.
 ```
-mm-model.sh
+mm-model
 ```
 
 ---
@@ -25,7 +25,7 @@ mm-model.sh
 
 Start `mmojo-server`:
 ```
-mm-start.sh background
+mm-start
 ```
 
 Notice that `background` parameter. It can be anything. That tells Mmojo Server to run quietly as a background proess. If you'd like to see its startup and operational output, which can be helpful for tracking down problems, omit the parameter.

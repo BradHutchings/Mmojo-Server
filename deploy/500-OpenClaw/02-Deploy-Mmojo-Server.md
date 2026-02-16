@@ -11,6 +11,10 @@ Open this deployment guide in a new tab:
 
 Complete that guide. When you are finished, you will have a Mmojo Server running in its own WSL instance.
 
+If you have an NVIDIA GPU, build a native Mmojo Server with CUDA support in your WSL instance:
+
+- [Build ELF Executable for Debian Linux](/build/020ELF-Debian.md)
+
 ---
 ### Download Models
 Download models that OpenClaw can work with from Hugging Face. These may take 20 minutes or so to download.
@@ -20,6 +24,25 @@ IBM Granite models implement so-called "thinking" and "tool calling". Run this s
 cat << EOF >> $LOCAL_MODEL_QUEUE
 IBM-Granite-2B-Instruct-v3.3-q8_0.gguf
 IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
+EOF
+```
+
+Here are some newer Granite models:
+```
+cat << EOF >> $LOCAL_MODEL_QUEUE
+IBM-Granite-350M-v4.0-q8_0.gguf
+IBM-Granite-1B-v4.0-q8_0.gguf
+IBM-Granite-Micro-3B-v4.0-q8_0.gguf
+IBM-Granite-Tiny-Preview-7B-v4.0-q8_0.gguf
+EOF
+```
+
+Here are some Microsoft Phi4 models:
+```
+cat << EOF >> $LOCAL_MODEL_QUEUE
+Microsoft-Phi-3.8B-Reasoning-v4-q8_0.gguf
+Microsoft-Phi-16B-Reasoning-v4-q8_0.gguf
+Microsoft-Phi-16B-Reasoning-Plus-v4-q8_0.gguf
 EOF
 ```
 

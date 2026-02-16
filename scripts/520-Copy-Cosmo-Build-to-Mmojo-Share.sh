@@ -70,7 +70,7 @@ echo "  copying to: $MMOJO_SHARE_BUILDS/$BUILD_SUBDIRECTORY"
 
 if [ -d "$THIS_BUILD_DIR" ] && [ "$BUILD_SUBDIRECTORY" != "" ]; then
     if [[ ! $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]]; then
-        mm-mount-mmojo-share.sh
+        mm-share-mount.sh
     fi
     
     if [[ $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]]; then

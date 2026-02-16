@@ -10,7 +10,7 @@ if ! grep -q "mm-start-mmojo-server.sh" "$HOME/.bashrc"; then
 cat << EOF >> $HOME/.bashrc
 
 alias mm-stop="mm-stop-mmojo-server.sh"
-alias mm-choose="mm-choose-model.sh"
+alias mm-model="mm-model-choose.sh"
 alias mm-start="mm-start-mmojo-server.sh background"
 alias mm-debug="mm-start-mmojo-server.sh"
 
@@ -21,10 +21,10 @@ echo "Close all MmojoServer WSL windows to stop Mmojo Server."
 echo "Or, type the alias: << mm-stop >>."
 echo ""
 echo "Useful command aliases:"
-echo "- mm-stop   --> mm-stop-mmojo-server.sh"
-echo "- mm-choose --> mm-choose-model.sh"
-echo "- mm-start  --> mm-start-mmojo-server.sh background  # Runs in background."
-echo "- mm-debug  --> mm-start-mmojo-server.sh             # Runs in foreground with output."
+echo "- mm-stop  --> mm-stop-mmojo-server.sh"
+echo "- mm-model --> mm-model-choose.sh"
+echo "- mm-start --> mm-start-mmojo-server.sh background  # Runs in background."
+echo "- mm-debug --> mm-start-mmojo-server.sh             # Runs in foreground with output."
 echo ""
 EOF
 fi

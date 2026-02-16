@@ -24,31 +24,31 @@ mm-env
 ### SHORTCUT: Build Compatible, Performant, and Native Executables with Optional GPU Support
 Before using this shortcut, please work through the steps of building the compatible, performant, and native executables a few times so that you can become familiar with what they do.
 ```
-. mm-use-gpus.sh
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$CHOSEN_GPUS"
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$CHOSEN_GPUS"
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$CHOSEN_GPUS"
+. mm-gpus-choose.sh
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$GPUS_CHOICE"
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$GPUS_CHOICE"
+$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$GPUS_CHOICE"
 ```
 
 ---
 ### SHORTCUT: Test Compatible Executable Mmojo Server
 After you build all the APEs, you can test the compatible executable:
 ```
-$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh compatible "$CHOSEN_GPUS" "$TEST_WITH_CHAT_UI"
+$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh compatible "$GPUS_CHOICE" "$TEST_WITH_CHAT_UI"
 ```
 
 ---
 ### SHORTCUT: Test Performant Executable Mmojo Server
 After you build all the APEs, you can test the performant executable:
 ```
-$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$CHOSEN_GPUS" "$TEST_WITH_CHAT_UI"
+$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh performant "$GPUS_CHOICE" "$TEST_WITH_CHAT_UI"
 ```
 
 ---
 ### SHORTCUT: Test Native Executable Mmojo Server
 After you build all the APEs, you can test the native executable:
 ```
-$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh native "$CHOSEN_GPUS" "$TEST_WITH_CHAT_UI"
+$MMOJO_SERVER_SCRIPTS/510-Test-Server.sh native "$GPUS_CHOICE" "$TEST_WITH_CHAT_UI"
 ```
 
 ---

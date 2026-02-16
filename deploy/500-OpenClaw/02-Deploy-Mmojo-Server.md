@@ -13,7 +13,7 @@ Complete that guide. When you are finished, you will have a Mmojo Server running
 
 If you have an NVIDIA GPU, build a native Mmojo Server with CUDA support in your WSL instance:
 
-- [Build ELF Executable for Debian Linux](/build/020ELF-Debian.md)
+- [Build ELF Executable for Debian Linux](/build/20-ELF-Debian.md)
 
 ---
 ### Download Models

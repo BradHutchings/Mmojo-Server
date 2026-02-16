@@ -59,10 +59,10 @@ nano $LOCAL_MODEL_QUEUE
 ---
 ### Download Models
 This script downloads two models from Hugging Face:
-- View the script: <a href="../scripts/mm-download-models.sh" target="_blank">mm-download-models.sh</a>.
+- View the script: <a href="../scripts/mm-models-download.sh" target="_blank">mm-models-download.sh</a>.
 - Run the script.
   ```
-  mm-download-models.sh 2
+  mm-models-download.sh 2
   ```
 
 <details>
@@ -84,7 +84,7 @@ I really think you should run through these scripts one at a time the first few 
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
 $MMOJO_SERVER_SCRIPTS/mm-create-models-directory.sh
-mm-download-models.sh 2
+mm-models-download.sh 2
 ```
 
 <details>
@@ -107,7 +107,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 $MMOJO_SERVER_SCRIPTS/mm-create-models-directory.sh
 $MMOJO_SERVER_SCRIPTS/401-Download-Model-Map.sh
-mm-download-models.sh 2
+mm-models-download.sh 2
 ```
 
 <details>

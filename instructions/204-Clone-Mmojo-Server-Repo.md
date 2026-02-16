@@ -20,11 +20,11 @@ fi
 mkdir -p $MMOJO_SERVER_DIR
 git clone https://github.com/BradHutchings/mmojo-server.git $MMOJO_SERVER_DIR
 
-# mm-update-local-mmojo-server-repo.sh uses these variables, so set them first.
+# mm-repo-update-local.sh uses these variables, so set them first.
 . $MMOJO_SERVER_SCRIPTS/mm-environment-variables.sh
 
-# mm-update-local-mmojo-server-repo.sh copies mm- scripts to $HOME/mm-scripts
-. $MMOJO_SERVER_SCRIPTS/mm-update-local-mmojo-server-repo.sh
+# mm-repo-update-local.sh copies mm- scripts to $HOME/mm-scripts
+. $MMOJO_SERVER_SCRIPTS/mm-repo-update-local.sh
 
 if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc

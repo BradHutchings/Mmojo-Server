@@ -11,6 +11,10 @@ Open this deployment guide in a new tab:
 
 Complete that guide. When you are finished, you will have a Mmojo Server running in its own WSL instance.
 
+If you have an NVIDIA GPU, build a native Mmojo Server with CUDA support in your WSL instance:
+
+- [Build ELF Executable for Debian Linux](/build/020ELF-Debian.md)
+
 ---
 ### Download Models
 Download models that OpenClaw can work with from Hugging Face. These may take 20 minutes or so to download.

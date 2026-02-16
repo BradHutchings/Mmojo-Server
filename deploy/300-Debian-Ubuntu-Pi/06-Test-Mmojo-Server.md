@@ -15,7 +15,7 @@ mm-model-choose.sh
 
 Launch `mmojo-server`:
 ```
-mm-start-mmojo-server.sh
+mm-mmojo-server-start.sh
 ```
 
 ---

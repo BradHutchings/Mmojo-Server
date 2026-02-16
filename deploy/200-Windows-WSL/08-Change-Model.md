@@ -10,7 +10,7 @@ You should still see the `(MmojoServer)` prompt in your Terminal window.
 
 Run this command:
 ```
-mm-stop-mmojo-server.sh
+mm-mmojo-server-stop.sh
 ```
 
 ---

@@ -37,6 +37,15 @@ IBM-Granite-Tiny-Preview-7B-v4.0-q8_0.gguf
 EOF
 ```
 
+Here are some Microsoft Phi4 models:
+```
+cat << EOF >> $LOCAL_MODEL_QUEUE
+Microsoft-Phi-3.8B-Reasoning-v4-q8_0.gguf
+Microsoft-Phi-16B-Reasoning-v4-q8_0.gguf
+Microsoft-Phi-16B-Reasoning-Plus-v4-q8_0.gguf
+EOF
+```
+
 Now download all the models you added to the queue.
 ```
 mm-models-download.sh

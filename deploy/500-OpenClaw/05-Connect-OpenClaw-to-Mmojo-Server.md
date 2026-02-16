@@ -16,7 +16,7 @@ mm-model-choose.sh
 
 Launch `mmojo-server`:
 ```
-mm-start-mmojo-server.sh
+mm-mmojo-server-start.sh
 ```
 
 Leave the WSL instance Terminal window open and visible on your screen.

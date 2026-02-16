@@ -20,8 +20,7 @@ mm-share-create-mount-point.sh
 ### Edit the Mmojo Share Mount Script
 Edit the script to put your `COMPUTER` and `USER` names in. `Ctrl-X`, then `Y`, then `Enter` to exit and save.
 ```
-nano "$HOME_SCRIPTS/$MMOJO_SHARE_MOUNT_SCRIPT
-"
+nano "$HOME_SCRIPTS/$MMOJO_SHARE_MOUNT_SCRIPT"
 ```
 
 ---

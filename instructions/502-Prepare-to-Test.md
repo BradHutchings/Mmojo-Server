@@ -19,12 +19,12 @@ mm-env
 ---
 ### Choose `.gguf` Model for Testing
 Choose a model. The models from your `$LOCAL_MODELS_DIR` directory are available for you to use. This is its own script in your `$HOME/scripts` directory because it sets an environment variable and is resused in these instructions. .
-- View the script: <a href="../scripts/mm-choose-model.sh" target="_blank">mm-choose-model.sh</a>.
+- View the script: <a href="../scripts/mm-model-choose.sh" target="_blank">mm-model-choose.sh</a>.
 - Run the script.
   ```
   unset CHOSEN_MODEL
   unset CHOSEN_MODEL_MNEMONIC
-  . mm-choose-model.sh
+  . mm-model-choose.sh
   ```
 
 ---

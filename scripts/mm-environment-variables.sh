@@ -52,7 +52,7 @@ export MMOJO_SHARE_PACKAGES_COMPATIBLE_APE="$MMOJO_SHARE_PACKAGES/compatible-ape
 export MMOJO_SHARE_PACKAGES_PERFORMANT_APE="$MMOJO_SHARE_PACKAGES/performant-ape"
 export MMOJO_SHARE_PACKAGES_ZIP="$MMOJO_SHARE_PACKAGES/zip"
 
-export MOUNT_MMOJO_SHARE_SCRIPT="mm-mount-mmojo-share.sh"
+export MMOJO_SHARE_MOUNT_SCRIPT="mm-share-mount.sh"
 
 echo "Setting Build Pieces paths."
 export CERTIFICATES_DIR="$HOME/mm-certificates"

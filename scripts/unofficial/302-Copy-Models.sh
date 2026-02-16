@@ -20,7 +20,7 @@ CopyModel() {
 }
 
 cd $MODELS_DIR
-mm-mount-mmojo-share.sh
+mm-share-mount.sh
 unset apefiles
 declare -A apefiles
 

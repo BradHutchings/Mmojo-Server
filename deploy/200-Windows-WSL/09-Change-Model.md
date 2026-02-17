@@ -1,4 +1,4 @@
-## 08. Change Model
+## 09. Change Model
 ### About this Step
 In this short step, we're going to stop Mmojo Server while keeping the WSL session open, choose a new model, then start Mmojo Sever.
 
@@ -31,7 +31,14 @@ mm-start
 Notice that `background` parameter. It can be anything. That tells Mmojo Server to run quietly as a background proess. If you'd like to see its startup and operational output, which can be helpful for tracking down problems, omit the parameter.
 
 ---
-### Connect and Verify Model Change
+### Verify Model Change
+You can see which model is active with this command:
+```
+mm-model-which.sh
+```
+
+---
+### Connect and Verify Model Change in Mmojo Complete
 Connect to Mmojo Server again in your browser:
 
 - [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
@@ -63,8 +70,8 @@ You will see your PowerShell prompt.
 
 ---
 ### Proceed
-- **Next:** [09. Launch from Taskbar](09-Launch-from-Taskbar.md)
-- **Previous:** [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md)
+- **Next:** [10. Launch from Taskbar](10-Launch-from-Taskbar.md)
+- **Previous:** [08. Autostart Mmojo Server](08-Autostart-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

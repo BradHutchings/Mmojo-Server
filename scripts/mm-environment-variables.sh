@@ -151,6 +151,7 @@ export PACKAGE_MMOJO_SERVER_SUPPORT_DIR="mmojo-server-support"
 
 export PACKAGE_FILES="$MMOJO_SERVER_DIR/files/package"
 export PACKAGE_FILES_APE_CONNECT="$PACKAGE_FILES/ape-connect.html"
+export PACKAGE_FILES_APE_CHAT="$PACKAGE_FILES/ape-chat.html"
 export PACKAGE_FILES_APE_READ_ME="$PACKAGE_FILES/ape-read-me.html"
 export PACKAGE_FILES_ORGANIC_READ_ME="$PACKAGE_FILES/organic-read-me.html"
 export PACKAGE_FILES_ORGANIC_CONNECT="$PACKAGE_FILES/organic-connect.html"

@@ -1,4 +1,4 @@
-## 09. Launch from Taskbar
+## 10. Launch from Taskbar
 ### About this Step
 Let's test the workflow we enabled in the Autostart step. You will click the Mmojo Server icon in the Taskbar to launch it and close the window to stop it.
 
@@ -56,8 +56,8 @@ Enjoy Mmojo Server for regular use! Also, enjoy a nice latte. You earned it!
 
 ---
 ### Proceed
-- **Next:** [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) (Optional)
-- **Previous:** [08. Change Model](08-Change-Model.md)
+- **Next:** [11. Port Forward to Mmojo Server](11-Port-Forward-to-Mmojo-Server.md) (Optional)
+- **Previous:** [09. Change Model](09-Change-Model.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

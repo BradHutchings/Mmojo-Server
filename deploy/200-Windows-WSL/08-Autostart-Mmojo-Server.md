@@ -6,7 +6,7 @@ In this short step, we're going to modify the Mmojo Server WSL instance so that 
 ### Autostart Mmojo Server
 Run this command:
 ```
-if ! grep -q "mm-mmojo-server-start.sh" "$HOME/.bashrc"; then
+if ! grep -q "Starting Mmojo Server." "$HOME/.bashrc"; then
 cat << EOF >> $HOME/.bashrc
 
 echo "Starting Mmojo Server."

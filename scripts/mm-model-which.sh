@@ -13,7 +13,7 @@ SCRIPT_NAME=$(basename -- "$0")
 if [ -d "$RUN_DIR" ]; then  
     wd=$(pwd)
     cd "$RUN_DIR"
-    model-$(ls *.gguf | head -n 1)
+    model=$(ls *.gguf | head -n 1)
     echo "The active model is: \"$model\"."
     cd $wd
 fi

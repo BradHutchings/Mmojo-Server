@@ -27,6 +27,15 @@ IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
 EOF
 ```
 
+**Optional:** Qwen3 models also implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
+```
+cat << EOF >> $LOCAL_MODEL_QUEUE
+Qwen3-4B-Thinking-2507-FP8-q8_0.gguf
+Qwen3-8B-v3-q8_0.gguf
+Qwen3-14B-v3-q8_0.gguf
+EOF
+```
+
 Now download all the models you added to the queue. If any of the models are available on your Mmojo Share, they will be copied from there.
 ```
 mm-models-download.sh

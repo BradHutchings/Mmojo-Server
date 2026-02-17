@@ -1,4 +1,4 @@
-## 07. Autostart Mmojo Server
+## 08. Autostart Mmojo Server
 ### About this Step (Optional)
 **NEEDS TO BE UPDATED TO USE CRON, START AT STARTUP, STRIP OUT WSL STUFF.**
 
@@ -32,8 +32,8 @@ I told you this was a short step!
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
-- **Previous:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
+- **Next:** [09. Change Model](09-Change-Model.md)
+- **Previous:** [07. Make Command Aliases](07-Make-Command-Aliases.md)
 - **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 
 ---

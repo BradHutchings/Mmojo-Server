@@ -8,7 +8,7 @@ Let's test the workflow we enabled in the Autostart step. You will click the Mmo
 
 Click the MmojoServer WSL icon that you previously added to the Taskbar.
 
-<img width="789" height="257" alt="image" src="https://github.com/user-attachments/assets/eee93dcc-44e1-4644-8b72-8335eb701af0" />
+<img width="785" height="254" alt="image" src="https://github.com/user-attachments/assets/94f237ce-5943-4b16-aed5-eda92c474142" />
 
 A Terminal window will open, connected to your Mmojo Server WSL instance. You'll see a message about the Mmojo Server process being started or already running, followed by some useful command aliases for managing things.
 

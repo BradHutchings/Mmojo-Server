@@ -38,7 +38,7 @@ You will see your command prompt.
 
 ---
 ### Proceed
-- **Next:** [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md)
+- **Next:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 - **Previous:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 

@@ -6,7 +6,7 @@ In this short step, we're going to create some alias commands in `.bashrc` to ma
 ### Make Command Aliases
 Run this command:
 ```
-if ! grep -q "v" "$HOME/.bashrc"; then
+if ! grep -q "alias mm-stop=" "$HOME/.bashrc"; then
 cat << EOF >> $HOME/.bashrc
 
 alias mm-stop="mm-mmojo-server-stop.sh"

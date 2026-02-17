@@ -2558,6 +2558,11 @@ private:
 
                         SLT_INF(slot, "prompt done, n_tokens = %d, batch.n_tokens = %d\n", slot.prompt.n_tokens(), batch.n_tokens);
 
+                        // Mmojo Server START
+                        // This would be a good place to implement a --recap-prompts feature. Display the prompt and response here.
+                        // Do I know how to do that? Nope. -Brad 2026-02-17
+                        // Mmojo Server END
+
                         slot.init_sampler();
 
                         const auto pos_min = llama_memory_seq_pos_min(llama_get_memory(ctx), slot.id);

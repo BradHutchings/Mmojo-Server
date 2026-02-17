@@ -145,7 +145,7 @@ if test -n "$RUN_DIR"; then
 fi
 ```
 
-**Future:** Figure out if we need both files, with `.exe` and withot. WIll macOS run the `.exe`?
+**Future:** Rename the files so Mac users run the no `.exe` versions.
 
 ---
 ### Proceed

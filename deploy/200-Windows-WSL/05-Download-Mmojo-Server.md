@@ -72,8 +72,6 @@ fi
 
 Mmojo Server is installed. You are ready to test it!
 
-**Skip to:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
-
 ---
 ### Proceed
 - **Next:**  [06. Test Mmojo Server](06-Test-Mmojo-Server.md)

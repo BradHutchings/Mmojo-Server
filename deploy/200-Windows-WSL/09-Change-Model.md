@@ -56,7 +56,7 @@ Click the Settings icon &mdash; lefmost icon top right &mdash;  to reveal the Se
 
 <img width="422" height="151" alt="image" src="https://github.com/user-attachments/assets/c3b767c8-54a7-4c8d-93f0-7d542ef2f2a6" />
 
-Click the Setting icon again to make the Settings panel disappear.
+Click the Settings icon again to make the Settings panel disappear.
 
 ---
 ### Power Off Mmojo Server

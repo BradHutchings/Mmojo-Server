@@ -12,7 +12,7 @@ mm-model-choose.sh
 ---
 ### Start Mmojo Server
 
-Launch `mmojo-server`:
+Launch `mmojo-server` in "debug mode" so you can see it working:
 ```
 mm-mmojo-server-start.sh
 ```

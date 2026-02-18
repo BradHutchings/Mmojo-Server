@@ -5,7 +5,7 @@ These are the instructions for maintaining the files rooted in this directory. T
 1. Switch to the `work-in-progress` branch for this page.
 
 2. Open the Clone Repos script in a new tab:
-   - [mm-prepare-clone-repo.sh](/scripts/mm-prepare-clone-repo.sh)
+   - [mm-prepare-clone-llama-cpp.sh](/scripts/mm-prepare-clone-llama-cpp.sh)
   
 3. Open recent commits to llama.cpp in a new tab:
    - [Commmits to llama.cpp](https://github.com/ggml-org/llama.cpp/commits/master/)

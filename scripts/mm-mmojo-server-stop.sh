@@ -10,7 +10,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
 
-mmojoServerRunning=$(pgrep "mmojo-server")
+mmojoServerRunning=$(pgrep -x "mmojo-server")
 # echo "\$mmojoServerRunning: $mmojoServerRunning"
 
 if [ -z "$mmojoServerRunning" ] ; then

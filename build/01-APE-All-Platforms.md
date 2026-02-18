@@ -46,7 +46,7 @@ mm-build-cosmo-ape.sh performant
 
 ---
 ### Create a Run Directory
-Create a run directory:
+Create a run directory. We need `.exe` variants for Windows. We need the plain variants for macOS. Linux Terminals and desktops see both as executables.
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
@@ -109,6 +109,32 @@ EOF
 **Future:** These are good candidate for mm-scripts.
 
 ---
+### Choose a Build and a Model
+Use one of the four commands below to choose a build from from the `$RUN_DIR` to activate. The command will create a link to the right executable in your `$RUN_DIR`. The link will not be included in your `.zip` archive.
+
+```
+ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe" \
+    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+```
+```
+ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
+    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+```
+```
+ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe" \
+    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+```
+```
+ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
+    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+```
+
+Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google Gemma 270M Instruct v3**.
+```
+mm-model-choose.sh
+```
+
+---
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
@@ -123,11 +149,6 @@ It should look like:
 ### (Optional) Make a .zip File
 Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
 
-Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gemma 270M Instruct v3**.
-```
-mm-model-choose.sh
-```
-
 Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ```
 ZIP_FILE="Mmojo-Server-ape.zip"
@@ -139,8 +160,6 @@ if test -n "$RUN_DIR"; then
   cd $HOME
 fi
 ```
-
-**Future:** Figure out if we need both files, with `.exe` and withot. WIll macOS run the `.exe`?
 
 ---
 ### Proceed

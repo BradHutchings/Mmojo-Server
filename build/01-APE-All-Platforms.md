@@ -60,7 +60,6 @@ if [ -f "$COMPATIBLE_APE" ]; then
    cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
    cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
 fi
-cp "$MMOJO_SERVER_DIR/LICENSE" "$RUN_DIR/LICENSE"
 ```
 
 Create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with the Mmojo Complete UI:
@@ -134,14 +133,14 @@ Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ZIP_FILE="Mmojo-Server-ape.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r $ZIP_FILE "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" LICENSE
+  zip -r $ZIP_FILE "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete
   zip -0 $ZIP_FILE *.gguf
   mv $ZIP_FILE $HOME
   cd $HOME
 fi
 ```
 
-**Future:** Rename the files so Mac users run the no `.exe` versions.
+**Future:** Figure out if we need both files, with `.exe` and withot. WIll macOS run the `.exe`?
 
 ---
 ### Proceed

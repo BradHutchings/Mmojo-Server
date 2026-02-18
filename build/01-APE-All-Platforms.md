@@ -46,7 +46,7 @@ mm-build-cosmo-ape.sh performant
 
 ---
 ### Create a Run Directory
-Create a run directory:
+Create a run directory. We need `.exe` variants for Windows. We need the plain variants for macOS. Linux Terminals and desktops see both as executables.
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
@@ -109,6 +109,20 @@ EOF
 **Future:** These are good candidate for mm-scripts.
 
 ---
+### Choose a Build and a Model
+There will be a command and a step to choose a build in the `$RUN_DIR` here. It will create a link to the right executable in your `$RUN_DIR`.
+
+(Script call here.)
+
+Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google Gemma 270M Instruct v3**.
+```
+mm-model-choose.sh
+```
+
+---
+### Choose a Model
+
+---
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
@@ -123,11 +137,6 @@ It should look like:
 ### (Optional) Make a .zip File
 Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
 
-Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gemma 270M Instruct v3**.
-```
-mm-model-choose.sh
-```
-
 Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ```
 ZIP_FILE="Mmojo-Server-ape.zip"
@@ -139,8 +148,6 @@ if test -n "$RUN_DIR"; then
   cd $HOME
 fi
 ```
-
-**Future:** Figure out if we need both files, with `.exe` and withot. WIll macOS run the `.exe`?
 
 ---
 ### Proceed

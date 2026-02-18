@@ -187,10 +187,11 @@ Make a `.zip` file and move it to your `$PACKAGES_DIR` directory:
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete $TOUCH_FILE
-  mkdir -p $PACKAGES_DIR
-  mv -f $ZIP_FILE $PACKAGES_DIR
+  zip -r "$ZIP_FILE" mmojo-server mmojo-server-args Mmojo-Complete "$TOUCH_FILE"
+  mkdir -p "$PACKAGES_DIR"
+  mv -f "$ZIP_FILE" "$PACKAGES_DIR"
   cd $HOME
+  ls -al "$PACKAGES_DIR"
 fi
 ```
 

@@ -113,19 +113,19 @@ EOF
 Use one of the four commands below to choose a build from from the `$RUN_DIR` to activate. The command will create a link to the right executable in your `$RUN_DIR`. The link will not be included in your `.zip` archive.
 
 ```
-ln -s "$RUN_DIR/RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe" \
+ln -sr "$RUN_DIR/RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe" \
     "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 ```
-ln -s "$RUN_DIR/RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
+ln -sr "$RUN_DIR/RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
     "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 ```
-ln -s "$RUN_DIR/RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe" \
+ln -sr "$RUN_DIR/RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe" \
     "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 ```
-ln -s "$RUN_DIR/RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
+ln -sr "$RUN_DIR/RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
     "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 

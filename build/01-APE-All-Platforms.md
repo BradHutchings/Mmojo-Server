@@ -110,6 +110,20 @@ EOF
 
 ---
 ### Choose a Build and a Model
+
+---
+### Review Your Work
+Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
+```
+ls -l $RUN_DIR
+```
+
+It should look like:
+
+<img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
+
+---
+### Test Your Build
 Use one of the four commands below to choose a build from from the `$RUN_DIR` to activate. The command will create a link to the right executable in your `$RUN_DIR`. The link will not be included in your `.zip` archive.
 
 ```
@@ -134,16 +148,9 @@ Choose a model. It will be included in your `.zip` archive. I'd suggest choosing
 mm-model-choose.sh
 ```
 
----
-### Review Your Work
-Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
-ls -l $RUN_DIR
+mm-debug
 ```
-
-It should look like:
-
-<img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
 ### (Optional) Make a .zip File
@@ -154,10 +161,12 @@ Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ZIP_FILE="Mmojo-Server-ape.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r $ZIP_FILE "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete
-  zip -0 $ZIP_FILE *.gguf
-  mv $ZIP_FILE $HOME
+  zip -r "$ZIP_FILE" "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete
+  zip -0 "$ZIP_FILE" *.gguf
+  mkdir -p "$PACKAGES_DIR"
+  mv -f "$ZIP_FILE" "$PACKAGES_DIR"
   cd $HOME
+  ls -al "$PACKAGES_DIR"
 fi
 ```
 

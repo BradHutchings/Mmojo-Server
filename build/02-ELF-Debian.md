@@ -183,6 +183,7 @@ if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
   zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete $TOUCH_FILE
   # zip -0 $ZIP_FILE *.gguf
+  mkdir -p $PACKAGES_DIR
   mv -f $ZIP_FILE $PACKAGES_DIR
   cd $HOME
 fi

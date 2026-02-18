@@ -169,21 +169,21 @@ It should look like:
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
-### (Optional) Make a .zip File
-Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
+### (Optional) Save a .zip Package
+Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME/mm-packages` directory after zipping. You don't need to do this.
 
 Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gemma 270M Instruct v3**.
 ```
 mm-model-choose.sh
 ```
 
-Make a `.zip` file and move it to your `$HOME` directory:
+Make a `.zip` file and move it to your `$PACKAGES_DIR` directory:
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
   zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete $TOUCH_FILE
-  zip -0 $ZIP_FILE *.gguf
-  mv $ZIP_FILE $HOME
+  # zip -0 $ZIP_FILE *.gguf
+  mv -f $ZIP_FILE $PACKAGES_DIR
   cd $HOME
 fi
 ```

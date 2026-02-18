@@ -1,4 +1,4 @@
-## 09. Launch from Taskbar
+## 10. Launch from Taskbar
 ### About this Step
 Let's test the workflow we enabled in the Autostart step. You will click the Mmojo Server icon in the Taskbar to launch it and close the window to stop it.
 
@@ -8,7 +8,7 @@ Let's test the workflow we enabled in the Autostart step. You will click the Mmo
 
 Click the MmojoServer WSL icon that you previously added to the Taskbar.
 
-<img width="789" height="257" alt="image" src="https://github.com/user-attachments/assets/eee93dcc-44e1-4644-8b72-8335eb701af0" />
+<img width="785" height="254" alt="image" src="https://github.com/user-attachments/assets/94f237ce-5943-4b16-aed5-eda92c474142" />
 
 A Terminal window will open, connected to your Mmojo Server WSL instance. You'll see a message about the Mmojo Server process being started or already running, followed by some useful command aliases for managing things.
 
@@ -24,7 +24,7 @@ You're probably wondering how you're going to remember the commands so you can c
 
 All three commands start with `mm-`. In fact, many commands you used in this setup start with `mm-`. These commands live in the `$HOME/mm-scripts` directory, and that directory is in your `$PATH`.
 
-You can use these aliases you added to your `.bashrc` in the Autostart step:
+You can use these aliases you added to your `.bashrc` in the [07. Make Command Aliases](07-Make-Command-Aliases.md) step:
 - `mm-stop`  --> `mm-mmojo-server-stop.sh`
 - `mm-model` --> `mm-model-choose.sh`
 - `mm-start` --> `mm-mmojo-server-start.sh background`  # Runs in background.
@@ -56,8 +56,8 @@ Enjoy Mmojo Server for regular use! Also, enjoy a nice latte. You earned it!
 
 ---
 ### Proceed
-- **Next:** [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) (Optional)
-- **Previous:** [08. Change Model](08-Change-Model.md)
+- **Next:** [11. Port Forward to Mmojo Server](11-Port-Forward-to-Mmojo-Server.md) (Optional)
+- **Previous:** [09. Change Model](09-Change-Model.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

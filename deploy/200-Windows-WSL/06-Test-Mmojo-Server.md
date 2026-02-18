@@ -12,7 +12,7 @@ mm-model-choose.sh
 ---
 ### Start Mmojo Server
 
-Launch `mmojo-server`:
+Launch `mmojo-server` in "debug mode" so you can see it working:
 ```
 mm-mmojo-server-start.sh
 ```
@@ -49,7 +49,7 @@ You will see your command prompt.
 
 ---
 ### Proceed
-- **Next:** [07. Autostart Mmojo Server](07-Autostart-Mmojo-Server.md)
+- **Next:** [07. Make Command Aliases](07-Make-Command-Aliases.md)
 - **Previous:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 

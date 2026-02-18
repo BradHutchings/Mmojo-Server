@@ -1,4 +1,4 @@
-## 07. Autostart Mmojo Server
+## 08. Autostart Mmojo Server
 ### About this Step
 In this short step, we're going to modify the Mmojo Server WSL instance so that it automatically starts Mmojo Server and has some useful command aliases for managing it. This will enable a workflow where you click the Mmojo Server icon in the Taskbar to launch it and close the window to stop it. 
 
@@ -6,25 +6,14 @@ In this short step, we're going to modify the Mmojo Server WSL instance so that 
 ### Autostart Mmojo Server
 Run this command:
 ```
-if ! grep -q "mm-mmojo-server-start.sh" "$HOME/.bashrc"; then
+if ! grep -q "Starting Mmojo Server." "$HOME/.bashrc"; then
 cat << EOF >> $HOME/.bashrc
-
-alias mm-stop="mm-mmojo-server-stop.sh"
-alias mm-model="mm-model-choose.sh"
-alias mm-start="mm-mmojo-server-start.sh background"
-alias mm-debug="mm-mmojo-server-start.sh"
 
 echo "Starting Mmojo Server."
 mm-start
 echo ""
 echo "Close all MmojoServer WSL windows to stop Mmojo Server."
 echo "Or, type the alias: << mm-stop >>."
-echo ""
-echo "Useful command aliases:"
-echo "- mm-stop  --> mm-mmojo-server-stop.sh"
-echo "- mm-model --> mm-model-choose.sh"
-echo "- mm-start --> mm-mmojo-server-start.sh background  # Runs in background."
-echo "- mm-debug --> mm-mmojo-server-start.sh             # Runs in foreground with output."
 echo ""
 EOF
 fi
@@ -54,8 +43,7 @@ Now, let's start your MmojoServer WSL instance and connect to it again:
 ```
 wsl -d "MmojoServer"
 ```
-
-<img width="787" height="258" alt="image" src="https://github.com/user-attachments/assets/d6bb2336-b5aa-4666-b864-7f0263daae4d" />
+<img width="781" height="254" alt="image" src="https://github.com/user-attachments/assets/b996fe5b-59f5-44e5-aec5-7f8f3b6722ac" />
 
 You will see a message about Mmojo Server being started or already running. It's fine if it says it's already running. WSL made a previous connection to your instance before the one displayed in the Terminal window.
 
@@ -67,8 +55,8 @@ Leave the WSL window open for as long as you want to run Mmojo Server. When you 
 
 ---
 ### Proceed
-- **Next:** [08. Change Model](08-Change-Model.md)
-- **Previous:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
+- **Next:** [09. Change Model](09-Change-Model.md)
+- **Previous:** [07. Make Command Aliases](07-Make-Command-Aliases.md)
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

@@ -60,9 +60,6 @@ if [ -f "$COMPATIBLE_APE" ]; then
    cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
    cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
 fi
-cp $PACKAGE_FILES_APE_CONNECT "$RUN_DIR/Connect-to-Mmojo.html"
-cp $PACKAGE_FILES_APE_READ_ME "$RUN_DIR/Read-Me.html"
-touch "$RUN_DIR/0-TRY-THESE-IN-ORDER"
 ```
 
 Create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with the Mmojo Complete UI:
@@ -136,7 +133,7 @@ Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
 ZIP_FILE="Mmojo-Server-ape.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r $ZIP_FILE "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete *".html" 0-*
+  zip -r $ZIP_FILE "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete
   zip -0 $ZIP_FILE *.gguf
   mv $ZIP_FILE $HOME
   cd $HOME

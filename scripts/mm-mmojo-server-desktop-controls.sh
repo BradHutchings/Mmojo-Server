@@ -62,7 +62,7 @@ SCRIPT_DIR="$(dirname -- "$(realpath -- "$0")")"
 rm -f "$SCRIPT_DIR/Mmojo Server OFF"
 rm -f "$SCRIPT_DIR/Mmojo Server ON"
 
-mmojoServerRunning=$(pgrep "mmojo-server")
+mmojoServerRunning=$(pgrep -x "mmojo-server")
 if [ -z "$mmojoServerRunning" ] ; then
     touch "$SCRIPT_DIR/Mmojo Server OFF"
 else

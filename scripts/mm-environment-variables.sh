@@ -129,6 +129,8 @@ unset TEST_MODEL
 unset TEST_CPU_THREADS
 unset TEST_WITH_CHAT_UI
 
+export PACKAGES_DIR="$HOME/mm-packages"
+
 echo "Setting Package paths."
 export PACKAGE_DIR="$HOME/600-PACKAGE-mmojo-server"
 

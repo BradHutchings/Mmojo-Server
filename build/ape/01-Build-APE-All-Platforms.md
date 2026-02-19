@@ -30,11 +30,18 @@ mm-build-openssl-with-cosmopolitan.sh
 
 ---
 ### Build Compatible and Performant Mmojo Server APEs
-Prepare to build Mmojo Server (llama.cpp with patches and extensions):
+Prepare to build Mmojo Server (llama.cpp with patches and extensions).
 ```
-mm-prepare-clone-llama-cpp.sh
-mm-prepare-patch-llama-cpp.sh
-mm-prepare-customize-webui.sh
+if [ ! -d "$BUILD_DIR" ]; then
+    mm-prepare-clone-llama-cpp.sh
+    mm-prepare-patch-llama-cpp.sh
+    mm-prepare-customize-webui.sh
+fi
+```
+
+Copy Cosmo and OpenSSL into the `$BUILD_DIR`:
+```
+mm-prepare-copy-cosmo.sh
 ```
 
 Build compatible and performant Mmojo Server APE:

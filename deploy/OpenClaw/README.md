@@ -1,5 +1,5 @@
 ## Deploy OpenClaw (WSL)
-### About this Section (500-OpenClaw)
+### About this Section
 In this section, you will deploy the open source OpenClaw agent platform. You will deploy OpenClaw in one Windows Subsystem for Linux (WSL) instance and Mmojo Server in a separate WSL instance. You will configure OpenClaw to use Mmojo Server as its LLM. You'll be ready to rock and roll with OpenClaw.
 
 Your installation will be private and self-contained on the computer on which you are running OpenClaw. Of course, the agents you run can reach out anywhere on the Internet and leak all of your private and sensitive information, so you should proceed cautiously.

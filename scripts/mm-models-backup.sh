@@ -29,9 +29,9 @@ if [[ $(findmnt "$MMOJO_SHARE_MOUNT_POINT") ]]; then
     mkdir -p "$MMOJO_SHARE_MODELS_DIR"
 fi
 
-# Create $LOCAL_MODELS_DIR is needed.
-if [ ! -d "$LOCAL_MODELS_DIR" ]; then
-    mkdir -p "$LOCAL_MODELS_DIR"
+# Create $MODELS_DIR is needed.
+if [ ! -d "$MODELS_DIR" ]; then
+    mkdir -p "$MODELS_DIR"
 fi
 
 BackupModel() {
@@ -39,14 +39,14 @@ BackupModel() {
     if [ ! -f "$MMOJO_SHARE_MODELS_DIR/$MODEL_FILE" ]; then 
         echo ""
         echo "Backing up $MODEL_FILE to $MMOJO_SHARE_MODELS_DIR."
-        sudo rsync -ah --progress "$LOCAL_MODELS_DIR/$MODEL_FILE" "$MMOJO_SHARE_MODELS_DIR/$MODEL_FILE"
+        sudo rsync -ah --progress "$MODELS_DIR/$MODEL_FILE" "$MMOJO_SHARE_MODELS_DIR/$MODEL_FILE"
         sudo chmod a-x "$MMOJO_SHARE_MODELS_DIR/$MODEL_FILE"
         backed_up_one=1
     fi
 }
 
-if [[ $(findmnt "$MMOJO_SHARE_MOUNT_POINT") ]] && [ -d "$MMOJO_SHARE_MODELS_DIR" ] && [ -d "$LOCAL_MODELS_DIR" ]; then
-    cd "$LOCAL_MODELS_DIR"
+if [[ $(findmnt "$MMOJO_SHARE_MOUNT_POINT") ]] && [ -d "$MMOJO_SHARE_MODELS_DIR" ] && [ -d "$MODELS_DIR" ]; then
+    cd "$MODELS_DIR"
     for file in *.gguf; do
         if [ -f "$file" ]; then
             BackupModel "$file"

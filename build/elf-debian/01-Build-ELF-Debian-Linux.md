@@ -186,9 +186,9 @@ fi
 
 ---
 ### Proceed
-- **Next:** [03. Build ELF Executable for Red Hat Enterprise Linux](03-ELF-RHEL.md)
-- **Previous:** [01. Build APE for All Platforms](01-APE-All-Platforms.md)
-- **Up:** [Build Mmojo Server](README.md)
+- **Next:** [02. Test ELF Executable for Debian Linux](02-Test-ELF-Debian-Linux.md)
+- **Previous:** This is the first step in this section.
+- **Up:** [Build Mmojo Server](../README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

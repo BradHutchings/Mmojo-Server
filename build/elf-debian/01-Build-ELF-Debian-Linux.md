@@ -32,9 +32,11 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 ### Build Mmojo Server
 Prepare to build Mmojo Server (llama.cpp with patches and extensions):
 ```
-mm-prepare-clone-llama-cpp.sh
-mm-prepare-patch-llama-cpp.sh
-mm-prepare-customize-webui.sh
+if [ ! -d "$BUILD_DIR" ]; then
+    mm-prepare-clone-llama-cpp.sh
+    mm-prepare-patch-llama-cpp.sh
+    mm-prepare-customize-webui.sh
+fi
 ```
 
 Choose GPUs for your build if you're not building for Raspberry Pi 5.

@@ -14,7 +14,7 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 cd $HOME
 
-build_folders=("$BUILD_DIR" "$DOGHOUSE_BUILD_DIR" "$LLAMA_SERVER_BUILD_DIR")
+build_folders=("$BUILD_DIR" "$LLAMA_SERVER_BUILD_DIR")
 
 for build_folder in "${build_folders[@]}"; do
     if [ -d "$build_folder" ]; then

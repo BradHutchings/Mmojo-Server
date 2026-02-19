@@ -1,8 +1,6 @@
 ## 02. Test APE for All Platforms
 ### About this Step
-In this step, you will build an Actual Portable Executable (APE) file that will run on x86_64 and aarch64 (arm64) processors with Windows, macOS, Linux, and other less common operating systems. APE builds are statically linked with no dependencies on dynamic libraries. I use the APE build as a first thing for clients to download and get Mmojo Server running quickly on their computers. If they like they can "upgrade" to a more performant platform-specific version later.
-
-These build steps work well in a Debian Linux operating system like Ubuntu or Raspberry Pi.
+In this step, you will test your Actual Portable Executable (APE) build. If you zipped up your run directory and saved as a package previously, you can recover that package and test it.
 
 ---
 ### Retrieve Previously Built Package (Optional)

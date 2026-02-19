@@ -1,4 +1,4 @@
-## 11. Build ELF Executable for Debian Linux
+## 01. Build ELF Executable for Debian Linux
 ### About this Step
 In this step, you will build an executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:
 - **Compatible:** Runs on most systems that use a CPU from your computer's CPU family. 
@@ -167,17 +167,6 @@ ls -al $RUN_DIR
 It should look like:
 
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
-
----
-### Test Your Build
-Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gemma 270M Instruct v3**.
-```
-mm-model-choose.sh
-```
-
-```
-mm-debug
-```
 
 ---
 ### (Optional) Create a .zip Package

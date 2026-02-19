@@ -8,7 +8,7 @@ These build steps should be performed in a Debian Linux operating system like Ub
 
 ---
 ### Install Dependencies
-Install dependencies. These may take 20 minutes or so to download and install.
+Install dependencies. These may take 20 minutes or so to download and install. Reinstalling nodejs is necessary to get the right tools in place to rebuild the webui.
 ```
 mm-prepare-install-dependencies.sh
 mm-prepare-reinstall-nodejs.sh

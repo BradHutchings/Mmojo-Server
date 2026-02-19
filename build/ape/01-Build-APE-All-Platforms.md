@@ -2,7 +2,7 @@
 ### About this Step
 In this step, you will build an Actual Portable Executable (APE) file that will run on x86_64 and aarch64 (arm64) processors with Windows, macOS, Linux, and other less common operating systems. APE builds are statically linked with no dependencies on dynamic libraries. I use the APE build as a first thing for clients to download and get Mmojo Server running quickly on their computers. If they like they can "upgrade" to a more performant platform-specific version later.
 
-These build steps work well in a Debian Linux operating system like Ubuntu or Raspberry Pi. Please prepare your Debian environment by working through one these deploy recipes:
+These build steps should be performed in a Debian Linux operating system like Ubuntu or Raspberry Pi. Please prepare your Debian environment by working through one these deploy recipes:
 - [Deploy Mmojo Server on Windows (WSL)](/deploy/200-Windows-WSL/README.md) 
 - [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](/deploy/300-Debian-Ubuntu-Pi/README.md) 
 

@@ -18,6 +18,7 @@ These build steps should be performed in a Debian Linux operating system like Ub
 Install dependencies. These may take 20 minutes or so to download and install.
 ```
 mm-prepare-install-dependencies.sh
+mm-prepare-reinstall-nodejs.sh
 ```
 
 Install CUDA and Vulkan support. These may take 10 minutes or so to download and install.

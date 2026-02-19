@@ -63,14 +63,13 @@ elif [ $(uname -m) == "aarch64" ]; then
     PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
 fi
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$GPUS_CHOICE"
+mm-build-for-platform.sh native "$GPUS_CHOICE"
 ```
 
 <details>
   <summary><b>Alternatively:</b> Build a more compatible Mmojo Server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$GPUS_CHOICE"
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
@@ -82,6 +81,7 @@ elif [ $(uname -m) == "aarch64" ]; then
     PACKAGE_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
 fi
+mm-build-for-platform.sh compatible "$GPUS_CHOICE"
 ```
 </details>
 
@@ -89,7 +89,6 @@ fi
   <summary><b>Alternatively:</b> Build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$GPUS_CHOICE"
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
@@ -101,6 +100,7 @@ elif [ $(uname -m) == "aarch64" ]; then
     PACKAGE_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
 fi
+mm-build-for-platform.sh performant "$GPUS_CHOICE"
 ```
 </details>
 

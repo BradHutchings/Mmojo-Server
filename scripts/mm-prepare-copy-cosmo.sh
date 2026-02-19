@@ -40,6 +40,8 @@ echo ""
 # Copy cosmocc and openssl.
 ################################################################################
 
+cd $THIS_BUILD_DIR
+
 cp -r $BUILD_COSMOPOLITAN_DIR/cosmocc .
 cp -r $BUILD_OPENSSSL_DIR/openssl .
 

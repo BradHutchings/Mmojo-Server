@@ -109,41 +109,6 @@ EOF
 **Future:** These are good candidate for mm-scripts.
 
 ---
-### Choose a Build and a Model
-Use one of the four commands below to choose a build from from the `$RUN_DIR` to activate. The command will create a link to the right executable in your `$RUN_DIR`. The link will not be included in your `.zip` archive.
-
-```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-
-Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google Gemma 270M Instruct v3**.
-```
-mm-model-choose.sh
-```
-
----
-### Test Your Build
-Test that the build runs with output in the Terminal.
-```
-mm-debug
-```
-
-Hit `CTRL-C` to stop the debug run.
-
----
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
@@ -173,7 +138,7 @@ fi
 
 ---
 ### Proceed
-- **Next:** [02. Build ELF Executable for Debian Linux](02-ELF-Debian.md)
+- **Next:** [02. Test APE for All Platforms](02-Test-APE-All-Platforms.md)
 - **Previous:** This is the first step in this section.
 - **Up:** [Build Mmojo Server](README.md)
 

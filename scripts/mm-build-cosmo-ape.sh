@@ -8,29 +8,18 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2.\n*\n$STARS\n\n"
+printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 
 variation=$1
-branding=$2
 
 if [ "$variation" != "compatible" ] && [ "$variation" != "performant" ]; then
     echo "Resetting variation."
     variation="compatible"
 fi
 
-if [ "$branding" != "llama-server" ]; then
-    echo "Resetting branding."
-    branding=""
-fi
-
 THIS_BUILD_DIR=$BUILD_DIR
 EXECUTABLE_FILE=$PACKAGE_MMOJO_SERVER_FILE
 APE_FILE=$PACKAGE_MMOJO_SERVER_APE_FILE
-if [ "$branding" == "llama-server" ]; then
-    THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
-    EXECUTABLE_FILE=$PACKAGE_LLAMA_SERVER_FILE
-    APE_FILE=$PACKAGE_LLAMA_SERVER_APE_FILE
-fi
 
 BUILD_X86_64_SUBDIRECTORY="$BUILD_COSMO_COMPATIBLE_X86_64"
 BUILD_AARCH64_SUBDIRECTORY="$BUILD_COSMO_COMPATIBLE_AARCH64"
@@ -42,7 +31,6 @@ if [ $variation == "performant" ]; then
 fi
 
 echo "                 Variation: $variation"
-echo "                  Branding: $branding"
 echo " Build x86_64 Subdirectory: $BUILD_X86_64_SUBDIRECTORY"
 echo "Build aarch64 Subdirectory: $BUILD_AARCH64_SUBDIRECTORY"
 echo "    Build APE Subdirectory: $BUILD_APE_SUBDIRECTORY"

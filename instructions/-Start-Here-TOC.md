@@ -37,8 +37,6 @@ Prepare things needed to build Mmojo Server executables. **You only need to do t
 - [301. Download Models](301-Download-Models.md) - Download `.gguf` model files from Hugging Face and copy them to your Mmojo share.
 - [302. Copy Models](302-Copy-Models.md) - Copy `.gguf` model files from your Mmojo share.
 - [303. Copy Certificates](303-Copy-Certificates.md) - Copy SSL certificate files from your Mmojo share.
-- [304. Build Cosmopolitan](304-Build-Cosmopolitan.md) - Patch Cosmopolitan and build it.
-- [305. Build OpenSSL](305-Build-OpenSSL.md) - Build OpenSSL static libraries with Cosmopolitan.
 - [306. Install CUDA Toolkit](306-Install-CUDA-Toolkit.md) - Install NVIDIA's CUDA Toolkit.
 - [307. Build Vulkan SDK](307-Build-Vulkan-SDK.md) - Build Vulkan SDK for platform optimized builds.
 
@@ -55,11 +53,6 @@ Gather pre-built models from the Mmojo Share and use llama.cpp and Hugging Face 
 Build Mmojo Server executables.
 
 - [501. Prepare to Build](501-Prepare-to-Build.md) - Clone llama.cpp repo, fix some things, and copy some things.
-- [502. Prepare to Test](502-Prepare-to-Test.md) - Set some environment variables to customize test runs.
-- [510. Platform Builds](510-Platform-Builds.md) - Explains build-platform executables and how to build them. Now with GPU choices and support.
-  - [511. Platform (Compatible)](511-Platform-Compatible.md) - Build `mmojo-server` for the base CPU of the build environment platform.
-  - [512. Platform (Performant)](512-Platform-Performant.md) - Build `mmojo-server` for recent CPUs from the CPU family of the build environment platform.
-  - [513. Platform (Native)](513-Platform-Native.md) - Build `mmojo-server` highly optimized for the CPU of the build environment platform.<br/><br/>
 
 ---
 [MIT License](/LICENSE)<br/>

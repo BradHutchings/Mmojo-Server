@@ -129,6 +129,8 @@ unset TEST_MODEL
 unset TEST_CPU_THREADS
 unset TEST_WITH_CHAT_UI
 
+export PACKAGES_DIR="$HOME/mm-packages"
+
 echo "Setting Package paths."
 export PACKAGE_DIR="$HOME/600-PACKAGE-mmojo-server"
 
@@ -148,19 +150,6 @@ export PACKAGE_MMOJO_SERVER_ZIP_FILE="mmojo-server.zip"
 export PACKAGE_MMOJO_SERVER_EXE_FILE="mmojo-server.exe"
 export PACKAGE_MMOJO_SERVER_ARGS_FILE="mmojo-server-args"
 export PACKAGE_MMOJO_SERVER_SUPPORT_DIR="mmojo-server-support"
-
-echo "Setting Doghouse paths and filenames."
-export DOGHOUSE_FILES="$MMOJO_SERVER_DIR/files/doghouse"
-export DOGHOUSE_SCRIPTS="$MMOJO_SERVER_DIR/scripts/doghouse"
-export DOGHOUSE_BUILD_DIR="$HOME/500-BUILD-doghouse"
-export DOGHOUSE_PACKAGE_DIR="$HOME/600-PACKAGE-doghouse"
-
-export PACKAGE_DOGHOUSE_FILE="doghouse"
-export PACKAGE_DOGHOUSE_APE_FILE="doghouse-ape"
-export PACKAGE_DOGHOUSE_ZIP_FILE="doghouse.zip"
-export PACKAGE_DOGHOUSE_EXE_FILE="doghouse.exe"
-export PACKAGE_DOGHOUSE_ARGS_FILE="doghouse-args"
-export PACKAGE_DOGHOUSE_SUPPORT_DIR="doghouse-support"
 
 echo "Setting llama-server paths and filenames."
 export LLAMA_SERVER_FILES="$MMOJO_SERVER_DIR/files/llama-server"

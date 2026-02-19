@@ -23,9 +23,6 @@ if [ -d "$MMOJO_SERVER_DIR" ]; then
   chmod -f a+x $MMOJO_SERVER_SCRIPTS/4*.sh
   chmod -f a+x $MMOJO_SERVER_SCRIPTS/5*.sh
   chmod -f a+x $MMOJO_SERVER_SCRIPTS/6*.sh
-  chmod -f a+x $DOGHOUSE_SCRIPTS/4*.sh
-  chmod -f a+x $DOGHOUSE_SCRIPTS/5*.sh
-  chmod -f a+x $DOGHOUSE_SCRIPTS/6*.sh
   chmod -f a+x $LLAMA_SERVER_SCRIPTS/4*.sh
   chmod -f a+x $LLAMA_SERVER_SCRIPTS/5*.sh
   chmod -f a+x $LLAMA_SERVER_SCRIPTS/6*.sh

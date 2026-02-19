@@ -1,4 +1,4 @@
-## Build ELF Executable for Debian Linux
+## 01. Build ELF Executable for Debian Linux
 ### About this Step
 In this step, you will build an executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:
 - **Compatible:** Runs on most systems that use a CPU from your computer's CPU family. 
@@ -9,7 +9,9 @@ In this step, you will build an executable file that runs on Debian Linux operat
 
 Windows Subsystem for Linux (WSL) supports NVIDIA GPUs through CUDA libraries. If you're building for WSL, be sure to enable CUDA below.
 
-These build steps work well in a Debian Linux operating system like Ubuntu or Raspberry Pi, or in a Ubuntu WSL instance on Windows 10 or 11.
+These build steps should be performed in a Debian Linux operating system like Ubuntu or Raspberry Pi. Please prepare your Debian environment by working through one these deploy recipes:
+- [Deploy Mmojo Server on Windows (WSL)](/deploy/200-Windows-WSL/README.md) 
+- [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](/deploy/300-Debian-Ubuntu-Pi/README.md) 
  
 ---
 ### Install Dependencies and GPU Support
@@ -42,20 +44,20 @@ Choose GPUs for your build if you're not building for Raspberry Pi 5.
 Build native Mmojo Server tuned to the specific CPU of your PC:
 ```
 BUILD_SUBDIR=""
-ZIP_FILE=""
+PACKAGE_FILE=""
 TOUCH_FILE=""
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
     unset $GPUS_CHOICE
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_RPI5_AARCH64"
-    ZIP_FILE="Mmojo-Server-aarch64-rpi5.zip"
+    PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
     TOUCH_FILE="build-aarch64-rpi5"
 elif [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
 fi
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$GPUS_CHOICE"
@@ -67,14 +69,14 @@ $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$GPUS_CHOICE"
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$GPUS_CHOICE"
 BUILD_SUBDIR=""
-ZIP_FILE=""
+PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-x86_64-comp$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-x86_64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-comp$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
 fi
 ```
@@ -86,14 +88,14 @@ fi
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$GPUS_CHOICE"
 BUILD_SUBDIR=""
-ZIP_FILE=""
+PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-x86_64-perf$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-x86_64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-perf$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
 fi
 ```
@@ -169,30 +171,26 @@ It should look like:
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
-### (Optional) Make a .zip File
-Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
+### Make a Package File
+Make a .zip pakcage files from your run directory. They are moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
-Choose a model to include in your `.zip` file. I'd suggest choosing **Google Gemma 270M Instruct v3**.
-```
-mm-model-choose.sh
-```
-
-Make a `.zip` file and move it to your `$HOME` directory:
+Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r $ZIP_FILE mmojo-server mmojo-server-args Mmojo-Complete $TOUCH_FILE
-  zip -0 $ZIP_FILE *.gguf
-  mv $ZIP_FILE $HOME
+  zip -r "$PACKAGE_FILE" mmojo-server mmojo-server-args Mmojo-Complete "$TOUCH_FILE"
+  mkdir -p "$PACKAGES_DIR"
+  mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME
+  ls -al "$PACKAGES_DIR"
 fi
 ```
 
 ---
 ### Proceed
-- **Next:** [03. Build ELF Executable for Red Hat Enterprise Linux](03-ELF-RHEL.md)
-- **Previous:** [01. Build APE for All Platforms](01-APE-All-Platforms.md)
-- **Up:** [Build Mmojo Server](README.md)
+- **Next:** [02. Test ELF Executable for Debian Linux](02-Test-ELF-Debian-Linux.md)
+- **Previous:** This is the first step in this section.
+- **Up:** [Build Mmojo Server](../README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

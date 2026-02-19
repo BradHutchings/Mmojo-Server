@@ -1,8 +1,10 @@
-## Build APE for All Platforms
+## 01. Build APE for All Platforms
 ### About this Step
 In this step, you will build an Actual Portable Executable (APE) file that will run on x86_64 and aarch64 (arm64) processors with Windows, macOS, Linux, and other less common operating systems. APE builds are statically linked with no dependencies on dynamic libraries. I use the APE build as a first thing for clients to download and get Mmojo Server running quickly on their computers. If they like they can "upgrade" to a more performant platform-specific version later.
 
-These build steps work well in a Debian Linux operating system like Ubuntu or Raspberry Pi.
+These build steps should be performed in a Debian Linux operating system like Ubuntu or Raspberry Pi. Please prepare your Debian environment by working through one these deploy recipes:
+- [Deploy Mmojo Server on Windows (WSL)](/deploy/200-Windows-WSL/README.md) 
+- [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](/deploy/300-Debian-Ubuntu-Pi/README.md) 
 
 ---
 ### Install Dependencies
@@ -109,32 +111,6 @@ EOF
 **Future:** These are good candidate for mm-scripts.
 
 ---
-### Choose a Build and a Model
-Use one of the four commands below to choose a build from from the `$RUN_DIR` to activate. The command will create a link to the right executable in your `$RUN_DIR`. The link will not be included in your `.zip` archive.
-
-```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-
-Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google Gemma 270M Instruct v3**.
-```
-mm-model-choose.sh
-```
-
----
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
@@ -146,26 +122,27 @@ It should look like:
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
-### (Optional) Make a .zip File
-Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
+### Make a Package File
+Make a .zip pakcage files from your run directory. They are moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
-Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
+Make a `mmojo-server-ape.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
-ZIP_FILE="Mmojo-Server-ape.zip"
+PACKAGE_FILE="Mmojo-Server-ape.zip"
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r $ZIP_FILE "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete
-  zip -0 $ZIP_FILE *.gguf
-  mv $ZIP_FILE $HOME
+  zip -r "$PACKAGE_FILE" "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete
+  mkdir -p "$PACKAGES_DIR"
+  mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME
+  ls -al "$PACKAGES_DIR"
 fi
 ```
 
 ---
 ### Proceed
-- **Next:** [02. Build ELF Executable for Debian Linux](02-ELF-Debian.md)
+- **Next:** [02. Test APE for All Platforms](02-Test-APE-All-Platforms.md)
 - **Previous:** This is the first step in this section.
-- **Up:** [Build Mmojo Server](README.md)
+- **Up:** [Build Mmojo Server](../README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

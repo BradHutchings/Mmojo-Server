@@ -1,5 +1,7 @@
 ## 200. Prepare Build Environment
 ### About this Section
+**THESE ARE OLD INSTRUCTIONS FROM MMOJO SERVER V1 AND V2. SOME PORTIONS REMAIN HERE FOR REFERENCE.**
+
 Before you can build Mmojo Server, you need to set up a build environment. I use three build environments regularly:
 - Ubuntu 24.04 for x86_64 in a Windows Subsystem for Linux (WSL) instance.
 - Ubuntu 24.04 Server (Debian 13 Trixie) for x86_64 in a virtual machine.

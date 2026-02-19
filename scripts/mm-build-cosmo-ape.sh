@@ -18,7 +18,7 @@ if [ "$variation" != "compatible" ] && [ "$variation" != "performant" ]; then
     variation="compatible"
 fi
 
-if [ "$branding" != "doghouse" ] && [ "$branding" != "llama-server" ]; then
+if [ "$branding" != "llama-server" ]; then
     echo "Resetting branding."
     branding=""
 fi
@@ -26,12 +26,7 @@ fi
 THIS_BUILD_DIR=$BUILD_DIR
 EXECUTABLE_FILE=$PACKAGE_MMOJO_SERVER_FILE
 APE_FILE=$PACKAGE_MMOJO_SERVER_APE_FILE
-if [ "$branding" == "doghouse" ]; then
-    chat_ui=1
-	THIS_BUILD_DIR=$DOGHOUSE_BUILD_DIR
-    EXECUTABLE_FILE=$PACKAGE_DOGHOUSE_FILE
-    APE_FILE=$PACKAGE_DOGHOUSE_APE_FILE
-elif [ "$branding" == "llama-server" ]; then
+if [ "$branding" == "llama-server" ]; then
     THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
     EXECUTABLE_FILE=$PACKAGE_LLAMA_SERVER_FILE
     APE_FILE=$PACKAGE_LLAMA_SERVER_APE_FILE

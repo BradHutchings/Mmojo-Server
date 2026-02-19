@@ -140,7 +140,7 @@ fi
 ### Proceed
 - **Next:** [02. Test APE for All Platforms](02-Test-APE-All-Platforms.md)
 - **Previous:** This is the first step in this section.
-- **Up:** [Build Mmojo Server](README.md)
+- **Up:** [Build Mmojo Server](../README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

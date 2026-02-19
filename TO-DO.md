@@ -1,19 +1,14 @@
 ## Disorganized To-Do List
 
+Well, this got out of hand. I'm cleaning it up and trying to use it again. -Brad 2026-02-19
+
 | Added              | Item      |
 | :-------------           | :------    |
 | 2025&minus;12&minus;10         | GGML params for aarch64 aren't implemented yet for performant builds - default to all off. 520-Build-with-Cosmo.sh and 510-Build-for-Platform.sh. |
-| 2025&minus;12&minus;09         | In build and test scripts, test for existence of the main build directory for the brand. If it's not there, we haven't cloned llama.cpp for that brand yet. |
-| 2025&minus;12&minus;07         | Audit mm-environment-variables.sh. Is there any unused garbage left? |
-| 2025&minus;12&minus;07         | Unbranded build llama-server 500/600 track. Easiest way to build and deploy llama-server. |
-| 2025&minus;12&minus;03         | Rewrite [105. Packaging for Deployment](instructions/105-Packaging-for-Deployment.md) |
-| 2025&minus;12&minus;03         | Rewrite [104. Build Targets](instructions/104-Build-Targets.md). |
 | 2025&minus;12&minus;02         | `mm-choose-build.sh` does not find GPU enabled builds. |
 | 2025&minus;12&minus;02         | See if latest Cosmo commit solves the 400 problem in server &mdash; [Commit Details](https://github.com/jart/cosmopolitan/commit/b444b3a6e0d442162f800142a349371386b374c6). Still need to keep a slow roll on Cosmo changes. |
-| 2025&minus;12&minus;01         | Build and test options in an `mm-build-test-options.sh` script, called by `mm-environment-variables.sh`. I could put `--parallel` for CMake, prefered LLM to use in testing, use chat UI, etc. |
 | 2025&minus;12&minus;01         | mm-choose-gpus.sh needs to let user choose what they previously chose easily. |
 | 2025&minus;11&minus;27         | Go through all scripts and make sure descriptions are correct. Some have been copied, not edited. |
-| 2025&minus;11&minus;23         | First paragraph is wrong about what we're going to build. [400-Build-Mmojo-Server.md](https://github.com/BradHutchings/Mmojo-Server/blob/main/instructions/400-Build-Mmojo-Server.md) |
 | 2025&minus;11&minus;26         | Next update of llama.cpp: Can I just copy loading-mmojo.html to loading.html and forget about changes in server-mmojo.cpp? |
 | 2025&minus;11&minus;21         | Is it safe to use the latest Cosmo again? Changes started mid-November and broke the build of the Cosmo library. No. We get 400 responses to our API requests when running the server. Nothing shows up in building before that. Grrrr. Answer: NO. 2025-12-16. |
 | 2025&minus;11&minus;23         | `mmojo-server-args` should be a json/yaml file. It's a cool solution inherited from Cosmo and llamafile, but it's also awkward. See the top of the `main()` function in [`server-mmojo.cpp`](https://github.com/BradHutchings/Mmojo-Server/blob/main/files/tools/server/server-mmojo.cpp). It bends my brain every time I look at it. LOL. |

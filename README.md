@@ -17,10 +17,10 @@ This repository is your source for deploying and building Mmojo Server:
 The best path to start your Mmojo Server journey goes like this:
 1. Mmojo.net will host a downloadable Mmojo Stick package. Copy to a fast thumb drive. Use it on most dekstop or laptop computers in use today. Leave no footprints! There will be a link to that soon!
 2. Deploy Mmojo Server securely, tailored to:
-   - Windows 11 using the [Deploy Mmojo Server on Windows (WSL)](/deploy/200-Windows-WSL/README.md) recipe.
-   - Debian Linux using the [Deploy Mmojo Server on Debian / Ubintu / Pi](/deploy/300-Debian-Ubuntu-Pi/README.md) recipe.
+   - Windows 11 using the [Deploy Mmojo Server on Windows (WSL)](/deploy/Windows-WSL/README.md) recipe.
+   - Debian Linux using the [Deploy Mmojo Server on Debian / Ubintu / Pi](/deploy/Debian-Ubuntu-Pi/README.md) recipe.
    - More platforms are coming soon.
-3. Get started with OpenClaw using the [OpenClaw](/deploy/500-OpenClase/README.md) recipe.
+3. Get started with OpenClaw using the [OpenClaw](/deploy/OpenClase/README.md) recipe.
 
 Need professional help with your deployment, rollout, or build? Would you like to sponsor accessible, local, private LLMs? Email me!
 

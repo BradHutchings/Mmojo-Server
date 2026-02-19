@@ -44,20 +44,20 @@ Choose GPUs for your build if you're not building for Raspberry Pi 5.
 Build native Mmojo Server tuned to the specific CPU of your PC:
 ```
 BUILD_SUBDIR=""
-ZIP_FILE=""
+PACKAGE_FILE=""
 TOUCH_FILE=""
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
     unset $GPUS_CHOICE
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_RPI5_AARCH64"
-    ZIP_FILE="Mmojo-Server-aarch64-rpi5.zip"
+    PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
     TOUCH_FILE="build-aarch64-rpi5"
 elif [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
 fi
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$GPUS_CHOICE"
@@ -69,14 +69,14 @@ $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$GPUS_CHOICE"
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$GPUS_CHOICE"
 BUILD_SUBDIR=""
-ZIP_FILE=""
+PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-x86_64-comp$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-x86_64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-comp$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
 fi
 ```
@@ -88,14 +88,14 @@ fi
 ```
 $MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$GPUS_CHOICE"
 BUILD_SUBDIR=""
-ZIP_FILE=""
+PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-x86_64-perf$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-x86_64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-perf$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
-    ZIP_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
+    PACKAGE_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
 fi
 ```
@@ -171,16 +171,16 @@ It should look like:
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
-### (Optional) Create a .zip Package
-You can create a `.zip` package that can be restored to the run directory later. Packages are saved to your `$HOME/mm-packages` directory after zipping. You don't need to do this.
+### Make a Package File
+Make a .zip pakcage files from your run directory. They are moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
-Make a `.zip` file and move it to your `$PACKAGES_DIR` directory:
+Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r "$ZIP_FILE" mmojo-server mmojo-server-args Mmojo-Complete "$TOUCH_FILE"
+  zip -r "$PACKAGE_FILE" mmojo-server mmojo-server-args Mmojo-Complete "$TOUCH_FILE"
   mkdir -p "$PACKAGES_DIR"
-  mv -f "$ZIP_FILE" "$PACKAGES_DIR"
+  mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME
   ls -al "$PACKAGES_DIR"
 fi

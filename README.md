@@ -10,6 +10,7 @@ Mmojo Server is a private, local LLM server:
 - Mmojo Server supports the OpenAI API. If you're building an "AI-powered" app, using Mmojo Server will save you from cloud token bills.
 - Mmojo Server can be built as an Actual Portable Executable (APE), allowing one executable to run on Windows, macOS, and Linux, on both x86_64 and aarch64 (arm64) CPU architectures. It is the easiest way to get started with a local or hosted LLM.
 - Mmojo Server can also be built for specific operating systems and architectures, optimized for a particular computer, or built to run on a wide selection of CPUs in a CPU family.
+- Everything in the Mmojo Server repo &mdash; code, instructions, examples, etc. &mdash; is written and tested by me, not a computer. I take pride in the code and information being correct and making it easy for you to get started with private, local LLMs. 
 
 This repository is your source for deploying and building Mmojo Server:
 - The [Deploy](/deploy/README.md) section helps you expertly deploy Mmojo Server for use on your computer or server.

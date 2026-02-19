@@ -1,4 +1,4 @@
-## Build ELF Executable for Debian Linux
+## 11. Build ELF Executable for Debian Linux
 ### About this Step
 In this step, you will build an executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:
 - **Compatible:** Runs on most systems that use a CPU from your computer's CPU family. 

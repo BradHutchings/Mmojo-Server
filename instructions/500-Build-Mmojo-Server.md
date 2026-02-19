@@ -1,5 +1,7 @@
 ## 500. Build Mmojo Server
 ### About this Section
+**THESE ARE OLD INSTRUCTIONS FROM MMOJO SERVER V1 AND V2. SOME PORTIONS REMAIN HERE FOR REFERENCE.**
+
 We're ready to build `mmojo-server` executables. First, we'll build a native version for the build environment platfrom that can be used to test features and changes. Then, we'll build an Actually Portable Executable (APE) with Cosmopolitan that will run anywhere. After that, we'll build unoptimized linux builds for x86_64 and aarch64 (arm64) platforms, as well as optimized builds for specific devices like macOS and Raspberry Pi.
 
 #### Experimental &mdash; llama-server
@@ -20,9 +22,6 @@ Here are the things you need to do:
   - [511. Platform (Compatible)](511-Platform-Compatible.md) - Build `mmojo-server` for the base CPU of the build environment platform.
   - [512. Platform (Performant)](512-Platform-Performant.md) - Build `mmojo-server` for recent CPUs from the CPU family of the build environment platform.
   - [513. Platform (Native)](513-Platform-Native.md) - Build `mmojo-server` highly optimized for the CPU of the build environment platform.<br/><br/>
-- [520. APE Builds](520-APE-Builds.md) - Explains Actual Portable Executables (APEs) and how to build them.
-  - [521. APE (Compatible)](521-APE-Compatible.md) - Build `mmojo-server-ape` as an APE with Cosmopolitan. This build is widely compatible with x86_64 and aarch64 (arm64) systems, but not very performant.
-  - [522. APE (Performant)](522-APE-Performant.md) - Build `mmojo-server-ape` as an APE with Cosmopolitan. This build is compatible with recent x86_64 and aarch64 (arm64) systems and more performant.<br/><br/>
 
 **Get Started:** [501. Prepare to Build](501-Prepare-to-Build.md)
 

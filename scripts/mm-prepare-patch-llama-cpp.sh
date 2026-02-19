@@ -12,20 +12,9 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 
 cd $HOME
 
-branding=$1
-
-if [ "$branding" != "llama-server" ]; then
-    branding=""
-fi
-
 THIS_BUILD_DIR=$BUILD_DIR
 EXECUTABLE_FILE=$PACKAGE_MMOJO_SERVER_FILE
-if [ "$branding" == "llama-server" ]; then
-    THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
-    EXECUTABLE_FILE=$PACKAGE_LLAMA_SERVER_FILE
-fi
 
-echo "         Branding: $branding"
 echo "  executable file: $EXECUTABLE_FILE"
 echo "       cloning in: $THIS_BUILD_DIR"
 echo ""
@@ -61,36 +50,22 @@ sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/serv
 sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
 
 #-------------------------------------------------------------------------------
-# Mmojo Server and Doghouse specific
+# Mmojo Server specific
 #-------------------------------------------------------------------------------
 
-if [ "$branding" == "" ] || [ "$branding" == "doghouse" ]; then
-    # Update the CMake files.
-    sed -i -e 's/arg.cpp/arg-mmojo.cpp/g' common/CMakeLists.txt
-    sed -i -e 's/common.cpp/common-mmojo.cpp/g' common/CMakeLists.txt
-    sed -i -e '/log.h/a \    mmojo-args.h\n\    mmojo-args.c' common/CMakeLists.txt
-    # Not bothering with zipalign for now. -Brad 2025-11-23
-    # sed -i -e 's/add_subdirectory(server)/add_subdirectory(server)\n\tif (COSMOCC)\n\t\tadd_subdirectory(zipalign)\n\tendif()/g' tools/CMakeLists.txt
-    sed -i -e 's/server.cpp/server-mmojo.cpp/g' tools/server/CMakeLists.txt
-    sed -i -e 's/server-context.cpp/server-context-mmojo.cpp/g' tools/server/CMakeLists.txt
-    sed -i -e 's/server-http.cpp/server-http-mmojo.cpp/g' tools/server/CMakeLists.txt
-    sed -i -e "s/set(TARGET llama-server)/set(TARGET $EXECUTABLE_FILE)/g" tools/server/CMakeLists.txt
-    sed -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt
+# Update the CMake files.
+sed -i -e 's/arg.cpp/arg-mmojo.cpp/g' common/CMakeLists.txt
+sed -i -e 's/common.cpp/common-mmojo.cpp/g' common/CMakeLists.txt
+sed -i -e '/log.h/a \    mmojo-args.h\n\    mmojo-args.c' common/CMakeLists.txt
+# Not bothering with zipalign for now. -Brad 2025-11-23
+# sed -i -e 's/add_subdirectory(server)/add_subdirectory(server)\n\tif (COSMOCC)\n\t\tadd_subdirectory(zipalign)\n\tendif()/g' tools/CMakeLists.txt
+sed -i -e 's/server.cpp/server-mmojo.cpp/g' tools/server/CMakeLists.txt
+sed -i -e 's/server-context.cpp/server-context-mmojo.cpp/g' tools/server/CMakeLists.txt
+sed -i -e 's/server-http.cpp/server-http-mmojo.cpp/g' tools/server/CMakeLists.txt
+sed -i -e "s/set(TARGET llama-server)/set(TARGET $EXECUTABLE_FILE)/g" tools/server/CMakeLists.txt
+sed -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt
 
-    # --- Here is where to patch common/common.h with common/common.h.patch-1
-fi
-
-#-------------------------------------------------------------------------------
-# llama-server specific
-#-------------------------------------------------------------------------------
-
-if [ "$branding" == "llama-server" ]; then
-    # Update the CMake files.
-    sed -i -e '/log.h/a \    mmojo-args.h\n\    mmojo-args.c' common/CMakeLists.txt
-    sed -i -e 's/common.cpp/common-mmojo.cpp/g' common/CMakeLists.txt
-    sed -i -e 's/server.cpp/server-mmojo.cpp/g' tools/server/CMakeLists.txt
-    sed -i -e 's/server-context.cpp/server-context-mmojo.cpp/g' tools/server/CMakeLists.txt
-fi
+# --- Here is where to patch common/common.h with common/common.h.patch-1
 
 #-------------------------------------------------------------------------------
 # Thread priority patch for MinGW cross-compiler:

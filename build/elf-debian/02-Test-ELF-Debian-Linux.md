@@ -29,9 +29,9 @@ Hit `CTRL-C` to stop the debug run.
 
 ---
 ### Proceed
-- **Next:** [11. Build ELF for Debian Linux](11-Build-ELF-Debian-Linux.md)
-- **Previous:** [01. Build APE for All Platforms](01-Build-APE-All-Platforms.md)
-- **Up:** [Build Mmojo Server](README.md)
+- **Next:** This is the last step in this section.
+- **Previous:** [01. Build ELF Executable for Debian Linux](01-Build-ELF-Debian-Linux.md)
+- **Up:** [Build Mmojo Server](../README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

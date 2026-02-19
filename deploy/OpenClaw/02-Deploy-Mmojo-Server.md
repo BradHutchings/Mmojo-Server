@@ -1,4 +1,4 @@
-## 02. Cleanup WSL Instances
+## 02. Deploy Mmojo Server
 ### About this Step
 In this step, you will open the deployment guide for deploying Mmojo Server on Windows (WSL), you will complete the guide. You will return here.
 

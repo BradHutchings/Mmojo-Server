@@ -25,20 +25,14 @@ Test that the build runs with output in the Terminal.
 mm-debug
 ```
 
-Hit `CTRL-C` to stop the debug run when you are finished testing your build.
-
-Since your build is in your `$RUN_DIR`, it's ready to be deployed with `mm-start`.
-
----
-### Connect to Mmojo Complete
 Connect to Mmojo Complete from a browser:
 
 [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
-You should see the Mmojo Complete user interface:
 
-<img width="543" height="400" alt="image" src="https://github.com/user-attachments/assets/31055741-4697-441e-a3e3-a191401a7e8c" />
+Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 
+Since your build is in your `$RUN_DIR`, it's ready to be deployed with `mm-start`.
 
 ---
 ### Proceed

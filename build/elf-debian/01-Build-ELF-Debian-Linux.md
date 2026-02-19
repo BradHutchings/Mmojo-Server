@@ -10,8 +10,8 @@ In this step, you will build an executable file that runs on Debian Linux operat
 Windows Subsystem for Linux (WSL) supports NVIDIA GPUs through CUDA libraries. If you're building for WSL, be sure to enable CUDA below.
 
 These build steps should be performed in a Debian Linux operating system like Ubuntu or Raspberry Pi. Please prepare your Debian environment by working through one these deploy recipes:
-- [Deploy Mmojo Server on Windows (WSL)](/deploy/200-Windows-WSL/README.md) 
-- [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](/deploy/300-Debian-Ubuntu-Pi/README.md) 
+- [Deploy Mmojo Server on Windows (WSL)](/deploy/Windows-WSL/README.md) 
+- [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](/deploy/Debian-Ubuntu-Pi/README.md) 
  
 ---
 ### Install Dependencies and GPU Support

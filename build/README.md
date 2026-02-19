@@ -1,5 +1,5 @@
 ## Build Mmojo Server - Table of Contents
-Build instructions are here. I use these to build Mmojo Server for the delpoy offerings and my own products.
+Build instructions are here. I use these to build Mmojo Server for the [Deploy](/deploy/README.md) offerings and my own products.
 
 You can build an Actual Portable Executable (APE) file that runs on x86_64 and aarch64 (arm64), across Windows, macOS, Linux, and other platforms:
 - [Build APE for All Platforms](ape/01-Build-APE-All-Platforms.md)

@@ -22,7 +22,7 @@ The best path to start your Mmojo Server journey goes like this:
    - More platforms are coming soon.
 3. Get started with OpenClaw using the [OpenClaw](/deploy/500-OpenClase/README.md) recipe.
 
-Need professional help with your deployment, rollout, or build? Email me!
+Need professional help with your deployment, rollout, or build? Would you like to sponsor accessible, local, private LLMs? Email me!
 
 -Brad<br/>
 --<br/>

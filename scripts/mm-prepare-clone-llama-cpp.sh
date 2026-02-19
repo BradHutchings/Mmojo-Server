@@ -23,14 +23,12 @@ cd $HOME
 
 branding=$1
 
-if [ "$branding" != "doghouse" ] && [ "$branding" != "llama-server" ]; then
+if [ "$branding" != "llama-server" ]; then
     branding=""
 fi
 
 THIS_BUILD_DIR=$BUILD_DIR
-if [ "$branding" == "doghouse" ]; then
-    THIS_BUILD_DIR=$DOGHOUSE_BUILD_DIR
-elif [ "$branding" == "llama-server" ]; then
+if [ "$branding" == "llama-server" ]; then
     THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
 fi
 

@@ -1,4 +1,4 @@
-## 03. Build ELF Executable for Red Hat Enterprise Linux
+## 21. Build ELF Executable for Red Hat Enterprise Linux
 **THE BUILD SSECTION IS UNDER CONSTRUCTION. THESE INSTRUCTIONS PROBABLY DON'T WORK.**
 
 ---
@@ -9,7 +9,7 @@ In this step, you will build for RHEL, CentOS, Oracle Linux, etc.
 ---
 ### Proceed
 - **Next:** [04. Build ELF Executable for Arch Linux](04-ELF-Arch.md)
-- **Previous:** [02. Build ELF Executable for Debian Linux](02-ELF-Debian.md)
+- **Previous:** [12. Test ELF Executable for Debian Linux](02-ELF-Debian.md)
 - **Up:** [Build Mmojo Server](README.md)
 
 ---

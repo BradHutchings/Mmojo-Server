@@ -1,5 +1,5 @@
 ## Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi
-### About this Section (300-Debian-Ubunutu-Pi)
+### About this Section
 In this section, you will deploy Mmojo Server on Debian / Ubuntu Linux. This will also work with Raspberry Pi Linux on a Raspberry Pi 5, as it is Debian-based.
 
 <!-- SPONSOR --> 
@@ -33,7 +33,7 @@ Here are the deployment steps:
 You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
 
 Use this recipe:
-- [01. Build ELF Executable for Debian Linux](/build/elf-debian/01-Build-ELF-Debian-Linux.md)
+- [Build ELF Executable for Debian Linux](/build/elf-debian/01-Build-ELF-Debian-Linux.md)
 
 Before building, please work through all of the deploy steps above.
 

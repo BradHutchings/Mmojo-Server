@@ -141,7 +141,6 @@ Test that the build runs with output in the Terminal.
 mm-debug
 ```
 
-
 Hit `CTRL-C` to stop the debug run.
 
 ---
@@ -157,9 +156,9 @@ It should look like:
 
 ---
 ### (Optional) Make a .zip File
-Brad makes .zip files for the Hugging Face downloads. They are moved to your `$HOME` directory after zipping. You don't need to do this.
+Brad makes .zip files for the Hugging Face downloads. They are moved to your `$PACKAGES_DIR` directory after zipping. You don't need to do this.
 
-Make a `mmojo-server-ape.zip` file and move it to your `$HOME` directory:
+Make a `mmojo-server-ape.zip` file and move it to your `$PACKAGES_DIR` directory:
 ```
 ZIP_FILE="Mmojo-Server-ape.zip"
 if test -n "$RUN_DIR"; then

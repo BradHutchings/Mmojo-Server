@@ -33,14 +33,6 @@ echo "Installing python packages to support convert_hf_to_gguf.py."
 pip3 install transformers torch sentencepiece --break-system-packages
 # ?? unsloth-zoo unsloth gguf
 
-echo ""
-echo "Reinstalling nodejs and npm because recompiling the current llama.cpp webui doesn't like what we have."
-
-sudo apt remove nodejs npm -y
-sudo apt install nodejs npm -y
-sudo npm install -g node@latest
-sudo npm install -g npm@latest
-
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 ################################################################################

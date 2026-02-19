@@ -32,10 +32,6 @@ if [ "$branding" == "llama-server" ]; then
     THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
 fi
 
-if [ -d "$THIS_BUILD_DIR" ]; then
-    rm -r -f $THIS_BUILD_DIR
-fi
-
 echo "       Branding: $branding"
 echo "build directory: $THIS_BUILD_DIR/"
 echo ""

@@ -1,11 +1,4 @@
 ## About Mmojo Server
-
-**[Deploy Mmojo Server (Windows WSL)](deploy/200-Windows-WSL/README.md)**
-
-**[Deploy OpenClaw (Windows WSL)](deploy/500-OpenClaw/README.md)**
-
-**[Build Mmojo Server Now!](build/READDME.md)**
-
 Welcome to Mmojo Server version 3!
 
 Mmojo Server is a private, local LLM server:

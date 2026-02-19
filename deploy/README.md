@@ -4,7 +4,7 @@ Let's deploy Mmojo Server on your PC, laptop, or server!
 Here are deployments that are ready for you to use:
 - [Deploy Mmojo Server on Windows (WSL)](Windows-WSL/README.md) - Deploy Mmojo Server in WSL instance.
 - [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](Debian-Ubuntu-Pi/README.md) - Deploy Mmojo Server on Debian, Ubuntu, and Raspberry Pi 5.
-- [Deploy OpenClaw (WSL)](OpenClaw/README.md) - Deploy OpenClaw server with Mmojo Server in WSL instances.
+- [Deploy OpenClaw (Windows WSL)](OpenClaw-Windows-WSL/README.md) - Deploy OpenClaw server with Mmojo Server in WSL instances.
 
 <!-- SPONSOR --> 
 If you need assistance via Zoom call and screen sharing, I offer a one-hour hands-on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this stuff work. [Email me if interested](mailto:brad@BradHutchings.com?subject=Mmojo%20Server%20Install%20Help).

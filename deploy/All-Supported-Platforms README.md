@@ -1,4 +1,4 @@
-## Deploy Mmojo Server APE on Supported Platforms
+## Deploy Mmojo Server on All Supported Platforms
 ### About this Section
 In this section, you will deploy a Mmojo Server Actual Portable Executable (APE) on one of the supported platforms.
 

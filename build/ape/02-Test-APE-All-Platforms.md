@@ -50,7 +50,7 @@ Hit `CTRL-C` to stop the debug run.
 ### Proceed
 - **Next:** This is the last step in this section.
 - **Previous:** [01. Build APE for All Platforms](01-Build-APE-All-Platforms.md)
-- **Up:** [Build Mmojo Server](README.md)
+- **Up:** [Build Mmojo Server](../README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

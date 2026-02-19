@@ -25,7 +25,9 @@ Test that the build runs with output in the Terminal.
 mm-debug
 ```
 
-Hit `CTRL-C` to stop the debug run when you are finished.
+Hit `CTRL-C` to stop the debug run when you are finished testing your build.
+
+Since your build is in your `$RUN_DIR`, it's ready to be deployed with `mm-start`.
 
 ---
 ### Connect to Mmojo Complete

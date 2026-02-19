@@ -27,7 +27,7 @@ if [ "$attire" != "attired" ] && [ "$attire" != "naked" ]; then
     attire="attired"
 fi
 
-if [ "$branding" != "doghouse" ] && [ "$branding" != "llama-server" ]; then
+if [ "$branding" != "llama-server" ]; then
     branding=""
 fi
 
@@ -48,10 +48,7 @@ fi
 
 THIS_PACKAGE_DIR="$PACKAGE_DIR/$PACKAGE_SUBDIRECTORY"
 EXECUTABLE_FILE=$PACKAGE_MMOJO_SERVER_APE_FILE
-if [ "$branding" == "doghouse" ]; then
-    THIS_PACKAGE_DIR="$DOGHOUSE_PACKAGE_DIR/$PACKAGE_SUBDIRECTORY"
-    EXECUTABLE_FILE=$PACKAGE_DOGHOUSE_APE_FILE
-elif [ "$branding" == "llama-server" ]; then
+if [ "$branding" == "llama-server" ]; then
     THIS_PACKAGE_DIR="$LLAMA_SERVER_PACKAGE_DIR/$PACKAGE_SUBDIRECTORY"
     EXECUTABLE_FILE=$PACKAGE_LLAMA_SERVER_APE_FILE
 fi

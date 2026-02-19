@@ -14,16 +14,13 @@ cd $HOME
 
 branding=$1
 
-if [ "$branding" != "doghouse" ] && [ "$branding" != "llama-server" ]; then
+if [ "$branding" != "llama-server" ]; then
     branding=""
 fi
 
 THIS_BUILD_DIR=$BUILD_DIR
 APP_NAME='Mmojo Chat'
-if [ "$branding" == "doghouse" ]; then
-    THIS_BUILD_DIR=$DOGHOUSE_BUILD_DIR
-    APP_NAME='Doghouse'
-elif [ "$branding" == "llama-server" ]; then
+if [ "$branding" == "llama-server" ]; then
     THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
     APP_NAME='llama.cpp'
 fi
@@ -44,7 +41,7 @@ npm run build
 cd $SAVE_WD
 mv loading-mmojo.html tools/server/public/loading-mmojo.html
 
-if [ "$branding" != "doghouse" ] && [ "$branding" != "llama-server" ]; then
+if [ "$branding" != "llama-server" ]; then
     TODAY=$(date +%Y-%m-%d)
     cp -r Mmojo-Complete Mmojo-Complete-original
     sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/scripts.js

@@ -34,7 +34,7 @@ if [ "$chat_ui" == "" ] || [ "$chat_ui" != "1" ]; then
     chat_ui="0"
 fi
 
-if [ "$branding" != "doghouse" ] && [ "$branding" != "llama-server" ]; then
+if [ "$branding" != "llama-server" ]; then
     branding=""
 fi
 
@@ -42,12 +42,7 @@ THIS_BUILD_DIR=$BUILD_DIR
 EXECUTABLE_FILE=$PACKAGE_MMOJO_SERVER_FILE
 ARGS_FILE=$PACKAGE_MMOJO_SERVER_ARGS_FILE
 SUPPORT_DIR=$PACKAGE_MMOJO_SERVER_SUPPORT_DIR
-if [ "$branding" == "doghouse" ]; then
-    THIS_BUILD_DIR=$DOGHOUSE_BUILD_DIR
-    EXECUTABLE_FILE=$PACKAGE_DOGHOUSE_FILE
-    ARGS_FILE=$PACKAGE_DOGHOUSE_ARGS_FILE
-    SUPPORT_DIR=$PACKAGE_DOGHOUSE_SUPPORT_DIR
-elif [ "$branding" == "llama-server" ]; then
+if [ "$branding" == "llama-server" ]; then
     THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
     EXECUTABLE_FILE=$PACKAGE_LLAMA_SERVER_FILE
     ARGS_FILE=$PACKAGE_LLAMA_SERVER_ARGS_FILE

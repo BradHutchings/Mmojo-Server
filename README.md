@@ -1,5 +1,7 @@
 ## About Mmojo Server
-Welcome to Mmojo Server version 3!
+Welcome to Mmojo Server version 3! 
+
+This repository is the "Easy Button" for deploying and building [llama.cpp](https://github.com/ggml-org/llama.cpp) for your PC, laptop, or server.
 
 Mmojo Server is a private, local LLM server:
 - All defaults support private, local LLM usage. No logs by default. No cloud queries. No user accounts. No shared server over your network. Cues and completions &mdash; aka prompts and answers &mdash; do not leave your computer unless you make them leave your computer.

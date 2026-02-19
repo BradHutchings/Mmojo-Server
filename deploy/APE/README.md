@@ -1,5 +1,5 @@
 ## Deploy Mmojo Server APE on Supported Platforms
-### About this Section (100)
+### About this Section
 In this section, you will deploy a Mmojo Server Actual Portable Executable (APE) on one of the supported platforms.
 
 Supported CPUs are: x86_64 (Intel) and aarch64 (ARM).

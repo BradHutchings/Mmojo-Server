@@ -40,7 +40,7 @@ If you want Mmojo Server to accept connections from other computers on your netw
 You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
 
 Use this recipe:
-- [02. Build ELF Executable for Debian Linux](/build/02-ELF-Debian.md)
+- [01. Build ELF Executable for Debian Linux](/build/elf-debian/01-Build-ELF-Debian-Linux.md)
 
 Before building, please work through all of the deploy steps above.
 

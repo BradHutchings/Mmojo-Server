@@ -5,7 +5,7 @@ Mmojo Server is a private, local LLM server:
 - All defaults support private, local LLM usage. No logs by default. No cloud queries. No user accounts. No shared server over your network. Cues and completions &mdash; aka prompts and answers &mdash; do not leave your computer unless you make them leave your computer.
 - Mmojo Server sports a humane completion-style user interface as its default, and offers a traditional chat user interface for those who want that. You don't have to pretend to chat with a robot! 
 
-- Mmojo Server extends the llama.cpp llama-server. It kept up to date with llama.cpp source weekly.
+- Mmojo Server extends llama-server from the llama.cpp project. Mmojo Server is kept up to date with llama.cpp source weekly.
 - Mmojo Server can be built as an Actual Portable Executable (APE), allowing one executable to run on Windows, macOS, and Linux, on both x86_64 and aarch64 (arm64) CPU architectures. It is the easiest way to get started with a local or hosted LLM.
 - Mmojo Server can also be built for specific operating systems and architectures, optimized for a particular computer, or built to run on a wide selection of CPUs in a CPU family.
 

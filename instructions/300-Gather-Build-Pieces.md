@@ -9,8 +9,6 @@ If you have already prepared your build environment, skip ahead to:
 ### Gather Build Pieces
 Here are the things you need to do:
 - [301. Copy Certificates](301-Copy-Certificates.md) - Copy SSL certificate files from your Mmojo share.
-- [302. Build Cosmopolitan](302-Build-Cosmopolitan.md) - Patch Cosmopolitan and build it.
-- [303. Build OpenSSL](303-Build-OpenSSL.md) - Build OpenSSL static libraries with Cosmopolitan.
 - [304. Install CUDA Toolkit](304-Install-CUDA-Toolkit.md) - Install NVIDIA's CUDA Toolkit.
 - [305. Build Vulkan SDK](305-Build-Vulkan-SDK.md) - Build Vulkan SDK for platform optimized builds.
 

@@ -15,9 +15,10 @@ These build steps should be performed in a Debian Linux operating system like Ub
  
 ---
 ### Install Dependencies and GPU Support
-Install dependencies. These may take 20 minutes or so to download and install.
+Install dependencies. These may take 20 minutes or so to download and install. Reinstalling nodejs is necessary to get the right tools in place to rebuild the webui.
 ```
 mm-prepare-install-dependencies.sh
+mm-prepare-reinstall-nodejs.sh
 ```
 
 Install CUDA and Vulkan support. These may take 10 minutes or so to download and install.
@@ -31,9 +32,11 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 ### Build Mmojo Server
 Prepare to build Mmojo Server (llama.cpp with patches and extensions):
 ```
-mm-prepare-clone-llama-cpp.sh
-mm-prepare-patch-llama-cpp.sh
-mm-prepare-customize-webui.sh
+if [ ! -d "$BUILD_DIR" ]; then
+    mm-prepare-clone-llama-cpp.sh
+    mm-prepare-patch-llama-cpp.sh
+    mm-prepare-customize-webui.sh
+fi
 ```
 
 Choose GPUs for your build if you're not building for Raspberry Pi 5.
@@ -60,14 +63,13 @@ elif [ $(uname -m) == "aarch64" ]; then
     PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
 fi
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh native "$GPUS_CHOICE"
+mm-build-for-platform.sh native "$GPUS_CHOICE"
 ```
 
 <details>
   <summary><b>Alternatively:</b> Build a more compatible Mmojo Server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh compatible "$GPUS_CHOICE"
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
@@ -79,6 +81,7 @@ elif [ $(uname -m) == "aarch64" ]; then
     PACKAGE_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
 fi
+mm-build-for-platform.sh compatible "$GPUS_CHOICE"
 ```
 </details>
 
@@ -86,7 +89,6 @@ fi
   <summary><b>Alternatively:</b> Build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
-$MMOJO_SERVER_SCRIPTS/510-Build-for-Platform.sh performant "$GPUS_CHOICE"
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
@@ -98,6 +100,7 @@ elif [ $(uname -m) == "aarch64" ]; then
     PACKAGE_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
 fi
+mm-build-for-platform.sh performant "$GPUS_CHOICE"
 ```
 </details>
 

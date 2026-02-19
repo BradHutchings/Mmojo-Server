@@ -8,11 +8,10 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2 $3.\n*\n$STARS\n\n"
+printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2.\n*\n$STARS\n\n"
 
 processor=$1
 variation=$2
-branding=$3
 
 if [ "$processor" == "arm64" ]; then
     processor="aarch64"
@@ -28,15 +27,8 @@ if [ "$variation" != "compatible" ] && [ "$variation" != "performant" ]; then
     variation="compatible"
 fi
 
-if [ "$branding" != "llama-server" ]; then
-    echo "Resetting branding."
-    branding=""
-fi
 
 THIS_BUILD_DIR=$BUILD_DIR
-if [ "$branding" == "llama-server" ]; then
-    THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
-fi
 
 cd $THIS_BUILD_DIR
 
@@ -72,7 +64,6 @@ fi
 
 echo "   Processor: $processor"
 echo "   Variation: $variation"
-echo "    Branding: $branding"
 echo "  arch param: $ARCH_LEVEL_PARAM"
 echo "subdirectory: $BUILD_SUBDIRECTORY"
 echo " building in: $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY"
@@ -145,7 +136,7 @@ unset AR
 
 cd $HOME
 
-printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME $1 $2 $3.\n*\n$STARS\n\n"
+printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME $1 $2.\n*\n$STARS\n\n"
 
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by

@@ -21,22 +21,12 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 
 cd $HOME
 
-branding=$1
-
-if [ "$branding" != "llama-server" ]; then
-    branding=""
-fi
-
 THIS_BUILD_DIR=$BUILD_DIR
-if [ "$branding" == "llama-server" ]; then
-    THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
-fi
 
 if [ -d "$THIS_BUILD_DIR" ]; then
     rm -r -f $THIS_BUILD_DIR
 fi
 
-echo "  Branding: $branding"
 echo "cloning in: $THIS_BUILD_DIR/"
 echo ""
 

@@ -11,12 +11,11 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2 $3.\n*\n$STARS\n\n"
+printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2.\n*\n$STARS\n\n"
 
 processor=$(uname -m)
 variation=$1
 gpus=$2
-branding=$3
 
 if [ "$processor" == "arm64" ]; then
     processor="aarch64"
@@ -30,14 +29,7 @@ if [ "$variation" != "compatible" ] && [ "$variation" != "performant" ] && [ "$v
     variation="native"
 fi
 
-if [ "$branding" != "llama-server" ]; then
-    branding=""
-fi
-
 THIS_BUILD_DIR=$BUILD_DIR
-if [ "$branding" == "llama-server" ]; then
-    THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
-fi
 
 BUILD_SUBDIRECTORY=""
 ARCH_LEVEL_PARAM=""
@@ -113,7 +105,6 @@ BUILD_SUBDIRECTORY+="$gpus"
 echo "   Processor: $processor"
 echo "   Variation: $variation"
 echo "        GPUs: $gpus"
-echo "    Branding: $branding"
 echo "  arch param: $ARCH_LEVEL_PARAM"
 echo "subdirectory: $BUILD_SUBDIRECTORY"
 echo " building in: $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY"

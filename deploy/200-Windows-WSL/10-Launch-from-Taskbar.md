@@ -8,9 +8,9 @@ Let's test the workflow we enabled in the Autostart step. You will click the Mmo
 
 Click the MmojoServer WSL icon that you previously added to the Taskbar.
 
-<img width="785" height="254" alt="image" src="https://github.com/user-attachments/assets/94f237ce-5943-4b16-aed5-eda92c474142" />
+<img width="788" height="273" alt="image" src="https://github.com/user-attachments/assets/ed1fd90d-0093-4678-bb65-b762d94059b4" />
 
-A Terminal window will open, connected to your Mmojo Server WSL instance. You'll see a message about the Mmojo Server process being started or already running, followed by some useful command aliases for managing things.
+A Terminal window will open, connected to your Mmojo Server WSL instance. You'll see some useful command aliases for managing things, followed by a message about the Mmojo Server process being started or already running.
 
 ---
 ### Connect to Mmojo Server
@@ -25,10 +25,11 @@ You're probably wondering how you're going to remember the commands so you can c
 All three commands start with `mm-`. In fact, many commands you used in this setup start with `mm-`. These commands live in the `$HOME/mm-scripts` directory, and that directory is in your `$PATH`.
 
 You can use these aliases you added to your `.bashrc` in the [07. Make Command Aliases](07-Make-Command-Aliases.md) step:
-- `mm-stop`  --> `mm-mmojo-server-stop.sh`
-- `mm-model` --> `mm-model-choose.sh`
-- `mm-start` --> `mm-mmojo-server-start.sh background`  # Runs in background.
-- `mm-debug` --> `mm-mmojo-server-start.sh`             # Runs in foreground with output.
+- `mm-stop`   --> `mm-mmojo-server-stop.sh`
+- `mm-model`  --> `mm-model-choose.sh`
+- `mm-start`  --> `mm-mmojo-server-start.sh background`  # Runs in background.
+- `mm-debug`  --> `mm-mmojo-server-start.sh`             # Runs in foreground with output.
+- `mm-status` --> `mm-mmojo-server-status.sh`            # Is Mmojo Server running?
 
 Notice that you are reminded of these when you start a session with your MmojoServer WSL instance.
 

@@ -1,5 +1,7 @@
 ## About Mmojo Server
-Welcome to Mmojo Server version 3!
+Welcome to Mmojo Server version 3! 
+
+This repository is the "Easy Button" for deploying and building [llama.cpp](https://github.com/ggml-org/llama.cpp) for your PC, laptop, or server.
 
 Mmojo Server is a private, local LLM server:
 - All defaults support private, local LLM usage. No logs by default. No cloud queries. No user accounts. No shared server over your network. Cues and completions &mdash; aka prompts and answers &mdash; do not leave your computer unless you make them leave your computer.
@@ -19,6 +21,8 @@ The best path to start your Mmojo Server journey goes like this:
    - Debian Linux using the [Deploy Mmojo Server on Debian / Ubintu / Pi](/deploy/300-Debian-Ubuntu-Pi/README.md) recipe.
    - More platforms are coming soon.
 3. Get started with OpenClaw using the [OpenClaw](/deploy/500-OpenClase/README.md) recipe.
+
+Need professional help with your deployment, rollout, or build? Would you like to sponsor accessible, local, private LLMs? Email me!
 
 -Brad<br/>
 --<br/>

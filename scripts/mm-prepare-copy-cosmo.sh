@@ -1,17 +1,25 @@
 #!/bin/bash
 
 ################################################################################
-# This script builds llama.cpp with Mmojo Server extensions for the CPU of the
-# build environment machine. This is a debug build with no CPU optimizations.
-# Thank you to Georgi Gerganov and his team for llama.cpp!
+# This script clones these repos to set up a $BUILD_DIR:
+# - llama.cpp
+#   - https://github.com/ggml-org/llama.cpp
+# - Google minja (for llama.cpp) - chat templates
+#    - https://github.com/google/minja - 
 #
-# https://github.com/ggml-org/llama.cpp
+# It rolls back the llama.cpp cloned repo to a recent known release where our 
+# patches have been tested.
+#
+# Thank you to Georgi Gerganov and his team for llama.cpp! Thank you to the
+# developers behind the rest of the repos for their support as well!
 #
 # See licensing note at end.
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
+
+cd $HOME
 
 branding=$1
 
@@ -24,31 +32,18 @@ if [ "$branding" == "llama-server" ]; then
     THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
 fi
 
-BUILD_SUBDIRECTORY=$BUILD_DEBUG
-VERBOSE="OFF"
-
-echo "    Branding: $branding"
-echo "subdirectory: $BUILD_SUBDIRECTORY"
-echo " building in: $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY"
+echo "       Branding: $branding"
+echo "build directory: $THIS_BUILD_DIR/"
 echo ""
 
-if [ "$BUILD_SUBDIRECTORY" != "" ]; then
-    cd $THIS_BUILD_DIR
+################################################################################
+# Copy cosmocc and openssl.
+################################################################################
 
-    rm -r -f $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY
-    cmake -B $BUILD_SUBDIRECTORY -DBUILD_SHARED_LIBS=OFF -DLLAMA_CURL=OFF -DLLAMA_OPENSSL=ON \
-        -DCMAKE_BUILD_TYPE=Debug -DCMAKE_VERBOSE_MAKEFILE=$VERBOSE 
-    cmake --build $BUILD_SUBDIRECTORY
+cd $THIS_BUILD_DIR
 
-    echo ""
-    echo "Build of debug version of llama.cpp is complete."
-    
-    # Show off what we built
-    echo ""
-    echo "\$ ls -al $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY/bin/"
-    ls -al $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY/bin
-    echo ""
-fi
+cp -r -f $BUILD_COSMOPOLITAN_DIR/cosmocc .
+cp -r -f $BUILD_OPENSSSL_DIR/openssl .
 
 cd $HOME
 

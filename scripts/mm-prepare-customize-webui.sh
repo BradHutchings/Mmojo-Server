@@ -8,22 +8,12 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
+printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 cd $HOME
 
-branding=$1
-
-if [ "$branding" != "llama-server" ]; then
-    branding=""
-fi
-
 THIS_BUILD_DIR=$BUILD_DIR
 APP_NAME='Mmojo Chat'
-if [ "$branding" == "llama-server" ]; then
-    THIS_BUILD_DIR=$LLAMA_SERVER_BUILD_DIR
-    APP_NAME='llama.cpp'
-fi
 
 cd $THIS_BUILD_DIR
 
@@ -41,16 +31,14 @@ npm run build
 cd $SAVE_WD
 mv loading-mmojo.html tools/server/public/loading-mmojo.html
 
-if [ "$branding" != "llama-server" ]; then
-    TODAY=$(date +%Y-%m-%d)
-    cp -r Mmojo-Complete Mmojo-Complete-original
-    sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/scripts.js
-    sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/bookmark-scripts.js
-fi
+TODAY=$(date +%Y-%m-%d)
+cp -r Mmojo-Complete Mmojo-Complete-original
+sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/scripts.js
+sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/bookmark-scripts.js
 
 cd $HOME
 
-printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
+printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by

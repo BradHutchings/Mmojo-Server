@@ -43,7 +43,7 @@ Now, let's start your MmojoServer WSL instance and connect to it again:
 ```
 wsl -d "MmojoServer"
 ```
-<img width="781" height="254" alt="image" src="https://github.com/user-attachments/assets/b996fe5b-59f5-44e5-aec5-7f8f3b6722ac" />
+<img width="788" height="273" alt="image" src="https://github.com/user-attachments/assets/c1b2d850-d736-40bf-93c1-8a6220f2441e" />
 
 You will see a message about Mmojo Server being started or already running. It's fine if it says it's already running. WSL made a previous connection to your instance before the one displayed in the Terminal window.
 

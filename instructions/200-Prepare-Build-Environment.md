@@ -26,8 +26,6 @@ Here are the things you need to do:
 - [203. Create Scripts Directory](203-Create-Scripts-Directory.md) - Create `$HOME/mmscripts` directory, then add it to your `$PATH`.
 - [204. Clone Mmojo Server Repo](204-Clone-Mmojo-Server-Repo.md) - Clone Mmojo Server Repo for setup and build scripts.
 - [205. Set Timezone](205-Set-Timezone.md) - Set your build system's time zone so Completion UI reflects correct build date.
-- [206. Create Mmojo Share](206-Create-Mmojo-Share.md) - Create a file share to support multiple build environments.
-- [207. Mount Mmojo Share](207-Mount-Mmojo-Share.md) - Mount a file share to support multiple build environments.
 - [208. Install Dependencies](208-Install-Dependencies.md) - Install packages needed for your build system.
 - [209. mm- Scripts](209-mm-Scripts.md) - All about those `mm-` scripts in your `$HOME/mm-scripts` directory.
 

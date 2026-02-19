@@ -1,9 +1,7 @@
 #!/bin/bash
 
 ################################################################################
-# This script downloads a model map file from Hugging Face. The model map file
-# identifies models we might want to download, and suggest names for their
-# self-contaned APE files we will package later.
+# This script installs dependencies needed for building Mmojo Server.
 #
 # See licensing note at end.
 ################################################################################
@@ -11,8 +9,17 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-MODEL_MAP_URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/model-map.txt"
-wget $MODEL_MAP_URL --quiet -O $MODEL_MAP
+echo "Installing system updates."
+sudo apt update
+sudo apt upgrade -y
+
+echo ""
+echo "Reinstalling nodejs and npm because recompiling the current llama.cpp webui doesn't like what we have."
+
+sudo apt remove nodejs npm -y
+sudo apt install nodejs npm -y
+sudo npm install -g node@latest
+sudo npm install -g npm@latest
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

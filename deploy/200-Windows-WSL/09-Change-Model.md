@@ -30,12 +30,10 @@ mm-model
 ---
 ### Start Mmojo Server
 
-Start `mmojo-server`:
+Start `mmojo-server` in the background:
 ```
 mm-start
 ```
-
-Notice that `background` parameter. It can be anything. That tells Mmojo Server to run quietly as a background proess. If you'd like to see its startup and operational output, which can be helpful for tracking down problems, omit the parameter.
 
 ---
 ### Verify Model Change

@@ -4,31 +4,26 @@
 
 **[Deploy OpenClaw (Windows WSL)](deploy/500-OpenClaw/README.md)**
 
-**[Build Mmojo Server Now!](instructions/-Start-Here-TOC.md)**
+**[Build Mmojo Server Now!](build/READDME.md)**
 
-Welcome to Mmojo Server version 2! This project makes building and packaging the LLM server and other software from llama.cpp easy and approachable, with some carefully selected extensions and enhancements. Highlights:
-- Build and package Actual Portable Executable (APE) files that run on Linux, Windows, macOS operating systems across x86_64 and aarch64 (ARM64) architectures.
-  - I am inspired by the original llamafile project.
-  - APE files can contain a .gguf model, user interface, certificates, and other support files &mdash; in one single executable file.
-  - Download and run the same executable file on x86_64 Linux and an ARM Raspberry Pi (for example).
-- Build and package CPU-optimized and GPU-enabled executables that run on specific operating systems and CPU architectures.
-- Coordinate testing and packaging across CPU and OS platforms with a file share on your network.
-- Instructions (aka "documentation") are extensive, continually maintained, and easy to follow.
-- Mmojo Complete completion-style user interface can be the default UI, with chat-style UI as an end-user option.
-- Build the new, less branded, less opinionated **Doghouse** LLM server. Even better, become a sponsor of Mmojo Server, and I'll make a branded open source server with your name on it!
-- Mmojo Server version 2 is no longer a Github fork of llama.cpp. Instead, it incorporates a locally cloned llama.cpp repository into its build sequence.
+Welcome to Mmojo Server version 3!
 
-End-users should be able to easily get started with the APE build, then upgrade to an optimized CPU/GPU build for their computer. Developers building Mmojo Server should expect a similar experience.
+Mmojo Server is a private, local LLM server:
+- All defaults support private, local LLM usage. No logs by default. No cloud queries. No user accounts. No shared server over your network. Cues and completions &mdash; aka prompts and answers &mdash; do not leave your computer unless you make them leave your computer.
+- Mmojo Server sports a humane completion-style user interface as its default, and offers a traditional chat user interface for those who want that. You don't have to pretend to chat with a robot! 
 
-I want Mmojo Server to be the easiest way for developers to build llama.cpp and to foster greater and wider understanding of how llama.cpp works. I don't want my project to be a hair pulling and muscle flexing exercise for developers like most open source software turns out to be.
+- Mmojo Server extends the llama.cpp llama-server. It kept up to date with llama.cpp source weekly.
+- Mmojo Server can be built as an Actual Portable Executable (APE), allowing one executable to run on Windows, macOS, and Linux, on both x86_64 and aarch64 (arm64) CPU architectures. It is the easiest way to get started with a local or hosted LLM.
+- Mmojo Server can also be built for specific operating systems and architectures, optimized for a particular computer, or built to run on a wide selection of CPUs in a CPU family.
 
-I use Mmojo Server for my own consulting and commercial offerings. There is no fluff in this project driven by hypothetical use cases, surveys, or discussion board warriors. I do not solicit or accept pull requests from strangers. I do not use LLMs to write the documentation or provide more than sample code to guide my coding. You can depend on Mmojo Server to be maintained and remain relevant.
+This repository is your source for deploying and building Mmojo Server:
+- The [Deploy](/deploy/README.md) section helps you expertly deploy Mmojo Server for use on your computer or server.
+- The [Build](/build/README.md) section helps you build a custom Mmojo Server tailored to your computer or server.
 
-<!--
-For those of you hoping to find the original Mmojo Server, it is archived here: [Mmojo-Server-v1 repo](https://github.com/BradHutchings/Mmojo-Server-v1). I urge you to switch over to this new version now.
--->
-
-Get started now by diving into the [Mmojo Server Instructions](instructions/-Start-Here-TOC.md). Read through it. Start doing it!
+The best path to start your Mmojo Server journey goes like this:
+1. Mmojo.net will host a downloadable Mmojo Stick package. Copy to a fast thumb drive. Use it on most dekstop or laptop computers in use today. Leave no footprints! There will be a link to that soon!
+2. Deploy Mmojo Server securely and more optimally for Windows 11 using the [Deploy Mmojo Server on Windows (WSL)](/deploy/200-Windows-WSL/README.md) recipe.
+3. Deploy Mmojo Server securely and more optimally for devices running Debian Linux using the [Deploy Mmojo Server on Debian / Ubintu / Pi](/deploy/300-Debian-Ubuntu-Pi/README.md) recipe.
 
 -Brad<br/>
 --<br/>

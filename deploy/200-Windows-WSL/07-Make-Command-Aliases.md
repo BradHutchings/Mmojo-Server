@@ -13,7 +13,7 @@ alias mm-stop="mm-mmojo-server-stop.sh"
 alias mm-model="mm-model-choose.sh"
 alias mm-start="mm-mmojo-server-start.sh background"
 alias mm-debug="mm-mmojo-server-start.sh"
-alias mm-status="mm-mmojo-server-ststus.sh"
+alias mm-status="mm-mmojo-server-status.sh"
 
 echo "Useful command aliases:"
 echo "- mm-stop   --> mm-mmojo-server-stop.sh"

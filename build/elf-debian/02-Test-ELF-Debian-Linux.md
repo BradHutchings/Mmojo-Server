@@ -29,7 +29,6 @@ Connect to Mmojo Complete from a browser:
 
 [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
-
 Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 
 Since your build is in your `$RUN_DIR`, it's ready to be deployed with `mm-start`.

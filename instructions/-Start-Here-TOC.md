@@ -1,5 +1,5 @@
 ## Mmojo Server Instructions &ndash; Table of Contents
-**THESE ARE OLD INSTRUCTIONS FROM MMOJO SERVER V1 AND V2. SOME PORTIONS REMAIN HERE FOR REFERENCE.**
+**THESE ARE OLD INSTRUCTIONS FROM MMOJO SERVER V1 AND V2. SOME PORTIONS REMAIN HERE FOR REFERENCE. OTHERS WILL BE REMOVED WHEN NO LONGER NEEDED.**
 
 The Mmojo Server project is mostly my instructions (aka "documentation"), with lots of functioning scripts to work out the gory details. The instructions are organized to be worked through sequentially from start to finish. I'll tell you what the point of this project is, help you prepare your build environment, gather things you'll need, build Mmojo Server, then package it for deployment. Read the instructions on GitHub. You will be instructed to clone this repo to a specific directory on your build machine(s) later.
 
@@ -61,9 +61,6 @@ Build Mmojo Server executables.
   - [511. Platform (Compatible)](511-Platform-Compatible.md) - Build `mmojo-server` for the base CPU of the build environment platform.
   - [512. Platform (Performant)](512-Platform-Performant.md) - Build `mmojo-server` for recent CPUs from the CPU family of the build environment platform.
   - [513. Platform (Native)](513-Platform-Native.md) - Build `mmojo-server` highly optimized for the CPU of the build environment platform.<br/><br/>
-- [520. APE Builds](520-APE-Builds.md) - Explains Actual Portable Executables (APEs) and how to build them.
-  - [521. APE (Compatible)](521-APE-Compatible.md) - Build `mmojo-server-ape` as an APE with Cosmopolitan. This build is widely compatible with x86_64 and aarch64 (arm64) systems, but not very performant.
-  - [522. APE (Performant)](522-APE-Performant.md) - Build `mmojo-server-ape` as an APE with Cosmopolitan. This build is compatible with recent x86_64 and aarch64 (arm64) systems and more performant.<br/><br/>
 
 ---
 [MIT License](/LICENSE)<br/>

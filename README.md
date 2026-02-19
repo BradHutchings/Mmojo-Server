@@ -20,7 +20,7 @@ The best path to start your Mmojo Server journey goes like this:
    - Windows 11 using the [Deploy Mmojo Server on Windows (WSL)](/deploy/Windows-WSL/README.md) recipe.
    - Debian Linux using the [Deploy Mmojo Server on Debian / Ubintu / Pi](/deploy/Debian-Ubuntu-Pi/README.md) recipe.
    - More platforms are coming soon.
-3. Get started with OpenClaw using the [OpenClaw](/deploy/OpenClase/README.md) recipe.
+3. Get started with OpenClaw using the [OpenClaw](/deploy/OpenClaw/README.md) recipe.
 
 Need professional help with your deployment, rollout, or build? Would you like to sponsor accessible, local, private LLMs? Email me!
 

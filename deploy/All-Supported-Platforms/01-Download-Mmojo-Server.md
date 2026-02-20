@@ -40,7 +40,7 @@ One model at a time! Mmojo Server finds the first model it can in its folder and
 ### Proceed
 - **Next:** [02. Start Mmojo Server](02-Start-Mmojo-Server.md)
 - **Previous:** This is the first step in this section.
-- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+- **Up:** [Deploy Mmojo Server on All Supported Platforms](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

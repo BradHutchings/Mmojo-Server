@@ -1,7 +1,10 @@
 ## Mmojo Server Deployments - Table of Contents
 Let's deploy Mmojo Server on your PC, laptop, or server!
 
-Here are deployments that are ready for you to use:
+Start with this deployment:
+- [Deploy Mmojo Server on All Supported Platforms](All-Supported-Platforms/README.md) - Runs on everything. Zero footprint.
+
+Here are more deployments that are ready for you to use:
 - [Deploy Mmojo Server on Windows (WSL)](Windows-WSL/README.md) - Deploy Mmojo Server in WSL instance.
 - [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](Debian-Ubuntu-Pi/README.md) - Deploy Mmojo Server on Debian, Ubuntu, and Raspberry Pi 5.
 - [Deploy OpenClaw (Windows WSL)](OpenClaw-Windows-WSL/README.md) - Deploy OpenClaw server with Mmojo Server in WSL instances.

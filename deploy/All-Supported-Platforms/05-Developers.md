@@ -16,20 +16,20 @@ To allow it to accept connections from any computer on your network, edit the `m
 
 The file is formatted:
 
-&nbsp;&nbsp;&nbsp;&nbsp;--paramter<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;value<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;--parameter<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;value<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`--paramter`<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`value`<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`--parameter`<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`value`<br/>
 
 You need to change:
 
-&nbsp;&nbsp;&nbsp;&nbsp;--host<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;127.0.0.1<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`--host`<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`127.0.0.1`<br/>
 
 Set the value as:
 
-&nbsp;&nbsp;&nbsp;&nbsp;--host<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;0.0.0.0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`--host`<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`0.0.0.0`<br/>
 
 Save changes to the file and start Mmojo Server for them to take effect.
 

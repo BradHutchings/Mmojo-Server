@@ -146,6 +146,11 @@ if test -n "$RUN_DIR"; then
 fi
 ```
 
+You can back the package up to your Mmojo Share.
+```
+mm-packages-backup.sh
+```
+
 ---
 ### Proceed
 - **Next:** [02. Test APE for All Platforms](02-Test-APE-All-Platforms.md)

@@ -38,7 +38,7 @@ You're running either the performant build or the compatible build. Throw the ot
 ### Proceed
 - **Next:** [03. Connect to Mmojo Server](03-Connect-to-Mmojo-Server.md)
 - **Previous:** [01. Download Mmojo Server and Model](01-Download-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+- **Up:** [Deploy Mmojo Server on All Supported Platforms](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

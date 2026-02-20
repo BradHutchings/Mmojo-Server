@@ -30,12 +30,12 @@ downloaded=0
 unset ggufs
 declare -A ggufs
 
-if [ -f "$LOCAL_MODEL_QUEUE" ]; then
+if [ -f "$MODEL_QUEUE" ]; then
     while IFS=$' ' read -r gguf ; do
         if [[ "$gguf" != "#" ]] && [[ -n "$gguf" ]]; then
             ggufs["${gguf}"]="1"
         fi
-    done < "$LOCAL_MODEL_QUEUE"
+    done < "$MODEL_QUEUE"
 fi
 
 for key in "${!ggufs[@]}"; do
@@ -69,7 +69,7 @@ if [ "$downloaded" -gt "0" ]; then
 fi
 
 cd $MODELS_DIR
-echo -e "\nLocal models directory:"
+echo -e "\nmm-models directory:"
 # if [ -f *.gguf ]; then
     ls -al *.gguf
 # fi

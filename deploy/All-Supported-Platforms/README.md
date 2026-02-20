@@ -2,7 +2,7 @@
 ### About this Section
 In this section, you will get Mmojo Server running on your PC or laptop, regardless of operating system or CPU. You will download the `mmojo-server-ape.zip` archive, download a model, expand the acrhive on your desktop, then run Mmojo Server.
 
-**Note:** *Even if you want to jump to other deploy or build guides, this one will get you familiar with the step by step approach of nt guides.*
+**Note:** *Even if you want to jump to other deploy or build guides, this one will get you familiar with the step by step approach of the guides.*
 
 The Mmojo Server Actual Portable Executable (APE) is a starting point. Connect to my Mmojo Complete UI or a traditional chat UI in your web browser. Connect your OpenAI API compatible application to Mmojo Server. Make sure it works for you. If you decide you'd like a more robust installation, perhaps with GPU support, you can deploy or build Mmojo Server, tuned to your platform.
 

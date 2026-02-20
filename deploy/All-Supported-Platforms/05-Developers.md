@@ -37,7 +37,7 @@ Save changes to the file and start Mmojo Server for them to take effect.
 ### Proceed
 - **Next:** This is the last step in this section.
 - **Previous:** [04. Stop Mmojo Server](04-Stop-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+- **Up:** [Deploy Mmojo Server on All Supported Platforms](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

@@ -21,7 +21,6 @@ brad@BradHutchings.com<br/><br/>
 ---
 ### Future Deployments
 Here is a tentative list of planned deployments:
-- [Deploy Mmojo Server on All Supported Platforms](All-Supported-Platforms/README.md) - Placeholder page.
 - [Deploy Mmojo Server on macOS](macOS/README.md) - Placeholder page.
 
 ---

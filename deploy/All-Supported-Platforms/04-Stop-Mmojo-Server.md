@@ -14,8 +14,8 @@ You didn't really "install" it. Just throw the folder in the Trash or Recycle Bi
 
 ---
 ### Proceed
-- **Next:** [03. Connect to Mmojo Server](03-Connect-to-Mmojo-Server.md)
-- **Previous:** [05. Developers](05-Developers.md)
+- **Next:** [05. Developers](05-Developers.md)
+- **Previous:** [03. Connect to Mmojo Server](03-Connect-to-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
 
 ---

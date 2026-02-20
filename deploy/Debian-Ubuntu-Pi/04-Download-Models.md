@@ -13,7 +13,7 @@ mm-models-create-directory.sh
 
 **Optional:** There are more recent Gemma E2B and E4B models. Run this script to add them to the model download queue.
 ```
-cat << EOF >> $LOCAL_MODEL_QUEUE
+cat << EOF >> $MODEL_QUEUE
 Google-Gemma-E2B-Instruct-v3n-q8_0.gguf
 Google-Gemma-E4B-Instruct-v3n-q8_0.gguf
 EOF
@@ -21,7 +21,7 @@ EOF
 
 **Optional:** IBM Granite models implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
 ```
-cat << EOF >> $LOCAL_MODEL_QUEUE
+cat << EOF >> $MODEL_QUEUE
 IBM-Granite-2B-Instruct-v3.3-q8_0.gguf
 IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
 EOF
@@ -29,7 +29,7 @@ EOF
 
 **Optional:** Qwen3 models also implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
 ```
-cat << EOF >> $LOCAL_MODEL_QUEUE
+cat << EOF >> $MODEL_QUEUE
 Qwen3-4B-Thinking-2507-FP8-q8_0.gguf
 Qwen3-8B-v3-q8_0.gguf
 Qwen3-14B-v3-q8_0.gguf

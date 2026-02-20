@@ -36,13 +36,13 @@ fi
 
 BackupPackage() {
     PACKAGE_FILE=$1
-    if [ ! -f "$MMOJO_SHARE_PACKAGES_DIR/$PACKAGE_FILE" ]; then 
+    # if [ ! -f "$MMOJO_SHARE_PACKAGES_DIR/$PACKAGE_FILE" ]; then 
         echo ""
         echo "Backing up $PACKAGE_FILE to $MMOJO_SHARE_PACKAGES_DIR."
         sudo rsync -ah --progress "$PACKAGES_DIR/$PACKAGE_FILE" "$MMOJO_SHARE_PACKAGES_DIR/$PACKAGE_FILE"
         sudo chmod a-x "$MMOJO_SHARE_PACKAGES_DIR/$PACKAGE_FILE"
         backed_up_one=1
-    fi
+    # fi
 }
 
 if [[ $(findmnt "$MMOJO_SHARE_MOUNT_POINT") ]] && [ -d "$MMOJO_SHARE_PACKAGES_DIR" ] && [ -d "$PACKAGES_DIR" ]; then

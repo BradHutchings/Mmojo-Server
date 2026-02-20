@@ -3,7 +3,7 @@ Welcome to Mmojo Server version 3!
 
 This repository is the "Easy Button" for deploying and building [llama.cpp](https://github.com/ggml-org/llama.cpp) for your PC, laptop, or server. The audience for this repo is developers and tinkerers. Regular users can visit [Mmojo.net](https://mmojo.net) for Mmojo products meant for them.
 
-Get started here: [Deploy Mmojo Server to All Supported Platforms](/deploy/All-Supported-Platforms/README.md) guide.
+**Get started here:** [Deploy Mmojo Server to All Supported Platforms](/deploy/All-Supported-Platforms/README.md) guide.
 
 Mmojo Server is a private, local LLM server:
 - All defaults support private, local LLM usage. No logs by default. No cloud queries. No user accounts. No shared server over your network. Cues and completions &mdash; aka prompts and answers &mdash; do not leave your computer unless you make them leave your computer.

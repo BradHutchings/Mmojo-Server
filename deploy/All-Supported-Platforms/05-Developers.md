@@ -16,7 +16,7 @@ To allow it to accept connections from any computer on your network, edit the `m
 
 The file is formatted:
 
-&nbsp;&nbsp;&nbsp;&nbsp;`--paramter`<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`--parameter`<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;`value`<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;`--parameter`<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;`value`<br/>

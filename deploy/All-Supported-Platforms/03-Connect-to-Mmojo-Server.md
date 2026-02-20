@@ -25,7 +25,7 @@ You will see the Mmojo Chat user interface for Mmojo Server.
 ### Proceed
 - **Next:** [04. Stop Mmojo Server](04-Stop-Mmojo-Server.md)
 - **Previous:** [02. Start Mmojo Server](02-Start-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+- **Up:** [Deploy Mmojo Server on All Supported Platforms](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

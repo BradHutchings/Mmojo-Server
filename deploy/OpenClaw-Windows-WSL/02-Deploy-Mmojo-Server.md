@@ -1,4 +1,4 @@
-## 02. Cleanup WSL Instances
+## 02. Deploy Mmojo Server
 ### About this Step
 In this step, you will open the deployment guide for deploying Mmojo Server on Windows (WSL), you will complete the guide. You will return here.
 
@@ -7,13 +7,13 @@ In this step, you will open the deployment guide for deploying Mmojo Server on W
 
 Open this deployment guide in a new tab:
 
-- [Deploy Mmojo Server on Windows (WSL)](../200-Windows-WSL/README.md)
+- [Deploy Mmojo Server on Windows (WSL)](../Windows-WSL/README.md)
 
 Complete that guide. When you are finished, you will have a Mmojo Server running in its own WSL instance.
 
 If you have an NVIDIA GPU, build a native Mmojo Server with CUDA support in your WSL instance:
 
-- [Build ELF Executable for Debian Linux](/build/20-ELF-Debian.md)
+- [Build ELF Executable for Debian Linux](/build/elf-debian/01-Build-ELF-Debian-Linux.md)
 
 ---
 ### Download Models

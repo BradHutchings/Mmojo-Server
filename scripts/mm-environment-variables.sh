@@ -27,6 +27,11 @@ echo "Setting mm-scripts paths."
 export HOME_SCRIPTS="$HOME/mm-scripts"
 export TILDE_SCRIPTS="~/mm-scripts"
 
+# Directory names
+export CERTIFICATES_DIR_NAME="mm-certificates"
+export MOOELS_DIR_NAME="mm-models"
+export PACKAGES_DIR_NAME="mm-packages"
+
 echo "Setting mmojo-server paths."
 export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server-repo"
 export MMOJO_SERVER_FILES="$MMOJO_SERVER_DIR/files"
@@ -38,7 +43,11 @@ export MMOJO_SHARE_MOUNT_POINT="/Volumes/mmojo"
 else
 export MMOJO_SHARE_MOUNT_POINT="/mnt/mmojo"
 fi
-export MMOJO_SHARE_CERTIFICATES="$MMOJO_SHARE_MOUNT_POINT/certificates"
+
+export MMOJO_SHARE_CERTIFICATES_DIR="$MMOJO_SHARE_MOUNT_POINT/$CERTIFICATES_DIR_NAME"
+export MMOJO_SHARE_MODELS_DIR="$MMOJO_SHARE_MOUNT_POINT/$MOOELS_DIR_NAME"
+export MMOJO_SHARE_PACKAGES_DIR="$MMOJO_SHARE_MOUNT_POINT/$PACKAGES_DIR_NAME"
+
 export MMOJO_SHARE_BUILDS="$MMOJO_SHARE_MOUNT_POINT/builds"
 export MMOJO_SHARE_BUILDS_APE="$MMOJO_SHARE_BUILDS/ape"
 export MMOJO_SHARE_BUILDS_COMPATIBLE_APE="$MMOJO_SHARE_BUILDS/compatible-ape"
@@ -46,11 +55,10 @@ export MMOJO_SHARE_BUILDS_PERFORMANT_APE="$MMOJO_SHARE_BUILDS/performant-ape"
 export MMOJO_SHARE_BUILDS_CPU_NATIVE="$MMOJO_SHARE_BUILDS/cpu-native"
 export MMOJO_SHARE_BUILDS_CUDA="$MMOJO_SHARE_BUILDS/cuda"
 export MMOJO_SHARE_BUILDS_VULKAN="$MMOJO_SHARE_BUILDS/vulkan"
-export MMOJO_SHARE_PACKAGES="$MMOJO_SHARE_MOUNT_POINT/packages"
-export MMOJO_SHARE_PACKAGES_APE="$MMOJO_SHARE_PACKAGES/ape"
-export MMOJO_SHARE_PACKAGES_COMPATIBLE_APE="$MMOJO_SHARE_PACKAGES/compatible-ape"
-export MMOJO_SHARE_PACKAGES_PERFORMANT_APE="$MMOJO_SHARE_PACKAGES/performant-ape"
-export MMOJO_SHARE_PACKAGES_ZIP="$MMOJO_SHARE_PACKAGES/zip"
+export MMOJO_SHARE_PACKAGES_APE="$MMOJO_SHARE_PACKAGES_DIR/ape"
+export MMOJO_SHARE_PACKAGES_COMPATIBLE_APE="$MMOJO_SHARE_PACKAGES_DIR/compatible-ape"
+export MMOJO_SHARE_PACKAGES_PERFORMANT_APE="$MMOJO_SHARE_PACKAGES_DIR/performant-ape"
+export MMOJO_SHARE_PACKAGES_ZIP="$MMOJO_SHARE_PACKAGES_DIR/zip"
 
 export MMOJO_SHARE_MOUNT_SCRIPT="mm-share-mount.sh"
 
@@ -70,17 +78,16 @@ if [ -e "$VULKAN_SETUP_ENV" ]; then
   source $VULKAN_SETUP_ENV
 fi
 
-echo "Setting Local and Share Models paths."
-export MOOELS_DIR_NAME="mm-models"
+echo "Setting local models paths."
+export MODELS_DIR="$HOME/$MOOELS_DIR_NAME"
+export MODEL_QUEUE="$MODELS_DIR/model-queue.txt"
 
-export LOCAL_MODELS_DIR="$HOME/$MOOELS_DIR_NAME"
-export LOCAL_MODEL_QUEUE="$LOCAL_MODELS_DIR/model-queue.txt"
-
-export MMOJO_SHARE_MODELS_DIR="$MMOJO_SHARE_MOUNT_POINT/$MOOELS_DIR_NAME"
+echo "Setting packages paths"
+export PACKAGES_DIR="$HOME/$PACKAGES_DIR_NAME"
 
 # Get rid of these.
 # export LOCAL_DOWNLOAD_MODEL_MAP="$LOCAL_MODEL_QUEUE"
-# export LOCAL_MODEL_MAP="$LOCAL_MODELS_DIR/model-map.txt"
+# export LOCAL_MODEL_MAP="$MODELS_DIR/model-map.txt"
 # export MMOJO_SHARE_MODEL_MAP="$MMOJO_SHARE_MODELS_DIR/model-map.txt"
 # export MMOJO_SHARE_RESTORE_MODEL_MAP="$MMOJO_SHARE_MODELS_DIR/restore-model-map.txt"
 
@@ -128,8 +135,6 @@ export TEST_WORKING_DIR="$HOME/500-TEST-working-directory"
 unset TEST_MODEL
 unset TEST_CPU_THREADS
 unset TEST_WITH_CHAT_UI
-
-export PACKAGES_DIR="$HOME/mm-packages"
 
 echo "Setting Package paths."
 export PACKAGE_DIR="$HOME/600-PACKAGE-mmojo-server"

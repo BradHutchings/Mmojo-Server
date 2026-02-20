@@ -18,14 +18,14 @@ DownloadModel() {
     MODEL_FILE=$1
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/models/$MODEL_FILE?download=true"
     if [ ! -f $MODEL_FILE ]; then
-        echo "Downloading $MODEL_FILE to $LOCAL_MODELS_DIR."
+        echo "Downloading $MODEL_FILE to $MODELS_DIR."
         DOWNLOAD_FILE_NAME=".$MODEL_FILE.download"
         wget $URL --show-progress --quiet -O $DOWNLOAD_FILE_NAME
         mv $DOWNLOAD_FILE_NAME $MODEL_FILE
     fi
 }
 
-cd $LOCAL_MODELS_DIR
+cd $MODELS_DIR
 downloaded=0
 unset ggufs
 declare -A ggufs
@@ -44,13 +44,13 @@ for key in "${!ggufs[@]}"; do
 
     FILE_ON_MMOJO_SHARE="$MMOJO_SHARE_MODELS_DIR/$key"
 
-    if [ -f "$LOCAL_MODELS_DIR/$key" ]; then
-        echo "File already exists in $LOCAL_MODELS_DIR."
+    if [ -f "$MODELS_DIR/$key" ]; then
+        echo "File already exists in $MODELS_DIR."
         
     elif [ -f "$FILE_ON_MMOJO_SHARE" ]; then
         echo "Copying $key from your Mmojo Share."
-        sudo rsync -ah --progress "$FILE_ON_MMOJO_SHARE" "$LOCAL_MODELS_DIR/$key" 
-        sudo chmod a-x "$LOCAL_MODELS_DIR/$key"
+        sudo rsync -ah --progress "$FILE_ON_MMOJO_SHARE" "$MODELS_DIR/$key" 
+        sudo chmod a-x "$MODELS_DIR/$key"
         
     elif [ "$count" -gt "0" ]; then
         if [ "$downloaded" -ge "$count" ]; then
@@ -58,7 +58,7 @@ for key in "${!ggufs[@]}"; do
         fi
     else
         DownloadModel $key
-        if [ -f "$LOCAL_MODELS_DIR/$key" ]; then
+        if [ -f "$MODELS_DIR/$key" ]; then
             ((downloaded++))
         fi
     fi
@@ -68,7 +68,7 @@ if [ "$downloaded" -gt "0" ]; then
     mm-models-backup.sh
 fi
 
-cd $LOCAL_MODELS_DIR
+cd $MODELS_DIR
 echo -e "\nLocal models directory:"
 # if [ -f *.gguf ]; then
     ls -al *.gguf

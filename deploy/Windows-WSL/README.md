@@ -1,6 +1,6 @@
-## Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi
-### About this Section (300-Debian-Ubunutu-Pi)
-In this section, you will deploy Mmojo Server on Debian / Ubuntu Linux. This will also work with Raspberry Pi Linux on a Raspberry Pi 5, as it is Debian-based.
+## Deploy Mmojo Server on Windows (WSL)
+### About this Section
+In this section, you will setup a WSL environment on Windows and deploy Mmojo Server in it. This is the prefered way to run Mmojo Server on a Windows PC.
 
 <!-- SPONSOR --> 
 If you need assistance via Zoom call and screen sharing, I offer a one-hour hands-on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this thing work. [Email me if interested](mailto:brad@BradHutchings.com?subject=Mmojo%20Server%20Install%20Help).
@@ -17,7 +17,7 @@ brad@BradHutchings.com<br/><br/>
 ### Deploy Mmojo Server
 Here are the deployment steps:
 - [01. Prerequisites](01-Prerequisites.md) - What you need to deploy Mmojo Server in a WSL instance.  
-- [02. Prepare Debian](02-Prepare-Debian.md) - Prepare your Debian host for Mmojo Server.
+- [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md) - Create a WSL instance for Mmojo Server.
 - [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md) - If you have a Mmojo Share, mount it.
 - [04. Download Models](04-Download-Models.md) - Download models for use with Mmojo Server from Hugging Face, or copy from your Mmojo Share.
 - [05. Download Mmojo Server](05-Download-Mmojo-Server.md) - Download Mmojo Server from Hugging Face and install it.
@@ -25,8 +25,15 @@ Here are the deployment steps:
 - [07. Make Command Aliases](07-Make-Command-Aliases.md) - Add useful command aliases to `.bashrc`.
 - [08. Autostart Mmojo Server](08-Autostart-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
 - [09. Change Model](09-Change-Model.md) - Stop Mmojo Server, choose a new model, start Mmojo Server.
+- [10. Launch from Taskbar](10-Launch-from-Taskbar.md) - Make sure Mmojo Server works for day to day use.
+  <br/><br/>
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
+
+---
+### Port Forward to Mmojo Server
+If you want Mmojo Server to accept connections from other computers on your network, you can set that up:
+- [11. Port Forward to Mmojo Server](11-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
 
 ---
 ### Build Mmojo Server

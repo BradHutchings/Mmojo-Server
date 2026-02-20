@@ -16,7 +16,7 @@ echo ""
 echo "These models are available to package:"
 PS3="Please choose a model:"
 
-cd $LOCAL_MODELS_DIR
+cd $MODELS_DIR
 select filename in *.gguf; do
   case $filename in
     "")
@@ -38,7 +38,7 @@ if [ -v MODEL_CHOICE ]; then
   if [ -d "$RUN_DIR" ]; then
       rm -f "$RUN_DIR"/*.gguf
       echo "Soft linking $MODEL_CHOICE to $RUN_DIR."
-      ln -s "$LOCAL_MODELS_DIR/$MODEL_CHOICE" "$RUN_DIR/$MODEL_CHOICE"
+      ln -s "$MODELS_DIR/$MODEL_CHOICE" "$RUN_DIR/$MODEL_CHOICE"
   fi
 fi
 

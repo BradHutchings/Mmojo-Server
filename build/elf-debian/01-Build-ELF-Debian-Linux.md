@@ -189,6 +189,11 @@ if test -n "$RUN_DIR"; then
 fi
 ```
 
+You can back the package up to your Mmojo Share.
+```
+mm-packages-backup.sh
+```
+
 ---
 ### Proceed
 - **Next:** [02. Test ELF Executable for Debian Linux](02-Test-ELF-Debian-Linux.md)

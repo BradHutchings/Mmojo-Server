@@ -1,3 +1,4 @@
+<!-- SPONSOR -->
 ## About Mmojo Server
 Welcome to Mmojo Server version 3! 
 
@@ -33,6 +34,7 @@ Need professional help with your deployment, rollout, or build? Would you like t
 --<br/>
 Brad Hutchings<br/>
 brad@bradhutchings.com
+<!-- END SPONSOR -->
 
 ---
 [MIT-Style License](/LICENSE)<br/>

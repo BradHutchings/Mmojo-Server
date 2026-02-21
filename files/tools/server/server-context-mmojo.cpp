@@ -3130,6 +3130,12 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
             } else {
                 // multi-results, non-OAI compat
                 res->ok(arr);
+              
+                // Mmojo Server START
+                if (params.show_prompt) {
+                    SRV_INF("\n----------\Completion:\n%s\n----------\n", arr.dump(0).c_str());
+                }
+                // Mmojo Server END
             }
         }
     } else {

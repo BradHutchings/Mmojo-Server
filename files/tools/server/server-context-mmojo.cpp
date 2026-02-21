@@ -1324,6 +1324,12 @@ private:
 
         SLT_DBG(slot, "n_decoded = %d, n_remaining = %d, next token: %5d '%s'\n", slot.n_decoded, slot.n_remaining, result.tok, token_str.c_str());
 
+        // Mmojo Server START
+        if (params.show_completion) {
+            SRV_INF("\n----------\nCompletion:\n%s\n----------\n", slot.generated_text.c_str());
+        }
+        // Mmojo Server END
+
         return slot.has_next_token; // continue
     }
 
@@ -3126,12 +3132,6 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                 // multi-results, non-OAI compat
                 res->ok(arr);              
             }
-
-            // Mmojo Server START
-            if (params.show_completion) {
-                SRV_INF("\n----------\nCompletion:\n%s\n----------\n", arr.dump(0).c_str());
-            }
-            // Mmojo Server END
         }
     } else {
         // in streaming mode, the first error must be treated as non-stream response
@@ -3249,18 +3249,6 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                 return false;
             }
         };
-
-        if (!res->next) {
-            // SRV_INF("!res->next, %s", "xxx");
-            // Mmojo Server START
-            if (params.show_completion) {
-                // SRV_INF("\n----------\nCompletion:\n%s\n----------\n", res->data.c_str());
-            }
-            // Mmojo Server END
-        }
-        else {
-            // SRV_INF("res->next, %s", "zzz");
-        }
     }
 
     return res;

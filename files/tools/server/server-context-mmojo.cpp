@@ -3129,7 +3129,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
 
             // Mmojo Server START
             if (params.show_completion) {
-                SRV_INF("\n----------\Completion:\n%s\n----------\n", arr.dump(0).c_str());
+                SRV_INF("\n----------\nCompletion:\n%s\n----------\n", arr.dump(0).c_str());
             }
             // Mmojo Server END
         }
@@ -3179,14 +3179,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
 
             try {
                 if (req.should_stop()) {
-                    SRV_DBG("%s", "stopping streaming due to should_stop condition\n");
-                  
-                    // Mmojo Server START
-                    if (params.show_completion) {
-                        SRV_INF("\n----------\Completion:\n%s\n----------\n", res_this->data.c_str());
-                    }
-                    // Mmojo Server END
-                  
+                    SRV_DBG("%s", "stopping streaming due to should_stop condition\n");                  
                     return false; // should_stop condition met
                 }
 
@@ -3213,13 +3206,6 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                             break;
                     }
                     SRV_DBG("%s", "all results received, terminating stream\n");
-                  
-                    // Mmojo Server START
-                    if (params.show_completion) {
-                        SRV_INF("\n----------\Completion:\n%s\n----------\n", res_this->data.c_str());
-                    }
-                    // Mmojo Server END
-
                     return false; // no more data, terminate
                 }
 
@@ -3228,13 +3214,6 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                 if (result == nullptr) {
                     SRV_DBG("%s", "stopping streaming due to should_stop condition\n");
                     GGML_ASSERT(req.should_stop());
-                  
-                    // Mmojo Server START
-                    if (params.show_completion) {
-                        SRV_INF("\n----------\Completion:\n%s\n----------\n", res_this->data.c_str());
-                    }
-                    // Mmojo Server END
-                  
                     return false; // should_stop condition met
                 }
 
@@ -3270,6 +3249,14 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                 return false;
             }
         };
+
+        if (!res->next) {
+            // Mmojo Server START
+            if (params.show_completion) {
+                SRV_INF("\n----------\nCompletion:\n%s\n----------\n", res->data.c_str());
+            }
+            // Mmojo Server END
+        }
     }
 
     return res;

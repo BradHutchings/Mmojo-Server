@@ -3818,6 +3818,24 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
             params.use_mmap = true;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
+    // This is so we can show the prompt in regular output.
+    add_opt(common_arg(
+        {"--show-prompt"},
+        "show the prompt in regular output",
+        [](common_params & params) {
+            params.show_prompt = true;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
+    // This is so we can show the completion in regular output.
+    add_opt(common_arg(
+        {"--show-completion"},
+        "show the completion in regular output",
+        [](common_params & params) {
+            params.show_completion = true;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
     // Mmojo Server END  
   
     return ctx_arg;

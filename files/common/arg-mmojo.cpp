@@ -3811,6 +3811,8 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
 
     // This is so we can override --no-mmap in default-args in APE file, turn mmap back on from command-line.
+    // This has been implemented (above). Commenting out for now, remove later. -Brad 2026-02-21
+    /*
     add_opt(common_arg(
         {"--mmap"},
         "use memory-map model, for overriding --no-mmap",
@@ -3818,7 +3820,8 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
             params.use_mmap = true;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
-
+    */
+  
     // This is so we can show the prompt in regular output.
     add_opt(common_arg(
         {"--show-prompt"},

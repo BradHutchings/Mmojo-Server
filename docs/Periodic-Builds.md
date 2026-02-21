@@ -33,6 +33,16 @@ This document identifies the periodic builds, when to build them, how to build t
   - Upload `Mmojo-Server-x86_64-perf-cud.zip` to Hugging Face repo.
 
 ---
+### Mmojo-Server-x86_64-native-cud.zip
+- **What:** Native CUDA x86_64 build runs on Linux x86_64, NVIDIA GPU supported, but optional.
+- **When:** This should be rebuilt after each sync of llama.cpp.
+- **Where:** Build in Windows-WSL environment.
+- **How:**
+  - Complete a fresh [Windows-WSL deployment](/deploy/Windows-WSL/README.md) after llama.cpp sync.
+  - Build with [elf-debian recipe](/build/elf-debian/01-Build-ELF-Debian-Linux.md), CUDA GPUs, performant.
+  - Keep this package available for use with OpenClaw.
+
+---
 ### Mmojo-Server-aarch64-comp-cud.zip
 - **What:** Compatible CUDA aarch64 build runs on Linux aarch64, NVIDIA GPU supported, but optional.
 - **When:** This should be rebuilt after each sync of llama.cpp.

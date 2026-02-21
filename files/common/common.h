@@ -382,6 +382,8 @@ struct common_params {
     // This could be automated by searching for "int32_t n_batch " and inserting this block immediately below. -Brad 2025-11-05
     int32_t n_batch_sleep_ms          =     0; // delay in milliseconds after processing each batch.
     std::string default_ui_endpoint   =    ""; // endpoint for chat UI
+    bool    show_prompt               =    false;
+    bool    show_completion           =    false;
     // Mmojo Server END
 
     int32_t n_ubatch              =   512; // physical batch size for prompt processing (must be >=32 to use BLAS)

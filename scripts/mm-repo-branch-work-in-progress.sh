@@ -33,6 +33,11 @@ if [ -d "$MMOJO_SERVER_DIR" ]; then
 
   cp $MMOJO_SERVER_SCRIPTS/mr-*.sh $HOME_SCRIPTS
   chmod a+x $HOME_SCRIPTS/mr-*.sh
+
+  # This copies the $MMOJO_SERVER_FILES tree into the $BUILD_DIR tree.
+  if [ -d "$BUILD_DIR" ]; then
+      cp -r $MMOJO_SERVER_FILES/* $BUILD_DIR/
+  fi
 else
   echo "The $MMOJO_SERVER_DIR directory does not exist."
 fi

@@ -3,6 +3,8 @@ Welcome to Mmojo Server version 3!
 
 This repository is the "Easy Button" for deploying and building [llama.cpp](https://github.com/ggml-org/llama.cpp) for your PC, laptop, or server. The audience for this repo is developers and tinkerers. Regular users can visit [Mmojo.net](https://mmojo.net) for Mmojo products meant for them.
 
+**Get started here:** [Deploy Mmojo Server to All Supported Platforms](/deploy/All-Supported-Platforms/README.md) guide.
+
 Mmojo Server is a private, local LLM server:
 - All defaults support private, local LLM usage. No logs by default. No cloud queries. No user accounts. No shared server over your network. Cues and completions &mdash; aka prompts and answers &mdash; do not leave your computer unless you make them leave your computer.
 - Mmojo Server sports a humane completion-style user interface as its default, and offers a traditional chat user interface for those who want that. You don't have to pretend to chat with a robot! 
@@ -19,11 +21,11 @@ This repository is your source for deploying and building Mmojo Server:
 The best path to start your Mmojo Server journey goes like this:
 1. Mmojo.net will host a downloadable Mmojo Stick package. Copy to a fast thumb drive. Use it on most dekstop or laptop computers in use today. Leave no footprints! There will be a link to that soon!
 2. Deploy Mmojo Server securely, tailored to:
-   - All Supported Platform using the [Deploy Mmojo Server to All Supported Platforms](/deploy/All-Supported-Platforms/README.md) recipe.
-   - Windows 11 using the [Deploy Mmojo Server on Windows (WSL)](/deploy/Windows-WSL/README.md) recipe.
-   - Debian Linux using the [Deploy Mmojo Server on Debian / Ubintu / Pi](/deploy/Debian-Ubuntu-Pi/README.md) recipe.
+   - All Supported Platform using the [Deploy Mmojo Server to All Supported Platforms](/deploy/All-Supported-Platforms/README.md) guide.
+   - Windows 11 using the [Deploy Mmojo Server on Windows (WSL)](/deploy/Windows-WSL/README.md) guide.
+   - Debian Linux using the [Deploy Mmojo Server on Debian / Ubintu / Pi](/deploy/Debian-Ubuntu-Pi/README.md) guide.
    - More platforms are coming soon.
-4. Get started with OpenClaw using the [OpenClaw (Windows WSL)](/deploy/OpenClaw-Windows-WSL/README.md) recipe.
+4. Get started with OpenClaw using the [OpenClaw (Windows WSL)](/deploy/OpenClaw-Windows-WSL/README.md) guide.
 
 Need professional help with your deployment, rollout, or build? Would you like to sponsor accessible, local, private LLMs? Email me!
 

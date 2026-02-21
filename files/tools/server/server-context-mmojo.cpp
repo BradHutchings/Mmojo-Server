@@ -1324,6 +1324,14 @@ private:
 
         SLT_DBG(slot, "n_decoded = %d, n_remaining = %d, next token: %5d '%s'\n", slot.n_decoded, slot.n_remaining, result.tok, token_str.c_str());
 
+        // Mmojo Server START
+        if (!slot.has_next_token) {
+            if (params_base.show_completion) {
+                SRV_INF("\n----------\nCompletion:\n%s\n----------\n", slot.generated_text.c_str());
+            }
+        }
+        // Mmojo Server END
+
         return slot.has_next_token; // continue
     }
 
@@ -2557,12 +2565,7 @@ private:
                         slot.i_batch   = batch.n_tokens - 1;
 
                         SLT_INF(slot, "prompt done, n_tokens = %d, batch.n_tokens = %d\n", slot.prompt.n_tokens(), batch.n_tokens);
-
-                        // Mmojo Server START
-                        // This would be a good place to implement a --recap-prompts feature. Display the prompt and response here.
-                        // Do I know how to do that? Nope. -Brad 2026-02-17
-                        // Mmojo Server END
-
+                      
                         slot.init_sampler();
 
                         const auto pos_min = llama_memory_seq_pos_min(llama_get_memory(ctx), slot.id);
@@ -3046,6 +3049,12 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
         // TODO: this log can become very long, put it behind a flag or think about a more compact format
         //SRV_DBG("Prompt: %s\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
 
+        // Mmojo Server START
+        if (params.show_prompt) {
+            SRV_INF("\n----------\nPrompt:\n%s\n----------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
+        }
+        // Mmojo Server END
+
         // process prompt
         std::vector<server_tokens> inputs;
 
@@ -3123,7 +3132,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                 res->ok(arr[0]);
             } else {
                 // multi-results, non-OAI compat
-                res->ok(arr);
+                res->ok(arr);              
             }
         }
     } else {
@@ -3172,7 +3181,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
 
             try {
                 if (req.should_stop()) {
-                    SRV_DBG("%s", "stopping streaming due to should_stop condition\n");
+                    SRV_DBG("%s", "stopping streaming due to should_stop condition\n");                  
                     return false; // should_stop condition met
                 }
 

@@ -3129,14 +3129,14 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                 res->ok(arr[0]);
             } else {
                 // multi-results, non-OAI compat
-                res->ok(arr);
-              
-                // Mmojo Server START
-                if (params.show_prompt) {
-                    SRV_INF("\n----------\Completion:\n%s\n----------\n", arr.dump(0).c_str());
-                }
-                // Mmojo Server END
+                res->ok(arr);              
             }
+
+            // Mmojo Server START
+            if (params.show_prompt) {
+                SRV_INF("\n----------\Completion:\n%s\n----------\n", arr.dump(0).c_str());
+            }
+            // Mmojo Server END
         }
     } else {
         // in streaming mode, the first error must be treated as non-stream response

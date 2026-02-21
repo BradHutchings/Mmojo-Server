@@ -2557,12 +2557,7 @@ private:
                         slot.i_batch   = batch.n_tokens - 1;
 
                         SLT_INF(slot, "prompt done, n_tokens = %d, batch.n_tokens = %d\n", slot.prompt.n_tokens(), batch.n_tokens);
-
-                        // Mmojo Server START
-                        // This would be a good place to implement a --recap-prompts feature. Display the prompt and response here.
-                        // Do I know how to do that? Nope. -Brad 2026-02-17
-                        // Mmojo Server END
-
+                      
                         slot.init_sampler();
 
                         const auto pos_min = llama_memory_seq_pos_min(llama_get_memory(ctx), slot.id);
@@ -3185,6 +3180,13 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
             try {
                 if (req.should_stop()) {
                     SRV_DBG("%s", "stopping streaming due to should_stop condition\n");
+                  
+                    // Mmojo Server START
+                    if (params.show_completion) {
+                        SRV_INF("\n----------\Completion:\n%s\n----------\n", res_this->data.c_str());
+                    }
+                    // Mmojo Server END
+                  
                     return false; // should_stop condition met
                 }
 
@@ -3211,6 +3213,13 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                             break;
                     }
                     SRV_DBG("%s", "all results received, terminating stream\n");
+                  
+                    // Mmojo Server START
+                    if (params.show_completion) {
+                        SRV_INF("\n----------\Completion:\n%s\n----------\n", res_this->data.c_str());
+                    }
+                    // Mmojo Server END
+
                     return false; // no more data, terminate
                 }
 
@@ -3219,6 +3228,13 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                 if (result == nullptr) {
                     SRV_DBG("%s", "stopping streaming due to should_stop condition\n");
                     GGML_ASSERT(req.should_stop());
+                  
+                    // Mmojo Server START
+                    if (params.show_completion) {
+                        SRV_INF("\n----------\Completion:\n%s\n----------\n", res_this->data.c_str());
+                    }
+                    // Mmojo Server END
+                  
                     return false; // should_stop condition met
                 }
 

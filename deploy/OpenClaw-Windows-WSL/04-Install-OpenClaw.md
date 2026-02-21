@@ -18,6 +18,8 @@ Now, run this command from the [OpenClaw website](https://openclaw.ai) to downlo
 curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
+**Note:** This breaks with the 2026.2.21 release. The problem has been reported, and I am waiting for the next release to fix. That's how OpenClaw goes some days.
+
 ---
 ### Complete OpenClaw Onboarding
 You will complete OpenClaw onboarding right now to get it running quickly. You will connect it to Mmojo Server and set up services later.

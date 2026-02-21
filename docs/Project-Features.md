@@ -74,6 +74,8 @@ The original version of this document is in the project archives. Its contents w
 
 - [102. Project Features](https://github.com/BradHutchings/Mmojo-Server/blob/c9229ad86e17f6a76d21e1645b8a5a05f16516c6/instructions/102-Project-Features.md)
 
+Need to document ability to find a .gguf file.
+
 
 ---
 [MIT-Style License](/LICENSE)<br/>

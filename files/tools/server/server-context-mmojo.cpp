@@ -3133,7 +3133,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
             }
 
             // Mmojo Server START
-            if (params.show_prompt) {
+            if (params.show_completion) {
                 SRV_INF("\n----------\Completion:\n%s\n----------\n", arr.dump(0).c_str());
             }
             // Mmojo Server END

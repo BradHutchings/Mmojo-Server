@@ -34,9 +34,11 @@ if [ -d "$MMOJO_SERVER_DIR" ]; then
   cp $MMOJO_SERVER_SCRIPTS/mr-*.sh $HOME_SCRIPTS
   chmod a+x $HOME_SCRIPTS/mr-*.sh
 
-  # This copies the $MMOJO_SERVER_FILES tree into the $BUILD_DIR tree.
   if [ -d "$BUILD_DIR" ]; then
+      # This copies the $MMOJO_SERVER_FILES tree into the $BUILD_DIR tree.
       cp -r $MMOJO_SERVER_FILES/* $BUILD_DIR/
+      # In tools/server .cpp files, replace "defer(" with "defer_task(" to make Cosmo STL happy.
+      sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
   fi
 else
   echo "The $MMOJO_SERVER_DIR directory does not exist."

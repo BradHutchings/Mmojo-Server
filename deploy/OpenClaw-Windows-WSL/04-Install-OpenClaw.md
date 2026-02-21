@@ -2,6 +2,11 @@
 ### About this Step
 You will install OpenClaw in the `OpenClaw` WSL instance.
 
+### Start Mmojo Server
+The OpenClaw onboarding sequence will connect with Mmojo Server. It needs to be running.
+
+Start Mmojo Server by launching it from the Taskbar.
+
 ---
 ### Install OpenClaw
 Switch to the `Terminal` window with the `(OpenClaw)` prompt.

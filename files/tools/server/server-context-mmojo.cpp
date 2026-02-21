@@ -3251,15 +3251,15 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
         };
 
         if (!res->next) {
-            SRV_INF("!res->next, %s", "xxx");
+            // SRV_INF("!res->next, %s", "xxx");
             // Mmojo Server START
             if (params.show_completion) {
-                SRV_INF("\n----------\nCompletion:\n%s\n----------\n", res->data.c_str());
+                // SRV_INF("\n----------\nCompletion:\n%s\n----------\n", res->data.c_str());
             }
             // Mmojo Server END
         }
         else {
-            SRV_INF("res->next, %s", "zzz");
+            // SRV_INF("res->next, %s", "zzz");
         }
     }
 

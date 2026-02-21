@@ -6,7 +6,7 @@ In this step, you're going to download the `mmojo-server-ape.zip` from Hugging F
 ### Download mmojo-server-ape.zip
 This archive has the Mmojo Server software.
 
-- [Download mmojo-server-ape.zip](https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-ape.zip)
+- [Download Mmojo-Server-ape.zip](https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-ape.zip)
 
 ---
 ### Download a Model

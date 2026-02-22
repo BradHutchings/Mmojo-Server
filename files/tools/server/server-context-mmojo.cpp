@@ -1341,7 +1341,7 @@ private:
             else {
                 int count = slot.generated_token_count;
                 if ((count > 0) && ((count % 20) == 0)) {
-                    SRV_INF("Completing: %d\n", count);
+                    SRV_INF("Completing: %d tokens generated.\n", count);
                 }
             }
         }

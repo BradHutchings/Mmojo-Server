@@ -3827,7 +3827,7 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
         {"--show-request"},
         "show the json request in regular output",
         [](common_params & params) {
-            params.request = true;
+            params.show_request = true;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
 
@@ -3835,7 +3835,7 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
         {"--dont-show-request"},
         "don't show the json request in regular output",
         [](common_params & params) {
-            params.request = false;
+            params.show_request = false;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
 

@@ -1330,7 +1330,7 @@ private:
                 SRV_INF("\n----------\nCompletion:\n%s\n----------\n", slot.generated_text.c_str());
             }
             else {
-                int generated_size = generated_tokens.size();
+                int generated_size = slot.generated_tokens.size();
                 if ((generated_size % 100) == 0) {
                     SRV_INF("Completing: %d\n", generated_size);
                 }

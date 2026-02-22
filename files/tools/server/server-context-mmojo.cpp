@@ -1325,9 +1325,15 @@ private:
         SLT_DBG(slot, "n_decoded = %d, n_remaining = %d, next token: %5d '%s'\n", slot.n_decoded, slot.n_remaining, result.tok, token_str.c_str());
 
         // Mmojo Server START
-        if (!slot.has_next_token) {
-            if (params_base.show_completion) {
+        if (params_base.show_completion) {
+            if (!slot.has_next_token) {
                 SRV_INF("\n----------\nCompletion:\n%s\n----------\n", slot.generated_text.c_str());
+            }
+            else {
+                int generated_size = generated_tokens.size();
+                if ((generated_size % 100) == 0) {
+                    SRV_INF("Completing: %d\n", generated_size);
+                }
             }
         }
         // Mmojo Server END

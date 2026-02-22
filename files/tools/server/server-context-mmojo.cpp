@@ -95,6 +95,7 @@ struct server_slot {
 
     std::string  generated_text;
     llama_tokens generated_tokens;
+    size_t generated_token_count = 0;
 
     // idx of draft tokens in the main batch
     // non-empty if we went to evaluate draft tokens
@@ -194,6 +195,7 @@ struct server_slot {
         drafted.clear();
         i_batch_dft.clear();
         generated_tokens.clear();
+        generated_token_count = 0;
         generated_token_probs.clear();
         json_schema = json();
 
@@ -1205,6 +1207,9 @@ private:
         if (slot.task->params.return_tokens) {
             slot.generated_tokens.push_back(result.tok);
         }
+        // Mmojo Server START
+        slot.generated_token_count++;
+        // Mmojo Server END
         slot.has_next_token = true;
 
         // check if there is incomplete UTF-8 character at the end
@@ -1330,9 +1335,9 @@ private:
                 SRV_INF("\n----------\nCompletion:\n%s\n----------\n", slot.generated_text.c_str());
             }
             else {
-                int generated_size = slot.generated_tokens.size();
-                if ((generated_size > 0) && ((generated_size % 100) == 0)) {
-                    SRV_INF("Completing: %d\n", generated_size);
+                int count = slot.generated_token_count;
+                if ((count > 0) && ((count % 100) == 0)) {
+                    SRV_INF("Completing: %d\n", count);
                 }
             }
         }

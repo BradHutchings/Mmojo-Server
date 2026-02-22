@@ -95,7 +95,9 @@ struct server_slot {
 
     std::string  generated_text;
     llama_tokens generated_tokens;
+    // Mmojo Server START
     size_t generated_token_count = 0;
+    // Mmojo Server END
 
     // idx of draft tokens in the main batch
     // non-empty if we went to evaluate draft tokens
@@ -195,7 +197,9 @@ struct server_slot {
         drafted.clear();
         i_batch_dft.clear();
         generated_tokens.clear();
+        // Mmojo Server START
         generated_token_count = 0;
+        // Mmojo Server END
         generated_token_probs.clear();
         json_schema = json();
 

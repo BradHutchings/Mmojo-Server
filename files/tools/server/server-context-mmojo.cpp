@@ -1340,7 +1340,7 @@ private:
             }
             else {
                 int count = slot.generated_token_count;
-                if ((count > 0) && ((count % 100) == 0)) {
+                if ((count > 0) && ((count % 20) == 0)) {
                     SRV_INF("Completing: %d\n", count);
                 }
             }

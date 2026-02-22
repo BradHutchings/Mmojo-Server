@@ -3050,9 +3050,11 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
         //SRV_DBG("Prompt: %s\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
 
         // Mmojo Server START
-        if (params.show_prompt) {
+        if (params.show_request) {
             SRV_INF("\n----------\data:\n%s\n----------\n", data.is_string() ? data.get<std::string>().c_str() : data.dump(2).c_str());
-            // SRV_INF("\n----------\nPrompt:\n%s\n----------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
+        }
+        if (params.show_prompt) {
+            SRV_INF("\n----------\nPrompt:\n%s\n----------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
         }
         // Mmojo Server END
 

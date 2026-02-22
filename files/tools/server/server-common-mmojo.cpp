@@ -1126,8 +1126,8 @@ json convert_responses_to_chatcmpl(const json & response_body) {
 
         for (json item : input_value) {
             // Mmojo Server START
-            // if (exists_and_is_string(item, "content")) {
-            if (exists_and_is_string(item, "content") && (item.at("role") != "developer")) {
+            if (exists_and_is_string(item, "content")) {
+            // if (exists_and_is_string(item, "content") && (item.at("role") != "developer")) {
             // Mmojo Server END
                 // #responses_create-input-input_item_list-input_message-content-text_input
                 // Only "Input message" contains item["content"]::string

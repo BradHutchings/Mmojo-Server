@@ -1331,7 +1331,7 @@ private:
             }
             else {
                 int generated_size = slot.generated_tokens.size();
-                if ((generated_size % 100) == 0) {
+                if ((generated_size > 0) && ((generated_size % 100) == 0)) {
                     SRV_INF("Completing: %d\n", generated_size);
                 }
             }

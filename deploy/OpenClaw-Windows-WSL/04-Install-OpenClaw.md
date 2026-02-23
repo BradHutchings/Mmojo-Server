@@ -2,10 +2,13 @@
 ### About this Step
 You will install OpenClaw in the `OpenClaw` WSL instance.
 
+---
 ### Start Mmojo Server
 The OpenClaw onboarding sequence will connect with Mmojo Server. It needs to be running.
 
 Start Mmojo Server by launching it from the Taskbar.
+
+Once launched, I recommend stopping Mmojo Server, switching the model to `Qwen3-14B-v3-q8_0.gguf` and starting it in "debug" mode.
 
 ---
 ### Install OpenClaw

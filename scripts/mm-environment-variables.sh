@@ -175,6 +175,7 @@ export ARCH_AARCH64_NATIVE="native"
 
 # Run directory for deployment only
 export RUN_DIR="$HOME/mm-mmojo-server"
+export RUN_LLAMA_SERVER_DIR="$HOME/mm-llama-server"
 
 # Run this script when user starts a session.
 SEARCH_STRING="\. mm-environment-variables.sh"

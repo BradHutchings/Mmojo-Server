@@ -31,14 +31,16 @@ This will take a few minutes, as it first does some work on memory compaction wh
 
 Note the timestamps.
 
-**Note:** *The problem with OpenClaw and small LLMs as of February 23, 2026 is OpenClaw's giant, poorly organized, and largely ineffective system prompt. OpenClaw enthisiasts have been happy so far to pay huge cloud token bills, or set up Mac Minis and Mac Studio clusters to run larger models. Having dug deep into the prompt, I know that's just the wrong approach. It may take time, but that system prompt situation should get better or fixable. It's good that you can get OpenClaw installed and running now. -Brad 2026-02-23*
-
 Skills are a mixed bag. This seems to work about half the time, making a tool call to query the wttr.in service.
 ```
 /skill weather San Diego, CA
 ```
 
+---
+### Future
+A future version of these instructions will show you how to configure Mmojo Server so that you can watch what OpenClaw is asking for. It's eye opening.
 
+**Note:** *The problem with OpenClaw and small LLMs as of February 23, 2026 is OpenClaw's giant, poorly organized, and largely ineffective system prompt. OpenClaw enthisiasts have been happy so far to pay huge cloud token bills, or set up Mac Minis and Mac Studio clusters to run larger models. Having dug deep into the prompt, I know that's just the wrong approach. It may take time, but that system prompt situation should get better or fixable. It's good that you can get OpenClaw installed and running now. -Brad 2026-02-23*
 
 ---
 ### Proceed

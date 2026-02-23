@@ -34,7 +34,7 @@ export PATH="/home/linux/.npm-global/bin:$PATH"
 
 ---
 ### Proceed
-- **Next:** [05. Configure OpenClaw](05-Configure-OpenClaw.md)
+- **Next:** [05. Configure OpenClaw — Mmojo Server](05-Configure-OpenClaw-1.md)
 - **Previous:** [03. Prepare WSL - OpenClaw](03-Prepare-WSL-OpenClaw.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 

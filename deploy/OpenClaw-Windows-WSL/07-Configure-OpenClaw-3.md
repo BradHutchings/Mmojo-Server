@@ -1,6 +1,9 @@
+## Configure OpenClaw &mdash; Finish Configuration
+### About this Step
+In this step, you will configure channels and skills.
 
-
-
+---
+### Configure OpenClaw (continued)
 **Enable Hooks?**
 
 <img width="326" height="123" alt="image" src="https://github.com/user-attachments/assets/8fead834-6497-4361-88ee-d90de8fc9126" />
@@ -64,16 +67,13 @@ You will see the **OpenClaw Gateway Dashboard**, indicating that OpenClaw is run
 
 
 
-**Show Homebrew install command?**
-
-<img width="357" height="65" alt="image" src="https://github.com/user-attachments/assets/738027be-0d3a-49aa-8cb5-52bd12d16528" />
-
-Hit the `N` key.
+---
+### Proceed
+- **Next:** [05. Connect OpenClaw to Mmojo Server](05-Connect-OpenClaw-to-Mmojo-Server.md)
+- **Previous:** [03. Prepare WSL - OpenClaw](03-Prepare-WSL-OpenClaw.md)
+- **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---
-
-**Preferred node manager for skill installs**
-
-<img width="423" height="103" alt="image" src="https://github.com/user-attachments/assets/05513603-a480-486f-8e3a-48174bc81422" />
-
-Hit the `ENTER` key.
+[MIT-Style License](/LICENSE)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+[https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

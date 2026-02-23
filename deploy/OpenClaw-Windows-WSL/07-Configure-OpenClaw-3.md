@@ -37,8 +37,18 @@ Your shell prompt appears.
 Source the `.bashrc` file. Run `openclaw` to make sure it is available.
 ```
 . $HOME/.bashrc
-openclaw
+openclaw config set agents.defaults.timeoutSeconds 1200
+openclaw config set models.providers.custom-127-0-0-1-8080.models[0].reasoning true
+openclaw config set models.providers.custom-127-0-0-1-8080.models[0].contextWindow 32768
+openclaw config set models.providers.custom-127-0-0-1-8080.models[0].maxTokens 32768
+openclaw config set models.providers.custom-127-0-0-1-8080.models[0].compat.supportsDeveloperRole false
+openclaw gateway restart
 ```
+
+<!--
+supportsDeveloperRole from this comment:
+https://github.com/openclaw/openclaw/issues/5704#issuecomment-3938731743
+-->
 
 ---
 ### Connect to OpenClaw
@@ -54,8 +64,8 @@ You will see the **OpenClaw Gateway Dashboard** in your web browser, indicating 
 
 ---
 ### Proceed
-- **Next:** [05. Connect OpenClaw to Mmojo Server](05-Connect-OpenClaw-to-Mmojo-Server.md)
-- **Next:** [06. Configure OpenClaw — Channels, Skills, and API Keys](06-Configure-OpenClaw-2.md)
+- **Next:** [08. Test OpenClaw](08-Test-OpenClaw.md)
+- **Previous:** [06. Configure OpenClaw — Channels, Skills, and API Keys](06-Configure-OpenClaw-2.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

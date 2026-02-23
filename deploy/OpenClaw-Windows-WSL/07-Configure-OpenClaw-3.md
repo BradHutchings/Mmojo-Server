@@ -1,4 +1,4 @@
-## Configure OpenClaw &mdash; Finish Configuration
+## 07. Configure OpenClaw &mdash; Finish Configuration
 ### About this Step
 In this step, you will configure channels and skills.
 

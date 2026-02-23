@@ -47,6 +47,7 @@ Choose GPUs for your build if you're not building for Raspberry Pi 5.
 
 Build native Mmojo Server tuned to the specific CPU of your PC:
 ```
+export BUILD_DIR="$HOME/mm-build-llama-cpp"
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
 TOUCH_FILE=""

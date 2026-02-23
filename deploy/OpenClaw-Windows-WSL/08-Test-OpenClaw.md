@@ -30,8 +30,11 @@ Ask it to tell you a joke.
 Tell me a joke.
 ```
 
-At this time, skills don't seem to work very well.
+This will take a few minutes, as it first does some work on memory compaction when you issue the above prompt. But eventually, it will tell you joke.
 
+**Note:** *The problem with OpenClaw and small LLMs as of February 23, 2026 is OpenClaw's giant, poorly organized, and largely ineffective system prompt. OpenClaw enthisiasts have been happy so far to pay huge cloud token bills, or set up Mac Minis and Mac Studio clusters to run larger models. Having dug deep into the prompt, I know that's just the wrong approach. It may take time, but that system prompt situation should get better or fixable. It's good that you can get OpenClaw installed and running now. -Brad 2026-02-23*
+
+Skills are a mixed bag. This seems to work about half the time, making a tool call to query the wttr.in service.
 ```
 /skill weather San Diego, CA
 ```

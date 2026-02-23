@@ -1,4 +1,4 @@
-## 06. Test OpenClaw
+## 09. Test OpenClaw
 ### About this Step
 You perform a few tests to demonstrate that OpenClaw is using your Mmojo Server for it's large language model (LLM) server.
 

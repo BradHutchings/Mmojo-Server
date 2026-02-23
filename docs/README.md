@@ -1,6 +1,7 @@
 ## Mmojo Server Documents - Table of Contents
 Here are some docs you should review:
 
+- [Sponsor this Repo](Sponsor-this-Repo.md) - Your business can help me with my private and local mission!
 - [Maintenance](Maintenance.md) - How periodic maintenance to sync with llama.cpp is done.
 - [Periodic Builds](Periodic-Builds.md) - Things that get build regularly, how, and where.
 - [Project Features](Project-Features.md) - All the things this project does.

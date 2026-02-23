@@ -38,10 +38,10 @@ Source the `.bashrc` file. Run `openclaw` to make sure it is available.
 ```
 . $HOME/.bashrc
 openclaw config set agents.defaults.timeoutSeconds 1200
-openclaw config set models.providers.custom-127-0-0-1-8080.models[0].reasoning true
-openclaw config set models.providers.custom-127-0-0-1-8080.models[0].contextWindow 32768
-openclaw config set models.providers.custom-127-0-0-1-8080.models[0].maxTokens 32768
-openclaw config set models.providers.custom-127-0-0-1-8080.models[0].compat.supportsDeveloperRole false
+openclaw config set models.providers.mmojo-server-127-0-0-1-8080.models[0].reasoning true
+openclaw config set models.providers.mmojo-server-127-0-0-1-8080.models[0].contextWindow 32768
+openclaw config set models.providers.mmojo-server-127-0-0-1-8080.models[0].maxTokens 32768
+openclaw config set models.providers.mmojo-server-127-0-0-1-8080.models[0].compat.supportsDeveloperRole false
 openclaw gateway restart
 ```
 

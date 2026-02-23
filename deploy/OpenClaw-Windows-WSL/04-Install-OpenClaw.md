@@ -15,10 +15,11 @@ Switch to the `Terminal` window with the `(OpenClaw)` prompt.
 
 Now, run this command from the [OpenClaw website](https://openclaw.ai) to download and install OpenClaw.
 ```
+export OPENCLAW_USE_GUM=0
 curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
-**Note:** This breaks with the 2026.2.21 release. The problem has been reported, and I am waiting for the next release to fix. That's how OpenClaw goes some days.
+**Note:** Turning off GUM is a workaround for the 2026-2-21 release.
 
 ---
 ### Complete OpenClaw Onboarding

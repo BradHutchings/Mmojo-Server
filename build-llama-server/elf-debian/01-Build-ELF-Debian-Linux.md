@@ -30,8 +30,8 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 ```
 
 ---
-### Build Mmojo Server
-Prepare to build Mmojo Server (llama.cpp with patches and extensions):
+### Build llama-server
+Prepare to build llama-server:
 ```
 if [ ! -d "$BUILD_LLAMA_SERVER_DIR" ]; then
     mm-prepare-clone-llama-cpp.sh
@@ -44,7 +44,7 @@ Choose GPUs for your build if you're not building for Raspberry Pi 5.
 . mm-gpus-choose.sh
 ```
 
-Build native Mmojo Server tuned to the specific CPU of your PC:
+Build native llama-server tuned to the specific CPU of your PC:
 ```
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
@@ -71,7 +71,7 @@ mm-build-for-platform.sh $VARIATION "$GPUS_CHOICE"
 ```
 
 <details>
-  <summary><b>Alternatively:</b> Build a more compatible Mmojo Server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
+  <summary><b>Alternatively:</b> Build a more compatible llama-server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
 BUILD_SUBDIR=""
@@ -90,7 +90,7 @@ mm-build-for-platform.sh compatible "$GPUS_CHOICE"
 </details>
 
 <details>
-  <summary><b>Alternatively:</b> Build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
+  <summary><b>Alternatively:</b> Build a performant llama-server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
 BUILD_SUBDIR=""
@@ -120,7 +120,7 @@ touch "$RUN_DIR/$TOUCH_FILE"
 
 ---
 ### Review Your Work
-Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
+Let's list the contents of the `$HOME/mm-mmojo-server` directory and review your work:
 ```
 ls -al $RUN_DIR
 ```

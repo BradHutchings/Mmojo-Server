@@ -50,27 +50,12 @@ openclaw dashboard --no-open
 
 Control-click the top link in the output.
 
-<!--
-Scroll up to find the `Dashboard ready` section of the configure output. 
-
-<img width="777" height="291" alt="image" src="https://github.com/user-attachments/assets/b0951a76-a2fd-4a10-bf61-b403eb01bcde" />
-
-Control-click the `Dashboard link (with token)`.
-
-<img width="716" height="368" alt="image" src="https://github.com/user-attachments/assets/6800706c-b82a-4978-9e13-c270b955dbf2" />
-
-**Note**: The picture above needs to be updated.
--->
-
-You will see the **OpenClaw Gateway Dashboard**, indicating that OpenClaw is running and you can connect to it from a web browser on your computer.
-
-
-
+You will see the **OpenClaw Gateway Dashboard** in your web browser, indicating that OpenClaw is running and ready for use.
 
 ---
 ### Proceed
 - **Next:** [05. Connect OpenClaw to Mmojo Server](05-Connect-OpenClaw-to-Mmojo-Server.md)
-- **Previous:** [03. Prepare WSL - OpenClaw](03-Prepare-WSL-OpenClaw.md)
+- **Next:** [06. Configure OpenClaw — Channels, Skills, and API Keys](06-Configure-OpenClaw-2.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

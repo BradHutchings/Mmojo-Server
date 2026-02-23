@@ -28,7 +28,7 @@ export OPENCLAW_USE_GUM=0
 -->
 
 <!--
-Add to .bashrc, source .bashrc. Can this work before we install? -Brad 2026-02-23
+This gets added to .bashrc. We will source .bashrc when we're done. -Brad 2026-02-23
 export PATH="/home/linux/.npm-global/bin:$PATH"
 -->
 

@@ -40,6 +40,8 @@ if [ ! -d "$BUILD_DIR" ]; then
 fi
 ```
 
+**Future:** Should be `BUILD_LLAMA_SERVER_DIR` in `mm-environment-variables.sh`.
+
 Choose GPUs for your build if you're not building for Raspberry Pi 5.
 ```
 . mm-gpus-choose.sh

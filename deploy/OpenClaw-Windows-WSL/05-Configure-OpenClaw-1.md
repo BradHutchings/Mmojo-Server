@@ -1,10 +1,10 @@
 ## 05. Configure OpenClaw &mdash; Mmojo Server
 ### About this Step
-In this step, you will work through OpenClaw configuration wizard through the connection to Mmojo Server.
+In this step, you will start working through OpenClaw configuration wizard. You will get through the configuration option of connecting OpenClaw to Mmojo Server.
 
 ---
 ### Initial Configuration
-You will complete OpenClaw onboarding right now to get it running quickly. You will connect it to Mmojo Server and set up services later.
+Work through the configuration options in order as they are presented.
 
 ---
 

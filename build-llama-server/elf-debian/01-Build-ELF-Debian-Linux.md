@@ -33,14 +33,11 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 ### Build Mmojo Server
 Prepare to build Mmojo Server (llama.cpp with patches and extensions):
 ```
-export BUILD_DIR="$HOME/mm-build-llama-cpp"
-if [ ! -d "$BUILD_DIR" ]; then
+if [ ! -d "$BUILD_LLAMA_SERVER_DIR" ]; then
     mm-prepare-clone-llama-cpp.sh
     mm-prepare-customize-webui.sh
 fi
 ```
-
-**Future:** Should be `BUILD_LLAMA_SERVER_DIR` in `mm-environment-variables.sh`.
 
 Choose GPUs for your build if you're not building for Raspberry Pi 5.
 ```
@@ -55,17 +52,17 @@ TOUCH_FILE=""
 VARIATION="native"
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
     unset $GPUS_CHOICE
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_RPI5_AARCH64"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_RPI5_AARCH64"
     PACKAGE_FILE="llama-cpp-aarch64-rpi5.zip"
     TOUCH_FILE="build-aarch64-rpi5"
     VARIATION="pi"
 elif [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
     PACKAGE_FILE="llama-cpp-x86_64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
     VARIATION="native"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
     PACKAGE_FILE="llama-cpp-aarch64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
     VARIATION="native"
@@ -80,11 +77,11 @@ mm-build-for-platform.sh $VARIATION "$GPUS_CHOICE"
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
     PACKAGE_FILE="llama-cpp-x86_64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-comp$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
     PACKAGE_FILE="llama-cpp-aarch64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
 fi
@@ -99,11 +96,11 @@ mm-build-for-platform.sh compatible "$GPUS_CHOICE"
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
     PACKAGE_FILE="llama-cpp-x86_64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-perf$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
     PACKAGE_FILE="llama-cpp-aarch64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
 fi
@@ -117,7 +114,7 @@ Create a run directory:
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
-cp $BUILD_SUBDIR/bin/llama-server $RUN_DIR
+cp $BUILD_SUBDIR/bin/$PACKAGE_LLAMA_SERVER_FILE $RUN_DIR
 touch "$RUN_DIR/$TOUCH_FILE"
 ```
 
@@ -140,7 +137,7 @@ Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r "$PACKAGE_FILE" llama-server "$TOUCH_FILE"
+  zip -r "$PACKAGE_FILE" $PACKAGE_LLAMA_SERVER_FILE "$TOUCH_FILE"
   mkdir -p "$PACKAGES_DIR"
   mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME

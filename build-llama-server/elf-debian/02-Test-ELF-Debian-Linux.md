@@ -24,7 +24,7 @@ mm-model-choose.sh
 Test that the build runs with output in the Terminal.
 ```
 cd $RUN_DIR
-./llama-server --host 127.0.0.1 --port 8080 --model *.gguf
+./$PACKAGE_LLAMA_SERVER_FILE --host 127.0.0.1 --port 8080 --model *.gguf
 cd $HOME 
 ```
 

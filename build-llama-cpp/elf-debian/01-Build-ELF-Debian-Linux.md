@@ -116,9 +116,7 @@ Create a run directory:
 ```
 mkdir -p $RUN_DIR
 rm -r -f "$RUN_DIR"/*
-cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
-cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cp $BUILD_SUBDIR/bin/llama-server $RUN_DIR
 touch "$RUN_DIR/$TOUCH_FILE"
 ```
 
@@ -141,7 +139,7 @@ Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 if test -n "$RUN_DIR"; then
   cd "$RUN_DIR"
-  zip -r "$PACKAGE_FILE" mmojo-server mmojo-server-args Mmojo-Complete "$TOUCH_FILE"
+  zip -r "$PACKAGE_FILE" llama-server "$TOUCH_FILE"
   mkdir -p "$PACKAGES_DIR"
   mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME

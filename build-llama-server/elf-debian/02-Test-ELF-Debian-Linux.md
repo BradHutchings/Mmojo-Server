@@ -28,19 +28,17 @@ cd $RUN_DIR
 cd $HOME 
 ```
 
-Connect to Mmojo Complete from a browser:
+Connect to llama.cpp Chat from a browser:
 
-[Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
+[llama.cpp Chat](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
 Hit `CTRL-C` to stop the debug run when you are finished testing your build.
-
-Since your build is in your `$RUN_DIR`, it's ready to be deployed with `mm-start`.
 
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
 - **Previous:** [01. Build ELF Executable for Debian Linux](01-Build-ELF-Debian-Linux.md)
-- **Up:** [Build Mmojo Server](../README.md)
+- **Up:** [Build llama-server](../README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

@@ -18,6 +18,7 @@ Mmojo Server is a private, local LLM server:
 This repository is your source for deploying and building Mmojo Server:
 - The [Deploy](/deploy/README.md) section helps you expertly deploy Mmojo Server for use on your computer or server.
 - The [Build](/build/README.md) section helps you build a custom Mmojo Server tailored to your computer or server.
+- The [Docs](/docs/README.md) section has some things you should read.
 
 The best path to start your Mmojo Server journey goes like this:
 1. Mmojo.net will host a downloadable Mmojo Stick package. Copy to a fast thumb drive. Use it on most dekstop or laptop computers in use today. Leave no footprints! There will be a link to that soon!

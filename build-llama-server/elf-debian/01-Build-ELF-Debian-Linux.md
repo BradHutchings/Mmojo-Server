@@ -112,17 +112,17 @@ mm-build-for-platform.sh performant "$GPUS_CHOICE"
 ### Create a Run Directory
 Create a run directory:
 ```
-mkdir -p $RUN_DIR
-rm -r -f "$RUN_DIR"/*
-cp $BUILD_SUBDIR/bin/$PACKAGE_LLAMA_SERVER_FILE $RUN_DIR
-touch "$RUN_DIR/$TOUCH_FILE"
+mkdir -p $RUN_LLAMA_SERVER_DIR
+rm -r -f "$RUN_LLAMA_SERVER_DIR"/*
+cp $BUILD_SUBDIR/bin/$PACKAGE_LLAMA_SERVER_FILE $RUN_LLAMA_SERVER_DIR
+touch "$RUN_LLAMA_SERVER_DIR/$TOUCH_FILE"
 ```
 
 ---
 ### Review Your Work
-Let's list the contents of the `$HOME/mm-mmojo-server` directory and review your work:
+Let's list the contents of the `$HOME/mm-llama-server` directory and review your work:
 ```
-ls -al $RUN_DIR
+ls -al $RUN_LLAMA_SERVER_DIR
 ```
 
 It should look like:
@@ -135,8 +135,8 @@ Make a .zip pakcage files from your run directory. They are moved to your `$PACK
 
 Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
-if test -n "$RUN_DIR"; then
-  cd "$RUN_DIR"
+if test -n "$RUN_LLAMA_SERVER_DIR"; then
+  cd "$RUN_LLAMA_SERVER_DIR"
   zip -r "$PACKAGE_FILE" $PACKAGE_LLAMA_SERVER_FILE "$TOUCH_FILE"
   mkdir -p "$PACKAGES_DIR"
   mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"

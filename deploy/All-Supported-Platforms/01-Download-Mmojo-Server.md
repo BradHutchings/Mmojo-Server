@@ -3,10 +3,10 @@
 In this step, you're going to download the `mmojo-server-ape.zip` from Hugging Face, download a model from Hugging Face, exapnd the `.zip` archive, and move a model into the expanded archive folder.
 
 ---
-### Download mmojo-server-ape.zip
+### Download Mmojo-Server-ape.zip
 This archive has the Mmojo Server software.
 
-- [Download mmojo-server-ape.zip](https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-ape.zip)
+- [Download Mmojo-Server-ape.zip](https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-ape.zip)
 
 ---
 ### Download a Model
@@ -23,8 +23,8 @@ More models that have been tested with Mmojo Server are available here:
 - [Mmojo Server Models](https://huggingface.co/bradhutchings/Mmojo-Server/tree/main/models)
 
 ---
-### Expand mmojo-server-ape.zip
-Expand the `mmojo-server-ape.zip` archive into a folder on your Desktop. The contents of the folder will look something like this:
+### Expand Mmojo-Server-ape.zip
+Expand the `Mmojo-Server-ape.zip` archive into a folder on your Desktop. The contents of the folder will look something like this:
 
 <img width="408" height="189" alt="image" src="https://github.com/user-attachments/assets/bdd76941-a6ae-4ea5-b790-262ab9db923d" />
 

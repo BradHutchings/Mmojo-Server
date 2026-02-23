@@ -11,20 +11,11 @@ Brad Hutchings<br/>
 brad@bradhutchings.com
 
 ---
-### [100. Overview](100-Overview.md)
-This is an overview of what this repository is about, how to work with it, what to contribute, etc. Read this first before diving in!
-
-- [106. Contribute and Sponsor](106-Contribute-and-Sponsor.md) - About contributing to this project and sponsoring my work.
-
----
 ### [200. Prepare Build Environment](200-Prepare-Build-Environment.md)
 Before you can build Mmojo Server, you need a build environment. Depending on what you want to build, it could be a single computer or multiple computers. You should have a separate share on your network to keep files you only need to download once, and keep the products of your builds. You may find yourself rebuilding your build environments regularly, especially if you edit or enhance code and instructions in the repo.
 
 - [201. Prepare WSL](201-Prepare-WSL.md) - Prepare your Windows Subsystem for Linux (WSL) environment if you're using one.
 - [202. Prepare macOS](202-Prepare-macOS.md) - Prepare your macOS environment if you're using one.
-- [203. Create Scripts Directory](203-Create-Scripts-Directory.md) - Create `$HOME/mmscripts` directory, then add it to your `$PATH`.
-- [204. Clone Mmojo Server Repo](204-Clone-Mmojo-Server-Repo.md) - Clone Mmojo Server Repo for setup and build scripts.
-- [205. Set Timezone](205-Set-Timezone.md) - Set your build system's time zone so Completion UI reflects correct build date.
 - [208. Install Dependencies](208-Install-Dependencies.md) - Install packages needed for your build system.
 - [209. mm- Scripts](209-mm-Scripts.md) - All about those `mm-` scripts in your `$HOME/mm-scripts` directory.
 

@@ -95,6 +95,9 @@ struct server_slot {
 
     std::string  generated_text;
     llama_tokens generated_tokens;
+    // Mmojo Server START
+    size_t generated_token_count = 0;
+    // Mmojo Server END
 
     // idx of draft tokens in the main batch
     // non-empty if we went to evaluate draft tokens
@@ -194,6 +197,9 @@ struct server_slot {
         drafted.clear();
         i_batch_dft.clear();
         generated_tokens.clear();
+        // Mmojo Server START
+        generated_token_count = 0;
+        // Mmojo Server END
         generated_token_probs.clear();
         json_schema = json();
 
@@ -1205,6 +1211,9 @@ private:
         if (slot.task->params.return_tokens) {
             slot.generated_tokens.push_back(result.tok);
         }
+        // Mmojo Server START
+        slot.generated_token_count++;
+        // Mmojo Server END
         slot.has_next_token = true;
 
         // check if there is incomplete UTF-8 character at the end
@@ -1325,9 +1334,15 @@ private:
         SLT_DBG(slot, "n_decoded = %d, n_remaining = %d, next token: %5d '%s'\n", slot.n_decoded, slot.n_remaining, result.tok, token_str.c_str());
 
         // Mmojo Server START
-        if (!slot.has_next_token) {
-            if (params_base.show_completion) {
+        if (params_base.show_completion) {
+            if (!slot.has_next_token) {
                 SRV_INF("\n----------\nCompletion:\n%s\n----------\n", slot.generated_text.c_str());
+            }
+            else {
+                int count = slot.generated_token_count;
+                if ((count > 0) && ((count % 20) == 0)) {
+                    SRV_INF("Completing: %d tokens generated.\n", count);
+                }
             }
         }
         // Mmojo Server END
@@ -3050,6 +3065,9 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
         //SRV_DBG("Prompt: %s\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
 
         // Mmojo Server START
+        if (params.show_request) {
+            SRV_INF("\n----------\data:\n%s\n----------\n", data.is_string() ? data.get<std::string>().c_str() : data.dump(2).c_str());
+        }
         if (params.show_prompt) {
             SRV_INF("\n----------\nPrompt:\n%s\n----------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
         }

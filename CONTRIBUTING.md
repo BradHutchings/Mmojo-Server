@@ -1,3 +1,6 @@
+<!-- SPONSOR -->
+## Contributing to the Mmojo Server Repo
+
 I am not accepting unsolicited assistance with this repo now. Nor in the foreseeable future.
 
 If you have feature requests or bug reports, please leave them in the [Discussion section](https://github.com/BradHutchings/Mmojo-Server/discussions).
@@ -12,3 +15,4 @@ If you would like to work with me on Mmojo Server, please email a serious human-
 --<br/>
 Brad Hutchings<br/>
 brad@bradhutchings.com
+<!-- END SPONSOR -->

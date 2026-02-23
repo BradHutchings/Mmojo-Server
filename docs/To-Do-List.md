@@ -52,3 +52,8 @@ Well, this got out of hand. I'm cleaning it up and trying to use it again. -Brad
 | 2025&minus;11&minus;23 | 2025&minus;11&minus;21         | Are `--mlock` and `--no-mmap` needed as parameters when we test builds or package builds? Seems like they should be added by one of our users for better performance / behavior. *Not needed for testing.* Packaging?<br/> It appears that `mmap()` from Cosmo libc isn't handling llama.cpp's call to access a .gguf in the `/zip` path. So `--no-mmap` would be necessary for embedded .ggufs in APE packages. Still investigating. Added an `--mmap` param to override on command-line for future use. |
 | 2025&minus;11&minus;22 | 2025&minus;11&minus;21 | Use `mm-choose-model.sh` in [402-Prepare-to-Test.md](https://github.com/BradHutchings/Mmojo-Server/blob/main/instructions/402-Prepare-to-Test.md) |
 | 2025&minus;11&minus;21 | 2025&minus;11&minus;21 | Finish instruction file renumbering step for Dogpile. |
+
+---
+[MIT-Style License](/LICENSE)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+[https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

@@ -1,6 +1,6 @@
 ## Maintenance
 
-These are the instructions for maintaining the files rooted in this directory. This turns into a mess if we're in the middle of rapid fire commits to llama.cpp. Test builds after maintenance!
+These are the instructions for maintaining the files in the `/fies` directory. This turns into a mess if we're in the middle of rapid fire commits to llama.cpp. Test builds after maintenance!
 
 1. Switch to the `work-in-progress` branch for this page.
 
@@ -47,3 +47,8 @@ These are the instructions for maintaining the files rooted in this directory. T
 9. Edit the script that clones llama.cpp and change the rollback point. More details needed here.
 
    <img width="205" height="180" alt="image" src="https://github.com/user-attachments/assets/9beadab3-9b4f-4435-9c0b-41edb728a590" />
+
+---
+[MIT-Style License](/LICENSE)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+[https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

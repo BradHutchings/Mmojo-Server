@@ -3824,10 +3824,35 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
   
     // This is so we can show the prompt in regular output.
     add_opt(common_arg(
+        {"--show-request"},
+        "show the json request in regular output",
+        [](common_params & params) {
+            params.show_request = true;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
+    add_opt(common_arg(
+        {"--dont-show-request"},
+        "don't show the json request in regular output",
+        [](common_params & params) {
+            params.show_request = false;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
+    // This is so we can show the prompt in regular output.
+    add_opt(common_arg(
         {"--show-prompt"},
         "show the prompt in regular output",
         [](common_params & params) {
             params.show_prompt = true;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
+    add_opt(common_arg(
+        {"--dont-show-prompt"},
+        "don't show the prompt in regular output",
+        [](common_params & params) {
+            params.show_prompt = false;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
 
@@ -3839,7 +3864,15 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
             params.show_completion = true;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
-    // Mmojo Server END  
+
+    add_opt(common_arg(
+        {"--dont-show-completion"},
+        "don't show the completion in regular output",
+        [](common_params & params) {
+            params.show_completion = false;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+// Mmojo Server END  
   
     return ctx_arg;
 }

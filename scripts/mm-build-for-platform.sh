@@ -25,7 +25,8 @@ if [ "$processor" != "x86_64" ] && [ "$processor" != "aarch64" ]; then
     processor="x86_64"
 fi
 
-if [ "$variation" != "compatible" ] && [ "$variation" != "performant" ] && [ "$variation" != "native" ]; then
+if [ "$variation" != "compatible" ] && [ "$variation" != "performant" ] && \
+    [ "$variation" != "native" ] && [ "$variation" != "pi" ]; then
     variation="native"
 fi
 
@@ -70,11 +71,14 @@ fi
 
 # A special exception for Raspberry Pi 5 - Means I can't build comp/per -cud. Grrrr.
 # if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
-#    BUILD_SUBDIRECTORY="$BUILD_EXECUTABLE_RPI5_AARCH64"
-#    ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_NATIVE "
-#    GGML_PARAMS=""
-#    gpus=""
-# fi
+
+# Pass in pi as a variation to trigger this.
+if [ "$variation" == "pi" ]; then
+    BUILD_SUBDIRECTORY="$BUILD_EXECUTABLE_RPI5_AARCH64"
+    ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_NATIVE "
+    GGML_PARAMS=""
+    gpus=""
+fi
 
 if [[ "$gpus" == *"cud"* ]]; then
     GGML_PARAMS+=" -DGGML_CUDA=ON";

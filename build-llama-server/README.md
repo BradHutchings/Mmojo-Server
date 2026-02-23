@@ -1,5 +1,5 @@
 ## Build llama-server - Table of Contents
-Mmojo Server build instructions are here. I use these to build Mmojo Server for the [Deploy](/deploy/README.md) offerings and my own products.
+If you want to build vanilla llama-server from llama.cpp, instructions are here. They are based on the Mmoho Server build instructions, but without the Mmojo Server customizations.
 
 <!-- SPONSOR --> 
 If you need assistance via Zoom call and screen sharing, I offer a one-hour hands-on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this stuff work. [Email me if interested](mailto:brad@BradHutchings.com?subject=Mmojo%20Server%20Install%20Help).
@@ -9,12 +9,6 @@ If you need assistance via Zoom call and screen sharing, I offer a one-hour hand
 Brad Hutchings<br/>
 brad@BradHutchings.com<br/><br/>
 <!-- END SPONSOR -->
-
----
-### APE Multi-platform, Multi-CPU
-You can build an Actual Portable Executable (APE) file that runs on x86_64 and aarch64 (arm64), across Windows, macOS, Linux, and other platforms:
-- [Build APE for All Platforms](ape/01-Build-APE-All-Platforms.md)
-- [Test APE for All Platforms](ape/02-Test-APE-All-Platforms.md)
 
 ---
 ### ELF for Debian Linux, x86_64 or aarch64 (arm64)

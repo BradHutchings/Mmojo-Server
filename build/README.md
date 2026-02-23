@@ -23,8 +23,8 @@ You can build ELF binaries for Debian Linux (e.g. Ubuntu) in native CPU, perform
 - [Test ELF Executable for Debian Linux](elf-debian/02-Test-ELF-Debian-Linux.md)
 
 ---
-### Future Deployments
-Here is a tentative list of planned build recipes:
+### Future Build Guides
+Here is a tentative list of planned build guides:
 - Mach-O Executable for macOS.
 - ELF Executable for RHEL (Linux)
 - ELF Executable for Arch Linux

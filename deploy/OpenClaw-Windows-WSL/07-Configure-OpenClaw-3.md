@@ -28,7 +28,7 @@ Your shell prompt appears.
 
 ---
 ### Additional Configuration
-Source the `.bashrc` file. Run `openclaw` to make sure it is available.
+Source the `.bashrc` file. Change some things in the OpenClaw configuration. These changes specifically enable the recommended `Qwen3 14B v3` model.
 ```
 . $HOME/.bashrc
 openclaw config set agents.defaults.timeoutSeconds 1200

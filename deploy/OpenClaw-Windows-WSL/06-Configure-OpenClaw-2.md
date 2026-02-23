@@ -80,8 +80,8 @@ There is more configuration left to complete. Continue on the next page.
 
 ---
 ### Proceed 
-- **Next:** [06. Configure OpenClaw — Finish Configuration](06-Configure-OpenClaw-3.md)
-- **Previous:** [05. Configure OpenClaw — Mmojo Server](06-Configure-OpenClaw-1.md)
+- **Next:** [07. Configure OpenClaw — Finish Configuration](07-Configure-OpenClaw-3.md)
+- **Previous:** [05. Configure OpenClaw — Mmojo Server](05-Configure-OpenClaw-1.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

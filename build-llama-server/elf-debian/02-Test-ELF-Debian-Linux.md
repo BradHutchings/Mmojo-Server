@@ -12,6 +12,8 @@ If you've previously built an APE for all platforms and want to retrieve it for 
 mm-package-choose.sh
 ```
 
+**Note:** this will unzip your package in the `$RUN_DIR`, not the `$RUN_LLAMA_SERVER_DIR`. I'll fix that soon. -Brad
+
 ---
 ### Choose a Model
 Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google Gemma 270M Instruct v3**.
@@ -23,7 +25,7 @@ mm-model-choose.sh
 ### Test Your Build
 Test that the build runs with output in the Terminal.
 ```
-cd $RUN_DIR
+cd $RUN_LLAMA_SERVER_DIR
 ./$PACKAGE_LLAMA_SERVER_FILE --host 127.0.0.1 --port 8080 --model *.gguf
 cd $HOME 
 ```

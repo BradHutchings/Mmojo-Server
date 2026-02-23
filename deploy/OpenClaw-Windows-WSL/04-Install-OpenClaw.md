@@ -18,11 +18,19 @@ Switch to the `Terminal` window with the `(OpenClaw)` prompt.
 
 Now, run this command from the [OpenClaw website](https://openclaw.ai) to download and install OpenClaw.
 ```
-export OPENCLAW_USE_GUM=0
 curl -fsSL https://openclaw.ai/install.sh | bash
 ```
-
+<!--
+```
+export OPENCLAW_USE_GUM=0
+```
 **Note:** Turning off GUM is a workaround for the 2026-2-21 release.
+-->
+
+<!--
+Add to .bashrc, source .bashrc. Can this work before we install? -Brad 2026-02-23
+export PATH="/home/linux/.npm-global/bin:$PATH"
+-->
 
 ---
 ### Proceed

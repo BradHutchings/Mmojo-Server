@@ -50,7 +50,7 @@ https://github.com/openclaw/openclaw/issues/5704#issuecomment-3938731743
 openclaw dashboard --no-open
 ```
 
-<img width="696" height="346" alt="image" src="https://github.com/user-attachments/assets/9fb8908c-1d63-4ea4-846a-12494a93ac05" />
+<img width="883" height="136" alt="image" src="https://github.com/user-attachments/assets/86ce52fc-21ae-48b1-b75d-7618cc6dcd4d" />
 
 Control-click the top link in the output.
 

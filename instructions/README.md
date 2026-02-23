@@ -16,9 +16,6 @@ Before you can build Mmojo Server, you need a build environment. Depending on wh
 
 - [201. Prepare WSL](201-Prepare-WSL.md) - Prepare your Windows Subsystem for Linux (WSL) environment if you're using one.
 - [202. Prepare macOS](202-Prepare-macOS.md) - Prepare your macOS environment if you're using one.
-- [203. Create Scripts Directory](203-Create-Scripts-Directory.md) - Create `$HOME/mmscripts` directory, then add it to your `$PATH`.
-- [204. Clone Mmojo Server Repo](204-Clone-Mmojo-Server-Repo.md) - Clone Mmojo Server Repo for setup and build scripts.
-- [205. Set Timezone](205-Set-Timezone.md) - Set your build system's time zone so Completion UI reflects correct build date.
 - [208. Install Dependencies](208-Install-Dependencies.md) - Install packages needed for your build system.
 - [209. mm- Scripts](209-mm-Scripts.md) - All about those `mm-` scripts in your `$HOME/mm-scripts` directory.
 

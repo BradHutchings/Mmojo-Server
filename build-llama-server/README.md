@@ -1,5 +1,5 @@
 ## Build llama-server - Table of Contents
-If you want to build vanilla llama-server from llama.cpp, instructions are here. They are based on the Mmoho Server build instructions, but without the Mmojo Server customizations.
+If you want to build vanilla llama-server from llama.cpp, instructions are here. They are based on the Mmojo Server build instructions, but without the Mmojo Server customizations.
 
 <!-- SPONSOR --> 
 If you need assistance via Zoom call and screen sharing, I offer a one-hour hands-on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this stuff work. [Email me if interested](mailto:brad@BradHutchings.com?subject=Mmojo%20Server%20Install%20Help).

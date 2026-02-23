@@ -22,12 +22,6 @@ Use the <code>&darr;</code> key to choose `Open the Web UI`, then hit the `ENTER
 
 **Onboarding complete.**
 
-<img width="682" height="147" alt="image" src="https://github.com/user-attachments/assets/fdc95d95-5247-4b38-ac60-3f398f8d4939" />
-
-You're not quite done yet. At this point it looks like the installer is stuck. You will not see your familiar `(OpenClaw-` shell prompt.
-
-Hit `CTRL-C`.
-
 <img width="671" height="70" alt="image" src="https://github.com/user-attachments/assets/782a4b07-f15c-49a4-a15f-9225736832fe" />
 
 Your shell prompt appears.

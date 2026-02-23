@@ -156,7 +156,7 @@ mm-packages-backup.sh
 ### Proceed
 - **Next:** [02. Test ELF Executable for Debian Linux](02-Test-ELF-Debian-Linux.md)
 - **Previous:** This is the first step in this section.
-- **Up:** [Build Mmojo Server](../README.md)
+- **Up:** [Build llama-server](../README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

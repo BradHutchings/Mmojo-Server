@@ -108,8 +108,8 @@ There is more configuration left to complete. Continue on the next page.
 
 ---
 ### Proceed
-- **Next:** [05. Connect OpenClaw to Mmojo Server](05-Connect-OpenClaw-to-Mmojo-Server.md)
-- **Previous:** [03. Prepare WSL - OpenClaw](03-Prepare-WSL-OpenClaw.md)
+- **Next:** [06. Configure OpenClaw — Channels, Skills, and API Keys](06-Configure-OpenClaw-2.md)
+- **Previous:** [04. Install OpenClaw](04-Install-OpenClaw.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

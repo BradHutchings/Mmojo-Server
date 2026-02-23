@@ -99,8 +99,9 @@ export LOCAL_DOWNLOADS_DIR="$HOME/$DOWNLOADS_DIR_NAME"
 export MMOJO_SHARE_DOWNLOADS_DIR="$MMOJO_SHARE_MOUNT_POINT/$DOWNLOADS_DIR_NAME"
 
 echo "Setting Build paths."
-# export BUILD_DIR="$HOME/500-BUILD-mmojo-server"
 export BUILD_DIR="$HOME/mm-build-mmojo-server"
+export BUILD_LLAMA_SERVER_DIR="$HOME/mm-build-llama-server"
+
 export BUILD_DEBUG="build-debug"
 export BUILD_COSMO_APE="build-cosmo-ape"
 export BUILD_COSMO_COMPATIBLE_X86_64="build-cosmo-compatible-x86_64"
@@ -149,6 +150,8 @@ export PACKAGE_SEAS="seas"
 
 export PACKAGE_MMOJO_SERVER_FILE="mmojo-server"
 export PACKAGE_MMOJO_SERVER_APE_FILE="mmojo-server-ape"
+export PACKAGE_LLAMA_SERVER_FILE="llama-server"
+
 export PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE="mmojo-server-ape-compatible"
 export PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE="mmojo-server-ape-performant"
 export PACKAGE_MMOJO_SERVER_ZIP_FILE="mmojo-server.zip"

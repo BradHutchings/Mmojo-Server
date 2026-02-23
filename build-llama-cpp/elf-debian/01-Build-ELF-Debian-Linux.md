@@ -1,4 +1,5 @@
-## 01. Build llama.cpp &mdash; ELF Executable for Debian Linux
+## 01. llama.cpp &mdash; Build ELF Executable for Debian Linux
+**THIS GUIDE IS IN PROGRESS**
 ### About this Step
 If this step, you will build vanilla llama.cpp without Mmojo Server extensions. The executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:
 - **Compatible:** Runs on most systems that use a CPU from your computer's CPU family. 
@@ -53,17 +54,17 @@ VARIATION="native"
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
     unset $GPUS_CHOICE
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_RPI5_AARCH64"
-    PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
+    PACKAGE_FILE="llama-cpp-aarch64-rpi5.zip"
     TOUCH_FILE="build-aarch64-rpi5"
     VARIATION="pi"
 elif [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
+    PACKAGE_FILE="llama-cpp-x86_64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
     VARIATION="native"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
+    PACKAGE_FILE="llama-cpp-aarch64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
     VARIATION="native"
 fi
@@ -78,11 +79,11 @@ BUILD_SUBDIR=""
 PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-x86_64-comp$GPUS_CHOICE.zip"
+    PACKAGE_FILE="llama-cpp-x86_64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-comp$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
+    PACKAGE_FILE="llama-cpp-aarch64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
 fi
 mm-build-for-platform.sh compatible "$GPUS_CHOICE"
@@ -97,11 +98,11 @@ BUILD_SUBDIR=""
 PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-x86_64-perf$GPUS_CHOICE.zip"
+    PACKAGE_FILE="llama-cpp-x86_64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-perf$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
     BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
+    PACKAGE_FILE="llama-cpp-aarch64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
 fi
 mm-build-for-platform.sh performant "$GPUS_CHOICE"
@@ -119,52 +120,6 @@ cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 touch "$RUN_DIR/$TOUCH_FILE"
 ```
-
-Create a mmojo-server-args file in the $RUN_DIR to launch Mmojo Server with the Mmojo Complete UI:
-```
-cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
---path
-/app/Mmojo-Complete
---default-ui-endpoint
-chat
---host
-0.0.0.0
---port
-8080
---batch-size
-2048
---threads-http
-8
---ctx-size
-32768 
-EOF
-```
-
-<details>
-  <summary><b>Alternatively:</b> Create a <code>mmojo-server-args</code> file in the <code>$RUN_DIR</code> to launch Mmojo Server with chat UI.</summary>
-<br/>
-    
-Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
-```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
---host
-0.0.0.0
---port
-8080
---batch-size
-2048
---threads-http
-8
---ctx-size
-32768 
-EOF
-```
-</details>
-
-**Future:** These are good candidate for mm-scripts.
 
 ---
 ### Review Your Work

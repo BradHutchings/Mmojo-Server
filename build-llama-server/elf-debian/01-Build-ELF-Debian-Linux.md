@@ -1,4 +1,4 @@
-## 01. llama.cpp &mdash; Build ELF Executable for Debian Linux
+## 01. llama-server &mdash; Build ELF Executable for Debian Linux
 **THIS GUIDE IS IN PROGRESS**
 ### About this Step
 If this step, you will build vanilla llama.cpp without Mmojo Server extensions. The executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:

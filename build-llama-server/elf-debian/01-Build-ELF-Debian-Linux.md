@@ -67,7 +67,7 @@ elif [ $(uname -m) == "aarch64" ]; then
     TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
     VARIATION="native"
 fi
-mm-build-for-platform.sh $VARIATION "$GPUS_CHOICE"
+mm-build-for-platform.sh $VARIATION "$GPUS_CHOICE" "llama-server"
 ```
 
 <details>
@@ -85,7 +85,7 @@ elif [ $(uname -m) == "aarch64" ]; then
     PACKAGE_FILE="llama-cpp-aarch64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
 fi
-mm-build-for-platform.sh compatible "$GPUS_CHOICE"
+mm-build-for-platform.sh compatible "$GPUS_CHOICE" "llama-server"
 ```
 </details>
 
@@ -104,7 +104,7 @@ elif [ $(uname -m) == "aarch64" ]; then
     PACKAGE_FILE="llama-cpp-aarch64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
 fi
-mm-build-for-platform.sh performant "$GPUS_CHOICE"
+mm-build-for-platform.sh performant "$GPUS_CHOICE" "llama-server"
 ```
 </details>
 

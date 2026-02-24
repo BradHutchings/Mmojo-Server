@@ -120,11 +120,6 @@ export BUILD_EXECUTABLE_NATIVE_AARCH64="build-executable-native-aarch64"
 
 export BUILD_EXECUTABLE_RPI5_AARCH64="build-executable-rpi5-aarch64"
 
-export BUILD_MINGW_COMPATIBLE_X86_64="build-mingw-compatible-x86_64"
-export BUILD_MINGW_COMPATIBLE_AARCH64="build-mingw-compatible-aarch64"
-export BUILD_MINGW_PERFORMANT_X86_64="build-mingw-performant-x86_64"
-export BUILD_MINGW_PERFORMANT_AARCH64="build-mingw-performant-aarch64"
-
 # Split out build commands so we can edit locally, build the delta.
 export LAST_BUILD_COMMAND=".last-build-command.sh"
 export LAST_BUILD_COMMAND_PATH="$HOME/$LAST_BUILD_COMMAND"

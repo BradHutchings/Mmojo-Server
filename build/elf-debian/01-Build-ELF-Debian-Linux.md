@@ -32,7 +32,6 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 ### Build Mmojo Server
 Prepare to build Mmojo Server (llama.cpp with patches and extensions):
 ```
-mm-env
 if [ ! -d "$BUILD_DIR" ]; then
     mm-prepare-clone-llama-cpp.sh
     mm-prepare-patch-llama-cpp.sh
@@ -171,7 +170,7 @@ EOF
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
-ls -al $RUN_DIR
+ls -l $RUN_DIR
 ```
 
 It should look like:

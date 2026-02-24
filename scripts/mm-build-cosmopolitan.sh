@@ -13,7 +13,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-if [ -d "$BUILD_COSMOPOLITAN_DIR" ]; then
+if [ "$BUILD_COSMOPOLITAN_DIR" != ""  ] && [ -d "$BUILD_COSMOPOLITAN_DIR" ]; then
     rm -r -f $BUILD_COSMOPOLITAN_DIR
 fi
 

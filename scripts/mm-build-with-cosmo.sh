@@ -110,8 +110,10 @@ if [ -v CC ]; then
     sed -i -e '/error bad version/d' vendor/cpp-httplib/CMakeLists.txt
 
     # Prepare the build folder
-    rm -r -f $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY
-    cmake -B $BUILD_SUBDIRECTORY -DBUILD_SHARED_LIBS=OFF -DLLAMA_CURL=OFF -DLLAMA_OPENSSL=ON \
+    if [ "$THIS_BUILD_DIR/$BUILD_SUBDIRECTORY" != "" ]; then
+        rm -r -f "$THIS_BUILD_DIR/$BUILD_SUBDIRECTORY"
+    fi
+    cmake -B "$BUILD_SUBDIRECTORY" -DBUILD_SHARED_LIBS=OFF -DLLAMA_CURL=OFF -DLLAMA_OPENSSL=ON \
       -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=$processor \
       -DCMAKE_VERBOSE_MAKEFILE=$VERBOSE $GGML_PARAMS
 
@@ -120,10 +122,10 @@ if [ -v CC ]; then
     mv vendor/cpp-httplib/CMakeLists-orig.txt vendor/cpp-httplib/CMakeLists.txt
 
     # Build
-    cmake --build $BUILD_SUBDIRECTORY --config Release
+    cmake --build "$BUILD_SUBDIRECTORY" --config Release
 
     echo
-    echo "Build command: cmake --build $BUILD_SUBDIRECTORY --config Release"
+    echo "Build command: cmake --build \"$BUILD_SUBDIRECTORY\" --config Release"
 
     # Show off what we built
     printf "\nBuild of Cosmo $processor of llama.cpp is complete.\n\n"

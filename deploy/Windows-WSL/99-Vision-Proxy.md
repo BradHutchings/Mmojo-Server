@@ -7,7 +7,7 @@ You can deploy a vision proxy in order to watch requests to and responses from M
 ### Clone openai-proxy Repo
 ```
 PROXY_DIR="$HOME/mm-proxy"
-if [ "$PROXY_DIR != "" ] && [ -d "$PROXY_DIR" ]; then
+if [ "$PROXY_DIR" != "" ] && [ -d "$PROXY_DIR" ]; then
     rm -r -f $PROXY_DIR
 fi
 git clone https://github.com/fangwentong/openai-proxy $PROXY_DIR

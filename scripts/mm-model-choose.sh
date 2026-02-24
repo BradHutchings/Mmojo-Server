@@ -40,7 +40,7 @@ if [ -v MODEL_CHOICE ]; then
   echo "You chose: $MODEL_CHOICE"
   echo ""
 
-  if [ -d "$THIS_RUN_DIR" ]; then
+  if [ "$THIS_RUN_DIR" != "" ] && [ -d "$THIS_RUN_DIR" ]; then
       rm -f "$THIS_RUN_DIR"/*.gguf
       echo "Soft linking $MODEL_CHOICE to $THIS_RUN_DIR."
       ln -s "$MODELS_DIR/$MODEL_CHOICE" "$THIS_RUN_DIR/$MODEL_CHOICE"

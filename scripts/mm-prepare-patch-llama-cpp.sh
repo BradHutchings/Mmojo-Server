@@ -12,16 +12,21 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 
 cd $HOME
 
+THIS_BUILD_DIR=$BUILD_DIR
+if [ "$1" == "llama-server" ]; then
+    THIS_BUILD_DIR=$BUILD_LLAMA_SERVER_DIR
+fi
+
 EXECUTABLE_FILE=$PACKAGE_MMOJO_SERVER_FILE
 
 echo "  executable file: $EXECUTABLE_FILE"
-echo "       cloning in: $BUILD_DIR"
+echo "       cloning in: $"
 echo ""
 
-# This copies the $MMOJO_SERVER_FILES tree into the $BUILD_DIR tree.
-cp -r $MMOJO_SERVER_FILES/* $BUILD_DIR/
+# This copies the $MMOJO_SERVER_FILES tree into the $THIS_BUILD_DIR tree.
+cp -r $MMOJO_SERVER_FILES/* $THIS_BUILD_DIR/
 
-cd $BUILD_DIR
+cd $THIS_BUILD_DIR
 
 #-------------------------------------------------------------------------------
 # Cosmo compatibility

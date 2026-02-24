@@ -50,8 +50,8 @@ This document identifies the periodic builds, when to build them, how to build t
 - **How:**
   - Run these:
     ```
-    if [ "$BUILD_DIR" != "" ]; then
-        mm-repo-update-local.sh
+    mm-repo-update-local.sh
+    if [ "$BUILD_DIR" != "" ] && [ -d "$BUILD_DIR" ]; then
         rm -r -f "$BUILD_DIR"
     fi
     ```
@@ -68,8 +68,8 @@ This document identifies the periodic builds, when to build them, how to build t
 - **How:**
   - Run these:
     ```
-    if [ "$BUILD_DIR" != "" ]; then
-        mm-repo-update-local.sh
+    mm-repo-update-local.sh
+    if [ "$BUILD_DIR" != "" ] && [ -d "$BUILD_DIR" ]; then
         rm -r -f "$BUILD_DIR"
     fi
     ```
@@ -86,8 +86,8 @@ This document identifies the periodic builds, when to build them, how to build t
 - **How:**
   - Run these:
     ```
-    if [ "$BUILD_DIR" != "" ]; then
-        mm-repo-update-local.sh
+    mm-repo-update-local.sh
+    if [ "$BUILD_DIR" != "" ] && [ -d "$BUILD_DIR" ]; then
         rm -r -f "$BUILD_DIR"
     fi
     ```

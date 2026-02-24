@@ -112,10 +112,12 @@ mm-build-for-platform.sh performant "$GPUS_CHOICE"
 ### Create a Run Directory
 Create a run directory:
 ```
-mkdir -p $RUN_LLAMA_SERVER_DIR
-rm -r -f "$RUN_LLAMA_SERVER_DIR"/*
-cp $BUILD_SUBDIR/bin/$PACKAGE_LLAMA_SERVER_FILE $RUN_LLAMA_SERVER_DIR
-touch "$RUN_LLAMA_SERVER_DIR/$TOUCH_FILE"
+if [ "$RUN_LLAMA_SERVER_DIR" != "" ]; then
+    mkdir -p $RUN_LLAMA_SERVER_DIR
+    rm -r -f "$RUN_LLAMA_SERVER_DIR"/*
+    cp $BUILD_SUBDIR/bin/$PACKAGE_LLAMA_SERVER_FILE $RUN_LLAMA_SERVER_DIR
+    touch "$RUN_LLAMA_SERVER_DIR/$TOUCH_FILE"
+fi
 ```
 
 ---

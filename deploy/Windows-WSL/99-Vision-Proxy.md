@@ -7,7 +7,6 @@ You can deploy a vision proxy in order to watch requests to and responses from M
 ### Clone openai-proxy Repo
 ```
 sudo apt install -y python3 python3-pip python3-tk uvicorn
-PROXY_DIR="$HOME/mm-proxy"
 if [ "$PROXY_DIR" != "" ] && [ -d "$PROXY_DIR" ]; then
     rm -r -f $PROXY_DIR
 fi

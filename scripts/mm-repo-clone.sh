@@ -11,7 +11,7 @@ SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 # export MMOJO_SERVER_REPO_DIR="$HOME/mm-mmojo-server"
-# export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_REPO_DIR/scripts"
+# export MMOJO_SERVER_REPO_FILES="$MMOJO_SERVER_REPO_DIR/scripts"
 cd $HOME
 if [ "$MMOJO_SERVER_REPO_DIR" != "" ] && [ -d "$MMOJO_SERVER_REPO_DIR" ] ; then
   rm -r -f $MMOJO_SERVER_REPO_DIR
@@ -20,10 +20,10 @@ mkdir -p $MMOJO_SERVER_REPO_DIR
 git clone https://github.com/BradHutchings/mmojo-server.git $MMOJO_SERVER_REPO_DIR
 
 # mm-repo-update-local.sh uses these variables, so set them first.
-. $MMOJO_SERVER_SCRIPTS/mm-environment-variables.sh
+. $MMOJO_SERVER_REPO_SCRIPTS/mm-environment-variables.sh
 
 # mm-repo-update-local.sh copies mm- scripts to $HOME/mm-scripts
-. $MMOJO_SERVER_SCRIPTS/mm-repo-update-local.sh
+. $MMOJO_SERVER_REPO_SCRIPTS/mm-repo-update-local.sh
 
 if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc

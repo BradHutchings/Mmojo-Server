@@ -50,8 +50,10 @@ This document identifies the periodic builds, when to build them, how to build t
 - **How:**
   - Run these:
     ```
-    mm-repo-update-local.sh
-    rm -r -f $BUILD_DIR
+    if [ "$BUILD_DIR" != "" ]; then
+        mm-repo-update-local.sh
+        rm -r -f "$BUILD_DIR"
+    fi
     ```
   - Build with [elf-debian recipe](/build/elf-debian/01-Build-ELF-Debian-Linux.md), CUDA GPUs, compatible. Don't build for Raspberry Pi.
   - Upload `Mmojo-Server-aarch64-comp-cud.zip` to Hugging Face repo.
@@ -66,8 +68,10 @@ This document identifies the periodic builds, when to build them, how to build t
 - **How:**
   - Run these:
     ```
-    mm-repo-update-local.sh
-    rm -r -f $BUILD_DIR
+    if [ "$BUILD_DIR" != "" ]; then
+        mm-repo-update-local.sh
+        rm -r -f "$BUILD_DIR"
+    fi
     ```
   - Build with [elf-debian recipe](/build/elf-debian/01-Build-ELF-Debian-Linux.md), CUDA GPUs, performant. Don't build for Raspberry Pi.
   - Upload `Mmojo-Server-aarch64-perf-cud.zip` to Hugging Face repo.
@@ -82,8 +86,10 @@ This document identifies the periodic builds, when to build them, how to build t
 - **How:**
   - Run these:
     ```
-    mm-repo-update-local.sh
-    rm -r -f $BUILD_DIR
+    if [ "$BUILD_DIR" != "" ]; then
+        mm-repo-update-local.sh
+        rm -r -f "$BUILD_DIR"
+    fi
     ```
   - Build with [elf-debian recipe](/build/elf-debian/01-Build-ELF-Debian-Linux.md), No GPUs, native. Build for Raspberry Pi.
   - Upload `Mmojo-Server-aarch64-rpi5.zip` to Hugging Face repo.

@@ -43,7 +43,9 @@ sudo nano $MMOJO_SHARE_RESTORE_MODEL_MAP
   
 Deleting the restore model map file will force the `mm-restore-models.sh` script to recreate it. You can delete the `restore-model-map.txt` file with this command:
 ```
-sudo rm $MMOJO_SHARE_RESTORE_MODEL_MAP
+if [ "$MMOJO_SHARE_RESTORE_MODEL_MAP != "" ]; then
+    sudo rm $MMOJO_SHARE_RESTORE_MODEL_MAP
+fi
 ```
 </details>
 

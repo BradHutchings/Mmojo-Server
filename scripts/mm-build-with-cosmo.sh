@@ -122,10 +122,10 @@ if [ -v CC ]; then
     mv vendor/cpp-httplib/CMakeLists-orig.txt vendor/cpp-httplib/CMakeLists.txt
 
     # Build
-    cmake --build $BUILD_SUBDIRECTORY --config Release
+    cmake --build "$BUILD_SUBDIRECTORY" --config Release
 
     echo
-    echo "Build command: cmake --build $BUILD_SUBDIRECTORY --config Release"
+    echo "Build command: cmake --build \"$BUILD_SUBDIRECTORY\" --config Release"
 
     # Show off what we built
     printf "\nBuild of Cosmo $processor of llama.cpp is complete.\n\n"

@@ -20,7 +20,7 @@ MODEL_NAME="Microsoft-Phi-3.8B-Instruct-v3.5"
 MODEL_MNEMONIC="mic-phi-3.8B-ins-v3.5"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/microsoft/Phi-3.5-mini-instruct"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -48,7 +48,7 @@ MODEL_NAME="Microsoft-Phi-3.8B-Vision-Instruct-v3.5"
 MODEL_MNEMONIC="mic-phi-3.8B-vis-ins-v3.5"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/microsoft/Phi-3.5-vision-instruct"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -74,7 +74,7 @@ MODEL_NAME="Microsoft-Phi-3.8B-Instruct-v4"
 MODEL_MNEMONIC="mic-phi-3.8B-instruct-v4"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/microsoft/Phi-4-mini-instruct"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -102,7 +102,7 @@ MODEL_NAME="Microsoft-Phi-3.8B-Flash-Reasoning-v4"
 MODEL_MNEMONIC="mic-phi-3.8B-fla-rea-v4"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/microsoft/Phi-4-mini-flash-reasoning"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -128,7 +128,7 @@ MODEL_NAME="Microsoft-Phi-3.8B-Reasoning-v4"
 MODEL_MNEMONIC="mic-phi-3.8B-rea-v4"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/microsoft/Phi-4-mini-reasoning"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -154,7 +154,7 @@ MODEL_NAME="Microsoft-Phi-16B-Reasoning-v4"
 MODEL_MNEMONIC="mic-phi-16B-rea-v4"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/microsoft/Phi-4-reasoning"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -180,7 +180,7 @@ MODEL_NAME="Microsoft-Phi-16B-Reasoning-Plus-v4"
 MODEL_MNEMONIC="mic-phi-16B-rea-plu-v4"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/microsoft/Phi-4-reasoning-plus"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 

@@ -170,7 +170,7 @@ EOF
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
-ls -al $RUN_DIR
+ls -l $RUN_DIR
 ```
 
 It should look like:

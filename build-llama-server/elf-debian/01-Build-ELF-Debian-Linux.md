@@ -124,7 +124,7 @@ fi
 ### Review Your Work
 Let's list the contents of the `$HOME/mm-llama-server` directory and review your work:
 ```
-ls -al $RUN_LLAMA_SERVER_DIR
+ls -l $RUN_LLAMA_SERVER_DIR
 ```
 
 It should look like:

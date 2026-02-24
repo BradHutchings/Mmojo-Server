@@ -29,13 +29,13 @@ echo "      MODEL_FILE: $MODEL_FILE"
 if [ "$model_name" != "" ] && [ "$model_type" != "" ] && [ "$model_mnemonic" != "" ] && [ "$model_repo" != "" ]; then
     mkdir -p "$LOCAL_MODELS_DIR"
 
-    if [ -d "$MODEL_SOURCE_DIR" ] && [ ! -f "$MODEL_SOURCE_DIR/cloned" ]; then
+    if [ "$MODEL_SOURCE_DIR" != "" ] &&  [ -d "$MODEL_SOURCE_DIR" ] && [ ! -f "$MODEL_SOURCE_DIR/cloned" ]; then
         echo ""
         echo "Deleting existing model directory that doesn't look complete."
         rm -r -f "$MODEL_SOURCE_DIR"
     fi
     
-    if [ ! -d "$MODEL_SOURCE_DIR" ]; then
+    if [ "$MODEL_SOURCE_DIR" != "" ] &&  [ ! -d "$MODEL_SOURCE_DIR" ]; then
         echo ""
         echo "Cloning $model_repo."
         git clone "$model_repo" "$MODEL_SOURCE_DIR"

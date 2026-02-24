@@ -8,7 +8,12 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-# printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
+# printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
+
+THIS_RUN_DIR="$RUN_DIR"
+if [ "$1" == "llama-server" ]; then
+    THIS_RUN_DIR=$RUN_LLAMA_SERVER_DIR
+fi
 
 if [ -d "$PACKAGES_DIR" ]; then
     wd=$(pwd)
@@ -30,10 +35,10 @@ if [ -d "$PACKAGES_DIR" ]; then
         if [ "$opt" -gt "0" ] && [ "$opt" -le "${#options[@]}" ]; then
             package=${options[$opt-1]}
             echo "You chose $opt: $package."
-            echo "Unzipping into $RUN_DIR."
-            mkdir -p "$RUN_DIR"
-            rm -r -f "$RUN_DIR"/*
-            unzip "$PACKAGES_DIR/$package" -d "$RUN_DIR"
+            echo "Unzipping into $THIS_RUN_DIR."
+            mkdir -p "$THIS_RUN_DIR"
+            rm -r -f "$THIS_RUN_DIR"/*
+            unzip "$PACKAGES_DIR/$package" -d "$THIS_RUN_DIR"
         else
             echo "Your choice was out of range."
         fi

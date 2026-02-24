@@ -9,10 +9,8 @@ These build steps work well in a Debian Linux operating system like Ubuntu or Ra
 ### Retrieve Previously Built Package (Optional)
 If you've previously built an APE for all platforms and want to retrieve it for testing, run this script:
 ```
-mm-package-choose.sh
+mm-package-choose.sh "llama-server"
 ```
-
-**Note:** this will unzip your package in the `$RUN_DIR`, not the `$RUN_LLAMA_SERVER_DIR`. I'll fix that soon. -Brad
 
 ---
 ### Choose a Model

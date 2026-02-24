@@ -36,8 +36,10 @@ if [ -d "$PACKAGES_DIR" ]; then
             package=${options[$opt-1]}
             echo "You chose $opt: $package."
             echo "Unzipping into $THIS_RUN_DIR."
-            mkdir -p "$THIS_RUN_DIR"
-            rm -r -f "$THIS_RUN_DIR"/*
+            if [ "$THIS_RUN_DIR" != "" ] && [ -d "$THIS_RUN_DIR" ]; then
+                mkdir -p "$THIS_RUN_DIR"
+                rm -r -f "$THIS_RUN_DIR"/*
+            fi
             unzip "$PACKAGES_DIR/$package" -d "$THIS_RUN_DIR"
         else
             echo "Your choice was out of range."

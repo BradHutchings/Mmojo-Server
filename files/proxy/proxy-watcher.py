@@ -3,6 +3,6 @@
 import tkinter as tk
 
 root = tk.Tk()
-root.heometry("800x600")
+root.geometry("800x600")
 root.title("Mmojo Proxy Watcher")
 root.mainloop()

@@ -29,7 +29,7 @@ MODEL_NAME="Meta-Llama-Scout-17B-Instruct-v4"
 MODEL_MNEMONIC="met-lla-sco-17B-ins-v4"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_FILES/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -55,7 +55,7 @@ MODEL_NAME="Meta-Llama-Maverick-17B-Instruct-v4"
 MODEL_MNEMONIC="met-lla-mav-17B-ins-v4"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_FILES/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -81,7 +81,7 @@ MODEL_NAME="Meta-Llama-1B-Instruct-v3.2"
 MODEL_MNEMONIC="met-lla-1B-ins-v3.2"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_FILES/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -107,7 +107,7 @@ MODEL_NAME="Meta-Llama-3B-Instruct-v3.2"
 MODEL_MNEMONIC="met-lla-3B-ins-v3.2"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_FILES/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -133,7 +133,7 @@ MODEL_NAME="Meta-Llama-11B-Vision-Instruct-v3.2"
 MODEL_MNEMONIC="met-lla-11B-vis-ins-v3.2"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/meta-llama/Llama-3.2-11B-Vision-Instruct"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_FILES/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 

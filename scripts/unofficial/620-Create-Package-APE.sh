@@ -64,7 +64,7 @@ echo "This Package Directory: $THIS_PACKAGE_DIR"
 echo "  This Build Directory: $THIS_BUILD_DIR"
 
 if [ "$THIS_PACKAGE_DIR" != "" ] && [ "$THIS_BUILD_DIR" != "" ]; then
-    if [ -d "$THIS_PACKAGE_DIR" ]; then
+    if [ "$THIS_PACKAGE_DIR" != "" ] && [ -d "$THIS_PACKAGE_DIR" ]; then
         rm -r -f "$THIS_PACKAGE_DIR"
     fi
     mkdir -p "$THIS_PACKAGE_DIR"

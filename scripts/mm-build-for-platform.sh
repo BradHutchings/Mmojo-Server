@@ -11,7 +11,7 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2.\n*\n$STARS\n\n"
+printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2 $3.\n*\n$STARS\n\n"
 
 processor=$(uname -m)
 variation=$1
@@ -31,6 +31,9 @@ if [ "$variation" != "compatible" ] && [ "$variation" != "performant" ] && \
 fi
 
 THIS_BUILD_DIR=$BUILD_DIR
+if [ "$3" == "llama-server" ]; then
+    THIS_BUILD_DIR=$BUILD_LLAMA_SERVER_DIR
+fi
 
 BUILD_SUBDIRECTORY=""
 ARCH_LEVEL_PARAM=""

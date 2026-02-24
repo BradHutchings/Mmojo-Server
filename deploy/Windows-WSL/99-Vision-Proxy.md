@@ -12,7 +12,7 @@ if [ "$PROXY_DIR" != "" ] && [ -d "$PROXY_DIR" ]; then
 fi
 git clone https://github.com/fangwentong/openai-proxy $PROXY_DIR
 cd $PROXY_DIR
-pip install -r requirements.txt --break-system-packages
+pip install -r requirements.txt --quiet --break-system-packages
 cd $HOME
 
 if [ -d "$MMOJO_SERVER_FILES" ]; then

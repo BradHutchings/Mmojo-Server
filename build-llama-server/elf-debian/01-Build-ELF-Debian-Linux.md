@@ -129,7 +129,7 @@ ls -l $RUN_LLAMA_SERVER_DIR
 
 It should look like:
 
-<img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
+<img width="615" height="79" alt="image" src="https://github.com/user-attachments/assets/d3914894-c66d-4012-be1b-0511c023e3b0" />
 
 ---
 ### Make a Package File

@@ -8,7 +8,9 @@ You can deploy a vision proxy in order to watch requests to and responses from M
 ```
 PROXY_DIR="$HOME/proxy"
 git clone https://github.com/fangwentong/openai-proxy $PROXY_DIR
+cd $PROXY_DIR
 pip install -r requirements.txt --break-system-packages
+cd $HOME
 
 if [ -d "$MMOJO_SERVER_DIR" ]; then
     cp -r -f "$MMOJO_SERVER_DIR/proxy/"* $PROXY_DIR

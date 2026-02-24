@@ -34,8 +34,8 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 Prepare to build llama-server:
 ```
 if [ ! -d "$BUILD_LLAMA_SERVER_DIR" ]; then
-    mm-prepare-clone-llama-cpp.sh
-    mm-prepare-customize-webui.sh
+    mm-prepare-clone-llama-cpp.sh "llama-server"
+    mm-prepare-customize-webui.sh "llama-server"
 fi
 ```
 

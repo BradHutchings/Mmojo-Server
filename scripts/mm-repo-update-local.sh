@@ -34,8 +34,8 @@ if [ -d "$MMOJO_SERVER_REPO_DIR" ]; then
   chmod a+x $HOME_SCRIPTS/mr-*.sh
 
   if [ -d "$BUILD_DIR" ]; then
-      # This copies the $MMOJO_SERVER_FILES tree into the $BUILD_DIR tree.
-      cp -r $MMOJO_SERVER_FILES/* $BUILD_DIR/
+      # This copies the $MMOJO_SERVER_REPO_FILES tree into the $BUILD_DIR tree.
+      cp -r $MMOJO_SERVER_REPO_FILES/* $BUILD_DIR/
       # In tools/server .cpp files, replace "defer(" with "defer_task(" to make Cosmo STL happy.
       sed -i -e 's/defer(/defer_task(/g' "$BUILD_DIR/tools/server/server-context-mmojo.cpp"
   fi

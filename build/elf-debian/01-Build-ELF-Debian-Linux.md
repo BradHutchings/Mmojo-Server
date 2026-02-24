@@ -113,12 +113,13 @@ mm-build-for-platform.sh performant "$GPUS_CHOICE"
 ### Create a Run Directory
 Create a run directory:
 ```
-mkdir -p $RUN_DIR
-rm -r -f "$RUN_DIR"/*
-cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
-cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-touch "$RUN_DIR/$TOUCH_FILE"
+if [ "$RUN_DIR" != "" ]; then
+    mkdir -p $RUN_DIR
+    rm -r -f "$RUN_DIR"/*
+    cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
+    cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
+    touch "$RUN_DIR/$TOUCH_FILE"
+fi
 ```
 
 Create a mmojo-server-args file in the $RUN_DIR to launch Mmojo Server with the Mmojo Complete UI:

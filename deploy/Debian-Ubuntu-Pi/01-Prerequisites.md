@@ -3,7 +3,7 @@
 This step contains prerequisites for deploying Mmojo Server using this recipe. We will install Mmojo Server in a home directory of a dedicated Linux account on your device.
 
 **Skip Ahead:**
-- [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
+- [02. Prepare Debian](02-Prepare-Debian.md)
 
 ### Requirements
 This recipe deploys Mmojo Server on a single, stand-alone PC or laptop running a Debian based Linux operating system:

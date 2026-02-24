@@ -25,7 +25,7 @@ if [[ -v CHOSEN_BUILD ]] && [[ -v CHOSEN_BUILD_PATH ]] && [[ -v CHOSEN_BUILD_INF
     SUPPORT_DIR="$THIS_PACKAGE_DIR/$PACKAGE_MMOJO_SERVER_SUPPORT_DIR"
 
     echo "Creating $THIS_PACKAGE_DIR."
-    if [ -d $THIS_PACKAGE_DIR ]; then
+    if [ $THIS_PACKAGE_DIR != "" ] && [ -d $THIS_PACKAGE_DIR ]; then
         rm -r -f $THIS_PACKAGE_DIR
     fi
     mkdir -p "$THIS_PACKAGE_DIR"

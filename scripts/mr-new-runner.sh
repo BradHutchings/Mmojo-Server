@@ -39,7 +39,7 @@ echo "\$support_directory_name: $support_directory_name"
 
 # Clear out a directory that was there. Make a new one.
 echo "Creating $runner_dir directory."
-if [ -d "$runner_dir" ]; then
+if [ ""$runner_dir"" != "" ] && [ -d "$runner_dir" ]; then
     rm -r -f "$runner_dir"
 fi
 mkdir -p "$runner_dir"

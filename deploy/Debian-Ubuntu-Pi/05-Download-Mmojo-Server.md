@@ -60,15 +60,15 @@ fi
 ### Download Mmojo Server from Hugging Face
 Download Mmojo Server from Hugging Face and unzip it in the `$HOME/Mmojo-Server` directory:
 ```
-if (test -n "$RUN_DIR") && [ "$URL" != "" ]; then
-  mkdir -p $RUN_DIR
-  cd $RUN_DIR
-  rm -r -f "$RUN_DIR"/*
-  wget $URL -O "mmojo-server.zip"
-  unzip "mmojo-server.zip"
-  rm "mmojo-server.zip"
-  cd $HOME
-  ls -al $RUN_DIR
+if [ "$RUN_DIR" != "" ] && [ "$URL" != "" ]; then
+    mkdir -p $RUN_DIR
+    cd $RUN_DIR
+    rm -r -f "$RUN_DIR"/*
+    wget $URL -O "mmojo-server.zip"
+    unzip "mmojo-server.zip"
+    rm "mmojo-server.zip"
+    cd $HOME
+    ls -al $RUN_DIR
 fi
 ```
 

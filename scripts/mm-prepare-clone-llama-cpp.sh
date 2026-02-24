@@ -26,7 +26,7 @@ if [ "$1" == "llama-server" ]; then
     THIS_BUILD_DIR=$BUILD_LLAMA_SERVER_DIR
 fi
 
-if [ -d "$THIS_BUILD_DIR" ]; then
+if [ "$THIS_BUILD_DIR" != "" ] && [ -d "$THIS_BUILD_DIR" ]; then
     rm -r -f $THIS_BUILD_DIR
 fi
 

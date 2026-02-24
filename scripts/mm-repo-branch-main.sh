@@ -10,9 +10,9 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-if [ -d "$MMOJO_SERVER_DIR" ]; then
+if [ -d "$MMOJO_SERVER_REPO_DIR" ]; then
   WD=$(pwd)
-  cd $MMOJO_SERVER_DIR
+  cd $MMOJO_SERVER_REPO_DIR
   git reset --hard
   git checkout main
   cd $WD
@@ -41,7 +41,7 @@ if [ -d "$MMOJO_SERVER_DIR" ]; then
       sed -i -e 's/defer(/defer_task(/g' "$BUILD_DIR/tools/server/server-context-mmojo.cpp"
   fi
 else
-  echo "The $MMOJO_SERVER_DIR directory does not exist."
+  echo "The $MMOJO_SERVER_REPO_DIR directory does not exist."
 fi
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

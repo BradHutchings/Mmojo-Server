@@ -13,7 +13,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-if [ -d "$BUILD_OPENSSSL_DIR" ]; then
+if [ "$BUILD_OPENSSSL_DIR" != "" ] && [ -d "$BUILD_OPENSSSL_DIR" ]; then
     rm -r -f $BUILD_OPENSSSL_DIR
 fi
 

@@ -58,23 +58,25 @@ mm-build-cosmo-ape.sh performant
 ### Create a Run Directory
 Create a run directory. We need `.exe` variants for Windows. We need the plain variants for macOS. Linux Terminals and desktops see both as executables.
 ```
-mkdir -p $RUN_DIR
-rm -r -f "$RUN_DIR"/*
-PERFORMANT_APE="$BUILD_DIR/$BUILD_COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
-if [ -f "$PERFORMANT_APE" ]; then
-   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
-   cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
-fi
-COMPATIBLE_APE="$BUILD_DIR/$BUILD_COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
-if [ -f "$COMPATIBLE_APE" ]; then
-   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
-   cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
+if [ "$RUN_DIR" != "" ]; then
+    mkdir -p $RUN_DIR
+    rm -r -f "$RUN_DIR"/*
+    PERFORMANT_APE="$BUILD_DIR/$BUILD_COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
+    if [ -f "$PERFORMANT_APE" ]; then
+        cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
+        cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
+    fi
+    COMPATIBLE_APE="$BUILD_DIR/$BUILD_COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
+    if [ -f "$COMPATIBLE_APE" ]; then
+        cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
+        cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
+    fi
+    cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 fi
 ```
 
 Create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with the Mmojo Complete UI:
 ```
-cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --path

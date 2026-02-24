@@ -1,6 +1,7 @@
-## 01. Build ELF Executable for Debian Linux
+## 01. llama-server &mdash; Build ELF Executable for Debian Linux
+**THIS GUIDE IS IN PROGRESS**
 ### About this Step
-In this step, you will build an executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:
+If this step, you will build vanilla llama.cpp without Mmojo Server extensions. The executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:
 - **Compatible:** Runs on most systems that use a CPU from your computer's CPU family. 
 - **Performant:** Runs on systems that use a recent CPU from your computer's CPU family.
   - For x86_64, these are x86_64 CPUs that support "level 3" flags, as defined by the gnu cc compiler.
@@ -29,14 +30,12 @@ echo "NOTE: Install CUDA and Vulkan tools finished."
 ```
 
 ---
-### Build Mmojo Server
-Prepare to build Mmojo Server (llama.cpp with patches and extensions):
+### Build llama-server
+Prepare to build llama-server:
 ```
-mm-env
-if [ ! -d "$BUILD_DIR" ]; then
-    mm-prepare-clone-llama-cpp.sh
-    mm-prepare-patch-llama-cpp.sh
-    mm-prepare-customize-webui.sh
+if [ ! -d "$BUILD_LLAMA_SERVER_DIR" ]; then
+    mm-prepare-clone-llama-cpp.sh "llama-server"
+    mm-prepare-customize-webui.sh "llama-server"
 fi
 ```
 
@@ -45,7 +44,7 @@ Choose GPUs for your build if you're not building for Raspberry Pi 5.
 . mm-gpus-choose.sh
 ```
 
-Build native Mmojo Server tuned to the specific CPU of your PC:
+Build native llama-server tuned to the specific CPU of your PC:
 ```
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
@@ -53,59 +52,59 @@ TOUCH_FILE=""
 VARIATION="native"
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
     unset $GPUS_CHOICE
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_RPI5_AARCH64"
-    PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_RPI5_AARCH64"
+    PACKAGE_FILE="llama-cpp-aarch64-rpi5.zip"
     TOUCH_FILE="build-aarch64-rpi5"
     VARIATION="pi"
 elif [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
+    PACKAGE_FILE="llama-cpp-x86_64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
     VARIATION="native"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
+    PACKAGE_FILE="llama-cpp-aarch64-native$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
     VARIATION="native"
 fi
-mm-build-for-platform.sh $VARIATION "$GPUS_CHOICE"
+mm-build-for-platform.sh $VARIATION "$GPUS_CHOICE" "llama-server"
 ```
 
 <details>
-  <summary><b>Alternatively:</b> Build a more compatible Mmojo Server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
+  <summary><b>Alternatively:</b> Build a more compatible llama-server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-x86_64-comp$GPUS_CHOICE.zip"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
+    PACKAGE_FILE="llama-cpp-x86_64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-comp$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
+    PACKAGE_FILE="llama-cpp-aarch64-comp$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
 fi
-mm-build-for-platform.sh compatible "$GPUS_CHOICE"
+mm-build-for-platform.sh compatible "$GPUS_CHOICE" "llama-server"
 ```
 </details>
 
 <details>
-  <summary><b>Alternatively:</b> Build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
+  <summary><b>Alternatively:</b> Build a performant llama-server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
 BUILD_SUBDIR=""
 PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-x86_64-perf$GPUS_CHOICE.zip"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
+    PACKAGE_FILE="llama-cpp-x86_64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-x86_64-perf$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
+    BUILD_SUBDIR="$BUILD_LLAMA_SERVER_DIR/$BUILD_EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
+    PACKAGE_FILE="llama-cpp-aarch64-perf$GPUS_CHOICE.zip"
     TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
 fi
-mm-build-for-platform.sh performant "$GPUS_CHOICE"
+mm-build-for-platform.sh performant "$GPUS_CHOICE" "llama-server"
 ```
 </details>
 
@@ -113,65 +112,19 @@ mm-build-for-platform.sh performant "$GPUS_CHOICE"
 ### Create a Run Directory
 Create a run directory:
 ```
-if [ "$RUN_DIR" != "" ]; then
-    mkdir -p $RUN_DIR
-    rm -r -f "$RUN_DIR"/*
-    cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
-    cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
-    touch "$RUN_DIR/$TOUCH_FILE"
+if [ "$RUN_LLAMA_SERVER_DIR" != "" ]; then
+    mkdir -p $RUN_LLAMA_SERVER_DIR
+    rm -r -f "$RUN_LLAMA_SERVER_DIR"/*
+    cp $BUILD_SUBDIR/bin/$PACKAGE_LLAMA_SERVER_FILE $RUN_LLAMA_SERVER_DIR
+    touch "$RUN_LLAMA_SERVER_DIR/$TOUCH_FILE"
 fi
 ```
 
-Create a mmojo-server-args file in the $RUN_DIR to launch Mmojo Server with the Mmojo Complete UI:
-```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
---path
-/app/Mmojo-Complete
---default-ui-endpoint
-chat
---host
-0.0.0.0
---port
-8080
---batch-size
-2048
---threads-http
-8
---ctx-size
-32768 
-EOF
-```
-
-<details>
-  <summary><b>Alternatively:</b> Create a <code>mmojo-server-args</code> file in the <code>$RUN_DIR</code> to launch Mmojo Server with chat UI.</summary>
-<br/>
-    
-Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
-```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
---host
-0.0.0.0
---port
-8080
---batch-size
-2048
---threads-http
-8
---ctx-size
-32768 
-EOF
-```
-</details>
-
-**Future:** These are good candidate for mm-scripts.
-
 ---
 ### Review Your Work
-Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
+Let's list the contents of the `$HOME/mm-llama-server` directory and review your work:
 ```
-ls -al $RUN_DIR
+ls -al $RUN_LLAMA_SERVER_DIR
 ```
 
 It should look like:
@@ -184,9 +137,9 @@ Make a .zip pakcage files from your run directory. They are moved to your `$PACK
 
 Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
-if test -n "$RUN_DIR"; then
-  cd "$RUN_DIR"
-  zip -r "$PACKAGE_FILE" mmojo-server mmojo-server-args Mmojo-Complete "$TOUCH_FILE"
+if test -n "$RUN_LLAMA_SERVER_DIR"; then
+  cd "$RUN_LLAMA_SERVER_DIR"
+  zip -r "$PACKAGE_FILE" $PACKAGE_LLAMA_SERVER_FILE "$TOUCH_FILE"
   mkdir -p "$PACKAGES_DIR"
   mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME
@@ -203,7 +156,7 @@ mm-packages-backup.sh
 ### Proceed
 - **Next:** [02. Test ELF Executable for Debian Linux](02-Test-ELF-Debian-Linux.md)
 - **Previous:** This is the first step in this section.
-- **Up:** [Build Mmojo Server](../README.md)
+- **Up:** [Build llama-server](../README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

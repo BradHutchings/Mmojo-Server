@@ -15,9 +15,11 @@ Brad Hutchings<br/>
 brad@BradHutchings.com<br/><br/>
 <!-- END SPONSOR -->
 
+<!--
 **OPENCLAW TEAM KEEPS BREAKING THINGS.** I'm testing new builds soon after they are released and patching up instructions as I can figure them out. -Brad 2025-02-09
 
 **THIS IS A DRAFT OF THIS RECIPE.** Some pieces aren't implemented yet. If you're careful, you should end up with a "working" installation and at the very least, be able to use the OpenClaw web control page to chat with your Mmojo Server. -Brad 2026-02-01
+-->
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
 

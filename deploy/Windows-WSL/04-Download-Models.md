@@ -6,38 +6,52 @@ In this step, we will download models for use with Mmojo Server from Hugging Fac
 ### Download Models
 Download models. These may take 20 minutes or so to download.
 
-The default set of models contains Google Gemma 270M, 1B, and 4B. Run this command to create the model download queue.
+The default set of models contains Google Gemma 270M, 1B, and 4B. Run this command to create the model download queue and download some Google models. If any of the models are available on your Mmojo Share, they will be copied from there.
+
 ```
 mm-models-create-directory.sh
+mm-models-download.sh
 ```
 
-**Optional:** There are more recent Gemma E2B and E4B models. Run this script to add them to the model download queue.
+**Optional:** There are more recent Gemma E2B and E4B models. Run this script to download them.
 ```
 cat << EOF >> $MODEL_QUEUE
 Google-Gemma-E2B-Instruct-v3n-q8_0.gguf
 Google-Gemma-E4B-Instruct-v3n-q8_0.gguf
 EOF
+mm-models-download.sh
 ```
 
-**Optional:** IBM Granite models implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
+**Optional:** IBM Granite models implement so-called "thinking" and "tool calling". Run this script to download them.
 ```
 cat << EOF >> $MODEL_QUEUE
 IBM-Granite-2B-Instruct-v3.3-q8_0.gguf
 IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
+IBM-Granite-350M-v4.0-q8_0.gguf
+IBM-Granite-1B-v4.0-q8_0.gguf
+IBM-Granite-Micro-3B-v4.0-q8_0.gguf
+IBM-Granite-Tiny-Preview-7B-v4.0-q8_0.gguf
 EOF
+mm-models-download.sh
 ```
 
-**Optional:** Qwen3 models also implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
+**Optional:** Microsoft Phi 4 models also implement so-called "thinking" and "tool calling". Run this script to download them.
+```
+cat << EOF >> $MODEL_QUEUE
+Microsoft-Phi-3.8B-Reasoning-v4-q8_0.gguf
+Microsoft-Phi-16B-Reasoning-Plus-v4-q8_0.gguf
+Microsoft-Phi-16B-Reasoning-v4-q8_0.gguf
+EOF
+mm-models-download.sh
+```
+
+**Optional:** Qwen3 models also implement so-called "thinking" and "tool calling". Qwen3 models, particularly 14B, seem to be the best for use with OpenClaw. Run this script to download them.
 ```
 cat << EOF >> $MODEL_QUEUE
 Qwen3-4B-Thinking-2507-FP8-q8_0.gguf
 Qwen3-8B-v3-q8_0.gguf
 Qwen3-14B-v3-q8_0.gguf
 EOF
-```
-
-Now download all the models you added to the queue. If any of the models are available on your Mmojo Share, they will be copied from there.
-```
 mm-models-download.sh
 ```
 

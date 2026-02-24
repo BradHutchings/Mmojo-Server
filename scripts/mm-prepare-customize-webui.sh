@@ -14,6 +14,11 @@ cd $HOME
 
 THIS_BUILD_DIR=$BUILD_DIR
 APP_NAME='Mmojo Chat'
+if [ "$1" == "llama-server" ]; then
+    THIS_BUILD_DIR=$BUILD_LLAMA_SERVER_DIR
+    APP_NAME="llama.cpp"
+fi
+
 
 cd $THIS_BUILD_DIR
 

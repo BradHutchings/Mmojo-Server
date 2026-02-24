@@ -22,6 +22,9 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n$STARS\n\n"
 cd $HOME
 
 THIS_BUILD_DIR=$BUILD_DIR
+if [ "$1" == "llama-server" ]; then
+    THIS_BUILD_DIR=$BUILD_LLAMA_SERVER_DIR
+fi
 
 if [ -d "$THIS_BUILD_DIR" ]; then
     rm -r -f $THIS_BUILD_DIR

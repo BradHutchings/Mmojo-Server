@@ -10,7 +10,7 @@ SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 echo "Creating $CERTIFICATES_DIR."
-if [ -d "$CERTIFICATES_DIR" ]; then
+if [ "$CERTIFICATES_DIR" != "" ] && [ -d "$CERTIFICATES_DIR" ]; then
     rm -r -f $CERTIFICATES_DIR
 fi
 

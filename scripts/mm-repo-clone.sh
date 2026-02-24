@@ -13,7 +13,7 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 # export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server"
 # export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
 cd $HOME
-if [ "$MMOJO_SERVER_DIR" ]; then
+if [ "$MMOJO_SERVER_DIR" != "" ] && [ -d "$MMOJO_SERVER_DIR" ] ; then
   rm -r -f $MMOJO_SERVER_DIR
 fi
 mkdir -p $MMOJO_SERVER_DIR

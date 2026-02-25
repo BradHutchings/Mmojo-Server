@@ -5,25 +5,15 @@
 import tkinter as tk
 from pathlib import Path
 
-p = Path("requests")
-for entry in p.iterdir():
-    print(entry.name)
-
 #----------------------------------------
 # values are the request file names.
 # value is the active request file name.
 #----------------------------------------
 
+NO_REQUEST = "No request."
+
 values=[]
 value = ""
-
-def loadValues():
-    global values
-    values.clear()
-    for i in range(1, 11):
-        values.append(f"{i:07d}")
-    values.sort()
-
 
 def indexOfValue():
     global values, value
@@ -34,10 +24,27 @@ def indexOfValue():
         result = -1
     return result
 
+def loadValues():
+    global values, value
+    values.clear()
+    try:
+        p = Path("requests")
+        for entry in p.iterdir():
+            values.append(entry.name)
+    except:
+        pass
+    values.sort()
+    value_index = indexOfValue()
+    setValue(value_index)
+
 def setValue(value_index):
     global values, value
     if (value_index >= 0) and (value_index < len(values)):
         value = values[value_index]
+    elif (len(values) > 0):
+        value = values[0]
+    else:
+        value = NO_REQUEST
 
 def prev():
     global values, value
@@ -65,9 +72,6 @@ def showValue():
     request.config(text=value)
 
 loadValues()
-value = "No request."
-if len(values) > 0:
-    value = values[0]
 
 #----------------------------------------
 # Control layout.
@@ -91,4 +95,3 @@ next_button.grid(row=0, column=2, padx=(0, 0))
 showValue()
 
 root.mainloop()
-

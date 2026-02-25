@@ -176,8 +176,8 @@ async def proxy_openai_api(request: Request):
                             'request_body': request_body,
                         }
 
-                        with open("requests/" + request_data_filename, "w") as file:
-                            file.write(json.dumps(request_data, indent=4))
+                        # with open("requests/" + request_data_filename, "w") as file:
+                        #    file.write(json.dumps(request_data, indent=4))
                         pass
 
 

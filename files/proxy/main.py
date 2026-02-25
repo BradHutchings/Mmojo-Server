@@ -121,7 +121,7 @@ async def proxy_openai_api(request: Request):
                                 file.write(json.dumps(request_data, indent=4))
 
                     elif (request.url.path == "/v1/models"):
-                        request_date = {
+                        request_data = {
                             'id': request_id,
                             'elapsed_ms': elapsed_ms,
                             'path': request.url.path,
@@ -133,7 +133,7 @@ async def proxy_openai_api(request: Request):
                         pass
 
                     elif (request.url.path == "/v1/completions"):
-                        request_date = {
+                        request_data = {
                             'id': request_id,
                             'elapsed_ms': elapsed_ms,
                             'path': request.url.path,
@@ -145,7 +145,7 @@ async def proxy_openai_api(request: Request):
                         pass
 
                     elif (request.url.path == "/v1/responses"):
-                        request_date = {
+                        request_data = {
                             'id': request_id,
                             'elapsed_ms': elapsed_ms,
                             'path': request.url.path,
@@ -157,7 +157,7 @@ async def proxy_openai_api(request: Request):
                         pass
 
                     elif (request.url.path == "/v1/embeddings"):
-                        request_date = {
+                        request_data = {
                             'id': request_id,
                             'elapsed_ms': elapsed_ms,
                             'path': request.url.path,
@@ -169,7 +169,7 @@ async def proxy_openai_api(request: Request):
                         pass
 
                     else:
-                        request_date = {
+                        request_data = {
                             'id': request_id,
                             'elapsed_ms': elapsed_ms,
                             'path': request.url.path,

@@ -134,9 +134,23 @@ def timerLoadValues():
 #----------------------------------------
 # showValue loads the data from the file.
 #----------------------------------------
-
 def showValue():
     global values, value
+
+    try:
+        value_index = values.index(value)
+    except:
+        value_index = -1
+
+    if value_index > 0:
+        ui_prev_button.config(state = tk.NORMAL )
+    else:
+        ui_prev_button.config(state = tk.DISABLED )
+    if (value_index >= 0) and (value_index < (len(values) - 1)):
+        ui_next_button.config(state = tk.NORMAL )
+    else:
+        ui_next_button.config(state = tk.DISABLED )
+
     ui_request.config(text=value)
     request_data = {}
     tries = 0
@@ -146,7 +160,7 @@ def showValue():
                 with open(REQUESTS_PATH + value, 'r') as file:
                     request_data = json.load(file)
             except Exception as e:
-                print("exception: " + str(e))
+                print("Exception reading file: " + str(e))
                 request_data = {}
                 time.sleep(0.5)
             tries = tries + 1
@@ -226,18 +240,33 @@ def getPrompt(messages, showSystemPrompt):
             role = message["role"]
             content = message["content"]
 
-        if (role == "system") and showSystemPrompt:
-            add_to_prompt = "system:\n\n" + content + "\n--------------------\n"
-        elif (role == "user"):
-            add_to_prompt = "user:\n\n" + content + "\n--------------------\n"
-        elif (role == "assistant"):
-            add_to_prompt = "assistant:\n\n" + content + "\n--------------------\n"
+        if isinstance(content, str):
+            d = {"type": "text", "text": content}
+            content = [ d ]
 
-        if add_to_prompt != "":
-            if not first_message:
-                result = result + "\n"
-            first_message = False
-            result = result + add_to_prompt
+        if isinstance(content, list):
+            for elt in content:
+                elt_content = ""
+                if ("type" in elt) and (elt["type"] == "text"):
+                    if ("text" in elt):
+                        elt_content = elt["text"]
+                    else:
+                        elt_content= "PROXY: Cannot retrieve content text."
+                else:
+                    elt_content = "PROXY: Non-text content."
+
+                if (role == "system") and showSystemPrompt:
+                    add_to_prompt = "system:\n\n" + elt_content + "\n--------------------\n"
+                elif (role == "user"):
+                    add_to_prompt = "user:\n\n" + elt_content + "\n--------------------\n"
+                elif (role == "assistant"):
+                    add_to_prompt = "assistant:\n\n" + elt_content + "\n--------------------\n"
+
+                if add_to_prompt != "":
+                    if not first_message:
+                        result = result + "\n"
+                    first_message = False
+                    result = result + add_to_prompt
 
     return result
 

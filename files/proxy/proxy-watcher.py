@@ -91,19 +91,19 @@ ui_request = tk.Label(ui_top_frame, text = "", font = ("Helvetica", 18))
 ui_next_button = tk.Button(ui_top_frame, text = ">", command = next)
 ui_path = tk.Label(ui_top_frame, text = "(Path goes here.)", anchor = "w", font = ("Helvetica", 18))
 
-ui_request_data = tk.Text(ui_data_frame, width = 20, height = 10, wrap = "word", background = "#E0E0E0", relief = "solid")
-ui_response_data = tk.Text(ui_data_frame, width = 20, height = 10, wrap = "word", background = "#F0F0F0", relief = "solid")
+ui_prompt = tk.Text(ui_data_frame, width = 20, height = 10, wrap = "word", background = "#E0E0E0", relief = "solid")
+ui_completion = tk.Text(ui_data_frame, width = 20, height = 10, wrap = "word", background = "#F0F0F0", relief = "solid")
 
 ui_prev_button.pack(side="left", padx = (0, 12))
 ui_request.pack(side="left", padx = (0, 12))
 ui_next_button.pack(side="left", padx = (0, 12))
 ui_path.pack(side = "left", fill = "both", expand = True, padx = (0,0))
 
-ui_request_data.pack(side = "left", fill = "both", expand = True, padx = (0, 12))
-ui_response_data.pack(side = "left", fill = "both", expand = True, padx = (0, 0))
+ui_prompt.pack(side = "left", fill = "both", expand = True, padx = (0, 12))
+ui_completion.pack(side = "left", fill = "both", expand = True, padx = (0, 0))
 
-ui_request_data.config(state = tk.DISABLED )
-ui_response_data.config(state = tk.DISABLED )
+ui_prompt.config(state = tk.DISABLED )
+ui_completion.config(state = tk.DISABLED )
 
 #----------------------------------------
 # Timer for repeatedly loading.
@@ -143,34 +143,33 @@ def showValue():
     else:
         ui_path.config(text = "")
 
-    ui_request_data.config(state = tk.NORMAL )
-    ui_request_data.delete("1.0", tk.END)
+    ui_prompt.config(state = tk.NORMAL )
+    ui_prompt.delete("1.0", tk.END)
     if "request_body" in request_data:
-        ui_request_data.insert("1.0", str(request_data["request_body"]))
+        ui_prompt.insert("1.0", str(request_data["request_body"]))
     else:
-        ui_request_data.insert("1.0", "Nothing to see here.")
-    ui_request_data.config(state = tk.DISABLED )
+        ui_prompt.insert("1.0", "Nothing to see here.")
+    ui_prompt.config(state = tk.DISABLED )
 
-
-    new_response_data = "Nothing to see here."
-    if "response" in request_data:
-        new_response_data = str(request_data["response"])
-    old_response_data = ui_response_data.get("1.0", tk.END)
+    new_completion = "Nothing to see here."
+    if "completion" in request_data:
+        new_completion = str(request_data["completion"])
+    old_completion = ui_completion.get("1.0", tk.END)
 
     # the data from the Text has a \n tacked on the end. Grrrrr.
-    if (new_response_data != old_response_data) and ((new_response_data + "\n") != old_response_data):
-        print("Replacing old_response_data.\n----------")
-        save_scroll = ui_response_data.yview()[0]
-        ui_response_data.config(state = tk.NORMAL )
-        ui_response_data.delete("1.0", tk.END)
-        ui_response_data.insert("1.0", new_response_data)
-        ui_response_data.config(state = tk.DISABLED )
+    if (new_completion != old_completion) and ((new_completion + "\n") != old_completion):
+        print("Replacing old_completion.\n----------")
+        save_scroll = ui_completion.yview()[0]
+        ui_completion.config(state = tk.NORMAL )
+        ui_completion.delete("1.0", tk.END)
+        ui_completion.insert("1.0", new_completion)
+        ui_completion.config(state = tk.DISABLED )
 
         # This scrolls a percent, not to a particular line. Will revisit.
-        if new_response_data.startswith(old_response_data):
-            ui_response_data.yview("moveto", save_scroll)
-        if new_response_data.startswith(old_response_data[:-1]):
-            ui_response_data.yview("moveto", save_scroll)
+        if new_completion.startswith(old_completion):
+            ui_completion.yview("moveto", save_scroll)
+        if new_completion.startswith(old_completion[:-1]):
+            ui_completion.yview("moveto", save_scroll)
 
 #----------------------------------------
 # Main control.

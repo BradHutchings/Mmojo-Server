@@ -54,6 +54,7 @@ async def proxy_openai_api(request: Request):
     url = f'{proxied_hosts.get_matching(request.url.path)}{request.url.path}'
 
     start_dt = datetime.datetime.now()
+    start_ms = start_dt // 1000;
 
     request_body = None
     try:
@@ -73,6 +74,7 @@ async def proxy_openai_api(request: Request):
         'id': this_request_id,
         'path': request.url.path,
         'request_body': request_body,
+        'start_ms': str(start_ms),
     }
 
     request_data_filename = f"{this_request_id:07d}"
@@ -99,6 +101,7 @@ async def proxy_openai_api(request: Request):
 
                 content = bytearray()
                 first_chunk = True
+                request_data["status_code"] = res.status_code
 
                 async for chunk in res.aiter_bytes():
                     yield chunk
@@ -134,28 +137,18 @@ async def proxy_openai_api(request: Request):
                                 file.write(json.dumps(request_data, indent=4))
 
                     elif (request.url.path == "/v1/models"):
-                        # with open("requests/" + request_data_filename, "w") as file:
-                        #     file.write(json.dumps(request_data, indent=4))
                         pass
 
                     elif (request.url.path == "/v1/completions"):
-                        # with open("requests/" + request_data_filename, "w") as file:
-                        #    file.write(json.dumps(request_data, indent=4))
                         pass
 
                     elif (request.url.path == "/v1/responses"):
-                        # with open("requests/" + request_data_filename, "w") as file:
-                        #    file.write(json.dumps(request_data, indent=4))
                         pass
 
                     elif (request.url.path == "/v1/embeddings"):
-                        # with open("requests/" + request_data_filename, "w") as file:
-                        #    file.write(json.dumps(request_data, indent=4))
                         pass
 
                     else:
-                        # with open("requests/" + request_data_filename, "w") as file:
-                        #    file.write(json.dumps(request_data, indent=4))
                         pass
 
 

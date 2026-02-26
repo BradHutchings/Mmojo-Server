@@ -47,13 +47,6 @@ for f in files:
 
 async def proxy_openai_api(request: Request):
     global request_id
-    if request.url.path.startswith("/v1/"):
-        request_id = request_id + 1
-    completion_string = ""
-
-    if request.url.path.startswith("/v1/"):
-        print("Noting URL:" + request.url.path)
-        pass
 
     # proxy request to OpenAI API
     headers = {k: v for k, v in request.headers.items() if
@@ -62,13 +55,39 @@ async def proxy_openai_api(request: Request):
 
     start_dt = datetime.datetime.now()
 
+    request_body = None
     try:
         request_body = await request.json() if request.method in {'POST', 'PUT'} else None
     except json.JSONDecodeError:
         raise HTTPException(status_code=400, detail='Invalid JSON body')
 
+    # request_data
+    this_request_id = 0
+    if request.url.path.startswith("/v1/"):
+        request_id = request_id + 1
+        this_request_id = request_id
+        print("Request ID: " + str(this_request_id))
+        print("Request URL:" + request.url.path)
+
+    request_data = {
+        'id': this_request_id,
+        'path': request.url.path,
+        'request_body': request_body,
+    }
+
+    request_data_filename = f"{this_request_id:07d}"
+
+    if this_request_id > 0:
+        with open("requests/" + request_data_filename, "w") as file:
+            file.write(json.dumps(request_data, indent=4))
+
+
+    completion_string = ""
+
     async def stream_api_response():
-        global request_id
+        nonlocal this_request_id
+        nonlocal request_data
+        nonlocal request_data_filename
         nonlocal completion_string
 
         try:
@@ -87,7 +106,6 @@ async def proxy_openai_api(request: Request):
 
                     now_dt = datetime.datetime.now()
                     elapsed_ms = (now_dt - start_dt).microseconds // 1000
-                    request_data_filename = f"{request_id:07d}"
 
                     if (request.url.path == "/v1/chat/completions"):
                         data_lines = chunk.decode('utf-8').splitlines()
@@ -109,73 +127,33 @@ async def proxy_openai_api(request: Request):
                                 except Exception as e:
                                     pass
 
-                            request_data = {
-                                'id': request_id,
-                                'elapsed_ms': elapsed_ms,
-                                'path': request.url.path,
-                                'request_body': request_body,
-                                'completion': completion_string,
-                            }
+                            request_data["elapsed_ms"] = elapsed_ms
+                            request_data["completion"] = completion_string
 
                             with open("requests/" + request_data_filename, "w") as file:
                                 file.write(json.dumps(request_data, indent=4))
 
                     elif (request.url.path == "/v1/models"):
-                        request_data = {
-                            'id': request_id,
-                            'elapsed_ms': elapsed_ms,
-                            'path': request.url.path,
-                            'request_body': request_body,
-                        }
-
                         # with open("requests/" + request_data_filename, "w") as file:
                         #     file.write(json.dumps(request_data, indent=4))
                         pass
 
                     elif (request.url.path == "/v1/completions"):
-                        request_data = {
-                            'id': request_id,
-                            'elapsed_ms': elapsed_ms,
-                            'path': request.url.path,
-                            'request_body': request_body,
-                        }
-
                         # with open("requests/" + request_data_filename, "w") as file:
                         #    file.write(json.dumps(request_data, indent=4))
                         pass
 
                     elif (request.url.path == "/v1/responses"):
-                        request_data = {
-                            'id': request_id,
-                            'elapsed_ms': elapsed_ms,
-                            'path': request.url.path,
-                            'request_body': request_body,
-                        }
-
                         # with open("requests/" + request_data_filename, "w") as file:
                         #    file.write(json.dumps(request_data, indent=4))
                         pass
 
                     elif (request.url.path == "/v1/embeddings"):
-                        request_data = {
-                            'id': request_id,
-                            'elapsed_ms': elapsed_ms,
-                            'path': request.url.path,
-                            'request_body': request_body,
-                        }
-
                         # with open("requests/" + request_data_filename, "w") as file:
                         #    file.write(json.dumps(request_data, indent=4))
                         pass
 
                     else:
-                        request_data = {
-                            'id': request_id,
-                            'elapsed_ms': elapsed_ms,
-                            'path': request.url.path,
-                            'request_body': request_body,
-                        }
-
                         # with open("requests/" + request_data_filename, "w") as file:
                         #    file.write(json.dumps(request_data, indent=4))
                         pass

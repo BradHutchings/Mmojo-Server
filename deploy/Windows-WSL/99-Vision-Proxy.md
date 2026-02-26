@@ -26,7 +26,6 @@ Click the MmojoServer icon in the Taskbar to open a new terminal connection to y
 ```
 cd $PROXY_DIR
 uvicorn main:app --host 127.0.0.1 --port 8081
-cd $HOME
 ```
 
 Click the MmojoServer icon in the Taskbar to open another new terminal connection to your MmojoServer WSL instance. Start the watcher.
@@ -34,7 +33,6 @@ Click the MmojoServer icon in the Taskbar to open another new terminal connectio
 ```
 cd $PROXY_DIR
 python3 proxy-watcher.py
-cd $HOME
 ```
 
 ---

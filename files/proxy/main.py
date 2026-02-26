@@ -49,7 +49,7 @@ async def proxy_openai_api(request: Request):
     global request_id
     if request.url.path.startswith("/v1/"):
         request_id = request_id + 1
-    response_string = ""
+    completion_string = ""
 
     if request.url.path.startswith("/v1/"):
         print("Noting URL:" + request.url.path)
@@ -69,7 +69,7 @@ async def proxy_openai_api(request: Request):
 
     async def stream_api_response():
         global request_id
-        nonlocal response_string
+        nonlocal completion_string
 
         try:
             st = client.stream(request.method, url, headers=headers, params=request.query_params, json=request_body)
@@ -96,7 +96,7 @@ async def proxy_openai_api(request: Request):
                             if data.startswith("data: "):
                                 data = data[6:].strip()
                                 if data.startswith("[DONE]"):
-                                    # print("Response:\n" + response_string)
+                                    # print("Completion:\n" + completion_string)
                                     pass
                                 else:
                                     data_json = json.loads(data)
@@ -104,8 +104,8 @@ async def proxy_openai_api(request: Request):
                             if data_json != None:
                                 try:
                                     delta = data_json["choices"][0]["delta"]["content"]
-                                    response_string = response_string + delta
-                                    # print("response_string:\n" + response_string + "\n----------")
+                                    completion_string = completion_string + delta
+                                    # print("completion_string:\n" + completion_string + "\n----------")
                                 except Exception as e:
                                     pass
 
@@ -114,7 +114,7 @@ async def proxy_openai_api(request: Request):
                                 'elapsed_ms': elapsed_ms,
                                 'path': request.url.path,
                                 'request_body': request_body,
-                                'response': response_string,
+                                'completion': completion_string,
                             }
 
                             with open("requests/" + request_data_filename, "w") as file:
@@ -128,8 +128,8 @@ async def proxy_openai_api(request: Request):
                             'request_body': request_body,
                         }
 
-                        with open("requests/" + request_data_filename, "w") as file:
-                            file.write(json.dumps(request_data, indent=4))
+                        # with open("requests/" + request_data_filename, "w") as file:
+                        #     file.write(json.dumps(request_data, indent=4))
                         pass
 
                     elif (request.url.path == "/v1/completions"):

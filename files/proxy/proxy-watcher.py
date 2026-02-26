@@ -16,6 +16,8 @@ import time
 
 NO_REQUESTS = "No requests."
 REQUESTS_PATH = "requests/"
+TEXT_FONT = "Helvetica"
+TEXT_SIZE = 14
 
 values=[]
 value = ""
@@ -86,20 +88,31 @@ ui_top_frame.pack(side = "top", fill = "both", padx = (20, 20), pady = (12, 20))
 ui_data_frame = tk.Frame(ui_root)
 ui_data_frame.pack(side = "top", fill = "both", expand = True, padx = (20, 20), pady = (0, 12))
 
-ui_prev_button = tk.Button(ui_top_frame, text = "<", command = prev)
-ui_request = tk.Label(ui_top_frame, text = "", font = ("Helvetica", 18))
-ui_next_button = tk.Button(ui_top_frame, text = ">", command = next)
-ui_path = tk.Label(ui_top_frame, text = "(Path goes here.)", anchor = "w", font = ("Helvetica", 18))
+ui_prompt_frame = tk.Frame(ui_data_frame)
+ui_prompt_frame.pack(side = "left", fill = "both", expand = True, padx = (0, 12), pady = (0, 0))
 
-ui_prompt = tk.Text(ui_data_frame, width = 20, height = 10, wrap = "word", background = "#E0E0E0", relief = "solid")
-ui_completion = tk.Text(ui_data_frame, width = 20, height = 10, wrap = "word", background = "#F0F0F0", relief = "solid")
+ui_prev_button = tk.Button(ui_top_frame, text = "<", command = prev)
+ui_request = tk.Label(ui_top_frame, text = "", font = (TEXT_FONT, TEXT_SIZE))
+ui_next_button = tk.Button(ui_top_frame, text = ">", command = next)
+ui_path = tk.Label(ui_top_frame, text = "(Path goes here.)", anchor = "w", font = (TEXT_FONT, TEXT_SIZE))
+
+ui_prompt = tk.Text(ui_prompt_frame, width = 20, height = 10, wrap = "word", \
+    background = "#E0E0E0", relief = "solid")
+ui_completion = tk.Text(ui_data_frame, width = 20, height = 10, wrap = "word", \
+    background = "#F0F0F0", relief = "solid")
+
+var_show_system_prompt = tk.IntVar()
+ui_show_system_prompt = tk.Checkbutton(ui_prompt_frame, text = "Show System Prompt", \
+    variable = var_show_system_prompt, font = (TEXT_FONT, TEXT_SIZE), anchor = "w")
 
 ui_prev_button.pack(side="left", padx = (0, 12))
 ui_request.pack(side="left", padx = (0, 12))
 ui_next_button.pack(side="left", padx = (0, 12))
 ui_path.pack(side = "left", fill = "both", expand = True, padx = (0,0))
 
-ui_prompt.pack(side = "left", fill = "both", expand = True, padx = (0, 12))
+ui_prompt.pack(side = "top", fill = "both", expand = True, padx = (0, 0), pady = (0, 12))
+ui_show_system_prompt.pack(side = "top", fill = "both", padx = (0, 0), pady = (0, 0))
+
 ui_completion.pack(side = "left", fill = "both", expand = True, padx = (0, 0))
 
 ui_prompt.config(state = tk.DISABLED )
@@ -127,7 +140,7 @@ def showValue():
     ui_request.config(text=value)
     request_data = {}
     tries = 0
-    if (value != ""):
+    if (value != "") and (value != NO_REQUESTS):
         while (tries < 5) and not request_data:
             try:
                 with open(REQUESTS_PATH + value, 'r') as file:
@@ -143,13 +156,38 @@ def showValue():
     else:
         ui_path.config(text = "")
 
-    ui_prompt.config(state = tk.NORMAL )
-    ui_prompt.delete("1.0", tk.END)
+    # ui_prompt.config(state = tk.NORMAL )
+    # ui_prompt.delete("1.0", tk.END)
+    # if "request_body" in request_data:
+    #    ui_prompt.insert("1.0", str(request_data["request_body"]))
+    # else:
+    #    ui_prompt.insert("1.0", "Nothing to see here.")
+    # ui_prompt.config(state = tk.DISABLED )
+
+    new_prompt = "No prompt."
     if "request_body" in request_data:
-        ui_prompt.insert("1.0", str(request_data["request_body"]))
-    else:
-        ui_prompt.insert("1.0", "Nothing to see here.")
-    ui_prompt.config(state = tk.DISABLED )
+        request_body = request_data["request_body"]
+        if "messages" in request_body:
+            messages = request_body["messages"]
+            new_prompt = getPrompt(messages, var_show_system_prompt.get())
+
+    # the data from the Text has a \n tacked on the end. Grrrrr.
+    # https://stackoverflow.com/questions/4609382/getting-the-total-number-of-lines-in-a-tkinter-text-widget
+    # int(text_widget.index('end-1c').split('.')[0]) - 1
+    # then subtract text.cget("height") ??
+    old_prompt = ui_prompt.get("1.0", tk.END)
+    if  (new_prompt != old_prompt) and ((new_prompt + "\n") != old_prompt):
+        save_scroll = ui_prompt.yview()[0]
+        ui_prompt.config(state = tk.NORMAL )
+        ui_prompt.delete("1.0", tk.END)
+        ui_prompt.insert("1.0", new_prompt)
+        ui_prompt.config(state = tk.DISABLED )
+
+        # This scrolls a percent, not to a particular line. Will revisit.
+        if new_prompt.startswith(old_prompt):
+            ui_prompt.yview("moveto", save_scroll)
+        if new_prompt.startswith(old_prompt[:-1]):
+            ui_prompt.yview("moveto", save_scroll)
 
     new_completion = "Nothing to see here."
     if "completion" in request_data:
@@ -157,8 +195,10 @@ def showValue():
     old_completion = ui_completion.get("1.0", tk.END)
 
     # the data from the Text has a \n tacked on the end. Grrrrr.
+    # https://stackoverflow.com/questions/4609382/getting-the-total-number-of-lines-in-a-tkinter-text-widget
+    # int(text_widget.index('end-1c').split('.')[0]) - 1
+    # then subtract text.cget("height") ??
     if (new_completion != old_completion) and ((new_completion + "\n") != old_completion):
-        print("Replacing old_completion.\n----------")
         save_scroll = ui_completion.yview()[0]
         ui_completion.config(state = tk.NORMAL )
         ui_completion.delete("1.0", tk.END)
@@ -172,8 +212,41 @@ def showValue():
             ui_completion.yview("moveto", save_scroll)
 
 #----------------------------------------
+# getPrompt formats the prompt.
+#----------------------------------------
+
+def getPrompt(messages, showSystemPrompt):
+    result = ""
+    first_message = True
+    for message in messages:
+        role = ""
+        content = ""
+        add_to_prompt = ""
+        if ("role" in message) and ("content" in message):
+            role = message["role"]
+            content = message["content"]
+
+        if (role == "system") and showSystemPrompt:
+            add_to_prompt = "system:\n\n" + content + "\n--------------------\n"
+        elif (role == "user"):
+            add_to_prompt = "user:\n\n" + content + "\n--------------------\n"
+        elif (role == "assistant"):
+            add_to_prompt = "assistant:\n\n" + content + "\n--------------------\n"
+
+        if add_to_prompt != "":
+            if not first_message:
+                result = result + "\n"
+            first_message = False
+            result = result + add_to_prompt
+
+    return result
+
+#----------------------------------------
 # Main control.
 #----------------------------------------
 
 timerLoadValues()
 ui_root.mainloop()
+
+# deal with the quit problem. See method 2 of this:
+# https://share.google/aimode/omk19semg1pQVipya

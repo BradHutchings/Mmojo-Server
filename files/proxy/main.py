@@ -138,10 +138,10 @@ async def proxy_openai_api(request: Request):
                                 try:
                                     with open("requests/" + request_data_filename, "w") as file:
                                         file.write(json.dumps(request_data, indent=4))
-                                except Exception as e
+                                except Exception as e:
                                     print("Exception writing request_data: " + str(e))
                                     
-                        except Exception as e
+                        except Exception as e:
                             print("Exception handling /v1/chat/completions: " + str(e))
                             
                     elif (request.url.path == "/v1/models"):

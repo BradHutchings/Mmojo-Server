@@ -20,7 +20,7 @@ MODEL_NAME="Mistral-Ministral-3B-Reasoning-v3-2512"
 MODEL_MNEMONIC="mis-min-3B-rea-v3-2512"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/mistralai/Ministral-3-3B-Reasoning-2512"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -46,7 +46,7 @@ MODEL_NAME="Mistral-Ministral-8B-Reasoning-v3-2512"
 MODEL_MNEMONIC="mis-min-8B-rea-v3-2512"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/mistralai/Ministral-3-8B-Reasoning-2512"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -72,7 +72,7 @@ MODEL_NAME="Mistral-Ministral-14B-Reasoning-v3-2512"
 MODEL_MNEMONIC="mis-min-14B-rea-v3-2512"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/mistralai/Ministral-3-14B-Reasoning-2512"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 

@@ -19,7 +19,7 @@ build_folders=("$BUILD_DIR" "$LLAMA_SERVER_BUILD_DIR")
 for build_folder in "${build_folders[@]}"; do
     if [ -d "$build_folder" ]; then
         echo "Copying into: $build_folder/"
-        cp -r $MMOJO_SERVER_FILES/* $build_folder/
+        cp -r $MMOJO_SERVER_REPO_FILES/* $build_folder/
 
         cd $build_folder
 

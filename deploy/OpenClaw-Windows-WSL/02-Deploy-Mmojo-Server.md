@@ -26,6 +26,7 @@ Qwen3-4B-Thinking-2507-FP8-q8_0.gguf
 Qwen3-8B-v3-q8_0.gguf
 Qwen3-14B-v3-q8_0.gguf
 EOF
+mm-models-download.sh
 ```
 
 **Optional:** IBM Granite models implement so-called "thinking" and "tool calling".
@@ -34,6 +35,7 @@ cat << EOF >> $MODEL_QUEUE
 IBM-Granite-2B-Instruct-v3.3-q8_0.gguf
 IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
 EOF
+mm-models-download.sh
 ```
 
 **Optional:** Here are some newer Granite models:
@@ -44,6 +46,7 @@ IBM-Granite-1B-v4.0-q8_0.gguf
 IBM-Granite-Micro-3B-v4.0-q8_0.gguf
 IBM-Granite-Tiny-Preview-7B-v4.0-q8_0.gguf
 EOF
+mm-models-download.sh
 ```
 
 **Optional:** Here are some Microsoft Phi4 models:
@@ -53,10 +56,6 @@ Microsoft-Phi-3.8B-Reasoning-v4-q8_0.gguf
 Microsoft-Phi-16B-Reasoning-v4-q8_0.gguf
 Microsoft-Phi-16B-Reasoning-Plus-v4-q8_0.gguf
 EOF
-```
-
-Now download all the models you added to the queue.
-```
 mm-models-download.sh
 ```
 

@@ -29,7 +29,7 @@ This script creates the `$MODELS_DIR` and adds a simple model map to it:
     <br/>
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
-  $MMOJO_SERVER_SCRIPTS/mm-models-create-directory.sh
+  $MMOJO_SERVER_REPO_SCRIPTS/mm-models-create-directory.sh
   ```
 
 <!--
@@ -42,7 +42,7 @@ This script downloads the model map from Hugging Face:
 - View the script: <a href="../scripts/401-Download-Model-Map.sh" target="_blank">401-Download-Model-Map.sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/401-Download-Model-Map.sh
+  $MMOJO_SERVER_REPO_SCRIPTS/401-Download-Model-Map.sh
   ```
 </details>
 -->
@@ -83,7 +83,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/mm-models-create-directory.sh
+$MMOJO_SERVER_REPO_SCRIPTS/mm-models-create-directory.sh
 mm-models-download.sh 2
 ```
 
@@ -105,8 +105,8 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/mm-models-create-directory.sh
-$MMOJO_SERVER_SCRIPTS/401-Download-Model-Map.sh
+$MMOJO_SERVER_REPO_SCRIPTS/mm-models-create-directory.sh
+$MMOJO_SERVER_REPO_SCRIPTS/401-Download-Model-Map.sh
 mm-models-download.sh 2
 ```
 

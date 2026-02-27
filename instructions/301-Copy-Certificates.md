@@ -30,7 +30,7 @@ This script creates the `$CERTIFICATES_DIR` and uses the `mkcert` utility to cre
     <br/>
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/301-Create-Certificates-Directory.sh
+  $MMOJO_SERVER_REPO_SCRIPTS/301-Create-Certificates-Directory.sh
   ```
 
 ---
@@ -39,7 +39,7 @@ This script copies files from your Mmojo Share to the `$CERTIFICATES_DIR`:
 - View the script: <a href="../scripts/301-Copy-Certificates-from-Mmojo-Share.sh" target="_blank">301-Copy-Certificates-from-Mmojo-Share.sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/301-Copy-Certificates-from-Mmojo-Share.sh
+  $MMOJO_SERVER_REPO_SCRIPTS/301-Copy-Certificates-from-Mmojo-Share.sh
   ```
 
 ---
@@ -49,8 +49,8 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 # SHORTCUT: DON'T DO THIS IF YOU ALREADY RAN SCRIPTS ABOVE!
 ################################################################################
-$MMOJO_SERVER_SCRIPTS/301-Create-Certificates-Directory.sh
-$MMOJO_SERVER_SCRIPTS/301-Copy-Certificates-from-Mmojo-Share.sh
+$MMOJO_SERVER_REPO_SCRIPTS/301-Create-Certificates-Directory.sh
+$MMOJO_SERVER_REPO_SCRIPTS/301-Copy-Certificates-from-Mmojo-Share.sh
 ```
 
 ---

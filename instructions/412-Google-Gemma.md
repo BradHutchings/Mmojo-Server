@@ -29,7 +29,7 @@ MODEL_NAME="Google-Gemma-E2B-Instruct-v3n"
 MODEL_MNEMONIC="goo-gem-E2B-ins-v3n"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/google/gemma-3n-E2B-it.git"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -55,7 +55,7 @@ MODEL_NAME="Google-Gemma-E4B-Instruct-v3n"
 MODEL_MNEMONIC="goo-gem-E4B-ins-v3n"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/google/gemma-3n-E4B-it.git"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -81,7 +81,7 @@ MODEL_NAME="Google-Gemma-270M-Instruct-v3"
 MODEL_MNEMONIC="goo-gem-270M-ins-v3"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/google/gemma-3-270m-it"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -107,7 +107,7 @@ MODEL_NAME="Google-Gemma-1B-Instruct-v3"
 MODEL_MNEMONIC="goo-gem-1B-ins-v3"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/google/gemma-3-1b-it"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -133,7 +133,7 @@ MODEL_NAME="Google-Gemma-4B-Instruct-v3"
 MODEL_MNEMONIC="goo-gem-4B-ins-v3"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/google/gemma-3-4b-it"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 
@@ -159,7 +159,7 @@ MODEL_NAME="Google-Gemma-12B-Instruct-v3"
 MODEL_MNEMONIC="goo-gem-12B-ins-v3"
 MODEL_TYPE="q8_0"
 MODEL_REPO="https://huggingface.co/google/gemma-3-12b-it"
-$MMOJO_SERVER_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
+$MMOJO_SERVER_REPO_SCRIPTS/410-Convert-HF-to-gguf-Model.sh \
     $MODEL_NAME $MODEL_TYPE $MODEL_MNEMONIC $MODEL_REPO
 ```
 

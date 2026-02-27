@@ -21,7 +21,7 @@ Do this if you're running on x86_64.
 - Run the script. We run with `.` so variables can be defined and exported.
   ```
   . mm-environment-variables.sh
-  . $MMOJO_SERVER_SCRIPTS/207-Set-up-Cross-Compile-aarch64-on-x86_64.sh
+  . $MMOJO_SERVER_REPO_SCRIPTS/207-Set-up-Cross-Compile-aarch64-on-x86_64.sh
   ```
 
 #### Verify that libssl.a and libcrypto.a are Installed for Both Architectures

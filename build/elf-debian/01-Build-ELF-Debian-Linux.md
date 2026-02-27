@@ -175,7 +175,7 @@ ls -l $RUN_DIR
 
 It should look like:
 
-<img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
+<img width="656" height="118" alt="image" src="https://github.com/user-attachments/assets/fb38bb9a-8285-42f5-a5ca-92301585ba72" />
 
 ---
 ### Make a Package File

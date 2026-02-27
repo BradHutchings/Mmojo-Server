@@ -193,16 +193,16 @@ echo $PATH
 ### Clone the Mmojo Server Repository
 The Mmojo Server Github repositort has scripts and tools for installing and building Mmojo Server.
 ```
-export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server-repo"
-export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
+export MMOJO_SERVER_REPO_DIR="$HOME/mm-mmojo-server-repo"
+export MMOJO_SERVER_REPO_SCRIPTS="$MMOJO_SERVER_REPO_DIR/scripts"
 cd $HOME
-if [ "$MMOJO_SERVER_DIR" ]; then
-  rm -r -f $MMOJO_SERVER_DIR
+if [ "$MMOJO_SERVER_REPO_DIR" ]; then
+  rm -r -f $MMOJO_SERVER_REPO_DIR
 fi
-mkdir -p $MMOJO_SERVER_DIR
-git clone https://github.com/BradHutchings/mmojo-server.git $MMOJO_SERVER_DIR
-. $MMOJO_SERVER_SCRIPTS/mm-environment-variables.sh
-. $MMOJO_SERVER_SCRIPTS/mm-repo-update-local.sh
+mkdir -p $MMOJO_SERVER_REPO_DIR
+git clone https://github.com/BradHutchings/mmojo-server.git $MMOJO_SERVER_REPO_DIR
+. $MMOJO_SERVER_REPO_SCRIPTS/mm-environment-variables.sh
+. $MMOJO_SERVER_REPO_SCRIPTS/mm-repo-update-local.sh
 if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc
 alias mm-env=". mm-environment-variables.sh"

@@ -23,8 +23,8 @@ echo "  executable file: $EXECUTABLE_FILE"
 echo "       cloning in: $"
 echo ""
 
-# This copies the $MMOJO_SERVER_FILES tree into the $THIS_BUILD_DIR tree.
-cp -r $MMOJO_SERVER_FILES/* $THIS_BUILD_DIR/
+# This copies the $MMOJO_SERVER_REPO_FILES tree into the $THIS_BUILD_DIR tree.
+cp -r $MMOJO_SERVER_REPO_FILES/* $THIS_BUILD_DIR/
 
 cd $THIS_BUILD_DIR
 

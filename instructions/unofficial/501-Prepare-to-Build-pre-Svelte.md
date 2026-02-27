@@ -50,7 +50,7 @@ Rollback the `tools/server/webui` to the pre-Svelte version. The new Svelte UI d
 - View the script: <a href="../scripts/501-Rollback-webui.sh" target="_blank">501-Rollback-webui.sh</a>.
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/501-Rollback-webui.sh
+  $MMOJO_SERVER_REPO_SCRIPTS/501-Rollback-webui.sh
   ```
 
 #### Required
@@ -84,7 +84,7 @@ I really think you should run through these scripts one at a time the first few 
 ################################################################################
 mm-prepare-clone-repo.sh
 mm-prepare-patch-llama-cpp.sh
-$MMOJO_SERVER_SCRIPTS/501-Rollback-webui.sh
+$MMOJO_SERVER_REPO_SCRIPTS/501-Rollback-webui.sh
 mm-prepare-customize-webui-sh
 ```
 

@@ -25,7 +25,7 @@ This script clones the llama.cpp repo into `$LOCAL_MODELS_DIR` directory. We use
     <br/>
 - Run the script.
   ```
-  $MMOJO_SERVER_SCRIPTS/410-Clone-llama-cpp.sh
+  $MMOJO_SERVER_REPO_SCRIPTS/410-Clone-llama-cpp.sh
   ```
 
 ---

@@ -43,7 +43,7 @@ Add user interface directory to an existing archive:
 - View the script: <a href="../scripts/mr-add-ui.sh" target="_blank">mr-add-ui.sh</a>.
 - Run the script.
   ```
-  mr-add-ui.sh test-archive $MMOJO_SERVER_DIR/files/Mmojo-Complete $CERTIFICATES_DIR/selfsignCA.crt
+  mr-add-ui.sh test-archive $MMOJO_SERVER_REPO_DIR/files/Mmojo-Complete $CERTIFICATES_DIR/selfsignCA.crt
   ```
 - Note: The Mmojo Complete UI is not customized with the updated date. Can't touch the repo. Might want to copy Mmojo Complete into it's own 300 thing on cloning the repo or mm-update. Maybe an mm-update-mmojo-complete? Builds would use that copy, not the repo.
 
@@ -59,7 +59,7 @@ Add args file to an existing archive:
 mr-new-runner.sh test-archive mmojo-server mmojo-server-args /support mmojo-server-support
 mr-add-model.sh test-archive 300-MODELS/Google-Gemma-1B-Instruct-v3-q8_0.gguf
 mr-add-certs.sh test-archive $CERTIFICATES_DIR/cert.crt $CERTIFICATES_DIR/cert.key
-mr-add-ui.sh test-archive $MMOJO_SERVER_DIR/files/Mmojo-Complete $CERTIFICATES_DIR/selfsignCA.crt
+mr-add-ui.sh test-archive $MMOJO_SERVER_REPO_DIR/files/Mmojo-Complete $CERTIFICATES_DIR/selfsignCA.crt
 mr-add-args.sh test-archive
 ```
 

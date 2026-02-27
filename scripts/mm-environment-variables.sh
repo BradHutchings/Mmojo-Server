@@ -33,9 +33,9 @@ export MOOELS_DIR_NAME="mm-models"
 export PACKAGES_DIR_NAME="mm-packages"
 
 echo "Setting mmojo-server paths."
-export MMOJO_SERVER_DIR="$HOME/mm-mmojo-server-repo"
-export MMOJO_SERVER_FILES="$MMOJO_SERVER_DIR/files"
-export MMOJO_SERVER_SCRIPTS="$MMOJO_SERVER_DIR/scripts"
+export MMOJO_SERVER_REPO_DIR="$HOME/mm-mmojo-server-repo"
+export MMOJO_SERVER_REPO_FILES="$MMOJO_SERVER_REPO_DIR/files"
+export MMOJO_SERVER_REPO_SCRIPTS="$MMOJO_SERVER_REPO_DIR/scripts"
 
 echo "Setting Mmojo Share paths."
 if [ "$(uname -s)" = "Darwin" ]; then
@@ -84,12 +84,6 @@ export MODEL_QUEUE="$MODELS_DIR/model-queue.txt"
 
 echo "Setting packages paths"
 export PACKAGES_DIR="$HOME/$PACKAGES_DIR_NAME"
-
-# Get rid of these.
-# export LOCAL_DOWNLOAD_MODEL_MAP="$LOCAL_MODEL_QUEUE"
-# export LOCAL_MODEL_MAP="$MODELS_DIR/model-map.txt"
-# export MMOJO_SHARE_MODEL_MAP="$MMOJO_SHARE_MODELS_DIR/model-map.txt"
-# export MMOJO_SHARE_RESTORE_MODEL_MAP="$MMOJO_SHARE_MODELS_DIR/restore-model-map.txt"
 
 echo "Setting Local and Share Download paths."
 export DOWNLOADS_DIR_NAME="mm-downloads"
@@ -171,6 +165,9 @@ export ARCH_AARCH64_NATIVE="native"
 # Run directory for deployment only
 export RUN_DIR="$HOME/mm-mmojo-server"
 export RUN_LLAMA_SERVER_DIR="$HOME/mm-llama-server"
+
+# Proxy directory for deployment only
+export PROXY_DIR="$HOME/mm-proxy"
 
 # Run this script when user starts a session.
 SEARCH_STRING="\. mm-environment-variables.sh"

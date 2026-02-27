@@ -54,7 +54,6 @@ async def proxy_openai_api(request: Request):
     url = f'{proxied_hosts.get_matching(request.url.path)}{request.url.path}'
 
     start_dt = datetime.datetime.now()
-    start_ms = start_dt // 1000;
 
     request_body = None
     try:
@@ -74,7 +73,8 @@ async def proxy_openai_api(request: Request):
         'id': this_request_id,
         'path': request.url.path,
         'request_body': request_body,
-        'start_ms': str(start_ms),
+        'start_dt': str(start_dt),
+        'working': True
     }
 
     request_data_filename = f"{this_request_id:07d}"
@@ -118,6 +118,7 @@ async def proxy_openai_api(request: Request):
                                 data = data[6:].strip()
                                 if data.startswith("[DONE]"):
                                     # print("Completion:\n" + completion_string)
+                                    request_data["working"] = False
                                     pass
                                 else:
                                     data_json = json.loads(data)

@@ -83,7 +83,7 @@ You'll see the configuration wizard verifying that it can make a connection, fol
 
 Paste in this value:
 ```
-mmojo-server-127-0-0-1-8080
+mmojo-server-127-0-0-1
 ```
 
 ---

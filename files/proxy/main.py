@@ -111,32 +111,39 @@ async def proxy_openai_api(request: Request):
                     elapsed_ms = (now_dt - start_dt).microseconds // 1000
 
                     if (request.url.path == "/v1/chat/completions"):
-                        data_lines = chunk.decode('utf-8').splitlines()
-                        for data in data_lines:
-                            data_json = None
-                            if data.startswith("data: "):
-                                data = data[6:].strip()
-                                if data.startswith("[DONE]"):
-                                    # print("Completion:\n" + completion_string)
-                                    request_data["working"] = False
-                                    pass
-                                else:
-                                    data_json = json.loads(data)
+                        try:
+                            data_lines = chunk.decode('utf-8').splitlines()
+                            for data in data_lines:
+                                data_json = None
+                                if data.startswith("data: "):
+                                    data = data[6:].strip()
+                                    if data.startswith("[DONE]"):
+                                        # print("Completion:\n" + completion_string)
+                                        request_data["working"] = False
+                                        pass
+                                    else:
+                                        data_json = json.loads(data)
 
-                            if data_json != None:
+                                if data_json != None:
+                                    try:
+                                        delta = data_json["choices"][0]["delta"]["content"]
+                                        completion_string = completion_string + delta
+                                        # print("completion_string:\n" + completion_string + "\n----------")
+                                    except Exception as e:
+                                        pass
+
+                                request_data["elapsed_ms"] = elapsed_ms
+                                request_data["completion"] = completion_string
+
                                 try:
-                                    delta = data_json["choices"][0]["delta"]["content"]
-                                    completion_string = completion_string + delta
-                                    # print("completion_string:\n" + completion_string + "\n----------")
-                                except Exception as e:
-                                    pass
-
-                            request_data["elapsed_ms"] = elapsed_ms
-                            request_data["completion"] = completion_string
-
-                            with open("requests/" + request_data_filename, "w") as file:
-                                file.write(json.dumps(request_data, indent=4))
-
+                                    with open("requests/" + request_data_filename, "w") as file:
+                                        file.write(json.dumps(request_data, indent=4))
+                                except Exception as e
+                                    print("Exception writing request_data: " + str(e))
+                                    
+                        except Exception as e
+                            print("Exception handling /v1/chat/completions: " + str(e))
+                            
                     elif (request.url.path == "/v1/models"):
                         pass
 

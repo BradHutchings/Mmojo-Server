@@ -158,7 +158,6 @@ function PageLoaded() {
 
     
     checked = localStorage.getItem('showCopyAndPaste');
-    console.log("checked: " + checked);
     if (checked === "true") {
         elements.showCopyAndPasteCheckbox.checked = true;
     }

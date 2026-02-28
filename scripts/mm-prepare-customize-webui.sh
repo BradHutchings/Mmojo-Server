@@ -22,7 +22,7 @@ fi
 cd $THIS_BUILD_DIR
 
 if [ -f tools/server/webui/src/routes/+page.svelte ]; then
-    sed -i -e "s/>llama.cpp - AI Chat Interface<\/title>/>$APP_NAME<\/title>/g" tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte
+    sed -i -e "s/>llama.cpp - AI Chat Interface<\/title>/>$APP_NAME<\/title>/g" tools/server/webui/src/routes/+page.svelte
 fi
 if [ -f tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte ]; then
     sed -i -e "s/>llama.cpp<\/h1>/>$APP_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte

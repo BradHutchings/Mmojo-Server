@@ -48,6 +48,10 @@ if ! grep -q "#include <algorithm>" "common/ngram-mod.cpp" ; then
   sed -i '2i #include <algorithm>' "common/ngram-mod.cpp"
 fi
 
+# cpp-httplib has a couple lines with type conversion that the old Cosmo compiler doesn't like
+sed -i -e 's/static_cast<cert_t>(cert)/(void*) cert/g' vendor/cpp-httplib/httplib.cpp
+sed -i -e 's/static_cast<cert_t>(x509)/(void*) x509/g' vendor/cpp-httplib/httplib.cpp
+
 # In tools/server .cpp files, replace "defer(" with "defer_task(" to make Cosmo STL happy.
 sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
 sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp

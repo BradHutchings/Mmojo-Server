@@ -20,7 +20,7 @@ fi
 EXECUTABLE_FILE=$PACKAGE_MMOJO_SERVER_FILE
 
 echo "  executable file: $EXECUTABLE_FILE"
-echo "       cloning in: $"
+echo "       cloning in: $THIS_BUILD_DIR"
 echo ""
 
 # This copies the $MMOJO_SERVER_REPO_FILES tree into the $THIS_BUILD_DIR tree.

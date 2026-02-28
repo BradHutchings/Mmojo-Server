@@ -13,12 +13,11 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 cd $HOME
 
 THIS_BUILD_DIR=$BUILD_DIR
-APP_NAME='Mmojo Chat'
+APP_NAME='Mmojo Chat is Private.'
 if [ "$1" == "llama-server" ]; then
     THIS_BUILD_DIR=$BUILD_LLAMA_SERVER_DIR
     APP_NAME="llama.cpp"
 fi
-
 
 cd $THIS_BUILD_DIR
 

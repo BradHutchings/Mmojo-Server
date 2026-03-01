@@ -9,41 +9,66 @@ var instructions =
     "<p>These shortcuts are designed for desktop interaction, but also work if you have a physical keyboard attached to " +
         "your mobile device.</p>" +
     "<ul>\n" +
-    "<li>Hit the <b>RETURN</b> or <b>ENTER</b> key to start completing.</li>\n" + 
-    "<li>Type <b>SHIFT-RETURN</b> or <b>SHIFT-ENTER</b> to make a new line in the <b>Work Area</b>.</li>\n" +
-    "<li>Type <b>CTRL-RETURN</b> or <b>CTRL-ENTER</b> to make a new line in the <b>Work Area</b> and start completing. " +
-        "This is useful when chatting using your name as a stop word.</li>\n" +
-    "<li><b>CTRL-Click</b> (Windows and Linux) or <b>OPTION-Click</b> (Mac) to delete everything after the place you click. " +
-        "This is useful for backing up and redoing the completed text.</li>\n" +
-    "<li><b>CTRL-Z</b> and <b>SHIFT-CTRL-Z</b> undo and redo, respectively, to and from previous completion points.</li>\n" +
-    "<li>Click the <b>Copy</b> and <b>Paste</b> buttons at the right to save your work and switch between it.</li>\n" +
-    "<li>Icons top right:\n" + 
+        "<li>Hit the <b>RETURN</b> or <b>ENTER</b> key to start completing.</li>\n" + 
+        "<li>Type <b>SHIFT-RETURN</b> or <b>SHIFT-ENTER</b> to make a new line in the <b>Work Area</b>.</li>\n" +
+        "<li>Type <b>CTRL-RETURN</b> or <b>CTRL-ENTER</b> to make a new line in the Work Area and start completing. " +
+            "This is useful when chatting using your name as a stop word.</li>\n" +
+        "<li><b>CTRL-Click</b> (Windows and Linux) or <b>OPTION-Click</b> (Mac) to delete everything after the place you click. " +
+            "This is useful for backing up and redoing the completed text.</li>\n" +
+        "<li><b>CTRL-Z</b> and <b>SHIFT-CTRL-Z</b> undo and redo, respectively, to and from previous completion points.</li>\n" +
+        "<li>Click the <b>Copy</b> and <b>Paste</b> buttons at the right to save your work and switch between it.</li>\n" +
+        "<li>The number of tokens in the Work Area and available in the model's context window are shown in the <b>Status</b> " +
+            "area, bottom right.</li>\n" +
+    "</ul>\n" +
+
+
+    "<hr />\n" +
+    "<h3>Icons (Top Right):</h3>\n" +
+    "<ul>\n" +
+        "<li><img src=\"images/settings-64.png\" class=\"inline-image\" /><b>Settings:</b> Shows <b>Settings</b> panel.\n" + 
         "<ul>\n" +
-            "<li><img src=\"images/settings-64.png\" class=\"inline-image\" /><b>Settings:</b> Shows <b>Settings</b> panel.\n" + 
-            "<ul>\n" +
-                "<li>Set temperature, tokens, and stop words.</li>\n" +
-                "<li>Updated indicates when Mmojo Complete and your Mmojo Knowledge Appliance executable were built.</li>\n" +
-                "<li>Print Size, Picture Width, and Picture URL are for printing.</li>\n" +
-            "</ul>\n" +
-            "<li><img src=\"images/chat-64.png\" class=\"inline-image\" /><b>Chat:</b> Click for a more standard chat-style interface.\n" + 
-            "<li><img src=\"images/bookmark-64.png\" class=\"inline-image\" /><b>Bookmark:</b> Click to open the Bookmark Editor.\n" + 
-            "<li><img src=\"images/help-64.png\" class=\"inline-image\" /><b>Help:</b> You found this page!\n" + 
-            "<li><img src=\"images/fullscreen-64.png\" class=\"inline-image\" /><b>Full Screen:</b> Toggle between full screen and window display.</li>\n" +
+            "<li>Show and hide the copy / paste controls.</li>\n" +
+            "<li>Set temperature, tokens, and stop words.</li>\n" +
         "</ul>\n" +
-    "<li>The number of tokens in the <b>Work Area</b> and available in the model's context window are shown in the Status " +
-        "area, bottom right.</li>\n" +
-    "<li>To print what's in the <b>Work Area</b>, just print the page.</li>\n" +
+        "<li><img src=\"images/tools-64.png\" class=\"inline-image\" /><b>Tools:</b> Shows <b>Information</b> panel and <b>Tools</b> panel.</li>\n" + 
+        "<li><img src=\"images/help-64.png\" class=\"inline-image\" /><b>Help:</b> You found this page!</li>\n" + 
     "</ul>\n" +
 
     "<hr />\n" +
-    "<h3>Change the Model:</h3>\n" +
-    "<p>Use the Mmojo Controls page to change which large language model Mmojo uses:</p>\n" +
+    "<h3>Information Panel:</h3>\n" +
+    "<ul>\n" +
+        "<li><b>Model</b> indicates which model Mmojo Server is using.</li>\n" +
+        "<li><b>Mmojo Server</b> indicates when your Mmojo Server application and Mmojo Complete were built.</li>\n" +
+    "</ul>\n" +
+
+    "<hr />\n" +
+    "<h3>Tools Panel:</h3>\n" +
+    "<ul>\n" +
+        "<li><img src=\"images/chat-64.png\" class=\"inline-image\" /><b>Chat:</b> Click for a more standard chat-style interface.</li>\n" + 
+        "<li><img src=\"images/read-64.png\" class=\"inline-image\" /><b>Read:</b> Click to have the computer read the (selected) Work Area text.</li>\n" + 
+        "<li><img src=\"images/download-64.png\" class=\"inline-image\" /><b>Download:</b> Click to download the Work Area text.</li>\n" + 
+        "<li><img src=\"images/print-64.png\" class=\"inline-image\" /><b>Print:</b> Click to show the <b>Print</b> panel.</li>\n" + 
+        "<li><img src=\"images/bookmark-64.png\" class=\"inline-image\" /><b>Bookmark:</b> Click to open the Bookmark Maker.</li>\n" + 
+        "<li><img src=\"images/fullscreen-64.png\" class=\"inline-image\" /><b>Full Screen:</b> Toggle between full screen and window display.</li>\n" +
+    "</ul>\n" +
+
+    "<hr />\n" +
+    "<h3>Print Panel:</h3>\n" +
+    "<ul>\n" +
+        "<li><b>Print Size</b>, <b>Picture Width</b>, and <b>Picture URL</b> are for printing.</li>\n" +
+        "<li>To print what's in the Work Area, print the page.</li>\n" +
+    "</ul>\n" +
+
+    "<hr />\n" +
+    "<h3>Mmojo Knowledge Appliance: Change the Model:</h3>\n" +
+    "<p>If you are running Mmojo Server on a Mmojo Knowledge Appliance, you can use the Mmojo Controls page to change which large language " +
+        "model Mmojo Server uses:</p>\n" +
     "<ul>\n" +
     "<li><a href=\"/controls\" target=\"_blank\">Mmojo Controls</a></li>\n" +
     "</ul>\n" +
 
     "<hr />\n" +
-    "<h3>Install Our Certificate Authority:</h3>\n" +
+    "<h3>Mmojo Knowledge Appliance: Install Our Certificate Authority:</h3>\n" +
     "<p>To remove security warnings for the Mmojo Knowledge Appliance on your devices and to allow the Mmojo app to install on " +
         "your phones and tablets, please download and install our Certificate Authority on your devices.</p>\n\n" +
     "<ul>\n" +

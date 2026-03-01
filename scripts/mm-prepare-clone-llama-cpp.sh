@@ -30,7 +30,7 @@ if [ "$THIS_BUILD_DIR" != "" ] && [ -d "$THIS_BUILD_DIR" ]; then
     rm -r -f $THIS_BUILD_DIR
 fi
 
-echo "cloning in: $THIS_BUILD_DIR/"
+echo "Cloning into: $THIS_BUILD_DIR/"
 echo ""
 
 ################################################################################

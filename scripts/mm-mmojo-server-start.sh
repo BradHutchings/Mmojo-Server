@@ -17,36 +17,44 @@ if [ "$background" != "" ]; then
     runInBackground=true;
 fi
 
-# printf "\n\$RUN_DIR: $RUN_DIR\n\n"
+# printf "\n\$DEPLOY_DIR: $DEPLOY_DIR\n\n"
 # printf "\n\$PACKAGE_MMOJO_SERVER_FILE: $PACKAGE_MMOJO_SERVER_FILE\n\n"
 
 MMOJO_SERVER_EXEC=""
+APP_NAME=""
 
-if [ -d "$RUN_DIR" ]; then
-    if [ -f "$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE" ]; then
-        MMOJO_SERVER_EXEC="$RUN_DIR/$PACKAGE_MMOJO_SERVER_FILE"
-    elif [ -f "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE" ]; then
-        MMOJO_SERVER_EXEC="$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+if [ -d "$DEPLOY_DIR" ]; then
+    if [ -f "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_FILE" ]; then
+        MMOJO_SERVER_EXEC="$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_FILE"
+        APP_NAME="Mmojo Server"
+    elif [ -f "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE" ]; then
+        MMOJO_SERVER_EXEC="$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+        APP_NAME="Mmojo Server"
+    elif [ -f "$DEPLOY_DIR/$PACKAGE_LLAMA_SERVER_FILE" ]; then
+        MMOJO_SERVER_EXEC="$DEPLOY_DIR/$PACKAGE_LLAMA_SERVER_FILE"
+        APP_NAME="llama-server"
     fi
     MMOJO_SERVER_LOG="$MMOJO_SERVER_EXEC.log"
 else
-    echo "The run directory < $RUN_DIR > does not exist."
+    echo "The run directory < $DEPLOY_DIR > does not exist."
 fi
 
 mmojoServerRunning=$(pgrep -x "mmojo-server")
+llamaServerRunning=$(pgrep -x "llama-server")
 # echo "\$mmojoServerRunning: $mmojoServerRunning"
+# echo "\$llamaServerRunning: $llamaServerRunning"
 
-if [ -z "$mmojoServerRunning" ] ; then
+if [ -z "$mmojoServerRunning" ] && [ -z "$llamaServerRunning" ] ; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
         if ($runInBackground); then
-            echo "Starting mmojo-server in the background."
+            echo "Starting $APP_NAME in the background."
             nohup "$MMOJO_SERVER_EXEC" > "$MMOJO_SERVER_LOG" 2>&1 &
         else
             "$MMOJO_SERVER_EXEC"
         fi
     fi
 else
-    echo "Mmojo Server is already running with process id: $mmojoServerRunning."
+    echo "$APP_NAME is already running with process id: $mmojoServerRunning."
 fi
 
 # printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"

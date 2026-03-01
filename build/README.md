@@ -15,6 +15,7 @@ brad@BradHutchings.com<br/><br/>
 You can build an Actual Portable Executable (APE) file that runs on x86_64 and aarch64 (arm64), across Windows, macOS, Linux, and other platforms:
 - [Build APE for All Platforms](ape/01-Build-APE-All-Platforms.md)
 - [Test APE for All Platforms](ape/02-Test-APE-All-Platforms.md)
+- [Package APE for All Platforms](ape/03-Package-APE-All-Platforms.md)
 
 ---
 ### ELF for Debian Linux, x86_64 or aarch64 (arm64)

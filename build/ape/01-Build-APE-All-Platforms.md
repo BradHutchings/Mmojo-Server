@@ -105,6 +105,9 @@ Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 ```
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# Rename this file "mmojo-server-args" (no quotes) and put it
+# in the same directory as the mmojo-server executable to
+# override these default values.
 --host
 127.0.0.1
 --port

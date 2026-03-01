@@ -12,8 +12,6 @@ SCRIPT_NAME=$(basename -- "$0")
 
 unset MODEL_CHOICE
 
-DEPLOY_DIR="$DEPLOY_DIR"
-
 echo ""
 echo "These models are available to package:"
 PS3="Please choose a model:"

@@ -24,9 +24,7 @@ mm-model-choose.sh
 ### Test Your Build
 Test that the build runs with output in the Terminal.
 ```
-cd $RUN_DIR
 mm-debug
-cd $HOME 
 ```
 
 Connect to llama.cpp Chat from a browser:

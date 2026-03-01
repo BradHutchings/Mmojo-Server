@@ -16,15 +16,7 @@ mm-package-choose.sh
 Use one of the four commands below to choose a build from from the `$DEPLOY_DIR` to activate. The command will create a link to the right executable in your `$DEPLOY_DIR`. The link will not be included in your `.zip` archive.
 
 ```
-ln -sfr "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe" \
-    "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-```
 ln -sfr "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
-    "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-```
-ln -sfr "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe" \
     "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 ```

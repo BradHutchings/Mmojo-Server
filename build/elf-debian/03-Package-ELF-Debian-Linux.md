@@ -1,4 +1,4 @@
-## 01. Build ELF Executable for Debian Linux
+## 03. Package ELF Executable for Debian Linux
 ### About this Step
 In this step, you will package the build you just created and tested.
 

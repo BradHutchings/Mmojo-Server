@@ -59,7 +59,7 @@ mm-build-cosmo-ape.sh performant
 Create a deploy directory. We need `.exe` variants for Windows. We need the plain variants for macOS. Linux Terminals and desktops see both as executables.
 ```
 if [ "$DEPLOY_DIR" != "" ]; then
-    mkdir -p $DEPLOY_DIR
+    mkdir -p "$DEPLOY_DIR"
     rm -r -f "$DEPLOY_DIR"/*
     PERFORMANT_APE="$BUILD_DIR/$BUILD_COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
     if [ -f "$PERFORMANT_APE" ]; then
@@ -69,7 +69,8 @@ if [ "$DEPLOY_DIR" != "" ]; then
     if [ -f "$COMPATIBLE_APE" ]; then
         cp "$COMPATIBLE_APE" "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
     fi
-    cp -r $BUILD_DIR/Mmojo-Complete $DEPLOY_DIR
+    cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
+    cp "$MMOJO_SERVER_REPO_DIR/LICENSE" "$DEPLOY_DIR"
 fi
 ```
 

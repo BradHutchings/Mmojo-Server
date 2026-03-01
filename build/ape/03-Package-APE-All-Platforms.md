@@ -14,7 +14,7 @@ It should look like:
 <img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
 
 ---
-### Add Mmojo Complete and mmojo-server-args to the APE Files
+### Add `Mmojo Complete` and `mmojo-server-args` to the APE Files
 ```
 cd "$DEPLOY_DIR"
 sed -i -e 's/\/app\//\/zip\//g' "mmojo-server-args"

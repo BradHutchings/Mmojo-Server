@@ -163,7 +163,7 @@ export ARCH_AARCH64_NATIVE="native"
 # export ZIPALIGN="$HOME/tools/mm-zipalign"
 
 # Run directory for deployment only
-export RUN_DIR="$HOME/mm-mmojo-server"
+export RUN_DIR="$HOME/mm-run"
 
 # Proxy directory for deployment only
 export PROXY_DIR="$HOME/mm-proxy"

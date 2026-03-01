@@ -13,9 +13,6 @@ SCRIPT_NAME=$(basename -- "$0")
 unset MODEL_CHOICE
 
 THIS_RUN_DIR="$RUN_DIR"
-if [ "$1" == "llama-server" ]; then
-    THIS_RUN_DIR=$RUN_LLAMA_SERVER_DIR
-fi
 
 echo ""
 echo "These models are available to package:"

@@ -15,12 +15,14 @@ brad@BradHutchings.com<br/><br/>
 You can build an Actual Portable Executable (APE) file that runs on x86_64 and aarch64 (arm64), across Windows, macOS, Linux, and other platforms:
 - [Build APE for All Platforms](ape/01-Build-APE-All-Platforms.md)
 - [Test APE for All Platforms](ape/02-Test-APE-All-Platforms.md)
+- [Package APE for All Platforms](ape/03-Package-APE-All-Platforms.md)
 
 ---
 ### ELF for Debian Linux, x86_64 or aarch64 (arm64)
 You can build ELF binaries for Debian Linux (e.g. Ubuntu) in native CPU, performant CPU, and compatible CPU builds. They can support GPUs with CUDA and Vulkan support. This is the build recipe to use for Windows WSL.
 - [Build ELF Executable for Debian Linux](elf-debian/01-Build-ELF-Debian-Linux.md)
 - [Test ELF Executable for Debian Linux](elf-debian/02-Test-ELF-Debian-Linux.md)
+- [Package ELF Executable for Debian Linux](elf-debian/03-Package-ELF-Debian-Linux.md)
 
 ---
 ### Future Build Guides

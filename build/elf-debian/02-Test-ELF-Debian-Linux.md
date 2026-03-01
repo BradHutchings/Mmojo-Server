@@ -4,12 +4,14 @@ In this step, you will build an Actual Portable Executable (APE) file that will 
 
 These build steps work well in a Debian Linux operating system like Ubuntu or Raspberry Pi.
 
+<!--
 ---
 ### Retrieve Previously Built Package (Optional)
 If you've previously built an APE for all platforms and want to retrieve it for testing, run this script:
 ```
 mm-package-choose.sh
 ```
+-->
 
 ---
 ### Choose a Model
@@ -35,7 +37,7 @@ Since your build is in your `$RUN_DIR`, it's ready to be deployed with `mm-start
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** [03. Package ELF Executable for Debian Linux](03-Package-ELF-Debian-Linux.md)
 - **Previous:** [01. Build ELF Executable for Debian Linux](01-Build-ELF-Debian-Linux.md)
 - **Up:** [Build Mmojo Server](../README.md)
 

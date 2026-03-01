@@ -4,12 +4,14 @@ In this step, you will build an Actual Portable Executable (APE) file that will 
 
 These build steps work well in a Debian Linux operating system like Ubuntu or Raspberry Pi.
 
+<!--
 ---
 ### Retrieve Previously Built Package (Optional)
 If you've previously built an APE for all platforms and want to retrieve it for testing, run this script:
 ```
 mm-package-choose.sh
 ```
+-->
 
 ---
 ### Choose a Model

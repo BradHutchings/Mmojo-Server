@@ -10,9 +10,9 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
 
-if [ -d "$RUN_DIR" ]; then  
+if [ -d "$DEPLOY_DIR" ]; then  
     wd=$(pwd)
-    cd "$RUN_DIR"
+    cd "$DEPLOY_DIR"
     model=$(ls *.gguf | head -n 1)
     echo "The active model is: \"$model\"."
     cd $wd

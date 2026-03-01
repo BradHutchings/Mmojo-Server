@@ -30,7 +30,7 @@ fi
 ```
 
 ---
-### Bacup Package to Mmojo Share
+### Backup Package to Mmojo Share
 You can back the package up to your Mmojo Share.
 ```
 mm-packages-backup.sh

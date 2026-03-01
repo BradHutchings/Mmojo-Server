@@ -164,7 +164,6 @@ export ARCH_AARCH64_NATIVE="native"
 
 # Run directory for deployment only
 export RUN_DIR="$HOME/mm-mmojo-server"
-export RUN_LLAMA_SERVER_DIR="$HOME/mm-llama-server"
 
 # Proxy directory for deployment only
 export PROXY_DIR="$HOME/mm-proxy"

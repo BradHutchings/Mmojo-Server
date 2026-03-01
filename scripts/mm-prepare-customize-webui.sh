@@ -21,10 +21,6 @@ fi
 
 cd $THIS_BUILD_DIR
 
-<title>{activeConversation()?.name || 'Chat'} - llama.cpp</title>
-
-tools/server/webui/src/routes/chat/[id]/+page.svelte
-
 if [ -f tools/server/webui/src/routes/+page.svelte ]; then
     sed -i -e "s/>llama.cpp - AI Chat Interface<\/title>/>$APP_NAME<\/title>/g" tools/server/webui/src/routes/+page.svelte
 fi

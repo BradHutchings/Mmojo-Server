@@ -21,6 +21,7 @@ You can build an Actual Portable Executable (APE) file that runs on x86_64 and a
 You can build ELF binaries for Debian Linux (e.g. Ubuntu) in native CPU, performant CPU, and compatible CPU builds. They can support GPUs with CUDA and Vulkan support. This is the build recipe to use for Windows WSL.
 - [Build ELF Executable for Debian Linux](elf-debian/01-Build-ELF-Debian-Linux.md)
 - [Test ELF Executable for Debian Linux](elf-debian/02-Test-ELF-Debian-Linux.md)
+- [Package ELF Executable for Debian Linux](elf-debian/03-Package-ELF-Debian-Linux.md)
 
 ---
 ### Future Build Guides

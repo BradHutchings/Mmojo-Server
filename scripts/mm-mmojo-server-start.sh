@@ -58,7 +58,7 @@ if [ -z "$serverRunningId" ]; then
         fi
     fi
 else
-    echo "$APP_NAME is already running with process id: $serverRunningId."
+    echo "Mmojo Server is already running with process id: $serverRunningId."
 fi
 
 # printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"

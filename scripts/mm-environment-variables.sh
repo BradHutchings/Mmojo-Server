@@ -162,8 +162,8 @@ export ARCH_AARCH64_NATIVE="native"
 # export ZIPALIGN="$BUILD_LLAMAFILE_DIR/bin/zipalign"
 # export ZIPALIGN="$HOME/tools/mm-zipalign"
 
-# Run directory for deployment only
-export RUN_DIR="$HOME/mm-run"
+# Deploy directory for deployment only
+export DEPLOY_DIR="$HOME/mm-deploy"
 
 # Proxy directory for deployment only
 export PROXY_DIR="$HOME/mm-proxy"

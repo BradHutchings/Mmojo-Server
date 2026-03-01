@@ -12,7 +12,7 @@ mm-package-choose.sh
 -->
 
 ---
-### Choose a Build and a Model
+### Choose a Build
 Use one of the four commands below to choose a build from from the `$RUN_DIR` to activate. The command will create a link to the right executable in your `$RUN_DIR`. The link will not be included in your `.zip` archive.
 
 ```
@@ -32,6 +32,8 @@ ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
     "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 
+---
+### Choose a Model
 Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google Gemma 270M Instruct v3**.
 ```
 mm-model-choose.sh

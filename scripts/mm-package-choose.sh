@@ -11,9 +11,6 @@ SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
 
 THIS_RUN_DIR="$RUN_DIR"
-if [ "$1" == "llama-server" ]; then
-    THIS_RUN_DIR=$RUN_LLAMA_SERVER_DIR
-fi
 
 if [ -d "$PACKAGES_DIR" ]; then
     wd=$(pwd)

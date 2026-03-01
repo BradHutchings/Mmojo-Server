@@ -36,7 +36,7 @@ Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** [03. Package ELF Executable for Debian Linux](03-Package-ELF-Debian-Linux.md)
 - **Previous:** [01. Build ELF Executable for Debian Linux](01-Build-ELF-Debian-Linux.md)
 - **Up:** [Build llama-server](../README.md)
 

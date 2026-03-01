@@ -2,12 +2,14 @@
 ### About this Step
 In this step, you will test your Actual Portable Executable (APE) build. If you zipped up your run directory and saved as a package previously, you can recover that package and test it.
 
+<!--
 ---
 ### Retrieve Previously Built Package (Optional)
 If you've previously built an APE for all platforms and want to retrieve it for testing, run this script:
 ```
 mm-package-choose.sh
 ```
+-->
 
 ---
 ### Choose a Build and a Model

@@ -54,7 +54,7 @@ Since your build is in your `$RUN_DIR`, it's ready to be deployed with `mm-start
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** [03. Package APE for All Platforms](03-Package-APE-All-Platforms.md)
 - **Previous:** [01. Build APE for All Platforms](01-Build-APE-All-Platforms.md)
 - **Up:** [Build Mmojo Server](../README.md)
 

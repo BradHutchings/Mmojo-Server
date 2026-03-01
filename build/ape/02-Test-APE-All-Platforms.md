@@ -12,8 +12,10 @@ mm-package-choose.sh
 -->
 
 ---
-### Choose a Build
-Use one of the four commands below to choose a build from from the `$DEPLOY_DIR` to activate. The command will create a link to the right executable in your `$DEPLOY_DIR`. The link will not be included in your `.zip` archive.
+### Optional: Choose a Build
+You can use one of the two commands below to choose a build from from the `$DEPLOY_DIR` to activate. The command will create a link to the right executable in your `$DEPLOY_DIR`. The link will not be included in your `.zip` archive.
+
+If you don't do this, the `mm-debug` and `mm-start` commands will use the first available APE, which in this case would be the compatible one.
 
 ```
 ln -sfr "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \

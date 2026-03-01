@@ -5,7 +5,7 @@
 const isMmojoPage = true;
 const kLogging = false;
 const kMaxCopyPastes = 20;
-const kUpdated = '2026-02-24';
+const kUpdated = '[[UPDATED]]';
 const kWaitToComplete = 2000;
 const kReplayDelay = 25;
 

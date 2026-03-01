@@ -6,7 +6,7 @@ In this step, you will package the build you just created and tested.
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
-ls -l $RUN_DIR
+ls -l $DEPLOY_DIR
 ```
 
 It should look like:
@@ -20,8 +20,8 @@ Make a .zip pakcage files from your run directory. They are moved to your `$PACK
 Make a `mmojo-server-ape.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 PACKAGE_FILE="Mmojo-Server-ape.zip"
-if test -n "$RUN_DIR"; then
-  cd "$RUN_DIR"
+if test -n "$DEPLOY_DIR"; then
+  cd "$DEPLOY_DIR"
   zip -r "$PACKAGE_FILE" "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete
   mkdir -p "$PACKAGES_DIR"
   mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"

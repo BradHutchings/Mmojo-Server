@@ -6,7 +6,7 @@ In this step, you will connect to Mmojo Server with your web browser. Mmojo Serv
 ### Connect to Mmojo Server
 Open your web browser on the computer on which you are running Mmojo Server. Go to this link:
 
-- [http://127.0.0.1](http://127.0.0.1)
+- [http://127.0.0.1:8080](http://127.0.0.1:8080)
 
 You will see the Mmojo Complete user interface for Mmojo Server. Type a question or a sentence and the `RETURN` or `ENTER` key.
 
@@ -14,7 +14,7 @@ You will see the Mmojo Complete user interface for Mmojo Server. Type a question
 
 If you'd prefer to go directly to the chat user interface, use this link instead:
 
-- [http://127.0.0.1/chat](http://127.0.0.1/chat)
+- [http://127.0.0.1:8080/chat](http://127.0.0.1:8080/chat)
 
 You will see the Mmojo Chat user interface for Mmojo Server.  
 

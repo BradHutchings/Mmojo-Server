@@ -35,7 +35,7 @@ Connect to Mmojo Complete from a browser:
 
 You should see the Mmojo Complete user interface:
 
-<img width="543" height="400" alt="image" src="https://github.com/user-attachments/assets/31055741-4697-441e-a3e3-a191401a7e8c" />
+<img width="881" height="714" alt="image" src="https://github.com/user-attachments/assets/fb6716c6-e7a9-4fd7-8341-7f81313847bf" />
 
 Bookmark Mmojo Complete in your browser while you're there.
 

@@ -23,13 +23,23 @@ fi
 MMOJO_SERVER_EXEC=""
 APP_NAME=""
 
+PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE
+
+PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE
+
 if [ -d "$DEPLOY_DIR" ]; then
     if [ -f "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_FILE" ]; then
         MMOJO_SERVER_EXEC="$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_FILE"
         APP_NAME="Mmojo Server"
     elif [ -f "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE" ]; then
         MMOJO_SERVER_EXEC="$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-        APP_NAME="Mmojo Server"
+        APP_NAME="Mmojo Server APE"
+    elif [ -f "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" ]; then
+        MMOJO_SERVER_EXEC="$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
+        APP_NAME="Mmojo Server APE (Compatible)"
+    elif [ -f "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" ]; then
+        MMOJO_SERVER_EXEC="$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
+        APP_NAME="Mmojo Server APE (Performant)"
     elif [ -f "$DEPLOY_DIR/$PACKAGE_LLAMA_SERVER_FILE" ]; then
         MMOJO_SERVER_EXEC="$DEPLOY_DIR/$PACKAGE_LLAMA_SERVER_FILE"
         APP_NAME="llama-server"
@@ -39,12 +49,10 @@ else
     echo "The run directory < $DEPLOY_DIR > does not exist."
 fi
 
-mmojoServerRunning=$(pgrep -x "mmojo-server")
-llamaServerRunning=$(pgrep -x "llama-server")
-# echo "\$mmojoServerRunning: $mmojoServerRunning"
-# echo "\$llamaServerRunning: $llamaServerRunning"
+serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
+echo "serverRunningId: $serverRunningId"
 
-if [ -z "$mmojoServerRunning" ] && [ -z "$llamaServerRunning" ] ; then
+if [ -z "$serverRunningId" ]; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
         if ($runInBackground); then
             echo "Starting $APP_NAME in the background."
@@ -54,7 +62,7 @@ if [ -z "$mmojoServerRunning" ] && [ -z "$llamaServerRunning" ] ; then
         fi
     fi
 else
-    echo "$APP_NAME is already running with process id: $mmojoServerRunning."
+    echo "$APP_NAME is already running with process id: $serverRunningId."
 fi
 
 # printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"

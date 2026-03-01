@@ -20,7 +20,7 @@ fi
 EXECUTABLE_FILE=$PACKAGE_MMOJO_SERVER_FILE
 
 echo "  executable file: $EXECUTABLE_FILE"
-echo "       cloning in: $"
+echo "       cloning in: $THIS_BUILD_DIR"
 echo ""
 
 # This copies the $MMOJO_SERVER_REPO_FILES tree into the $THIS_BUILD_DIR tree.
@@ -47,6 +47,10 @@ fi
 if ! grep -q "#include <algorithm>" "common/ngram-mod.cpp" ; then
   sed -i '2i #include <algorithm>' "common/ngram-mod.cpp"
 fi
+
+# cpp-httplib has a couple lines with type conversion that the old Cosmo compiler doesn't like
+sed -i -e 's/static_cast<cert_t>(cert)/(void*) cert/g' vendor/cpp-httplib/httplib.cpp
+sed -i -e 's/static_cast<cert_t>(x509)/(void*) x509/g' vendor/cpp-httplib/httplib.cpp
 
 # In tools/server .cpp files, replace "defer(" with "defer_task(" to make Cosmo STL happy.
 sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp

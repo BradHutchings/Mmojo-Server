@@ -81,7 +81,7 @@ if [ "$processor" == "x86_64" ]; then
     export CC="x86_64-unknown-cosmo-cc \
         -nostdinc -O3 $ARCH_LEVEL_PARAM"
     export CXX="x86_64-unknown-cosmo-c++ \
-        -DCOSMOCC=1 -nostdinc -nostdinc++ -O3 -Wno-format-truncation $ARCH_LEVEL_PARAM  \
+        -DCOSMOCC=1 -nostdinc -nostdinc++ -O3 -Wno-format-truncation -fpermissive $ARCH_LEVEL_PARAM  \
         -I$(pwd)/openssl/include \
         -L$(pwd)/openssl"
     export AR="cosmoar"
@@ -93,7 +93,7 @@ if [ "$processor" == "aarch64" ]; then
     export CC="aarch64-unknown-cosmo-cc  \
         -nostdinc -O3 $ARCH_LEVEL_PARAM"
     export CXX="aarch64-unknown-cosmo-c++ \
-        -DCOSMOCC=1 -nostdinc -nostdinc++ -O3 -Wno-format-truncation $ARCH_LEVEL_PARAM \
+        -DCOSMOCC=1 -nostdinc -nostdinc++ -O3 -Wno-format-truncation -fpermissive $ARCH_LEVEL_PARAM \
         -I$(pwd)/openssl/include \
         -L$(pwd)/openssl/.aarch64/"
     export AR="cosmoar"

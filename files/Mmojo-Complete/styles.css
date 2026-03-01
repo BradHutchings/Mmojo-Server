@@ -48,10 +48,11 @@ body {
     display: flex;
 }
 
-label, #model-label, #updated-label {
+label, #model-labelxx, #updated-labelxx {
     margin-right: 0.25rem;
     margin-top: auto;
     margin-bottom: auto;
+    font-weight: bold;
 }
 
 select {
@@ -302,12 +303,14 @@ ul, li {
     font-weight: bold;
 }
 
-#settings-icon, #chat-icon, #print-icon, #bookmark-icon, #color-wheel-icon, #full-screen-icon, #help-icon {
+#settings-icon, #tools-icon, #help-icon, #chat-icon, 
+#read-icon, #download-icon, #print-icon, #bookmark-icon, 
+#color-wheel-icon, #full-screen-icon {
     width: 1.6rem;
     margin-right: 0.8rem;
 }
 
-#help-icon {
+#help-icon, #full-screen-icon {
     margin-right: 0rem;
 }
 
@@ -320,6 +323,39 @@ ul, li {
     user-select: none;
     background-color: var(--color7);
     color: var(--grey-dark);
+}
+
+#tools-area {
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: #00000000;
+    color: var(--grey-dark);
+    padding: 0rem 0rem;
+}
+
+#tools-info {
+    min-height: 1.4rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 8;
+    flex-shrink: 20;
+    background-color: var(--color7);
+    margin-right: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+#tools {
+    xx-display: none;
+    xx-visibility: hidden;
+
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color7);
+    color: var(--grey-dark);
+    margin-bottom: 0rem;
 }
 
 #settings-space {
@@ -344,7 +380,6 @@ ul, li {
     margin-top: auto;
     margin-bottom: auto;
     color: var(--grey-dark);
-    font-weight: bold;
 }
 
 #updated {
@@ -352,7 +387,12 @@ ul, li {
     margin-top: auto;
     margin-bottom: auto;
     color: var(--grey-dark);
-    font-weight: bold;
+}
+
+#show-copy-and-paste-checkbox {
+    margin-right: 0.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
 }
 
 #stop-words-checkbox {
@@ -396,13 +436,13 @@ ul, li {
 }
 
 #picture-url {
-    margin-right: 1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    width: 40rem;
+    flex-grow: 8;
+    flex-shrink: 20;
 }
 
-#print {
+#print, #print-cancel {
     font-size: 0.8rem;
     min-width: 4rem;
     padding: 0.25rem 0.5rem;
@@ -423,7 +463,7 @@ ul, li {
     border-color: var(--color2);
     color: var(--grey-dark);
     border-radius: 0.5rem;
-    margin-right: 0.5rem;
+    xx-margin-right: 0.5rem;
     flex-grow: 1;
 }
 
@@ -445,6 +485,7 @@ ul, li {
     border-radius: 0.5rem;
     overflow: hidden;
     padding: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .copy-paste-item {

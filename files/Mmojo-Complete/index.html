@@ -15,7 +15,7 @@
     <title>Mmojo Complete</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, interactive-widget=resizes-content" />
 </head>
-<body onload="PageLoaded();" onresize="PageResized();" onbeforeprint="LoadPrint();" onhashchange="HashChange();">
+<body onload="PageLoaded();" onresize="PageResized();" onbeforeprint="LoadPrint();" onhashchange="HashChange();" onclick="WorkAreaFocus();">
     <!--
     
     -->
@@ -27,29 +27,42 @@
         </div>
     </div>
 
-    <div id="content">
+    <div id="content" onclick="WorkAreaFocus();">
 
         <div id="title-bar" class="row">
-            <div id="mmojo-complete">Mmojo Complete is Private.</div>
-            <img id="settings-icon" src="images/settings-64.png" onclick="ToggleSettings();" title="Toggle Settings" />
-            <img id="chat-icon" src="images/chat-64.png" onclick="Chat();" title="Chat" />
-            <img id="print-icon" src="images/print-64.png" onclick="TogglePrintSettings();" title="Print"/>
-            <img id="bookmark-icon" src="images/bookmark-64.png" onclick="EditBookmark();" title="Bookmark Maker"/>
-            <img id="full-screen-icon" src="images/fullscreen-64.png" onclick="ToggleFullScreen();" title="Toggle Full Screen"/>
-            <img id="help-icon" src="images/help-64.png" onclick="Help();" title="Help"/>
+            <div id="mmojo-complete" onclick="WorkAreaFocus();">Mmojo Complete is Private.</div>
+            <img id="settings-icon" src="images/settings-64.png" onclick="ToggleSettings(event);" title="Toggle Settings" />
+            <img id="tools-icon" src="images/tools-64.png" onclick="ToggleTools(event);" title="Toggle Tools" />
+            <img id="help-icon" src="images/help-64.png" onclick="Help(event);" title="Help"/>
         </div>
 
-        <div id="settings" class="row hidden">
-            <div id="model-label" for="model">Model:</div>
-            <div id="model"></div>
-            <div id="updated-space" class="space"></div>
+        <div id="tools-area" class="row hidden" onclick="WorkAreaFocus();">
+            <div id="tools-info" class="row-item" onclick="WorkAreaFocus();">
+                <label id="model-label">Model:</label>
+                <div id="model"></div>
+                <div id="updated-space" class="space"></div>
+                <label id="updated-label">Mmojo Server:</label>
+                <div id="updated">Date</div>
 
-            <div id="updated-label" for="updated">Updated:</div>
-            <div id="updated">Date</div>
-            <div id="info-break" class="break"></div>
+
+            </div>
+            <div id="tools" class="row" onclick="WorkAreaFocus();">
+                <img id="chat-icon" src="images/chat-64.png" onclick="Chat(event);" title="Mmojo Chat" />
+                <img id="read-icon" src="images/read-64.png" onclick="Read(event)" title="Read Work Area" />
+                <img id="download-icon" src="images/download-64.png" onclick="Download(event)" title="Download Work Area" />
+                <img id="print-icon" src="images/print-64.png" onclick="TogglePrintSettings(event);" title="Print Work Area"/>
+                <img id="bookmark-icon" src="images/bookmark-64.png" onclick="EditBookmark(event);" title="Bookmark Maker"/>
+                <img id="full-screen-icon" src="images/fullscreen-64.png" onclick="ToggleFullScreen(event);" title="Toggle Full Screen"/>
+            </div>
+        </div>
+
+        <div id="settings" class="row hidden" onclick="WorkAreaFocus();">
+            <input id="show-copy-and-paste-checkbox" type="checkbox" onclick="EnableControls(event);" onchange="ShowCopyAndPasteChanged(event);" />
+            <label id="show-copy-and-paste-checkbox-label" for="show-copy-and-paste-checkbox">Show Copy &amp; Paste</label>
+            <div id="views-break" class="break"></div>
 
             <label id="temperature-label" for="temperature">Temperature:</label>
-            <select id="temperature">
+            <select id="temperature" onclick="EnableControls(event);">
                 <option value="0.00">0.00</option>
                 <option value="0.10">0.10</option>
                 <option value="0.25" selected>0.25</option>
@@ -61,7 +74,7 @@
 
             <div id="tokens-divider" class="vertical-divider"></div>
             <label id="tokens-label" for="tokens">Tokens:</label>
-            <select id="tokens">
+            <select id="tokens" onclick="EnableControls(event);">
                 <option value="-1" selected>Complete</option>
                 <option value="1">1</option>
                 <option value="5">5</option>
@@ -75,17 +88,17 @@
             </select>
 
             <div id="stop-words-divider" class="vertical-divider"></div>
-            <input id="stop-words-checkbox" type="checkbox" onchange="EnableControls(); StopWordsSetFocus();" />
+            <input id="stop-words-checkbox" type="checkbox" onclick="EnableControls(event);" onchange="EnableControls(); StopWordsSetFocus();" />
             <label id="stop-words-checkbox-label" for="stop-words-checkbox">Stop Words</label>
 
             <div id="stop-words-break" class="break hidden"></div>
             <label id="stop-words-label" for="stop-words" class="hidden">Stop Words:</label>
-            <input id="stop-words" type="text" class="hidden"/>
+            <input id="stop-words" type="text" class="hidden" onclick="EnableControls(event);" />
         </div>
 
-        <div id="print-settings" class="row hidden">
+        <div id="print-settings" class="row hidden" onclick="WorkAreaFocus();">
             <label id="print-size-label" for="print-size">Print Size:</label>
-            <select id="print-size">
+            <select id="print-size" onclick="EnableControls(event);">
                 <option value="1rem">Tiny</option>
                 <option value="1.2rem">Small</option>
                 <option value="1.4rem" selected>Medium</option>
@@ -94,7 +107,7 @@
             </select>
             <div id="picture-width-divider" class="vertical-divider"></div>
             <label id="picture-width-label" for="picture-width">Picture Width:</label>
-            <select id="picture-width">
+            <select id="picture-width" onclick="EnableControls(event);">
                 <option value="10%">10%</option>
                 <option value="15%">15%</option>
                 <option value="20%">20%</option>
@@ -107,11 +120,12 @@
             </select>
 
             <div id="print-space" class="space"></div>
-            <button id="print" onclick="Print();">Print</button>
+            <button id="print" onclick="Print(event);">Print</button>
+            <button id="print-cancel" onclick="TogglePrintSettings(event);">Cancel</button>
 
             <div id="picture-url-break" class="break"></div>
             <label id="picture-url-label" for="picture-url">Picture URL:</label>
-            <input id="picture-url" type="text" onchange="UpdatePicture();"/>
+            <input id="picture-url" type="text" onclick="EnableControls(event);" onchange="UpdatePicture();"/>
         </div>
 
         <div id="work-area" class="row">
@@ -127,17 +141,17 @@
                 </div>
 
                 <div id="copy-paste-space" class="space"></div>
-                <button id="clear-cue" class="clear-button hidden" onclick="elements.workAreaText.focus(); ClearCue();">Clear Cue</button>
+                <button id="clear-cue" class="clear-button hidden" onclick="WorkAreaFocus(); ClearCue();">Clear Cue</button>
             </div>
         </div>
 
-        <div id="status" class="row hidden">
+        <div id="status" class="row hidden" onclick="WorkAreaFocus();">
             <div id="status-text"><b>Status:</b> The status goes here.</div>
             <div id="status-space" class="space"></div>
-            <button id="status-start" onclick="elements.workAreaText.focus(); Complete();">Start</button>
-            <button id="status-stop" onclick="elements.workAreaText.focus(); StopCompleting();">Stop</button>
-            <button id="status-undo" onclick="elements.workAreaText.focus(); UndoChange();">Undo</button>
-            <button id="status-clear" onclick="elements.workAreaText.focus(); ClearWorkArea();">Clear</button>
+            <button id="status-start" onclick="WorkAreaFocus(); Complete();">Start</button>
+            <button id="status-stop" onclick="WorkAreaFocus(); StopCompleting();">Stop</button>
+            <button id="status-undo" onclick="WorkAreaFocus(); UndoChange();">Undo</button>
+            <button id="status-clear" onclick="WorkAreaFocus(); ClearWorkArea();">Clear</button>
         </div>
 
         <div id="gutter" class="row">

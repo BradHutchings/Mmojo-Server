@@ -5,7 +5,7 @@
 const isMmojoPage = true;
 const kLogging = false;
 const kMaxCopyPastes = 20;
-const kUpdated = '[[UPDATED]]';
+const kUpdated = '2026-02-24';
 const kWaitToComplete = 2000;
 const kReplayDelay = 25;
 
@@ -62,6 +62,7 @@ const kWorkAreaTextPlaceholder =
     "Anything you do with LLMs in the cloud, you can do here, privately.\n\n" +
     "Type some text in this work area that will get the language model started. The text you type is called a \"cue\".\n\n" +
     "Once you've entered your cue, click the Start button at the bottom or type the ENTER key to start completing.\n\n" +
+    "Remember: You are intelligent. LLMs do not think. Chat is an illusion.\n\n" +
     "Click the ? button (top-right) for more help.";
 
 const kCompletionMinimumTimeMS = 1500;
@@ -154,6 +155,13 @@ function PageLoaded() {
     setInterval(function() {
         UpdateStatus();
     }, 200);
+
+    
+    checked = localStorage.getItem('showCopyAndPaste');
+    if (checked === "true") {
+        elements.showCopyAndPasteCheckbox.checked = true;
+    }
+    EnableControls();
 }
 
 function PageResized() {
@@ -161,28 +169,35 @@ function PageResized() {
 }
 
 function FindElements() {
-    elements.body                   = document.body;
-    elements.content                = document.getElementById("content");
-    elements.printLayout            = document.getElementById("print-layout");
-    elements.printPicture           = document.getElementById("print-picture");
-    elements.printContent           = document.getElementById("print-content");
+    elements.body                       = document.body;
+    elements.content                    = document.getElementById("content");
+    elements.printLayout                = document.getElementById("print-layout");
+    elements.printPicture               = document.getElementById("print-picture");
+    elements.printContent               = document.getElementById("print-content");
 
-    elements.titleBar               = document.getElementById("title-bar");
-    elements.mmojoComplete        	= document.getElementById("mmojo-complete");
-    elements.settingsIcon           = document.getElementById("settings-icon");
-    //  elements.hashIcon               = document.getElementById("hash-icon");
-    //  elements.colorWheelIcon         = document.getElementById("color-wheel-icon");
-    elements.bookmarkIcon           = document.getElementById("bookmark-icon");
-    elements.helpIcon               = document.getElementById("help-icon");
-    elements.fullScreenIcon         = document.getElementById("full-screen-icon");
+    elements.titleBar                   = document.getElementById("title-bar");
+    elements.mmojoComplete        	    = document.getElementById("mmojo-complete");
+    elements.settingsIcon               = document.getElementById("settings-icon");
+    elements.toolsIcon                  = document.getElementById("tools-icon");
+    elements.helpIcon                   = document.getElementById("help-icon");
 
-    elements.settings               = document.getElementById("settings");
-    elements.temperature            = document.getElementById("temperature");
-    elements.tokens                 = document.getElementById("tokens");
-    elements.stopWordsCheckbox      = document.getElementById("stop-words-checkbox");
-    elements.stopWordsBreak         = document.getElementById("stop-words-break");
-    elements.stopWordsLabel         = document.getElementById("stop-words-label");
-    elements.stopWords              = document.getElementById("stop-words");
+    elements.toolsArea                  = document.getElementById("tools-area");
+    elements.tools                      = document.getElementById("tools");
+    elements.chatIcon                   = document.getElementById("chat-icon");
+    elements.downloadIcon               = document.getElementById("download-icon");
+    elements.printIcon                  = document.getElementById("print-icon");
+    elements.bookmarkIcon               = document.getElementById("bookmark-icon");
+    //  elements.colorWheelIcon             = document.getElementById("color-wheel-icon");
+    elements.fullScreenIcon             = document.getElementById("full-screen-icon");
+
+    elements.settings                   = document.getElementById("settings");
+    elements.showCopyAndPasteCheckbox   = document.getElementById("show-copy-and-paste-checkbox");
+    elements.temperature                = document.getElementById("temperature");
+    elements.tokens                     = document.getElementById("tokens");
+    elements.stopWordsCheckbox          = document.getElementById("stop-words-checkbox");
+    elements.stopWordsBreak             = document.getElementById("stop-words-break");
+    elements.stopWordsLabel             = document.getElementById("stop-words-label");
+    elements.stopWords                  = document.getElementById("stop-words");
 
     elements.printSettings          = document.getElementById("print-settings");
     elements.printSize              = document.getElementById("print-size");
@@ -402,7 +417,11 @@ function ClearWorkArea() {
     script.statusMode = kStatusMode.editing;
 }
 
-function EnableControls() {
+function EnableControls(event) {
+    if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
     if (elements.stopWordsCheckbox.checked) {
         if (kLogging) console.log("Enabling stop words.");
         
@@ -417,7 +436,29 @@ function EnableControls() {
         HideElement(elements.stopWords);
     }
 
+    if (elements.showCopyAndPasteCheckbox.checked) {
+        ShowElement(elements.copyPaste);
+    }
+    else {
+        HideElement(elements.copyPaste);
+    }
+
     EnableCopyPaste();
+}
+
+function ShowCopyAndPasteChanged(event) {
+    if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+    if (elements.showCopyAndPasteCheckbox.checked) {
+        localStorage.setItem('showCopyAndPaste', 'true');
+        console.log("Set showCopyAndPaste true.");
+    }
+    else {
+        localStorage.setItem('showCopyAndPaste', 'false');
+        console.log("Set showCopyAndPaste false.");
+    }
 }
 
 function EnableCopyPaste() {
@@ -1066,7 +1107,13 @@ function WorkAreaTextClicked(event) {
     return result;
 }
 
-function ToggleFullScreen() {
+function WorkAreaFocus() {
+    elements.workAreaText.focus();
+}
+
+function ToggleFullScreen(event) {
+    event.stopPropagation();
+
     var elt = document.documentElement;
 
     if (document.fullscreenElement) {
@@ -1078,6 +1125,7 @@ function ToggleFullScreen() {
         document.documentElement.requestFullscreen();
     }
 
+    elements.workAreaText.focus();
 }
 
 function FullscreenChange() {
@@ -1304,14 +1352,34 @@ async function GetModelInfoFromServer() {
     }
 }
 
-function ToggleSettings() {
+function ToggleSettings(event) {
+    event.stopPropagation();
+    elements.workAreaText.focus()
     ToggleShowElement(elements.settings);
+    HideElement(elements.toolsArea);
+    HideElement(elements.printSettings);
+
+    if (elements.settings.classList.contains("hidden")) {
+        elements.workAreaText.focus()
+    }
+    else {
+        elements.showCopyAndPasteCheckbox.focus()
+    }
+}
+
+function ToggleTools(event) {
+    event.stopPropagation();
+    elements.workAreaText.focus()
+    ToggleShowElement(elements.toolsArea);
+    HideElement(elements.settings);
     HideElement(elements.printSettings);
 }
 
 function TogglePrintSettings() {
+    elements.workAreaText.focus()
     ToggleShowElement(elements.printSettings)
     HideElement(elements.settings);
+    HideElement(elements.toolsArea);
 }
 
 function ScrollToEnd() {
@@ -1679,7 +1747,122 @@ function UpdatePicture() {
 
 }
 
-function EditBookmark() {
+function Chat(event) {
+    event.stopPropagation();
+    elements.workAreaText.focus();
+
+    window.open('/chat', '_blank');
+}
+
+function Read(event) {
+    event.stopPropagation();
+    elements.workAreaText.focus();
+
+    if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+    }
+    else {
+        var textToSpeak = elements.workAreaText.value;
+        if (typeof elements.workAreaText.selectionStart !== 'undefined') {
+            // Get the start and end positions of the selection
+            var startPosition = elements.workAreaText.selectionStart;
+            var endPosition = elements.workAreaText.selectionEnd;
+
+            // console.log("startPosition: " + startPosition);
+            // console.log("endPosition: " + endPosition);
+
+            // Use the substring method on the textarea's value to get the selected text
+            if (startPosition < endPosition) {
+                textToSpeak = elements.workAreaText.value.substring(startPosition, endPosition);
+            }
+        }
+        if (textToSpeak === "") {
+            textToSpeak = kWorkAreaTextPlaceholder;
+        }
+
+        // 1. Create a new SpeechSynthesisUtterance object
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+
+        // Optional: Customize properties
+        utterance.lang = 'en-US'; // Set the language
+        utterance.pitch = 1;     // Set the pitch (0 to 2)
+        utterance.rate = 1;      // Set the speaking rate (0.1 to 10)
+        utterance.volume = 1;    // Set the volume (0 to 1)
+
+        // 2. Use the window.speechSynthesis.speak() method to play the text
+        window.speechSynthesis.speak(utterance);
+    }
+}
+
+function Download(event) {
+    event.stopPropagation();
+    elements.workAreaText.focus();
+
+    textData = elements.workAreaText.value;
+    if (textData === "") {
+        textData = kWorkAreaTextPlaceholder;
+    }
+
+    filename = "Mmojo Complete Work Area.txt"
+
+    try {
+        const blob = new Blob([textData], { type: "text/plain" });
+        const blobUrl = window.URL.createObjectURL(blob);
+
+        const anchor = document.createElement('a');
+        anchor.href = blobUrl;
+        anchor.download = filename;
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+
+        window.URL.revokeObjectURL(blobUrl);
+    }
+    catch (error) {
+        //  console.error('Download failed:', error);
+    }
+}
+
+async function downloadFileWithFetch(url, fileName) {
+  try {
+    // Fetch the file content as a Blob
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const blob = await response.blob();
+    
+    // Create an object URL from the Blob
+    const blobUrl = window.URL.createObjectURL(blob);
+    
+    // Use the anchor method from Method 1
+    const anchor = document.createElement('a');
+    anchor.href = blobUrl;
+    anchor.download = fileName;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+
+    // Clean up the object URL to free up memory
+    window.URL.revokeObjectURL(blobUrl);
+
+  } catch (error) {
+    console.error('Download failed:', error);
+  }
+}
+
+
+
+
+function Print() {
+    event.stopPropagation();
+    elements.workAreaText.focus();
+    window.print();
+}
+
+function EditBookmark(event) {
+    event.stopPropagation();
+
     let logThis = false;
     if (kLogging || logThis) console.log("EditBookmark()");
 
@@ -1691,17 +1874,13 @@ function EditBookmark() {
         bookmarkLink = bookmarkLink + hash;
     }
     window.open(bookmarkLink, '_blank');
+
+    elements.workAreaText.focus();
 }
 
-function Chat() {
-    window.open('/chat', '_blank');
-}
-
-function Print() {
-    window.print();
-}
-
-function Help() {
+function Help(event) {
+    event.stopPropagation();
+    elements.workAreaText.focus();
     window.open('help.html', '_blank');
 }
 

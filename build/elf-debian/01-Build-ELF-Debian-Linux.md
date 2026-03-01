@@ -178,27 +178,6 @@ It should look like:
 <img width="656" height="118" alt="image" src="https://github.com/user-attachments/assets/fb38bb9a-8285-42f5-a5ca-92301585ba72" />
 
 ---
-### Make a Package File
-Make a .zip pakcage files from your run directory. They are moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment.
-
-Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
-```
-if test -n "$RUN_DIR"; then
-  cd "$RUN_DIR"
-  zip -r "$PACKAGE_FILE" mmojo-server mmojo-server-args Mmojo-Complete "$TOUCH_FILE"
-  mkdir -p "$PACKAGES_DIR"
-  mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
-  cd $HOME
-  ls -al "$PACKAGES_DIR"
-fi
-```
-
-You can back the package up to your Mmojo Share.
-```
-mm-packages-backup.sh
-```
-
----
 ### Proceed
 - **Next:** [02. Test ELF Executable for Debian Linux](02-Test-ELF-Debian-Linux.md)
 - **Previous:** This is the first step in this section.

@@ -93,7 +93,7 @@ export LOCAL_DOWNLOADS_DIR="$HOME/$DOWNLOADS_DIR_NAME"
 export MMOJO_SHARE_DOWNLOADS_DIR="$MMOJO_SHARE_MOUNT_POINT/$DOWNLOADS_DIR_NAME"
 
 echo "Setting Build paths."
-export BUILD_DIR="$HOME/mm-build-mmojo-server"
+export BUILD_DIR="$HOME/mm-build"
 export BUILD_LLAMA_SERVER_DIR="$HOME/mm-build-llama-server"
 
 export BUILD_DEBUG="build-debug"

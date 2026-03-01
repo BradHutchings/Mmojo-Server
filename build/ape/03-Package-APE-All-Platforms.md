@@ -4,7 +4,7 @@ In this step, you will package the build you just created and tested.
 
 ---
 ### Review Your Work
-Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
+Let's list the contents of the `$HOME/mm-deploy` directory and review your work:
 ```
 ls -l $DEPLOY_DIR
 ```
@@ -34,6 +34,17 @@ rm -r "Mmojo-Complete"
 mv "$PACKAGE_MMOJO_SERVER_ARGS_FILE" "EXAMPLE-$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 cd "$HOME"
 ```
+
+---
+### Review Changes
+Let's list the contents of the `$HOME/mm-deploy` directory again and review changes:
+```
+ls -l $DEPLOY_DIR
+```
+
+It should look like:
+
+<img width="771" height="178" alt="image" src="https://github.com/user-attachments/assets/55163e57-5506-40d8-a676-6deb51147cee" />
 
 ---
 ### Make a Package File

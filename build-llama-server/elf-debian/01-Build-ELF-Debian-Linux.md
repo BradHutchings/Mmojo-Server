@@ -111,11 +111,11 @@ mm-build-for-platform.sh performant "$GPUS_CHOICE" "llama-server"
 ### Create a Run Directory
 Create a run directory:
 ```
-if [ "$RUN_LLAMA_SERVER_DIR" != "" ]; then
-    mkdir -p $RUN_LLAMA_SERVER_DIR
-    rm -r -f "$RUN_LLAMA_SERVER_DIR"/*
-    cp $BUILD_SUBDIR/bin/$PACKAGE_LLAMA_SERVER_FILE $RUN_LLAMA_SERVER_DIR
-    touch "$RUN_LLAMA_SERVER_DIR/$TOUCH_FILE"
+if [ "$RUN_DIR" != "" ]; then
+    mkdir -p $RUN_DIR
+    rm -r -f "$RUN_DIR"/*
+    cp $BUILD_SUBDIR/bin/$PACKAGE_LLAMA_SERVER_FILE $RUN_DIR
+    touch "$RUN_DIR/$TOUCH_FILE"
 fi
 ```
 
@@ -123,7 +123,7 @@ fi
 ### Review Your Work
 Let's list the contents of the `$HOME/mm-llama-server` directory and review your work:
 ```
-ls -l $RUN_LLAMA_SERVER_DIR
+ls -l $RUN_DIR
 ```
 
 It should look like:

@@ -14,7 +14,10 @@ It should look like:
 <img width="772" height="153" alt="image" src="https://github.com/user-attachments/assets/96480922-cf30-4dc2-a997-343709997e5a" />
 
 ---
-### Add `Mmojo Complete` and `mmojo-server-args` to the APE Files
+### Add `Mmojo-Complete` and `mmojo-server-args` to the APE Files
+This script will add the `Mmojo-Complete` folder and `mmojo-server-args` file to the compatible and performant Mmojo Server APE files, as the APE files are structured as `.zip` files, and intended to hold application support data.
+
+After adding this data, the compatible and performant APE files are duplicated with `.exe` extensions to run on Windows PCs.
 ```
 cd "$DEPLOY_DIR"
 sed -i -e 's/\/app\//\/zip\//g' "mmojo-server-args"
@@ -48,9 +51,9 @@ It should look like:
 
 ---
 ### Make a Package File
-Make a .zip pakcage files from your run directory. They are moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment.
+Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
-Make a `mmojo-server-ape.zip` package file and move it to your `$PACKAGES_DIR` directory:
+Make a `Mmojo-Server-ape.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 PACKAGE_FILE="Mmojo-Server-ape.zip"
 if test -n "$DEPLOY_DIR"; then

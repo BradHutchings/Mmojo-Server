@@ -1595,7 +1595,7 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
         }
     ).set_sparam());
     add_opt(common_arg(
-        {"--temp"}, "N",
+        {"--temp", "--temperature"}, "N",
         string_format("temperature (default: %.2f)", (double)params.sampling.temp),
         [](common_params & params, const std::string & value) {
             params.sampling.temp = std::stof(value);
@@ -1628,7 +1628,7 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
         }
     ).set_sparam());
     add_opt(common_arg(
-        {"--top-nsigma"}, "N",
+        {"--top-nsigma", "--top-n-sigma"}, "N",
         string_format("top-n-sigma sampling (default: %.2f, -1.0 = disabled)", params.sampling.top_n_sigma),
         [](common_params & params, const std::string & value) {
             params.sampling.top_n_sigma = std::stof(value);
@@ -1651,7 +1651,7 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
         }
     ).set_sparam());
     add_opt(common_arg(
-        {"--typical"}, "N",
+        {"--typical", "--typical-p"}, "N",
         string_format("locally typical sampling, parameter p (default: %.2f, 1.0 = disabled)", (double)params.sampling.typ_p),
         [](common_params & params, const std::string & value) {
             params.sampling.typ_p = std::stof(value);
@@ -2537,11 +2537,28 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
     ));
     add_opt(common_arg(
         {"-a", "--alias"}, "STRING",
-        "set alias for model name (to be used by REST API)",
+        "set model name aliases, comma-separated (to be used by API)",
         [](common_params & params, const std::string & value) {
-            params.model_alias = value;
+            for (auto & alias : string_split<std::string>(value, ',')) {
+                alias = string_strip(alias);
+                if (!alias.empty()) {
+                    params.model_alias.insert(alias);
+                }
+            }
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}).set_env("LLAMA_ARG_ALIAS"));
+    add_opt(common_arg(
+        {"--tags"}, "STRING",
+        "set model tags, comma-separated (informational, not used for routing)",
+        [](common_params & params, const std::string & value) {
+            for (auto & tag : string_split<std::string>(value, ',')) {
+                tag = string_strip(tag);
+                if (!tag.empty()) {
+                    params.model_tags.insert(tag);
+                }
+            }
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}).set_env("LLAMA_ARG_TAGS"));
     add_opt(common_arg(
         {"-m", "--model"}, "FNAME",
         ex == LLAMA_EXAMPLE_EXPORT_LORA
@@ -3809,18 +3826,6 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
             params.n_batch_sleep_ms = value;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
-
-    // This is so we can override --no-mmap in default-args in APE file, turn mmap back on from command-line.
-    // This has been implemented (above). Commenting out for now, remove later. -Brad 2026-02-21
-    /*
-    add_opt(common_arg(
-        {"--mmap"},
-        "use memory-map model, for overriding --no-mmap",
-        [](common_params & params) {
-            params.use_mmap = true;
-        }
-    ).set_examples({LLAMA_EXAMPLE_SERVER}));
-    */
   
     // This is so we can show the prompt in regular output.
     add_opt(common_arg(
@@ -3872,7 +3877,7 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
             params.show_completion = false;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
-// Mmojo Server END  
+    // Mmojo Server END  
   
     return ctx_arg;
 }

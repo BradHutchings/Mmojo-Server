@@ -109,22 +109,22 @@ mm-build-for-platform.sh performant "$GPUS_CHOICE"
 </details>
 
 ---
-### Create a Run Directory
-Create a run directory:
+### Create a Deploy Directory
+Create a deploy directory:
 ```
-if [ "$RUN_DIR" != "" ]; then
-    mkdir -p $RUN_DIR
-    rm -r -f "$RUN_DIR"/*
-    cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $RUN_DIR
-    cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
-    touch "$RUN_DIR/$TOUCH_FILE"
+if [ "$DEPLOY_DIR" != "" ]; then
+    mkdir -p $DEPLOY_DIR
+    rm -r -f "$DEPLOY_DIR"/*
+    cp $BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE $DEPLOY_DIR
+    cp -r $BUILD_DIR/Mmojo-Complete $DEPLOY_DIR
+    touch "$DEPLOY_DIR/$TOUCH_FILE"
 fi
 ```
 
-Create a mmojo-server-args file in the $RUN_DIR to launch Mmojo Server with the Mmojo Complete UI:
+Create a mmojo-server-args file in the $DEPLOY_DIR to launch Mmojo Server with the Mmojo Complete UI:
 ```
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --path
 /app/Mmojo-Complete
 --default-ui-endpoint
@@ -143,13 +143,13 @@ EOF
 ```
 
 <details>
-  <summary><b>Alternatively:</b> Create a <code>mmojo-server-args</code> file in the <code>$RUN_DIR</code> to launch Mmojo Server with chat UI.</summary>
+  <summary><b>Alternatively:</b> Create a <code>mmojo-server-args</code> file in the <code>$DEPLOY_DIR</code> to launch Mmojo Server with chat UI.</summary>
 <br/>
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 ```
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --host
 0.0.0.0
 --port
@@ -170,7 +170,7 @@ EOF
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
-ls -l $RUN_DIR
+ls -l $DEPLOY_DIR
 ```
 
 It should look like:

@@ -46,7 +46,7 @@ else
 fi
 
 serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
-echo "serverRunningId: $serverRunningId"
+# echo "serverRunningId: $serverRunningId"
 
 if [ -z "$serverRunningId" ]; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then

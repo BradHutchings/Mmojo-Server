@@ -10,7 +10,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
 
-THIS_RUN_DIR="$RUN_DIR"
+DEPLOY_DIR="$DEPLOY_DIR"
 
 if [ -d "$PACKAGES_DIR" ]; then
     wd=$(pwd)
@@ -32,12 +32,12 @@ if [ -d "$PACKAGES_DIR" ]; then
         if [ "$opt" -gt "0" ] && [ "$opt" -le "${#options[@]}" ]; then
             package=${options[$opt-1]}
             echo "You chose $opt: $package."
-            echo "Unzipping into $THIS_RUN_DIR."
-            if [ "$THIS_RUN_DIR" != "" ] && [ -d "$THIS_RUN_DIR" ]; then
-                mkdir -p "$THIS_RUN_DIR"
-                rm -r -f "$THIS_RUN_DIR"/*
+            echo "Unzipping into $DEPLOY_DIR."
+            if [ "$DEPLOY_DIR" != "" ] && [ -d "$DEPLOY_DIR" ]; then
+                mkdir -p "$DEPLOY_DIR"
+                rm -r -f "$DEPLOY_DIR"/*
             fi
-            unzip "$PACKAGES_DIR/$package" -d "$THIS_RUN_DIR"
+            unzip "$PACKAGES_DIR/$package" -d "$DEPLOY_DIR"
         else
             echo "Your choice was out of range."
         fi

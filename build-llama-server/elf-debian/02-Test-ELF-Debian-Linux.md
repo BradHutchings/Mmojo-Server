@@ -1,16 +1,17 @@
 ## 02. llama-server &mdash; Test ELF Executable for Debian Linux
-**THIS GUIDE IS IN PROGRESS**
 ### About this Step
 In this step, you will build an Actual Portable Executable (APE) file that will run on x86_64 and aarch64 (arm64) processors with Windows, macOS, Linux, and other less common operating systems. APE builds are statically linked with no dependencies on dynamic libraries. I use the APE build as a first thing for clients to download and get Mmojo Server running quickly on their computers. If they like they can "upgrade" to a more performant platform-specific version later.
 
 These build steps work well in a Debian Linux operating system like Ubuntu or Raspberry Pi.
 
+<!--
 ---
 ### Retrieve Previously Built Package (Optional)
 If you've previously built an APE for all platforms and want to retrieve it for testing, run this script:
 ```
 mm-package-choose.sh "llama-server"
 ```
+-->
 
 ---
 ### Choose a Model
@@ -36,7 +37,7 @@ Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** [03. Package ELF Executable for Debian Linux](03-Package-ELF-Debian-Linux.md)
 - **Previous:** [01. Build ELF Executable for Debian Linux](01-Build-ELF-Debian-Linux.md)
 - **Up:** [Build llama-server](../README.md)
 

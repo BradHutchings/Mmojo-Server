@@ -1,5 +1,4 @@
 ## 01. llama-server &mdash; Build ELF Executable for Debian Linux
-**THIS GUIDE IS IN PROGRESS**
 ### About this Step
 If this step, you will build vanilla llama.cpp without Mmojo Server extensions. The executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:
 - **Compatible:** Runs on most systems that use a CPU from your computer's CPU family. 
@@ -130,27 +129,6 @@ ls -l $RUN_LLAMA_SERVER_DIR
 It should look like:
 
 <img width="615" height="79" alt="image" src="https://github.com/user-attachments/assets/d3914894-c66d-4012-be1b-0511c023e3b0" />
-
----
-### Make a Package File
-Make a .zip pakcage files from your run directory. They are moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment.
-
-Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
-```
-if test -n "$RUN_LLAMA_SERVER_DIR"; then
-  cd "$RUN_LLAMA_SERVER_DIR"
-  zip -r "$PACKAGE_FILE" $PACKAGE_LLAMA_SERVER_FILE "$TOUCH_FILE"
-  mkdir -p "$PACKAGES_DIR"
-  mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
-  cd $HOME
-  ls -al "$PACKAGES_DIR"
-fi
-```
-
-You can back the package up to your Mmojo Share.
-```
-mm-packages-backup.sh
-```
 
 ---
 ### Proceed

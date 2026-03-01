@@ -49,14 +49,14 @@ cp -r $BUILD_OPENSSSL_DIR/openssl .
 
 cd $THIS_BUILD_DIR
 # Roll the llama.cpp repo back to last known working.
-# Up through: https://github.com/ggml-org/llama.cpp/commit/e2f19b320fa358bb99cee41e2f4606f4ee93cc0c
-# e2f19b320fa358bb99cee41e2f4606f4ee93cc0c
+# Up through: https://github.com/ggml-org/llama.cpp/commit/66d65ec29ba7c440cbc31b6f63b74a17b536ba65
+# 66d65ec29ba7c440cbc31b6f63b74a17b536ba65
+
+# Verified: 2026-02-28
+git checkout 66d65ec29ba7c440cbc31b6f63b74a17b536ba65 
 
 # Verified: 2026-02-17
-git checkout e2f19b320fa358bb99cee41e2f4606f4ee93cc0c 
-
-# Verified: 2026-02-10
-# Previous: 57487a64c88c152ac72f3aea09bd1cc491b2f61e
+# Previous: e2f19b320fa358bb99cee41e2f4606f4ee93cc0c
 
 # To see where you're checked out:
 # git log -1

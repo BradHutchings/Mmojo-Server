@@ -529,6 +529,7 @@ void main_mmojo_server_3(common_params& params) {
         }
     }
 }
+
 // Mmojo Server END
 
 int main(int argc, char ** argv) {
@@ -549,7 +550,7 @@ int main(int argc, char ** argv) {
     // Mmojo Server START
     main_mmojo_server_2(params);
     // Mmojo Server END
-
+  
     // validate batch size for embeddings
     // embeddings require all tokens to be processed in a single ubatch
     // see https://github.com/ggml-org/llama.cpp/issues/12836
@@ -562,7 +563,8 @@ int main(int argc, char ** argv) {
     if (params.n_parallel < 0) {
         // Mmojo Server START
         // Does this LOG_INF cause memory corruption with MinGW compile? YES.
-        // LOG_INF("%s: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true\n", __func__);
+        // We're not going to do MinGW, so can remove this chnage next time. -Brad 2026-02-28
+        LOG_INF("%s: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true\n", __func__);
         // Mmojo Server END
 
         params.n_parallel = 4;
@@ -571,7 +573,7 @@ int main(int argc, char ** argv) {
 
     // for consistency between server router mode and single-model mode, we set the same model name as alias
     if (params.model_alias.empty() && !params.model.name.empty()) {
-        params.model_alias = params.model.name;
+        params.model_alias.insert(params.model.name);
     }
 
     // Mmojo Server START
@@ -663,6 +665,7 @@ int main(int argc, char ** argv) {
     ctx_http.post("/v1/chat/completions", ex_wrapper(routes.post_chat_completions));
     ctx_http.post("/api/chat",            ex_wrapper(routes.post_chat_completions)); // ollama specific endpoint
     ctx_http.post("/v1/responses",        ex_wrapper(routes.post_responses_oai));
+    ctx_http.post("/responses",           ex_wrapper(routes.post_responses_oai));
     ctx_http.post("/v1/messages",         ex_wrapper(routes.post_anthropic_messages)); // anthropic messages API
     ctx_http.post("/v1/messages/count_tokens", ex_wrapper(routes.post_anthropic_count_tokens)); // anthropic token counting
     ctx_http.post("/infill",              ex_wrapper(routes.post_infill));

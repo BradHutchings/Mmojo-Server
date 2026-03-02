@@ -11,7 +11,7 @@ ls -l $DEPLOY_DIR
 
 It should look like:
 
-<img width="771" height="175" alt="image" src="https://github.com/user-attachments/assets/a3dbfc54-dcba-49bd-949d-d5eb89215e53" />
+<img width="778" height="214" alt="image" src="https://github.com/user-attachments/assets/2af0e2b3-0392-4b73-9f68-775ea10c0cd7" />
 
 ---
 ### Add `Mmojo-Complete` and `mmojo-server-args` to the APE Files

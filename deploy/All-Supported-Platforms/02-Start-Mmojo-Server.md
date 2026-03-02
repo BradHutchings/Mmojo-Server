@@ -29,11 +29,13 @@ Double-click the performant build.
 
 - **Mac Users:** You may be asked to install "Developer Tools" before the terminal window appears. Do that.
 
+  <img width="400" xxheight="291" alt="image" src="https://github.com/user-attachments/assets/23cffe50-ef0d-4dff-9b49-21e2768c8cf4" />
+
+- **Linux users:** If you are running GNOME Files as your desktop, you should open a Terminal for the directory and run Mmojo Server from the command line. Otherwise, it will launch as a background process.
+
 A terminal window will open and show what Mmojo Server is doing:
 
 <img width="803" height="640" alt="image" src="https://github.com/user-attachments/assets/ed2347fa-3700-43da-bbd7-8857fe0133e6" />
-
-- **Linux users:** If you are running GNOME Files as your desktop, you should open a Terminal for the directory and run Mmojo Server from the command line. Otherwise, it will launch as a background process.
 
 If the performant build won't run, runs and quits immediately, or complains in the Terminal window about an "illegal instruction", you need to run the compatible build. Double-click the compatible build.
 

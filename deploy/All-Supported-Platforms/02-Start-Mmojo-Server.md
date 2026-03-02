@@ -35,7 +35,7 @@ Double-click the performant build.
 
 A terminal window will open and show what Mmojo Server is doing:
 
-<img width="803" height="640" alt="image" src="https://github.com/user-attachments/assets/ed2347fa-3700-43da-bbd7-8857fe0133e6" />
+<img width="400" xxheight="640" alt="image" src="https://github.com/user-attachments/assets/ed2347fa-3700-43da-bbd7-8857fe0133e6" />
 
 If the performant build won't run, runs and quits immediately, or complains in the Terminal window about an "illegal instruction", you need to run the compatible build. Double-click the compatible build.
 

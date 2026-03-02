@@ -71,6 +71,9 @@ if [ "$DEPLOY_DIR" != "" ]; then
     fi
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     cp "$MMOJO_SERVER_REPO_DIR/LICENSE" "$DEPLOY_DIR"
+    cp "$MMOJO_SERVER_REPO_DIR/LICENSE" "$DEPLOY_DIR"
+    cp "$MMOJO_SERVER_REPO_FILES/package/ape-chat.html" "$DEPLOY_DIR/Mmojo Chat.html"
+    cp "$MMOJO_SERVER_REPO_FILES/package/ape-connect.html" "$DEPLOY_DIR/Mmojo Connect.html"
 fi
 ```
 
@@ -134,7 +137,7 @@ ls -l $DEPLOY_DIR
 
 It should look like:
 
-<img width="683" height="138" alt="image" src="https://github.com/user-attachments/assets/d7af9055-13d9-435f-bee9-c62fffceb644" />
+<img width="694" height="176" alt="image" src="https://github.com/user-attachments/assets/4a53edbc-5b12-4c7e-b217-e01d60691e16" />
 
 ---
 ### Proceed

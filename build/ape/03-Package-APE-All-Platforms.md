@@ -11,7 +11,7 @@ ls -l $DEPLOY_DIR
 
 It should look like:
 
-<img width="771" height="175" alt="image" src="https://github.com/user-attachments/assets/a3dbfc54-dcba-49bd-949d-d5eb89215e53" />
+<img width="778" height="214" alt="image" src="https://github.com/user-attachments/assets/2af0e2b3-0392-4b73-9f68-775ea10c0cd7" />
 
 ---
 ### Add `Mmojo-Complete` and `mmojo-server-args` to the APE Files
@@ -47,7 +47,7 @@ ls -l $DEPLOY_DIR
 
 It should look like:
 
-<img width="772" height="193" alt="image" src="https://github.com/user-attachments/assets/4a020237-3d2b-4430-8c43-6b0d26617eb3" />
+<img width="778" height="229" alt="image" src="https://github.com/user-attachments/assets/883232c1-86b9-47b3-825f-1e05fd936283" />
 
 ---
 ### Make a Package File
@@ -58,7 +58,7 @@ Make a `Mmojo-Server-ape.zip` package file and move it to your `$PACKAGES_DIR` d
 PACKAGE_FILE="Mmojo-Server-ape.zip"
 if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
-  zip "$PACKAGE_FILE" "$PACKAGE_MMOJO_SERVER_APE_FILE"* *"$PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE
+  zip "$PACKAGE_FILE" "$PACKAGE_MMOJO_SERVER_APE_FILE"* *"$PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
   mkdir -p "$PACKAGES_DIR"
   mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME

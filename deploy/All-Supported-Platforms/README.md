@@ -16,7 +16,7 @@ The Mmojo Server Actual Portable Executable (APE) is a starting point. Connect t
 ### Deploy Mmojo Server
 Here are the deployment steps:
 - [01. Download Mmojo Server and a Model](01-Download-Mmojo-Server.md) - Download Mmojo Server and a Model, organize folder.
-- [02. Start Mmojo Server](03-Start-Mmojo-Server.md) - Start Mmojo Server.
+- [02. Start Mmojo Server](02-Start-Mmojo-Server.md) - Start Mmojo Server.
 - [03. Connect to Mmojo Server](03-Connect-to-Mmojo-Server.md) - Connect to Mmojo Server from your web browser.
 - [04. Stop Mmojo Server](04-Stop-Mmojo-Server.md) - Stop Mmojo Server.
 - [05. Developers](05-Developers.md) - Connect your app to Mmojo Server.

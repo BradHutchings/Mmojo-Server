@@ -12,7 +12,7 @@ For an application running on your computer, use this OpenAI compatible API endp
 ### Make Mmojo Server Visible on your Network
 Mmojo Server, as configured, only accepts local connections.
 
-To allow it to accept connections from any computer on your network, edit the `mmojo-server-args` file.
+To allow it to accept connections from any computer on your network, rename the `EXAMPLE-mmojo-server-args` file to `mmojo-server-args`. Then edit it.
 
 The file is formatted:
 

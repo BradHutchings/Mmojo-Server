@@ -93,7 +93,7 @@ chat
 --port
 8080
 --batch-size
-2048
+256
 --threads-http
 8
 --ctx-size
@@ -117,7 +117,7 @@ cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --port
 8080
 --batch-size
-2048
+256
 --threads-http
 8
 --ctx-size

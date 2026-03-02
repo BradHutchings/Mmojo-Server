@@ -10,7 +10,7 @@ This `.zip` archive contains the Mmojo Server software.
 
 ---
 ### Download a Model File
-Mmojo Server works with `.gguf` model files. Here are a few to try. Pick one. Higher `B` require more RAM, perform slower. Higher `B` generally gives better answers.
+Mmojo Server works with `.gguf` model files. Here are a few to try. Pick one. Higher "B" (e.g. "4B vs. "1B") require more RAM, perform slower. Higher "B" generally gives better answers.
 
 - [Google Gemma 1B Instruct v3](https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/models/Google-Gemma-1B-Instruct-v3-q8_0.gguf)
 

@@ -5,7 +5,7 @@ In this step, you're going to identify the builds, sort through which one you sh
 ---
 ### Identify the Builds
 There are four Mmojo Servers.
-- `mmojo-server-ape-performant` - maxOS and Linux.
+- `mmojo-server-ape-performant` - macOS and Linux.
 - `mmojo-server-ape-performant.exe` - Windows.
 - `mmojo-server-ape-compatible` - macOS and Linux.
 - `mmojo-server-ape-compatible.exe` - Windows.

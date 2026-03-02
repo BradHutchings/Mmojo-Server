@@ -35,6 +35,8 @@ if [ -f "$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" ]; then
 fi
 rm -r "Mmojo-Complete"
 mv "$PACKAGE_MMOJO_SERVER_ARGS_FILE" "EXAMPLE-$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+cp "$MMOJO_SERVER_REPO_FILES/package/ape-chat.html" "Mmojo Chat.html"
+cp "$MMOJO_SERVER_REPO_FILES/package/ape-connect.html" "Mmojo Connect.html"
 cd "$HOME"
 ```
 
@@ -58,7 +60,7 @@ Make a `Mmojo-Server-ape.zip` package file and move it to your `$PACKAGES_DIR` d
 PACKAGE_FILE="Mmojo-Server-ape.zip"
 if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
-  zip "$PACKAGE_FILE" "$PACKAGE_MMOJO_SERVER_APE_FILE"* *"$PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE
+  zip "$PACKAGE_FILE" "$PACKAGE_MMOJO_SERVER_APE_FILE"* *"$PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
   mkdir -p "$PACKAGES_DIR"
   mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME

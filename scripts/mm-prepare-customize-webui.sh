@@ -23,6 +23,7 @@ fi
 
 cd $THIS_BUILD_DIR
 
+echo "Customizing chat user interface files."
 if [ -f tools/server/webui/src/routes/+page.svelte ]; then
     sed -i -e "s/>llama.cpp - AI Chat Interface<\/title>/>$APP_NAME<\/title>/g" tools/server/webui/src/routes/+page.svelte
 fi
@@ -37,6 +38,8 @@ if [ -f tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.s
     sed -i -e "s/>llama.cpp<\/h1>/>$APP_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte
 fi
 cp tools/server/public/loading-mmojo.html ./loading-mmojo.html
+
+echo "Rebuilding chat user interface."
 SAVE_WD=$(pwd)
 cd tools/server/webui
 npm i
@@ -44,10 +47,13 @@ npm run build
 cd $SAVE_WD
 mv loading-mmojo.html tools/server/public/loading-mmojo.html
 
-TODAY=$(date +%Y-%m-%d)
-cp -r Mmojo-Complete Mmojo-Complete-original
-sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/scripts.js
-sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/bookmark-scripts.js
+if [ "$1" == "" ]; then
+    echo "Customizing Mmojo Complete."
+    TODAY=$(date +%Y-%m-%d)
+    cp -r Mmojo-Complete Mmojo-Complete-original
+    sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/scripts.js
+    sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/bookmark-scripts.js
+fi
 
 cd $HOME
 

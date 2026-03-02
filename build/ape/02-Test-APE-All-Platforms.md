@@ -12,24 +12,18 @@ mm-package-choose.sh
 -->
 
 ---
-### Choose a Build
-Use one of the four commands below to choose a build from from the `$RUN_DIR` to activate. The command will create a link to the right executable in your `$RUN_DIR`. The link will not be included in your `.zip` archive.
+### Optional: Choose a Build
+You can use one of the two commands below to choose a build from from the `$DEPLOY_DIR` to activate. The command will create a link to the right executable in your `$DEPLOY_DIR`. The link will not be included in your `.zip` archive.
+
+If you don't do this, the `mm-debug` and `mm-start` commands will use the first available APE, which in this case would be the compatible one.
 
 ```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+ln -sfr "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
+    "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 ```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
-```
-```
-ln -sfr "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
-    "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+ln -sfr "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
+    "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 
 ---
@@ -52,7 +46,7 @@ Connect to Mmojo Complete from a browser:
 
 Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 
-Since your build is in your `$RUN_DIR`, it's ready to be deployed with `mm-start`.
+Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-start`.
 
 ---
 ### Proceed

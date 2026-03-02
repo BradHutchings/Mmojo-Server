@@ -10,13 +10,13 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
 
-mmojoServerRunning=$(pgrep -x "mmojo-server")
-# echo "\$mmojoServerRunning: $mmojoServerRunning"
+serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
+# echo "serverRunningId: $serverRunningId"
 
-if [ -z "$mmojoServerRunning" ] ; then
+if [ -z "$serverRunningId" ] ; then
     echo "Mmojo Server is not running."
 else
-    echo "Mmojo Server is running with process id: $mmojoServerRunning."
+    echo "Mmojo Server is running with process id: $serverRunningId."
 fi
 
 # printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"

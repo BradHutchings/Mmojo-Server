@@ -39,7 +39,7 @@ fi
 ```
 
 <details>
-  <summary><b>Alternatively:</b>, set the URL for the Mmojo Server package that runs on all x86_64 and aarch64 (arm64) CPUs. Use this if the Mmojo Server you download with the URL setting above gives you an illegal instruction error when you run it.</summary>
+  <summary><b>Alternatively:</b> set the URL for the Mmojo Server package that runs on all x86_64 and aarch64 (arm64) CPUs. Use this if the Mmojo Server you download with the URL setting above gives you an illegal instruction error when you run it.</summary>
   <br/>
   
 ```
@@ -56,17 +56,17 @@ fi
 
 ---
 ### Download Mmojo Server from Hugging Face
-Download Mmojo Server from Hugging Face and unzip it in the `$HOME/Mmojo-Server` directory:
+Download Mmojo Server from Hugging Face and unzip it in the `$HOME/mm-deploy` directory:
 ```
-if [ "$RUN_DIR" != "" ] && [ "$URL" != "" ]; then
-    mkdir -p $RUN_DIR
-    cd $RUN_DIR
-    rm -r -f "$RUN_DIR"/*
+if [ "$DEPLOY_DIR" != "" ] && [ "$URL" != "" ]; then
+    mkdir -p $DEPLOY_DIR
+    cd $DEPLOY_DIR
+    rm -r -f "$DEPLOY_DIR"/*
     wget $URL -O "mmojo-server.zip"
     unzip "mmojo-server.zip"
     rm "mmojo-server.zip"
     cd $HOME
-    ls -al $RUN_DIR
+    ls -al $DEPLOY_DIR
 fi
 ```
 

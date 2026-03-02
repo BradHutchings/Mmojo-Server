@@ -55,30 +55,32 @@ mm-build-cosmo-ape.sh performant
 ```
 
 ---
-### Create a Run Directory
-Create a run directory. We need `.exe` variants for Windows. We need the plain variants for macOS. Linux Terminals and desktops see both as executables.
+### Create a Deploy Directory
+Create a deploy directory. We need `.exe` variants for Windows. We need the plain variants for macOS. Linux Terminals and desktops see both as executables.
 ```
-if [ "$RUN_DIR" != "" ]; then
-    mkdir -p $RUN_DIR
-    rm -r -f "$RUN_DIR"/*
+if [ "$DEPLOY_DIR" != "" ]; then
+    mkdir -p "$DEPLOY_DIR"
+    rm -r -f "$DEPLOY_DIR"/*
     PERFORMANT_APE="$BUILD_DIR/$BUILD_COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
     if [ -f "$PERFORMANT_APE" ]; then
-        cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
-        cp "$PERFORMANT_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
+        cp "$PERFORMANT_APE" "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
     fi
     COMPATIBLE_APE="$BUILD_DIR/$BUILD_COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
     if [ -f "$COMPATIBLE_APE" ]; then
-        cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
-        cp "$COMPATIBLE_APE" "$RUN_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
+        cp "$COMPATIBLE_APE" "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
     fi
-    cp -r $BUILD_DIR/Mmojo-Complete $RUN_DIR
+    cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
+    cp "$MMOJO_SERVER_REPO_DIR/LICENSE" "$DEPLOY_DIR"
 fi
 ```
 
-Create a `mmojo-server-args` file in the `$RUN_DIR` to launch Mmojo Server with the Mmojo Complete UI:
+Create a `mmojo-server-args` file in the `$DEPLOY_DIR` to launch Mmojo Server with the Mmojo Complete UI:
 ```
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# Rename this file "mmojo-server-args" (no quotes) and put it
+# in the same directory as the mmojo-server executable to
+# override these default values.
 --path
 /app/Mmojo-Complete
 --default-ui-endpoint
@@ -97,13 +99,16 @@ EOF
 ```
 
 <details>
-  <summary><b>Alternatively:</b> Create a <code>mmojo-server-args</code> file in the <code>$RUN_DIR</code> to launch Mmojo Server with chat UI.</summary>
+  <summary><b>Alternatively:</b> Create a <code>mmojo-server-args</code> file in the <code>$DEPLOY_DIR</code> to launch Mmojo Server with chat UI.</summary>
 <br/>
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 ```
 # make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$RUN_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# Rename this file "mmojo-server-args" (no quotes) and put it
+# in the same directory as the mmojo-server executable to
+# override these default values.
 --host
 127.0.0.1
 --port
@@ -122,14 +127,14 @@ EOF
 
 ---
 ### Review Your Work
-Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
+Let's list the contents of the `$HOME/mm-deploy` directory and review your work:
 ```
-ls -l $RUN_DIR
+ls -l $DEPLOY_DIR
 ```
 
 It should look like:
 
-<img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
+<img width="683" height="138" alt="image" src="https://github.com/user-attachments/assets/d7af9055-13d9-435f-bee9-c62fffceb644" />
 
 ---
 ### Proceed

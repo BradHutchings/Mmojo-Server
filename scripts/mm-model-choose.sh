@@ -12,11 +12,6 @@ SCRIPT_NAME=$(basename -- "$0")
 
 unset MODEL_CHOICE
 
-THIS_RUN_DIR="$RUN_DIR"
-if [ "$1" == "llama-server" ]; then
-    THIS_RUN_DIR=$RUN_LLAMA_SERVER_DIR
-fi
-
 echo ""
 echo "These models are available to package:"
 PS3="Please choose a model:"
@@ -40,10 +35,10 @@ if [ -v MODEL_CHOICE ]; then
   echo "You chose: $MODEL_CHOICE"
   echo ""
 
-  if [ "$THIS_RUN_DIR" != "" ] && [ -d "$THIS_RUN_DIR" ]; then
-      rm -f "$THIS_RUN_DIR"/*.gguf
-      echo "Soft linking $MODEL_CHOICE to $THIS_RUN_DIR."
-      ln -s "$MODELS_DIR/$MODEL_CHOICE" "$THIS_RUN_DIR/$MODEL_CHOICE"
+  if [ "$DEPLOY_DIR" != "" ] && [ -d "$DEPLOY_DIR" ]; then
+      rm -f "$DEPLOY_DIR"/*.gguf
+      echo "Soft linking $MODEL_CHOICE to $DEPLOY_DIR."
+      ln -s "$MODELS_DIR/$MODEL_CHOICE" "$DEPLOY_DIR/$MODEL_CHOICE"
   fi
 fi
 

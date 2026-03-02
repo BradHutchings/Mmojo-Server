@@ -9,7 +9,7 @@ These build steps work well in a Debian Linux operating system like Ubuntu or Ra
 ### Retrieve Previously Built Package (Optional)
 If you've previously built an APE for all platforms and want to retrieve it for testing, run this script:
 ```
-mm-package-choose.sh "llama-server"
+mm-package-choose.sh
 ```
 -->
 
@@ -17,16 +17,14 @@ mm-package-choose.sh "llama-server"
 ### Choose a Model
 Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google Gemma 270M Instruct v3**.
 ```
-mm-model-choose.sh "llama-server"
+mm-model-choose.sh
 ```
 
 ---
 ### Test Your Build
 Test that the build runs with output in the Terminal.
 ```
-cd $RUN_LLAMA_SERVER_DIR
-./$PACKAGE_LLAMA_SERVER_FILE --host 127.0.0.1 --port 8080 --model *.gguf
-cd $HOME 
+mm-debug
 ```
 
 Connect to llama.cpp Chat from a browser:

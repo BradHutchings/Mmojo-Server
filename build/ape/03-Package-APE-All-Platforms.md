@@ -4,25 +4,61 @@ In this step, you will package the build you just created and tested.
 
 ---
 ### Review Your Work
-Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
+Let's list the contents of the `$HOME/mm-deploy` directory and review your work:
 ```
-ls -l $RUN_DIR
+ls -l $DEPLOY_DIR
 ```
 
 It should look like:
 
-<img width="814" height="159" alt="image" src="https://github.com/user-attachments/assets/7d59ae18-90ff-4137-840e-dbf7e9c10891" />
+<img width="771" height="175" alt="image" src="https://github.com/user-attachments/assets/a3dbfc54-dcba-49bd-949d-d5eb89215e53" />
+
+---
+### Add `Mmojo-Complete` and `mmojo-server-args` to the APE Files
+This script will add the `Mmojo-Complete` folder and `mmojo-server-args` file to the compatible and performant Mmojo Server APE files, as the APE files are structured as `.zip` files, and intended to hold application support data.
+
+After adding this data, the compatible and performant APE files are duplicated with `.exe` extensions to run on Windows PCs.
+```
+cd "$DEPLOY_DIR"
+sed -i -e 's/\/app\//\/zip\//g' "mmojo-server-args"
+if [ -f "$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" ]; then
+    mv "$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" "$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.zip"
+    zip -r "$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.zip" "Mmojo-Complete" "$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    mv "$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.zip" "$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
+    cp "$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" "$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
+fi
+if [ -f "$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" ]; then
+    mv "$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" "$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.zip"
+    zip -r "$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.zip" "Mmojo-Complete" "$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    mv "$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.zip" "$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
+    cp "$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" "$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
+fi
+rm -r "Mmojo-Complete"
+mv "$PACKAGE_MMOJO_SERVER_ARGS_FILE" "EXAMPLE-$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+cd "$HOME"
+```
+
+---
+### Review Changes
+Let's list the contents of the `$HOME/mm-deploy` directory again and review changes:
+```
+ls -l $DEPLOY_DIR
+```
+
+It should look like:
+
+<img width="772" height="193" alt="image" src="https://github.com/user-attachments/assets/4a020237-3d2b-4430-8c43-6b0d26617eb3" />
 
 ---
 ### Make a Package File
-Make a .zip pakcage files from your run directory. They are moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment.
+Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
-Make a `mmojo-server-ape.zip` package file and move it to your `$PACKAGES_DIR` directory:
+Make a `Mmojo-Server-ape.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 PACKAGE_FILE="Mmojo-Server-ape.zip"
-if test -n "$RUN_DIR"; then
-  cd "$RUN_DIR"
-  zip -r "$PACKAGE_FILE" "$PACKAGE_MMOJO_SERVER_APE_FILE"* mmojo-server-args Mmojo-Complete
+if test -n "$DEPLOY_DIR"; then
+  cd "$DEPLOY_DIR"
+  zip "$PACKAGE_FILE" "$PACKAGE_MMOJO_SERVER_APE_FILE"* *"$PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE
   mkdir -p "$PACKAGES_DIR"
   mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME

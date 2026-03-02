@@ -32,7 +32,7 @@ Expand the `Mmojo-Server-ape.zip` archive into a folder on your Desktop. The con
 ### Copy a Model into the Folder
 Copy one model you downloaded into the folder. The folder will look something like this:
 
-<img width="404" height="219" alt="image" src="https://github.com/user-attachments/assets/53b67556-b53d-4e21-99d2-c055fba2e024" />
+<img width="422" height="283" alt="image" src="https://github.com/user-attachments/assets/ea8c557d-6e34-4c0a-b8d2-668e0aa830c7" />
 
 One model at a time! Mmojo Server finds the first model it can in its folder and uses that one. It may or may not find the alphabetically. So, one model at a time!
 

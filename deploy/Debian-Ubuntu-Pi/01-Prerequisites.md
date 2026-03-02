@@ -5,6 +5,9 @@ This step contains prerequisites for deploying Mmojo Server using this recipe. W
 **Skip Ahead:**
 - [02. Prepare Debian](02-Prepare-Debian.md)
 
+*When you are finished with this step, proceed to the next step using the **Proceed** links at the bottom of this page.*
+
+---
 ### Requirements
 This recipe deploys Mmojo Server on a single, stand-alone PC or laptop running a Debian based Linux operating system:
 - x86_64 or AARCH64 (ARM64) CPU.

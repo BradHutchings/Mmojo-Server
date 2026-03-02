@@ -34,7 +34,7 @@ Copy one model you downloaded into the folder. The folder will look something li
 
 <img width="422" height="283" alt="image" src="https://github.com/user-attachments/assets/ea8c557d-6e34-4c0a-b8d2-668e0aa830c7" />
 
-One model at a time! Mmojo Server finds the first model it can in its folder and uses that one. It may or may not find them alphabetically. So, one model at a time!
+One model at a time! Mmojo Server finds the first `.gguf` model file it can in its folder and uses that model file. It may or may not find them alphabetically. So, one model file at a time!
 
 ---
 ### Proceed

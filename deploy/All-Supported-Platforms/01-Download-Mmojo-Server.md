@@ -1,6 +1,6 @@
 ## 01. Download Mmojo Server and a Model
 ### About this Step
-In this step, you're going to download the `mmojo-server-ape.zip` from Hugging Face, download a model from Hugging Face, exapnd the `.zip` archive, and move a model into the expanded archive folder.
+In this step, you're going to download the `mmojo-server-ape.zip` from Hugging Face, download a model file from Hugging Face, exapnd the `.zip` archive, and move a model into the expanded archive folder.
 
 ---
 ### Download Mmojo-Server-ape.zip
@@ -9,8 +9,8 @@ This `.zip` archive contains the Mmojo Server software.
 - [Download Mmojo-Server-ape.zip](https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-ape.zip)
 
 ---
-### Download a Model
-Mmojo Server works with `.gguf` models. Here are a few to try. Pick one. Higher `B` require more RAM, perform slower. Higher `B` generally gives better answers.
+### Download a Model File
+Mmojo Server works with `.gguf` model files. Here are a few to try. Pick one. Higher `B` require more RAM, perform slower. Higher `B` generally gives better answers.
 
 - [Google Gemma 1B Instruct v3](https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/models/Google-Gemma-1B-Instruct-v3-q8_0.gguf)
 
@@ -30,11 +30,11 @@ Expand the `Mmojo-Server-ape.zip` archive into a folder on your Desktop. The con
 
 ---
 ### Copy a Model into the Folder
-Copy one model you downloaded into the folder. The folder will look something like this:
+Copy one model file you downloaded into the folder. The folder will look something like this:
 
 <img width="422" height="283" alt="image" src="https://github.com/user-attachments/assets/ea8c557d-6e34-4c0a-b8d2-668e0aa830c7" />
 
-One model at a time! Mmojo Server finds the first `.gguf` model file it can in its folder and uses that model file. It may or may not find them alphabetically. So, one model file at a time!
+One model file at a time! Mmojo Server finds the first `.gguf` model file it can in its folder and uses that model file. It may or may not find them alphabetically. So, one model file at a time!
 
 ---
 ### Proceed

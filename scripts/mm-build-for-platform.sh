@@ -130,15 +130,14 @@ if [ -d "$THIS_BUILD_DIR" ] && [ "$BUILD_SUBDIRECTORY" != "" ]; then
         -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$ARCH_LEVEL_PARAM" -DCMAKE_CXX_FLAGS="$ARCH_LEVEL_PARAM" \
         -DCMAKE_VERBOSE_MAKEFILE=$VERBOSE $GGML_PARAMS $MMOJO_EXTRA_PARAMS
     cmake --build "$BUILD_SUBDIRECTORY"
-
-    echo
-    echo "Build command: cmake --build \"$BUILD_SUBDIRECTORY\""
     
     # Show off what we built
     printf "\nBuild of CPU Test of llama.cpp is complete.\n\n"
     printf "\$ ls -al $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY/bin/\n"
     ls -al $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY/bin
-    printf "\n"
+
+    echo
+    echo "Build command: cmake --build \"$BUILD_SUBDIRECTORY\""
 fi
 
 cd $HOME

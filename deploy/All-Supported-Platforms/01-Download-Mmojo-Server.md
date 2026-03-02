@@ -2,7 +2,7 @@
 ### About this Step
 In this step, you're going to download the `mmojo-server-ape.zip` from Hugging Face, download a model file from Hugging Face, exapnd the `.zip` archive, and move a model into the expanded archive folder.
 
-*When you are finished with this step, proceed to the next step using the **Proceed** links at the bottom of the page.*
+*When you are finished with this step, proceed to the next step using the **Proceed** links at the bottom of this page.*
 
 ---
 ### Download Mmojo-Server-ape.zip

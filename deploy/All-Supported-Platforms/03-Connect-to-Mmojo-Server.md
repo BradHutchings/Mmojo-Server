@@ -10,7 +10,7 @@ Open your web browser on the computer on which you are running Mmojo Server. Go 
 
 You will see the Mmojo Complete user interface for Mmojo Server. Type a question or a sentence and the `RETURN` or `ENTER` key.
 
-<img width="881" height="714" alt="image" src="https://github.com/user-attachments/assets/fb6716c6-e7a9-4fd7-8341-7f81313847bf" />
+<img width="400" xxheight="714" alt="image" src="https://github.com/user-attachments/assets/fb6716c6-e7a9-4fd7-8341-7f81313847bf" />
 
 ---
 ### Connect to Mmojo Chat
@@ -20,7 +20,14 @@ If you'd prefer to go directly to the chat user interface, use this link instead
 
 You will see the Mmojo Chat user interface for Mmojo Server.  
 
-<img width="881" height="712" alt="image" src="https://github.com/user-attachments/assets/35dba7a5-1b99-4bc4-9ef3-0cfb340bf695" />
+<img width="400" xxheight="712" alt="image" src="https://github.com/user-attachments/assets/35dba7a5-1b99-4bc4-9ef3-0cfb340bf695" />
+
+---
+### Shortcut Files
+There are two shortcut files in the `Mmojo-Server-ape` folder you can use to connect as well.
+
+<img width="185" height="66" alt="image" src="https://github.com/user-attachments/assets/03ff18d5-7884-434c-b733-ece5146c5cc5" />
+
 
 ---
 ### Proceed

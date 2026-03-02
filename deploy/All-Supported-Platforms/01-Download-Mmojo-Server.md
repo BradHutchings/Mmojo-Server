@@ -4,13 +4,13 @@ In this step, you're going to download the `mmojo-server-ape.zip` from Hugging F
 
 ---
 ### Download Mmojo-Server-ape.zip
-This archive has the Mmojo Server software.
+This `.zip` archive contains the Mmojo Server software.
 
 - [Download Mmojo-Server-ape.zip](https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-ape.zip)
 
 ---
 ### Download a Model
-Here are a few to try. Pick one. More B's require more RAM, perform slower. More B's generally give better answers.
+Mmojo Server works with `.gguf` models. Here are a few to try. Pick one. Higher `B` require more RAM, perform slower. Higher `B` generally gives better answers.
 
 - [Google Gemma 1B Instruct v3](https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/models/Google-Gemma-1B-Instruct-v3-q8_0.gguf)
 
@@ -34,7 +34,7 @@ Copy one model you downloaded into the folder. The folder will look something li
 
 <img width="422" height="283" alt="image" src="https://github.com/user-attachments/assets/ea8c557d-6e34-4c0a-b8d2-668e0aa830c7" />
 
-One model at a time! Mmojo Server finds the first model it can in its folder and uses that one. It may or may not find the alphabetically. So, one model at a time!
+One model at a time! Mmojo Server finds the first model it can in its folder and uses that one. It may or may not find them alphabetically. So, one model at a time!
 
 ---
 ### Proceed

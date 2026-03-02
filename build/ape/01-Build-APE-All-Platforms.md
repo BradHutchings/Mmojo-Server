@@ -137,7 +137,7 @@ ls -l $DEPLOY_DIR
 
 It should look like:
 
-<img width="683" height="138" alt="image" src="https://github.com/user-attachments/assets/d7af9055-13d9-435f-bee9-c62fffceb644" />
+<img width="694" height="176" alt="image" src="https://github.com/user-attachments/assets/4a53edbc-5b12-4c7e-b217-e01d60691e16" />
 
 ---
 ### Proceed

@@ -71,6 +71,9 @@ if [ "$DEPLOY_DIR" != "" ]; then
     fi
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     cp "$MMOJO_SERVER_REPO_DIR/LICENSE" "$DEPLOY_DIR"
+    cp "$MMOJO_SERVER_REPO_DIR/LICENSE" "$DEPLOY_DIR"
+    cp "$MMOJO_SERVER_REPO_FILES/package/ape-chat.html" "$DEPLOY_DIR/Mmojo Chat.html"
+    cp "$MMOJO_SERVER_REPO_FILES/package/ape-connect.html" "$DEPLOY_DIR/Mmojo Connect.html"
 fi
 ```
 

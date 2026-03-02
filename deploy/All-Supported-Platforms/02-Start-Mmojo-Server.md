@@ -14,7 +14,7 @@ If you're using a macOS or Linux computer, move the `.exe` builds to the Trash. 
 
 If you're using a Windows computer, move the builds without the `.exe` extension to the Recycle Bin. You don't need them for your computer.
 
-Now, you're left with a "performant" build and a "compatible" build. The performant build runs faster, but only on new enough computers. The compatible runs on most computers, but not as fast.
+Now, you're left with a "performant" build and a "compatible" build. The performant build runs faster, but only on new enough computers. The compatible build runs on most computers, but not as fast.
 
 **Note:** Raspberry Pi users, you will use the compatible build.
 

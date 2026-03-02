@@ -18,7 +18,7 @@ Mmojo Server works with `.gguf` model files. Here are a few to try. Pick one.
 
 - [Qwen3 8B v3](https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/models/Qwen3-8B-v3-q8_0.gguf)
 
-Higher "B" (e.g. "4B vs. "1B") require more RAM, perform slower. Higher "B" generally gives better answers.
+Model files wih higher "B" (e.g. "4B" vs. "1B") require more RAM, perform slower. Models with higher "B" generally give better answers.
 
 More models that have been tested with Mmojo Server are available here:
 

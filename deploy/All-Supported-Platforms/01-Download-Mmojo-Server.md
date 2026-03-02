@@ -26,7 +26,7 @@ More models that have been tested with Mmojo Server are available here:
 ### Expand Mmojo-Server-ape.zip
 Expand the `Mmojo-Server-ape.zip` archive into a folder on your Desktop. The contents of the folder will look something like this:
 
-<img width="408" height="189" alt="image" src="https://github.com/user-attachments/assets/bdd76941-a6ae-4ea5-b790-262ab9db923d" />
+<img width="414" height="250" alt="image" src="https://github.com/user-attachments/assets/4b3b0577-ee55-442e-9b2b-598d1381eaa9" />
 
 ---
 ### Copy a Model into the Folder

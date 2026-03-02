@@ -35,8 +35,6 @@ if [ -f "$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" ]; then
 fi
 rm -r "Mmojo-Complete"
 mv "$PACKAGE_MMOJO_SERVER_ARGS_FILE" "EXAMPLE-$PACKAGE_MMOJO_SERVER_ARGS_FILE"
-cp "$MMOJO_SERVER_REPO_FILES/package/ape-chat.html" "Mmojo Chat.html"
-cp "$MMOJO_SERVER_REPO_FILES/package/ape-connect.html" "Mmojo Connect.html"
 cd "$HOME"
 ```
 

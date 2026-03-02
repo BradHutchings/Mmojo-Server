@@ -47,7 +47,7 @@ ls -l $DEPLOY_DIR
 
 It should look like:
 
-<img width="772" height="193" alt="image" src="https://github.com/user-attachments/assets/4a020237-3d2b-4430-8c43-6b0d26617eb3" />
+<img width="778" height="229" alt="image" src="https://github.com/user-attachments/assets/883232c1-86b9-47b3-825f-1e05fd936283" />
 
 ---
 ### Make a Package File

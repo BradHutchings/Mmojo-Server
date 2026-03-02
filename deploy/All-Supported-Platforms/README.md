@@ -4,7 +4,7 @@ In this section, you will get Mmojo Server running on your PC or laptop, regardl
 
 **Note:** *Even if you want to jump to other deploy or build guides, this one will get you familiar with the step by step approach of the guides.*
 
-The Mmojo Server Actual Portable Executable (APE) is a starting point. Connect to my Mmojo Complete UI or a traditional chat UI in your web browser. Connect your OpenAI API compatible application to Mmojo Server. Make sure it works for you. If you decide you'd like a more robust installation, perhaps with GPU support, you can deploy or build Mmojo Server, tuned to your platform.
+The Mmojo Server Actual Portable Executable (APE) is a starting point. Connect to the Mmojo Complete user interface or a traditional chat user interface in your web browser. Connect your OpenAI API compatible application to Mmojo Server. Make sure it works for you. If you decide you'd like a more robust installation, perhaps with GPU support, you can deploy or build Mmojo Server, tuned to your platform.
 
 **Supported CPUs:** x86_64 (Intel/AMD) and aarch64 (ARM).
 
@@ -16,7 +16,7 @@ The Mmojo Server Actual Portable Executable (APE) is a starting point. Connect t
 ### Deploy Mmojo Server
 Here are the deployment steps:
 - [01. Download Mmojo Server and a Model](01-Download-Mmojo-Server.md) - Download Mmojo Server and a Model, organize folder.
-- [02. Start Mmojo Server](03-Start-Mmojo-Server.md) - Start Mmojo Server.
+- [02. Start Mmojo Server](02-Start-Mmojo-Server.md) - Start Mmojo Server.
 - [03. Connect to Mmojo Server](03-Connect-to-Mmojo-Server.md) - Connect to Mmojo Server from your web browser.
 - [04. Stop Mmojo Server](04-Stop-Mmojo-Server.md) - Stop Mmojo Server.
 - [05. Developers](05-Developers.md) - Connect your app to Mmojo Server.

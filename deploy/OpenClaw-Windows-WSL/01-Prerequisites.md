@@ -4,6 +4,8 @@ This step contains prerequisites for deploying OpenClaw and Mmojo Server using t
 
 **Skip Ahead:** [02. Deploy Mmojo Server](02-Deploy-Mmojo-Server.md)
 
+*When you are finished with this step, proceed to the next step using the **Proceed** links at the bottom of this page.*
+
 ---
 ### Requirements
 This recipe deploys OpenClaw and Mmojo Server on a single, stand-alone Windows 10/11 PC or laptop:

@@ -1,5 +1,7 @@
 /*
   server-context-additions-mmojo.cpp as an adjunct file for tools/server/server-context-mmojo.h.
+  Mmojo sepecifc function implementations will be defined in this file instead of within
+  server-context-mmojo.cpp.
 
   This file has been added to implement Mmojo Server specific fixes and features.
 

@@ -11,6 +11,10 @@
 
 #include "server-additions-mmojo.h"
 
+std::filesystem::path executablePath;
+std::filesystem::path executableParentPath;
+std::filesystem::path workingDirectoryPath;
+
 std::filesystem::path argsPath;
 std::filesystem::path supportPath;
 std::filesystem::path supportArgsPath;

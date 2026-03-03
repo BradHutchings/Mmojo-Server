@@ -67,8 +67,8 @@ sed -i -e 's/common.cpp/common-mmojo.cpp/g' common/CMakeLists.txt
 sed -i -e '/log.h/a \    mmojo-args.h\n\    mmojo-args.c' common/CMakeLists.txt
 # Not bothering with zipalign for now. -Brad 2025-11-23
 # sed -i -e 's/add_subdirectory(server)/add_subdirectory(server)\n\tif (COSMOCC)\n\t\tadd_subdirectory(zipalign)\n\tendif()/g' tools/CMakeLists.txt
-sed -i -e 's/server.cpp/server-mmojo.cpp/g' tools/server/CMakeLists.txt
-sed -i -e 's/server-context.cpp/server-context-mmojo.cpp/g' tools/server/CMakeLists.txt
+sed -i -e 's/server.cpp/server-mmojo.cpp\n    server-additions-mmojo.cpp/g' tools/server/CMakeLists.txt
+sed -i -e 's/server-context.cpp/server-context-mmojo.cpp\n    server-context-additions-mmojo.cpp/g' tools/server/CMakeLists.txt
 sed -i -e 's/server-http.cpp/server-http-mmojo.cpp/g' tools/server/CMakeLists.txt
 sed -i -e "s/set(TARGET llama-server)/set(TARGET $EXECUTABLE_FILE)/g" tools/server/CMakeLists.txt
 sed -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt

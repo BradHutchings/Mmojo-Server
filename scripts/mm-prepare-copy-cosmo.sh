@@ -42,8 +42,8 @@ echo ""
 
 cd $THIS_BUILD_DIR
 
-cp -r -f $BUILD_COSMOPOLITAN_DIR/cosmocc .
-cp -r -f $BUILD_OPENSSSL_DIR/openssl .
+cp -r -f $BUILD_DIR_COSMOPOLITAN/cosmocc .
+cp -r -f $BUILD_DIR_OPENSSSL/openssl .
 
 cd $HOME
 

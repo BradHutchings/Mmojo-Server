@@ -13,6 +13,7 @@
 #include "server-http.h"
 #include "server-models.h"
 
+#if 0
 #include "arg.h"
 #include "common.h"
 #include "llama.h"
@@ -35,6 +36,7 @@
 #include <dirent.h>
 #include <unistd.h>
 #include "mmojo-args.h"
+#endif
 
 #define PROCESS_NAME "mmojo-server"
 #define ARGS_FILENAME "mmojo-server-args"

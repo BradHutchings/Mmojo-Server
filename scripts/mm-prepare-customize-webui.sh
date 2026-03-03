@@ -16,7 +16,7 @@ THIS_BUILD_DIR=$BUILD_DIR
 APP_NAME='Mmojo Chat is Private.'
 APP_SHORT_NAME='Mmojo Chat'
 if [ "$1" == "llama-server" ]; then
-    THIS_BUILD_DIR=$BUILD_LLAMA_SERVER_DIR
+    THIS_BUILD_DIR=$BUILD_DIR_LLAMA_SERVER
     APP_NAME="llama.cpp"
     APP_SHORT_NAME="llama.cpp"
 fi

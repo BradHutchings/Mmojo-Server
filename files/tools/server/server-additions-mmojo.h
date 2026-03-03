@@ -13,32 +13,6 @@
 #include "server-http.h"
 #include "server-models.h"
 
-#if 0
-// REMOVE THIS BLOCK WHEN WE'RE SURE IT'S NOT NEEEDED
-#include "arg.h"
-#include "common.h"
-#include "llama.h"
-#include "log.h"
-
-#include <atomic>
-#include <exception>
-#include <signal.h>
-#include <thread> // for std::thread::hardware_concurrency
-
-#if defined(_WIN32)
-#include <windows.h>
-#endif
-
-#if !defined(_WIN32)
-#include <linux/limits.h>
-#endif
-
-#include <sys/stat.h>
-#include <dirent.h>
-#include <unistd.h>
-#include "mmojo-args.h"
-#endif
-
 #define PROCESS_NAME "mmojo-server"
 #define ARGS_FILENAME "mmojo-server-args"
 #define SUPPORT_DIRECTORY_NAME "mmojo-server-support"

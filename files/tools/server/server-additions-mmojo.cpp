@@ -1,5 +1,6 @@
 /*
   server-additions-mmojo.cpp as an adjunct file for tools/server/server-mmojo.cpp.
+  Mmojo sepecifc function implementations will go in this file instead of server-mmojo.cpp.
 
   This file has been added to implement Mmojo Server specific fixes and features.
 

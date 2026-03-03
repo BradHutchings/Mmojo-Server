@@ -45,8 +45,8 @@ if [ "$BUILD_X86_64_SUBDIRECTORY" != "" ] && [ "$BUILD_AARCH64_SUBDIRECTORY" != 
 	echo ""
 	echo "Creating $APE_FILE."
     apelink \
-	      -l $BUILD_COSMOPOLITAN_DIR/o/x86_64/ape/ape.elf \
-	      -l $BUILD_COSMOPOLITAN_DIR/o/aarch64/ape/ape.elf \
+	      -l $BUILD_DIR_COSMOPOLITAN/o/x86_64/ape/ape.elf \
+	      -l $BUILD_DIR_COSMOPOLITAN/o/aarch64/ape/ape.elf \
 	      -o $THIS_BUILD_DIR/$BUILD_APE_SUBDIRECTORY/$APE_FILE \
 	      -M $THIS_BUILD_DIR/cosmocc/bin/ape-m1.c \
         $THIS_BUILD_DIR/$BUILD_X86_64_SUBDIRECTORY/bin/$EXECUTABLE_FILE \
@@ -54,8 +54,8 @@ if [ "$BUILD_X86_64_SUBDIRECTORY" != "" ] && [ "$BUILD_AARCH64_SUBDIRECTORY" != 
 
         # Not using mm-ziplalign until we get the mmap() into `/zip/...` thing resolved.
         # apelink \
-        # 	-l $BUILD_COSMOPOLITAN_DIR/o/x86_64/ape/ape.elf \
-        # 	-l $BUILD_COSMOPOLITAN_DIR/o/aarch64/ape/ape.elf \
+        # 	-l $BUILD_DIR_COSMOPOLITAN/o/x86_64/ape/ape.elf \
+        # 	-l $BUILD_DIR_COSMOPOLITAN/o/aarch64/ape/ape.elf \
         #	-o $BUILD_DIR/$BUILD_APE_SUBDIRECTORY/mm-zipalign-ape \
         #	-M ./cosmocc/bin/ape-m1.c \
         #	$BUILD_DIR/$BUILD_X86_64_SUBDIRECTORY/bin/mm-zipalign \

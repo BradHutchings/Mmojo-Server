@@ -14,6 +14,7 @@
 #include "server-models.h"
 
 #if 0
+// REMOVE THIS BLOCK WHEN WE'RE SURE IT'S NOT NEEEDED
 #include "arg.h"
 #include "common.h"
 #include "llama.h"

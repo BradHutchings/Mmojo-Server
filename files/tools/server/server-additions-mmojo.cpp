@@ -11,44 +11,17 @@
 */
 
 #include "server-additions-mmojo.h"
+#include "mmojo-args.h"
 
-#if 1
-    #include "mmojo-args.h"
-    
-    #include <signal.h>
-    #include <dirent.h>
-    
-    #if defined(_WIN32)
-    #include <windows.h>
-    #endif
-    
-    #if !defined(_WIN32)
-    #include <linux/limits.h>
-    #endif
+#include <signal.h>
+#include <dirent.h>
 
-#else
-    #include "arg.h"
-    #include "common.h"
-    #include "llama.h"
-    #include "log.h"
-    
-    #include <atomic>
-    #include <exception>
-    #include <signal.h>
-    #include <thread> // for std::thread::hardware_concurrency
-    
-    #if defined(_WIN32)
-    #include <windows.h>
-    #endif
-    
-    #if !defined(_WIN32)
-    #include <linux/limits.h>
-    #endif
-    
-    #include <sys/stat.h>
-    #include <dirent.h>
-    #include <unistd.h>
-    #include "mmojo-args.h"
+#if defined(_WIN32)
+#include <windows.h>
+#endif
+
+#if !defined(_WIN32)
+#include <linux/limits.h>
 #endif
 
 std::filesystem::path executablePath;

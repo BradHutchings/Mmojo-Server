@@ -13,12 +13,12 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-if [ "$BUILD_COSMOPOLITAN_DIR" != ""  ] && [ -d "$BUILD_COSMOPOLITAN_DIR" ]; then
-    rm -r -f $BUILD_COSMOPOLITAN_DIR
+if [ "$BUILD_DIR_COSMOPOLITAN" != ""  ] && [ -d "$BUILD_DIR_COSMOPOLITAN" ]; then
+    rm -r -f $BUILD_DIR_COSMOPOLITAN
 fi
 
-git clone https://github.com/jart/cosmopolitan.git $BUILD_COSMOPOLITAN_DIR
-cd $BUILD_COSMOPOLITAN_DIR
+git clone https://github.com/jart/cosmopolitan.git $BUILD_DIR_COSMOPOLITAN
+cd $BUILD_DIR_COSMOPOLITAN
 
 # Roll the Cosmopolitan repo back to last known working.
 # Problem shows up when we run a build. Server responds to API calls with "400". Not fun to debug. Will do it someday if needed.
@@ -35,12 +35,12 @@ sed -i '39i \  if ((s == NULL) || (n == 0)) return 0;' libc/intrin/memchr.c
 # Build Cosmo
 tool/cosmocc/package.sh
 
-echo "#include <linux/limits.h>" > $BUILD_COSMOPOLITAN_DIR/cosmocc/include/sys/syslimits.h
+echo "#include <linux/limits.h>" > $BUILD_DIR_COSMOPOLITAN/cosmocc/include/sys/syslimits.h
 
 # Show off what we built
 printf "\nBuild of Cosmopolitan is complete.\n\n"
-printf "\$ ls -al $BUILD_COSMOPOLITAN_DIR/cosmocc/bin/\n"
-ls -al $BUILD_COSMOPOLITAN_DIR/cosmocc/bin/
+printf "\$ ls -al $BUILD_DIR_COSMOPOLITAN/cosmocc/bin/\n"
+ls -al $BUILD_DIR_COSMOPOLITAN/cosmocc/bin/
 printf "\n"
 
 cd $HOME

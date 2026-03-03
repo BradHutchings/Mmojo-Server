@@ -40,10 +40,10 @@ GGML_PARAMS+="-DGGML_USE_LLAMAFILE=OFF -DGGML_USE_OPENMP=OFF"
 VERBOSE="OFF"
 
 if [ $processor == "x86_64" ]; then
-    BUILD_SUBDIRECTORY="$BUILD_COSMO_COMPATIBLE_X86_64"
+    BUILD_SUBDIRECTORY="$COSMO_COMPATIBLE_X86_64"
     ARCH_LEVEL_PARAM=" -march=$ARCH_X86_64_COMPATIBLE "
     if [ $variation == "performant" ]; then
-        BUILD_SUBDIRECTORY="$BUILD_COSMO_PERFORMANT_X86_64"
+        BUILD_SUBDIRECTORY="$COSMO_PERFORMANT_X86_64"
         ARCH_LEVEL_PARAM=" -march=$ARCH_X86_64_PERFORMANT  "
         # Reference that x86-64-v3 supports these:
         # https://infotechys.com/x86-64-v3-architecture/
@@ -53,10 +53,10 @@ if [ $processor == "x86_64" ]; then
     fi
 fi
 if [ $processor == "aarch64" ]; then
-    BUILD_SUBDIRECTORY="$BUILD_COSMO_COMPATIBLE_AARCH64"
+    BUILD_SUBDIRECTORY="$COSMO_COMPATIBLE_AARCH64"
     ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_COMPATIBLE "
     if [ $variation == "performant" ]; then
-        BUILD_SUBDIRECTORY="$BUILD_COSMO_PERFORMANT_AARCH64"
+        BUILD_SUBDIRECTORY="$COSMO_PERFORMANT_AARCH64"
         ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_PERFORMANT  "
         GGML_PARAMS=""
     fi

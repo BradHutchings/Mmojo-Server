@@ -15,8 +15,8 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-mkdir $BUILD_VULKAN_SDK_DIR
-cd $BUILD_VULKAN_SDK_DIR
+mkdir $BUILD_DIR_VULKAN_SDK
+cd $BUILD_DIR_VULKAN_SDK
 wget https://sdk.lunarg.com/sdk/download/$VULKAN_VERSION/linux/vulkansdk-linux-x86_64-$VULKAN_VERSION.tar.xz
 tar xf vulkansdk-linux-x86_64-$VULKAN_VERSION.tar.xz
 cd $VULKAN_VERSION/

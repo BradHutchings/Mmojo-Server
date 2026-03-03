@@ -23,7 +23,7 @@ cd $HOME
 
 THIS_BUILD_DIR=$BUILD_DIR
 if [ "$1" == "llama-server" ]; then
-    THIS_BUILD_DIR=$BUILD_LLAMA_SERVER_DIR
+    THIS_BUILD_DIR=$BUILD_DIR_LLAMA_SERVER
 fi
 
 if [ "$THIS_BUILD_DIR" != "" ] && [ -d "$THIS_BUILD_DIR" ]; then
@@ -40,8 +40,8 @@ echo ""
 git clone https://github.com/ggml-org/llama.cpp $THIS_BUILD_DIR
 cd $THIS_BUILD_DIR
 # git clone https://github.com/google/minja.git google-minja
-cp -r $BUILD_COSMOPOLITAN_DIR/cosmocc .
-cp -r $BUILD_OPENSSSL_DIR/openssl .
+cp -r $BUILD_DIR_COSMOPOLITAN/cosmocc .
+cp -r $BUILD_DIR_OPENSSSL/openssl .
 
 ################################################################################
 # Rollback llama.cpp repo tp last tested working.

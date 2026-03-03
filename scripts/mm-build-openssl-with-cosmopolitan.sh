@@ -13,12 +13,12 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-if [ "$BUILD_OPENSSSL_DIR" != "" ] && [ -d "$BUILD_OPENSSSL_DIR" ]; then
-    rm -r -f $BUILD_OPENSSSL_DIR
+if [ "$BUILD_DIR_OPENSSSL" != "" ] && [ -d "$BUILD_DIR_OPENSSSL" ]; then
+    rm -r -f $BUILD_DIR_OPENSSSL
 fi
 
-mkdir -p $BUILD_OPENSSSL_DIR
-cd $BUILD_OPENSSSL_DIR
+mkdir -p $BUILD_DIR_OPENSSSL
+cd $BUILD_DIR_OPENSSSL
 cp -r $COSMOCC_DIR .
 
 export PATH="$(pwd)/cosmocc/bin:$SAVE_PATH"
@@ -46,16 +46,16 @@ elif [ -d "$AARCH64_OPENSSL" ]; then
 fi
 
 git clone https://github.com/openssl/openssl.git
-cd $BUILD_OPENSSSL_DIR/openssl
+cd $BUILD_DIR_OPENSSSL/openssl
 ./Configure no-asm no-dso no-afalgeng no-shared no-pinshared no-apps
 make
 
 # Show off what we built
 printf "\nBuild of OpenSSL with cosmocc is complete.\n\n"
-printf "\$ ls -al $BUILD_OPENSSSL_DIR/openssl/*.a\n"
-ls -al $BUILD_OPENSSSL_DIR/openssl/*.a
-printf "\n\$ ls -al $BUILD_OPENSSSL_DIR/openssl/*.a\n"
-ls -al $BUILD_OPENSSSL_DIR/openssl/.aarch64/*.a
+printf "\$ ls -al $BUILD_DIR_OPENSSSL/openssl/*.a\n"
+ls -al $BUILD_DIR_OPENSSSL/openssl/*.a
+printf "\n\$ ls -al $BUILD_DIR_OPENSSSL/openssl/*.a\n"
+ls -al $BUILD_DIR_OPENSSSL/openssl/.aarch64/*.a
 printf "\n"
 
 cd $HOME

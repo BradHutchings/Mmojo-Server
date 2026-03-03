@@ -34,6 +34,9 @@
 #endif
 
 // Mmojo Server START
+#include "server-additions-mmojo.h"
+
+#if 0
 // This could be automated by searching for "using json =" and inserting this block before.
 #if !defined(_WIN32)
 #include <linux/limits.h>
@@ -207,7 +210,7 @@ void mmojo_printf(const char* format, const char* stringParam) {
     #endif
     printf(formatString.c_str(), stringParam);
 }
-
+#endif
 // Mmojo Server END
 
 static std::function<void(int)> shutdown_handler;
@@ -261,6 +264,7 @@ static server_http_context::handler_t ex_wrapper(server_http_context::handler_t 
 }
 
 // Mmojo Server START
+#if 0
 // To automate, insert before: "int main(int argc, char ** argv) {"
 
 void main_mmojo_server_1(char* argv_0);
@@ -529,7 +533,7 @@ void main_mmojo_server_3(common_params& params) {
         }
     }
 }
-
+#endif
 // Mmojo Server END
 
 int main(int argc, char ** argv) {

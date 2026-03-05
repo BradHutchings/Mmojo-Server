@@ -39,6 +39,11 @@ if [ ! -d "$BUILD_DIR" ]; then
 fi
 ```
 
+The customize step occasionally skips setting the build date in the Mmojo Complete user interface. Run this command to make sure it only returns two results. If it returns more than two, delete the `$BUILD_DIR` and run the snippet above again.
+```
+ grep -r "\[\[UPDATED" $BUILD_DIR
+```
+
 Copy Cosmo and OpenSSL into the `$BUILD_DIR`:
 ```
 mm-prepare-copy-cosmo.sh

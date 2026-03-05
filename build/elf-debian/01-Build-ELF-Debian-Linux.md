@@ -39,6 +39,12 @@ if [ ! -d "$BUILD_DIR" ]; then
 fi
 ```
 
+The customize step occasionally skips setting the build date in the Mmojo Complete user interface. Run this command to make sure it only returns two results. If it returns more than two, delete the `$BUILD_DIR` and run the snippet above again.
+```
+ grep -r "\[\[UPDATED" $BUILD_DIR
+```
+
+
 Choose GPUs for your build if you're not building for Raspberry Pi 5.
 ```
 . mm-gpus-choose.sh

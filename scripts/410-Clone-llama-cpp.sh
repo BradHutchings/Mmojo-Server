@@ -14,11 +14,11 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-mkdir -p $LOCAL_MODELS_DIR
-cd $LOCAL_MODELS_DIR
+mkdir -p $MODELS_DIR
+cd $MODELS_DIR
 
 echo "Cloning llama.cpp locally for gguf python stack."
-git clone https://github.com/ggml-org/llama.cpp $LOCAL_MODELS_DIR/llama.cpp
+git clone https://github.com/ggml-org/llama.cpp $MODELS_DIR/llama.cpp
 
 cd $HOME
 

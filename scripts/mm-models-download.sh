@@ -30,12 +30,12 @@ downloaded=0
 unset ggufs
 declare -A ggufs
 
-if [ -f "$MODEL_QUEUE" ]; then
+if [ -f "$_MODEL_QUEUE" ]; then
     while IFS=$' ' read -r gguf ; do
         if [[ "$gguf" != "#" ]] && [[ -n "$gguf" ]]; then
             ggufs["${gguf}"]="1"
         fi
-    done < "$MODEL_QUEUE"
+    done < "$_MODEL_QUEUE"
 fi
 
 for key in "${!ggufs[@]}"; do

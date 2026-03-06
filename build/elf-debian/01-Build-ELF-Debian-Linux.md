@@ -120,7 +120,7 @@ Create a deploy directory:
 if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
     rm -r -f "$DEPLOY_DIR"/*
-    cp "$_BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
+    cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     cp "$MMOJO_SERVER_REPO_DIR/LICENSE" "$DEPLOY_DIR"
     touch "$DEPLOY_DIR/$TOUCH_FILE"

@@ -21,7 +21,7 @@ Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 if test -n "$RUN_LLAMA_SERVER_DIR"; then
   cd "$RUN_LLAMA_SERVER_DIR"
-  zip -r "$PACKAGE_FILE" $PACKAGE_LLAMA_SERVER_FILE "$TOUCH_FILE"
+  zip -r "$PACKAGE_FILE" $_PACKAGE_LLAMA_SERVER_FILE "$TOUCH_FILE"
   mkdir -p "$PACKAGES_DIR"
   mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME

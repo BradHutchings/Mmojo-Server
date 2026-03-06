@@ -19,11 +19,11 @@ If you don't do this, the `mm-debug` and `mm-start` commands will use the first 
 
 ```
 ln -sfr "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
-    "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+    "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 ```
 ln -sfr "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
-    "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+    "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 
 ---

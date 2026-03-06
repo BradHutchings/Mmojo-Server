@@ -32,7 +32,7 @@ export CERTIFICATES_DIR_NAME="mm-certificates"
 export MOOELS_DIR_NAME="mm-models"
 export PACKAGES_DIR_NAME="mm-packages"
 
-echo "Setting mmojo-server paths."
+echo "Setting Mmojo-Server repo paths."
 export MMOJO_SERVER_REPO_DIR="$HOME/mm-mmojo-server-repo"
 export MMOJO_SERVER_REPO_FILES="$MMOJO_SERVER_REPO_DIR/files"
 export MMOJO_SERVER_REPO_SCRIPTS="$MMOJO_SERVER_REPO_DIR/scripts"
@@ -66,16 +66,6 @@ echo "Setting local models paths."
 export MODELS_DIR="$HOME/$MOOELS_DIR_NAME"
 export _MODEL_QUEUE="$MODELS_DIR/model-queue.txt"
 
-echo "Setting packages paths"
-export PACKAGES_DIR="$HOME/$PACKAGES_DIR_NAME"
-
-echo "Setting Local and Share Download paths."
-export DOWNLOADS_DIR_NAME="mm-downloads"
-
-export LOCAL_DOWNLOADS_DIR="$HOME/$DOWNLOADS_DIR_NAME"
-
-export MMOJO_SHARE_DOWNLOADS_DIR="$MMOJO_SHARE_MOUNT_POINT/$DOWNLOADS_DIR_NAME"
-
 echo "Setting Build paths."
 export BUILD_DIR="$HOME/mm-build"
 export BUILD_DIR_LLAMA_SERVER="$HOME/mm-build-llama-server"
@@ -95,8 +85,6 @@ VULKAN_SETUP_ENV="$BUILD_DIR_VULKAN_SDK/$VULKAN_VERSION/setup-env.sh"
 if [ -e "$VULKAN_SETUP_ENV" ]; then
   source $VULKAN_SETUP_ENV
 fi
-
-
 
 export COSMO_COMPATIBLE_X86_64="build-cosmo-compatible-x86_64"
 export COSMO_COMPATIBLE_AARCH64="build-cosmo-compatible-aarch64"
@@ -126,8 +114,10 @@ unset TEST_MODEL
 unset TEST_CPU_THREADS
 unset TEST_WITH_CHAT_UI
 
-echo "Setting Package paths."
-export PACKAGE_DIR="$HOME/600-PACKAGE-mmojo-server"
+echo "Setting packages paths."
+export PACKAGES_DIR="$HOME/$PACKAGES_DIR_NAME"
+
+# export PACKAGE_DIR="$HOME/600-PACKAGE-mmojo-server"
 
 # REMOVE THESE IN FUTURE. -Brad 2026-03-05
 # export PACKAGE_APE="ape"
@@ -142,12 +132,13 @@ export _PACKAGE_MMOJO_SERVER_FILE="mmojo-server"
 export _PACKAGE_MMOJO_SERVER_APE_FILE="mmojo-server-ape"
 export _PACKAGE_LLAMA_SERVER_FILE="llama-server"
 
-export PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE="mmojo-server-ape-compatible"
-export PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE="mmojo-server-ape-performant"
-export PACKAGE_MMOJO_SERVER_ZIP_FILE="mmojo-server.zip"
-export PACKAGE_MMOJO_SERVER_EXE_FILE="mmojo-server.exe"
-export PACKAGE_MMOJO_SERVER_ARGS_FILE="mmojo-server-args"
-export PACKAGE_MMOJO_SERVER_SUPPORT_DIR="mmojo-server-support"
+export _PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE="mmojo-server-ape-compatible"
+export _PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE="mmojo-server-ape-performant"
+export _PACKAGE_MMOJO_SERVER_ARGS_FILE="mmojo-server-args"
+export _PACKAGE_MMOJO_SERVER_SUPPORT_DIR="mmojo-server-support"
+
+export _PACKAGE_MMOJO_SERVER_EXE_FILE="mmojo-server.exe"
+export _PACKAGE_MMOJO_SERVER_ZIP_FILE="mmojo-server.zip"
 
 echo "Setting architectuire value for compilers."
 export ARCH_X86_64_COMPATIBLE="x86-64"

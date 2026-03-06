@@ -15,16 +15,26 @@ mm-models-download.sh
 
 **Optional:** There are more recent Gemma E2B and E4B models. Run this script to download them.
 ```
-cat << EOF >> $MODEL_QUEUE
+cat << EOF >> $_MODEL_QUEUE
 Google-Gemma-E2B-Instruct-v3n-q8_0.gguf
 Google-Gemma-E4B-Instruct-v3n-q8_0.gguf
 EOF
 mm-models-download.sh
 ```
 
-**Optional:** IBM Granite models implement so-called "thinking" and "tool calling". Run this script to download them.
+**Optional:** Qwen3.5 models implement so-called "thinking" and "tool calling". Qwen3.5 models, particularly 9B, seem to be the best for use with OpenClaw. Run this script to download them.
 ```
-cat << EOF >> $MODEL_QUEUE
+cat << EOF >> $_MODEL_QUEUE
+Qwen3.5-2B-v3.5-q8_0.gguf
+Qwen3.5-4B-v3.5-q8_0.gguf
+Qwen3.5-9B-v3.5-q8_0.gguf
+EOF
+mm-models-download.sh
+```
+
+**Optional:** IBM Granite models also implement so-called "thinking" and "tool calling". Run this script to download them.
+```
+cat << EOF >> $_MODEL_QUEUE
 IBM-Granite-2B-Instruct-v3.3-q8_0.gguf
 IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
 IBM-Granite-350M-v4.0-q8_0.gguf
@@ -37,20 +47,10 @@ mm-models-download.sh
 
 **Optional:** Microsoft Phi 4 models also implement so-called "thinking" and "tool calling". Run this script to download them.
 ```
-cat << EOF >> $MODEL_QUEUE
+cat << EOF >> $_MODEL_QUEUE
 Microsoft-Phi-3.8B-Reasoning-v4-q8_0.gguf
 Microsoft-Phi-16B-Reasoning-Plus-v4-q8_0.gguf
 Microsoft-Phi-16B-Reasoning-v4-q8_0.gguf
-EOF
-mm-models-download.sh
-```
-
-**Optional:** Qwen3 models also implement so-called "thinking" and "tool calling". Qwen3 models, particularly 14B, seem to be the best for use with OpenClaw. Run this script to download them.
-```
-cat << EOF >> $MODEL_QUEUE
-Qwen3-4B-Thinking-2507-FP8-q8_0.gguf
-Qwen3-8B-v3-q8_0.gguf
-Qwen3-14B-v3-q8_0.gguf
 EOF
 mm-models-download.sh
 ```

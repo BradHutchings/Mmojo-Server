@@ -17,7 +17,7 @@ if [ "$1" == "llama-server" ]; then
     THIS_BUILD_DIR=$BUILD_DIR_LLAMA_SERVER
 fi
 
-EXECUTABLE_FILE=$PACKAGE_MMOJO_SERVER_FILE
+EXECUTABLE_FILE=$_PACKAGE_MMOJO_SERVER_FILE
 
 echo "  executable file: $EXECUTABLE_FILE"
 echo "       cloning in: $THIS_BUILD_DIR"

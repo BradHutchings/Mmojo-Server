@@ -84,8 +84,8 @@ fi
 
 Create a `mmojo-server-args` file in the `$DEPLOY_DIR` to launch Mmojo Server with the Mmojo Complete UI:
 ```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 # Rename this file "mmojo-server-args" (no quotes) and put it
 # in the same directory as the mmojo-server executable to
 # override these default values.
@@ -112,8 +112,8 @@ EOF
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 ```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 # Rename this file "mmojo-server-args" (no quotes) and put it
 # in the same directory as the mmojo-server executable to
 # override these default values.

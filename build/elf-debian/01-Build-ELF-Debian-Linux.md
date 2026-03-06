@@ -54,25 +54,25 @@ Build native Mmojo Server tuned to the specific CPU of your PC:
 _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 _TOUCH_FILE=""
-VARIATION="native"
+_VARIATION="native"
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
     unset $GPUS_CHOICE
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_RPI5_AARCH64"
     _PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
     _TOUCH_FILE="build-aarch64-rpi5"
-    VARIATION="pi"
+    _VARIATION="pi"
 elif [ $(uname -m) == "x86_64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
     _TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
-    VARIATION="native"
+    _VARIATION="native"
 elif [ $(uname -m) == "aarch64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
     _TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
-    VARIATION="native"
+    _VARIATION="native"
 fi
-mm-build-for-platform.sh $VARIATION "$GPUS_CHOICE"
+mm-build-for-platform.sh $_VARIATION "$GPUS_CHOICE"
 ```
 
 <details>

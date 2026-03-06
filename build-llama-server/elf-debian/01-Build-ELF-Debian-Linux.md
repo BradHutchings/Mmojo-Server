@@ -114,7 +114,7 @@ Create a run directory:
 if [ "$RUN_DIR" != "" ]; then
     mkdir -p $RUN_DIR
     rm -r -f "$RUN_DIR"/*
-    cp $_BUILD_SUBDIR/bin/$PACKAGE_LLAMA_SERVER_FILE $RUN_DIR
+    cp $_BUILD_SUBDIR/bin/$_PACKAGE_LLAMA_SERVER_FILE $RUN_DIR
     touch "$RUN_DIR/$TOUCH_FILE"
 fi
 ```

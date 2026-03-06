@@ -55,12 +55,12 @@ Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to th
 
 Make a `Mmojo-Server-ape.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
-PACKAGE_FILE="Mmojo-Server-ape.zip"
+_PACKAGE_FILE="Mmojo-Server-ape.zip"
 if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
-  zip "$PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_FILE"* *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
+  zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_FILE"* *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
   mkdir -p "$PACKAGES_DIR"
-  mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
+  mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME
   ls -al "$PACKAGES_DIR"
 fi

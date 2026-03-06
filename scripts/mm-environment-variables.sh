@@ -64,7 +64,7 @@ export MMOJO_SHARE_MOUNT_SCRIPT="mm-share-mount.sh"
 
 echo "Setting local models paths."
 export MODELS_DIR="$HOME/$MOOELS_DIR_NAME"
-export MODEL_QUEUE="$MODELS_DIR/model-queue.txt"
+export _MODEL_QUEUE="$MODELS_DIR/model-queue.txt"
 
 echo "Setting packages paths"
 export PACKAGES_DIR="$HOME/$PACKAGES_DIR_NAME"
@@ -129,17 +129,18 @@ unset TEST_WITH_CHAT_UI
 echo "Setting Package paths."
 export PACKAGE_DIR="$HOME/600-PACKAGE-mmojo-server"
 
-export PACKAGE_APE="ape"
-export PACKAGE_COMPATIBLE_APE="compatible-ape"
-export PACKAGE_PERFORMANT_APE="performant-ape"
-export PACKAGE_COMPATIBLE_NAKED_APE="compatible-naked-ape"
-export PACKAGE_PERFORMANT_NAKED_APE="performant-naked-ape"
-export PACKAGE_ZIP="zip"
-export PACKAGE_SEAS="seas"
+# REMOVE THESE IN FUTURE. -Brad 2026-03-05
+# export PACKAGE_APE="ape"
+# export PACKAGE_COMPATIBLE_APE="compatible-ape"
+# export PACKAGE_PERFORMANT_APE="performant-ape"
+# export PACKAGE_COMPATIBLE_NAKED_APE="compatible-naked-ape"
+# export PACKAGE_PERFORMANT_NAKED_APE="performant-naked-ape"
+# export PACKAGE_ZIP="zip"
+# export PACKAGE_SEAS="seas"
 
-export PACKAGE_MMOJO_SERVER_FILE="mmojo-server"
-export PACKAGE_MMOJO_SERVER_APE_FILE="mmojo-server-ape"
-export PACKAGE_LLAMA_SERVER_FILE="llama-server"
+export _PACKAGE_MMOJO_SERVER_FILE="mmojo-server"
+export _PACKAGE_MMOJO_SERVER_APE_FILE="mmojo-server-ape"
+export _PACKAGE_LLAMA_SERVER_FILE="llama-server"
 
 export PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE="mmojo-server-ape-compatible"
 export PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE="mmojo-server-ape-performant"

@@ -19,42 +19,12 @@ If you have an NVIDIA GPU, build a native Mmojo Server with CUDA support in your
 ### Download Models
 Download models that OpenClaw can work with from Hugging Face. These may take 20 minutes or so to download.
 
-Qwen3 models implement so-called "thinking" and "tool calling". Run this script to add them to the model download queue.
+Qwen3.5 models implement so-called "thinking" and "tool calling". 9B works really well with OpenClaw. Run this script to add them to the model download queue.
 ```
-cat << EOF >> $MODEL_QUEUE
-Qwen3-4B-Thinking-2507-FP8-q8_0.gguf
-Qwen3-8B-v3-q8_0.gguf
-Qwen3-14B-v3-q8_0.gguf
-EOF
-mm-models-download.sh
-```
-
-**Optional:** IBM Granite models implement so-called "thinking" and "tool calling".
-```
-cat << EOF >> $MODEL_QUEUE
-IBM-Granite-2B-Instruct-v3.3-q8_0.gguf
-IBM-Granite-8B-Instruct-v3.3-q8_0.gguf
-EOF
-mm-models-download.sh
-```
-
-**Optional:** Here are some newer Granite models:
-```
-cat << EOF >> $MODEL_QUEUE
-IBM-Granite-350M-v4.0-q8_0.gguf
-IBM-Granite-1B-v4.0-q8_0.gguf
-IBM-Granite-Micro-3B-v4.0-q8_0.gguf
-IBM-Granite-Tiny-Preview-7B-v4.0-q8_0.gguf
-EOF
-mm-models-download.sh
-```
-
-**Optional:** Here are some Microsoft Phi4 models:
-```
-cat << EOF >> $MODEL_QUEUE
-Microsoft-Phi-3.8B-Reasoning-v4-q8_0.gguf
-Microsoft-Phi-16B-Reasoning-v4-q8_0.gguf
-Microsoft-Phi-16B-Reasoning-Plus-v4-q8_0.gguf
+cat << EOF >> $_MODEL_QUEUE
+Qwen3.5-2B-v3.5-q8_0.gguf
+Qwen3.5-4B-v3.5-q8_0.gguf
+Qwen3.5-9B-v3.5-q8_0.gguf
 EOF
 mm-models-download.sh
 ```

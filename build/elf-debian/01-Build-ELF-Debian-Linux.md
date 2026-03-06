@@ -129,8 +129,8 @@ fi
 
 Create a mmojo-server-args file in the $DEPLOY_DIR to launch Mmojo Server with the Mmojo Complete UI:
 ```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --path
 /app/Mmojo-Complete
 --default-ui-endpoint
@@ -154,8 +154,8 @@ EOF
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 ```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --host
 127.0.0.1
 --port

@@ -33,9 +33,9 @@ export MOOELS_DIR_NAME="mm-models"
 export PACKAGES_DIR_NAME="mm-packages"
 
 echo "Setting Mmojo-Server repo paths."
-export MMOJO_SERVER_REPO_DIR="$HOME/mm-mmojo-server-repo"
-export MMOJO_SERVER_REPO_FILES="$MMOJO_SERVER_REPO_DIR/files"
-export MMOJO_SERVER_REPO_SCRIPTS="$MMOJO_SERVER_REPO_DIR/scripts"
+export REPO_DIR="$HOME/mm-repo"
+export REPO_FILES="$REPO_DIR/files"
+export REPO_SCRIPTS="$REPO_DIR/scripts"
 
 echo "Setting Mmojo Share paths."
 if [ "$(uname -s)" = "Darwin" ]; then

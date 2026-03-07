@@ -21,17 +21,17 @@ fi
 #----------------------------------------
 # Create mount point: /mnt/mmojo
 #----------------------------------------
-if [ ! -d "$MMOJO_SHARE_MOUNT_POINT" ]; then
-    echo "Creating Mmojo Share mount point - $MMOJO_SHARE_MOUNT_POINT."
-    sudo mkdir -p $MMOJO_SHARE_MOUNT_POINT
+if [ ! -d "$SHARE_MOUNT_POINT" ]; then
+    echo "Creating Mmojo Share mount point - $SHARE_MOUNT_POINT."
+    sudo mkdir -p $SHARE_MOUNT_POINT
 fi
 
 #----------------------------------------
 # Create a `mm-share-mount.sh` script.
 #----------------------------------------
-echo "Copying $MMOJO_SHARE_MOUNT_SCRIPT script."
-cp "$REPO_SCRIPTS/-$MMOJO_SHARE_MOUNT_SCRIPT" "$HOME_SCRIPTS/$MMOJO_SHARE_MOUNT_SCRIPT"
-chmod a+x "$HOME_SCRIPTS/$MMOJO_SHARE_MOUNT_SCRIPT"
+echo "Copying $SHARE_MOUNT_SCRIPT script."
+cp "$REPO_SCRIPTS/-$SHARE_MOUNT_SCRIPT" "$HOME_SCRIPTS/$SHARE_MOUNT_SCRIPT"
+chmod a+x "$HOME_SCRIPTS/$SHARE_MOUNT_SCRIPT"
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

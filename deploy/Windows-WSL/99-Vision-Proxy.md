@@ -15,8 +15,8 @@ cd $PROXY_DIR
 pip install -r requirements.txt --quiet --break-system-packages
 cd $HOME
 
-if [ -d "$MMOJO_SERVER_REPO_FILES" ]; then
-    cp -r -f "$MMOJO_SERVER_REPO_FILES/proxy/"* $PROXY_DIR
+if [ -d "$REPO_FILES" ]; then
+    cp -r -f "$REPO_FILES/proxy/"* $PROXY_DIR
 fi
 ```
 

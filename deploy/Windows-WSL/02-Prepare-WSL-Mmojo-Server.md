@@ -192,7 +192,7 @@ echo $PATH
 ### Clone the Mmojo Server Repository
 The Mmojo Server Github repositort has scripts and tools for installing and building Mmojo Server.
 ```
-export REPO_DIR="$HOME/mm-mmojo-server-repo"
+export REPO_DIR="$HOME/mm-repo"
 export REPO_SCRIPTS="$REPO_DIR/scripts"
 cd $HOME
 if [ "$REPO_DIR" ]; then

@@ -30,7 +30,7 @@ fi
 # Create a `mm-share-mount.sh` script.
 #----------------------------------------
 echo "Copying $MMOJO_SHARE_MOUNT_SCRIPT script."
-cp "$MMOJO_SERVER_REPO_SCRIPTS/-$MMOJO_SHARE_MOUNT_SCRIPT" "$HOME_SCRIPTS/$MMOJO_SHARE_MOUNT_SCRIPT"
+cp "$REPO_SCRIPTS/-$MMOJO_SHARE_MOUNT_SCRIPT" "$HOME_SCRIPTS/$MMOJO_SHARE_MOUNT_SCRIPT"
 chmod a+x "$HOME_SCRIPTS/$MMOJO_SHARE_MOUNT_SCRIPT"
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

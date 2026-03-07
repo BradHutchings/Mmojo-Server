@@ -10,15 +10,15 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-if [ -d "$MMOJO_SERVER_REPO_DIR" ]; then
+if [ -d "$REPO_DIR" ]; then
   WD=$(pwd)
-  cd $MMOJO_SERVER_REPO_DIR
+  cd $REPO_DIR
   branch=$(git branch --show-current)
   cd $WD
 
-  echo "You are in the \"$branch\" branch of the $MMOJO_SERVER_REPO_DIR repo directory."
+  echo "You are in the \"$branch\" branch of the $REPO_DIR repo directory."
 else
-  echo "The $MMOJO_SERVER_REPO_DIR directory does not exist."
+  echo "The $REPO_DIR directory does not exist."
 fi
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

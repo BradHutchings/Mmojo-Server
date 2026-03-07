@@ -19,7 +19,7 @@ SHARE="mmojo"
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-if [ ! -d $MMOJO_SHARE_MOUNT_POINT ]; then
+if [ ! -d $SHARE_MOUNT_POINT ]; then
     echo "You have not created your Mmojo Share mount point."
     exit 1
 fi
@@ -34,27 +34,16 @@ if [[ $(uname -r) =~ Microsoft|WSL ]]; then
     RUNNING_IN_WSL=1
 fi
 
-if [[ ! $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]]; then
+if [[ ! $(findmnt $SHARE_MOUNT_POINT) ]]; then
    echo "Attempting to mount Mmojo Share as cifs. You may be prompted for your share password."
-   sudo mount -t cifs -o user=$USER //$HOST/$SHARE $MMOJO_SHARE_MOUNT_POINT
+   sudo mount -t cifs -o user=$USER //$HOST/$SHARE $SHARE_MOUNT_POINT
 fi
-if [[ ! $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]]; then
+if [[ ! $(findmnt $SHARE_MOUNT_POINT) ]]; then
    if [ $RUNNING_IN_WSL == 1 ]; then
         echo "Attemoting to mount Mmojo Share as drvfs. You may be prompted for your share password."
-        sudo mount -t drvfs -o user=$USER "\\\\$HOST\\$SHARE" $MMOJO_SHARE_MOUNT_POINT
+        sudo mount -t drvfs -o user=$USER "\\\\$HOST\\$SHARE" $SHARE_MOUNT_POINT
    fi
 fi
-
-# Previous logic was not right.
-# if [[ ! $(findmnt $MMOJO_SHARE_MOUNT_POINT) ]]; then
-#     if [ $RUNNING_IN_WSL == 1 ]; then
-#         echo "Mounting Mmojo Share as drvfs. You may be prompted for your share password."
-#         sudo mount -t drvfs -o user=$USER "\\\\$HOST\\$SHARE" $MMOJO_SHARE_MOUNT_POINT
-#     else
-#         echo "Mounting Mmojo Share as cifs. You may be prompted for your share password."
-#         sudo mount -t cifs -o user=$USER //$HOST/$SHARE $MMOJO_SHARE_MOUNT_POINT
-#     fi
-# fi
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

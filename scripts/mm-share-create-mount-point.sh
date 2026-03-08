@@ -21,9 +21,9 @@ fi
 #----------------------------------------
 # Create mount point: /mnt/mmojo
 #----------------------------------------
-if [ ! -d "$SHARE_MOUNT_POINT" ]; then
-    echo "Creating Mmojo Share mount point - $SHARE_MOUNT_POINT."
-    sudo mkdir -p $SHARE_MOUNT_POINT
+if [ ! -d "$SHARE_DIR_MOUNT_POINT" ]; then
+    echo "Creating Mmojo Share mount point - $SHARE_DIR_MOUNT_POINT."
+    sudo mkdir -p $SHARE_DIR_MOUNT_POINT
 fi
 
 #----------------------------------------

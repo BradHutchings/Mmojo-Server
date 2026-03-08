@@ -36,7 +36,6 @@ if [ -d "$PACKAGES_DIR" ]; then
                 wd2=$(pwd)
                 cd "$DEPLOY_DIR"
                 shopt -s extglob
-                # This gives a syntax error if I try to run it directly. Seriously, WTF? -Brad 2026-03-08
                 bash -c "rm -r -f -- !(*.gguf)"
                 shopt -u extglob
                 cd $wd2

@@ -57,8 +57,10 @@ if [ -z "$serverRunningId" ]; then
             nohup "$MMOJO_SERVER_EXEC" "$MMOJO_SERVER_PARAMS" > "$MMOJO_SERVER_LOG" 2>&1 &
         else
             COMMAND="$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
-            # bash -c "$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
+            echo $COMMAND
+            echo ""
             bash -c "$COMMAND"
+            # bash -c "$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
         fi
     fi
 else

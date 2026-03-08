@@ -30,7 +30,7 @@ fi
 # Create a `mm-share-mount.sh` script.
 #----------------------------------------
 echo "Copying $SHARE_MOUNT_SCRIPT script."
-cp "$REPO_SCRIPTS/-$SHARE_MOUNT_SCRIPT" "$HOME_SCRIPTS/$SHARE_MOUNT_SCRIPT"
+cp "$REPO_DIR_SCRIPTS/-$SHARE_MOUNT_SCRIPT" "$HOME_SCRIPTS/$SHARE_MOUNT_SCRIPT"
 chmod a+x "$HOME_SCRIPTS/$SHARE_MOUNT_SCRIPT"
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

@@ -23,8 +23,8 @@ echo "  executable file: $EXECUTABLE_FILE"
 echo "       cloning in: $THIS_BUILD_DIR"
 echo ""
 
-# This copies the $REPO_FILES tree into the $THIS_BUILD_DIR tree.
-cp -r $REPO_FILES/* $THIS_BUILD_DIR/
+# This copies the $REPO_DIR_FILES tree into the $THIS_BUILD_DIR tree.
+cp -r $REPO_DIR_FILES/* $THIS_BUILD_DIR/
 
 cd $THIS_BUILD_DIR
 

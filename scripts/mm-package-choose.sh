@@ -10,10 +10,6 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
 
-echo $SHELL
-echo ""
-echo ""
-
 if [ -d "$PACKAGES_DIR" ]; then
     wd=$(pwd)
     cd "$PACKAGES_DIR"
@@ -35,11 +31,12 @@ if [ -d "$PACKAGES_DIR" ]; then
             package=${options[$opt-1]}
             echo "You chose $opt: $package."
             echo "Unzipping into $DEPLOY_DIR."
-            if [ "$DEPLOY_DIR" != "" ] && [ -d "$DEPLOY_DIR" ]; then
+            if [ "$DEPLOY_DIR" != "" ] then
                 mkdir -p "$DEPLOY_DIR"
                 wd2=$(pwd)
                 cd "$DEPLOY_DIR"
                 shopt -s extglob
+                # This gives a syntax error if I try to run it directly. Seriously, WTF? -Brad 2026-03-08
                 bash -c "rm -r -f -- !(*.gguf)"
                 shopt -u extglob
                 cd $wd2

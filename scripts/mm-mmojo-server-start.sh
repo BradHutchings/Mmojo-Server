@@ -52,13 +52,16 @@ serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
 
 if [ -z "$serverRunningId" ]; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
+        COMMAND="$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
+        echo $COMMAND
+        echo ""
         if ($runInBackground); then
             echo "Starting $APP_NAME in the background."
-            nohup "$MMOJO_SERVER_EXEC" "$MMOJO_SERVER_PARAMS" > "$MMOJO_SERVER_LOG" 2>&1 &
+            nohup bash -c "$COMMAND" > "$MMOJO_SERVER_LOG" 2>&1 &
         else
-            COMMAND="$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
-            echo $COMMAND
-            echo ""
+            # COMMAND="$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
+            # echo $COMMAND
+            # echo ""
             bash -c "$COMMAND"
             # bash -c "$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
         fi

@@ -33,7 +33,7 @@ if [ -d "$PACKAGES_DIR" ]; then
             echo "Unzipping into $DEPLOY_DIR."
             if [ "$DEPLOY_DIR" != "" ] && [ -d "$DEPLOY_DIR" ]; then
                 mkdir -p "$DEPLOY_DIR"
-                wd=(pwd)
+                wd=$(pwd)
                 cd "$DEPLOY_DIR"
                 shopt -s extglob
                 rm -r -f !(*.gguf)

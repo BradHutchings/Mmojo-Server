@@ -48,18 +48,6 @@ export SHARE_DIR_CERTIFICATES="$SHARE_MOUNT_POINT/$CERTIFICATES_DIR_NAME"
 export SHARE_DIR_MODELS="$SHARE_MOUNT_POINT/$MOOELS_DIR_NAME"
 export SHARE_DIR_PACKAGES="$SHARE_MOUNT_POINT/$PACKAGES_DIR_NAME"
 
-# export SHARE_BUILDS="$SHARE_MOUNT_POINT/builds"
-# export SHARE_BUILDS_APE="$SHARE_BUILDS/ape"
-# export SHARE_BUILDS_COMPATIBLE_APE="$SHARE_BUILDS/compatible-ape"
-# export SHARE_BUILDS_PERFORMANT_APE="$SHARE_BUILDS/performant-ape"
-# export SHARE_BUILDS_CPU_NATIVE="$SHARE_BUILDS/cpu-native"
-# export SHARE_BUILDS_CUDA="$SHARE_BUILDS/cuda"
-# export SHARE_BUILDS_VULKAN="$SHARE_BUILDS/vulkan"
-# export SHARE_PACKAGES_APE="$SHARE_PACKAGES_DIR/ape"
-# export SHARE_PACKAGES_COMPATIBLE_APE="$SHARE_PACKAGES_DIR/compatible-ape"
-# export SHARE_PACKAGES_PERFORMANT_APE="$SHARE_PACKAGES_DIR/performant-ape"
-# export SHARE_PACKAGES_ZIP="$SHARE_PACKAGES_DIR/zip"
-
 export SHARE_MOUNT_SCRIPT="mm-share-mount.sh"
 
 echo "Setting local models paths."
@@ -116,17 +104,6 @@ unset TEST_WITH_CHAT_UI
 
 echo "Setting packages paths."
 export PACKAGES_DIR="$HOME/$PACKAGES_DIR_NAME"
-
-# export PACKAGE_DIR="$HOME/600-PACKAGE-mmojo-server"
-
-# REMOVE THESE IN FUTURE. -Brad 2026-03-05
-# export PACKAGE_APE="ape"
-# export PACKAGE_COMPATIBLE_APE="compatible-ape"
-# export PACKAGE_PERFORMANT_APE="performant-ape"
-# export PACKAGE_COMPATIBLE_NAKED_APE="compatible-naked-ape"
-# export PACKAGE_PERFORMANT_NAKED_APE="performant-naked-ape"
-# export PACKAGE_ZIP="zip"
-# export PACKAGE_SEAS="seas"
 
 export _PACKAGE_MMOJO_SERVER_FILE="mmojo-server"
 export _PACKAGE_MMOJO_SERVER_APE_FILE="mmojo-server-ape"

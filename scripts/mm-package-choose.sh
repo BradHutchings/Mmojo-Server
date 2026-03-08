@@ -36,7 +36,7 @@ if [ -d "$PACKAGES_DIR" ]; then
                 wd=$(pwd)
                 cd "$DEPLOY_DIR"
                 shopt -s extglob
-                rm -- !(*.gguf)
+                rm -r -f -- !(*.gguf)
                 shopt -u extglob
                 cd $wd
             fi

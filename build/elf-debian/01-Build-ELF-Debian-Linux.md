@@ -39,6 +39,11 @@ if [ ! -d "$BUILD_DIR" ]; then
 fi
 ```
 
+The customize script &mdash; `mm-prepare-customize-webui.sh` &mdash; occasionally skips setting the build date in the Mmojo Complete user interface. Run this command to make sure it only returns two results. If it returns more than two, delete the `$BUILD_DIR` and run the snippet above again.
+```
+grep -r "\[\[UPDATED" $BUILD_DIR
+```
+
 Choose GPUs for your build if you're not building for Raspberry Pi 5.
 ```
 . mm-gpus-choose.sh
@@ -46,44 +51,44 @@ Choose GPUs for your build if you're not building for Raspberry Pi 5.
 
 Build native Mmojo Server tuned to the specific CPU of your PC:
 ```
-BUILD_SUBDIR=""
-PACKAGE_FILE=""
-TOUCH_FILE=""
-VARIATION="native"
+_BUILD_SUBDIR=""
+_PACKAGE_FILE=""
+_TOUCH_FILE=""
+_VARIATION="native"
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
     unset $GPUS_CHOICE
-    BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_RPI5_AARCH64"
-    PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
-    TOUCH_FILE="build-aarch64-rpi5"
-    VARIATION="pi"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_RPI5_AARCH64"
+    _PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
+    _TOUCH_FILE="build-aarch64-rpi5"
+    _VARIATION="pi"
 elif [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
-    TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
-    VARIATION="native"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
+    _VARIATION="native"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
-    TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
-    VARIATION="native"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
+    _VARIATION="native"
 fi
-mm-build-for-platform.sh $VARIATION "$GPUS_CHOICE"
+mm-build-for-platform.sh $_VARIATION "$GPUS_CHOICE"
 ```
 
 <details>
   <summary><b>Alternatively:</b> Build a more compatible Mmojo Server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
-BUILD_SUBDIR=""
-PACKAGE_FILE=""
+_BUILD_SUBDIR=""
+_PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-x86_64-comp$GPUS_CHOICE.zip"
-    TOUCH_FILE="build-x86_64-comp$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-x86_64-comp$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-x86_64-comp$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
-    TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
 fi
 mm-build-for-platform.sh compatible "$GPUS_CHOICE"
 ```
@@ -93,16 +98,16 @@ mm-build-for-platform.sh compatible "$GPUS_CHOICE"
   <summary><b>Alternatively:</b> Build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
   
 ```
-BUILD_SUBDIR=""
-PACKAGE_FILE=""
+_BUILD_SUBDIR=""
+_PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-x86_64-perf$GPUS_CHOICE.zip"
-    TOUCH_FILE="build-x86_64-perf$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-x86_64-perf$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-x86_64-perf$GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
-    PACKAGE_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
-    TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
 fi
 mm-build-for-platform.sh performant "$GPUS_CHOICE"
 ```
@@ -115,17 +120,17 @@ Create a deploy directory:
 if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
     rm -r -f "$DEPLOY_DIR"/*
-    cp "$BUILD_SUBDIR/bin/$PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
+    cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
-    cp "$MMOJO_SERVER_REPO_DIR/LICENSE" "$DEPLOY_DIR"
-    touch "$DEPLOY_DIR/$TOUCH_FILE"
+    cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
+    touch "$DEPLOY_DIR/$_TOUCH_FILE"
 fi
 ```
 
 Create a mmojo-server-args file in the $DEPLOY_DIR to launch Mmojo Server with the Mmojo Complete UI:
 ```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --path
 /app/Mmojo-Complete
 --default-ui-endpoint
@@ -149,8 +154,8 @@ EOF
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 ```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 --host
 127.0.0.1
 --port

@@ -21,9 +21,9 @@ Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
-  zip -r "$PACKAGE_FILE" mmojo-server mmojo-server-args Mmojo-Complete LICENSE "$TOUCH_FILE"
+  zip -r "$_PACKAGE_FILE" mmojo-server $_PACKAGE_MMOJO_SERVER_ARGS_FILE Mmojo-Complete LICENSE "$_TOUCH_FILE"
   mkdir -p "$PACKAGES_DIR"
-  mv -f "$PACKAGE_FILE" "$PACKAGES_DIR"
+  mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME
   ls -al "$PACKAGES_DIR"
 fi

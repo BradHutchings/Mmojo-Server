@@ -14,19 +14,19 @@ cd $HOME
 
 backed_up_one=0
 
-if [ ! -d "$MMOJO_SHARE_MOUNT_POINT" ]; then
+if [ ! -d "$SHARE_DIR_MOUNT_POINT" ]; then
     # Fail silently, since we're now called by mm-models-download.sh.
     # echo "You have not created your Mmojo Share mount point."
     exit 1
 fi
 
 # mount the mmojo share
-if [[ ! $(findmnt "$MMOJO_SHARE_MOUNT_POINT") ]]; then
+if [[ ! $(findmnt "$SHARE_DIR_MOUNT_POINT") ]]; then
     mm-share-mount.sh
 fi
 
-if [[ $(findmnt "$MMOJO_SHARE_MOUNT_POINT") ]]; then
-    mkdir -p "$MMOJO_SHARE_PACKAGES_DIR"
+if [[ $(findmnt "$SHARE_DIR_MOUNT_POINT") ]]; then
+    mkdir -p "$SHARE_DIR_PACKAGES"
 fi
 
 # Create $PACKAGES_DIR is needed.
@@ -36,16 +36,16 @@ fi
 
 BackupPackage() {
     PACKAGE_FILE=$1
-    # if [ ! -f "$MMOJO_SHARE_PACKAGES_DIR/$PACKAGE_FILE" ]; then 
+    # if [ ! -f "$SHARE_DIR_PACKAGES/$PACKAGE_FILE" ]; then 
         echo ""
-        echo "Backing up $PACKAGE_FILE to $MMOJO_SHARE_PACKAGES_DIR."
-        sudo rsync -ah --progress "$PACKAGES_DIR/$PACKAGE_FILE" "$MMOJO_SHARE_PACKAGES_DIR/$PACKAGE_FILE"
-        sudo chmod a-x "$MMOJO_SHARE_PACKAGES_DIR/$PACKAGE_FILE"
+        echo "Backing up $PACKAGE_FILE to $SHARE_DIR_PACKAGES."
+        sudo rsync -ah --progress "$PACKAGES_DIR/$PACKAGE_FILE" "$SHARE_DIR_PACKAGES/$PACKAGE_FILE"
+        sudo chmod a-x "$SHARE_DIR_PACKAGES/$PACKAGE_FILE"
         backed_up_one=1
     # fi
 }
 
-if [[ $(findmnt "$MMOJO_SHARE_MOUNT_POINT") ]] && [ -d "$MMOJO_SHARE_PACKAGES_DIR" ] && [ -d "$PACKAGES_DIR" ]; then
+if [[ $(findmnt "$SHARE_DIR_MOUNT_POINT") ]] && [ -d "$SHARE_DIR_PACKAGES" ] && [ -d "$PACKAGES_DIR" ]; then
     cd "$PACKAGES_DIR"
     for file in *.zip; do
         if [ -f "$file" ]; then

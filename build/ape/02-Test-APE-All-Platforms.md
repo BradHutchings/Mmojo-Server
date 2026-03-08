@@ -18,12 +18,12 @@ You can use one of the two commands below to choose a build from from the `$DEPL
 If you don't do this, the `mm-debug` and `mm-start` commands will use the first available APE, which in this case would be the compatible one.
 
 ```
-ln -sfr "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
-    "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+ln -sfr "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" \
+    "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 ```
-ln -sfr "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
-    "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_FILE"
+ln -sfr "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
+    "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_FILE"
 ```
 
 ---

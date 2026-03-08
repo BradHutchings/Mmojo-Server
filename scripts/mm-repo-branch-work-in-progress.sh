@@ -10,38 +10,38 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-if [ -d "$MMOJO_SERVER_REPO_DIR" ]; then
+if [ -d "$REPO_DIR" ]; then
   WD=$(pwd)
-  cd $MMOJO_SERVER_REPO_DIR
+  cd $REPO_DIR
   git reset --hard
   git checkout work-in-progress
   cd $WD
 
   # These are the scripts. They need to be executable.
-  chmod -f a+x $MMOJO_SERVER_REPO_SCRIPTS/2*.sh
-  chmod -f a+x $MMOJO_SERVER_REPO_SCRIPTS/3*.sh
-  chmod -f a+x $MMOJO_SERVER_REPO_SCRIPTS/4*.sh
-  chmod -f a+x $MMOJO_SERVER_REPO_SCRIPTS/5*.sh
-  chmod -f a+x $MMOJO_SERVER_REPO_SCRIPTS/6*.sh
+  chmod -f a+x $REPO_DIR_SCRIPTS/2*.sh
+  chmod -f a+x $REPO_DIR_SCRIPTS/3*.sh
+  chmod -f a+x $REPO_DIR_SCRIPTS/4*.sh
+  chmod -f a+x $REPO_DIR_SCRIPTS/5*.sh
+  chmod -f a+x $REPO_DIR_SCRIPTS/6*.sh
   chmod -f a+x $LLAMA_SERVER_SCRIPTS/4*.sh
   chmod -f a+x $LLAMA_SERVER_SCRIPTS/5*.sh
   chmod -f a+x $LLAMA_SERVER_SCRIPTS/6*.sh
 
   ### Links don't work - end up modifying repo files on chmod.
-  cp $MMOJO_SERVER_REPO_SCRIPTS/mm-*.sh $HOME_SCRIPTS
+  cp $REPO_DIR_SCRIPTS/mm-*.sh $HOME_SCRIPTS
   chmod a+x $HOME_SCRIPTS/mm-*.sh
 
-  cp $MMOJO_SERVER_REPO_SCRIPTS/mr-*.sh $HOME_SCRIPTS
+  cp $REPO_DIR_SCRIPTS/mr-*.sh $HOME_SCRIPTS
   chmod a+x $HOME_SCRIPTS/mr-*.sh
 
   if [ -d "$BUILD_DIR" ]; then
-      # This copies the $MMOJO_SERVER_REPO_FILES tree into the $BUILD_DIR tree.
-      cp -r $MMOJO_SERVER_REPO_FILES/* $BUILD_DIR/
+      # This copies the $REPO_DIR_FILES tree into the $BUILD_DIR tree.
+      cp -r $REPO_DIR_FILES/* $BUILD_DIR/
       # In tools/server .cpp files, replace "defer(" with "defer_task(" to make Cosmo STL happy.
       sed -i -e 's/defer(/defer_task(/g' "$BUILD_DIR/tools/server/server-context-mmojo.cpp"
   fi
 else
-  echo "The $MMOJO_SERVER_REPO_DIR directory does not exist."
+  echo "The $REPO_DIR directory does not exist."
 fi
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

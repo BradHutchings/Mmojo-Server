@@ -39,6 +39,11 @@ if [ ! -d "$BUILD_DIR" ]; then
 fi
 ```
 
+The customize step occasionally skips setting the build date in the Mmojo Complete user interface. Run this command to make sure it only returns two results. If it returns more than two, delete the `$BUILD_DIR` and run the snippet above again.
+```
+grep -r "\[\[UPDATED" $BUILD_DIR
+```
+
 Copy Cosmo and OpenSSL into the `$BUILD_DIR`:
 ```
 mm-prepare-copy-cosmo.sh
@@ -61,26 +66,26 @@ Create a deploy directory. We need `.exe` variants for Windows. We need the plai
 if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
     rm -r -f "$DEPLOY_DIR"/*
-    PERFORMANT_APE="$BUILD_DIR/$COSMO_PERFORMANT_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
+    PERFORMANT_APE="$BUILD_DIR/$COSMO_PERFORMANT_APE/$_PACKAGE_MMOJO_SERVER_APE_FILE"
     if [ -f "$PERFORMANT_APE" ]; then
-        cp "$PERFORMANT_APE" "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
+        cp "$PERFORMANT_APE" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
     fi
-    COMPATIBLE_APE="$BUILD_DIR/$COSMO_COMPATIBLE_APE/$PACKAGE_MMOJO_SERVER_APE_FILE"
+    COMPATIBLE_APE="$BUILD_DIR/$COSMO_COMPATIBLE_APE/$_PACKAGE_MMOJO_SERVER_APE_FILE"
     if [ -f "$COMPATIBLE_APE" ]; then
-        cp "$COMPATIBLE_APE" "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
+        cp "$COMPATIBLE_APE" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
     fi
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
-    cp "$MMOJO_SERVER_REPO_DIR/LICENSE" "$DEPLOY_DIR"
-    cp "$MMOJO_SERVER_REPO_DIR/LICENSE" "$DEPLOY_DIR"
-    cp "$MMOJO_SERVER_REPO_FILES/package/ape-chat.html" "$DEPLOY_DIR/Mmojo Chat.html"
-    cp "$MMOJO_SERVER_REPO_FILES/package/ape-connect.html" "$DEPLOY_DIR/Mmojo Connect.html"
+    cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
+    cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
+    cp "$REPO_DIR_FILES/package/ape-chat.html" "$DEPLOY_DIR/Mmojo Chat.html"
+    cp "$REPO_DIR_FILES/package/ape-connect.html" "$DEPLOY_DIR/Mmojo Connect.html"
 fi
 ```
 
 Create a `mmojo-server-args` file in the `$DEPLOY_DIR` to launch Mmojo Server with the Mmojo Complete UI:
 ```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 # Rename this file "mmojo-server-args" (no quotes) and put it
 # in the same directory as the mmojo-server executable to
 # override these default values.
@@ -107,8 +112,8 @@ EOF
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 ```
-# make a $PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$DEPLOY_DIR/$PACKAGE_MMOJO_SERVER_ARGS_FILE"
+# make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
+cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 # Rename this file "mmojo-server-args" (no quotes) and put it
 # in the same directory as the mmojo-server executable to
 # override these default values.

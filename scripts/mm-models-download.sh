@@ -30,19 +30,19 @@ downloaded=0
 unset ggufs
 declare -A ggufs
 
-if [ -f "$MODEL_QUEUE" ]; then
+if [ -f "$_MODEL_QUEUE" ]; then
     while IFS=$' ' read -r gguf ; do
         if [[ "$gguf" != "#" ]] && [[ -n "$gguf" ]]; then
             ggufs["${gguf}"]="1"
         fi
-    done < "$MODEL_QUEUE"
+    done < "$_MODEL_QUEUE"
 fi
 
 for key in "${!ggufs[@]}"; do
     echo ""
     echo "Considering: $key"
 
-    FILE_ON_MMOJO_SHARE="$MMOJO_SHARE_MODELS_DIR/$key"
+    FILE_ON_MMOJO_SHARE="$SHARE_DIR_MODELS/$key"
 
     if [ -f "$MODELS_DIR/$key" ]; then
         echo "File already exists in $MODELS_DIR."

@@ -18,20 +18,20 @@ if [ -d "$REPO_DIR" ]; then
   cd $WD
 
   # These are the scripts. They need to be executable.
-  chmod -f a+x $REPO_SCRIPTS/2*.sh
-  chmod -f a+x $REPO_SCRIPTS/3*.sh
-  chmod -f a+x $REPO_SCRIPTS/4*.sh
-  chmod -f a+x $REPO_SCRIPTS/5*.sh
-  chmod -f a+x $REPO_SCRIPTS/6*.sh
+  chmod -f a+x $REPO_DIR_SCRIPTS/2*.sh
+  chmod -f a+x $REPO_DIR_SCRIPTS/3*.sh
+  chmod -f a+x $REPO_DIR_SCRIPTS/4*.sh
+  chmod -f a+x $REPO_DIR_SCRIPTS/5*.sh
+  chmod -f a+x $REPO_DIR_SCRIPTS/6*.sh
   chmod -f a+x $LLAMA_SERVER_SCRIPTS/4*.sh
   chmod -f a+x $LLAMA_SERVER_SCRIPTS/5*.sh
   chmod -f a+x $LLAMA_SERVER_SCRIPTS/6*.sh
 
   ### Links don't work - end up modifying repo files on chmod.
-  cp $REPO_SCRIPTS/mm-*.sh $HOME_SCRIPTS
+  cp $REPO_DIR_SCRIPTS/mm-*.sh $HOME_SCRIPTS
   chmod a+x $HOME_SCRIPTS/mm-*.sh
 
-  cp $REPO_SCRIPTS/mr-*.sh $HOME_SCRIPTS
+  cp $REPO_DIR_SCRIPTS/mr-*.sh $HOME_SCRIPTS
   chmod a+x $HOME_SCRIPTS/mr-*.sh
 
   if [ -d "$BUILD_DIR" ]; then

@@ -14,18 +14,18 @@ cd $HOME
 
 backed_up_one=0
 
-if [ ! -d "$SHARE_MOUNT_POINT" ]; then
+if [ ! -d "$SHARE_DIR_MOUNT_POINT" ]; then
     # Fail silently, since we're now called by mm-models-download.sh.
     # echo "You have not created your Mmojo Share mount point."
     exit 1
 fi
 
 # mount the mmojo share
-if [[ ! $(findmnt "$SHARE_MOUNT_POINT") ]]; then
+if [[ ! $(findmnt "$SHARE_DIR_MOUNT_POINT") ]]; then
     mm-share-mount.sh
 fi
 
-if [[ $(findmnt "$SHARE_MOUNT_POINT") ]]; then
+if [[ $(findmnt "$SHARE_DIR_MOUNT_POINT") ]]; then
     mkdir -p "$SHARE_DIR_PACKAGES"
 fi
 
@@ -45,7 +45,7 @@ BackupPackage() {
     # fi
 }
 
-if [[ $(findmnt "$SHARE_MOUNT_POINT") ]] && [ -d "$SHARE_DIR_PACKAGES" ] && [ -d "$PACKAGES_DIR" ]; then
+if [[ $(findmnt "$SHARE_DIR_MOUNT_POINT") ]] && [ -d "$SHARE_DIR_PACKAGES" ] && [ -d "$PACKAGES_DIR" ]; then
     cd "$PACKAGES_DIR"
     for file in *.zip; do
         if [ -f "$file" ]; then

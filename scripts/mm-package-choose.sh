@@ -10,6 +10,10 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
 
+echo $SHELL
+echo ""
+echo ""
+
 if [ -d "$PACKAGES_DIR" ]; then
     wd=$(pwd)
     cd "$PACKAGES_DIR"

@@ -11,7 +11,7 @@ SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 # export REPO_DIR="$HOME/mm-repo"
-# export REPO_FILES="$REPO_DIR/scripts"
+# export REPO_DIR_FILES="$REPO_DIR/scripts"
 cd $HOME
 if [ "$REPO_DIR" != "" ] && [ -d "$REPO_DIR" ] ; then
   rm -r -f $REPO_DIR

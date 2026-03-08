@@ -42,7 +42,7 @@ for key in "${!ggufs[@]}"; do
     echo ""
     echo "Considering: $key"
 
-    FILE_ON_MMOJO_SHARE="$SHARE_MODELS_DIR/$key"
+    FILE_ON_MMOJO_SHARE="$SHARE_DIR_MODELS/$key"
 
     if [ -f "$MODELS_DIR/$key" ]; then
         echo "File already exists in $MODELS_DIR."

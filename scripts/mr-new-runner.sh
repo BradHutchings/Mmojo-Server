@@ -63,7 +63,7 @@ echo "$STARS"
 # Copy the mr-preamble.sh into the directory. Customize with app name.
 echo ""
 echo "Copying mr-preamble.sh to $runner_dir/preamble.sh."
-cp "$REPO_SCRIPTS/mr-preamble.sh" "$runner_dir/preamble.sh"
+cp "$REPO_DIR_SCRIPTS/mr-preamble.sh" "$runner_dir/preamble.sh"
 
 echo ""
 echo "Customizing $runner_dir/preamble.sh."

@@ -35,8 +35,9 @@ if [ -d "$PACKAGES_DIR" ]; then
                 mkdir -p "$DEPLOY_DIR"
                 wd2=$(pwd)
                 cd "$DEPLOY_DIR"
-                
-                bash -c "shopt -s extglob; rm -r -f -- !(*.gguf); shopt -u extglob"
+                shopt -s extglob
+                sleep 5s
+                bash -c "rm -r -f -- !(*.gguf)"
                 shopt -u extglob
                 cd $wd2
             fi

@@ -26,7 +26,7 @@ if [[ ! $(findmnt "$SHARE_MOUNT_POINT") ]]; then
 fi
 
 if [[ $(findmnt "$SHARE_MOUNT_POINT") ]]; then
-    mkdir -p "$SHARE_PACKAGES_DIR"
+    mkdir -p "$SHARE_DIR_PACKAGES"
 fi
 
 # Create $PACKAGES_DIR is needed.
@@ -36,16 +36,16 @@ fi
 
 BackupPackage() {
     PACKAGE_FILE=$1
-    # if [ ! -f "$SHARE_PACKAGES_DIR/$PACKAGE_FILE" ]; then 
+    # if [ ! -f "$SHARE_DIR_PACKAGES/$PACKAGE_FILE" ]; then 
         echo ""
-        echo "Backing up $PACKAGE_FILE to $SHARE_PACKAGES_DIR."
-        sudo rsync -ah --progress "$PACKAGES_DIR/$PACKAGE_FILE" "$SHARE_PACKAGES_DIR/$PACKAGE_FILE"
-        sudo chmod a-x "$SHARE_PACKAGES_DIR/$PACKAGE_FILE"
+        echo "Backing up $PACKAGE_FILE to $SHARE_DIR_PACKAGES."
+        sudo rsync -ah --progress "$PACKAGES_DIR/$PACKAGE_FILE" "$SHARE_DIR_PACKAGES/$PACKAGE_FILE"
+        sudo chmod a-x "$SHARE_DIR_PACKAGES/$PACKAGE_FILE"
         backed_up_one=1
     # fi
 }
 
-if [[ $(findmnt "$SHARE_MOUNT_POINT") ]] && [ -d "$SHARE_PACKAGES_DIR" ] && [ -d "$PACKAGES_DIR" ]; then
+if [[ $(findmnt "$SHARE_MOUNT_POINT") ]] && [ -d "$SHARE_DIR_PACKAGES" ] && [ -d "$PACKAGES_DIR" ]; then
     cd "$PACKAGES_DIR"
     for file in *.zip; do
         if [ -f "$file" ]; then

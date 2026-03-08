@@ -21,6 +21,7 @@ fi
 # printf "\n\$_PACKAGE_MMOJO_SERVER_FILE: $_PACKAGE_MMOJO_SERVER_FILE\n\n"
 
 MMOJO_SERVER_EXEC=""
+MMOJO_SERVER_PROPS=""
 APP_NAME=""
 
 if [ -d "$DEPLOY_DIR" ]; then
@@ -38,6 +39,7 @@ if [ -d "$DEPLOY_DIR" ]; then
         APP_NAME="Mmojo Server APE (Performant)"
     elif [ -f "$DEPLOY_DIR/$_PACKAGE_LLAMA_SERVER_FILE" ]; then
         MMOJO_SERVER_EXEC="$DEPLOY_DIR/$_PACKAGE_LLAMA_SERVER_FILE"
+        MMOJO_SERVER_EXEC="$MMOJO_SERVER_EXEC --model *.gguf"
         APP_NAME="llama-server"
     fi
     MMOJO_SERVER_LOG="$MMOJO_SERVER_EXEC.log"

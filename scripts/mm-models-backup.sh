@@ -26,7 +26,7 @@ if [[ ! $(findmnt "$SHARE_MOUNT_POINT") ]]; then
 fi
 
 if [[ $(findmnt "$SHARE_MOUNT_POINT") ]]; then
-    mkdir -p "$SHARE_MODELS_DIR"
+    mkdir -p "$SHARE_DIR_MODELS"
 fi
 
 # Create $MODELS_DIR is needed.
@@ -36,16 +36,16 @@ fi
 
 BackupModel() {
     MODEL_FILE=$1
-    if [ ! -f "$SHARE_MODELS_DIR/$MODEL_FILE" ]; then 
+    if [ ! -f "$SHARE_DIR_MODELS/$MODEL_FILE" ]; then 
         echo ""
-        echo "Backing up $MODEL_FILE to $SHARE_MODELS_DIR."
-        sudo rsync -ah --progress "$MODELS_DIR/$MODEL_FILE" "$SHARE_MODELS_DIR/$MODEL_FILE"
-        sudo chmod a-x "$SHARE_MODELS_DIR/$MODEL_FILE"
+        echo "Backing up $MODEL_FILE to $SHARE_DIR_MODELS."
+        sudo rsync -ah --progress "$MODELS_DIR/$MODEL_FILE" "$SHARE_DIR_MODELS/$MODEL_FILE"
+        sudo chmod a-x "$SHARE_DIR_MODELS/$MODEL_FILE"
         backed_up_one=1
     fi
 }
 
-if [[ $(findmnt "$SHARE_MOUNT_POINT") ]] && [ -d "$SHARE_MODELS_DIR" ] && [ -d "$MODELS_DIR" ]; then
+if [[ $(findmnt "$SHARE_MOUNT_POINT") ]] && [ -d "$SHARE_DIR_MODELS" ] && [ -d "$MODELS_DIR" ]; then
     cd "$MODELS_DIR"
     for file in *.gguf; do
         if [ -f "$file" ]; then

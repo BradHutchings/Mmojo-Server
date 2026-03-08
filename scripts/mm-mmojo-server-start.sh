@@ -56,7 +56,7 @@ if [ -z "$serverRunningId" ]; then
             echo "Starting $APP_NAME in the background."
             nohup "$MMOJO_SERVER_EXEC" "$MMOJO_SERVER_PARAMS" > "$MMOJO_SERVER_LOG" 2>&1 &
         else
-            "$MMOJO_SERVER_EXEC" "$MMOJO_SERVER_PARAMS"
+            bsdh -c "$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
         fi
     fi
 else

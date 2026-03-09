@@ -79,7 +79,7 @@ You'll see the configuration wizard verifying that it can make a connection, fol
 
 **Endpoint ID**
 
-<img width="299" height="56" alt="image" src="https://github.com/user-attachments/assets/3abd545c-1379-46bb-aa3e-a01e143f9a61" />
+<img width="248" height="57" alt="image" src="https://github.com/user-attachments/assets/d5372b1d-9b08-460c-a8a9-fda5af982a4c" />
 
 Paste in this value:
 ```

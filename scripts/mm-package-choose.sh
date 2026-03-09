@@ -31,9 +31,10 @@ if [ -d "$PACKAGES_DIR" ]; then
             package=${options[$opt-1]}
             echo "You chose $opt: $package."
             echo "Unzipping into $DEPLOY_DIR."
-            if [ "$DEPLOY_DIR" != "" ] && [ -d "$DEPLOY_DIR" ]; then
+            if [ "$DEPLOY_DIR" != "" ]; then
                 mkdir -p "$DEPLOY_DIR"
-                rm -r -f "$DEPLOY_DIR"/*
+                cd "$DEPLOY_DIR"
+                find . ! -name "*.gguf" -delete
             fi
             unzip "$PACKAGES_DIR/$package" -d "$DEPLOY_DIR"
         else

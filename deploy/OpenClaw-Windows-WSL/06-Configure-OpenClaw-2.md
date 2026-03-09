@@ -12,6 +12,14 @@ Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` k
 
 ---
 
+**Search provider**
+
+<img width="675" height="155" alt="image" src="https://github.com/user-attachments/assets/847ba469-0400-4c0c-8fa2-a4ef7d7c1b2e" />
+
+Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
+
+---
+
 **Configure skills now? (recommended)**
 
 <img width="363" height="68" alt="image" src="https://github.com/user-attachments/assets/9645fd0d-54d8-48d4-bcc9-6d2a1a7109fc" />

@@ -83,9 +83,9 @@ sed -i -e 's/THREAD_POWER_THROTTLING/PROCESS_POWER_THROTTLING/g' ggml/src/ggml-c
 
 #-------------------------------------------------------------------------------
 # Patch vendor/cpp-httplib for compatibility with MinGW. Inline member functions need to be
-# declared in class definitions.
+# declared in class definitions. WE DON'T DO MinGW. REMOVE NEXT TIME. -Bard 2026-03-09
 #-------------------------------------------------------------------------------
-
+#if 0
 sed -i -e 's/bool is_readable(/inline bool is_readable(/g' vendor/cpp-httplib/httplib.h
 sed -i -e 's/bool wait_readable(/inline bool wait_readable(/g' vendor/cpp-httplib/httplib.h
 sed -i -e 's/bool wait_writable(/inline bool wait_writable(/g' vendor/cpp-httplib/httplib.h
@@ -97,6 +97,13 @@ sed -i -e 's/bool wait_readable(/inline bool wait_readable(/g' vendor/cpp-httpli
 sed -i -e 's/bool wait_writable(/inline bool wait_writable(/g' vendor/cpp-httplib/httplib.cpp
 sed -i -e 's/ssize_t read(/inline ssize_t read(/g' vendor/cpp-httplib/httplib.cpp
 sed -i -e 's/ssize_t write(/inline ssize_t write(/g' vendor/cpp-httplib/httplib.cpp
+#endif
+
+#-------------------------------------------------------------------------------
+# Aggressive warning that goes off in /tokenize
+#-------------------------------------------------------------------------------
+
+sed -i -e 's/(src_parser.empty())/src_parser.empty() && false)/g' common/chat.cpp
 
 #-------------------------------------------------------------------------------
 # Future: Just patch common/argc.cpp and eliminate common/argc-mmojo.cpp

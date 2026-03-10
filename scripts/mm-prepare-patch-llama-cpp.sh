@@ -103,7 +103,7 @@ sed -i -e 's/ssize_t write(/inline ssize_t write(/g' vendor/cpp-httplib/httplib.
 # Aggressive warning that goes off in /tokenize
 #-------------------------------------------------------------------------------
 
-sed -i -e 's/(src_parser.empty())/src_parser.empty() && false)/g' common/chat.cpp
+sed -i -e 's/(src_parser.empty())/(false \&\& src_parser.empty())/g' common/chat.cpp
 
 #-------------------------------------------------------------------------------
 # Future: Just patch common/argc.cpp and eliminate common/argc-mmojo.cpp

@@ -32,7 +32,7 @@ mm-model
 
 Start `mmojo-server` in the background:
 ```
-mm-start
+mm-go
 ```
 
 ---

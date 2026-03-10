@@ -78,7 +78,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
     cp "$REPO_DIR_FILES/package/ape-chat.html" "$DEPLOY_DIR/Mmojo Chat.html"
-    cp "$REPO_DIR_FILES/package/ape-connect.html" "$DEPLOY_DIR/Mmojo Connect.html"
+    cp "$REPO_DIR_FILES/package/ape-connect.html" "$DEPLOY_DIR/Mmojo Complete.html"
 fi
 ```
 

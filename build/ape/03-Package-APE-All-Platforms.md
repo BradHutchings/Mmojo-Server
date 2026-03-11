@@ -2,6 +2,8 @@
 ### About this Step
 In this step, you will package the build you just created and tested.
 
+In this alternative, you will package the compatible and performant builds in one `.zip` file.
+
 ---
 ### Review Your Work
 Let's list the contents of the `$HOME/mm-deploy` directory and review your work:

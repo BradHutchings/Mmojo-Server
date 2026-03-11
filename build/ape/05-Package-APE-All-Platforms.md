@@ -59,12 +59,14 @@ Make a `Mmojo-Server-ape-compatible.zip` package file and move it to your `$PACK
 ```
 _PACKAGE_FILE="Mmojo-Server-ape-compatible-windows.zip"
 if test -n "$DEPLOY_DIR"; then
-  cd "$DEPLOY_DIR"
-  zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html *.gguf
-  mkdir -p "$PACKAGES_DIR"
-  mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
-  cd $HOME
-  ls -al "$PACKAGES_DIR"
+    cd "$DEPLOY_DIR"
+    zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
+    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
+    zip "$_PACKAGE_FILE" $MODELS_DIR/Google-Gemma-1B-Instruct-v3-q8_0.gguf
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    ls -al "$PACKAGES_DIR"
 fi
 ```
 
@@ -72,12 +74,14 @@ fi
 ### Make a Compatable Linux/macOS Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
-Make a `Mmojo-Server-ape-compatible.zip` package file and move it to your `$PACKAGES_DIR` directory:
+Make a `Mmojo-Server-ape-compatible-linux-macos.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 _PACKAGE_FILE="Mmojo-Server-ape-compatible-linux-macos.zip"
 if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
-  zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html *.gguf
+    zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
+    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
+    zip "$_PACKAGE_FILE" $MODELS_DIR/Google-Gemma-1B-Instruct-v3-q8_0.gguf
   mkdir -p "$PACKAGES_DIR"
   mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME
@@ -89,12 +93,14 @@ fi
 ### Make a Performant Windows Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
-Make a `Mmojo-Server-ape-performant.zip` package file and move it to your `$PACKAGES_DIR` directory:
+Make a `Mmojo-Server-ape-performant-windows.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
-_PACKAGE_FILE="Mmojo-Server-ape-performant.zip"
+_PACKAGE_FILE="Mmojo-Server-ape-performant-windows.zip"
 if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
-  zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html *.gguf
+    zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
+    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
+    zip "$_PACKAGE_FILE" $MODELS_DIR/Google-Gemma-4B-Instruct-v3-q8_0.gguf
   mkdir -p "$PACKAGES_DIR"
   mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME
@@ -106,12 +112,14 @@ fi
 ### Make a Performant Linux/macOS Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
-Make a `Mmojo-Server-ape-performant.zip` package file and move it to your `$PACKAGES_DIR` directory:
+Make a `Mmojo-Server-ape-performant-linux-macos.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
-_PACKAGE_FILE="Mmojo-Server-ape-performant.zip"
+_PACKAGE_FILE="Mmojo-Server-ape-performant-linux-macos.zip"
 if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
-  zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"* *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
+    zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
+    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
+    zip "$_PACKAGE_FILE" $MODELS_DIR/Google-Gemma-4B-Instruct-v3-q8_0.gguf
   mkdir -p "$PACKAGES_DIR"
   mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME

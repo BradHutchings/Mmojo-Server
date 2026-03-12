@@ -78,7 +78,7 @@ if [ -z "$serverRunningId" ]; then
             # bash -c "$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
         fi
     fi
-else
+# else
     # echo "Mmojo Server is already running with process id: $serverRunningId."
 fi
 

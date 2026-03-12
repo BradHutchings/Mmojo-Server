@@ -78,8 +78,10 @@ if [ -z "$serverRunningId" ]; then
             # bash -c "$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
         fi
     fi
-# else
-    # echo "Mmojo Server is already running with process id: $serverRunningId."
+else
+    if (! $runInBackground); then
+        echo "Mmojo Server is already running with process id: $serverRunningId."
+    fi
 fi
 
 # printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"

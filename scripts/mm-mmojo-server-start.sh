@@ -51,7 +51,7 @@ serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
 # echo "serverRunningId: $serverRunningId"
 
 # Stop Mmojo server if we're not running background
-if [ -z "$serverRunningId" ]; then
+if [ ! -z "$serverRunningId" ]; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
         if (! $runInBackground); then
             echo "Stopping Mmojo Server with process id: $serverRunningId."

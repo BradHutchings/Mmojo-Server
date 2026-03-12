@@ -62,7 +62,7 @@ if test -n "$DEPLOY_DIR"; then
     cd "$DEPLOY_DIR"
     zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
     zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
-    cp -n "$MODELS_DIR/Google-Gemma-1B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
+    cp --update=none "$MODELS_DIR/Google-Gemma-1B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
     zip -0 "$_PACKAGE_FILE" "Google-Gemma-1B-Instruct-v3-q8_0.gguf"
     mkdir -p "$PACKAGES_DIR"
     mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
@@ -82,7 +82,7 @@ if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
     zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
     zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
-    cp -n "$MODELS_DIR/Google-Gemma-1B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
+    cp --update=none "$MODELS_DIR/Google-Gemma-1B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
     zip -0 "$_PACKAGE_FILE" "Google-Gemma-1B-Instruct-v3-q8_0.gguf"
   mkdir -p "$PACKAGES_DIR"
   mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
@@ -102,7 +102,7 @@ if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
     zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
     zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
-    cp -n "$MODELS_DIR/Google-Gemma-4B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
+    cp --update=none "$MODELS_DIR/Google-Gemma-4B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
     zip -0 "$_PACKAGE_FILE" "Google-Gemma-4B-Instruct-v3-q8_0.gguf"
   mkdir -p "$PACKAGES_DIR"
   mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
@@ -122,7 +122,7 @@ if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
     zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
     zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
-    cp -n "$MODELS_DIR/Google-Gemma-4B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
+    cp --update=none "$MODELS_DIR/Google-Gemma-4B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
     zip -0 "$_PACKAGE_FILE" "Google-Gemma-4B-Instruct-v3-q8_0.gguf"
   mkdir -p "$PACKAGES_DIR"
   mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"

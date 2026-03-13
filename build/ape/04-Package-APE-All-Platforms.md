@@ -1,8 +1,8 @@
-## 03. Package APE for All Platforms
+## 04. Package APE for All Platforms
 ### About this Step
 In this step, you will package the build you just created and tested.
 
-In this alternative, you will package the compatible and performant builds in one `.zip` file.
+In this alternative, you will package the compatible and performant builds separately.
 
 ---
 ### Review Your Work
@@ -52,15 +52,32 @@ It should look like:
 <img width="778" height="229" alt="image" src="https://github.com/user-attachments/assets/883232c1-86b9-47b3-825f-1e05fd936283" />
 
 ---
-### Make a Package File
+### Make a Compatable Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
-Make a `Mmojo-Server-ape.zip` package file and move it to your `$PACKAGES_DIR` directory:
+Make a `Mmojo-Server-ape-compatible.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
-_PACKAGE_FILE="Mmojo-Server-ape.zip"
+_PACKAGE_FILE="Mmojo-Server-ape-compatible.zip"
 if test -n "$DEPLOY_DIR"; then
   cd "$DEPLOY_DIR"
-  zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_FILE"* *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
+  zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"* *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
+  mkdir -p "$PACKAGES_DIR"
+  mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
+  cd $HOME
+  ls -al "$PACKAGES_DIR"
+fi
+```
+
+---
+### Make a Performant Package File
+Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
+
+Make a `Mmojo-Server-ape-performant.zip` package file and move it to your `$PACKAGES_DIR` directory:
+```
+_PACKAGE_FILE="Mmojo-Server-ape-performant.zip"
+if test -n "$DEPLOY_DIR"; then
+  cd "$DEPLOY_DIR"
+  zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"* *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
   mkdir -p "$PACKAGES_DIR"
   mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME

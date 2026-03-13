@@ -10,17 +10,19 @@ if ! grep -q "alias mm-stop=" "$HOME/.bashrc"; then
 cat << EOF >> $HOME/.bashrc
 
 alias mm-stop="mm-mmojo-server-stop.sh"
-alias mm-model="mm-model-choose.sh"
-alias mm-start="mm-mmojo-server-start.sh background"
+alias mm-go="mm-mmojo-server-start.sh background"
 alias mm-debug="mm-mmojo-server-start.sh"
-alias mm-status="mm-mmojo-server-status.sh"
+alias mm-running="mm-mmojo-server-status.sh"
+alias mm-model="mm-model-choose.sh"
+alias mm-which="mm-model-which.sh"
 
 echo "Useful command aliases:"
-echo "- mm-stop   --> mm-mmojo-server-stop.sh"
-echo "- mm-model  --> mm-model-choose.sh"
-echo "- mm-start  --> mm-mmojo-server-start.sh background  # Runs in background."
-echo "- mm-debug  --> mm-mmojo-server-start.sh             # Runs in foreground with output."
-echo "- mm-status --> mm-mmojo-server-status.sh            # Is Mmojo Server running?"
+echo "- mm-stop    --> mm-mmojo-server-stop.sh"
+echo "- mm-go      --> mm-mmojo-server-start.sh background  # Runs in background."
+echo "- mm-debug   --> mm-mmojo-server-start.sh             # Runs in foreground with output."
+echo "- mm-running --> mm-mmojo-server-status.sh            # Is Mmojo Server running?"
+echo "- mm-model   --> mm-model-choose.sh"
+echo "- mm-which   --> mm-model-which.sh"
 echo ""
 EOF
 fi

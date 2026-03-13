@@ -30,7 +30,7 @@ ln -sfr "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" \
 ### Choose a Model
 Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google Gemma 270M Instruct v3**.
 ```
-mm-model-choose.sh
+mm-model
 ```
 
 ---

@@ -10,7 +10,7 @@ if ! grep -q "Starting Mmojo Server." "$HOME/.bashrc"; then
 cat << EOF >> $HOME/.bashrc
 
 echo "Starting Mmojo Server."
-mm-start
+mm-go
 echo ""
 echo "Close all MmojoServer WSL windows to stop Mmojo Server."
 echo "Or, type the alias: << mm-stop >>."

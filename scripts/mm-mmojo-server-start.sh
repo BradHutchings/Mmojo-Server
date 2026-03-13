@@ -50,6 +50,18 @@ fi
 serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
 # echo "serverRunningId: $serverRunningId"
 
+# Stop Mmojo server if we're not running background
+if [ ! -z "$serverRunningId" ]; then
+    if [ -f "$MMOJO_SERVER_EXEC" ]; then
+        if (! $runInBackground); then
+            echo "Stopping Mmojo Server with process id: $serverRunningId."
+            kill $serverRunningId
+            sleep 5s
+            serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
+        fi
+    fi
+fi
+
 if [ -z "$serverRunningId" ]; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
         COMMAND="$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
@@ -67,7 +79,9 @@ if [ -z "$serverRunningId" ]; then
         fi
     fi
 else
-    echo "Mmojo Server is already running with process id: $serverRunningId."
+    if (! $runInBackground); then
+        echo "Mmojo Server is already running with process id: $serverRunningId."
+    fi
 fi
 
 # printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"

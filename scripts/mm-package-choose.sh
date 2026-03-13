@@ -44,7 +44,8 @@ if [ -d "$PACKAGES_DIR" ]; then
         echo "The $PACKAGES_DIR is empty."
     fi
 else
-    echo "The $PACKAGES_DIR does not exist."
+    echo "The $PACKAGES_DIR does not exist. Creating"
+    mkdir -p "$PACKAGES_DIR"
 fi
 cd $HOME
 

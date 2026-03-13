@@ -47,15 +47,17 @@ npm run build
 cd $SAVE_WD
 mv loading-mmojo.html tools/server/public/loading-mmojo.html
 
-if [ "$1" == "" ]; then
-    echo ""
-    echo "Customizing Mmojo Complete."
-    TODAY=$(date +%Y-%m-%d)
-    cp -r Mmojo-Complete Mmojo-Complete-original
-    sleep 5s
-    sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/scripts.js
-    sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/bookmark-scripts.js
-fi
+mm-prepare-mmojo-complete.sh
+
+# if [ "$1" == "" ]; then
+#    echo ""
+#    echo "Customizing Mmojo Complete."
+#    TODAY=$(date +%Y-%m-%d)
+#    cp -r Mmojo-Complete Mmojo-Complete-original
+#    sleep 5s
+#    sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/scripts.js
+#    sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/bookmark-scripts.js
+# fi
 
 cd $HOME
 

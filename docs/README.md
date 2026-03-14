@@ -2,6 +2,7 @@
 Here are some docs you should review:
 
 - [Sponsor this Repo](Sponsor-this-Repo.md) - Your business can help me with my private and local mission! This could save humanity.
+- [Paid Assistance](Paid-Assistance.md) - Get hands-on assistance from Brad Hutchings to help jumpstart your Mmojo Server deployment or build, or OpenClaw stack deployment.
 - [Maintenance](Maintenance.md) - How periodic maintenance to sync with llama.cpp is done.
 - [Periodic Builds](Periodic-Builds.md) - Things that get build regularly, how, and where.
 - [Project Features](Project-Features.md) - All the things this project does.

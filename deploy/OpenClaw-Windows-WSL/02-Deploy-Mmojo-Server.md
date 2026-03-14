@@ -19,10 +19,9 @@ If you have an NVIDIA GPU, build a native Mmojo Server with CUDA support in your
 ### Download Models
 Download models that OpenClaw can work with from Hugging Face. These may take 20 minutes or so to download.
 
-Qwen3.5 models implement so-called "thinking" and "tool calling". 9B works really well with OpenClaw. Run this script to add them to the model download queue.
+Qwen3.5 models implement so-called "thinking" and "tool calling". 9B integrates well with OpenClaw 2026.3.12 and later. 4B might integrate well enough. Run this script to add them to the model download queue.
 ```
 cat << EOF >> $_MODEL_QUEUE
-Qwen3.5-2B-v3.5-q8_0.gguf
 Qwen3.5-4B-v3.5-q8_0.gguf
 Qwen3.5-9B-v3.5-q8_0.gguf
 EOF

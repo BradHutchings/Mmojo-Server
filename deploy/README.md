@@ -10,7 +10,8 @@ Here are more deployments that are ready for you to use:
 - [Deploy OpenClaw (Windows WSL)](OpenClaw-Windows-WSL/README.md) - Deploy OpenClaw server with Mmojo Server in WSL instances.
 
 <!-- SPONSOR --> 
-If you need assistance via Zoom call and screen sharing, I offer a one-hour hands-on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this stuff work. [Email me if interested](mailto:brad@BradHutchings.com?subject=Mmojo%20Server%20Install%20Help).
+I offer paid assistance over Zoom if you need it:
+* [Paid Assistance](/docs/Paid-Assistance.md)
 
 -Brad<br/>
 \--<br/>

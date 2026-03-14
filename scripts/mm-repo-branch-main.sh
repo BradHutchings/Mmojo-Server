@@ -37,6 +37,7 @@ if [ -d "$REPO_DIR" ]; then
   if [ -d "$BUILD_DIR" ]; then
       # This copies the $REPO_DIR_FILES tree into the $BUILD_DIR tree.
       cp -r $REPO_DIR_FILES/* $BUILD_DIR/
+      mm-prepare-mmojo-complete.sh
       # In tools/server .cpp files, replace "defer(" with "defer_task(" to make Cosmo STL happy.
       sed -i -e 's/defer(/defer_task(/g' "$BUILD_DIR/tools/server/server-context-mmojo.cpp"
   fi

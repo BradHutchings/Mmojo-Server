@@ -25,10 +25,8 @@ unset AR
 
 echo "Setting MMOJO_SED."
 echo "- CHANGE THIS FROM SED TO MMOJO_SED SOON! -Brad"
-SED="sed"
 MMOJO_SED="sed"
 if [ "$(uname -s)" = "Darwin" ]; then
-    SED="gsed"
     MMOJO_SED="gsed"
 fi
 

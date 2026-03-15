@@ -5,11 +5,14 @@ You will create a `mmojo` user account on your Mac to deploy Mmojo Server. It wi
 
 ---
 ### Install Latest Xcode
+- **CAN THIS MOVE TO BUILD??**
 - Use the App Store to install the latest Xcode.
 - This will ensure that you have the latest compilers and headers.
 
 --- 
 ### Uninstall Global Homebrew Installation
+- **CAN THIS MOVE TO BUILD??**
+
 If you have a global homebrew installation, you need to uninstall it and rethink your life choices. That was mean, but seriously, who does that?
 
 Open a Terminal. Paste this command:
@@ -70,6 +73,8 @@ admin123!
 
 ---
 ### Install homebrew
+- **CAN THIS MOVE TO BUILD??**
+
 Homebrew is the prefered package mamager for mac OS.
 
 In the Terminal, signed in as the new mmojo user:

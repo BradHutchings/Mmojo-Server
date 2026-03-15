@@ -52,7 +52,7 @@ if [ -d $runner_dir ] && [ -f "$archive_zip" ] && [ -d "$models_dir" ] && [ -f $
 
     echo ""
     echo "Updating vars.sh."
-    sed -i -e '/model/d' "$runner_dir/vars.sh"
+    MMOJO_SED -i -e '/model/d' "$runner_dir/vars.sh"
 cat << EOF >> "$runner_dir/vars.sh"
 export model="$(basename $model_file)"
 EOF

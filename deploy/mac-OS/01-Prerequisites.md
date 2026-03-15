@@ -18,7 +18,7 @@ You will need an administrator account on your Mac to complete these instruction
 ### Proceed
 - **Next:** [02. Prepare mmojo Account](02-Prepare-mmojo-Account.md)
 - **Previous:** This is the first step in this section.
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on mac OS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

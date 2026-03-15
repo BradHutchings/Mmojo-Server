@@ -15,6 +15,7 @@
 
 #include <signal.h>
 #include <dirent.h>
+#include <unistd.h>
 
 #if defined(_WIN32)
 #include <windows.h>

@@ -88,6 +88,57 @@ brew list
 ```
 
 ---
+### Create `mm-scripts` Directory
+The `mm-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
+```
+export HOME_SCRIPTS="$HOME/mm-scripts"
+TILDE_SCRIPTS="~/mm-scripts"
+mkdir -p $HOME_SCRIPTS
+
+if [[ "${PATH}" != *"${HOME_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_SCRIPTS}"* ]]; then
+cat << EOF >> $HOME/.zshrc
+export PATH="\$PATH:$HOME_SCRIPTS"
+EOF
+fi
+
+source $HOME/.zshrc
+echo $PATH
+```
+
+---
+### Clone the Mmojo Server Repository
+The Mmojo Server Github repositort has scripts and tools for installing and building Mmojo Server.
+```
+export REPO_DIR="$HOME/mm-repo"
+export REPO_DIR_SCRIPTS="$REPO_DIR/scripts"
+cd $HOME
+if [ "$REPO_DIR" ]; then
+  rm -r -f $REPO_DIR
+fi
+mkdir -p $REPO_DIR
+git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
+. $REPO_DIR_SCRIPTS/mm-environment-variables.sh
+. $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
+if ! grep -q "mm-env=" "$HOME/.zshrc"; then
+cat << EOF1 >> $HOME/.zshrc
+alias mm-env=". mm-environment-variables.sh"
+mm-env
+EOF1
+source $HOME/.zshrc
+fi
+```
+
+<details>
+  <summary><b>Optional:</b> If you're Brad working on writing these instructions, switch to the work-in-progress branch.</summary>
+  
+```
+mm-repo-branch-work-in-progress.sh
+mm-env
+```
+</details>
+
+
+---
 ### Proceed
 - **Next:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)

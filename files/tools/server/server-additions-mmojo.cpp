@@ -192,7 +192,11 @@ void main_mmojo_server_1(char* argv_0) {
     printf("- main_mmojo_server_1(%s)\n", argv_0);
 
     // Keep the build from showing up as ape in the process list.
+    #if defined (__APPLE__) && defined (__MACH__))
+    pthread_setname_np(PROCESS_NAME);
+    #else
     pthread_setname_np(pthread_self(), PROCESS_NAME);
+    #endif
 
     //  Find paths we need.
     get_important_paths(argv_0, executablePath, workingDirectoryPath);

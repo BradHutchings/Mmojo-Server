@@ -52,7 +52,7 @@ You will see your command prompt.
 ### Proceed
 - **Next:** [07. Make Command Aliases](07-Make-Command-Aliases.md)
 - **Previous:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on mac OS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

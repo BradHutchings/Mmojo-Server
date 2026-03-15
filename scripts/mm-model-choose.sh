@@ -30,7 +30,8 @@ select filename in *.gguf; do
   esac
 done
 
-if [ -v MODEL_CHOICE ]; then
+# if [ -v MODEL_CHOICE ]; then
+if [ "$MODEL_CHOICE" != "" ]; then
   echo ""
   echo "You chose: $MODEL_CHOICE"
   echo ""

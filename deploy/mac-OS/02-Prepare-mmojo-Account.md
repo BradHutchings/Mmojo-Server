@@ -11,6 +11,11 @@ If you have a previous `mmojo` user account on your Mac, let's delete it and sta
 - Settings > Users and Groups.
 - Delete the `mmojo` or `Mmojo Server` account.
 
+---
+### Install Latest Xcode
+- Use the App Store to install the latest Xcode.
+- This will ensure that you have the latest compilers and headers.
+
 --- 
 ### Uninstall Global Homebrew Installation
 If you have a global homebrew installation, you need to uninstall it and rethink your life choices. That was mean, but seriously, who does that?

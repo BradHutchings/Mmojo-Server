@@ -61,7 +61,7 @@ if [ $(uname -m) == "x86_64" ]; then
     _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-native$GPUS_CHOICE.zip"
     _TOUCH_FILE="build-mac-os-x86_64-native$GPUS_CHOICE"
     _VARIATION="native"
-elif [ ($(uname -m) == "aarch64") || ($(uname -m) == "arm64") ]; then
+elif [ $(uname -m) == "aarch64" ] || [ $(uname -m) == "arm64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-native$GPUS_CHOICE.zip"
     _TOUCH_FILE="build-mac-os-arm64-native$GPUS_CHOICE"

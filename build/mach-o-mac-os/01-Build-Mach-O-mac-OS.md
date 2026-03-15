@@ -17,10 +17,13 @@ These build steps should be performed with mac OS. Please prepare your mac OS en
 ### Install Dependencies and GPU Support
 Install dependencies. These may take 20 minutes or so to download and install. Reinstalling nodejs is necessary to get the right tools in place to rebuild the webui.
 ```
-brew install
-brew install
-brew install
-brew install
+brew install gnu-sed
+brew install npm
+```
+
+Do I need this with updated Xcode tools available?
+``
+brew install gcc
 ```
 
 ---

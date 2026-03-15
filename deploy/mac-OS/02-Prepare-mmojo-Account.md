@@ -4,14 +4,6 @@
 You will create a `mmojo` user account on your Mac to deploy Mmojo Server. It will be useful for building Mmojo Server as well, if you decide to do that. This provides a little bit of sandboxing to both Mmojo Server and your Mac, as well as isolation of development tools.
 
 ---
-### Delete your Existing mmojo User Account
-If you have a previous `mmojo` user account on your Mac, let's delete it and start over.
-
-- Log in as an admin user.
-- Settings > Users and Groups.
-- Delete the `mmojo` or `Mmojo Server` account.
-
----
 ### Install Latest Xcode
 - Use the App Store to install the latest Xcode.
 - This will ensure that you have the latest compilers and headers.
@@ -27,6 +19,14 @@ if [ -d "/opt/homebrew" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 fi
 ```
+
+---
+### Delete your Existing mmojo User Account
+If you have a previous `mmojo` user account on your Mac, let's delete it and start over.
+
+- Log in as an admin user.
+- Settings > Users and Groups.
+- Delete the `mmojo` or `Mmojo Server` account.
 
 ---
 ### Create a new mmojo User Account

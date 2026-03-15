@@ -41,7 +41,7 @@ If you want Mmojo Server to accept connections from other computers on your netw
 You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
 
 Use this recipe:
-- [01. Build Mach-O Executable for mac OS](/build/mach-o/01-Build-Mach-O=mac-OS.md)
+- [01. Build Mach-O Executable for mac OS](/build/mach-o-mac-os/01-Build-Mach-O-mac-OS.md)
 
 Before building, please work through all of the deploy steps above.
 

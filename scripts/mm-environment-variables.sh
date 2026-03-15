@@ -25,9 +25,9 @@ unset AR
 
 echo "Setting MMOJO_SED."
 echo "- CHANGE THIS FROM SED TO MMOJO_SED SOON! -Brad"
-MMOJO_SED="sed"
+export MMOJO_SED="sed"
 if [ "$(uname -s)" = "Darwin" ]; then
-    MMOJO_SED="gsed"
+    export MMOJO_SED="gsed"
 fi
 
 echo "Setting mm-scripts paths."

@@ -24,6 +24,14 @@ fi
 cd $THIS_BUILD_DIR
 
 echo "Customizing chat user interface files."
+if [ -f tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte ]; then
+    # Sentences need punctuation!
+    $MMOJO_SED -i -e "s/upload files to get started/upload files to get started./g" tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte
+fi
+if [ -f tools/server/webui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte ]; then
+    # Sentences need punctuation!
+    $MMOJO_SED -i -e "s/for new line/for new line./g" tools/server/webui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte
+fi
 if [ -f tools/server/webui/src/routes/+page.svelte ]; then
     $MMOJO_SED -i -e "s/>llama.cpp - AI Chat Interface<\/title>/>$APP_NAME<\/title>/g" tools/server/webui/src/routes/+page.svelte
 fi

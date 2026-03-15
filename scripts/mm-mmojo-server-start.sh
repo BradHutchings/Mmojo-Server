@@ -17,6 +17,8 @@ if [ "$background" != "" ]; then
     runInBackground=true;
 fi
 
+# echo "runInBackground: $runInBackground"
+
 # printf "\n\$DEPLOY_DIR: $DEPLOY_DIR\n\n"
 # printf "\n\$_PACKAGE_MMOJO_SERVER_FILE: $_PACKAGE_MMOJO_SERVER_FILE\n\n"
 

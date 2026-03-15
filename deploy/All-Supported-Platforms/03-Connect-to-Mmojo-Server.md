@@ -10,7 +10,7 @@ Open your web browser on the computer on which you are running Mmojo Server. Go 
 
 You will see the Mmojo Complete user interface for Mmojo Server. Type a question or a sentence and the `RETURN` or `ENTER` key.
 
-<img width="400" xxheight="714" alt="image" src="https://github.com/user-attachments/assets/fb6716c6-e7a9-4fd7-8341-7f81313847bf" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/fb6716c6-e7a9-4fd7-8341-7f81313847bf" />
 
 ---
 ### Connect to Mmojo Chat

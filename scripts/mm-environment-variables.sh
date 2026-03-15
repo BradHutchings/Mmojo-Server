@@ -23,6 +23,15 @@ unset CC
 unset CXX
 unset AR
 
+echo "Setting MMOJO_SED."
+echo "- CHANGE THIS FROM SED TO MMOJO_SED SOON! -Brad"
+SED="sed"
+MMOJO_SED="sed"
+if [ "$(uname -s)" = "Darwin" ]; then
+    SED="gsed"
+    MMOJO_SED="gsed"
+fi
+
 echo "Setting mm-scripts paths."
 export HOME_SCRIPTS="$HOME/mm-scripts"
 export TILDE_SCRIPTS="~/mm-scripts"
@@ -39,7 +48,8 @@ export REPO_DIR_SCRIPTS="$REPO_DIR/scripts"
 
 echo "Setting Mmojo Share paths."
 if [ "$(uname -s)" = "Darwin" ]; then
-export SHARE_DIR_MOUNT_POINT="/Volumes/mmojo"
+# export SHARE_DIR_MOUNT_POINT="/Volumes/mmojo"
+export SHARE_DIR_MOUNT_POINT="$HOME/mm-share"
 else
 export SHARE_DIR_MOUNT_POINT="/mnt/mmojo"
 fi

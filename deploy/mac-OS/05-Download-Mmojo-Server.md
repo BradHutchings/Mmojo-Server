@@ -1,0 +1,61 @@
+## 05. Download Mmojo Server
+**THIS SECTION IS IN PROGRESS.**
+### About this Step
+In this step, we will download Mmojo Server from Hugging Face.
+
+---
+### Set Mmojo Server Download URL
+Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs. It is currently unkown if this build runs on any aarch64 (arm64) Windows computers.
+```
+URL=""
+if [ $(uname -m) == "x86_64" ]; then
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-mac-os-x86_64-perf.zip"
+elif [ $(uname -m) == "arm64" ]; then
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-mac-os-arm64-perf-metal.zip"
+fi
+```
+
+<details>
+  <summary><b>Alternatively:</b> set the URL for the Mmojo Server package that runs on all x86_64 and aarch64 (arm64) CPUs. Use this if the Mmojo Server you download with the URL setting above gives you an illegal instruction error when you run it.</summary>
+  <br/>
+  
+```
+URL=""
+if [ $(uname -m) == "x86_64" ]; then
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-mac-os-x86_64-comp.zip"
+elif [ $(uname -m) == "aarch64" ]; then
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-mac-os-arm64-perf-metal.zip"
+fi
+```
+</details>
+
+**Future:** Might just download the "compatible" version for aarch64 (arm64) by default. It's tough to figure out what processors are out there. -Brad 2025-02-11
+
+---
+### Download Mmojo Server from Hugging Face
+Download Mmojo Server from Hugging Face and unzip it in the `$HOME/mm-deploy` directory:
+```
+if [ "$DEPLOY_DIR" != "" ] && [ "$URL" != "" ]; then
+    mkdir -p $DEPLOY_DIR
+    cd $DEPLOY_DIR
+    rm -r -f "$DEPLOY_DIR"/*
+    wget $URL -O "mmojo-server.zip"
+    unzip "mmojo-server.zip"
+    rm "mmojo-server.zip"
+    cd $HOME
+    ls -al $DEPLOY_DIR
+fi
+```
+
+Mmojo Server is installed. You are ready to test it!
+
+---
+### Proceed
+- **Next:**  [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
+- **Previous:** [04. Download Models](04-Download-Models.md)
+- **Up:** [Deploy Mmojo Server on mac OS](README.md)
+
+---
+[MIT-Style License](/LICENSE)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+[https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

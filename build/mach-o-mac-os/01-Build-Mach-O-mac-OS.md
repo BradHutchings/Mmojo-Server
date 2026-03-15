@@ -1,5 +1,8 @@
-## 01. Build ELF Executable for Debian Linux
+## 01. Build Mach-O Executable for mac OS
+**THIS SECTION IS IN PROGRESS.**
 ### About this Step
+**IT'S MIGHT JUST BE PERF WITH METAL.**
+
 In this step, you will build an executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:
 - **Compatible:** Runs on most systems that use a CPU from your computer's CPU family. 
 - **Performant:** Runs on systems that use a recent CPU from your computer's CPU family.
@@ -7,25 +10,20 @@ In this step, you will build an executable file that runs on Debian Linux operat
   - For aarch64 (arm64), these are aarch64 CPUs that support ??? flags, as defined by the gnu cc compiler. These include all Apple M-series CPUs.
 - **Native:** Runs on systems with a CPU that includes all of the CPU flags your computer's CPU includes. This includes your computer.
 
-Windows Subsystem for Linux (WSL) supports NVIDIA GPUs through CUDA libraries. If you're building for WSL, be sure to enable CUDA below.
+These build steps should be performed with mac OS. Please prepare your mac OS environment by working through this deploy recipes:
+- [Deploy Mmojo Server on mac OS](/deploy/mac-OS/README.md) 
 
-These build steps should be performed in a Debian Linux operating system like Ubuntu or Raspberry Pi. Please prepare your Debian environment by working through one these deploy recipes:
-- [Deploy Mmojo Server on Windows (WSL)](/deploy/Windows-WSL/README.md) 
-- [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](/deploy/Debian-Ubuntu-Pi/README.md) 
- 
 ---
 ### Install Dependencies and GPU Support
 Install dependencies. These may take 20 minutes or so to download and install. Reinstalling nodejs is necessary to get the right tools in place to rebuild the webui.
 ```
-mm-prepare-install-dependencies.sh
-mm-prepare-reinstall-nodejs.sh
+brew install gnu-sed
+brew install npm
 ```
 
-Install CUDA and Vulkan support. These may take 10 minutes or so to download and install.
-```
-sudo apt install -y nvidia-cuda-toolkit
-sudo apt install -y libvulkan-dev glslc vulkan-tools
-echo "NOTE: Install CUDA and Vulkan tools finished."
+Do I need this with updated Xcode tools available?
+``
+brew install gcc
 ```
 
 ---
@@ -44,32 +42,29 @@ The customize script &mdash; `mm-prepare-customize-webui.sh` &mdash; occasionall
 grep -r "\[\[UPDATED" $BUILD_DIR
 ```
 
-Choose GPUs for your build if you're not building for Raspberry Pi 5.
+Choose GPUs for your build. **WE SHOULD JUST GO METAL.**
 ```
 . mm-gpus-choose.sh
+$GPUS_CHOICE=""
 ```
 
 Build native Mmojo Server tuned to the specific CPU of your PC:
+**_PACKAGE_FILE and _TOUCH_FILE NAMES ARE NOT RIGHT.**
+
 ```
 _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 _TOUCH_FILE=""
 _VARIATION="native"
-if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
-    unset $GPUS_CHOICE
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_RPI5_AARCH64"
-    _PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
-    _TOUCH_FILE="build-aarch64-rpi5"
-    _VARIATION="pi"
-elif [ $(uname -m) == "x86_64" ]; then
+if [ $(uname -m) == "x86_64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-native$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-x86_64-native$GPUS_CHOICE"
     _VARIATION="native"
 elif [ ($(uname -m) == "aarch64") || ($(uname -m) == "arm64") ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-native$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-arm64-native$GPUS_CHOICE"
     _VARIATION="native"
 fi
 mm-build-for-platform.sh $_VARIATION "$GPUS_CHOICE"
@@ -83,12 +78,12 @@ _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-x86_64-comp$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-x86_64-comp$GPUS_CHOICE"
-elif [ $(uname -m) == "aarch64" ]; then
+    _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-comp$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-x86_64-comp$GPUS_CHOICE"
+elif [ ($(uname -m) == "aarch64") || ($(uname -m) == "arm64") ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-aarch64-comp$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-comp$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-arm64-comp$GPUS_CHOICE"
 fi
 mm-build-for-platform.sh compatible "$GPUS_CHOICE"
 ```
@@ -102,12 +97,12 @@ _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-x86_64-perf$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-x86_64-perf$GPUS_CHOICE"
-elif [ $(uname -m) == "aarch64" ]; then
+    _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-perf$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-x86_64-perf$GPUS_CHOICE"
+elif [ ($(uname -m) == "aarch64") || ($(uname -m) == "arm64") ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-aarch64-perf$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-perf$GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-arm64-perf$GPUS_CHOICE"
 fi
 mm-build-for-platform.sh performant "$GPUS_CHOICE"
 ```
@@ -185,7 +180,7 @@ It should look like:
 
 ---
 ### Proceed
-- **Next:** [02. Test ELF Executable for Debian Linux](02-Test-ELF-Debian-Linux.md)
+- **Next:** [02. Test Mach-O Executable for mac OS](02-Test-Mach-O-mac-OS.md)
 - **Previous:** This is the first step in this section.
 - **Up:** [Build Mmojo Server](../README.md)
 

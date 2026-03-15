@@ -35,43 +35,43 @@ cd $THIS_BUILD_DIR
 # --- Here is where to patch common/common.cpp with common/common.cpp.patch-1
 
 # Patch vendor/miniaudio/miniaudio.h for bad cosmo build assumptions
-sed -i -e 's/__COSMOPOLITAN__/__COSMOPOLITAN__XXX/g' vendor/miniaudio/miniaudio.h
+$SED -i -e 's/__COSMOPOLITAN__/__COSMOPOLITAN__XXX/g' vendor/miniaudio/miniaudio.h
 
 # Cosmo headers needed.
 if ! grep -q "#include <cstdlib>" "tools/mtmd/deprecation-warning.cpp" ; then
-  sed -i '3i #include <cstdlib>' "tools/mtmd/deprecation-warning.cpp"
+  $SED -i '3i #include <cstdlib>' "tools/mtmd/deprecation-warning.cpp"
 fi
 if ! grep -q "#include <algorithm>" "src/llama-hparams.cpp" ; then
-  sed -i '4i #include <algorithm>' "src/llama-hparams.cpp"
+  $SED -i '4i #include <algorithm>' "src/llama-hparams.cpp"
 fi
 if ! grep -q "#include <algorithm>" "common/ngram-mod.cpp" ; then
-  sed -i '2i #include <algorithm>' "common/ngram-mod.cpp"
+  $SED -i '2i #include <algorithm>' "common/ngram-mod.cpp"
 fi
 
 # cpp-httplib has a couple lines with type conversion that the old Cosmo compiler doesn't like
-sed -i -e 's/static_cast<cert_t>(cert)/(void*) cert/g' vendor/cpp-httplib/httplib.cpp
-sed -i -e 's/static_cast<cert_t>(x509)/(void*) x509/g' vendor/cpp-httplib/httplib.cpp
+$SED -i -e 's/static_cast<cert_t>(cert)/(void*) cert/g' vendor/cpp-httplib/httplib.cpp
+$SED -i -e 's/static_cast<cert_t>(x509)/(void*) x509/g' vendor/cpp-httplib/httplib.cpp
 
 # In tools/server .cpp files, replace "defer(" with "defer_task(" to make Cosmo STL happy.
-sed -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
-sed -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
-sed -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
+$SED -i -e 's/defer(/defer_task(/g' tools/server/server-context-mmojo.cpp
+$SED -i -e 's/server_queue::defer(/server_queue::defer_task(/g' tools/server/server-queue.cpp
+$SED -i -e 's/void\ defer(/void\ defer_task(/g' tools/server/server-queue.h
 
 #-------------------------------------------------------------------------------
 # Mmojo Server specific
 #-------------------------------------------------------------------------------
 
 # Update the CMake files.
-sed -i -e 's/arg.cpp/arg-mmojo.cpp/g' common/CMakeLists.txt
-sed -i -e 's/common.cpp/common-mmojo.cpp/g' common/CMakeLists.txt
-sed -i -e '/log.h/a \    mmojo-args.h\n\    mmojo-args.c' common/CMakeLists.txt
+$SED -i -e 's/arg.cpp/arg-mmojo.cpp/g' common/CMakeLists.txt
+$SED -i -e 's/common.cpp/common-mmojo.cpp/g' common/CMakeLists.txt
+$SED -i -e '/log.h/a \    mmojo-args.h\n\    mmojo-args.c' common/CMakeLists.txt
 # Not bothering with zipalign for now. -Brad 2025-11-23
-# sed -i -e 's/add_subdirectory(server)/add_subdirectory(server)\n\tif (COSMOCC)\n\t\tadd_subdirectory(zipalign)\n\tendif()/g' tools/CMakeLists.txt
-sed -i -e 's/server.cpp/server-mmojo.cpp\n    server-additions-mmojo.cpp/g' tools/server/CMakeLists.txt
-sed -i -e 's/server-context.cpp/server-context-mmojo.cpp\n    server-context-additions-mmojo.cpp/g' tools/server/CMakeLists.txt
-sed -i -e 's/server-http.cpp/server-http-mmojo.cpp/g' tools/server/CMakeLists.txt
-sed -i -e "s/set(TARGET llama-server)/set(TARGET $EXECUTABLE_FILE)/g" tools/server/CMakeLists.txt
-sed -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt
+# $SED -i -e 's/add_subdirectory(server)/add_subdirectory(server)\n\tif (COSMOCC)\n\t\tadd_subdirectory(zipalign)\n\tendif()/g' tools/CMakeLists.txt
+$SED -i -e 's/server.cpp/server-mmojo.cpp\n    server-additions-mmojo.cpp/g' tools/server/CMakeLists.txt
+$SED -i -e 's/server-context.cpp/server-context-mmojo.cpp\n    server-context-additions-mmojo.cpp/g' tools/server/CMakeLists.txt
+$SED -i -e 's/server-http.cpp/server-http-mmojo.cpp/g' tools/server/CMakeLists.txt
+$SED -i -e "s/set(TARGET llama-server)/set(TARGET $EXECUTABLE_FILE)/g" tools/server/CMakeLists.txt
+$SED -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt
 
 # --- Here is where to patch common/common.h with common/common.h.patch-1
 
@@ -79,31 +79,31 @@ sed -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt
 # Thread priority patch for MinGW cross-compiler:
 #-------------------------------------------------------------------------------
 
-sed -i -e 's/THREAD_POWER_THROTTLING/PROCESS_POWER_THROTTLING/g' ggml/src/ggml-cpu/ggml-cpu.c
+$SED -i -e 's/THREAD_POWER_THROTTLING/PROCESS_POWER_THROTTLING/g' ggml/src/ggml-cpu/ggml-cpu.c
 
 #-------------------------------------------------------------------------------
 # Patch vendor/cpp-httplib for compatibility with MinGW. Inline member functions need to be
 # declared in class definitions. WE DON'T DO MinGW. REMOVE NEXT TIME. -Bard 2026-03-09
 #-------------------------------------------------------------------------------
 #if 0
-sed -i -e 's/bool is_readable(/inline bool is_readable(/g' vendor/cpp-httplib/httplib.h
-sed -i -e 's/bool wait_readable(/inline bool wait_readable(/g' vendor/cpp-httplib/httplib.h
-sed -i -e 's/bool wait_writable(/inline bool wait_writable(/g' vendor/cpp-httplib/httplib.h
-sed -i -e 's/ssize_t read(/inline ssize_t read(/g' vendor/cpp-httplib/httplib.h
-sed -i -e 's/ssize_t write(/inline ssize_t write(/g' vendor/cpp-httplib/httplib.h
+$SED -i -e 's/bool is_readable(/inline bool is_readable(/g' vendor/cpp-httplib/httplib.h
+$SED -i -e 's/bool wait_readable(/inline bool wait_readable(/g' vendor/cpp-httplib/httplib.h
+$SED -i -e 's/bool wait_writable(/inline bool wait_writable(/g' vendor/cpp-httplib/httplib.h
+$SED -i -e 's/ssize_t read(/inline ssize_t read(/g' vendor/cpp-httplib/httplib.h
+$SED -i -e 's/ssize_t write(/inline ssize_t write(/g' vendor/cpp-httplib/httplib.h
 
-sed -i -e 's/bool is_readable(/inline bool is_readable(/g' vendor/cpp-httplib/httplib.cpp
-sed -i -e 's/bool wait_readable(/inline bool wait_readable(/g' vendor/cpp-httplib/httplib.cpp
-sed -i -e 's/bool wait_writable(/inline bool wait_writable(/g' vendor/cpp-httplib/httplib.cpp
-sed -i -e 's/ssize_t read(/inline ssize_t read(/g' vendor/cpp-httplib/httplib.cpp
-sed -i -e 's/ssize_t write(/inline ssize_t write(/g' vendor/cpp-httplib/httplib.cpp
+$SED -i -e 's/bool is_readable(/inline bool is_readable(/g' vendor/cpp-httplib/httplib.cpp
+$SED -i -e 's/bool wait_readable(/inline bool wait_readable(/g' vendor/cpp-httplib/httplib.cpp
+$SED -i -e 's/bool wait_writable(/inline bool wait_writable(/g' vendor/cpp-httplib/httplib.cpp
+$SED -i -e 's/ssize_t read(/inline ssize_t read(/g' vendor/cpp-httplib/httplib.cpp
+$SED -i -e 's/ssize_t write(/inline ssize_t write(/g' vendor/cpp-httplib/httplib.cpp
 #endif
 
 #-------------------------------------------------------------------------------
 # Aggressive warning that goes off in /tokenize
 #-------------------------------------------------------------------------------
 
-sed -i -e 's/(src_parser.empty())/(false \&\& src_parser.empty())/g' common/chat.cpp
+$SED -i -e 's/(src_parser.empty())/(false \&\& src_parser.empty())/g' common/chat.cpp
 
 #-------------------------------------------------------------------------------
 # Future: Just patch common/argc.cpp and eliminate common/argc-mmojo.cpp

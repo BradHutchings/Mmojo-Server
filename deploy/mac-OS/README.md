@@ -36,8 +36,12 @@ Here are the deployment steps:
 If you want Mmojo Server to accept connections from other computers on your network, you can set that up:
 - [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
 
+---
+### Build Mmojo Server
+You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
+
 Use this recipe:
-- [01. Build ELF Executable for Debian Linux](/build/elf-debian/01-Build-ELF-Debian-Linux.md)
+- [01. Build Mach-O Executable for mac OS](/build/mach-o/01-Build-Mach-O=mac-OS.md)
 
 Before building, please work through all of the deploy steps above.
 

@@ -54,7 +54,9 @@ echo "serverRunningId: $serverRunningId"
 
 # Stop Mmojo server if we're not running background
 if [ ! -z "$serverRunningId" ]; then
+    echo "Stop test 1"
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
+        echo "Stop test 2"
         if (! $runInBackground); then
             echo "Stopping Mmojo Server with process id: $serverRunningId."
             kill $serverRunningId

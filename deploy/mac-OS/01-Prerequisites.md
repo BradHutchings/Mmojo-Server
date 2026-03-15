@@ -8,6 +8,7 @@ This step contains prerequisites for deploying Mmojo Server using this recipe. W
 
 *When you are finished with this step, proceed to the next step using the **Proceed** links at the bottom of this page.*
 
+---
 ### Requirements
 This recipe deploys Mmojo Server on a single, stand-along Mac PC or laptop:
 - ARM64 (or AARCH64) CPU, also known as Apple Silicon.

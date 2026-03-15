@@ -62,8 +62,8 @@ if [ -d "$runner_dir" ] && [ -f "$cert_file" ] && [ -f "$key_file" ]; then
 
     echo ""
     echo "Updating vars.sh."
-    sed -i -e '/ssl_cert_file/d' "$runner_dir/vars.sh"
-    sed -i -e '/ssl_key_file/d' "$runner_dir/vars.sh"
+    $SED -i -e '/ssl_cert_file/d' "$runner_dir/vars.sh"
+    $SED -i -e '/ssl_key_file/d' "$runner_dir/vars.sh"
 cat << EOF >> "$runner_dir/vars.sh"
 export ssl_cert_file="certs/$(basename $cert_file)"
 export ssl_key_file="certs/$(basename $key_file)"

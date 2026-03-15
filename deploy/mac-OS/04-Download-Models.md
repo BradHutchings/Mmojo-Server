@@ -60,7 +60,7 @@ mm-models-download.sh
 ### Proceed
 - **Next:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
 - **Previous:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on mac OS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

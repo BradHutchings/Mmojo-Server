@@ -53,7 +53,7 @@ Mmojo Server is installed. You are ready to test it!
 ### Proceed
 - **Next:**  [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 - **Previous:** [04. Download Models](04-Download-Models.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on mac OS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

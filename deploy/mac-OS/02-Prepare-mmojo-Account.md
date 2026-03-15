@@ -53,15 +53,22 @@ sudo dscl . create /Users/mmojo IsHidden 1
 Keep the Terminal open.
 
 ---
+### Enable SSH
+Settings > General > Sharing > Advanced
+
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/423e3b66-f4f3-4eb6-bf00-0d0fcd96c603" />
+
+
+---
 ### Login as mmojo
 Note: I think this would be better as ssh. Gotta try that.
 ```
 ssh mmojo@localhost
 ```
 
-Let's su to the new mmojo user.
+Are you sure you want to continue connecting?
 ```
-su mmojo
+yes
 ```
 
 Your password:

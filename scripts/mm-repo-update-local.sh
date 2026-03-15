@@ -38,7 +38,7 @@ if [ -d "$REPO_DIR" ]; then
       cp -r $REPO_DIR_FILES/* $BUILD_DIR/
       mm-prepare-mmojo-complete.sh
       # In tools/server .cpp files, replace "defer(" with "defer_task(" to make Cosmo STL happy.
-      $SED -i -e 's/defer(/defer_task(/g' "$BUILD_DIR/tools/server/server-context-mmojo.cpp"
+      $MMOJO_SED -i -e 's/defer(/defer_task(/g' "$BUILD_DIR/tools/server/server-context-mmojo.cpp"
   fi
 else
   echo "The $REPO_DIR directory does not exist."

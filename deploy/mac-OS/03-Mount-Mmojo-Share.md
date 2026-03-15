@@ -38,7 +38,7 @@ ls -al $SHARE_DIR_MOUNT_POINT
 ### Proceed
 - **Next:** [04. Download Models](04-Download-Models.md)
 - **Previous:** [02. Prepare mmojo Account](02-Prepare-mmojo-Account.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on mac OS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

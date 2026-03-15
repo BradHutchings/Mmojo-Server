@@ -118,7 +118,7 @@ It is important that you use http, not https.
 ### Proceed
 - **Next:** This is the last step in this section.
 - **Previous:** [09. Change Model](09-Change-Model.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on mac OS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

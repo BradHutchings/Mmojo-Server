@@ -20,7 +20,7 @@
 #include <windows.h>
 #endif
 
-#if !defined(_WIN32)
+#if !defined(_WIN32) && !defined (__APPLE__) && !defined (__MACH__))
 #include <linux/limits.h>
 #endif
 

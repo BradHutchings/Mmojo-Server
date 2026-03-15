@@ -30,7 +30,7 @@ git checkout f1e83d52403060d674161944e849b51f95707c9a
 # git log -1
 
 # Edit the memchr_sse() function to check params.
-$SED -i '39i \  if ((s == NULL) || (n == 0)) return 0;' libc/intrin/memchr.c
+$MMOJO_SED -i '39i \  if ((s == NULL) || (n == 0)) return 0;' libc/intrin/memchr.c
 
 # Build Cosmo
 tool/cosmocc/package.sh

@@ -1,4 +1,4 @@
-## 11. Port Forward to Mmojo Server
+## 10. Port Forward to Mmojo Server
 **THIS SECTION IS IN PROGRESS.**
 ### About this Step (Optional)
 **THIS IS A HOT MESS. NO IDEA WHAT TO DO ABOUT IT YET.**

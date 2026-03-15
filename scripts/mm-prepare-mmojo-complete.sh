@@ -19,8 +19,8 @@ if [ "$1" == "" ]; then
     cp -r Mmojo-Complete Mmojo-Complete-original
 
     TODAY=$(date +%Y-%m-%d)
-    sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/scripts.js
-    sed -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/bookmark-scripts.js
+    $SED -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/scripts.js
+    $SED -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/bookmark-scripts.js
     cd $wd
 fi
 

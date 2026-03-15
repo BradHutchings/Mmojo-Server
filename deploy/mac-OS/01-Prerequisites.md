@@ -1,4 +1,5 @@
 ## 01. Prerequisites
+**THIS SECTION IS IN PROGRESS.**
 ### About this Step
 This step contains prerequisites for deploying Mmojo Server using this recipe. We will install Mmojo Server in under in its own user account on your Mac.
 

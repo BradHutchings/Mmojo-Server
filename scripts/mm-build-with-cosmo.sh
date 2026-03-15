@@ -104,10 +104,10 @@ if [ -v CC ]; then
     cp vendor/cpp-httplib/CMakeLists.txt vendor/cpp-httplib/CMakeLists-orig.txt
 
     # Make temporary change to CMake system so we link in static OpenSSL.
-    sed -i -e 's/PUBLIC OpenSSL::SSL OpenSSL::Crypto/PUBLIC libssl.a libcrypto.a/g' vendor/cpp-httplib/CMakeLists.txt
+    $SED -i -e 's/PUBLIC OpenSSL::SSL OpenSSL::Crypto/PUBLIC libssl.a libcrypto.a/g' vendor/cpp-httplib/CMakeLists.txt
     # Delete the rejection test for OpenSSL.
-    sed -i -e '/#include <openssl\/opensslv.h>/d' vendor/cpp-httplib/CMakeLists.txt
-    sed -i -e '/error bad version/d' vendor/cpp-httplib/CMakeLists.txt
+    $SED -i -e '/#include <openssl\/opensslv.h>/d' vendor/cpp-httplib/CMakeLists.txt
+    $SED -i -e '/error bad version/d' vendor/cpp-httplib/CMakeLists.txt
 
     # Prepare the build folder
     if [ "$THIS_BUILD_DIR/$BUILD_SUBDIRECTORY" != "" ]; then

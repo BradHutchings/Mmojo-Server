@@ -76,7 +76,7 @@ You will see your admin account prompt.
 ### Proceed
 - **Next:** [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) (Optional)
 - **Previous:** [08. Autostart Mmojo Server](08-Autostart-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on mac OS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

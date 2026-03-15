@@ -22,7 +22,7 @@ This script will add the `Mmojo-Complete` folder and `mmojo-server-args` file to
 After adding this data, the compatible and performant APE files are duplicated with `.exe` extensions to run on Windows PCs.
 ```
 cd "$DEPLOY_DIR"
-sed -i -e 's/\/app\//\/zip\//g' "mmojo-server-args"
+$SED -i -e 's/\/app\//\/zip\//g' "mmojo-server-args"
 if [ -f "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" ]; then
     mv "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.zip"
     zip -r "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.zip" "Mmojo-Complete" "$_PACKAGE_MMOJO_SERVER_ARGS_FILE"

@@ -66,7 +66,7 @@ elif [ $(uname -m) == "x86_64" ]; then
     _PACKAGE_FILE="Mmojo-Server-x86_64-native$GPUS_CHOICE.zip"
     _TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
     _VARIATION="native"
-elif [ $(uname -m) == "aarch64" || $(uname -m) == "arm64" ]; then
+elif [ $(uname -m) == "aarch64" ] || [ $(uname -m) == "arm64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-aarch64-native$GPUS_CHOICE.zip"
     _TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"

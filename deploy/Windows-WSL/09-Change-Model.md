@@ -48,13 +48,13 @@ Connect to Mmojo Server again in your browser:
 
 - [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
-<img width="313" height="64" alt="image" src="https://github.com/user-attachments/assets/f0bf286e-4a10-4bb4-a80b-ad707f2f9311" />
+<img width="159" height="80" alt="image" src="https://github.com/user-attachments/assets/df33bede-331f-4ae4-bcf6-44d163b41897" />
 
-Click the Settings icon &mdash; lefmost icon top right &mdash;  to reveal the Setting panel, which shows the model your Mmojo Server is running.
+Click the Tools icon &mdash; center icon top right &mdash;  to reveal the Tools Info panel, which shows the model your Mmojo Server is running.
 
 <img width="422" height="151" alt="image" src="https://github.com/user-attachments/assets/c3b767c8-54a7-4c8d-93f0-7d542ef2f2a6" />
 
-Click the Settings icon again to make the Settings panel disappear.
+Click the Tools icon again to make the Tools Info panel and Tools panel disappear.
 
 ---
 ### Power Off Mmojo Server

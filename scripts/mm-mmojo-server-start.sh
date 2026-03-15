@@ -17,6 +17,8 @@ if [ "$background" != "" ]; then
     runInBackground=true;
 fi
 
+echo "runInBackground: $runInBackground"
+
 # printf "\n\$DEPLOY_DIR: $DEPLOY_DIR\n\n"
 # printf "\n\$_PACKAGE_MMOJO_SERVER_FILE: $_PACKAGE_MMOJO_SERVER_FILE\n\n"
 
@@ -48,7 +50,7 @@ else
 fi
 
 serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
-# echo "serverRunningId: $serverRunningId"
+echo "serverRunningId: $serverRunningId"
 
 # Stop Mmojo server if we're not running background
 if [ ! -z "$serverRunningId" ]; then

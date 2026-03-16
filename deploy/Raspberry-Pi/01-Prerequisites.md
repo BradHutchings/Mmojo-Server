@@ -27,7 +27,7 @@ The following are recommended for smoothest sailing through this recipe:
  
 ---
 ### Proceed
-- **Next:** [02. Prepare Raspberry-Pi](02-Prepare-Raspberry-Pi.md)
+- **Next:** [02. Prepare Raspberry Pi](02-Prepare-Raspberry-Pi.md)
 - **Previous:** This is the first step in this section.
 - **Up:** [Deploy Mmojo Server on Raspberry Pi](README.md)
 

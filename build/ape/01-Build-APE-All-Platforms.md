@@ -4,7 +4,8 @@ In this step, you will build an Actual Portable Executable (APE) file that will 
 
 These build steps should be performed in a Debian Linux operating system like Ubuntu or Raspberry Pi. Please prepare your Debian environment by working through one these deploy recipes:
 - [Deploy Mmojo Server on Windows (WSL)](/deploy/Windows-WSL/README.md) 
-- [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](/deploy/Debian-Ubuntu-Pi/README.md) 
+- [Deploy Mmojo Server on Debian / Ubuntu](/deploy/Debian-Ubuntu/README.md) 
+- [Deploy Raspberry Pi](/deploy/Raspberry-Pi/README.md) 
 
 ---
 ### Install Dependencies

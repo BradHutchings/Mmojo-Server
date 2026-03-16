@@ -23,6 +23,7 @@ echo "- mm-debug  --> mm-mmojo-server-start.sh             # Runs in foreground 
 echo "- mm-status --> mm-mmojo-server-status.sh            # Is Mmojo Server running?"
 echo ""
 EOF
+source $HOME/.bashrc
 fi
 ```
 

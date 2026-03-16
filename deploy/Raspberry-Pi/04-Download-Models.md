@@ -54,7 +54,7 @@ mm-models-download.sh
 ### Proceed
 - **Next:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
 - **Previous:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
-- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+- **Up:** [Deploy Mmojo Server on Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

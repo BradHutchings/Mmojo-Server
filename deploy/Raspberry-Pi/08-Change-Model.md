@@ -58,7 +58,7 @@ Click the Settings icon again to make the Settings panel disappear.
 ### Proceed
 - **Next:** This is the last step in this section.
 - **Previous:** [07. Make Command Aliases](07-Make-Command-Aliases.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

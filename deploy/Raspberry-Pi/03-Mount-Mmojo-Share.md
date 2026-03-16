@@ -35,7 +35,7 @@ ls -al /mnt/mmojo
 ### Proceed
 - **Next:** [04. Download Models](04-Download-Models.md)
 - **Previous:** [02. Prepare Raspberry Pi](02-Prepare-Raspberry-Pi.md)
-- **Up:** [Deploy Raspberry Pi](README.md)
+- **Up:** [Deploy Mmojo Server on Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

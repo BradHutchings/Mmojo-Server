@@ -55,6 +55,11 @@ npm run build
 cd $SAVE_WD
 mv loading-mmojo.html tools/server/public/loading-mmojo.html
 
+# Somehow the Svelte recompile misses the "for new line". No idea why. -Brad 2026-03-15
+if [ -f tools/server/webui/.svelte-kit/output/prerendered/pages/index.html ]; then
+    $MMOJO_SED -i -e "s/for new line/for new line./g" tools/server/webui/.svelte-kit/output/prerendered/pages/index.html
+fi
+
 mm-prepare-mmojo-complete.sh
 
 # if [ "$1" == "" ]; then

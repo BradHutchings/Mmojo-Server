@@ -94,7 +94,7 @@ It's OK to start from scratch and do it often. There is a lot going on to deploy
 ### Proceed
 - **Next:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)
-- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+- **Up:** [Deploy Mmojo Server on Debian / Ubuntu](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

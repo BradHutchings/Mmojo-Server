@@ -200,9 +200,11 @@ struct server_slot {
         drafted.clear();
         i_batch_dft.clear();
         generated_tokens.clear();
+
         // Mmojo Server START
         generated_token_count = 0;
         // Mmojo Server END
+
         generated_token_probs.clear();
         json_schema = json();
 
@@ -917,9 +919,10 @@ private:
             }
 
             // thinking is enabled if:
-            // 1. It's not explicitly disabled (reasoning_budget == 0)
+            // 1. It's not explicitly disabled via --reasoning off
             // 2. The chat template supports it
-            const bool enable_thinking = params_base.use_jinja && params_base.reasoning_budget != 0 && common_chat_templates_support_enable_thinking(chat_templates.get());
+            const bool template_supports_thinking = params_base.use_jinja && common_chat_templates_support_enable_thinking(chat_templates.get());
+            const bool enable_thinking = params_base.enable_reasoning != 0 && template_supports_thinking;
             SRV_INF("%s: chat template, thinking = %d\n", __func__, enable_thinking);
 
             chat_params = {
@@ -931,6 +934,8 @@ private:
                 /* allow_image           */ mctx ? mtmd_support_vision(mctx) : false,
                 /* allow_audio           */ mctx ? mtmd_support_audio (mctx) : false,
                 /* enable_thinking       */ enable_thinking,
+                /* reasoning_budget      */ params_base.reasoning_budget,
+                /* reasoning_budget_msg  */ params_base.reasoning_budget_message,
                 /* media_path            */ params_base.media_path,
             };
         }
@@ -1210,6 +1215,9 @@ private:
             ? SLOT_STATE_WAIT_OTHER // wait for the parent to process prompt
             : SLOT_STATE_STARTED;
 
+        // reset server kill-switch counter
+        n_empty_consecutive = 0;
+
         SLT_INF(slot, "processing task, is_child = %d\n", slot.task->is_child());
         return true;
     }
@@ -1223,9 +1231,11 @@ private:
         if (slot.task->params.return_tokens) {
             slot.generated_tokens.push_back(result.tok);
         }
+        
         // Mmojo Server START
         slot.generated_token_count++;
         // Mmojo Server END
+
         slot.has_next_token = true;
 
         // check if there is incomplete UTF-8 character at the end
@@ -1344,7 +1354,7 @@ private:
         }
 
         SLT_DBG(slot, "n_decoded = %d, n_remaining = %d, next token: %5d '%s'\n", slot.n_decoded, slot.n_remaining, result.tok, token_str.c_str());
-
+      
         // Mmojo Server START
         if (params_base.show_completion) {
             if (!slot.has_next_token) {
@@ -1358,7 +1368,7 @@ private:
             }
         }
         // Mmojo Server END
-      
+
         return slot.has_next_token; // continue
     }
 
@@ -2466,7 +2476,7 @@ private:
                         // this is to signal the client that the request has started processing
                         if (slot.task->params.stream && slot.task->params.return_progress) {
                             send_partial_response(slot, {}, true);
-                          
+                            
                             // Mmojo Server START
                             // This could be automated by searching for "send_partial_response(slot, {}, true);" and inserting this block after. -Brad 2025-11-05
                             // This looks like the right spot to sleep.
@@ -2581,9 +2591,24 @@ private:
                         slot.n_prompt_tokens_processed++;
 
                         // process the last few tokens of the prompt separately in order to allow for a checkpoint to be created.
-                        const int n_last = std::min(n_batch, 512);
-                        if (do_checkpoint && slot.task->n_tokens() == slot.prompt.n_tokens() + n_last) {
-                            break;
+                        // create checkpoints that many tokens before the end of the prompt:
+                        //  - 4 + n_ubatch
+                        //  - 4
+                        // ref: https://github.com/ggml-org/llama.cpp/pull/20288
+                        {
+                            static const int checkpoint_offsets[] = {4 + n_ubatch, 4};
+
+                            bool should_break = false;
+                            for (int offset : checkpoint_offsets) {
+                                const int n_last = std::min(n_batch, offset);
+                                if (do_checkpoint && slot.task->n_tokens() == slot.prompt.n_tokens() + n_last) {
+                                    should_break = true;
+                                    break;
+                                }
+                            }
+                            if (should_break) {
+                                break;
+                            }
                         }
                     }
 
@@ -2605,18 +2630,27 @@ private:
                         slot.init_sampler();
                         SLT_INF(slot, "prompt processing done, n_tokens = %d, batch.n_tokens = %d\n", slot.prompt.n_tokens(), batch.n_tokens);
                     } else {
-                        // only do non-end checkpoints if the "checkpoint every n tokens" option is set
-                        do_checkpoint = do_checkpoint && params_base.checkpoint_every_nt > 0;
-                        if (do_checkpoint) {
-                            llama_pos last_checkpoint = 0;
-                            if (!slot.prompt.checkpoints.empty()) {
-                                last_checkpoint = slot.prompt.checkpoints.back().n_tokens;
-                            }
-                            do_checkpoint = do_checkpoint && slot.prompt.n_tokens() - batch.n_tokens - last_checkpoint >= params_base.checkpoint_every_nt;
+                        if (slot.task->n_tokens() < slot.prompt.n_tokens() + n_ubatch) {
+                            // near the end of the prompt
+                            do_checkpoint = do_checkpoint && true;
+                        } else {
+                            // only do non-end checkpoints if the "checkpoint every n tokens" option is set
+                            do_checkpoint = do_checkpoint && params_base.checkpoint_every_nt > 0;
+
                             if (do_checkpoint) {
-                                SLT_INF(slot, "%d tokens since last checkpoint at %d, creating new checkpoint during processing at position %d\n", params_base.checkpoint_every_nt, last_checkpoint, slot.prompt.n_tokens());
+                                llama_pos last_checkpoint = 0;
+                                if (!slot.prompt.checkpoints.empty()) {
+                                    last_checkpoint = slot.prompt.checkpoints.back().n_tokens;
+                                }
+
+                                do_checkpoint = do_checkpoint && slot.prompt.n_tokens() - batch.n_tokens - last_checkpoint >= params_base.checkpoint_every_nt;
+
+                                if (do_checkpoint) {
+                                    SLT_INF(slot, "%d tokens since last checkpoint at %d, creating new checkpoint during processing at position %d\n", params_base.checkpoint_every_nt, last_checkpoint, slot.prompt.n_tokens());
+                                }
                             }
                         }
+
                         SLT_INF(slot, "prompt processing progress, n_tokens = %d, batch.n_tokens = %d, progress = %f\n", slot.prompt.n_tokens(), batch.n_tokens, (float) slot.prompt.n_tokens() / slot.task->n_tokens());
                     }
 
@@ -3120,7 +3154,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
         const auto & prompt = data.at("prompt");
         // TODO: this log can become very long, put it behind a flag or think about a more compact format
         //SRV_DBG("Prompt: %s\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
-
+        
         // Mmojo Server START
         if (params.show_request) {
             SRV_INF("\n----------\data:\n%s\n----------\n", data.is_string() ? data.get<std::string>().c_str() : data.dump(2).c_str());
@@ -3833,7 +3867,7 @@ void server_routes::init_routes() {
         // Replace "meta" in json models below
         //   {"meta",     model_meta},
         // Mmojo Server END
-      
+
         json models = {
             {"models", {
                 {

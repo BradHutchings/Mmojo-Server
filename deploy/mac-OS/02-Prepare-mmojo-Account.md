@@ -53,15 +53,22 @@ sudo dscl . create /Users/mmojo IsHidden 1
 Keep the Terminal open.
 
 ---
+### Enable SSH
+Settings > General > Sharing > Advanced
+
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/423e3b66-f4f3-4eb6-bf00-0d0fcd96c603" />
+
+
+---
 ### Login as mmojo
 Note: I think this would be better as ssh. Gotta try that.
 ```
 ssh mmojo@localhost
 ```
 
-Let's su to the new mmojo user.
+Are you sure you want to continue connecting?
 ```
-su mmojo
+yes
 ```
 
 Your password:
@@ -75,10 +82,10 @@ admin123!
 ### Customize the Shell Prompt
 You can prepend `(MmojoServer)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
 ```
-cat << EOF >> .bashrc
+cat << EOF >> .zshrc
 PS1="(MmojoServer)-$PS1"
 EOF
-. .bashrc
+. .zshrc
 ```
 
 <img width="331" height="32" alt="image" src="https://github.com/user-attachments/assets/0610c9f1-e5b3-4a1d-b5f8-73a056d2fa1f" />

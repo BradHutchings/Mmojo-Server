@@ -30,7 +30,9 @@ fi
 if command -v vulkaninfo >/dev/null 2>&1; then
     has_vulkan=1
 fi
-# Metal???
+if [ "$(uname -s)" = "Darwin" ]; then
+    has_metal=1
+fi
 
 gpu_combos+=("None")
 if (( has_cuda == 1 )); then                                     gpu_combos+=("CUDA");                   fi

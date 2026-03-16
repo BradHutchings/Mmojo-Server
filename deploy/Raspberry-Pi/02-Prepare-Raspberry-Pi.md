@@ -80,6 +80,7 @@ fi
   
 ```
 mm-repo-branch-work-in-progress.sh
+mm-repo-update-local.sh
 mm-env
 ```
 </details>

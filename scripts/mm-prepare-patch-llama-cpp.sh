@@ -44,6 +44,9 @@ fi
 if ! grep -q "#include <algorithm>" "src/llama-hparams.cpp" ; then
   $MMOJO_SED -i '4i #include <algorithm>' "src/llama-hparams.cpp"
 fi
+if ! grep -q "#include <algorithm>" "src/llama-quant.cpp" ; then
+  $MMOJO_SED -i '15i #include <algorithm>' "src/llama-quant.cpp"
+fi
 if ! grep -q "#include <algorithm>" "common/ngram-mod.cpp" ; then
   $MMOJO_SED -i '2i #include <algorithm>' "common/ngram-mod.cpp"
 fi

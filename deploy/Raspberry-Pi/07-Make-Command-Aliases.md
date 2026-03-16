@@ -33,7 +33,7 @@ fi
 ### Proceed
 - **Next:** [08. Change Model](08-Change-Model.md)
 - **Previous:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

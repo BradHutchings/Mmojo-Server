@@ -49,7 +49,8 @@ EOF
 fi
 
 source $HOME/.bashrc
-echo $PATH
+echo
+echo "Your \$PATH is: $PATH"
 ```
 
 ---

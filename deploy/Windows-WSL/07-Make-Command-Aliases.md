@@ -25,6 +25,7 @@ echo "- mm-model   --> mm-model-choose.sh"
 echo "- mm-which   --> mm-model-which.sh"
 echo ""
 EOF
+source $HOME/.bashrc
 fi
 ```
 

@@ -32,7 +32,7 @@ Here are the deployment steps:
 ### Build Mmojo Server
 You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
 
-Use this recipe:
+Use this recipe while working on a Raspberry Pi 5:
 - [Build ELF Executable for Debian Linux](/build/elf-debian/01-Build-ELF-Debian-Linux.md)
 
 Before building, please work through all of the deploy steps above.

@@ -3,7 +3,7 @@
 This step contains prerequisites for deploying Mmojo Server using this recipe. We will install Mmojo Server in a home directory of a dedicated Linux account on your device.
 
 **Skip Ahead:**
-- [02. Prepare Debian](02-Prepare-Debian.md)
+- [02. Prepare Raspberry Pi](02-Prepare-Raspberry-Pi.md)
 
 *When you are finished with this step, proceed to the next step using the **Proceed** links at the bottom of this page.*
 

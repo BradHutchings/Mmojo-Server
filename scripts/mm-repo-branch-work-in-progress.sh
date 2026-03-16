@@ -31,9 +31,6 @@ if [ -d "$REPO_DIR" ]; then
   cp $REPO_DIR_SCRIPTS/mm-*.sh $HOME_SCRIPTS
   chmod a+x $HOME_SCRIPTS/mm-*.sh
 
-  cp $REPO_DIR_SCRIPTS/mr-*.sh $HOME_SCRIPTS
-  chmod a+x $HOME_SCRIPTS/mr-*.sh
-
   if [ -d "$BUILD_DIR" ]; then
       # This copies the $REPO_DIR_FILES tree into the $BUILD_DIR tree.
       cp -r $REPO_DIR_FILES/* $BUILD_DIR/

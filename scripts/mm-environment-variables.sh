@@ -24,7 +24,6 @@ unset CXX
 unset AR
 
 echo "Setting MMOJO_SED."
-echo "- CHANGE THIS FROM SED TO MMOJO_SED SOON! -Brad"
 export MMOJO_SED="sed"
 if [ "$(uname -s)" = "Darwin" ]; then
     export MMOJO_SED="gsed"

@@ -35,7 +35,7 @@ I told you this was a short step!
 ### Proceed
 - **Next:** [09. Change Model](09-Change-Model.md)
 - **Previous:** [07. Make Command Aliases](07-Make-Command-Aliases.md)
-- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+- **Up:** [Deploy Mmojo Server on Debian / Ubuntu](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

@@ -58,7 +58,7 @@ Click the Settings icon again to make the Settings panel disappear.
 ### Proceed
 - **Next:** This is the last step in this section.
 - **Previous:** [08. Autostart Mmojo Server](08-Autostart-Mmojo-Server.md)
-- **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
+- **Up:** [Deploy Mmojo Server on Debian / Ubuntu](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

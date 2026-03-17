@@ -1,4 +1,4 @@
-## 03. Package ELF Executable for Debian Linux
+## 03. Package Mach-O Executable for mac OS
 **THIS SECTION IS IN PROGRESS.**
 ### About this Step
 In this step, you will package the build you just created and tested.

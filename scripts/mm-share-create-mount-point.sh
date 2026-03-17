@@ -13,7 +13,8 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 # Haven't installed system updates and dependencies yet.
 #--------------------------------------------------------------------------------
 
-if [ $(cat /etc/os-release | grep "debian") != "" ]; then
+debian=$(cat /etc/os-release | grep "debian")
+if [ "$debian" != "" ]; then
     echo "Installing cifs-utils."
     sudo apt install -y cifs-utils
 fi

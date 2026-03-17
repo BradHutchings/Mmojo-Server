@@ -2,7 +2,7 @@
 ### About this Step
 In this step, you will mount your Mmojo Share, if you have one. Your Mmojo Share can be any SMB file share on your computer or your network. You will need it's host address, share name, username, and password.
 
-Your Mmojo Share will be used to automatcally store models that you download from Hugging Face so that you only have to download them once. That will save you a lot of time.
+Your Mmojo Share will be used to automatically store models that you download from Hugging Face so that you only have to download them once. That will save you a lot of time.
 
 If you don't have an SMB file share available to use on your computer or network, you can skip this step.
 
@@ -34,8 +34,8 @@ ls -al /mnt/mmojo
 ---
 ### Proceed
 - **Next:** [04. Download Models](04-Download-Models.md)
-- **Previous:** [02. Prepare Debian](02-Prepare-Debian.md)
-- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+- **Previous:** [02. Prepare Raspberry Pi](02-Prepare-Raspberry-Pi.md)
+- **Up:** [Deploy Mmojo Server on Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

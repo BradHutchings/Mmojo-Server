@@ -13,6 +13,9 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2 $3.\n*\n$STARS\n\n"
 
+echo "\$MMOJO_EXTRA_PARAMS: $MMOJO_EXTRA_PARAMS"
+echo
+
 processor=$(uname -m)
 variation=$1
 gpus=$2

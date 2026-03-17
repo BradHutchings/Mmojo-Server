@@ -10,6 +10,9 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2.\n*\n$STARS\n\n"
 
+echo "\$MMOJO_EXTRA_PARAMS: $MMOJO_EXTRA_PARAMS"
+echo
+
 processor=$1
 variation=$2
 
@@ -115,7 +118,7 @@ if [ -v CC ]; then
     fi
     cmake -B "$BUILD_SUBDIRECTORY" -DBUILD_SHARED_LIBS=OFF -DLLAMA_CURL=OFF -DLLAMA_OPENSSL=ON \
       -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=$processor \
-      -DCMAKE_VERBOSE_MAKEFILE=$VERBOSE $GGML_PARAMS
+      -DCMAKE_VERBOSE_MAKEFILE=$VERBOSE $GGML_PARAMS $MMOJO_EXTRA_PARAMS
 
     # Revert to original CMake system.
     # The OpenSSL linking got moved to vendor/cpp-httplib/CMakeLists.txt.

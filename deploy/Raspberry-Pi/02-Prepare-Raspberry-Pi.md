@@ -1,8 +1,6 @@
-## 02. Prepare Debian
+## 02. Prepare Raspberry Pi
 ### About this Step
 You will do some basic preparation for Mmojo Server deployment.
-
-Note for developer newbies: Windows cmd shell and PowerShell use a backslash `\` for file system paths. Linux shells use a forward slash `/` for paths and a backslash `\` for escaping characters like `$` in strings. I mostly use the Linux style slashes in these instructions because they're for Linux.
 
 <!--
 ---
@@ -51,7 +49,8 @@ EOF
 fi
 
 source $HOME/.bashrc
-echo $PATH
+echo
+echo "Your \$PATH is: $PATH"
 ```
 
 ---
@@ -71,7 +70,6 @@ git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
 if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc
 alias mm-env=". mm-environment-variables.sh"
-mm-env
 EOF1
 source $HOME/.bashrc
 fi
@@ -82,6 +80,7 @@ fi
   
 ```
 mm-repo-branch-work-in-progress.sh
+mm-repo-update-local.sh
 mm-env
 ```
 </details>
@@ -94,7 +93,7 @@ It's OK to start from scratch and do it often. There is a lot going on to deploy
 ### Proceed
 - **Next:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)
-- **Up:** [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](README.md)
+- **Up:** [Deploy Mmojo Server on Raspberry Pi](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

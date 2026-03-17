@@ -3,11 +3,9 @@
 ### About this Step
 **IT'S MIGHT JUST BE PERF WITH METAL.**
 
-In this step, you will build an executable file that runs on Debian Linux operating systems for the CPU family in your computer. The supported CPU families are x86_64 and aarch64 (arm64). You can build with three compatibility options:
-- **Compatible:** Runs on most systems that use a CPU from your computer's CPU family. 
-- **Performant:** Runs on systems that use a recent CPU from your computer's CPU family.
-  - For x86_64, these are x86_64 CPUs that support "level 3" flags, as defined by the gnu cc compiler.
-  - For aarch64 (arm64), these are aarch64 CPUs that support ??? flags, as defined by the gnu cc compiler. These include all Apple M-series CPUs.
+In this step, you will build an executable file that runs on Apple Silicon (i.e. M1, M2, M3, M4, and M5).
+- **Compatible:** Runs on Apple M1 and above. 
+- **Performant:** Runs on Apple M4 and above.
 - **Native:** Runs on systems with a CPU that includes all of the CPU flags your computer's CPU includes. This includes your computer.
 
 These build steps should be performed with mac OS. Please prepare your mac OS environment by working through this deploy recipes:

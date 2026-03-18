@@ -85,46 +85,6 @@ fi
 mm-build-for-platform.sh $_VARIATION "$_GPUS_CHOICE"
 ```
 
-<!--
-<details>
-  <summary><b>Alternatively:</b> Build a more compatible Mmojo Server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
-  
-```
-_BUILD_SUBDIR=""
-_PACKAGE_FILE=""
-if [ $(uname -m) == "x86_64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_X86_64$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-x86_64-comp$_GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-x86_64-comp$_GPUS_CHOICE"
-elif [ $(uname -m) == "aarch64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_AARCH64$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-aarch64-comp$_GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-aarch64-comp$_GPUS_CHOICE"
-fi
-mm-build-for-platform.sh compatible "$_GPUS_CHOICE"
-```
-</details>
-
-<details>
-  <summary><b>Alternatively:</b> Build a performant Mmojo Server. It will run on recent CPUs in your CPU family (x86_64 or aarch64).</summary>
-  
-```
-_BUILD_SUBDIR=""
-_PACKAGE_FILE=""
-if [ $(uname -m) == "x86_64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_X86_64$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-x86_64-perf$_GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-x86_64-perf$_GPUS_CHOICE"
-elif [ $(uname -m) == "aarch64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_AARCH64$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-aarch64-perf$_GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-aarch64-perf$_GPUS_CHOICE"
-fi
-mm-build-for-platform.sh performant "$_GPUS_CHOICE"
-```
-</details>
--->
-
 ---
 ### Create a Deploy Directory
 Create a `$DEPLOY_DIR` directory and copy Mmojo Server into it:

@@ -18,7 +18,6 @@ if [ "$1" == "llama-server" ]; then
 fi
 
 EXECUTABLE_FILE=$_PACKAGE_MMOJO_SERVER_FILE
-RPC_EXECUTABLE_FILE="mmojo-rpc-server"
 
 echo "  executable file: $EXECUTABLE_FILE"
 echo "       cloning in: $THIS_BUILD_DIR"
@@ -76,9 +75,6 @@ $MMOJO_SED -i -e 's/server-context.cpp/server-context-mmojo.cpp\n    server-cont
 $MMOJO_SED -i -e 's/server-http.cpp/server-http-mmojo.cpp/g' tools/server/CMakeLists.txt
 $MMOJO_SED -i -e "s/set(TARGET llama-server)/set(TARGET $EXECUTABLE_FILE)/g" tools/server/CMakeLists.txt
 $MMOJO_SED -i -e 's/loading.html/loading-mmojo.html/g' tools/server/CMakeLists.txt
-
-$MMOJO_SED -i -e 's/rpc-server.cpp/rpcserver-mmojo.cpp\n    rpc-server-additions-mmojo.cpp/g' tools/rpc/CMakeLists.txt
-$MMOJO_SED -i -e "s/set(TARGET rpc-server)/set(TARGET $RPC_EXECUTABLE_FILE)/g" tools/rpc/CMakeLists.txt
 
 # --- Here is where to patch common/common.h with common/common.h.patch-1
 

@@ -44,6 +44,7 @@ if (( has_vulkan == 1 )); then                                   gpu_combos+=("V
 if (( has_metal == 1 )); then                                    gpu_combos+=("METAL");                  fi
 
 if [ ${#gpu_combos[@]} -gt "0" ]; then
+    echo
     echo "Please pick the GPU combination you want your build to support:"
     for ((i=0;i<${#gpu_combos[@]};i++)); do 
         string="$(($i+1))) ${gpu_combos[$i]}"

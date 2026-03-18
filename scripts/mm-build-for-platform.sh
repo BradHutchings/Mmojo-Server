@@ -110,6 +110,10 @@ else
     # Metal is on by default in macOS builds.
     GGML_PARAMS+=" -DGGML_METAL=OFF";
 fi
+
+# Always build with RPC.
+GGML_PARAMS+=" -DGGML_RPC=ON";
+
 BUILD_SUBDIRECTORY+="$gpus"
 
 echo "   Processor: $processor"

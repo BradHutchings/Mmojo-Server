@@ -10,7 +10,7 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
+# printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 build="native"
 
@@ -51,7 +51,7 @@ cd $HOME
 
 echo $build > "/tmp/${SCRIPT_NAME%.*}.out"
 
-printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
+# printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 
 ################################################################################

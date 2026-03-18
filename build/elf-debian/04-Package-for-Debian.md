@@ -51,7 +51,7 @@ mm-packages-backup.sh
 ---
 ### Proceed
 - **Next:** [05. Package Mmojo Server for Raspberry Pi](05-Package-for-Raspberry-Pi.md)
-- **Previous:** [03. Test Mmojo RPC Server](04-Test-Mmojo-RPC-Server.md)
+- **Previous:** [03. Test Mmojo RPC Server](03-Test-Mmojo-RPC-Server.md)
 - **Up:** [Build Mmojo Server](../README.md)
 
 ---

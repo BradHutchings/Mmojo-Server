@@ -1,4 +1,4 @@
-## Build ELF Executable for Debian Linux
+## Build Mmojo Server for Debian Linux
 ### About this Guide
 (about it)
 

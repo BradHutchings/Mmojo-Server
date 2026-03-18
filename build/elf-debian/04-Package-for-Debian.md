@@ -1,4 +1,4 @@
-## 04. Package Mmojo Server for Debian Linux
+## 04. Package Mmojo Server
 ### About this Step
 In this step, you will package the build you just created and tested.
 

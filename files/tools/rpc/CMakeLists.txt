@@ -8,6 +8,7 @@ set(TARGET_SRCS
 
 add_executable(${TARGET} ${TARGET_SRCS})
 
+target_include_directories(${TARGET} PRIVATE ${CMAKE_SOURCE_DIR})
 target_link_libraries(${TARGET} PRIVATE ggml)
 target_compile_features(${TARGET} PRIVATE cxx_std_17)
 

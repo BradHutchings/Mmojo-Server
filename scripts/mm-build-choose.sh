@@ -12,7 +12,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-build=""
+build="native"
 
 builds=()
 builds+=("native")
@@ -38,7 +38,7 @@ if [ ${#builds[@]} -gt "0" ]; then
     fi
     
     if [ "$choice" == "None" ]; then
-        build=""
+        build="native"
     else
         build=$choice
     fi

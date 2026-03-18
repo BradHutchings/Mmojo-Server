@@ -1,4 +1,4 @@
-## 04. Package Mmojo Server for Raspberry Pi
+## 05. Package Mmojo Server for Raspberry Pi
 ### About this Step
 In this step, you will package the build you just created and tested for Raspberry Pi. It will include Google Gemma 1B Instruct v3.
 

@@ -11,6 +11,9 @@
   brad@bradhutchings.com
 */
 
+#include <string>
+#include <filesystem>
+
 #define PROCESS_NAME "mmojo-rpc-server"
 #define ARGS_FILENAME "mmojo-rpc-server-args"
 #define PRODUCT_NAME "Mmojo RPC Server"

@@ -12,7 +12,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-gpus="None"
+gpus=""
 
 gpu_combos=()
 has_cuda=0

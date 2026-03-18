@@ -115,7 +115,7 @@ mm-build-for-platform.sh performant "$GPUS_CHOICE"
 
 ---
 ### Create a Deploy Directory
-Create a deploy directory:
+Create a `$DEPLOY_DIR` directory and copy Mmojo Server into it:
 ```
 if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
@@ -128,7 +128,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
 fi
 ```
 
-Create a mmojo-server-args file in the $DEPLOY_DIR to launch Mmojo Server with the Mmojo Complete UI:
+Create a mmojo-server-args file in the `$DEPLOY_DIR` directory to launch Mmojo Server with the Mmojo Complete UI:
 ```
 # make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
 cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
@@ -174,8 +174,20 @@ EOF
 **Future:** These are good candidate for mm-scripts.
 
 ---
+### Optional: Add mmojo-rpc-server to Deploy Directory
+You built the Mmojo RPC Server too. You can copy it to the `$DEPLOY_DIR` directory as well.
+```
+cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
+cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
+-H 0.0.0.0
+-p 8081
+-c
+EOF
+```
+
+---
 ### Review Your Work
-Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
+Let's list the contents of the `$DEPLOY_DIR` directory and review your work:
 ```
 ls -l $DEPLOY_DIR
 ```

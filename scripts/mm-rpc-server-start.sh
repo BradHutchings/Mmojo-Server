@@ -68,7 +68,7 @@ if [ -z "$serverRunningId" ]; then
         fi
     fi
 else
-    if (! $runInBackground); then
+    if ($runInBackground); then
         echo "Mmojo RPC Server is already running with process id: $serverRunningId."
     fi
 fi

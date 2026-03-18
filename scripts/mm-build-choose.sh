@@ -50,6 +50,7 @@ fi
 
 cd $HOME
 
+echo
 echo $build > "/tmp/${SCRIPT_NAME%.*}.out"
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

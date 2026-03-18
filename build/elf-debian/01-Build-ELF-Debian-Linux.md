@@ -131,6 +131,17 @@ if [ "$DEPLOY_DIR" != "" ]; then
 fi
 ```
 
+<details>
+  <summary><b>Alternatively:</b> Create a <code>mmojo-server-args</code> file in the <code>$DEPLOY_DIR</code> to launch Mmojo Server with chat UI.</summary>
+<br/>
+    
+Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
+```
+cp "$REPO_DIR/build/support-files/mmojo-server-args-chat" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+```
+</details>
+
+
 <!--
 Create a mmojo-server-args file in the `$DEPLOY_DIR` directory to launch Mmojo Server with the Mmojo Complete UI:
 ```

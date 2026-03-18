@@ -1,4 +1,4 @@
-## 02. Test Mmojo Server for Debian Linux
+## 02. Test Mmojo Server
 ### About this Step
 In this step, you will test your Mmojo Server build.
 
@@ -26,8 +26,8 @@ Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-st
 
 ---
 ### Proceed
-- **Next:** [03. Test Mmojo RPC Server for Debian Linux](03-Test-Mmojo-RPC-Server.md)
-- **Previous:** [01. Build Mmojo Server for Debian Linux](01-Build-Mmojo-Server.md)
+- **Next:** [03. Test Mmojo RPC Server](03-Test-Mmojo-RPC-Server.md)
+- **Previous:** [01. Build Mmojo Server](01-Build-Mmojo-Server.md)
 - **Up:** [Build Mmojo Server for Debian Linux](README.md)
 
 ---

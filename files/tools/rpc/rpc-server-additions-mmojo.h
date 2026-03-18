@@ -22,6 +22,7 @@ void replaceAll(std::string& str, const std::string& from, const std::string& to
 void get_important_paths(const char* argv_0, std::filesystem::path& executablePath, std::filesystem::path& workingDirectoryPath);
 void mmojo_printf(const char* format, const char* stringParam);
 
+void main_addition_1(char* argv_0);
 void main_path_diagnostics();
 void main_args_files(int& argc, char **& argv);
 

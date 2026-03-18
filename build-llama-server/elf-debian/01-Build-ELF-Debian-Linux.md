@@ -40,7 +40,9 @@ fi
 
 Choose GPUs for your build if you're not building for Raspberry Pi 5.
 ```
-. mm-gpus-choose.sh
+mm-gpus-choose.sh
+_GPUS_CHOICE=$(cat /tmp/mm-gpus-choose.out)
+rm /tmp/mm-gpus-choose.out
 ```
 
 Build native llama-server tuned to the specific CPU of your PC:
@@ -50,23 +52,23 @@ _PACKAGE_FILE=""
 _TOUCH_FILE=""
 _VARIATION="native"
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
-    unset $GPUS_CHOICE
+    unset $_GPUS_CHOICE
     _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_RPI5_AARCH64"
     _PACKAGE_FILE="llama-cpp-aarch64-rpi5.zip"
     _TOUCH_FILE="build-aarch64-rpi5"
     _VARIATION="pi"
 elif [ $(uname -m) == "x86_64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
-    _PACKAGE_FILE="llama-cpp-x86_64-native$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-x86_64-native$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_NATIVE_X86_64$_GPUS_CHOICE"
+    _PACKAGE_FILE="llama-cpp-x86_64-native$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-x86_64-native$_GPUS_CHOICE"
     _VARIATION="native"
 elif [ $(uname -m) == "aarch64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
-    _PACKAGE_FILE="llama-cpp-aarch64-native$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-aarch64-native$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_NATIVE_AARCH64$_GPUS_CHOICE"
+    _PACKAGE_FILE="llama-cpp-aarch64-native$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-aarch64-native$_GPUS_CHOICE"
     _VARIATION="native"
 fi
-mm-build-for-platform.sh $_VARIATION "$GPUS_CHOICE" "llama-server"
+mm-build-for-platform.sh $_VARIATION "$_GPUS_CHOICE" "llama-server"
 ```
 
 <details>
@@ -76,15 +78,15 @@ mm-build-for-platform.sh $_VARIATION "$GPUS_CHOICE" "llama-server"
 _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
-    _PACKAGE_FILE="llama-cpp-x86_64-comp$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-x86_64-comp$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_COMPATIBLE_X86_64$_GPUS_CHOICE"
+    _PACKAGE_FILE="llama-cpp-x86_64-comp$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-x86_64-comp$_GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
-    _PACKAGE_FILE="llama-cpp-aarch64-comp$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-aarch64-comp$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_COMPATIBLE_AARCH64$_GPUS_CHOICE"
+    _PACKAGE_FILE="llama-cpp-aarch64-comp$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-aarch64-comp$_GPUS_CHOICE"
 fi
-mm-build-for-platform.sh compatible "$GPUS_CHOICE" "llama-server"
+mm-build-for-platform.sh compatible "$_GPUS_CHOICE" "llama-server"
 ```
 </details>
 
@@ -95,15 +97,15 @@ mm-build-for-platform.sh compatible "$GPUS_CHOICE" "llama-server"
 _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
-    _PACKAGE_FILE="llama-cpp-x86_64-perf$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-x86_64-perf$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_PERFORMANT_X86_64$_GPUS_CHOICE"
+    _PACKAGE_FILE="llama-cpp-x86_64-perf$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-x86_64-perf$_GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
-    _PACKAGE_FILE="llama-cpp-aarch64-perf$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-aarch64-perf$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR_LLAMA_SERVER/$EXECUTABLE_PERFORMANT_AARCH64$_GPUS_CHOICE"
+    _PACKAGE_FILE="llama-cpp-aarch64-perf$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-aarch64-perf$_GPUS_CHOICE"
 fi
-mm-build-for-platform.sh performant "$GPUS_CHOICE" "llama-server"
+mm-build-for-platform.sh performant "$_GPUS_CHOICE" "llama-server"
 ```
 </details>
 

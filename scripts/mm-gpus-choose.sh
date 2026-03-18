@@ -80,6 +80,7 @@ fi
 
 cd $HOME
 
+echo
 echo $gpus > "/tmp/${SCRIPT_NAME%.*}.out"
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

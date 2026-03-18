@@ -125,11 +125,13 @@ if [ "$DEPLOY_DIR" != "" ]; then
     find $DEPLOY_DIR/* ! -name "*.gguf" -delete
     cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
+    cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
     touch "$DEPLOY_DIR/$_TOUCH_FILE"
 fi
 ```
 
+<!--
 Create a mmojo-server-args file in the `$DEPLOY_DIR` directory to launch Mmojo Server with the Mmojo Complete UI:
 ```
 # make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
@@ -174,17 +176,14 @@ EOF
 </details>
 
 **Future:** These are good candidate for mm-scripts.
+-->
 
 ---
 ### Optional: Add mmojo-rpc-server to Deploy Directory
 You built the Mmojo RPC Server too. You can copy it to the `$DEPLOY_DIR` directory as well.
 ```
 cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
-cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
--H 0.0.0.0
--p 8081
--c
-EOF
+cp "$REPO_DIR/build/support-files/mmojo-rpc-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
 ```
 
 ---

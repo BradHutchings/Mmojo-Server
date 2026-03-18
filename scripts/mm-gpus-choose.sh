@@ -67,8 +67,8 @@ if [ ${#gpu_combos[@]} -gt "0" ]; then
         gpus="${gpus/VULKAN/VUL}"
         gpus="${gpus/METAL/MET}"
         gpus=${gpus,,}
-        echo "GPUs: $gpus"
     fi
+    echo "GPUs: $gpus"
 else
     echo "Could not find dev kits for CUDA, HIP, VULKAN, or METAL."
 fi

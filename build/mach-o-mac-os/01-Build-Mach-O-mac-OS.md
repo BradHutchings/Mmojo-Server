@@ -42,8 +42,9 @@ grep -r "\[\[UPDATED" $BUILD_DIR
 
 Choose GPUs for your build. **WE SHOULD JUST GO METAL.**
 ```
-. mm-gpus-choose.sh
-$GPUS_CHOICE=""
+mm-gpus-choose.sh
+_GPUS_CHOICE=$(cat /tmp/mm-gpus-choose.out)
+rm /tmp/mm-gpus-choose.out
 ```
 
 Build native Mmojo Server tuned to the specific CPU of your PC:
@@ -55,17 +56,17 @@ _PACKAGE_FILE=""
 _TOUCH_FILE=""
 _VARIATION="native"
 if [ $(uname -m) == "x86_64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-native$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-mac-os-x86_64-native$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-native$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-x86_64-native$_GPUS_CHOICE"
     _VARIATION="native"
 elif [ $(uname -m) == "aarch64" ] || [ $(uname -m) == "arm64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-native$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-mac-os-arm64-native$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-native$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-arm64-native$_GPUS_CHOICE"
     _VARIATION="native"
 fi
-mm-build-for-platform.sh $_VARIATION "$GPUS_CHOICE"
+mm-build-for-platform.sh $_VARIATION "$_GPUS_CHOICE"
 ```
 
 <details>
@@ -75,15 +76,15 @@ mm-build-for-platform.sh $_VARIATION "$GPUS_CHOICE"
 _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_X86_64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-comp$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-mac-os-x86_64-comp$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_X86_64$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-comp$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-x86_64-comp$_GPUS_CHOICE"
 elif [ ($(uname -m) == "aarch64") || ($(uname -m) == "arm64") ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_AARCH64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-comp$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-mac-os-arm64-comp$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_COMPATIBLE_AARCH64$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-comp$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-arm64-comp$_GPUS_CHOICE"
 fi
-mm-build-for-platform.sh compatible "$GPUS_CHOICE"
+mm-build-for-platform.sh compatible "$_GPUS_CHOICE"
 ```
 </details>
 
@@ -94,15 +95,15 @@ mm-build-for-platform.sh compatible "$GPUS_CHOICE"
 _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_X86_64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-perf$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-mac-os-x86_64-perf$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_X86_64$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-perf$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-x86_64-perf$_GPUS_CHOICE"
 elif [ ($(uname -m) == "aarch64") || ($(uname -m) == "arm64") ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_AARCH64$GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-perf$GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-mac-os-arm64-perf$GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_PERFORMANT_AARCH64$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-perf$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="build-mac-os-arm64-perf$_GPUS_CHOICE"
 fi
-mm-build-for-platform.sh performant "$GPUS_CHOICE"
+mm-build-for-platform.sh performant "$_GPUS_CHOICE"
 ```
 </details>
 

@@ -61,7 +61,9 @@ if [ ${#gpu_combos[@]} -gt "0" ]; then
         choice=${gpu_combos[$opt-1]}
     fi
     
-    if [ "$choice" != "None" ]; then
+    if [ "$choice" == "None" ]; then
+        gpus=""
+    else
         # This is bash search and replace syntax
         gpus="-${choice/ + /-}"
         gpus="${gpus/CUDA/CUD}"

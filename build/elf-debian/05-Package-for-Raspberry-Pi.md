@@ -47,7 +47,7 @@ mm-packages-backup.sh
 ---
 ### Proceed
 - **Next:** This is the last step in this guide.
-- **Previous:** [04. Package Mmojo Server for Debian](04-Package-for-Debian.md)
+- **Previous:** [04. Package Mmojo Server for Debian Linux](04-Package-for-Debian.md)
 - **Up:** [Build Mmojo Server for Debian Linux](README.md)
 
 ---

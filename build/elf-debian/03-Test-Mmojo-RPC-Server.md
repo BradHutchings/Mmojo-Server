@@ -47,12 +47,36 @@ stream {
 ### Start Mmojo RPC Server
 Run this command:
 ```
-mm-mmojo-rpc-server-start.sh
+mm-rpc-server-start.sh
 ```
 
 Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 
-Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-start-rpc`.
+Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `rpc-go`. See next sub-step.
+
+---
+### Make Command Aliases
+Run this command:
+```
+if ! grep -q "alias rpc-stop=" "$HOME/.bashrc"; then
+cat << EOF >> $HOME/.bashrc
+
+alias rpc-stop="mm-rpc-server-stop.sh"
+alias rpc-go="mm-rpc-server-start.sh background"
+alias rpc-debug="mm-rpc-server-start.sh"
+alias rpc-running="mm-rpc-server-status.sh"
+
+echo ""
+echo "Useful Mmojo RPC Servercommand aliases:"
+echo "- rpc-stop    --> mm-rpc-server-stop.sh"
+echo "- rpc-go      --> mm-rpc-server-start.sh background  # Runs in background."
+echo "- rpc-debug   --> mm-rpc-server-start.sh             # Runs in foreground with output."
+echo "- rpc-running --> mm-rpc-server-status.sh            # Is Mmojo RPC Server running?"
+echo ""
+EOF
+source $HOME/.bashrc
+fi
+```
 
 ---
 ### Proceed

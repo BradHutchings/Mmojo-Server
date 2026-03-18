@@ -23,8 +23,6 @@ Run this command:
 mm-mmojo-rpc-server-start.sh
 ```
 
-(Need to implement that command / shortcut. mm-mmojo-rpc-server-start.sh.)
-
 Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 
 Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-start-rpc`.

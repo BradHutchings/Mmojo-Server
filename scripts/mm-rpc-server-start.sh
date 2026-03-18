@@ -36,7 +36,7 @@ else
     echo "The run directory < $DEPLOY_DIR > does not exist."
 fi
 
-serverRunningId=$(pgrep -x "mmojo-rpc-server")
+serverRunningId=$(pgrep -x "mmojo-rpc-serve")
 # echo "serverRunningId: $serverRunningId"
 
 # Stop Mmojo RPC Server if we're not running background
@@ -46,7 +46,7 @@ if [ ! -z "$serverRunningId" ]; then
             echo "Stopping Mmojo RPC Server with process id: $serverRunningId."
             kill $serverRunningId
             sleep 5s
-            serverRunningId=$(pgrep -x "mmojo-rpc-server")
+            serverRunningId=$(pgrep -x "mmojo-rpc-serve")
         fi
     fi
 fi

@@ -123,9 +123,9 @@ void mmojo_printf(const char* format, const char* stringParam) {
     printf(formatString.c_str(), stringParam);
 }
 
-void main_mmojo_server_1(char* argv_0) {
+void main_addition_1(char* argv_0) {
     printf("\n");
-    printf("- main_mmojo_server_1(%s)\n", argv_0);
+    printf("- main_addition_1(%s)\n", argv_0);
 
     // Keep the build from showing up as ape in the process list.
     #if defined (__APPLE__) && defined (__MACH__)

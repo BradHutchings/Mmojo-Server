@@ -57,9 +57,7 @@ _GPUS_CHOICE=$(cat /tmp/mm-gpus-choose.out)
 rm /tmp/mm-gpus-choose.out
 ```
 
-**Note:** This would be a good place to choose the performance level: compatible, performant, or native.
-
-Build native Mmojo Server tuned to the specific CPU of your PC:
+Build Mmojo Server with your build choice and gpus choice:
 ```
 _BUILD_SUBDIR=""
 _PACKAGE_FILE=""

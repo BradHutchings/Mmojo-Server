@@ -31,7 +31,7 @@ Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-st
 
 ---
 ### Proceed
-- **Next:** [04. Package Mmojo Server](04-Package-for-Debian.md)
+- **Next:** [04. Package for Debian Linux](04-Package-for-Debian.md)
 - **Previous:** [02. Test Mmojo Server](02-Test-Mmojo-Server.md)
 - **Up:** [Build Mmojo Server for Debian Linux](README.md)
 

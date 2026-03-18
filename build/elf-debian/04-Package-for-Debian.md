@@ -19,9 +19,12 @@ Make a .zip package file for Mmojo Server from your run directory. It will be mo
 
 Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
-if test -n "$DEPLOY_DIR"; then
+if [ -d "$DEPLOY_DIR"]; then
   cd "$DEPLOY_DIR"
-  zip -r "$_PACKAGE_FILE" mmojo-server $_PACKAGE_MMOJO_SERVER_ARGS_FILE Mmojo-Complete LICENSE "$_TOUCH_FILE"
+  zip "$_PACKAGE_FILE" mmojo-server
+  zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_ARGS_FILE
+  zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
+  zip -r "$_PACKAGE_FILE" Mmojo-Complete 
   mkdir -p "$PACKAGES_DIR"
   mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME

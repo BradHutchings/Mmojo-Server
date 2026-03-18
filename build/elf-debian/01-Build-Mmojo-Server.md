@@ -1,4 +1,4 @@
-## 01. Build Mmojo Server for Debian Linux
+## 01. Build Mmojo Server (for Debian Linux)
 ### About this Step
 In this step, you will build ELF executables of Mmojo Server, Mmojo RPC Server, and llama.cpp targets for your computer's CPU family &mdash; x86_64 or aarch64 (arm64).
 

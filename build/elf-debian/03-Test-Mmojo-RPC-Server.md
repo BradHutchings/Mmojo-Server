@@ -19,7 +19,29 @@ Be sure to substitute the actual hostname and port of the computer on which you'
 
 ---
 ### WSL Needs a TCP Proxy in Windows
-(about that here)
+If you are running Mmojo RPC Server in WSL, it will need a proxy server running on Windows proper to forward incoming TCP traffic from other computers to it. Set up nginx to do that:
+
+- [Port Forward to Mmojo Server](deploy/Windows-WSL/11-Port-Forward-to-Mmojo-Server.md)
+
+After setting up nginx to forward HTTP traffic to Mmojo Server, add this to the `nginx.conf` configuraion file to forward TCP traffic as well:
+```
+stream {
+    # Define the upstream group of backend servers
+    upstream mmojo-rpc-server {
+        server 127.0.0.1:8081;
+    }
+
+    # Define the proxy server block
+    server {
+        listen 8081; # The port Nginx listens on for incoming connections
+        proxy_pass mmojo-rpc-server; # Forward connections to the upstream group
+
+        # Optional: connection timeouts
+        proxy_connect_timeout 10s;
+        proxy_timeout 300s;
+    }
+}
+```
 
 ---
 ### Start Mmojo RPC Server

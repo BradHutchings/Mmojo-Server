@@ -43,7 +43,14 @@ fi
 
 ---
 ### Build Mmojo Server
-Choose GPUs for your build if you're not building for Raspberry Pi 5.
+Choose the build type (native, performant, compatible):
+```
+mm-build-choose.sh
+_BUILD_CHOICE=$(cat /tmp/mm-build-choose.out)
+rm /tmp/mm-build-choose.out
+```
+
+Choose GPUs for your build:
 ```
 mm-gpus-choose.sh
 _GPUS_CHOICE=$(cat /tmp/mm-gpus-choose.out)
@@ -66,18 +73,19 @@ if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
     _VARIATION="pi"
 elif [ $(uname -m) == "x86_64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-x86_64-native$_GPUS_CHOICE.zip"
+    _PACKAGE_FILE="Mmojo-Server-x86_64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _TOUCH_FILE="build-x86_64-native$_GPUS_CHOICE"
     _VARIATION="native"
 elif [ $(uname -m) == "aarch64" ] || [ $(uname -m) == "arm64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-aarch64-native$_GPUS_CHOICE.zip"
+    _PACKAGE_FILE="Mmojo-Server-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _TOUCH_FILE="build-aarch64-native$_GPUS_CHOICE"
     _VARIATION="native"
 fi
 mm-build-for-platform.sh $_VARIATION "$_GPUS_CHOICE"
 ```
 
+<!--
 <details>
   <summary><b>Alternatively:</b> Build a more compatible Mmojo Server. It will run on most CPUs in your CPU family (x86_64 or aarch64).</summary>
   
@@ -115,6 +123,7 @@ fi
 mm-build-for-platform.sh performant "$_GPUS_CHOICE"
 ```
 </details>
+-->
 
 ---
 ### Create a Deploy Directory

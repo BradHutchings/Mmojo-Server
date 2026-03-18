@@ -76,7 +76,7 @@ cd $HOME
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-return $gpus
+# return $gpus
 
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by

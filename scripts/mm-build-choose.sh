@@ -20,6 +20,7 @@ builds+=("perf")
 builds+=("comp")
 
 if [ ${#builds[@]} -gt "0" ]; then
+    echo
     echo "Please pick the build you would like to perform:"
     for ((i=0;i<${#builds[@]};i++)); do 
         string="$(($i+1))) ${builds[$i]}"

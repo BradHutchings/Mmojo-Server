@@ -12,8 +12,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-unset GPUS_CHOICE
-unset GPUS_CHOICE_NAMES
+result="None"
 
 gpu_combos=()
 has_cuda=0
@@ -46,15 +45,22 @@ if (( has_metal == 1 )); then                                    gpu_combos+=("M
 
 if [ ${#gpu_combos[@]} -gt "0" ]; then
     echo "Please pick the GPU combination you want your build to support:"
-    select choice in "${gpu_combos[@]}"; do
-        break
+    for ((i=0;i<${#gpu_combos[@]};i++)); do 
+        string="$(($i+1))) ${gpu_combos[$i]}"
+        printf "%s\n" "$string"
     done
-    echo "You chose: $choice"
-    if [ "$choice" == "None" ]; then
+
+    echo
+    read -p 'Which GPU combination would you like to use? ' opt
+    echo
+    
+    echo "You chose: $opt"
+    if [ "$opt" == "None" ]; then
         gpus=""
         choice=""
     else
-        gpus="-${choice/ + /-}"
+        # This is bash search and replace syntax
+        gpus="-${opt/ + /-}"
         gpus="${gpus/CUDA/CUD}"
         gpus="${gpus/HIP/HIP}"
         gpus="${gpus/VULKAN/VUL}"
@@ -62,9 +68,6 @@ if [ ${#gpu_combos[@]} -gt "0" ]; then
         gpus=${gpus,,}
         echo "GPUs: $gpus"
     fi
-    
-    export GPUS_CHOICE=$gpus
-    export GPUS_CHOICE_NAMES=$choice
 else
     echo "Could not find dev kits for CUDA, HIP, or VULKAN."
 fi
@@ -72,6 +75,8 @@ fi
 cd $HOME
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
+
+return $gpus
 
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by

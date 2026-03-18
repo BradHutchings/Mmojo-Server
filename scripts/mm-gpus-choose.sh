@@ -55,6 +55,8 @@ if [ ${#gpu_combos[@]} -gt "0" ]; then
     echo
     
     echo "You chose: $opt"
+
+    choice="None"
     if [ "$opt" -gt "0" ] && [ "$opt" -le ${#gpu_combos[@]} ]; then
         choice=${gpu_combos[$opt-1]}
     fi

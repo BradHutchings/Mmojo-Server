@@ -2,6 +2,11 @@
 ### About this Step
 The Mmojo RPC Server lets you offload inference to another computer. You would use it to operate a cluser of Mmojo Server nodes acting as a single Mmojo Server. Mmojo RPC Server is the software the "slave hosts" in the cluster run. The "master host" runs Mmojo Server, and is configured to offload work to the "slave hosts".
 
+You can read more about llama.cpp's RPC Server here:
+- [llama.cpp RPC Server](https://github.com/ggml-org/llama.cpp/blob/master/tools/rpc/README.md)
+
+Mmojo RPC puts the parameters in a `mmojo-rpc-server-args` file for easier deployments.
+
 ---
 ### Set up Mmojo Server on Another Host
 Add this to the "master host's" `mmojo-server-args file:

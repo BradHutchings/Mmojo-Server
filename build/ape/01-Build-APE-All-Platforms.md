@@ -77,34 +77,10 @@ if [ "$DEPLOY_DIR" != "" ]; then
     fi
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
-    cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
-    cp "$REPO_DIR_FILES/package/ape-chat.html" "$DEPLOY_DIR/Mmojo Chat.html"
-    cp "$REPO_DIR_FILES/package/ape-connect.html" "$DEPLOY_DIR/Mmojo Complete.html"
+    cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
+    cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
 fi
-```
-
-Create a `mmojo-server-args` file in the `$DEPLOY_DIR` to launch Mmojo Server with the Mmojo Complete UI:
-```
-# make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
-# Rename this file "mmojo-server-args" (no quotes) and put it
-# in the same directory as the mmojo-server executable to
-# override these default values.
---path
-/app/Mmojo-Complete
---default-ui-endpoint
-chat
---host
-127.0.0.1
---port
-8080
---batch-size
-256
---threads-http
-8
---ctx-size
-32768 
-EOF
 ```
 
 <details>
@@ -113,22 +89,8 @@ EOF
     
 Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 ```
-# make a $_PACKAGE_MMOJO_SERVER_ARGS_FILE file
-cat << EOF > "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
-# Rename this file "mmojo-server-args" (no quotes) and put it
-# in the same directory as the mmojo-server executable to
-# override these default values.
---host
-127.0.0.1
---port
-8080
---batch-size
-256
---threads-http
-8
---ctx-size
-32768 
-EOF
+cp "$REPO_DIR/build/support-files/mmojo-server-args-chat" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+
 ```
 </details>
 

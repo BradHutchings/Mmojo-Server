@@ -44,17 +44,17 @@ if (( has_vulkan == 1 )); then                                   gpu_combos+=("V
 if (( has_metal == 1 )); then                                    gpu_combos+=("METAL");                  fi
 
 if [ ${#gpu_combos[@]} -gt "0" ]; then
-    echo "Please pick the GPU combination you want your build to support:"
+    printf "Please pick the GPU combination you want your build to support:"
     for ((i=0;i<${#gpu_combos[@]};i++)); do 
         string="$(($i+1))) ${gpu_combos[$i]}"
         printf "%s\n" "$string"
     done
 
-    echo
+    printf "\n"
     read -p 'Which GPU combination would you like to use? ' opt
-    echo
+    printf "\n"
     
-    echo "You chose: $opt"
+    printf "You chose: $opt"
     if [ "$opt" == "None" ]; then
         gpus=""
         choice=""
@@ -69,14 +69,14 @@ if [ ${#gpu_combos[@]} -gt "0" ]; then
         echo "GPUs: $gpus"
     fi
 else
-    echo "Could not find dev kits for CUDA, HIP, or VULKAN."
+    printf "Could not find dev kits for CUDA, HIP, or VULKAN.\n"
 fi
 
 cd $HOME
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-# return $gpus
+echo $gpus
 
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by

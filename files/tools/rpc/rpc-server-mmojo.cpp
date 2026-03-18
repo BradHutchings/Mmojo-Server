@@ -16,7 +16,7 @@
 */
 
 // Mmojo Server START
-// #include "rpc-server-additions-mmojo.h"
+#include "rpc-server-additions-mmojo.h"
 // Mmojo Server END
 
 #include "ggml-rpc.h"
@@ -310,8 +310,10 @@ static std::vector<ggml_backend_dev_t> get_devices(const rpc_server_params & par
 
 int main(int argc, char * argv[]) {
     // Mmojo Server START
-    // Find the args file.
-    // Use the args file.
+    printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
+    main_addition_1(argv[0]);
+    main_path_diagnostics();
+    main_args_files(argc, argv);
     // Mmojo Server END
 
     std::setlocale(LC_NUMERIC, "C");

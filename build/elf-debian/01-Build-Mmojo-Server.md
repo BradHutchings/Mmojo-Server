@@ -89,7 +89,6 @@ Create a `$DEPLOY_DIR` directory and copy Mmojo Server into it:
 ```
 if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
-    # rm -r -f "$DEPLOY_DIR"/*
     find $DEPLOY_DIR/* ! -name "*.gguf" -delete
     cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
@@ -97,6 +96,8 @@ if [ "$DEPLOY_DIR" != "" ]; then
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
+    cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
+    cp "$REPO_DIR/build/support-files/mmojo-rpc-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
     touch "$DEPLOY_DIR/$_TOUCH_FILE"
 fi
 ```
@@ -110,14 +111,6 @@ Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
 cp "$REPO_DIR/build/support-files/mmojo-server-args-chat" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 ```
 </details>
-
----
-### Optional: Add mmojo-rpc-server to Deploy Directory
-You built the Mmojo RPC Server too. You can copy it to the `$DEPLOY_DIR` directory as well.
-```
-cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
-cp "$REPO_DIR/build/support-files/mmojo-rpc-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
-```
 
 ---
 ### Review Your Work

@@ -1,0 +1,15 @@
+--path
+/app/Mmojo-Complete
+--default-ui-endpoint
+chat
+--host
+127.0.0.1
+--port
+8080
+--batch-size
+256
+--threads-http
+8
+--ctx-size
+32768 
+EOF

@@ -1,4 +1,4 @@
-## 02. Test Mmojo Serevr for Debian Linux
+## 02. Test Mmojo Server for Debian Linux
 ### About this Step
 In this step, you will test your Mmojo Server build.
 

@@ -135,7 +135,7 @@ It should look like:
 ---
 ### Proceed
 - **Next:** [02. Test ELF Executable for Debian Linux](02-Test-ELF-Debian-Linux.md)
-- **Previous:** This is the first step in this section.
+- **Previous:** This is the first step in this guide.
 - **Up:** [Build llama-server](../README.md)
 
 ---

@@ -5,6 +5,13 @@ In this step, you will package the build you just created and tested.
 In this alternative, you will package the compatible and performant builds in one `.zip` file.
 
 ---
+### Choose a Model
+Choose a model to include in the package. If you don't want one, choose "None".
+```
+mm-model
+```
+
+---
 ### Review Your Work
 Let's list the contents of the `$HOME/mm-deploy` directory and review your work:
 ```
@@ -23,12 +30,17 @@ Make a `Mmojo-Server-ape.zip` package file and move it to your `$PACKAGES_DIR` d
 ```
 _PACKAGE_FILE="Mmojo-Server-ape.zip"
 if test -n "$DEPLOY_DIR"; then
-  cd "$DEPLOY_DIR"
-  zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_FILE"* *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
-  mkdir -p "$PACKAGES_DIR"
-  mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
-  cd $HOME
-  ls -al "$PACKAGES_DIR"
+    cd "$DEPLOY_DIR"
+    zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_FILE"*
+    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    zip "$_PACKAGE_FILE" LICENSE *.html
+    if find . -maxdepth 1 -type f,l -iname "*.gguf" -print -quit | grep -q .; then
+        zip -0 "$_PACKAGE_FILE" *.gguf 
+    fi
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    ls -al "$PACKAGES_DIR"
 fi
 ```
 

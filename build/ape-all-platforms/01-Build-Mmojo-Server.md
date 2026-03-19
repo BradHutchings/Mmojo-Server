@@ -1,4 +1,4 @@
-## 01. Build APE for All Platforms
+## 01. Build Mmojo Server (for All Platforms)
 ### About this Step
 In this step, you will build an Actual Portable Executable (APE) file that will run on x86_64 and aarch64 (arm64) processors with Windows, macOS, Linux, and other less common operating systems. APE builds are statically linked with no dependencies on dynamic libraries. I use the APE build as a first thing for clients to download and get Mmojo Server running quickly on their computers. If they like they can "upgrade" to a more performant platform-specific version later.
 
@@ -111,7 +111,7 @@ It should look like:
 
 ---
 ### Proceed
-- **Next:** [02. Test APE for All Platforms](02-Test-APE-All-Platforms.md)
+- **Next:** [02. Test Mmojo Server](02-Test Mmojo Server.md)
 - **Previous:** This is the first step in this section.
 - **Up:** [Build Mmojo Server](../README.md)
 

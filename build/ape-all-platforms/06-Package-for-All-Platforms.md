@@ -121,7 +121,7 @@ mm-packages-backup.sh
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** This is the last step in this guide.
 - **Previous:** [05. Package for All Platforms](05-Package-for-All-Platforms.md)
 - **Up:** [Build Mmojo Server for All Platforms](README.md)
 

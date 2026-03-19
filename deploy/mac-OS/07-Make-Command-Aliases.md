@@ -1,5 +1,5 @@
 ## 07. Make Command Aliases
-**THIS SECTION IS IN PROGRESS.**
+**THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this short step, we're going to create some alias commands in `.zshrc` to make working with Mmojo Server from the command line easier. 
 

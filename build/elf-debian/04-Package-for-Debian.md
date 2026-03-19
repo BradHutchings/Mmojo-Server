@@ -38,6 +38,8 @@ if [ -d "$DEPLOY_DIR" ]; then
     mkdir -p "$PACKAGES_DIR"
     mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
     cd $HOME
+    echo
+    echo "Packages:"
     ls -al "$PACKAGES_DIR"
 fi
 ```

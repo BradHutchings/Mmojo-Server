@@ -13,10 +13,8 @@ brad@BradHutchings.com<br/><br/>
 
 ---
 ### APE Multi-platform, Multi-CPU
-You can build an Actual Portable Executable (APE) file that runs on x86_64 and aarch64 (arm64), across Windows, macOS, Linux, and other platforms:
-- [Build APE for All Platforms](ape/01-Build-APE-All-Platforms.md)
-- [Test APE for All Platforms](ape/02-Test-APE-All-Platforms.md)
-- [Package APE for All Platforms](ape/03-Package-APE-All-Platforms.md)
+You can build Actual Portable Executable (APE) files that run on x86_64 and aarch64 (arm64), across Windows, macOS, Linux, and other platforms:
+- [Build Mmojo Server for All Platforms](ape-all-platforms/README.md)
 
 ---
 ### Mmojo Server for Debian Linux, x86_64 or aarch64 (arm64)
@@ -26,7 +24,7 @@ You can build ELF binaries for Debian Linux (e.g. Ubuntu) in native CPU, perform
 ---
 ### Future Build Guides
 Here is a tentative list of planned build guides:
-- Mach-O Executable for macOS.
+- Mach-O Executable for mac OS &mdash; in progress and has produced a working executable!
 - ELF Executable for RHEL (Linux)
 - ELF Executable for Arch Linux
 

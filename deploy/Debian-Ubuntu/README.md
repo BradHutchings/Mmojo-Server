@@ -1,6 +1,6 @@
 ## Deploy Mmojo Server on Debian / Ubuntu
-### About this Section
-In this section, you will deploy Mmojo Server on Debian / Ubuntu Linux. I have a separate section for deploying on Raspberry Pi:
+### About this Guide
+In this guide, you will deploy Mmojo Server on Debian / Ubuntu Linux. I have a separate guide for deploying on Raspberry Pi:
 - [Deploy Mmojo Server on Raspberry Pi](../Raspberry-Pi/README.md)
 
 <!-- SPONSOR --> 

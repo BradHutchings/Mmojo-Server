@@ -10,18 +10,41 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
 
+wd=$(pwd)
 cd $MODELS_DIR
 
-mapfile -t models < <(find . -maxdepth 1 -type f -name "*.gguf")
-echo "Count: ${#models[@]}"
+models=()
+for file in *.gguf; do
+    # echo "Adding $file"
+    models+=($file)
+done
+# echo "Count: ${#models[@]}"
 
-for ((i=0;i<${#models[@]};i++)); do 
-    $models[$i] = "${$models[$i]/.\//}"
+cd $wd
+
+
+echo
+echo
+echo
+echo "Please pick a model to use:"
+for ((i=0;i<${#models[@]};i++)); do
+    string="$(($i+1))) ${models[$i]}"
+    printf "%s\n" "$string"
 done
 
-echo $models
+echo
+read -p 'Which model would you like to use? ' opt
+echo
 
+echo "You chose: $opt"
 
+choice=""
+if [ "$opt" -gt "0" ] && [ "$opt" -le ${#models[@]} ]; then
+    choice=${models[$opt-1]}
+fi
+
+echo
+echo $choice > "/tmp/${SCRIPT_NAME%.*}.out"
 
 exit
 

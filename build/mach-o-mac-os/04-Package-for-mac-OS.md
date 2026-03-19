@@ -74,8 +74,8 @@ mm-packages-backup.sh
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [03. Test Mmojo RPC Server](02-Test-Mmojo-RPC-Server.md)
-- **Up:** [Build Mmojo Server](../README.md)
+- **Previous:** [03. Test Mmojo RPC Server](03-Test-Mmojo-RPC-Server.md)
+- **Up:** [Build Mmojo Server for mac OS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

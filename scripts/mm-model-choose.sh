@@ -17,7 +17,7 @@ SCRIPT_NAME=$(basename -- "$0")
 wd=$(pwd)
 cd $MODELS_DIR
 
-models=()
+models=("None")
 for file in *.gguf; do
     # echo "Adding $file"
     models+=($file)
@@ -52,7 +52,7 @@ echo "You chose: $choice"
 # Copy the choice.
 #-------------------------------------------------------------------------------
 
-if [ "$choice" != "" ] && [ "$DEPLOY_DIR" != "" ]; then
+if [ "$choice" != "" ] && [ "$choice" != "None" ] && [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
     if [ -d "$DEPLOY_DIR" ]; then
         rm -f "$DEPLOY_DIR"/*.gguf

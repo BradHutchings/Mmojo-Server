@@ -1,5 +1,4 @@
 ## 02. Prepare WSL - Mmojo Server
-
 ### About this Step
 Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for Mmojo Server deployment.
 

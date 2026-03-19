@@ -2,19 +2,6 @@
 ### About this Step
 In this step, you will build ELF executables of Mmojo Server, Mmojo RPC Server, and llama.cpp targets for your computer's CPU family &mdash; x86_64 or aarch64 (arm64).
 
-You can build with three compatibility options:
-- **Compatible:** Runs on most systems that use a CPU from your computer's CPU family. 
-- **Performant:** Runs on systems that use a recent CPU from your computer's CPU family.
-  - For x86_64, these are x86_64 CPUs that support "level 3" flags, as defined by the gnu cc compiler.
-  - For aarch64 (arm64), these are aarch64 CPUs that support ??? flags, as defined by the gnu cc compiler. These include all Apple M-series CPUs.
-- **Native:** Runs on systems with a CPU that includes all of the CPU flags your computer's CPU includes. This includes your computer.
-
-Windows Subsystem for Linux (WSL) supports NVIDIA GPUs through CUDA libraries. If you're building for WSL, be sure to enable CUDA below.
-
-These build steps should be performed in a Debian Linux operating system like Ubuntu or Raspberry Pi. Please prepare your Debian environment by working through one these deploy recipes:
-- [Deploy Mmojo Server on Windows (WSL)](/deploy/Windows-WSL/README.md) 
-- [Deploy Mmojo Server on Debian / Ubuntu / Raspberry Pi](/deploy/Debian-Ubuntu-Pi/README.md) 
-
 ---
 ### Install Dependencies and GPU Support
 Install dependencies. These may take 20 minutes or so to download and install. Reinstalling nodejs is necessary to get the right tools in place to rebuild the webui. You only need to do these steps once on your system.

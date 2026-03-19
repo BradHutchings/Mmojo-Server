@@ -8,7 +8,7 @@ These build steps should be performed in a Debian Linux operating system like Ub
 - [Deploy Raspberry Pi](/deploy/Raspberry-Pi/README.md) 
 
 **Get Started:**
-- [01. Build Mmojo Server](01-Build-Mmojo-Server.md) &mdash; Build Mmojo Server, Mmojo RPC Server, and other llama.cpp targets.
+- [01. Build Mmojo Server](01-Build-Mmojo-Server.md) &mdash; Build Mmojo Server and other llama.cpp targets.
 
 ---
 ### Build Steps

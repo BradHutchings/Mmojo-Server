@@ -41,12 +41,12 @@ echo
 read -p 'Which model would you like to use? ' opt
 echo
 
-echo "You chose: $opt"
-
 choice=""
 if [ "$opt" -gt "0" ] && [ "$opt" -le ${#models[@]} ]; then
     choice=${models[$opt-1]}
 fi
+
+echo "You chose: $choice"
 
 #-------------------------------------------------------------------------------
 # Copy the choice.
@@ -67,43 +67,6 @@ fi
 
 echo
 echo $choice > "/tmp/${SCRIPT_NAME%.*}.out"
-
-exit
-
-
-
-echo ""
-echo "These models are available to package:"
-PS3="Please choose a model:"
-
-cd $MODELS_DIR
-select filename in *.gguf; do
-  case $filename in
-    "")
-      echo "That was not a valid choice. \$MODEL_CHOICE has been unset."
-      break
-      ;;
-    *)
-      export MODEL_CHOICE=$filename
-      break
-      ;;
-  esac
-done
-
-# if [ -v MODEL_CHOICE ]; then
-if [ "$MODEL_CHOICE" != "" ]; then
-  echo ""
-  echo "You chose: $MODEL_CHOICE"
-  echo ""
-
-  if [ "$DEPLOY_DIR" != "" ] && [ -d "$DEPLOY_DIR" ]; then
-      rm -f "$DEPLOY_DIR"/*.gguf
-      echo "Soft linking $MODEL_CHOICE to $DEPLOY_DIR."
-      ln -s "$MODELS_DIR/$MODEL_CHOICE" "$DEPLOY_DIR/$MODEL_CHOICE"
-  fi
-fi
-
-cd $HOME
 
 # printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"
 

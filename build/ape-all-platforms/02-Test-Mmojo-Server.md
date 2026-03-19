@@ -52,7 +52,7 @@ Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-st
 ### Proceed
 - **Next:** [03. Package for All Platforms](03-Package-for-All-Platforms.md)
 - **Previous:** [01. Build Mmojo Server](01-Build-Mmojo-Server.md)
-- **Up:** [Build Mmojo Server](../README.md)
+- **Up:** [Build Mmojo Server for All Platforms](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

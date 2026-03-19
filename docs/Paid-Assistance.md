@@ -1,8 +1,5 @@
 ## Paid Assistance
-### About this Document
-This document offers paid assistance to developers who need it.
-
-### Paid Assistance
+### I'm Here to Help
 <!-- SPONSOR --> 
 If you need assistance via Zoom call and screen sharing, I offer a one-hour hands-on session, for (US) $100. It can be scheduled during extended west coast business hours. You will be working with me, the guy who made this stuff work.
 

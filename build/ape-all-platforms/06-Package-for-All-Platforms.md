@@ -16,42 +16,6 @@ It should look like:
 <img width="778" height="214" alt="image" src="https://github.com/user-attachments/assets/2af0e2b3-0392-4b73-9f68-775ea10c0cd7" />
 
 ---
-### Add `Mmojo-Complete` and `mmojo-server-args` to the APE Files
-This script will add the `Mmojo-Complete` folder and `mmojo-server-args` file to the compatible and performant Mmojo Server APE files, as the APE files are structured as `.zip` files, and intended to hold application support data.
-
-After adding this data, the compatible and performant APE files are duplicated with `.exe` extensions to run on Windows PCs.
-```
-cd "$DEPLOY_DIR"
-$MMOJO_SED -i -e 's/\/app\//\/zip\//g' "mmojo-server-args"
-if [ -f "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" ]; then
-    mv "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.zip"
-    zip -r "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.zip" "Mmojo-Complete" "$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
-    mv "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.zip" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
-    cp "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
-fi
-if [ -f "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" ]; then
-    mv "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.zip"
-    zip -r "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.zip" "Mmojo-Complete" "$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
-    mv "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.zip" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
-    cp "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
-fi
-rm -r "Mmojo-Complete"
-mv "$_PACKAGE_MMOJO_SERVER_ARGS_FILE" "EXAMPLE-$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
-cd "$HOME"
-```
-
----
-### Review Changes
-Let's list the contents of the `$HOME/mm-deploy` directory again and review changes:
-```
-ls -l $DEPLOY_DIR
-```
-
-It should look like:
-
-<img width="778" height="229" alt="image" src="https://github.com/user-attachments/assets/883232c1-86b9-47b3-825f-1e05fd936283" />
-
----
 ### Make a Compatable Windows Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
@@ -72,7 +36,7 @@ fi
 ```
 
 ---
-### Make a Compatable Linux/macOS Package File
+### Make a Compatable Linux / mac OS Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
 Make a `Mmojo-Server-ape-compatible-linux-macos.zip` package file and move it to your `$PACKAGES_DIR` directory:
@@ -112,7 +76,7 @@ fi
 ```
 
 ---
-### Make a Performant Linux/macOS Package File
+### Make a Performant Linux / mac OS Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
 Make a `Mmojo-Server-ape-performant-linux-macos.zip` package file and move it to your `$PACKAGES_DIR` directory:
@@ -141,7 +105,7 @@ mm-packages-backup.sh
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [04. Package for All Platforms](04-Package-for-All-Platforms.md)
+- **Previous:** [05. Package for All Platforms](05-Package-for-All-Platforms.md)
 - **Up:** [Build Mmojo Server for All Platforms](README.md)
 
 ---

@@ -107,7 +107,7 @@ It should look like:
 ---
 ### Proceed
 - **Next:** [02. Test Mmojo Server](02-Test-Mmojo-Server.md)
-- **Previous:** This is the first step in this section.
+- **Previous:** This is the first step in this guide.
 - **Up:** [Build Mmojo Server for mac OS](README.md)
 
 ---

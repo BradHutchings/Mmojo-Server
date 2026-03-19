@@ -1,4 +1,4 @@
-## 03. Package Mach-O Executable for mac OS
+## 03. Package for mac OS
 **THIS SECTION IS IN PROGRESS.**
 ### About this Step
 In this step, you will package the build you just created and tested.
@@ -40,7 +40,7 @@ mm-packages-backup.sh
 ---
 ### Proceed
 - **Next:** This is the last step in this section.
-- **Previous:** [02. Test Mach-O Executable for mac OS](02-Test-Mach-O-mac-OS.md)
+- **Previous:** [03. Test Mmojo RPC Server](02-Test-Mmojo-RPC-Server.md)
 - **Up:** [Build Mmojo Server](../README.md)
 
 ---

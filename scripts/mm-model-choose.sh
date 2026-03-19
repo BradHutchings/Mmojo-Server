@@ -39,13 +39,13 @@ done
 
 echo
 read -p 'Which model would you like to use? ' opt
-echo
 
 choice=""
 if [ "$opt" -gt "0" ] && [ "$opt" -le ${#models[@]} ]; then
     choice=${models[$opt-1]}
 fi
 
+echo
 echo "You chose: $choice"
 
 #-------------------------------------------------------------------------------
@@ -57,6 +57,7 @@ if [ "$choice" != "" ] && [ "$DEPLOY_DIR" != "" ]; then
     rm -f "$DEPLOY_DIR"/*.gguf
     if [ "$choice" != "None" ]; then
         if [ -d "$DEPLOY_DIR" ]; then
+            echo
             echo "Soft linking $choice to $DEPLOY_DIR."
             ln -s "$MODELS_DIR/$choice" "$DEPLOY_DIR/$choice"
         fi

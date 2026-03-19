@@ -65,12 +65,16 @@ if [ $processor == "aarch64" ]; then
     fi
 fi
 
-echo "   Processor: $processor"
-echo "   Variation: $variation"
-echo "  arch param: $ARCH_LEVEL_PARAM"
-echo "subdirectory: $BUILD_SUBDIRECTORY"
-echo " building in: $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY"
-echo " GGML Params: $GGML_PARAMS"
+# Always build with RPC.
+GGML_PARAMS+=" -DGGML_RPC=ON";
+
+echo "          Processor: $processor"
+echo "          Variation: $variation"
+echo "         arch param: $ARCH_LEVEL_PARAM"
+echo "       subdirectory: $BUILD_SUBDIRECTORY"
+echo "        building in: $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY"
+echo "        GGML Params: $GGML_PARAMS"
+echo "\$MMOJO_EXTRA_PARAMS: $MMOJO_EXTRA_PARAMS"
 echo ""
 
 unset CC

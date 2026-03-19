@@ -44,7 +44,7 @@ A future version of these instructions will show you how to configure Mmojo Serv
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** This is the last step in this guide.
 - **Previous:** [07. Configure OpenClaw — Finish Configuration](07-Configure-OpenClaw-3.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 

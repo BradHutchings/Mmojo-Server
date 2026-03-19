@@ -4,7 +4,7 @@ In this step, you will build...
 
 ---
 ### Choose a Model
-Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google Gemma 270M Instruct v3**.
+Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google-Gemma-4B-Instruct-v3-q8_0.gguf**.
 ```
 mm-model
 ```

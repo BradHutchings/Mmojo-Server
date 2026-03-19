@@ -39,7 +39,7 @@ The following are recommended for smoothest sailing through this recipe:
 ---
 ### Proceed
 - **Next:** [02. Deploy Mmojo Server](02-Deploy-Mmojo-Server.md)
-- **Previous:** This is the first step in this section.
+- **Previous:** This is the first step in this guide.
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

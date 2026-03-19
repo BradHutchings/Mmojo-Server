@@ -1,6 +1,6 @@
 ## Deploy Mmojo Server on Raspberry Pi
-### About this Section
-In this section, you will deploy Mmojo Server on Raspberry Pi 5. This will also work with Raspberry Pi Linux on a Raspberry Pi 5, as it is Debian-based.
+### About this Guide
+In this guide, you will deploy Mmojo Server on Raspberry Pi 5. This will also work with Raspberry Pi Linux on a Raspberry Pi 5, as it is Debian-based.
 
 <!-- SPONSOR --> 
 I offer paid assistance over Zoom if you need it:

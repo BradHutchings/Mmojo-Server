@@ -1,5 +1,5 @@
 ## 03. Test Mmojo RPC Server
-**THIS SECTION IS A WORK IN PROGRESS.**
+**THIS GUIDE IS A WORK IN PROGRESS.**
 ### About this Step
 The Mmojo RPC Server lets you offload inference to another computer. You would use it to operate a cluser of Mmojo Server nodes acting as a single Mmojo Server. Mmojo RPC Server is the software the "slave hosts" in the cluster run. The "master host" runs Mmojo Server, and is configured to offload work to the "slave hosts".
 

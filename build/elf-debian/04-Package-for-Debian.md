@@ -30,7 +30,7 @@ if [ -d "$DEPLOY_DIR" ]; then
     cd "$DEPLOY_DIR"
     zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_FILE
     zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_ARGS_FILE
-    zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
+    zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE"
     zip -r "$_PACKAGE_FILE" Mmojo-Complete 
     if find . -maxdepth 1 -type f,l -iname "*.gguf" -print -quit | grep -q .; then
         zip -0 "$_PACKAGE_FILE" *.gguf 

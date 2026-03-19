@@ -54,6 +54,7 @@ if [ -d "$DEPLOY_DIR" ]; then
     cd "$DEPLOY_DIR"
     zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_FILE
     zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE
+    zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
     mkdir -p "$PACKAGES_DIR"
     mv -f "$_RPC_PACKAGE_FILE" "$PACKAGES_DIR"
     cd $HOME

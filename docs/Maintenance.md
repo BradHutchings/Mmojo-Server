@@ -35,6 +35,10 @@ These are the instructions for maintaining the files in the `/fies` directory. T
      - Mmojo Server - [tools/server/server-context-mmojo.cpp](/files/tools/server/server-context-mmojo.cpp)
      - Mmojo Server - [tools/server/server-context-mmojo.cpp](/files/tools/server/server-context-mmojo.cpp)
 
+   - llama.cpp - [tools/rpc/rpc-server.cpp](https://github.com/ggml-org/llama.cpp/blob/master/tools/rpc/rpc-server.cpp)
+     - Mmojo Server - [tools/rpc/rpc-server-mmojo.cpp](/files/tools/rpc/rpc-server-mmojo.cpp)
+     - Mmojo Server - [tools/rpc/rpc-server-mmojo.cpp](/files/tools/rpc/rpc-server-mmojo.cpp)
+
 5. Compare last modified dates of the originals and patched files. Discard tab triplets where the original is older.
    <img width="304" height="82" alt="image" src="https://github.com/user-attachments/assets/f8814cc1-e244-4ac5-a4d5-e61fa9f339ad" />
 

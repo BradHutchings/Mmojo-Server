@@ -1,4 +1,5 @@
 ## Build Mmojo Server for mac OS
+**THIS GUIDE IS A WORK IN PROGRESS.**
 ### About this Guide
 In this guide, you will build Mach-O executables of Mmojo Server, Mmojo RPC Server, and llama.cpp targets for Apple Silicon (i.e. M1, M2, M3, M4, and M5). Intel CPUs are not supported yet. You will test your Mmojo Server and Mmojo RPC Server builds. You will package your Mmojo Server and Mmojo RPC Server for later use or external deployment.
 

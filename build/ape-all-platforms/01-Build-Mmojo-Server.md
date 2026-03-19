@@ -91,8 +91,6 @@ cp "$REPO_DIR/build/support-files/mmojo-server-args-chat" "$DEPLOY_DIR/$_PACKAGE
 ```
 </details>
 
-**Future:** These are good candidate for mm-scripts.
-
 ---
 ### Review Your Work
 Let's list the contents of the `$HOME/mm-deploy` directory and review your work:

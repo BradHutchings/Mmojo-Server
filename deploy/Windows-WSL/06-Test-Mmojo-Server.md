@@ -31,7 +31,7 @@ If you get a message about an illegal instruction, it's because you installed a 
 ### Connect to Mmojo Complete
 Connect to Mmojo Complete from a browser:
 
-[Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
+- [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
 You should see the Mmojo Complete user interface:
 

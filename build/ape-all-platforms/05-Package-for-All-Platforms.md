@@ -22,6 +22,8 @@ It should look like:
 
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/3233af7d-978c-423a-9f83-94e9afb70782" />
 
+If you have a model to be included in the package, it will show up as a link. It is light blue in my listing.
+
 ---
 ### Make a Compatable Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.

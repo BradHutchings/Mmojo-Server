@@ -77,7 +77,7 @@ mm-packages-backup.sh
 
 ---
 ### Proceed
-- **Next:** [04. Package for All Platforms](04-Package-for-All-Platforms.md]
+- **Next:** [04. Package for All Platforms](04-Package-for-All-Platforms.md)
 - **Previous:** [02. Test Mmojo Server](02-Test-Mmojo-Server.md)
 - **Up:** [Build Mmojo Server](../README.md)
 

@@ -58,7 +58,7 @@ if [ -z "$serverRunningId" ]; then
         echo ""
         if ($runInBackground); then
             echo "Starting $APP_NAME in the background."
-            nohup bash -c "$COMMAND" > "$MMOJO_RPC_SERVER_LOG" 2>&1 &
+            nohup bash -c "$COMMAND" > /dev/null 2>&1 &
         else
             # COMMAND="$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
             # echo $COMMAND

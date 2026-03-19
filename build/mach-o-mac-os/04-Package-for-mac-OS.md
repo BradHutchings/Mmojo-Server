@@ -4,6 +4,13 @@
 In this step, you will package the build you just created and tested.
 
 ---
+### Choose a Model
+Choose a model to include in the package. If you don't want one, choose "None".
+```
+mm-model
+```
+
+---
 ### Review Your Work
 Let's list the contents of the `$HOME/Mmojo-Server` directory and review your work:
 ```
@@ -21,12 +28,39 @@ Make a .zip pakcage files from your run directory. They are moved to your `$PACK
 Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 if test -n "$DEPLOY_DIR"; then
-  cd "$DEPLOY_DIR"
-  zip -r "$_PACKAGE_FILE" mmojo-server $_PACKAGE_MMOJO_SERVER_ARGS_FILE Mmojo-Complete LICENSE "$_TOUCH_FILE"
-  mkdir -p "$PACKAGES_DIR"
-  mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
-  cd $HOME
-  ls -al "$PACKAGES_DIR"
+    cd "$DEPLOY_DIR"
+    zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_FILE
+    zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_ARGS_FILE
+    zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
+    zip -r "$_PACKAGE_FILE" Mmojo-Complete 
+    if find . -maxdepth 1 -type f,l -iname "*.gguf" -print -quit | grep -q .; then
+        zip -0 "$_PACKAGE_FILE" *.gguf 
+    fi
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    echo
+    echo "Packages:"
+    ls -al "$PACKAGES_DIR"
+fi
+```
+
+---
+### Make a Mmojo RPC Server Package File
+Make a .zip package file for RPC Mmojo Server from your run directory. It will be moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment.
+
+Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
+```
+if [ -d "$DEPLOY_DIR" ]; then
+    cd "$DEPLOY_DIR"
+    zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_FILE
+    zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_RPC_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    echo
+    echo "Packages:"
+    ls -al "$PACKAGES_DIR"
 fi
 ```
 

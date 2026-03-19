@@ -81,7 +81,7 @@ elif [ $(uname -m) == "aarch64" ] || [ $(uname -m) == "arm64" ]; then
     _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _TOUCH_FILE="build-aarch64$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
-mm-build-for-platform.sh $_BUILD_CHOICE "$_GPUS_CHOICE"
+mm-build-for-platform.sh "$_BUILD_CHOICE" "$_GPUS_CHOICE"
 ```
 
 ---

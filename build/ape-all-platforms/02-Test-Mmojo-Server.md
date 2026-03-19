@@ -50,8 +50,8 @@ Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-st
 
 ---
 ### Proceed
-- **Next:** [03. Package APE for All Platforms](03-Package-APE-All-Platforms.md)
-- **Previous:** [01. Build APE for All Platforms](01-Build-APE-All-Platforms.md)
+- **Next:** [03. Package for All Platforms](03-Package-for-All-Platforms.md)
+- **Previous:** [01. Build Mmojo Server](01-Build-Mmojo-Server.md)
 - **Up:** [Build Mmojo Server](../README.md)
 
 ---

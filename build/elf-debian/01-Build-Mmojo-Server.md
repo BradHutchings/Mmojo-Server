@@ -61,22 +61,26 @@ Build Mmojo Server with your build choice and gpus choice:
 ```
 _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
+_RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
 _VARIATION="native"
 if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
     _GPUS_CHOICE=""
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_RPI5_AARCH64"
     _PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
     _TOUCH_FILE="build-aarch64-rpi5"
     _VARIATION="pi"
 elif [ $(uname -m) == "x86_64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$_GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-x86_64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-x86_64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _TOUCH_FILE="build-x86_64-native$_GPUS_CHOICE"
     _VARIATION="native"
 elif [ $(uname -m) == "aarch64" ] || [ $(uname -m) == "arm64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$_GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _TOUCH_FILE="build-aarch64-native$_GPUS_CHOICE"
     _VARIATION="native"
 fi

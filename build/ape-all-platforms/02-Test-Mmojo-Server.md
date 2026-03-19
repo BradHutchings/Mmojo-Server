@@ -1,4 +1,4 @@
-## 02. Test APE for All Platforms
+## 02. Test Mmojo Server
 ### About this Step
 In this step, you will test your Actual Portable Executable (APE) build. If you zipped up your run directory and saved as a package previously, you can recover that package and test it.
 

@@ -1,5 +1,5 @@
 ## 05. Download Mmojo Server
-**THIS SECTION IS IN PROGRESS.**
+**THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this step, we will download Mmojo Server from Hugging Face.
 

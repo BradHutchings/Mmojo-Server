@@ -1,5 +1,5 @@
 ## 04. Package for mac OS
-**THIS SECTION IS A WORK IN PROGRESS.**
+**THIS GUIDE IS A WORK IN PROGRESS.**
 ### About this Step
 In this step, you will package the build you just created and tested.
 

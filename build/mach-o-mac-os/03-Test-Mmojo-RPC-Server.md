@@ -54,7 +54,7 @@ fi
 
 ---
 ### Proceed
-- **Next:** [04. Package for Debian Linux](04-Package-for-Debian.md)
+- **Next:** [04. Package for mac OS](04-Package-for-mac-os.md)
 - **Previous:** [02. Test Mmojo Server](02-Test-Mmojo-Server.md)
 - **Up:** [Build Mmojo Server for Debian Linux](README.md)
 

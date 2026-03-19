@@ -1,4 +1,4 @@
-## 05. Package APE for All Platforms
+## 05. Package for All Platforms
 ### About this Step
 In this step, you will package the build you just created and tested.
 

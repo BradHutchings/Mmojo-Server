@@ -52,12 +52,14 @@ echo "You chose: $choice"
 # Copy the choice.
 #-------------------------------------------------------------------------------
 
-if [ "$choice" != "" ] && [ "$choice" != "None" ] && [ "$DEPLOY_DIR" != "" ]; then
+if [ "$choice" != "" ] && [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
-    if [ -d "$DEPLOY_DIR" ]; then
-        rm -f "$DEPLOY_DIR"/*.gguf
-        echo "Soft linking $choice to $DEPLOY_DIR."
-        ln -s "$MODELS_DIR/$choice" "$DEPLOY_DIR/$choice"
+    rm -f "$DEPLOY_DIR"/*.gguf
+    if [ "$choice" != "None" ]; then
+        if [ -d "$DEPLOY_DIR" ]; then
+            echo "Soft linking $choice to $DEPLOY_DIR."
+            ln -s "$MODELS_DIR/$choice" "$DEPLOY_DIR/$choice"
+        fi
     fi
 fi
 

@@ -28,16 +28,18 @@ Make a .zip package file for Mmojo Server from your run directory. It will be mo
 Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 if [ -d "$DEPLOY_DIR" ]; then
-  cd "$DEPLOY_DIR"
-  zip "$_PACKAGE_FILE" mmojo-server
-  zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_ARGS_FILE
-  zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
-  zip -r "$_PACKAGE_FILE" Mmojo-Complete 
-  zip -0 "$_PACKAGE_FILE" *.gguf 
-  mkdir -p "$PACKAGES_DIR"
-  mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
-  cd $HOME
-  ls -al "$PACKAGES_DIR"
+    cd "$DEPLOY_DIR"
+    zip "$_PACKAGE_FILE" mmojo-server
+    zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_ARGS_FILE
+    zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
+    zip -r "$_PACKAGE_FILE" Mmojo-Complete 
+    if find . -maxdepth 1 -type f,l -iname "*.gguf" -print -quit | grep -q .; then
+        zip -0 "$_PACKAGE_FILE" *.gguf 
+    fi
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    ls -al "$PACKAGES_DIR"
 fi
 ```
 

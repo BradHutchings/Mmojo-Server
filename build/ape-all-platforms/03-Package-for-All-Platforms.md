@@ -77,8 +77,8 @@ mm-packages-backup.sh
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
-- **Previous:** [02. Test APE for All Platforms](02-Test-APE-All-Platforms.md)
+- **Next:** [04. Package for All Platforms](04-Package-for-All-Platforms.md]
+- **Previous:** [02. Test Mmojo Server](02-Test-Mmojo-Server.md)
 - **Up:** [Build Mmojo Server](../README.md)
 
 ---

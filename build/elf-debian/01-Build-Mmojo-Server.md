@@ -85,7 +85,7 @@ mm-build-for-platform.sh $_VARIATION "$_GPUS_CHOICE"
 
 ---
 ### Create a Deploy Directory
-Create a `$DEPLOY_DIR` directory and copy Mmojo Server into it:
+Create a `$DEPLOY_DIR` directory and copy Mmojo Server, Mmojo RPC Server, and supporting files into it:
 ```
 if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"

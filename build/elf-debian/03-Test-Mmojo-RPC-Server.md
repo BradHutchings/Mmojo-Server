@@ -5,7 +5,7 @@ The Mmojo RPC Server lets you offload inference to another computer. You would u
 You can read more about llama.cpp's RPC Server here:
 - [llama.cpp RPC Server](https://github.com/ggml-org/llama.cpp/blob/master/tools/rpc/README.md)
 
-Mmojo RPC puts the parameters in a `mmojo-rpc-server-args` file for easier deployments.
+Mmojo RPC Server puts the parameters in a `mmojo-rpc-server-args` file for easier deployments.
 
 ---
 ### Set up Mmojo Server on Another Host

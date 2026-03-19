@@ -111,7 +111,7 @@ It should look like:
 
 ---
 ### Proceed
-- **Next:** [02. Test Mmojo Server](02-Test Mmojo Server.md)
+- **Next:** [02. Test Mmojo Server](02-Test-Mmojo-Server.md)
 - **Previous:** This is the first step in this section.
 - **Up:** [Build Mmojo Server](../README.md)
 

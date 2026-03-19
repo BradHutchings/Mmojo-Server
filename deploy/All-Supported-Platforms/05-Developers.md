@@ -35,7 +35,7 @@ Save changes to the file and start Mmojo Server for them to take effect.
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** This is the last step in this guide.
 - **Previous:** [04. Stop Mmojo Server](04-Stop-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on All Supported Platforms](README.md)
 

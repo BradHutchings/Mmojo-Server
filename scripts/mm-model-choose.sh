@@ -12,9 +12,16 @@ SCRIPT_NAME=$(basename -- "$0")
 
 cd $MODELS_DIR
 
-models=$(ls -l *.gguf)
+mapfile -t models < <(find . -maxdepth 1 -type f -name "*.gguf")
+echo "Count: ${#models[@]}"
+
+for ((i=0;i<${#models[@]};i++)); do 
+    $models[$i] = "${$models[$i]/.\//}"
+done
+
 echo $models
-echo "Count: ${#builds[@]}"
+
+
 
 exit
 

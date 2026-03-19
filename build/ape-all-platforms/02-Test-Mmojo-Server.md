@@ -37,7 +37,7 @@ Connect to Mmojo Complete from a browser:
 
 Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 
-Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-start`.
+Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-go`.
 
 ---
 ### Proceed

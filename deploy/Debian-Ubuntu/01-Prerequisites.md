@@ -32,7 +32,7 @@ The following are recommended for smoothest sailing through this recipe:
 ---
 ### Proceed
 - **Next:** [02. Prepare Debian](02-Prepare-Debian.md)
-- **Previous:** This is the first step in this section.
+- **Previous:** This is the first step in this guide.
 - **Up:** [Deploy Mmojo Server on Debian / Ubuntu](README.md)
 
 ---

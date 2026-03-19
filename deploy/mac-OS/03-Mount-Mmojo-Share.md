@@ -1,5 +1,5 @@
 ## 03. Mount Mmojo Share
-**THIS SECTION IS IN PROGRESS.**
+**THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this step, you will mount your Mmojo Share, if you have one. Your Mmojo Share can be any SMB file share on your computer or your network. You will need it's host address, share name, username, and password.
 

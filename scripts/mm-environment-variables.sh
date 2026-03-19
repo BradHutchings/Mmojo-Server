@@ -124,6 +124,9 @@ export _PACKAGE_MMOJO_SERVER_SUPPORT_DIR="mmojo-server-support"
 export _PACKAGE_MMOJO_SERVER_EXE_FILE="mmojo-server.exe"
 export _PACKAGE_MMOJO_SERVER_ZIP_FILE="mmojo-server.zip"
 
+export _PACKAGE_MMOJO_RPC_SERVER_FILE="mmojo-rpc-server"
+export _PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE="mmojo-rpc-server-args"
+
 echo "Setting architectuire value for compilers."
 export ARCH_X86_64_COMPATIBLE="x86-64"
 export ARCH_X86_64_PERFORMANT="x86-64-v3"

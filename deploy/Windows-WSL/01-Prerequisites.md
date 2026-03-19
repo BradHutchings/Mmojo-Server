@@ -36,7 +36,7 @@ The following are recommended for smoothest sailing through this recipe:
 ---
 ### Proceed
 - **Next:** [02. Prepare WSL - Mmojo Server](02-Prepare-WSL-Mmojo-Server.md)
-- **Previous:** This is the first step in this section.
+- **Previous:** This is the first step in this guide.
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

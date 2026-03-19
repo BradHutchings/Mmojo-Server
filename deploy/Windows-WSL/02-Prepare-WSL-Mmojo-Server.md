@@ -1,5 +1,4 @@
 ## 02. Prepare WSL - Mmojo Server
-
 ### About this Step
 Windows Subsystem for Linux (WSL) lets you run a full Linux distribution directly on Windows. Let's create and configure a WSL instance for Mmojo Server deployment.
 
@@ -133,7 +132,7 @@ sudo poweroff
 
 ---
 ### Move the WSL `.vhdx` Virual Disk (Optional)
-In 2026, advanced Windows users like you have a startup drive for Windows stuff and applications and a separate (fast, larger) drive for your data. The virtual disk for your WSL instance will get pretty big, i.e. 50 GB or 100 GB. You should move it to another drive. That said, this section is optional.
+In 2026, advanced Windows users like you have a startup drive for Windows stuff and applications and a separate (fast, larger) drive for your data. The virtual disk for your WSL instance will get pretty big, i.e. 50 GB or 100 GB. You should move it to another drive. That said, this sub-step is optional.
 
 <img width="437" height="61" alt="image" src="https://github.com/user-attachments/assets/6fe4401e-4984-4a6c-804b-c8e608c4ebde" />
 

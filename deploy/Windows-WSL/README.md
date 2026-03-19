@@ -1,6 +1,6 @@
 ## Deploy Mmojo Server on Windows (WSL)
-### About this Section
-In this section, you will setup a WSL environment on Windows and deploy Mmojo Server in it. This is the prefered way to run Mmojo Server on a Windows PC.
+### About this Guide
+In this guide, you will setup a WSL environment on Windows and deploy Mmojo Server in it. This is the prefered way to run Mmojo Server on a Windows PC.
 
 <!-- SPONSOR --> 
 I offer paid assistance over Zoom if you need it:
@@ -41,7 +41,7 @@ If you want Mmojo Server to accept connections from other computers on your netw
 You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
 
 Use this recipe:
-- [01. Build ELF Executable for Debian Linux](/build/elf-debian/01-Build-ELF-Debian-Linux.md)
+- [01. Build Mmojo Server for Debian Linux](/build/elf-debian/README.md)
 
 Before building, please work through all of the deploy steps above.
 

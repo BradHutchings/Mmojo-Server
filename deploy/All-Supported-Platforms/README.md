@@ -1,6 +1,6 @@
 ## Deploy Mmojo Server on All Supported Platforms
-### About this Section
-In this section, you will get Mmojo Server running on your PC or laptop, regardless of operating system or CPU. You will download the `mmojo-server-ape.zip` archive, download a model, expand the acrhive on your desktop, then run Mmojo Server.
+### About this Guide
+In this guide, you will get Mmojo Server running on your PC or laptop, regardless of operating system or CPU. You will download the `mmojo-server-ape.zip` archive, download a model, expand the acrhive on your desktop, then run Mmojo Server.
 
 **Note:** *Even if you want to jump to other deploy or build guides, this one will get you familiar with the step by step approach of the guides.*
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ################################################################################
-# This script backs up the models in the $HOME/mm-models directory to Mmojo 
-# Share. It only backs up models that are not on the share.
+# This script backs up the packages in the $HOME/mm-packages directory to Mmojo 
+# Share. It only backs up packages that are not on the share.
 #
 # See licensing note at end.
 ################################################################################
@@ -15,8 +15,7 @@ cd $HOME
 backed_up_one=0
 
 if [ ! -d "$SHARE_DIR_MOUNT_POINT" ]; then
-    # Fail silently, since we're now called by mm-models-download.sh.
-    # echo "You have not created your Mmojo Share mount point."
+    echo "You have not created your Mmojo Share mount point."
     exit 1
 fi
 

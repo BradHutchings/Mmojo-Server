@@ -1,5 +1,5 @@
 ## 08. Autostart Mmojo Server
-**THIS SECTION IS IN PROGRESS.**
+**THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this short step, we're going to modify the mmojo user account so that it automatically starts Mmojo Server and has some useful command aliases for managing it. This will enable a workflow where you open a Terminal session with the mmojo account to launch it and close the Terminal window to stop it. 
 

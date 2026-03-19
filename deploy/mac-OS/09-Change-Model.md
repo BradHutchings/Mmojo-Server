@@ -1,5 +1,5 @@
 ## 09. Change Model
-**THIS SECTION IS IN PROGRESS.**
+**THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this short step, we're going to stop Mmojo Server while keeping the Terminal session open, choose a new model, then start Mmojo Sever.
 

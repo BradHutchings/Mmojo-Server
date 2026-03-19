@@ -1,11 +1,11 @@
 ## 06. Test Mmojo Server
-**THIS SECTION IS IN PROGRESS.**
+**THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this step, you will choose a model and test Mmojo Server.
 
 ---
 ### Choose a Model
-First, choose a model. I'd suggest choosing **Google Gemma 4B Instruct**. It will be soft-linked in your `$HOME/Mmojo-Server` directory.
+First, choose a model. I'd suggest choosing **Google-Gemma-4B-Instruct-v3-q8_0.gguf**. It will be soft-linked in your `$HOME/Mmojo-Server` directory.
 ```
 mm-model-choose.sh
 ```

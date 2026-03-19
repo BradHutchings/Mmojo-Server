@@ -10,40 +10,66 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME.\n*\n**********\n\n"
 
-unset MODEL_CHOICE
+#-------------------------------------------------------------------------------
+# Get list of available models in the $MODELS_DIR directory.
+#-------------------------------------------------------------------------------
 
-echo ""
-echo "These models are available to package:"
-PS3="Please choose a model:"
-
+wd=$(pwd)
 cd $MODELS_DIR
-select filename in *.gguf; do
-  case $filename in
-    "")
-      echo "That was not a valid choice. \$MODEL_CHOICE has been unset."
-      break
-      ;;
-    *)
-      export MODEL_CHOICE=$filename
-      break
-      ;;
-  esac
+
+models=("None")
+for file in *.gguf; do
+    # echo "Adding $file"
+    models+=($file)
+done
+# echo "Count: ${#models[@]}"
+
+cd $wd
+
+#-------------------------------------------------------------------------------
+# User picks one of the models.
+#-------------------------------------------------------------------------------
+
+echo
+echo "Please pick a model to use:"
+for ((i=0;i<${#models[@]};i++)); do
+    string="$(($i+1))) ${models[$i]}"
+    printf "%s\n" "$string"
 done
 
-# if [ -v MODEL_CHOICE ]; then
-if [ "$MODEL_CHOICE" != "" ]; then
-  echo ""
-  echo "You chose: $MODEL_CHOICE"
-  echo ""
+echo
+read -p 'Which model would you like to use? ' opt
 
-  if [ "$DEPLOY_DIR" != "" ] && [ -d "$DEPLOY_DIR" ]; then
-      rm -f "$DEPLOY_DIR"/*.gguf
-      echo "Soft linking $MODEL_CHOICE to $DEPLOY_DIR."
-      ln -s "$MODELS_DIR/$MODEL_CHOICE" "$DEPLOY_DIR/$MODEL_CHOICE"
-  fi
+choice=""
+if [ "$opt" -gt "0" ] && [ "$opt" -le ${#models[@]} ]; then
+    choice=${models[$opt-1]}
 fi
 
-cd $HOME
+echo
+echo "You chose: $choice"
+
+#-------------------------------------------------------------------------------
+# Copy the choice.
+#-------------------------------------------------------------------------------
+
+if [ "$choice" != "" ] && [ "$DEPLOY_DIR" != "" ]; then
+    mkdir -p "$DEPLOY_DIR"
+    rm -f "$DEPLOY_DIR"/*.gguf
+    if [ "$choice" != "None" ]; then
+        if [ -d "$DEPLOY_DIR" ]; then
+            echo
+            echo "Soft linking $choice to $DEPLOY_DIR."
+            ln -s "$MODELS_DIR/$choice" "$DEPLOY_DIR/$choice"
+        fi
+    fi
+fi
+
+#-------------------------------------------------------------------------------
+# Write out answer for caller to use.
+#-------------------------------------------------------------------------------
+
+echo
+echo $choice > "/tmp/${SCRIPT_NAME%.*}.out"
 
 # printf "\n**********\n*\n* FINISHED: $SCRIPT_NAME.\n*\n**********\n\n"
 

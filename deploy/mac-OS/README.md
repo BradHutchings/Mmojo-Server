@@ -1,7 +1,7 @@
 ## Deploy Mmojo Server on mac OS
-**THIS SECTION IS IN PROGRESS.**
-### About this Section
-In this section, you will deploy Mmojo Server on mac OS. Your Mmojo Server will take advantage of the GPU cores inside your Mac's M-series CPU.
+**THIS GUIDE IS IN PROGRESS.**
+### About this Guide
+In this guide, you will deploy Mmojo Server on mac OS. Your Mmojo Server will take advantage of the GPU cores inside your Mac's M-series CPU.
 
 <!-- SPONSOR --> 
 I offer paid assistance over Zoom if you need it:

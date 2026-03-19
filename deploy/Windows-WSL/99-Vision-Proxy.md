@@ -37,8 +37,8 @@ python3 proxy-watcher.py
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
-- **Previous:** Not sure what  the previous step is going to be.
+- **Next:** This is the last step in this guide.
+- **Previous:** Not sure what the previous step is going to be.
 - **Up:** [Deploy Mmojo Server on Windows (WSL)](README.md)
 
 ---

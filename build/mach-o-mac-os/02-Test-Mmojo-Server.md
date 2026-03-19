@@ -1,10 +1,11 @@
-## 02. Test Mach-O Executable for mac OS
+## 02. Test Mmojo Server
+**THIS GUIDE IS A WORK IN PROGRESS.**
 ### About this Step
-In this step, you will build...
+In this step, you will test your Mmojo Server build.
 
 ---
 ### Choose a Model
-Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google Gemma 270M Instruct v3**.
+Choose a model. It will be included in your `.zip` archive. I'd suggest choosing **Google-Gemma-4B-Instruct-v3-q8_0.gguf**.
 ```
 mm-model
 ```
@@ -18,7 +19,7 @@ mm-debug
 
 Connect to Mmojo Complete from a browser:
 
-[Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
+- [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
 Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 
@@ -26,9 +27,9 @@ Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-st
 
 ---
 ### Proceed
-- **Next:** [03. Package Mach-O Executable for mac OS](03-Package-Mach-O-mac-OS.md)
-- **Previous:** [01. Build Mach-O Executable for mac OS](01-Build-Mach-O-mac-OS.md)
-- **Up:** [Build Mmojo Server](../README.md)
+- **Next:** [03. Test Mmojo RPC Server](03-Test-Mmojo-RPC-Server.md)
+- **Previous:** [01. Build Mmojo Server](01-Build-Mmojo-Server.md)
+- **Up:** [Build Mmojo Server for mac OS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

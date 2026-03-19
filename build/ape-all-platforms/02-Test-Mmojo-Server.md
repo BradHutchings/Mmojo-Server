@@ -1,15 +1,6 @@
-## 02. Test APE for All Platforms
+## 02. Test Mmojo Server
 ### About this Step
-In this step, you will test your Actual Portable Executable (APE) build. If you zipped up your run directory and saved as a package previously, you can recover that package and test it.
-
-<!--
----
-### Retrieve Previously Built Package (Optional)
-If you've previously built an APE for all platforms and want to retrieve it for testing, run this script:
-```
-mm-package-choose.sh
-```
--->
+In this step, you will test your Actual Portable Executable (APE) builds.
 
 ---
 ### Optional: Choose a Build
@@ -42,7 +33,7 @@ mm-debug
 
 Connect to Mmojo Complete from a browser:
 
-[Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
+- [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
 Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 
@@ -50,9 +41,9 @@ Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-st
 
 ---
 ### Proceed
-- **Next:** [03. Package APE for All Platforms](03-Package-APE-All-Platforms.md)
-- **Previous:** [01. Build APE for All Platforms](01-Build-APE-All-Platforms.md)
-- **Up:** [Build Mmojo Server](../README.md)
+- **Next:** [03. Prepare to Package](03-Prepare-to-Package.md)
+- **Previous:** [01. Build Mmojo Server](01-Build-Mmojo-Server.md)
+- **Up:** [Build Mmojo Server for All Platforms](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

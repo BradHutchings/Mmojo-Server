@@ -43,7 +43,7 @@ One model file at a time! Mmojo Server finds the first `.gguf` model file it can
 ---
 ### Proceed
 - **Next:** [02. Start Mmojo Server](02-Start-Mmojo-Server.md)
-- **Previous:** This is the first step in this section.
+- **Previous:** This is the first step in this guide.
 - **Up:** [Deploy Mmojo Server on All Supported Platforms](README.md)
 
 ---

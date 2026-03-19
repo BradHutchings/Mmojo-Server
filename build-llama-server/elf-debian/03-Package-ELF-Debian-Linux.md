@@ -38,7 +38,7 @@ mm-packages-backup.sh
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** This is the last step in this guide.
 - **Previous:** [02. Test ELF Executable for Debian Linux](02-Test-ELF-Debian-Linux.md)
 - **Up:** [Build llama-server](../README.md)
 

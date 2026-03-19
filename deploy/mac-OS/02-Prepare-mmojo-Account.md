@@ -1,5 +1,5 @@
 ## 02. Prepare mmojo Account
-**THIS SECTION IS IN PROGRESS.**
+**THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 You will create a `mmojo` user account on your Mac to deploy Mmojo Server. It will be useful for building Mmojo Server as well, if you decide to do that. This provides a little bit of sandboxing to both Mmojo Server and your Mac, as well as isolation of development tools.
 

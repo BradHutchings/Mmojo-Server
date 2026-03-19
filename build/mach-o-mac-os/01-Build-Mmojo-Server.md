@@ -56,8 +56,6 @@ rm /tmp/mm-gpus-choose.out
 ```
 
 Build native Mmojo Server tuned to the specific CPU of your PC:
-**_PACKAGE_FILE and _TOUCH_FILE NAMES ARE NOT RIGHT.**
-
 ```
 _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
@@ -72,7 +70,7 @@ elif [ $(uname -m) == "aarch64" ] || [ $(uname -m) == "arm64" ]; then
     _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-native$_GPUS_CHOICE.zip"
     _TOUCH_FILE="build-mac-os-arm64-$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
-mm-build-for-platform.sh $_BUILD_CHOICE "$_GPUS_CHOICE"
+mm-build-for-platform.sh "$_BUILD_CHOICE" "$_GPUS_CHOICE"
 ```
 
 ---

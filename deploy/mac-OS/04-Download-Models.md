@@ -1,5 +1,5 @@
 ## 04. Download Models
-**THIS SECTION IS IN PROGRESS.**
+**THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this step, we will download models for use with Mmojo Server from Hugging Face. If you have setup a Mmojo Share and the models are already available there, the models will be copied from your Mmojo Share instead.
 

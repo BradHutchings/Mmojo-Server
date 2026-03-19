@@ -1,5 +1,5 @@
 ## 06. Test Mmojo Server
-**THIS SECTION IS IN PROGRESS.**
+**THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this step, you will choose a model and test Mmojo Server.
 

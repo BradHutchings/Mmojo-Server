@@ -28,7 +28,7 @@ Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 if [ -d "$DEPLOY_DIR" ]; then
     cd "$DEPLOY_DIR"
-    zip "$_PACKAGE_FILE" mmojo-server
+    zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_FILE
     zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_ARGS_FILE
     zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
     zip -r "$_PACKAGE_FILE" Mmojo-Complete 
@@ -50,7 +50,17 @@ Make a .zip package file for RPC Mmojo Server from your run directory. It will b
 
 Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
-# do whatever here
+if [ -d "$DEPLOY_DIR" ]; then
+    cd "$DEPLOY_DIR"
+    zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_FILE
+    zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_RPC_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    echo
+    echo "Packages:"
+    ls -al "$PACKAGES_DIR"
+fi
 ```
 
 ---

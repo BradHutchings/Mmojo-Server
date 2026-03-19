@@ -96,7 +96,7 @@ mm-packages-backup.sh
 ### Proceed
 - **Next:** [05. Package for All Platforms](05-Package-for-All-Platforms.md)
 - **Previous:** [03. Package for All Platforms](03-Package-for-All-Platforms.md)
-- **Up:** [Build Mmojo Server](../README.md)
+- **Up:** [Build Mmojo Server for All Platforms](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

@@ -56,7 +56,7 @@ Click the Settings icon again to make the Settings panel disappear.
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** This is the last step in this guide.
 - **Previous:** [08. Autostart Mmojo Server](08-Autostart-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on Debian / Ubuntu](README.md)
 

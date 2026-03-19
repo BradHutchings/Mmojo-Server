@@ -13,7 +13,7 @@ if ! grep -q "Starting Mmojo Server." "$HOME/.bashrc"; then
 cat << EOF >> $HOME/.bashrc
 
 echo "Starting Mmojo Server."
-mm-start
+mm-go
 echo ""
 echo "To stop Mmojo Server, type the alias: << mm-stop >>."
 echo ""

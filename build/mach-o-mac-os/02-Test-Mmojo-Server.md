@@ -1,6 +1,7 @@
 ## 02. Test Mmojo Server
+**THIS SECTION IS A WORK IN PROGRESS.**
 ### About this Step
-In this step, you will build...
+In this step, you will test your Mmojo Server build.
 
 ---
 ### Choose a Model

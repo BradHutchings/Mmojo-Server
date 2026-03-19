@@ -6,7 +6,7 @@ In this step, you will package the build you just created and tested.
 ### Choose a Model
 Choose a model to include in the package. If you don't want one, choose "None".
 ```
-find $DEPLOY_DIR/* ! -name "*.gguf" -delete
+rm "$DEPLOY_DIR/"*.gguf
 mm-model
 ```
 

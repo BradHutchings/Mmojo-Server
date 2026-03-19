@@ -13,7 +13,7 @@ ls -l $DEPLOY_DIR
 
 It should look like:
 
-<img width="778" height="214" alt="image" src="https://github.com/user-attachments/assets/2af0e2b3-0392-4b73-9f68-775ea10c0cd7" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/3233af7d-978c-423a-9f83-94e9afb70782" />
 
 ---
 ### Make a Compatable Windows Package File

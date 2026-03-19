@@ -28,7 +28,7 @@ If you have a model to be included in the package, it will show up as a link. It
 ### Make a Compatable Windows Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
-Make a `Mmojo-Server-ape-compatible.zip` package file and move it to your `$PACKAGES_DIR` directory:
+Make a `Mmojo-Server-ape-compatible-windows.zip` package file and move it to your `$PACKAGES_DIR` directory:
 ```
 _PACKAGE_FILE="Mmojo-Server-ape-compatible-windows.zip"
 if test -n "$DEPLOY_DIR"; then

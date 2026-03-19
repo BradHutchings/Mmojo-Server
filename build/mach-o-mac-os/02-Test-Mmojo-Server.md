@@ -28,7 +28,7 @@ Since your build is in your `$DEPLOY_DIR`, it's ready to be deployed with `mm-st
 ### Proceed
 - **Next:** [03. Test Mmojo RPC Server](03-Test-Mmojo-RPC-Server.md)
 - **Previous:** [01. Build Mmojo Server](01-Build-Mmojo-Server.md)
-- **Up:** [Build Mmojo Server](../README.md)
+- **Up:** [Build Mmojo Server for mac OS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

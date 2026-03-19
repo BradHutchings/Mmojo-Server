@@ -42,7 +42,10 @@ The best path to start your Mmojo Server journey goes like this:
 
 ---
 <!-- SPONSOR -->
-Need professional help with your deployment, rollout, or build? Would you like to sponsor accessible, local, private LLMs? Email me!
+Need professional help with your deployment, rollout, or build? I offer paid assistance over Zoom if you need it:
+- [Paid Assistance](/docs/Paid-Assistance.md)
+
+Would you like to sponsor accessible, local, private LLMs? Email me!
 
 -Brad<br/>
 --<br/>

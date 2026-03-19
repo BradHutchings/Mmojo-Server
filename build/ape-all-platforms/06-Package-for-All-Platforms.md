@@ -5,6 +5,13 @@ In this step, you will package the build you just created and tested.
 In this alternative, you will package the compatible and performant builds separately, Windows and Linux/macOS separately.
 
 ---
+### Choose a Model
+Choose a model to include in the package. If you don't want one, choose "None".
+```
+mm-model
+```
+
+---
 ### Review Your Work
 Let's list the contents of the `$HOME/mm-deploy` directory and review your work:
 ```
@@ -25,9 +32,11 @@ _PACKAGE_FILE="Mmojo-Server-ape-compatible-windows.zip"
 if test -n "$DEPLOY_DIR"; then
     cd "$DEPLOY_DIR"
     zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE.exe"
-    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
-    cp --update=none "$MODELS_DIR/Google-Gemma-1B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
-    zip -0 "$_PACKAGE_FILE" "Google-Gemma-1B-Instruct-v3-q8_0.gguf"
+    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    zip "$_PACKAGE_FILE" LICENSE *.html
+    if find . -maxdepth 1 -type f,l -iname "*.gguf" -print -quit | grep -q .; then
+        zip -0 "$_PACKAGE_FILE" *.gguf 
+    fi
     mkdir -p "$PACKAGES_DIR"
     mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
     cd $HOME
@@ -43,15 +52,17 @@ Make a `Mmojo-Server-ape-compatible-linux-macos.zip` package file and move it to
 ```
 _PACKAGE_FILE="Mmojo-Server-ape-compatible-linux-macos.zip"
 if test -n "$DEPLOY_DIR"; then
-  cd "$DEPLOY_DIR"
+    cd "$DEPLOY_DIR"
     zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_COMPATIBLE_FILE"
-    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
-    cp --update=none "$MODELS_DIR/Google-Gemma-1B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
-    zip -0 "$_PACKAGE_FILE" "Google-Gemma-1B-Instruct-v3-q8_0.gguf"
-  mkdir -p "$PACKAGES_DIR"
-  mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
-  cd $HOME
-  ls -al "$PACKAGES_DIR"
+    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    zip "$_PACKAGE_FILE" LICENSE *.html
+    if find . -maxdepth 1 -type f,l -iname "*.gguf" -print -quit | grep -q .; then
+        zip -0 "$_PACKAGE_FILE" *.gguf 
+    fi
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    ls -al "$PACKAGES_DIR"
 fi
 ```
 
@@ -63,15 +74,17 @@ Make a `Mmojo-Server-ape-performant-windows.zip` package file and move it to you
 ```
 _PACKAGE_FILE="Mmojo-Server-ape-performant-windows.zip"
 if test -n "$DEPLOY_DIR"; then
-  cd "$DEPLOY_DIR"
+    cd "$DEPLOY_DIR"
     zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE.exe"
-    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
-    cp --update=none "$MODELS_DIR/Google-Gemma-4B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
-    zip -0 "$_PACKAGE_FILE" "Google-Gemma-4B-Instruct-v3-q8_0.gguf"
-  mkdir -p "$PACKAGES_DIR"
-  mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
-  cd $HOME
-  ls -al "$PACKAGES_DIR"
+    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    zip "$_PACKAGE_FILE" LICENSE *.html
+    if find . -maxdepth 1 -type f,l -iname "*.gguf" -print -quit | grep -q .; then
+        zip -0 "$_PACKAGE_FILE" *.gguf 
+    fi
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    ls -al "$PACKAGES_DIR"
 fi
 ```
 
@@ -83,15 +96,17 @@ Make a `Mmojo-Server-ape-performant-linux-macos.zip` package file and move it to
 ```
 _PACKAGE_FILE="Mmojo-Server-ape-performant-linux-macos.zip"
 if test -n "$DEPLOY_DIR"; then
-  cd "$DEPLOY_DIR"
+    cd "$DEPLOY_DIR"
     zip "$_PACKAGE_FILE" "$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
-    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE" LICENSE *.html
-    cp --update=none "$MODELS_DIR/Google-Gemma-4B-Instruct-v3-q8_0.gguf" "$DEPLOY_DIR"
-    zip -0 "$_PACKAGE_FILE" "Google-Gemma-4B-Instruct-v3-q8_0.gguf"
-  mkdir -p "$PACKAGES_DIR"
-  mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
-  cd $HOME
-  ls -al "$PACKAGES_DIR"
+    zip "$_PACKAGE_FILE" *"$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    zip "$_PACKAGE_FILE" LICENSE *.html
+    if find . -maxdepth 1 -type f,l -iname "*.gguf" -print -quit | grep -q .; then
+        zip -0 "$_PACKAGE_FILE" *.gguf 
+    fi
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    ls -al "$PACKAGES_DIR"
 fi
 ```
 

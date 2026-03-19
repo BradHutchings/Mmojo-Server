@@ -73,7 +73,7 @@ mm-packages-backup.sh
 
 ---
 ### Proceed
-- **Next:** This is the last step in this section.
+- **Next:** This is the last step in this guide.
 - **Previous:** [03. Test Mmojo RPC Server](03-Test-Mmojo-RPC-Server.md)
 - **Up:** [Build Mmojo Server for mac OS](README.md)
 

@@ -18,7 +18,7 @@ mm-debug
 
 Connect to Mmojo Complete from a browser:
 
-[Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
+= [Mmojo Complete](http://127.0.0.1:8080) &larr; Right-click, open in new tab.
 
 Hit `CTRL-C` to stop the debug run when you are finished testing your build.
 

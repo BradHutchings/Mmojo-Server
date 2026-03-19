@@ -9,7 +9,7 @@ Mmojo RPC puts the parameters in a `mmojo-rpc-server-args` file for easier deplo
 
 ---
 ### Set up Mmojo Server on Another Host
-Add this to the "master host's" `mmojo-server-args file:
+Add this to the "master host's" `mmojo-server-args` file:
 ```
 --rpc
 ["slave" hostname]:[port]

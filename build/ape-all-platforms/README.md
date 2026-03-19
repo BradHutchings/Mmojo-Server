@@ -14,9 +14,10 @@ These build steps should be performed in a Debian Linux operating system like Ub
 ### Build Steps
 - [01. Build Mmojo Server](01-Build-Mmojo-Server.md) &mdash; Build Mmojo Server, Mmojo RPC Server, and other llama.cpp targets.
 - [02. Test Mmojo Server](02-Test-Mmojo-Server.md) &mdash; Test Mmojo Server.
-- [03. Package for All Platforms](03-Package-for-All-Platforms.md) &mdash; Package your builds for all platforms.
+- [03. Prepare to Package](03-Prepare-to-Package.md) &mdash; Package your builds for all platforms.
 - [04. Package for All Platforms](04-Package-for-All-Platforms.md) &mdash; Package your builds for all platforms.
 - [05. Package for All Platforms](05-Package-for-All-Platforms.md) &mdash; Package your builds for all platforms.
+- [06. Package for All Platforms](06-Package-for-All-Platforms.md) &mdash; Package your builds for all platforms.
 
 ---
 [MIT-Style License](/LICENSE)<br/>

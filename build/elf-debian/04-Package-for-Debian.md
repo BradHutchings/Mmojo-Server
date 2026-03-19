@@ -74,7 +74,7 @@ mm-packages-backup.sh
 ### Proceed
 - **Next:** This is the last step in this guide.
 - **Previous:** [03. Test Mmojo RPC Server](03-Test-Mmojo-RPC-Server.md)
-- **Up:** [Build Mmojo Server](../README.md)
+- **Up:** [Build Mmojo Server for Debian Linux](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

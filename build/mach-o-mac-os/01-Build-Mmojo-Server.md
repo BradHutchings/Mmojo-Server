@@ -1,15 +1,7 @@
 ## 01. Build Mmojo Server (for mac OS)
-**THIS SECTION IS IN PROGRESS.**
+**THIS SECTION IS A WORK IN PROGRESS.**
 ### About this Step
-**IT'S MIGHT JUST BE PERF WITH METAL.**
-
-In this step, you will build an executable file that runs on Apple Silicon (i.e. M1, M2, M3, M4, and M5).
-- **Compatible:** Runs on Apple M1 and above. 
-- **Performant:** Runs on Apple M4 and above.
-- **Native:** Runs on systems with a CPU that includes all of the CPU flags your computer's CPU includes. This includes your computer.
-
-These build steps should be performed with mac OS. Please prepare your mac OS environment by working through this deploy recipes:
-- [Deploy Mmojo Server on mac OS](/deploy/mac-OS/README.md) 
+In this step, you will build Mach-O executables of Mmojo Server, Mmojo RPC Server, and llama.cpp targets for Apple Silicon (i.e. M1, M2, M3, M4, and M5). Intel CPUs are not supported yet. 
 
 ---
 ### Latest Xcode Tools

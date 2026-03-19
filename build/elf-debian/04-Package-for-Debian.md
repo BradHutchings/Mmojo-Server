@@ -33,6 +33,7 @@ if [ -d "$DEPLOY_DIR" ]; then
   zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_ARGS_FILE
   zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
   zip -r "$_PACKAGE_FILE" Mmojo-Complete 
+  zip -0 "$_PACKAGE_FILE" *.gguf 
   mkdir -p "$PACKAGES_DIR"
   mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
   cd $HOME

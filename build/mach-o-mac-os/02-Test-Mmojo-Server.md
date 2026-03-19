@@ -1,4 +1,4 @@
-## 02. Test Mach-O Executable for mac OS
+## 02. Test Mmojo Server
 ### About this Step
 In this step, you will build...
 

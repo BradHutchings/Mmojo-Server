@@ -181,6 +181,23 @@ static std::string fs_get_cache_directory() {
         cache_directory = std::getenv("LOCALAPPDATA");
 #elif defined(__EMSCRIPTEN__)
         GGML_ABORT("not implemented on this platform");
+
+// Mmojo Server START
+// This could be automated by searching for "error Unknown architecture" and inserting the block 2 lines before. -Brad 2025-11-05
+#elif defined(COSMOCC)
+        // We don't know what OS we are running on at compile time, just CPU architecture.
+        // try various environment variables, fall back to ~/.cache.
+        // FUTURE: Checkj if the directories actually exist.
+        cache_directory = std::getenv("LOCALAPPDATA");
+        if (cache_directory == "") {
+            cache_directory = std::getenv("XDG_CACHE_HOME");
+        }
+        if (cache_directory == "") {
+            cache_directory = std::getenv("HOME") + std::string("/.cache/");
+        }
+        
+// Mmojo Server END
+
 #else
 #  error Unknown architecture
 #endif

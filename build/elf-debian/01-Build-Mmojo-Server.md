@@ -50,13 +50,13 @@ _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 _RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
-if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
+if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]] && [ "$_BUILD_CHOICE" == "native" ]; then
     _GPUS_CHOICE=""
+    _BUILD_CHOICE="pi"
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_RPI5_AARCH64"
     _PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
     _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
     _TOUCH_FILE="build-aarch64-rpi5"
-    _BUILD_CHOICE="pi"
 elif [ $(uname -m) == "x86_64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$_GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-x86_64$_BUILD_CHOICE$_GPUS_CHOICE.zip"

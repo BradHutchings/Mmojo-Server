@@ -125,6 +125,7 @@ export _PACKAGE_MMOJO_SERVER_EXE_FILE="mmojo-server.exe"
 export _PACKAGE_MMOJO_SERVER_ZIP_FILE="mmojo-server.zip"
 
 export _PACKAGE_MMOJO_RPC_SERVER_FILE="mmojo-rpc-server"
+export _PACKAGE_MMOJO_RPC_SERVER_APE_FILE="mmojo-rpc-server-ape"
 export _PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE="mmojo-rpc-server-args"
 
 echo "Setting architectuire value for compilers."

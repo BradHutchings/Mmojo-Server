@@ -18,7 +18,9 @@ ls -l $DEPLOY_DIR
 
 It should look like:
 
-<img width="656" height="118" alt="image" src="https://github.com/user-attachments/assets/fb38bb9a-8285-42f5-a5ca-92301585ba72" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/73e64e25-a017-4dd7-9f5d-84ad48666c8e" />
+
+If you chose "None" for the model above, you will not have a .gguf file (light blue in my window).
 
 ---
 ### Make a Mmojo Server Package File
@@ -30,7 +32,7 @@ if [ -d "$DEPLOY_DIR" ]; then
     cd "$DEPLOY_DIR"
     zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_FILE
     zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_ARGS_FILE
-    zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
+    zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE"
     zip -r "$_PACKAGE_FILE" Mmojo-Complete 
     if find . -maxdepth 1 -type f,l -iname "*.gguf" -print -quit | grep -q .; then
         zip -0 "$_PACKAGE_FILE" *.gguf 
@@ -54,6 +56,7 @@ if [ -d "$DEPLOY_DIR" ]; then
     cd "$DEPLOY_DIR"
     zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_FILE
     zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE
+    zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
     mkdir -p "$PACKAGES_DIR"
     mv -f "$_RPC_PACKAGE_FILE" "$PACKAGES_DIR"
     cd $HOME

@@ -51,15 +51,18 @@ Build native Mmojo Server tuned to the specific CPU of your PC:
 ```
 _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
+_RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     echo "Building for Intel Macs is not supported yet."
     # _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$_GPUS_CHOICE"
     # _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-native$_GPUS_CHOICE.zip"
+    # _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
     # _TOUCH_FILE="build-mac-os-x86_64-$_BUILD_CHOICE$_GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ] || [ $(uname -m) == "arm64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$_GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-native$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-mac-os-arm64-native.zip"
     _TOUCH_FILE="build-mac-os-arm64-$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
 mm-build-for-platform.sh "$_BUILD_CHOICE" "$_GPUS_CHOICE"

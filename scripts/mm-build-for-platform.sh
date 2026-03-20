@@ -13,9 +13,6 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2 $3.\n*\n$STARS\n\n"
 
-echo "\$MMOJO_EXTRA_PARAMS: $MMOJO_EXTRA_PARAMS"
-echo
-
 processor=$(uname -m)
 variation=$1
 gpus=$2
@@ -116,14 +113,15 @@ GGML_PARAMS+=" -DGGML_RPC=ON";
 
 BUILD_SUBDIRECTORY+="$gpus"
 
-echo "   Processor: $processor"
-echo "   Variation: $variation"
-echo "        GPUs: $gpus"
-echo "  arch param: $ARCH_LEVEL_PARAM"
-echo "subdirectory: $BUILD_SUBDIRECTORY"
-echo " building in: $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY"
-echo " GGML Params: $GGML_PARAMS"
-echo ""
+echo "          Processor: $processor"
+echo "          Variation: $variation"
+echo "               GPUs: $gpus"
+echo "         arch param: $ARCH_LEVEL_PARAM"
+echo "       subdirectory: $BUILD_SUBDIRECTORY"
+echo "        building in: $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY"
+echo "        GGML Params: $GGML_PARAMS"
+echo "\$MMOJO_EXTRA_PARAMS: $MMOJO_EXTRA_PARAMS"
+echo
 
 if [ -d "$THIS_BUILD_DIR" ] && [ "$BUILD_SUBDIRECTORY" != "" ]; then
     cd $THIS_BUILD_DIR

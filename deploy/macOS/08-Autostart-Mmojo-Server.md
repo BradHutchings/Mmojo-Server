@@ -36,7 +36,7 @@ Leave the Terminal window open for as long as you want to run Mmojo Server. When
 ### Proceed
 - **Next:** [09. Change Model](09-Change-Model.md)
 - **Previous:** [07. Make Command Aliases](07-Make-Command-Aliases.md)
-- **Up:** [Deploy Mmojo Server on mac OS](README.md)
+- **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

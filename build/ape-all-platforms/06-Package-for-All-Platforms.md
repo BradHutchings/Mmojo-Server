@@ -47,7 +47,7 @@ fi
 ```
 
 ---
-### Make a Compatable Linux / mac OS Package File
+### Make a Compatable Linux / macOS Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
 Make a `Mmojo-Server-ape-compatible-linux-macos.zip` package file and move it to your `$PACKAGES_DIR` directory:
@@ -91,7 +91,7 @@ fi
 ```
 
 ---
-### Make a Performant Linux / mac OS Package File
+### Make a Performant Linux / macOS Package File
 Make a .zip pakcage files from teh `$DEPLOY_DIR` directory. They are moved to the `$PACKAGES_DIR` directory after zipping for later testing or deployment.
 
 Make a `Mmojo-Server-ape-performant-linux-macos.zip` package file and move it to your `$PACKAGES_DIR` directory:

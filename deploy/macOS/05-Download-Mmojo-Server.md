@@ -9,9 +9,9 @@ Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs. It is 
 ```
 URL=""
 if [ $(uname -m) == "x86_64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-mac-os-x86_64-perf.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-x86_64-perf.zip"
 elif [ $(uname -m) == "arm64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-mac-os-arm64-perf-metal.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-arm64-perf-metal.zip"
 fi
 ```
 
@@ -22,9 +22,9 @@ fi
 ```
 URL=""
 if [ $(uname -m) == "x86_64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-mac-os-x86_64-comp.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-x86_64-comp.zip"
 elif [ $(uname -m) == "aarch64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-mac-os-arm64-perf-metal.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-arm64-perf-metal.zip"
 fi
 ```
 </details>
@@ -53,7 +53,7 @@ Mmojo Server is installed. You are ready to test it!
 ### Proceed
 - **Next:**  [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
 - **Previous:** [04. Download Models](04-Download-Models.md)
-- **Up:** [Deploy Mmojo Server on mac OS](README.md)
+- **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

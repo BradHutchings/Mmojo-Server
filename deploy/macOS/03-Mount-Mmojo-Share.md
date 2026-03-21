@@ -14,7 +14,7 @@ If you don't have an SMB file share available to use on your computer or network
 ### Create Mmojo Share Mount Point and Mount Script
 This script creates a mount point for the Mmojo Share and a script for mounting the Mmojo Share:
 ```
-mm-share-create-mount-point-mac-os.sh
+mm-share-create-mount-point-macos.sh
 ```
 
 NEED TO IMPLEMENT THAT SCRIPT -MAC SPECIFIC - MOUNT IN $HOME/mm-share. Fix environment script.
@@ -30,7 +30,7 @@ nano "$HOME_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
 ### Mount the Mmojo Share
 Mount the Mmojo share and list its contents. You may be prompted for your Mmojo Share password.
 ```
-mm-share-mount-mac-os.sh
+mm-share-mount-macos.sh
 ls -al $SHARE_DIR_MOUNT_POINT
 ```
 
@@ -38,7 +38,7 @@ ls -al $SHARE_DIR_MOUNT_POINT
 ### Proceed
 - **Next:** [04. Download Models](04-Download-Models.md)
 - **Previous:** [02. Prepare mmojo Account](02-Prepare-mmojo-Account.md)
-- **Up:** [Deploy Mmojo Server on mac OS](README.md)
+- **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

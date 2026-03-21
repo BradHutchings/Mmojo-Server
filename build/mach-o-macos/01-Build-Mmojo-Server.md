@@ -18,6 +18,7 @@ brew install npm
 Do I need this with updated Xcode tools available?
 ```
 brew install gcc
+brew install cmake
 ```
 
 ---

@@ -1,7 +1,7 @@
-## Deploy Mmojo Server on mac OS
+## Deploy Mmojo Server on macOS
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Guide
-In this guide, you will deploy Mmojo Server on mac OS. Your Mmojo Server will take advantage of the GPU cores inside your Mac's M-series CPU.
+In this guide, you will deploy Mmojo Server on macOS. Your Mmojo Server will take advantage of the GPU cores inside your Mac's M-series CPU.
 
 <!-- SPONSOR --> 
 I offer paid assistance over Zoom if you need it:
@@ -18,7 +18,7 @@ brad@BradHutchings.com<br/><br/>
 ---
 ### Deploy Mmojo Server
 Here are the deployment steps:
-- [01. Prerequisites](01-Prerequisites.md) - What you need to deploy Mmojo Server on mac OS.  
+- [01. Prerequisites](01-Prerequisites.md) - What you need to deploy Mmojo Server on macOS.  
 - [02. Prepare mmojo Account](02-Prepare-mmojo-Account.md) - Create a mmojo user account for Mmojo Server.
 - [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md) - If you have a Mmojo Share, mount it.
 - [04. Download Models](04-Download-Models.md) - Download models for use with Mmojo Server from Hugging Face, or copy from your Mmojo Share.
@@ -41,7 +41,7 @@ If you want Mmojo Server to accept connections from other computers on your netw
 You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
 
 Use this recipe:
-- [01. Build Mach-O Executable for mac OS](/build/mach-o-mac-os/01-Build-Mach-O-mac-OS.md)
+- [01. Build Mach-O Executable for macOS](/build/mach-o-macos/01-Build-Mach-O-macOS.md)
 
 Before building, please work through all of the deploy steps above.
 

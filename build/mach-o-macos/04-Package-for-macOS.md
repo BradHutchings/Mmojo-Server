@@ -1,4 +1,4 @@
-## 04. Package for mac OS
+## 04. Package for macOS
 **THIS GUIDE IS A WORK IN PROGRESS.**
 ### About this Step
 In this step, you will package the build you just created and tested.
@@ -78,7 +78,7 @@ mm-packages-backup.sh
 ### Proceed
 - **Next:** This is the last step in this guide.
 - **Previous:** [03. Test Mmojo RPC Server](03-Test-Mmojo-RPC-Server.md)
-- **Up:** [Build Mmojo Server for mac OS](README.md)
+- **Up:** [Build Mmojo Server for macOS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

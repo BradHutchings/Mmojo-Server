@@ -1,4 +1,4 @@
-## 01. Build Mmojo Server (for mac OS)
+## 01. Build Mmojo Server (for macOS)
 **THIS GUIDE IS A WORK IN PROGRESS.**
 ### About this Step
 In this step, you will build Mach-O executables of Mmojo Server, Mmojo RPC Server, and llama.cpp targets for Apple Silicon (i.e. M1, M2, M3, M4, and M5). Intel CPUs are not supported yet. 
@@ -56,14 +56,14 @@ _TOUCH_FILE=""
 if [ $(uname -m) == "x86_64" ]; then
     echo "Building for Intel Macs is not supported yet."
     # _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$_GPUS_CHOICE"
-    # _PACKAGE_FILE="Mmojo-Server-mac-os-x86_64-native$_GPUS_CHOICE.zip"
+    # _PACKAGE_FILE="Mmojo-Server-macos-x86_64-native$_GPUS_CHOICE.zip"
     # _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
-    # _TOUCH_FILE="build-mac-os-x86_64-$_BUILD_CHOICE$_GPUS_CHOICE"
+    # _TOUCH_FILE="build-macos-x86_64-$_BUILD_CHOICE$_GPUS_CHOICE"
 elif [ $(uname -m) == "aarch64" ] || [ $(uname -m) == "arm64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-mac-os-arm64-native$_GPUS_CHOICE.zip"
-    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-mac-os-arm64-native.zip"
-    _TOUCH_FILE="build-mac-os-arm64-$_BUILD_CHOICE$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-macos-arm64-native$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-arm64-native.zip"
+    _TOUCH_FILE="build-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
 mm-build-for-platform.sh "$_BUILD_CHOICE" "$_GPUS_CHOICE"
 ```
@@ -111,7 +111,7 @@ It should look like:
 ### Proceed
 - **Next:** [02. Test Mmojo Server](02-Test-Mmojo-Server.md)
 - **Previous:** This is the first step in this guide.
-- **Up:** [Build Mmojo Server for mac OS](README.md)
+- **Up:** [Build Mmojo Server for macOS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

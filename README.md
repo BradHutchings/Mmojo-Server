@@ -12,7 +12,7 @@ Mmojo Server is a private, local LLM server:
 - Mmojo Server sports a humane completion-style user interface as its default, and offers a traditional chat user interface for those who want that. You don't have to pretend to chat with a robot! 
 - Mmojo Server extends llama-server from the llama.cpp project. Mmojo Server is kept up to date with llama.cpp source weekly.
 - Mmojo Server supports the OpenAI API. If you're building an "AI-powered" app, using Mmojo Server will save you from cloud token bills.
-- Mmojo Server can be built as an Actual Portable Executable (APE), allowing one executable to run on Windows, mac OS, and Linux, on both x86_64 and aarch64 (arm64) CPU architectures. It is the easiest way to get started with a local or hosted LLM.
+- Mmojo Server can be built as an Actual Portable Executable (APE), allowing one executable to run on Windows, macOS, and Linux, on both x86_64 and aarch64 (arm64) CPU architectures. It is the easiest way to get started with a local or hosted LLM.
 - Mmojo Server can also be built for specific operating systems and architectures, optimized for a particular computer, or built to run on a wide selection of CPUs in a CPU family.
 - Mmojo RPC Server helps you deploy a cluster.
 - Everything in the Mmojo Server repo &mdash; code, instructions, examples, etc. &mdash; is written and hands-on tested by me, not a computer. I take pride in the code and information being correct and making it easy for you to get started with private, local LLMs. 

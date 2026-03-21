@@ -98,7 +98,7 @@ Notice your new prompt.
 ### Install homebrew
 - **CAN THIS MOVE TO BUILD??**
 
-Homebrew is the prefered package mamager for mac OS.
+Homebrew is the prefered package mamager for macOS.
 
 In the Terminal, signed in as the new mmojo user:
 ```
@@ -165,7 +165,7 @@ mm-env
 ### Proceed
 - **Next:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)
-- **Up:** [Deploy Mmojo Server on mac OS](README.md)
+- **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

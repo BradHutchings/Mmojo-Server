@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ################################################################################
-# This script returns "Running" or "Not running".
+# This script returns the gateway status: "Stopped", "Running", ???
 #
 # See licensing note at end.
 ################################################################################

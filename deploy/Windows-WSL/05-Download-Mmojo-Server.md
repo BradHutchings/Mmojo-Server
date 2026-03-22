@@ -31,9 +31,9 @@ sudo apt install cuda-drivers -y
 Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs. It is currently unkown if this build runs on any aarch64 (arm64) Windows computers.
 ```
 URL=""
-if [ $(uname -m) == "x86_64" ]; then
+if [ $(uname -m) = "x86_64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-perf-cud.zip"
-elif [ $(uname -m) == "aarch64" ]; then
+elif [ $(uname -m) = "aarch64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-perf-cud.zip"
 fi
 ```
@@ -44,9 +44,9 @@ fi
   
 ```
 URL=""
-if [ $(uname -m) == "x86_64" ]; then
+if [ $(uname -m) = "x86_64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-comp-cud.zip"
-elif [ $(uname -m) == "aarch64" ]; then
+elif [ $(uname -m) = "aarch64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-comp-cud.zip"
 fi
 ```

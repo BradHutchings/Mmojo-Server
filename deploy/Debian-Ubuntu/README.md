@@ -35,7 +35,7 @@ Here are the deployment steps:
 You can also build Mmojo Server using my new instructions in the [Build section](/buildREADME.md).
 
 Use this recipe:
-- [Build Mmojo Server for Debian Linux](/build/elf-debian/README.md)
+- [Build Mmojo Server for Debian Linux](/build/debian/README.md)
 
 Before building, please work through all of the deploy steps above.
 

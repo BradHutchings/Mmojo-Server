@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ################################################################################
-# This script backs up the OpenClaw installation with a sequential number prefix.
+# This script backs up the OpenClaw environment with a sequential number prefix.
 #
 # See licensing note at end.
 ################################################################################

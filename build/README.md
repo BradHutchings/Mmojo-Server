@@ -24,7 +24,7 @@ You can build ELF binaries for Debian Linux (e.g. Ubuntu) in native CPU, perform
 ---
 ### Future Build Guides
 Here is a tentative list of planned build guides:
-- [Mmojo Server for macOS](mach-o-macos/README.md) &mdash; in progress and has produced a working executable!
+- [Mmojo Server for macOS](macos/README.md) &mdash; in progress and has produced a working executable!
 - ELF Executable for RHEL (Linux)
 - ELF Executable for Arch Linux
 

@@ -31,11 +31,11 @@ sudo apt install cuda-drivers -y
 Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs, Apple M* processors (assuming you're running Debian Linux), and Raspberry Pi 5. It's unknown whether it runs on other vendors' aarch64 (arm64) PCs.
 ```
 URL=""
-if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
+if [[ $(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"* ]]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-rpi5.zip"
-elif [ $(uname -m) == "x86_64" ]; then
+elif [ $(uname -m) = "x86_64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-perf-cud.zip"
-elif [ $(uname -m) == "aarch64" ]; then
+elif [ $(uname -m) = "aarch64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-perf-cud.zip"
 fi
 ```
@@ -46,9 +46,9 @@ fi
   
 ```
 URL=""
-if [ $(uname -m) == "x86_64" ]; then
+if [ $(uname -m) = "x86_64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-comp-cud.zip"
-elif [ $(uname -m) == "aarch64" ]; then
+elif [ $(uname -m) = "aarch64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-comp-cud.zip"
 fi
 ```

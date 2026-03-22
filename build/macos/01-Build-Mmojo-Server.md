@@ -8,16 +8,18 @@ In this step, you will build Mach-O executables of Mmojo Server, Mmojo RPC Serve
 Install the latest Xcode Tools from the App Store. The build will likely break if you do not have the latest tools.
 
 ---
-### Install Dependencies and GPU Support
-Install dependencies. These may take 20 minutes or so to download and install. Reinstalling nodejs is necessary to get the right tools in place to rebuild the webui.
+### Install Dependencies
+Install dependencies. These may take 10 minutes or so to download and install.
 ```
 brew install gnu-sed
 brew install npm
+brew install gcc
+brew install cmake
 ```
 
-Do I need this with updated Xcode tools available?
+`npm` seems to get caught up with certificate problems, so run this:
 ```
-brew install gcc
+npm config set strict-ssl false
 ```
 
 ---
@@ -53,13 +55,13 @@ _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 _RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
-if [ $(uname -m) == "x86_64" ]; then
+if [ $(uname -m) = "x86_64" ]; then
     echo "Building for Intel Macs is not supported yet."
     # _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$_GPUS_CHOICE"
     # _PACKAGE_FILE="Mmojo-Server-macos-x86_64-native$_GPUS_CHOICE.zip"
     # _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
     # _TOUCH_FILE="build-macos-x86_64-$_BUILD_CHOICE$_GPUS_CHOICE"
-elif [ $(uname -m) == "aarch64" ] || [ $(uname -m) == "arm64" ]; then
+elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
     _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$_GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-macos-arm64-native$_GPUS_CHOICE.zip"
     _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-arm64-native.zip"
@@ -76,6 +78,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
     find $DEPLOY_DIR/* ! -name "*.gguf" -delete
     cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
+    cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
@@ -105,7 +108,7 @@ ls -l $DEPLOY_DIR
 
 It should look like:
 
-<img width="656" height="118" alt="image" src="https://github.com/user-attachments/assets/fb38bb9a-8285-42f5-a5ca-92301585ba72" />
+<img width="500" height="191" alt="image" src="https://github.com/user-attachments/assets/b1d61521-6d05-4d3e-9cc7-d0de55f29c91" />
 
 ---
 ### Proceed

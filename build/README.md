@@ -12,19 +12,19 @@ brad@BradHutchings.com<br/><br/>
 <!-- END SPONSOR -->
 
 ---
-### APE Multi-platform, Multi-CPU
+### All Platforms (APE &mdash; Windows, macOS, Linux, x86_64, aarch64/arm64)
 You can build Actual Portable Executable (APE) files that run on x86_64 and aarch64 (arm64), across Windows, macOS, Linux, and other platforms:
-- [Build Mmojo Server for All Platforms](ape-all-platforms/README.md)
+- [Build Mmojo Server for All Platforms](all-platforms/README.md)
 
 ---
 ### Mmojo Server for Debian Linux, x86_64 or aarch64 (arm64)
 You can build ELF binaries for Debian Linux (e.g. Ubuntu) in native CPU, performant CPU, and compatible CPU builds. They can support GPUs with CUDA and Vulkan support. This is the build recipe to use for Windows WSL.
-- [Build Mmojo Server for Debian Linux](elf-debian/README.md)
+- [Build Mmojo Server for Debian Linux](debian/README.md)
 
 ---
 ### Future Build Guides
 Here is a tentative list of planned build guides:
-- [Mmojo Server for macOS](mach-o-macos/README.md) &mdash; in progress and has produced a working executable!
+- [Mmojo Server for macOS](macos/README.md) &mdash; in progress and has produced a working executable!
 - ELF Executable for RHEL (Linux)
 - ELF Executable for Arch Linux
 

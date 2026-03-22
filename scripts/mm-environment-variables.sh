@@ -45,7 +45,6 @@ export REPO_DIR_SCRIPTS="$REPO_DIR/scripts"
 
 echo "Setting Mmojo Share paths."
 if [ "$(uname -s)" = "Darwin" ]; then
-# export SHARE_DIR_MOUNT_POINT="/Volumes/mmojo"
 export SHARE_DIR_MOUNT_POINT="$HOME/mm-share"
 else
 export SHARE_DIR_MOUNT_POINT="/mnt/mmojo"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ################################################################################
-# This script restores the OpenClaw installation to a chosen backup.
+# This script restores the OpenClaw environment to a chosen backup.
 #
 # See licensing note at end.
 ################################################################################

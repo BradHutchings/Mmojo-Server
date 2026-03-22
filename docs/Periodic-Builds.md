@@ -19,7 +19,7 @@ This document identifies the periodic builds, when to build them, how to build t
 - **Where:** Build in Windows-WSL environment.
 - **How:**
   - Complete a fresh [Windows-WSL deployment](/deploy/Windows-WSL/README.md) after llama.cpp sync.
-  - Build with [elf-debian recipe](/build/elf-debian/README.md), CUDA GPUs, compatible.
+  - Build with [Debian recipe](/build/debian/README.md), CUDA GPUs, compatible.
   - Upload `Mmojo-Server-x86_64-comp-cud.zip` to Hugging Face repo.
 
 ---
@@ -29,7 +29,7 @@ This document identifies the periodic builds, when to build them, how to build t
 - **Where:** Build in Windows-WSL environment.
 - **How:**
   - Complete a fresh [Windows-WSL deployment](/deploy/Windows-WSL/README.md) after llama.cpp sync.
-  - Build with [elf-debian recipe](/build/elf-debian/README.md), CUDA GPUs, performant.
+  - Build with [Debian recipe](/build/debian/README.md), CUDA GPUs, performant.
   - Upload `Mmojo-Server-x86_64-perf-cud.zip` to Hugging Face repo.
 
 ---
@@ -39,7 +39,7 @@ This document identifies the periodic builds, when to build them, how to build t
 - **Where:** Build in Windows-WSL environment.
 - **How:**
   - Complete a fresh [Windows-WSL deployment](/deploy/Windows-WSL/README.md) after llama.cpp sync.
-  - Build with [elf-debian recipe](/build/elf-debian/README.md), CUDA GPUs, performant.
+  - Build with [Debian recipe](/build/debian/README.md), CUDA GPUs, performant.
   - Keep this package available for use with OpenClaw.
 
 ---
@@ -55,7 +55,7 @@ This document identifies the periodic builds, when to build them, how to build t
         rm -r -f "$BUILD_DIR"
     fi
     ```
-  - Build with [elf-debian recipe](/build/elf-debian/README.md), CUDA GPUs, compatible. Don't build for Raspberry Pi.
+  - Build with [Debian recipe](/build/debian/README.md), CUDA GPUs, compatible. Don't build for Raspberry Pi.
   - Upload `Mmojo-Server-aarch64-comp-cud.zip` to Hugging Face repo.
 
 **Note:** Brad's Raspberry Pi 5 has 128 GB storage, which can only hold one CUDA build at a time.
@@ -73,7 +73,7 @@ This document identifies the periodic builds, when to build them, how to build t
         rm -r -f "$BUILD_DIR"
     fi
     ```
-  - Build with [elf-debian recipe](/build/elf-debian/README.md), CUDA GPUs, performant. Don't build for Raspberry Pi.
+  - Build with [Debian recipe](/build/debian/README.md), CUDA GPUs, performant. Don't build for Raspberry Pi.
   - Upload `Mmojo-Server-aarch64-perf-cud.zip` to Hugging Face repo.
 
 **Note:** Brad's Raspberry Pi 5 has 128 GB storage, which can only hold one CUDA build at a time.
@@ -91,7 +91,7 @@ This document identifies the periodic builds, when to build them, how to build t
         rm -r -f "$BUILD_DIR"
     fi
     ```
-  - Build with [elf-debian recipe](/build/elf-debian/README.md), No GPUs, native. Build for Raspberry Pi.
+  - Build with [Debian recipe](/build/debian/README.md), No GPUs, native. Build for Raspberry Pi.
   - Upload `Mmojo-Server-aarch64-rpi5.zip` to Hugging Face repo.
 
 **Note:** Brad's Raspberry Pi 5 has 128 GB storage, which can only hold one CUDA build at a time.

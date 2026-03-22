@@ -9,7 +9,7 @@ This document identifies the periodic builds, when to build them, how to build t
 - **Where:** Build in Windows-WSL environment.
 - **How:**
   - Complete a fresh [Windows-WSL deployment](/deploy/Windows-WSL/README.md) after llama.cpp sync.
-  - Build with [APE recipe](/build/ape-all-platforms/README.md).
+  - Build with [APE recipe](/build/all-platforms/README.md).
   - Upload `Mmojo-Server-ape.zip` to Hugging Face repo.
 
 ---

@@ -12,9 +12,9 @@ brad@BradHutchings.com<br/><br/>
 <!-- END SPONSOR -->
 
 ---
-### APE Multi-platform, Multi-CPU
+### All Platforms (APE &mdash; Windows, macOS, Linux, x86_64, aarch64/arm64)
 You can build Actual Portable Executable (APE) files that run on x86_64 and aarch64 (arm64), across Windows, macOS, Linux, and other platforms:
-- [Build Mmojo Server for All Platforms](ape-all-platforms/README.md)
+- [Build Mmojo Server for All Platforms](all-platforms/README.md)
 
 ---
 ### Mmojo Server for Debian Linux, x86_64 or aarch64 (arm64)

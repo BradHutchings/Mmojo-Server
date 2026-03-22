@@ -8,17 +8,18 @@ In this step, you will build Mach-O executables of Mmojo Server, Mmojo RPC Serve
 Install the latest Xcode Tools from the App Store. The build will likely break if you do not have the latest tools.
 
 ---
-### Install Dependencies and GPU Support
-Install dependencies. These may take 20 minutes or so to download and install. Reinstalling nodejs is necessary to get the right tools in place to rebuild the webui.
+### Install Dependencies
+Install dependencies. These may take 10 minutes or so to download and install.
 ```
 brew install gnu-sed
 brew install npm
-```
-
-Do I need this with updated Xcode tools available?
-```
 brew install gcc
 brew install cmake
+```
+
+`npm` seems to get caught up with certificate problems, so run this:
+```
+npm config set strict-ssl false
 ```
 
 ---

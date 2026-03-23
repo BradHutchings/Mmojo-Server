@@ -65,13 +65,13 @@ if [ "$choice" != "" ]; then
 
     cd $HOME
 
-    openclawSave="openclaw-save"
+    openclawSave="saved-openclaw"
     if [ -f "$openclawSave.zip" ]; then
         i=1
         while [ -f "$openclawSave-$i.zip" ]; do
             i=i+1
         done
-        openclawSave="openclaw-save-$i.zip"
+        openclawSave="saved-openclaw-$i.zip"
     fi
 
     echo "Archiving .openclaw."

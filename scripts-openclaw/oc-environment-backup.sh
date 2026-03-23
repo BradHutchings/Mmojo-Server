@@ -61,7 +61,7 @@ if [ "$backupFile" != "" ]; then
             oc-gateway-start.sh
         fi
     else
-        echo "The file $OPENCLAW_BACKUPS/$backupName already exists. It was not overwritten."
+        echo "The file $OPENCLAW_BACKUPS/$backupFile already exists. It was not overwritten."
     fi
 fi
 

@@ -34,7 +34,7 @@ for i in $(seq -f "%02g" 1 99); do
 done
 
 if [ "$prefix" != "" ]; then
-    backupFile="$i-$backupName.zip"
+    backupFile="$prefix-$backupName.zip"
     echo "Backing up to: $backupFile"
     touch "$OPENCLAW_BACKUPS/$backupFile"
 else

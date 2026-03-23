@@ -45,7 +45,7 @@ fi
 # Archive it and save in backups.
 ########################################
 
-if ["$backupName" != "" ]; then
+if [ "$backupName" != "" ]; then
     if [ ! -f "$OPENCLAW_BACKUPS/$backupName" ]; then
         isRunning=($(oc-gateway-status.sh) = "Running")
         if ($isRunning); then

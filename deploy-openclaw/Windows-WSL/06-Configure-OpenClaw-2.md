@@ -6,7 +6,7 @@ In this step, you will configure channels, skills, and API keys.
 ### Configure OpenClaw (continued)
 **Select channel (QuickStart)**
 
-<img width="688" height="386" alt="image" src="https://github.com/user-attachments/assets/79ec0122-0d4c-4697-bc55-116901f2920f" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/79ec0122-0d4c-4697-bc55-116901f2920f" />
 
 Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
 
@@ -14,7 +14,7 @@ Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` k
 
 **Search provider**
 
-<img width="675" height="155" alt="image" src="https://github.com/user-attachments/assets/847ba469-0400-4c0c-8fa2-a4ef7d7c1b2e" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/847ba469-0400-4c0c-8fa2-a4ef7d7c1b2e" />
 
 Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
 
@@ -30,7 +30,7 @@ Hit the `Y` key.
 
 **Install missing skill dependencies**
 
-<img width="573" height="148" alt="image" src="https://github.com/user-attachments/assets/09b8380e-950d-40f6-9cd5-f698586626ee" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/09b8380e-950d-40f6-9cd5-f698586626ee" />
 
 Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 
@@ -39,14 +39,6 @@ Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 **Set GOOGLE_PLACES_API_KEY for goplaces?**
 
 <img width="402" height="67" alt="image" src="https://github.com/user-attachments/assets/45b0c208-d68f-4b73-a3c4-a8f1f29a0ba8" />
-
-Hit the `N` key.
-
----
-
-**Set GEMINI_API_KEY for nano-banana-pro?**
-
-<img width="399" height="69" alt="image" src="https://github.com/user-attachments/assets/1e7f96cb-9716-4c98-a480-b3f4ba32d393" />
 
 Hit the `N` key.
 

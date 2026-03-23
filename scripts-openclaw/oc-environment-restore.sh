@@ -73,10 +73,20 @@ if [ "$choice" != "" ]; then
         done
         openclawSave="openclaw-save-$i.zip"
     fi
-    
+
+    echo "Archiving .openclaw."
     zip -r "$openclawSave" .openclaw
+
+    echo
+    echo "Archiving .openclaw."
     rm -r -f .openclaw
-    unzip "$OPENCLAW_BACKUPS/$choice" .
+
+    echo "Copying $choice."
+    cp "$OPENCLAW_BACKUPS/$choice" .
+
+    echo "Restoring $choice."
+    unzip $choice"
+    rm $choice
 
     if ($isRunning); then
         echo "Starting OpenClaw gateway."

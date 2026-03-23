@@ -35,8 +35,6 @@ done
 
 if [ "$prefix" != "" ]; then
     backupFile="$prefix-$backupName.zip"
-    echo "Backing up to: $backupFile"
-    touch "$OPENCLAW_BACKUPS/$backupFile"
 else
     echo "Backups are full."
     backupFile=""
@@ -54,6 +52,7 @@ if [ "$backupFile" != "" ]; then
             oc-gateway-stop.sh
         fi
     
+        echo "Backing up to: $backupFile"
         zip -r "$backupFile" .openclaw
         mv "$backupFile" $OPENCLAW_BACKUPS
     

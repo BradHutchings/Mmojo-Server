@@ -1,16 +1,23 @@
 #!/bin/bash
 
 ################################################################################
-# This script returns the gateway status: "Stopped", "Running", ???
+# This script returns the gateway status: "Not running", "Running", ???
 #
 # See licensing note at end.
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
+# printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
+running = $(systemctl --user status openclaw-gateway.service | grep "running")
 
-printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
+if ($running); then
+    echo "Running"
+else
+    echo "Not running"
+fi
+
+# printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by

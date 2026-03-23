@@ -52,14 +52,6 @@ Hit the `N` key.
 
 ---
 
-**Set OPENAI_API_KEY for openai-image-gen?**
-
-<img width="406" height="73" alt="image" src="https://github.com/user-attachments/assets/802ebddb-be97-403d-b75e-66883e4bfdfa" />
-
-Hit the `N` key.
-
----
-
 **Set OPENAI_API_KEY for openai-whisper-api?**
 
 <img width="433" height="67" alt="image" src="https://github.com/user-attachments/assets/1bd70a9f-3ac0-419e-aa81-1d8a583c3749" />

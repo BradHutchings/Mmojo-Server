@@ -11,7 +11,7 @@ SCRIPT_NAME=$(basename -- "$0")
 
 running=$(systemctl --user status openclaw-gateway.service | grep "running")
 
-if ($running); then
+if [ "$running" != "" ]; then
     echo "Running"
 else
     echo "Not running"

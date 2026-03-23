@@ -13,53 +13,67 @@ wd=$(pwd)
 cd $HOME
 
 ########################################
-# User enters the backup name.
+# User chooses a backup.
 ########################################
 
 OPENCLAW_BACKUPS="$HOME/openclaw-backups"
 mkdir -p $OPENCLAW_BACKUPS
 
-echo
-read -p 'Please enter a name for this backup: ' backupName
-echo
-
-backupName="${backupName// /-}"
-prefix=""
-for i in $(seq -f "%02g" 1 99); do
-    if [ ! -f "$OPENCLAW_BACKUPS/$i"* ]; then
-        prefix=$i
-        break;
-    fi
+cd $OPENCLAW_BACKUPS
+backups=("None")
+backups=()
+for file in *.zip; do
+    # echo "Adding $file"
+    backups+=($file)
 done
 
-if [ "$prefix" != "" ]; then
-    backupFile="$i-$backupName.zip"
-    echo "Backing up to: $backupFile"
-    touch "$OPENCLAW_BACKUPS/$backupFile"
-else
-    echo "Backups are full."
-    backupName=""
+echo
+echo "Please pick a backup to use:"
+for ((i=0;i<${#backups[@]};i++)); do
+    string="$(($i+1))) ${backups[$i]}"
+    printf "%s\n" "$string"
+done
+
+echo
+read -p 'Which backup would you like to use? ' opt
+
+choice=""
+if [ "$opt" -gt "0" ] && [ "$opt" -le ${#backups[@]} ]; then
+    choice=${backups[$opt-1]}
 fi
 
+echo
+echo "You chose: $choice"
+
 ########################################
-# Archive it and save in backups.
+# Zip up the .openclaw directory
+# Delete the .openclaw directory
+# Restore the .openclaw directory from backup.
 ########################################
 
-if ["$backupName" != "" ]; then
-    if [ ! -f "$OPENCLAW_BACKUPS/$backupName" ]; then
-        isRunning=($(oc-gateway-status.sh) = "Running")
-        if ($isRunning); then
-            oc-gateway-stop.sh
-        fi
+if [ "$choice" != "" ]; then
+    isRunning=($(oc-gateway-status.sh) = "Running")
+    if ($isRunning); then
+        oc-gateway-stop.sh
+    fi
+
+    cd $HOME
+
+    openclawSave="openclaw-save"
+    if [ -f "$openclawSave.zip" ]; then
+        i=1
+        while [ -f "$openclawSave-$i.zip" ]; do
+            i=i+1
+        done
+        openclawSave="openclaw-save-$i.zip"
+    fi
     
-        zip -r "$backupName" .openclaw
-        mv "$backupName" $OPENCLAW_BACKUPS
-    
-        if ($isRunning); then
-            oc-gateway-start.sh
-        fi
-    else
-        echo "The file $OPENCLAW_BACKUPS/$backupName already exists. It was not overwritten."
+    zip -r "$openclawSave" .openclaw
+    rm -r -f .openclaw
+    unzip "$OPENCLAW_BACKUPS/$choice" .
+
+    if ($isRunning); then
+        oc-gateway-start.sh
     fi
 fi
 

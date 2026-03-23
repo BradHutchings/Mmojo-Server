@@ -46,8 +46,9 @@ https://github.com/openclaw/openclaw/issues/5704#issuecomment-3938731743
 
 ---
 ### Connect to OpenClaw
+You'll use one of the custom commands from `$HOME/oc-scripts` to get the URL to connect to OpenClaw.
 ```
-openclaw dashboard --no-open
+oc-dashboard
 ```
 
 <img width="883" height="136" alt="image" src="https://github.com/user-attachments/assets/86ce52fc-21ae-48b1-b75d-7618cc6dcd4d" />

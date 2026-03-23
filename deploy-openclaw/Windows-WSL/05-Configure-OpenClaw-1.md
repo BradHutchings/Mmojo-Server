@@ -18,7 +18,7 @@ Hit the `Y` key.
 
 **Onboarding mode**
 
-<img width="608" height="77" alt="image" src="https://github.com/user-attachments/assets/de92b7b5-a0f8-4e53-be85-042e38a4d096" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/de92b7b5-a0f8-4e53-be85-042e38a4d096" />
 
 Hit the `ENTER` key.
 
@@ -26,7 +26,7 @@ Hit the `ENTER` key.
 ### Configure for Use with Mmojo Server
 **Model/auth provider**
 
-<img width="616" height="541" alt="image" src="https://github.com/user-attachments/assets/0c4f6139-2411-47ba-a0e6-865bd8ddfe3f" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/b388b5da-096a-4448-8afd-e21ebf7e2b3d" />
 
 Use the <code>&darr;</code> key to choose `Custom Provider`, then hit the `ENTER` key.
 
@@ -99,7 +99,7 @@ mmojo-server
 
 You will see this message about configuration:
 
-<img width="624" height="68" alt="image" src="https://github.com/user-attachments/assets/410e689e-e85e-4fa3-916c-39a983f2702e" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/410e689e-e85e-4fa3-916c-39a983f2702e" />
 
 ---
 ### Continue Next Page

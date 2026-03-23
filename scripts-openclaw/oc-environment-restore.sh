@@ -85,8 +85,8 @@ if [ "$choice" != "" ]; then
     cp "$OPENCLAW_BACKUPS/$choice" .
 
     echo "Restoring $choice."
-    unzip $choice"
-    rm $choice
+    unzip "$choice"
+    rm "$choice"
 
     if ($isRunning); then
         echo "Starting OpenClaw gateway."

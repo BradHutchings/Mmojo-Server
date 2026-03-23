@@ -24,6 +24,7 @@ read -p 'Please enter a name for this backup: ' backupName
 echo
 
 backupName="${backupName// /-}"
+backupFile=""
 prefix=""
 for i in $(seq -f "%02g" 1 99); do
     if [ ! -f "$OPENCLAW_BACKUPS/$i"* ]; then
@@ -38,22 +39,23 @@ if [ "$prefix" != "" ]; then
     touch "$OPENCLAW_BACKUPS/$backupFile"
 else
     echo "Backups are full."
-    backupName=""
+    backupFile=""
 fi
 
 ########################################
 # Archive it and save in backups.
 ########################################
 
-if [ "$backupName" != "" ]; then
-    if [ ! -f "$OPENCLAW_BACKUPS/$backupName" ]; then
+if [ "$backupFile" != "" ]; then
+    if [ ! -f "$OPENCLAW_BACKUPS/$backupFile" ]; then
         isRunning=($(oc-gateway-status.sh) = "Running")
+        echo "isRunning: $isRunning"
         if ($isRunning); then
             oc-gateway-stop.sh
         fi
     
-        zip -r "$backupName" .openclaw
-        mv "$backupName" $OPENCLAW_BACKUPS
+        zip -r "$backupFile" .openclaw
+        mv "$backupFile" $OPENCLAW_BACKUPS
     
         if ($isRunning); then
             oc-gateway-start.sh

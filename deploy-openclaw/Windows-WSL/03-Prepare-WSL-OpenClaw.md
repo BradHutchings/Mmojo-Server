@@ -178,7 +178,8 @@ mkdir -p $HOME_OC_SCRIPTS
 
 if [[ "${PATH}" != *"${HOME_OC_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_OC_SCRIPTS}"* ]]; then
 cat << EOF >> $HOME/.bashrc
-export PATH="\$PATH:$HOME_OC_SCRIPTS"
+
+export PATH="$HOME_OC_SCRIPTS:\$PATH"
 EOF
 fi
 
@@ -202,6 +203,7 @@ git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
 . $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
 if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc
+
 alias mm-env=". mm-environment-variables.sh"
 mm-env
 EOF1

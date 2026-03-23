@@ -51,7 +51,7 @@ You'll use one of the custom commands from `$HOME/oc-scripts` to get the URL to 
 oc-dashboard
 ```
 
-<img width="883" height="136" alt="image" src="https://github.com/user-attachments/assets/86ce52fc-21ae-48b1-b75d-7618cc6dcd4d" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/6bbaa473-895a-46f2-a91b-bddb45d07855" />
 
 Control-click the top link in the output.
 

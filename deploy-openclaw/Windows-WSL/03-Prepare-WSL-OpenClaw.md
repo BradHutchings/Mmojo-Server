@@ -114,7 +114,7 @@ Update linux and install `unzip`:
 ```
 sudo apt update
 sudo apt upgrade -y
-sudo apt install unzip -y
+sudo apt install zip unzip -y
 echo "NOTE: apt update, upgrade, and install unzip finished."
 ```
 
@@ -228,6 +228,7 @@ sudo apt remove nodejs npm -y
 sudo apt install nodejs npm -y
 sudo npm install -g node@latest
 sudo npm install -g npm@latest
+sudo npm install -g pnpm
 
 if ! grep -q "\.npm-global\/bin" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc

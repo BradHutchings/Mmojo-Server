@@ -52,8 +52,14 @@ echo "You chose: $choice"
 ########################################
 
 if [ "$choice" != "" ]; then
-    isRunning=($(oc-gateway-status.sh) = "Running")
+    isRunning=false
+    status=$(oc-gateway-status.sh) 
+    if [ "$status" = "Running" ]; then
+        isRunning=true
+    fi
+
     if ($isRunning); then
+        echo "Stopping OpenClaw gateway."
         oc-gateway-stop.sh
     fi
 
@@ -73,6 +79,7 @@ if [ "$choice" != "" ]; then
     unzip "$OPENCLAW_BACKUPS/$choice" .
 
     if ($isRunning); then
+        echo "Starting OpenClaw gateway."
         oc-gateway-start.sh
     fi
 fi

@@ -220,7 +220,23 @@ mm-env
 ```
 </details>
 
+---
+### Install node to Avoid Problems Later
+The OpenClaw installer is still a little flakey. Installing node first helps.
+```
+sudo apt remove nodejs npm -y
+sudo apt install nodejs npm -y
+sudo npm install -g node@latest
+sudo npm install -g npm@latest
 
+if ! grep -q "\.npm-global\/bin" "$HOME/.bashrc"; then
+cat << EOF1 >> $HOME/.bashrc
+
+export PATH="$HOME/.npm-global/bin:$PATH"
+EOF1
+source $HOME/.bashrc
+fi
+```
 
 ---
 ### Pin OpenClaw to the Taskbar

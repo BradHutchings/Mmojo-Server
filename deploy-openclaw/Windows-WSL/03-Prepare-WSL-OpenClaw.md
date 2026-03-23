@@ -170,7 +170,7 @@ admin123!
 
 ---
 ### Create `oc-scripts` Directory
-The `mm-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
+The `oc-scripts` Directory will contain useful scripts you will use to manage OpenClaw.
 ```
 export HOME_OC_SCRIPTS="$HOME/oc-scripts"
 export TILDE_OC_SCRIPTS="~/oc-scripts"
@@ -188,7 +188,7 @@ echo $PATH
 
 ---
 ### Clone the Mmojo Server Repository
-The Mmojo Server Github repositort has scripts and tools for installing and building Mmojo Server.
+The Mmojo Server Github repository has scripts and tools for managing OpenClaw.
 ```
 export REPO_DIR="$HOME/mm-repo"
 export REPO_DIR_SCRIPTS="$REPO_DIR/scripts"

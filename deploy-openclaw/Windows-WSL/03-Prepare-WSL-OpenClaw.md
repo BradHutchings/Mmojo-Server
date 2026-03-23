@@ -173,7 +173,7 @@ admin123!
 The `mm-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
 ```
 export HOME_OC_SCRIPTS="$HOME/oc-scripts"
-TILDE_OC_SCRIPTS="~/oc-scripts"
+export TILDE_OC_SCRIPTS="~/oc-scripts"
 mkdir -p $HOME_OC_SCRIPTS
 
 if [[ "${PATH}" != *"${HOME_OC_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_OC_SCRIPTS}"* ]]; then

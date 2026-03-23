@@ -22,7 +22,7 @@ Use the <code>&darr;</code> key to choose `Open the Web UI`, then hit the `ENTER
 
 **Onboarding complete.**
 
-<img width="671" height="70" alt="image" src="https://github.com/user-attachments/assets/782a4b07-f15c-49a4-a15f-9225736832fe" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/1ce63803-fe12-4a44-b53d-e1224117ac8d" />
 
 Your shell prompt appears.
 

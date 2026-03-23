@@ -232,7 +232,7 @@ sudo npm install -g npm@latest
 if ! grep -q "\.npm-global\/bin" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc
 
-export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:\$PATH"
 EOF1
 source $HOME/.bashrc
 fi

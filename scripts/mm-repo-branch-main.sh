@@ -23,8 +23,18 @@ if [ -d "$REPO_DIR" ]; then
   chmod -f a+x $REPO_DIR_SCRIPTS/4*.sh
 
   ### Links don't work - end up modifying repo files on chmod.
-  cp $REPO_DIR_SCRIPTS/mm-*.sh $HOME_SCRIPTS
-  chmod a+x $HOME_SCRIPTS/mm-*.sh
+  if [ -d "$HOME_SCRIPTS" ]; then
+      cp $REPO_DIR_SCRIPTS/mm-*.sh $HOME_SCRIPTS
+      chmod a+x $HOME_SCRIPTS/mm-*.sh
+  fi
+  
+  if [ -d "$HOME_OC_SCRIPTS" ]; then
+      cp $REPO_DIR_SCRIPTS_OPENCLAW/oc-*.sh $HOME_OC_SCRIPTS
+      cp $REPO_DIR_SCRIPTS/mm-environment-variables.sh $HOME_OC_SCRIPTS
+      cp $REPO_DIR_SCRIPTS/mm-repo-*.sh $HOME_OC_SCRIPTS
+      chmod a+x $HOME_OC_SCRIPTS/mm-*.sh
+      chmod a+x $HOME_OC_SCRIPTS/oc-*.sh
+  fi
 
   if [ -d "$BUILD_DIR" ]; then
       # This copies the $REPO_DIR_FILES tree into the $BUILD_DIR tree.

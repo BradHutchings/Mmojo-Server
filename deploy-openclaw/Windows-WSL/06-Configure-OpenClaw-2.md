@@ -6,7 +6,7 @@ In this step, you will configure channels, skills, and API keys.
 ### Configure OpenClaw (continued)
 **Select channel (QuickStart)**
 
-<img width="688" height="386" alt="image" src="https://github.com/user-attachments/assets/79ec0122-0d4c-4697-bc55-116901f2920f" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/79ec0122-0d4c-4697-bc55-116901f2920f" />
 
 Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
 
@@ -14,7 +14,7 @@ Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` k
 
 **Search provider**
 
-<img width="675" height="155" alt="image" src="https://github.com/user-attachments/assets/847ba469-0400-4c0c-8fa2-a4ef7d7c1b2e" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/847ba469-0400-4c0c-8fa2-a4ef7d7c1b2e" />
 
 Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
 
@@ -30,7 +30,7 @@ Hit the `Y` key.
 
 **Install missing skill dependencies**
 
-<img width="573" height="148" alt="image" src="https://github.com/user-attachments/assets/09b8380e-950d-40f6-9cd5-f698586626ee" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/09b8380e-950d-40f6-9cd5-f698586626ee" />
 
 Hit the spacebar to choose `Skip for now`. Hit the `ENTER` key.
 
@@ -44,25 +44,9 @@ Hit the `N` key.
 
 ---
 
-**Set GEMINI_API_KEY for nano-banana-pro?**
-
-<img width="399" height="69" alt="image" src="https://github.com/user-attachments/assets/1e7f96cb-9716-4c98-a480-b3f4ba32d393" />
-
-Hit the `N` key.
-
----
-
 **Set NOTION_API_KEY for notion?**
 
 <img width="335" height="67" alt="image" src="https://github.com/user-attachments/assets/31c9661e-fba7-44da-bc45-0d2b9632f7a7" />
-
-Hit the `N` key.
-
----
-
-**Set OPENAI_API_KEY for openai-image-gen?**
-
-<img width="406" height="73" alt="image" src="https://github.com/user-attachments/assets/802ebddb-be97-403d-b75e-66883e4bfdfa" />
 
 Hit the `N` key.
 

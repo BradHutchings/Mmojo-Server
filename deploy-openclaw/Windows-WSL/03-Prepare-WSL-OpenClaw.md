@@ -169,6 +169,76 @@ admin123!
 ```
 
 ---
+### Create `oc-scripts` Directory
+The `oc-scripts` Directory will contain useful scripts you will use to manage OpenClaw.
+```
+export HOME_OC_SCRIPTS="$HOME/oc-scripts"
+export TILDE_OC_SCRIPTS="~/oc-scripts"
+mkdir -p $HOME_OC_SCRIPTS
+
+if [[ "${PATH}" != *"${HOME_OC_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_OC_SCRIPTS}"* ]]; then
+cat << EOF >> $HOME/.bashrc
+
+export PATH="$HOME_OC_SCRIPTS:\$PATH"
+EOF
+fi
+
+source $HOME/.bashrc
+echo $PATH
+```
+
+---
+### Clone the Mmojo Server Repository
+The Mmojo Server Github repository has scripts and tools for managing OpenClaw.
+```
+export REPO_DIR="$HOME/mm-repo"
+export REPO_DIR_SCRIPTS="$REPO_DIR/scripts"
+cd $HOME
+if [ "$REPO_DIR" ]; then
+  rm -r -f $REPO_DIR
+fi
+mkdir -p $REPO_DIR
+git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
+. $REPO_DIR_SCRIPTS/mm-environment-variables.sh
+. $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
+if ! grep -q "mm-env=" "$HOME/.bashrc"; then
+cat << EOF1 >> $HOME/.bashrc
+
+alias mm-env=". mm-environment-variables.sh"
+mm-env
+EOF1
+source $HOME/.bashrc
+fi
+```
+
+<details>
+  <summary><b>Optional:</b> If you're Brad working on writing these instructions, switch to the work-in-progress branch.</summary>
+  
+```
+mm-repo-branch-work-in-progress.sh
+mm-env
+```
+</details>
+
+---
+### Install node to Avoid Problems Later
+The OpenClaw installer is still a little flakey. Installing node first helps.
+```
+sudo apt remove nodejs npm -y
+sudo apt install nodejs npm -y
+sudo npm install -g node@latest
+sudo npm install -g npm@latest
+
+if ! grep -q "\.npm-global\/bin" "$HOME/.bashrc"; then
+cat << EOF1 >> $HOME/.bashrc
+
+export PATH="$HOME/.npm-global/bin:$PATH"
+EOF1
+source $HOME/.bashrc
+fi
+```
+
+---
 ### Pin OpenClaw to the Taskbar
 Click your **Start** menu. Search for:
 ```

@@ -22,7 +22,7 @@ Use the <code>&darr;</code> key to choose `Open the Web UI`, then hit the `ENTER
 
 **Onboarding complete.**
 
-<img width="671" height="70" alt="image" src="https://github.com/user-attachments/assets/782a4b07-f15c-49a4-a15f-9225736832fe" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/1ce63803-fe12-4a44-b53d-e1224117ac8d" />
 
 Your shell prompt appears.
 
@@ -46,11 +46,12 @@ https://github.com/openclaw/openclaw/issues/5704#issuecomment-3938731743
 
 ---
 ### Connect to OpenClaw
+You'll use one of the custom commands from `$HOME/oc-scripts` to get the URL to connect to OpenClaw.
 ```
-openclaw dashboard --no-open
+oc-dashboard
 ```
 
-<img width="883" height="136" alt="image" src="https://github.com/user-attachments/assets/86ce52fc-21ae-48b1-b75d-7618cc6dcd4d" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/6bbaa473-895a-46f2-a91b-bddb45d07855" />
 
 Control-click the top link in the output.
 

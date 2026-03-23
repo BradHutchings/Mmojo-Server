@@ -32,6 +32,8 @@ fi
 echo "Setting mm-scripts paths."
 export HOME_SCRIPTS="$HOME/mm-scripts"
 export TILDE_SCRIPTS="~/mm-scripts"
+export HOME_OC_SCRIPTS="$HOME/oc-scripts"
+export TILDE_OC_SCRIPTS="~/oc-scripts"
 
 # Directory names
 export CERTIFICATES_DIR_NAME="mm-certificates"
@@ -42,6 +44,7 @@ echo "Setting Mmojo-Server repo paths."
 export REPO_DIR="$HOME/mm-repo"
 export REPO_DIR_FILES="$REPO_DIR/files"
 export REPO_DIR_SCRIPTS="$REPO_DIR/scripts"
+export REPO_DIR_SCRIPTS_OPENCLAW="$REPO_DIR/scripts-openclaw"
 
 echo "Setting Mmojo Share paths."
 if [ "$(uname -s)" = "Darwin" ]; then

@@ -9,7 +9,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-running = $(systemctl --user status openclaw-gateway.service | grep "running")
+running=$(systemctl --user status openclaw-gateway.service | grep "running")
 
 if ($running); then
     echo "Running"

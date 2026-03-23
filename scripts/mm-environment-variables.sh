@@ -32,6 +32,8 @@ fi
 echo "Setting mm-scripts paths."
 export HOME_SCRIPTS="$HOME/mm-scripts"
 export TILDE_SCRIPTS="~/mm-scripts"
+export HOME_OC_SCRIPTS="$HOME/oc-scripts"
+export TILDE_OC_SCRIPTS="~/oc-scripts"
 
 # Directory names
 export CERTIFICATES_DIR_NAME="mm-certificates"

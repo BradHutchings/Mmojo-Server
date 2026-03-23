@@ -10,7 +10,7 @@ Work through the configuration options in order as they are presented.
 
 **I understand this is powerful and inherently risky? Continue?**
 
-<img width="607" height="60" alt="image" src="https://github.com/user-attachments/assets/6b1c2fb1-7d48-4d64-87a0-b8dbf687547c" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/6b1c2fb1-7d48-4d64-87a0-b8dbf687547c" />
 
 Hit the `Y` key.
 

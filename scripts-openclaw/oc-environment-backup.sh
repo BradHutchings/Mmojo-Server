@@ -53,7 +53,7 @@ if [ "$backupFile" != "" ]; then
         fi
 
         if ($isRunning); then
-            "Stopping OpenClaw gateway."
+            echo "Stopping OpenClaw gateway."
             oc-gateway-stop.sh
         fi
     
@@ -62,7 +62,7 @@ if [ "$backupFile" != "" ]; then
         mv "$backupFile" $OPENCLAW_BACKUPS
     
         if ($isRunning); then
-            "Starting OpenClaw gateway."
+            echo "Starting OpenClaw gateway."
             oc-gateway-start.sh
         fi
     else

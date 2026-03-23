@@ -7,13 +7,13 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
+# printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 wd=$(pwd)
 cd $HOME
 
 ########################################
-# 
+# User enters the backup name.
 ########################################
 
 OPENCLAW_BACKUPS="$HOME/openclaw-backups"
@@ -41,6 +41,10 @@ else
     backupName=""
 fi
 
+########################################
+# Archive it and save in backups.
+########################################
+
 if ["$backupName" != "" ]; then
     if [ ! -f "$OPENCLAW_BACKUPS/$backupName" ]; then
         isRunning=($(oc-gateway-status.sh) = "Running")
@@ -61,7 +65,7 @@ fi
 
 cd $pwd
 
-printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
+# printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by

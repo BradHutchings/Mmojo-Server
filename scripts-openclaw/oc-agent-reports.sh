@@ -52,7 +52,7 @@ fi
 if [ "$agent_index" -ge "0" ]; then
     temp_workspace_directory=$(cat "$openclaw_json" | jq ".agents.list.[$agent_index].workspace")
     if [ "$temp_workspace_directory" != null ] && [ "$temp_workspace_directory" != "" ]; then
-        workspace_directory=$temp_workspace_directory
+        workspace_directory=${temp_workspace_directory//\"/}
     fi
 fi
 

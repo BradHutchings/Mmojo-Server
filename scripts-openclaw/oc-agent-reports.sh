@@ -13,6 +13,44 @@ wd=$(pwd)
 cd $HOME
 
 ########################################
+# User chooses an agent.
+########################################
+
+agent_index=-1
+agent=""
+agents=()
+agent_count=$(cat openclaw.json | jq "[.agents.list.[].id]" | jq "length")
+for (( i=0; i<$agent_count; i++ )); do
+    agent=$(cat openclaw.json | jq ".agents.list.[$i].id")
+    agents+=("$agent")
+done
+
+if [ "${#agents[@]}" -gt "1" ]; then
+    echo
+    echo "Please pick an agent:"
+    for ((i=0;i<${#agents[@]};i++)); do
+        string="$(($i+1))) ${agents[$i]}"
+        printf "%s\n" "$string"
+    done
+
+    echo
+    read -p 'Which agent? ' opt
+
+    agent=""
+    if [ "$opt" -gt "0" ] && [ "$opt" -le ${#agents[@]} ]; then
+        agent_index=$opt-1
+        agent=${agents[$opt-1]}
+    fi
+else
+    agent=$agents[0]
+fi
+
+echo "agent_index: $agent_index
+echo "agent: $agent"
+
+exit
+
+########################################
 # User chooses a report to view.
 ########################################
 

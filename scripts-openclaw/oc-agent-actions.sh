@@ -81,7 +81,7 @@ if [ "$workspace_directory" != "" ]; then
         actions+=($file)
     done
 
-    if [ "${#reports[@]}" -gt "0" ]; then
+    if [ "${#actions[@]}" -gt "0" ]; then
         echo
         echo "Please pick an action to view:"
         for ((i=0;i<${#actions[@]};i++)); do
@@ -116,7 +116,7 @@ if [ "$workspace_directory" != "" ]; then
         fi
     else
         echo
-        echo "There are no reports for $agent."
+        echo "There are no actions for $agent."
     fi
 fi
 

@@ -28,7 +28,7 @@ Your shell prompt appears.
 
 ---
 ### Additional Configuration
-Source the `.bashrc` file. Change some things in the OpenClaw configuration. These changes specifically enable the recommended `Qwen3 14B v3` model.
+Source the `.bashrc` file. Create useful directories. Change some things in the OpenClaw configuration. These changes specifically enable the recommended `Qwen3.5 9B v3.5` model.
 ```
 . $HOME/.bashrc
 mkdir -p "$HOME/.openclaw/workspace/actions"

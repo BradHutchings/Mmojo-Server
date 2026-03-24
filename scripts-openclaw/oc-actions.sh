@@ -45,7 +45,7 @@ fi
 echo
 echo "You chose: $choice"
 
-if [ "$choice" != "" ] }&& [ -f "$WORKSPACE_REPORTS/$choice" ]; then
+if [ "$choice" != "" ] && [ -f "$WORKSPACE_REPORTS/$choice" ]; then
     echo
     cat "$WORKSPACE_REPORTS/$choice"
     echo

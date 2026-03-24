@@ -78,7 +78,7 @@ if [ "$workspace_directory" != "" ]; then
         reports+=($file)
     done
     
-    if [ {#reports[@]} > 0 ]; then
+    if [ ${#reports[@]} > 0 ]; then
         echo
         echo "Please pick a report to view:"
         for ((i=0;i<${#reports[@]};i++)); do

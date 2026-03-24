@@ -31,6 +31,8 @@ Your shell prompt appears.
 Source the `.bashrc` file. Change some things in the OpenClaw configuration. These changes specifically enable the recommended `Qwen3 14B v3` model.
 ```
 . $HOME/.bashrc
+mkdir -p "$HOME/.openclaw/workspace/actions"
+mkdir -p "$HOME/.openclaw/workspace/reports"
 openclaw config set agents.defaults.timeoutSeconds 1200
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].reasoning true
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].contextWindow 72000

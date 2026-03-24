@@ -19,7 +19,7 @@ cd $HOME
 agent_index=-1
 agent=""
 agents=()
-openclaw_json="$HOME/.openclaw/openclaw.jason"
+openclaw_json="$HOME/.openclaw/openclaw.json"
 agent_count=$(cat "$openclaw_json" | jq "[.agents.list.[].id]" | jq "length")
 for (( i=0; i<$agent_count; i++ )); do
     agent=$(cat "$openclaw_json" | jq ".agents.list.[$i].id")

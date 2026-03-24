@@ -47,9 +47,12 @@ echo "You chose: $choice"
 
 if [ "$choice" != "" ] && [ -f "$WORKSPACE_ACTIONS/$choice" ]; then
     echo
+    echo "----------------------------------------"
     cat "$WORKSPACE_ACTIONS/$choice"
     echo
-
+    echo "----------------------------------------"
+    echo
+    
     read -p 'Would you like to edit $choice? (Y/N) ' opt
 
     if [[ "$opt" == "y"* ]]; then

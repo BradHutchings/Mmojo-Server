@@ -46,7 +46,7 @@ else
     agent=$agents[0]
 fi
 
-echo "agent_index: $agent_index
+echo "agent_index: $agent_index"
 echo "agent: $agent"
 
 exit

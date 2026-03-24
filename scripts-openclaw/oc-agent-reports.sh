@@ -39,7 +39,7 @@ if [ "${#agents[@]}" -gt "1" ]; then
 
     agent=""
     if [ "$opt" -gt "0" ] && [ "$opt" -le ${#agents[@]} ]; then
-        agent_index=$(opt-1)
+        agent_index=$((opt-1))
         agent=${agents[$opt-1]}
     fi
 else

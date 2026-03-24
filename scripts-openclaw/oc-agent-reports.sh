@@ -55,55 +55,57 @@ if [ "$agent_index" -ge "0" ]; then
     fi
 fi
 
+echo
 echo "agent_index: $agent_index"
 echo "agent: $agent"
 echo "workspace_directory: $workspace_directory"
 
-exit
 
-########################################
-# User chooses a report to view.
-########################################
+if [ "$workspace_directory" != "" ]; then
+    ########################################
+    # User chooses a report to view.
+    ########################################
 
-WORKSPACE_REPORTS="$HOME/.openclaw/workspace/reports"
-mkdir -p $WORKSPACE_REPORTS
+    WORKSPACE_REPORTS="$workspace_directory/reports"
+    mkdir -p $WORKSPACE_REPORTS
+    
+    cd $WORKSPACE_REPORTS
+    reports=("None")
+    reports=()
+    for file in *; do
+        # echo "Adding $file"
+        reports+=($file)
+    done
+    
+    echo
+    echo "Please pick a report to view:"
+    for ((i=0;i<${#reports[@]};i++)); do
+        string="$(($i+1))) ${reports[$i]}"
+        printf "%s\n" "$string"
+    done
+    
+    echo
+    read -p 'Which report would you like to view? ' opt
 
-cd $WORKSPACE_REPORTS
-reports=("None")
-reports=()
-for file in *; do
-    # echo "Adding $file"
-    reports+=($file)
-done
-
-echo
-echo "Please pick a report to view:"
-for ((i=0;i<${#reports[@]};i++)); do
-    string="$(($i+1))) ${reports[$i]}"
-    printf "%s\n" "$string"
-done
-
-echo
-read -p 'Which report would you like to view? ' opt
-
-choice=""
-if [ "$opt" -gt "0" ] && [ "$opt" -le ${#reports[@]} ]; then
-    choice=${reports[$opt-1]}
+    choice=""
+    if [ "$opt" -gt "0" ] && [ "$opt" -le ${#reports[@]} ]; then
+        choice=${reports[$opt-1]}
+    fi
+    
+    echo
+    echo "You chose: $choice"
+    
+    if [ "$choice" != "" ]; then
+        echo
+        echo "----------------------------------------"
+        cat "$WORKSPACE_REPORTS/$choice"
+        echo
+        echo "----------------------------------------"
+        echo
+    fi
+    
+    cd $pwd
 fi
-
-echo
-echo "You chose: $choice"
-
-if [ "$choice" != "" ]; then
-    echo
-    echo "----------------------------------------"
-    cat "$WORKSPACE_REPORTS/$choice"
-    echo
-    echo "----------------------------------------"
-    echo
-fi
-
-cd $pwd
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

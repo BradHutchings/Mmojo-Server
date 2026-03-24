@@ -84,25 +84,30 @@ if [ "$workspace_directory" != "" ]; then
         string="$(($i+1))) ${reports[$i]}"
         printf "%s\n" "$string"
     done
-    
-    echo
-    read -p 'Which report would you like to view? ' opt
 
-    choice=""
-    if [ "$opt" -gt "0" ] && [ "$opt" -le ${#reports[@]} ]; then
-        choice=${reports[$opt-1]}
-    fi
+    if [ "{#reports[@]}" -gt "0" ]; then
+        echo
+        read -p 'Which report would you like to view? ' opt
     
-    echo
-    echo "You chose: $choice"
-    
-    if [ "$choice" != "" ]; then
+        choice=""
+        if [ "$opt" -gt "0" ] && [ "$opt" -le ${#reports[@]} ]; then
+            choice=${reports[$opt-1]}
+        fi
+        
         echo
-        echo "----------------------------------------"
-        cat "$WORKSPACE_REPORTS/$choice"
+        echo "You chose: $choice"
+        
+        if [ "$choice" != "" ]; then
+            echo
+            echo "----------------------------------------"
+            cat "$WORKSPACE_REPORTS/$choice"
+            echo
+            echo "----------------------------------------"
+            echo
+        fi
+    else
         echo
-        echo "----------------------------------------"
-        echo
+        echo "There are no reports for $agent."
     fi
 fi
 

@@ -11,6 +11,7 @@ SCRIPT_NAME=$(basename -- "$0")
 
 wd=$(pwd)
 cd $HOME
+shopt -s nullglob
 
 ########################################
 # User chooses an agent.
@@ -103,9 +104,9 @@ if [ "$workspace_directory" != "" ]; then
         echo "----------------------------------------"
         echo
     fi
-    
-    cd $pwd
 fi
+
+cd $pwd
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

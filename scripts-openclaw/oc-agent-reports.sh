@@ -26,7 +26,7 @@ agents=()
 agent_count=$(cat "$openclaw_json" | jq "[.agents.list.[].id]" | jq "length")
 for (( i=0; i<$agent_count; i++ )); do
     agent=$(cat "$openclaw_json" | jq ".agents.list.[$i].id")
-    agents+=("$agent")
+    agents+=({"$agent"/"/})
 done
 
 if [ "${#agents[@]}" -gt "1" ]; then

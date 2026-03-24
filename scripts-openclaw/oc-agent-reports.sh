@@ -16,10 +16,12 @@ cd $HOME
 # User chooses an agent.
 ########################################
 
+openclaw_json="$HOME/.openclaw/openclaw.json"
+workspace_directory="$HOME/.openclaw/workspace"
+
 agent_index=-1
 agent=""
 agents=()
-openclaw_json="$HOME/.openclaw/openclaw.json"
 agent_count=$(cat "$openclaw_json" | jq "[.agents.list.[].id]" | jq "length")
 for (( i=0; i<$agent_count; i++ )); do
     agent=$(cat "$openclaw_json" | jq ".agents.list.[$i].id")
@@ -46,8 +48,16 @@ else
     agent=$agents[0]
 fi
 
+if [ "$agent_index" -ge "0" ]; then
+    temp_workspace_directory=$(cat "$openclaw_json" | jq ".agents.list.[$agent_index].workspace")
+    if [ "$temp_workspace_directory" != "" ]; then
+        workspace_directory=$temp_workspace_directory
+    fi
+fi
+
 echo "agent_index: $agent_index"
 echo "agent: $agent"
+echo "workspace_directory: $workspace_directory"
 
 exit
 

@@ -68,6 +68,8 @@ if [ "$workspace_directory" != "" ]; then
     ########################################
 
     WORKSPACE_REPORTS="$workspace_directory/reports"
+    echo
+    echo "WORKSPACE_REPORTS: $WORKSPACE_REPORTS"
     mkdir -p $WORKSPACE_REPORTS
     
     cd $WORKSPACE_REPORTS

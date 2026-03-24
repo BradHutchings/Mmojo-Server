@@ -1,0 +1,68 @@
+#!/bin/bash
+
+################################################################################
+# This script restores the OpenClaw environment to a chosen backup.
+#
+# See licensing note at end.
+################################################################################
+
+SCRIPT_NAME=$(basename -- "$0")
+# printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
+
+wd=$(pwd)
+cd $HOME
+
+########################################
+# User chooses a report to view.
+########################################
+
+WORKSPACE_REPORTS="$HOME/.openclaw/workspace/reports"
+mkdir -p $WORKSPACE_REPORTS
+
+cd $WORKSPACE_REPORTS
+reports=("None")
+reports=()
+for file in *; do
+    # echo "Adding $file"
+    reports+=($file)
+done
+
+echo
+echo "Please pick a report to view:"
+for ((i=0;i<${#reports[@]};i++)); do
+    string="$(($i+1))) ${reports[$i]}"
+    printf "%s\n" "$string"
+done
+
+echo
+read -p 'Which report would you like to use? ' opt
+
+choice=""
+if [ "$opt" -gt "0" ] && [ "$opt" -le ${#reports[@]} ]; then
+    choice=${reports[$opt-1]}
+fi
+
+echo
+echo "You chose: $choice"
+
+if [ "$choice" != "" ]; then
+    echo
+    cat "$WORKSPACE_REPORTS/$choice"
+    echo
+fi
+
+cd $pwd
+
+# printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
+
+################################################################################
+#  This is an original script for the Mmojo Server repo. It is covered by
+#  the repo's MIT-style LICENSE:
+#
+#  https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
+#
+#  Copyright (c) 2025-26 Brad Hutchings.
+#  --
+#  Brad Hutchings
+#  brad@bradhutchings.com
+################################################################################

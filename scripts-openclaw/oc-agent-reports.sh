@@ -56,11 +56,10 @@ if [ "$agent_index" -ge "0" ]; then
     fi
 fi
 
-echo
-echo "agent_index: $agent_index"
-echo "agent: $agent"
-echo "workspace_directory: $workspace_directory"
-
+# echo
+# echo "agent_index: $agent_index"
+# echo "agent: $agent"
+# echo "workspace_directory: $workspace_directory"
 
 if [ "$workspace_directory" != "" ]; then
     ########################################
@@ -68,15 +67,15 @@ if [ "$workspace_directory" != "" ]; then
     ########################################
 
     WORKSPACE_REPORTS="$workspace_directory/reports"
-    echo
-    echo "WORKSPACE_REPORTS: $WORKSPACE_REPORTS"
+    # echo
+    # echo "WORKSPACE_REPORTS: $WORKSPACE_REPORTS"
     mkdir -p $WORKSPACE_REPORTS
     
     cd $WORKSPACE_REPORTS
     reports=("None")
     reports=()
     for file in *; do
-        echo "Adding $file"
+        # echo "Adding $file"
         reports+=($file)
     done
     

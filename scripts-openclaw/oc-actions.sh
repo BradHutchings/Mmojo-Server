@@ -45,15 +45,15 @@ fi
 echo
 echo "You chose: $choice"
 
-if [ "$choice" != "" ] && [ -f "$WORKSPACE_REPORTS/$choice" ]; then
+if [ "$choice" != "" ] && [ -f "$WORKSPACE_ACTIONS/$choice" ]; then
     echo
-    cat "$WORKSPACE_REPORTS/$choice"
+    cat "$WORKSPACE_ACTIONS/$choice"
     echo
 
     read -p 'Would you like to edit $choice? (Y/N) ' opt
 
     if [[ "$opt" == "y"* ]]; then
-        nano "$WORKSPACE_REPORTS/$choice"
+        nano "$WORKSPACE_ACTIONS/$choice"
     fi
 fi
 

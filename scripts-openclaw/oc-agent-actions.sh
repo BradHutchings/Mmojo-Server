@@ -90,7 +90,7 @@ if [ "$workspace_directory" != "" ]; then
         done
     
         echo
-        read -p 'Which action would you like to view? ' opt
+        read -p "Which action would you like to view? " opt
         
         choice=""
         if [ "$opt" -gt "0" ] && [ "$opt" -le ${#actions[@]} ]; then
@@ -108,7 +108,7 @@ if [ "$workspace_directory" != "" ]; then
             echo "----------------------------------------"
             echo
             
-            read -p 'Would you like to edit $choice? (Y/N) ' opt
+            read -p "Would you like to edit $choice? (Y/N) " opt
         
             if [[ "$opt" == "y"* ]]; then
                 nano "$WORKSPACE_ACTIONS/$choice"

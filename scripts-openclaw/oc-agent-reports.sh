@@ -85,7 +85,7 @@ if [ "$workspace_directory" != "" ]; then
         printf "%s\n" "$string"
     done
 
-    if [ {#reports[@]} -gt 0 ]; then
+    if [ {#reports[@]} > 0 ]; then
         echo
         read -p 'Which report would you like to view? ' opt
     

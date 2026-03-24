@@ -88,7 +88,7 @@ if [ "$workspace_directory" != "" ]; then
         done
 
         echo
-        read -p 'Which report would you like to view? ' opt
+        read -p "Which report would you like to view? " opt
     
         choice=""
         if [ "$opt" -gt "0" ] && [ "$opt" -le ${#reports[@]} ]; then

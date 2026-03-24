@@ -35,7 +35,7 @@ for ((i=0;i<${#reports[@]};i++)); do
 done
 
 echo
-read -p 'Which report would you like to use? ' opt
+read -p 'Which report would you like to view? ' opt
 
 choice=""
 if [ "$opt" -gt "0" ] && [ "$opt" -le ${#reports[@]} ]; then

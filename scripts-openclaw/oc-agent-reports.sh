@@ -78,14 +78,14 @@ if [ "$workspace_directory" != "" ]; then
         reports+=($file)
     done
     
-    echo
-    echo "Please pick a report to view:"
-    for ((i=0;i<${#reports[@]};i++)); do
-        string="$(($i+1))) ${reports[$i]}"
-        printf "%s\n" "$string"
-    done
-
     if [ {#reports[@]} > 0 ]; then
+        echo
+        echo "Please pick a report to view:"
+        for ((i=0;i<${#reports[@]};i++)); do
+            string="$(($i+1))) ${reports[$i]}"
+            printf "%s\n" "$string"
+        done
+
         echo
         read -p 'Which report would you like to view? ' opt
     

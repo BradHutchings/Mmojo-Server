@@ -205,7 +205,6 @@ if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc
 
 alias mm-env=". mm-environment-variables.sh"
-mm-env
 EOF1
 source $HOME/.bashrc
 fi

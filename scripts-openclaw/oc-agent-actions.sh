@@ -39,7 +39,7 @@ if [ "${#agents[@]}" -gt "1" ]; then
     done
 
     echo
-    read -p 'Which agent? ' opt
+    read -p "Which agent? " opt
 
     agent=""
     if [ "$opt" -gt "0" ] && [ "$opt" -le ${#agents[@]} ]; then

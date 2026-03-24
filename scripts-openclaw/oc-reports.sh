@@ -47,7 +47,10 @@ echo "You chose: $choice"
 
 if [ "$choice" != "" ]; then
     echo
+    echo "----------------------------------------"
     cat "$WORKSPACE_REPORTS/$choice"
+    echo
+    echo "----------------------------------------"
     echo
 fi
 

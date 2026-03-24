@@ -74,7 +74,7 @@ if [ "$workspace_directory" != "" ]; then
     reports=("None")
     reports=()
     for file in *; do
-        # echo "Adding $file"
+        echo "Adding $file"
         reports+=($file)
     done
     

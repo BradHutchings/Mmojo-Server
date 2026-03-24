@@ -219,6 +219,7 @@ mm-env
 ```
 </details>
 
+<!--
 ---
 ### Install node to Avoid Problems Later
 The OpenClaw installer is still a little flakey. Installing node first helps.
@@ -237,6 +238,7 @@ EOF1
 source $HOME/.bashrc
 fi
 ```
+-->
 
 ---
 ### Pin OpenClaw to the Taskbar

@@ -114,7 +114,7 @@ Update linux and install `unzip`:
 ```
 sudo apt update
 sudo apt upgrade -y
-sudo apt install zip unzip -y
+sudo apt install zip unzip jq -y
 echo "NOTE: apt update, upgrade, and install unzip finished."
 ```
 

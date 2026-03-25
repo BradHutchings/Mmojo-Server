@@ -86,6 +86,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
     cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
     cp "$REPO_DIR/build/support-files/mmojo-rpc-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
+    cp "$_BUILD_SUBDIR/bin/llama-quantize" "$DEPLOY_DIR"
     touch "$DEPLOY_DIR/$_TOUCH_FILE"
 fi
 ```

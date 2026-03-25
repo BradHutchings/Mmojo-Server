@@ -2655,7 +2655,7 @@ private:
                         // Mmojo Server START
                         // Replace SLT_INF in original code.
                         float percent_complete = (float) 100.0 * slot.prompt.n_tokens() / slot.task->n_tokens();
-                        SLT_INF(slot, "prompt processing progress: %d / %d (%.1f%), batch size: %d\n", 
+                        SLT_INF(slot, "prompt processing progress: %d / %d (%.1f\%), batch size: %d\n", 
                           slot.prompt.n_tokens(), slot.task->n_tokens(), percent_complete, batch.n_tokens );
                         // Mmojo Server END
                     }

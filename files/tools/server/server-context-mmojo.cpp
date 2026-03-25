@@ -3171,6 +3171,36 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
         if (params.show_prompt) {
             SRV_INF("\n----------\nPrompt:\n%s\n----------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
         }
+        if (params.show_messages) {
+            SRV_INF("%s", "\n------------------------------\nSHOW_MESSAGES:\n");
+            if (data.contains("messages")) {
+                SRV_INF("%s", "SHOW_MESSAGES: data contains \"messages\".\n");
+                json messages = data.at("messages");
+                if (messages.is_array()) {
+                    SRV_INF("%s", "SHOW_MESSAGES: messages.is_array.\n");
+                    size_type messages_size = messages.size();
+                    if (messages_size == 2) {
+                        SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");
+                        json message_0 = messages[0];
+                        json message_1 = messages[1];
+
+                        std::string role_0 = message_0.value("role");
+                        std::string role_1 = message_1.value("role");
+                        std::string content_0 = message_0.value("content");
+                        std::string content_1 = message_1.value("content");
+
+                        if ((role_0 == "system") && (role_1 == "user")) {
+                            SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");
+                        }
+                    }
+
+                    if (messages_size > 1) {
+                        SRV_INF("%s", "SHOW_MESSAGES: messages_size > 1.\n");
+                    }
+                }
+            }          
+            SRV_INF("%s", "\n------------------------------\n");
+        }
         // Mmojo Server END
 
         // process prompt

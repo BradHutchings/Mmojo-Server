@@ -3190,12 +3190,19 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                         std::string content_1 = message_1.value("content", "");
 
                         if ((role_0 == "system") && (role_1 == "user")) {
-                            SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");
+                            SRV_INF("%s", "SHOW_MESSAGES: system / user .\n");
+                            SRV_INF("\n------------------------------\nSYSTEM PROMPT:\n%s%\n------------------------------\n", content_0.c_str());
                         }
                     }
 
                     if (messages_size > 1) {
                         SRV_INF("%s", "SHOW_MESSAGES: messages_size > 1.\n");
+
+                        json message_last = messages[messages_size - 1];
+                        json role_last = message_last.value("role", "");
+                        json content_last = message_last.value("content", "");
+                        SRV_INF("\n------------------------------\nMESSAGE - %s:\n%s%\n------------------------------\n", 
+                              role_last.c_str(), content_last.c_str());
                     }
                 }
             }          

@@ -34,6 +34,7 @@
 #include <cinttypes>
 #include <memory>
 #include <filesystem>
+#include <string>
 
 // fix problem with std::min and std::max
 #if defined(_WIN32)

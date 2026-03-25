@@ -3178,7 +3178,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                 json messages = data.at("messages");
                 if (messages.is_array()) {
                     SRV_INF("%s", "SHOW_MESSAGES: messages.is_array.\n");
-                    size_type messages_size = messages.size();
+                    std::size_t messages_size = messages.size();
                     if (messages_size == 2) {
                         SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");
                         json message_0 = messages[0];

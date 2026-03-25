@@ -2652,8 +2652,11 @@ private:
                             }
                         }
 
-                        SLT_INF(slot, "prompt processing progress, n_tokens = %d, batch.n_tokens = %d, task->n_tokens = %d, progress = %f\n", 
-                          slot.prompt.n_tokens(), batch.n_tokens, slot.task->n_tokens(), (float) slot.prompt.n_tokens() / slot.task->n_tokens());
+                        // Mmojo Server START
+                        // Replace SLT_INF in original code.
+                        SLT_INF(slot, "prompt processing progress: n_tokens = %d / %d, batch.n_tokens = %d, progress = %f\n", 
+                          slot.prompt.n_tokens(), slot.task->n_tokens(), batch.n_tokens, (float) slot.prompt.n_tokens() / slot.task->n_tokens());
+                        // Mmojo Server END
                     }
 
                     const auto pos_min = llama_memory_seq_pos_min(llama_get_memory(ctx), slot.id);

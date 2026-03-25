@@ -3800,6 +3800,11 @@ void server_routes::init_routes() {
             body,
             meta->chat_params,
             files);
+      
+        // Mmojo Server START
+        SRV_INF("%s", "\n\n----------\npost_responses_oai:\nTHIS IS WHERE TO POST EITHER FIRST TWO MESSSGES OR LATEST MESSAGE.\n----------\n\n");        
+        // Mmojo Server END
+        
         return handle_completions_impl(
             req,
             SERVER_TASK_TYPE_COMPLETION,

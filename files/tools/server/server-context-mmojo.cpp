@@ -3191,25 +3191,57 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                         SRV_INF("%s", "SHOW_MESSAGES: std::string role_0.\n");
                         std::string role_1 = message_1.value("role", "");
                         SRV_INF("%s", "SHOW_MESSAGES: std::string role_1.\n");
-                        std::string content_0 = message_0.value("content", "");
+
                         SRV_INF("%s", "SHOW_MESSAGES: std::string content_0.\n");
-                        std::string content_1 = message_1.value("content", "");
-                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_0.\n");
+                        json content_0 = message_0.at("content");
+                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_1.\n");
+                        json content_1 = message_1.at("content");
+                        
+                        std::string content_value_0 = "";
+                        std::string content_value_1 = "";
+
+                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_0.\n");
+                        if (content_0.is_string()) {
+                            content_value_0 = (std::string) content_0;
+                        }
+                        else if (content_0.is_array()) {
+                            content_value_0 = content_0[0].value("text", "");
+                        }
+
+                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_1.\n");
+                        if (content_1.is_string()) {
+                            content_value_1 = (std::string) content_1;
+                        }
+                        else if (content_1.is_array()) {
+                            content_value_1 = content_1[0].value("text", "");
+                        }
 
                         if ((role_0 == "system") && (role_1 == "user")) {
                             SRV_INF("%s", "SHOW_MESSAGES: system / user .\n");
-                            SRV_INF("\n------------------------------\nSYSTEM PROMPT:\n%s\n------------------------------\n", content_0.c_str());
+                            SRV_INF("\n------------------------------\nSYSTEM PROMPT:\n%s\n------------------------------\n", content_value_0.c_str());
                         }
                     }
 
                     if (messages_size > 1) {
                         SRV_INF("%s", "SHOW_MESSAGES: messages_size > 1.\n");
 
+                        SRV_INF("%s", "SHOW_MESSAGES: json message_last.\n");
                         json message_last = messages[messages_size - 1];
+                        SRV_INF("%s", "SHOW_MESSAGES: std::string role_last.\n");
                         std::string role_last = message_last.value("role", "");
-                        std::string content_last = message_last.value("content", "");
+                        SRV_INF("%s", "SHOW_MESSAGES: json content_last.\n");
+                        json content_last = message_0.at("content");
+                        std::string content_value_last = "";
+                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_last.\n");
+                        if (content_last.is_string()) {
+                            content_value_last = (std::string) content_0;
+                        }
+                        else if (content_last.is_array()) {
+                            content_value_last = content_last[0].value("text", "");
+                        }
+
                         SRV_INF("\n------------------------------\nMESSAGE - %s:\n%s\n------------------------------\n", 
-                              role_last.c_str(), content_last.c_str());
+                              role_last.c_str(), content_value_last.c_str());
                     }
                 }
             }          

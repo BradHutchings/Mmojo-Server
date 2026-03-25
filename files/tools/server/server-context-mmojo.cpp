@@ -3173,15 +3173,15 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
             SRV_INF("\n----------\nPrompt:\n%s\n----------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
         }
         if (params.show_messages) {
-            // SRV_INF("%s", "\n------------------------------\nSHOW_MESSAGES:\n");
+            SRV_INF("%s", "\n------------------------------\nSHOW_MESSAGES:\n");
             if (data.contains("messages")) {
-                // SRV_INF("%s", "SHOW_MESSAGES: data contains \"messages\".\n");
+                SRV_INF("%s", "SHOW_MESSAGES: data contains \"messages\".\n");
                 json messages = data.at("messages");
                 if (messages.is_array()) {
-                    // SRV_INF("%s", "SHOW_MESSAGES: messages.is_array.\n");
+                    SRV_INF("%s", "SHOW_MESSAGES: messages.is_array.\n");
                     std::size_t messages_size = messages.size();
                     if (messages_size == 2) {
-                        // SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");
+                        SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");
                         json message_0 = messages[0];
                         json message_1 = messages[1];
 
@@ -3191,13 +3191,13 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                         std::string content_1 = message_1.value("content", "");
 
                         if ((role_0 == "system") && (role_1 == "user")) {
-                            // SRV_INF("%s", "SHOW_MESSAGES: system / user .\n");
+                            SRV_INF("%s", "SHOW_MESSAGES: system / user .\n");
                             SRV_INF("\n------------------------------\nSYSTEM PROMPT:\n%s\n------------------------------\n", content_0.c_str());
                         }
                     }
 
                     if (messages_size > 1) {
-                        // SRV_INF("%s", "SHOW_MESSAGES: messages_size > 1.\n");
+                        SRV_INF("%s", "SHOW_MESSAGES: messages_size > 1.\n");
 
                         json message_last = messages[messages_size - 1];
                         std::string role_last = message_last.value("role", "");

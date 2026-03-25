@@ -3183,12 +3183,18 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                     if (messages_size == 2) {
                         SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");
                         json message_0 = messages[0];
+                        SRV_INF("%s", "SHOW_MESSAGES: json message_0.\n");
                         json message_1 = messages[1];
+                        SRV_INF("%s", "SHOW_MESSAGES: json message_1.\n");
 
                         std::string role_0 = message_0.value("role", "");
+                        SRV_INF("%s", "SHOW_MESSAGES: std::string role_0.\n");
                         std::string role_1 = message_1.value("role", "");
+                        SRV_INF("%s", "SHOW_MESSAGES: std::string role_1.\n");
                         std::string content_0 = message_0.value("content", "");
+                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_0.\n");
                         std::string content_1 = message_1.value("content", "");
+                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_0.\n");
 
                         if ((role_0 == "system") && (role_1 == "user")) {
                             SRV_INF("%s", "SHOW_MESSAGES: system / user .\n");

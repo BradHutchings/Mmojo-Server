@@ -3187,7 +3187,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                         std::string role_0 = message_0.value("role", "");
                         std::string role_1 = message_1.value("role", "");
                         std::string content_0 = message_0.value("content", "");
-                        std::string content_1 = message_1.value("content". "");
+                        std::string content_1 = message_1.value("content", "");
 
                         if ((role_0 == "system") && (role_1 == "user")) {
                             SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");

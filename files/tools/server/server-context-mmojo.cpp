@@ -3230,11 +3230,11 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                         SRV_INF("%s", "SHOW_MESSAGES: std::string role_last.\n");
                         std::string role_last = message_last.value("role", "");
                         SRV_INF("%s", "SHOW_MESSAGES: json content_last.\n");
-                        json content_last = message_0.at("content");
+                        json content_last = message_last.at("content");
                         std::string content_value_last = "";
                         SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_last.\n");
                         if (content_last.is_string()) {
-                            content_value_last = (std::string) content_0;
+                            content_value_last = (std::string) content_last;
                         }
                         else if (content_last.is_array()) {
                             content_value_last = content_last[0].value("text", "");

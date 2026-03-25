@@ -393,6 +393,7 @@ struct common_params {
     std::string default_ui_endpoint   =    ""; // endpoint for chat UI
     bool    show_request              =    false;
     bool    show_prompt               =    false;
+    bool    show_messages             =    false;
     bool    show_completion           =    false;
     // Mmojo Server END
 

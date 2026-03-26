@@ -3247,10 +3247,10 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                                 else if (content_last.is_array()) {
                                     content_value_last = content_last[0].value("text", "");
                                 }
-                                if (role_last == "tool") {
+                                if (role_i == "tool") {
                                     content_value_last = "<< tool result >>";
                                 }
-                                SRV_INF("%s\n", "content_value_last.c_str());
+                                SRV_INF("%s\n", content_value_last.c_str());
                             }
                         }
 

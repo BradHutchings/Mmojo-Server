@@ -1360,7 +1360,7 @@ private:
         int completion_interval = 50;
         if (params_base.show_completion) {
             if (!slot.has_next_token) {
-                SRV_INF("\n----------\nCompletion:\n%s\n----------\n", slot.generated_text.c_str());
+                SRV_INF("\n------------------------------\nCompletion:\n%s\n------------------------------\n", slot.generated_text.c_str());
             }
             else {
                 int count = slot.generated_token_count;
@@ -3167,10 +3167,10 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
         
         // Mmojo Server START
         if (params.show_request) {
-            SRV_INF("\n----------\ndata:\n%s\n----------\n", data.is_string() ? data.get<std::string>().c_str() : data.dump(2).c_str());
+            SRV_INF("\n------------------------------\ndata:\n%s\n------------------------------\n", data.is_string() ? data.get<std::string>().c_str() : data.dump(2).c_str());
         }
         if (params.show_prompt) {
-            SRV_INF("\n----------\nPrompt:\n%s\n----------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
+            SRV_INF("\n------------------------------\nPrompt:\n%s\n------------------------------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
         }
         if (params.show_messages) {
             bool debug = params.show_messages_debug;
@@ -3887,11 +3887,7 @@ void server_routes::init_routes() {
             body,
             meta->chat_params,
             files);
-      
-        // Mmojo Server START
-        SRV_INF("%s", "\n\n----------\npost_responses_oai:\nTHIS IS WHERE TO POST EITHER FIRST TWO MESSSGES OR LATEST MESSAGE.\n----------\n\n");        
-        // Mmojo Server END
-        
+              
         return handle_completions_impl(
             req,
             SERVER_TASK_TYPE_COMPLETION,

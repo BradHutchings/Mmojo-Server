@@ -3240,6 +3240,10 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                             content_value_last = content_last[0].value("text", "");
                         }
 
+                        if (role_last == "tool") {
+                            content_value_last = "<< tool data >>';
+                        }
+
                         SRV_INF("\n------------------------------\nMESSAGE - %s:\n%s\n------------------------------\n", 
                               role_last.c_str(), content_value_last.c_str());
                     }

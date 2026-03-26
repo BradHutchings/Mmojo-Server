@@ -3250,37 +3250,13 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                                 if (role_i == "tool") {
                                     content_value_last = "<< tool result >>";
                                 }
-                                SRV_INF("%s\n", content_value_last.c_str());
+                                SRV_INF("\n%s\n", content_value_last.c_str());
                             }
                         }
-
-                        /*
-                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: json message_last.\n");
-                        json message_last = messages[messages_size - 1];
-                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string role_last.\n");
-                        std::string role_last = message_last.value("role", "");
-                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: json content_last.\n");
-                        json content_last = message_last.at("content");
-                        std::string content_value_last = "";
-                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_last.\n");
-                        if (content_last.is_string()) {
-                            content_value_last = (std::string) content_last;
-                        }
-                        else if (content_last.is_array()) {
-                            content_value_last = content_last[0].value("text", "");
-                        }
-
-                        if (role_last == "tool") {
-                            content_value_last = "<< tool result >>";
-                        }
-
-                        SRV_INF("\n------------------------------\nMESSAGE[%d] - %s:\n%s\n------------------------------\n", 
-                              messages_size - 1, role_last.c_str(), content_value_last.c_str());
-                        */
                     }
                 }
             }          
-            if (debug) SRV_INF("%s", "\n------------------------------\n");
+            SRV_INF("%s", "\n------------------------------\n");
         }
         // Mmojo Server END
 

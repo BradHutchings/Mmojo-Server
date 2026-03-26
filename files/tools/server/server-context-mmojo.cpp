@@ -3246,8 +3246,8 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                             content_value_last = "<< tool result >>";
                         }
 
-                        SRV_INF("\n------------------------------\nMESSAGE - %s:\n%s\n------------------------------\n", 
-                              role_last.c_str(), content_value_last.c_str());
+                        SRV_INF("\n------------------------------\nMESSAGE[%d] - %s:\n%s\n------------------------------\n", 
+                              messages_size - 1, role_last.c_str(), content_value_last.c_str());
                     }
                 }
             }          

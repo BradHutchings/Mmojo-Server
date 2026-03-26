@@ -394,6 +394,7 @@ struct common_params {
     bool    show_request              =    false;
     bool    show_prompt               =    false;
     bool    show_messages             =    false;
+    bool    show_messages_debug       =    false;
     bool    show_completion           =    false;
     // Mmojo Server END
 

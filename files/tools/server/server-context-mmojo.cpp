@@ -3227,6 +3227,34 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                     if (messages_size > 1) {
                         if (debug) SRV_INF("%s", "SHOW_MESSAGES: messages_size > 1.\n");
 
+                        SRV_INF("%s", "\n------------------------------\n");
+
+                        for (int i = 0; i < messages_size; i++) {
+                            if (debug) SRV_INF("%s", "SHOW_MESSAGES: json message_i.\n");
+                            json message_i = messages[i];
+                            if (debug) SRV_INF("%s", "SHOW_MESSAGES: json role_i.\n");
+                            std::string role_i = message_i.value("role", "");
+                            SRV_INF("MESSAGE[%d] - %s:\n", i, role_i.c_str());
+
+                            if (i == (messages_size - 1)) {
+                                if (debug) SRV_INF("%s", "SHOW_MESSAGES: json content_last.\n");
+                                json content_last = message_i.at("content");
+                                if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_last.\n");
+                                std::string content_value_last = "";
+                                if (content_last.is_string()) {
+                                    content_value_last = (std::string) content_last;
+                                }
+                                else if (content_last.is_array()) {
+                                    content_value_last = content_last[0].value("text", "");
+                                }
+                                if (role_last == "tool") {
+                                    content_value_last = "<< tool result >>";
+                                }
+                                SRV_INF("%s\n", "content_value_last.c_str());
+                            }
+                        }
+
+                        /*
                         if (debug) SRV_INF("%s", "SHOW_MESSAGES: json message_last.\n");
                         json message_last = messages[messages_size - 1];
                         if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string role_last.\n");
@@ -3248,6 +3276,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
 
                         SRV_INF("\n------------------------------\nMESSAGE[%d] - %s:\n%s\n------------------------------\n", 
                               messages_size - 1, role_last.c_str(), content_value_last.c_str());
+                        */
                     }
                 }
             }          

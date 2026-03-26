@@ -3173,34 +3173,36 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
             SRV_INF("\n----------\nPrompt:\n%s\n----------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
         }
         if (params.show_messages) {
-            SRV_INF("%s", "\n------------------------------\nSHOW_MESSAGES:\n");
+            bool debug = params.show_messages_debug;
+          
+            if (debug) SRV_INF("%s", "\n------------------------------\nSHOW_MESSAGES:\n");
             if (data.contains("messages")) {
-                SRV_INF("%s", "SHOW_MESSAGES: data contains \"messages\".\n");
+                if (debug) SRV_INF("%s", "SHOW_MESSAGES: data contains \"messages\".\n");
                 json messages = data.at("messages");
                 if (messages.is_array()) {
-                    SRV_INF("%s", "SHOW_MESSAGES: messages.is_array.\n");
+                    if (debug) SRV_INF("%s", "SHOW_MESSAGES: messages.is_array.\n");
                     std::size_t messages_size = messages.size();
                     if (messages_size == 2) {
-                        SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");
                         json message_0 = messages[0];
-                        SRV_INF("%s", "SHOW_MESSAGES: json message_0.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: json message_0.\n");
                         json message_1 = messages[1];
-                        SRV_INF("%s", "SHOW_MESSAGES: json message_1.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: json message_1.\n");
 
                         std::string role_0 = message_0.value("role", "");
-                        SRV_INF("%s", "SHOW_MESSAGES: std::string role_0.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string role_0.\n");
                         std::string role_1 = message_1.value("role", "");
-                        SRV_INF("%s", "SHOW_MESSAGES: std::string role_1.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string role_1.\n");
 
-                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_0.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_0.\n");
                         json content_0 = message_0.at("content");
-                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_1.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_1.\n");
                         json content_1 = message_1.at("content");
                         
                         std::string content_value_0 = "";
                         std::string content_value_1 = "";
 
-                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_0.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_0.\n");
                         if (content_0.is_string()) {
                             content_value_0 = (std::string) content_0;
                         }
@@ -3208,7 +3210,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                             content_value_0 = content_0[0].value("text", "");
                         }
 
-                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_1.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_1.\n");
                         if (content_1.is_string()) {
                             content_value_1 = (std::string) content_1;
                         }
@@ -3217,22 +3219,22 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                         }
 
                         if ((role_0 == "system") && (role_1 == "user")) {
-                            SRV_INF("%s", "SHOW_MESSAGES: system / user .\n");
+                            if (debug) SRV_INF("%s", "SHOW_MESSAGES: system / user .\n");
                             SRV_INF("\n------------------------------\nSYSTEM PROMPT:\n%s\n------------------------------\n", content_value_0.c_str());
                         }
                     }
 
                     if (messages_size > 1) {
-                        SRV_INF("%s", "SHOW_MESSAGES: messages_size > 1.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: messages_size > 1.\n");
 
-                        SRV_INF("%s", "SHOW_MESSAGES: json message_last.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: json message_last.\n");
                         json message_last = messages[messages_size - 1];
-                        SRV_INF("%s", "SHOW_MESSAGES: std::string role_last.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string role_last.\n");
                         std::string role_last = message_last.value("role", "");
-                        SRV_INF("%s", "SHOW_MESSAGES: json content_last.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: json content_last.\n");
                         json content_last = message_last.at("content");
                         std::string content_value_last = "";
-                        SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_last.\n");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_last.\n");
                         if (content_last.is_string()) {
                             content_value_last = (std::string) content_last;
                         }
@@ -3249,7 +3251,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                     }
                 }
             }          
-            // SRV_INF("%s", "\n------------------------------\n");
+            if (debug) SRV_INF("%s", "\n------------------------------\n");
         }
         // Mmojo Server END
 

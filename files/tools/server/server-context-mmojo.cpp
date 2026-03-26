@@ -3241,7 +3241,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                         }
 
                         if (role_last == "tool") {
-                            content_value_last = "<< tool data >>';
+                            content_value_last = "<< tool data >>";
                         }
 
                         SRV_INF("\n------------------------------\nMESSAGE - %s:\n%s\n------------------------------\n", 

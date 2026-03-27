@@ -70,6 +70,15 @@ Control-click the top link in the output.
 You will see the **OpenClaw Gateway Dashboard** in your web browser, indicating that OpenClaw is running and ready for use.
 
 ---
+### Backup the Configuration
+Your `mm-scripts` directory scripts for backing up and restoring the OpenClaw environment. These are really useful as you get started automating things with OpenClaw.
+```
+oc-environment-backup.sh
+```
+
+Enter "Fresh Install" for the backup name.
+
+---
 ### Proceed
 - **Next:** [08. Test OpenClaw](08-Test-OpenClaw.md)
 - **Previous:** [06. Configure OpenClaw — Channels, Skills, and API Keys](06-Configure-OpenClaw-2.md)

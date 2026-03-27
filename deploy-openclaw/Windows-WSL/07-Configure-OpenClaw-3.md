@@ -41,6 +41,12 @@ openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].compat.sup
 openclaw gateway restart
 ```
 
+Optional: Turn of Heartbeat. It's a mess.
+```
+openclaw config set agents.defaults.heartbeat 0m
+openclaw gateway restart
+```
+
 <!--
 supportsDeveloperRole from this comment:
 https://github.com/openclaw/openclaw/issues/5704#issuecomment-3938731743

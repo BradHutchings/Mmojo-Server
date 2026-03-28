@@ -51,7 +51,7 @@ https://github.com/openclaw/openclaw/issues/5704#issuecomment-3938731743
 <br/>
     
 ```
-openclaw config set agents.defaults.heartbeat 0m
+openclaw config set agents.defaults.heartbeat.every 0m
 openclaw gateway restart
 ```
 </details>

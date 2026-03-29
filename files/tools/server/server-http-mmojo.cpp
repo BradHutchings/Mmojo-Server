@@ -25,6 +25,7 @@
 #include <string>
 #include <thread>
 
+#ifdef LLAMA_BUILD_WEBUI
 // auto generated files (see README.md for details)
 #include "index.html.gz.hpp"
 // Mmojo Server START -- XXX
@@ -36,6 +37,7 @@
 bool starts_with (std::string const &fullString, std::string const &beginning);
 bool ends_with (std::string const &fullString, std::string const &ending);
 // Mmojo Server END
+#endif
 
 //
 // HTTP implementation using cpp-httplib
@@ -135,6 +137,16 @@ bool server_http_context::init(const common_params & params) {
     // set timeouts and change hostname and port
     srv->set_read_timeout (params.timeout_read);
     srv->set_write_timeout(params.timeout_write);
+    srv->set_socket_options([reuse_port = params.reuse_port](socket_t sock) {
+        httplib::set_socket_opt(sock, SOL_SOCKET, SO_REUSEADDR, 1);
+        if (reuse_port) {
+#ifdef SO_REUSEPORT
+            httplib::set_socket_opt(sock, SOL_SOCKET, SO_REUSEPORT, 1);
+#else
+            LOG_WRN("%s: SO_REUSEPORT is not supported\n", __func__);
+#endif
+        }
+    });
 
     if (params.api_keys.size() == 1) {
         auto key = params.api_keys[0];
@@ -206,8 +218,9 @@ bool server_http_context::init(const common_params & params) {
     auto middleware_server_state = [this](const httplib::Request & req, httplib::Response & res) {
         bool ready = is_ready.load();
         if (!ready) {
+#ifdef LLAMA_BUILD_WEBUI
             auto tmp = string_split<std::string>(req.path, '.');
-
+          
             // Mmojo Server START -- XXX
             // if (req.path == "/" || tmp.back() == "html") {
             //    res.status = 503;
@@ -218,8 +231,10 @@ bool server_http_context::init(const common_params & params) {
                 res.status = 503;
                 res.set_content(reinterpret_cast<const char*>(loading_mmojo_html), loading_mmojo_html_len, "text/html; charset=utf-8");
             // Mmojo Server END
-
-            } else {
+              
+            } else
+#endif
+            {
                 // no endpoints is allowed to be accessed when the server is not ready
                 // this is to prevent any data races or inconsistent states
                 res.status = 503;
@@ -258,7 +273,7 @@ bool server_http_context::init(const common_params & params) {
         }
         return httplib::Server::HandlerResponse::Unhandled;
     });
-
+  
     // Mmojo Server START
     srv->set_post_routing_handler([](const httplib::Request & req, httplib::Response & res) {
         std::string cacheControlValue = "max-age=3600";
@@ -288,14 +303,20 @@ bool server_http_context::init(const common_params & params) {
         res.set_header("Cache-Control", cacheControlValue);
     });    
     // Mmojo Server END
-  
+
     int n_threads_http = params.n_threads_http;
     if (n_threads_http < 1) {
-        // +2 threads for monitoring endpoints
-        n_threads_http = std::max(params.n_parallel + 2, (int32_t) std::thread::hardware_concurrency() - 1);
+        // +4 threads for monitoring, health and some threads reserved for MCP and other tasks in the future
+        n_threads_http = std::max(params.n_parallel + 4, (int32_t) std::thread::hardware_concurrency() - 1);
     }
     LOG_INF("%s: using %d threads for HTTP server\n", __func__, n_threads_http);
-    srv->new_task_queue = [n_threads_http] { return new httplib::ThreadPool(n_threads_http); };
+    srv->new_task_queue = [n_threads_http] {
+        // spawn n_threads_http fixed thread (always alive), while allow up to 1024 max possible additional threads
+        // when n_threads_http is used, server will create new "dynamic" threads that will be destroyed after processing each request
+        // ref: https://github.com/yhirose/cpp-httplib/pull/2368
+        size_t max_threads = (size_t)n_threads_http + 1024;
+        return new httplib::ThreadPool(n_threads_http, max_threads);
+    };
 
     //
     // Web UI setup
@@ -313,6 +334,7 @@ bool server_http_context::init(const common_params & params) {
                 return 1;
             }
         } else {
+#ifdef LLAMA_BUILD_WEBUI
             // using embedded static index.html
             srv->Get(params.api_prefix + "/", [](const httplib::Request & req, httplib::Response & res) {
                 if (req.get_header_value("Accept-Encoding").find("gzip") == std::string::npos) {
@@ -326,9 +348,10 @@ bool server_http_context::init(const common_params & params) {
                 }
                 return false;
             });
+#endif
         }
     }
-
+  
     // Mmojo Server START
     // This can be automated by searching for "server_http_context::start" and inserting this block before the return true above. -Brad 2025-12-29
     // LOG_INF("%s%s\n", "default_ui_endpoint: ", params.default_ui_endpoint.c_str());

@@ -63,7 +63,7 @@ Create a deploy directory. We need `.exe` variants for Windows. We need the plai
 ```
 if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
-    rm -r -f "$DEPLOY_DIR"/*
+    find $DEPLOY_DIR/* \( ! -name "*.gguf" -a ! -name "*-args" \) -delete
     PERFORMANT_APE="$BUILD_DIR/$COSMO_PERFORMANT_APE/$_PACKAGE_MMOJO_SERVER_APE_FILE"
     if [ -f "$PERFORMANT_APE" ]; then
         cp "$PERFORMANT_APE" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"
@@ -74,7 +74,9 @@ if [ "$DEPLOY_DIR" != "" ]; then
     fi
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
-    cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE" ]; then
+        cp "$REPO_DIR/build/support-files/mmojo-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    fi
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
 fi

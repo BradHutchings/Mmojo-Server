@@ -63,7 +63,7 @@ Create a deploy directory. We need `.exe` variants for Windows. We need the plai
 ```
 if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
-    rm -r -f "$DEPLOY_DIR"/*
+    find $DEPLOY_DIR/* \( ! -name "*.gguf" -a ! -name "*-args" \) -delete
     PERFORMANT_APE="$BUILD_DIR/$COSMO_PERFORMANT_APE/$_PACKAGE_MMOJO_SERVER_APE_FILE"
     if [ -f "$PERFORMANT_APE" ]; then
         cp "$PERFORMANT_APE" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_APE_PERFORMANT_FILE"

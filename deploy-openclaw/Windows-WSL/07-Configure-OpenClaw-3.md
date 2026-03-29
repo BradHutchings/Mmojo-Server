@@ -28,13 +28,15 @@ Your shell prompt appears.
 
 ---
 ### Additional Configuration
-Source the `.bashrc` file. Change some things in the OpenClaw configuration. These changes specifically enable the recommended `Qwen3 14B v3` model.
+Source the `.bashrc` file. Create useful directories. Change some things in the OpenClaw configuration. These changes specifically enable the recommended `Qwen3.5 9B v3.5` model.
 ```
 . $HOME/.bashrc
+mkdir -p "$HOME/.openclaw/workspace/actions"
+mkdir -p "$HOME/.openclaw/workspace/reports"
 openclaw config set agents.defaults.timeoutSeconds 1200
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].reasoning true
-openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].contextWindow 32768
-openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].maxTokens 32768
+openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].contextWindow 72000
+openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].maxTokens 72000
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].compat.supportsDeveloperRole false
 openclaw gateway restart
 ```
@@ -44,11 +46,21 @@ supportsDeveloperRole from this comment:
 https://github.com/openclaw/openclaw/issues/5704#issuecomment-3938731743
 -->
 
+<details>
+  <summary><b>Optional:</b> Turn of Heartbeat. It's a mess.</summary>
+<br/>
+    
+```
+openclaw config set agents.defaults.heartbeat.every 0m
+openclaw gateway restart
+```
+</details>
+
 ---
 ### Connect to OpenClaw
 You'll use one of the custom commands from `$HOME/oc-scripts` to get the URL to connect to OpenClaw.
 ```
-oc-dashboard
+oc-dashboard.sh
 ```
 
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/6bbaa473-895a-46f2-a91b-bddb45d07855" />
@@ -56,6 +68,15 @@ oc-dashboard
 Control-click the top link in the output.
 
 You will see the **OpenClaw Gateway Dashboard** in your web browser, indicating that OpenClaw is running and ready for use.
+
+---
+### Backup the Configuration
+Your `mm-scripts` directory scripts for backing up and restoring the OpenClaw environment. These are really useful as you get started automating things with OpenClaw.
+```
+oc-environment-backup.sh
+```
+
+Enter "Fresh Install" for the backup name.
 
 ---
 ### Proceed

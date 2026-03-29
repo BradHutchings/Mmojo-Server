@@ -114,7 +114,7 @@ Update linux and install `unzip`:
 ```
 sudo apt update
 sudo apt upgrade -y
-sudo apt install unzip -y
+sudo apt install zip unzip jq -y
 echo "NOTE: apt update, upgrade, and install unzip finished."
 ```
 
@@ -205,7 +205,6 @@ if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc
 
 alias mm-env=". mm-environment-variables.sh"
-mm-env
 EOF1
 source $HOME/.bashrc
 fi
@@ -220,6 +219,7 @@ mm-env
 ```
 </details>
 
+<!--
 ---
 ### Install node to Avoid Problems Later
 The OpenClaw installer is still a little flakey. Installing node first helps.
@@ -228,15 +228,17 @@ sudo apt remove nodejs npm -y
 sudo apt install nodejs npm -y
 sudo npm install -g node@latest
 sudo npm install -g npm@latest
+sudo npm install -g pnpm
 
 if ! grep -q "\.npm-global\/bin" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc
 
-export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:\$PATH"
 EOF1
 source $HOME/.bashrc
 fi
 ```
+-->
 
 ---
 ### Pin OpenClaw to the Taskbar

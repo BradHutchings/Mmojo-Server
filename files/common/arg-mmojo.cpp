@@ -3918,6 +3918,31 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
 
+      // This is so we can show the prompt in regular output.
+    add_opt(common_arg(
+        {"--show-messages"},
+        "show the messages in regular output",
+        [](common_params & params) {
+            params.show_messages = true;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
+    add_opt(common_arg(
+        {"--dont-show-messages"},
+        "don't show the messages in regular output",
+        [](common_params & params) {
+            params.show_messages = false;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
+    add_opt(common_arg(
+        {"--show-messages-debug"},
+        "show debug information for messages diagnotic in regular output",
+        [](common_params & params) {
+            params.show_messages_debug = true;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
     // This is so we can show the completion in regular output.
     add_opt(common_arg(
         {"--show-completion"},

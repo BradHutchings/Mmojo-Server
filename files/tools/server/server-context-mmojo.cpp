@@ -34,6 +34,7 @@
 #include <cinttypes>
 #include <memory>
 #include <filesystem>
+#include <string>
 
 // fix problem with std::min and std::max
 #if defined(_WIN32)
@@ -1356,13 +1357,14 @@ private:
         SLT_DBG(slot, "n_decoded = %d, n_remaining = %d, next token: %5d '%s'\n", slot.n_decoded, slot.n_remaining, result.tok, token_str.c_str());
       
         // Mmojo Server START
+        int completion_interval = 50;
         if (params_base.show_completion) {
             if (!slot.has_next_token) {
-                SRV_INF("\n----------\nCompletion:\n%s\n----------\n", slot.generated_text.c_str());
+                SRV_INF("\n------------------------------\nCompletion:\n%s\n------------------------------\n", slot.generated_text.c_str());
             }
             else {
                 int count = slot.generated_token_count;
-                if ((count > 0) && ((count % 20) == 0)) {
+                if ((count > 0) && ((count % completion_interval) == 0)) {
                     SRV_INF("Completing: %d tokens generated.\n", count);
                 }
             }
@@ -2651,7 +2653,15 @@ private:
                             }
                         }
 
-                        SLT_INF(slot, "prompt processing progress, n_tokens = %d, batch.n_tokens = %d, progress = %f\n", slot.prompt.n_tokens(), batch.n_tokens, (float) slot.prompt.n_tokens() / slot.task->n_tokens());
+                        // Mmojo Server START
+                        // Replace SLT_INF in original code.
+                        // At this point, we are starting on the batch at slot.prompt.n_tokens().
+                        int completed = slot.prompt.n_tokens() - batch.n_tokens;
+                        // completed = slot.prompt.n_tokens();
+                        float percent_complete = (float) 100.0 * completed / slot.task->n_tokens();
+                        SLT_INF(slot, "prompt processing: %d / %d (%.1f%%) complete, batch size: %d\n", 
+                          completed, slot.task->n_tokens(), percent_complete, batch.n_tokens );
+                        // Mmojo Server END
                     }
 
                     const auto pos_min = llama_memory_seq_pos_min(llama_get_memory(ctx), slot.id);
@@ -3157,10 +3167,96 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
         
         // Mmojo Server START
         if (params.show_request) {
-            SRV_INF("\n----------\ndata:\n%s\n----------\n", data.is_string() ? data.get<std::string>().c_str() : data.dump(2).c_str());
+            SRV_INF("\n------------------------------\ndata:\n%s\n------------------------------\n", data.is_string() ? data.get<std::string>().c_str() : data.dump(2).c_str());
         }
         if (params.show_prompt) {
-            SRV_INF("\n----------\nPrompt:\n%s\n----------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
+            SRV_INF("\n------------------------------\nPrompt:\n%s\n------------------------------\n", prompt.is_string() ? prompt.get<std::string>().c_str() : prompt.dump(2).c_str());
+        }
+        if (params.show_messages) {
+            bool debug = params.show_messages_debug;
+          
+            if (debug) SRV_INF("%s", "\n------------------------------\nSHOW_MESSAGES:\n");
+            if (data.contains("messages")) {
+                if (debug) SRV_INF("%s", "SHOW_MESSAGES: data contains \"messages\".\n");
+                json messages = data.at("messages");
+                if (messages.is_array()) {
+                    if (debug) SRV_INF("%s", "SHOW_MESSAGES: messages.is_array.\n");
+                    std::size_t messages_size = messages.size();
+                    if (messages_size == 2) {
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: messages_size == 2.\n");
+                        json message_0 = messages[0];
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: json message_0.\n");
+                        json message_1 = messages[1];
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: json message_1.\n");
+
+                        std::string role_0 = message_0.value("role", "");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string role_0.\n");
+                        std::string role_1 = message_1.value("role", "");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string role_1.\n");
+
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_0.\n");
+                        json content_0 = message_0.at("content");
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_1.\n");
+                        json content_1 = message_1.at("content");
+                        
+                        std::string content_value_0 = "";
+                        std::string content_value_1 = "";
+
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_0.\n");
+                        if (content_0.is_string()) {
+                            content_value_0 = (std::string) content_0;
+                        }
+                        else if (content_0.is_array()) {
+                            content_value_0 = content_0[0].value("text", "");
+                        }
+
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_1.\n");
+                        if (content_1.is_string()) {
+                            content_value_1 = (std::string) content_1;
+                        }
+                        else if (content_1.is_array()) {
+                            content_value_1 = content_1[0].value("text", "");
+                        }
+
+                        if ((role_0 == "system") && (role_1 == "user")) {
+                            if (debug) SRV_INF("%s", "SHOW_MESSAGES: system / user .\n");
+                            SRV_INF("\n------------------------------\nSYSTEM PROMPT:\n%s\n------------------------------\n", content_value_0.c_str());
+                        }
+                    }
+
+                    if (messages_size > 1) {
+                        if (debug) SRV_INF("%s", "SHOW_MESSAGES: messages_size > 1.\n");
+
+                        SRV_INF("%s", "\n------------------------------\n");
+
+                        for (int i = 0; i < messages_size; i++) {
+                            if (debug) SRV_INF("%s", "SHOW_MESSAGES: json message_i.\n");
+                            json message_i = messages[i];
+                            if (debug) SRV_INF("%s", "SHOW_MESSAGES: json role_i.\n");
+                            std::string role_i = message_i.value("role", "");
+                            SRV_INF("MESSAGE[%d] - %s:\n", i, role_i.c_str());
+
+                            if (i == (messages_size - 1)) {
+                                if (debug) SRV_INF("%s", "SHOW_MESSAGES: json content_last.\n");
+                                json content_last = message_i.at("content");
+                                if (debug) SRV_INF("%s", "SHOW_MESSAGES: std::string content_value_last.\n");
+                                std::string content_value_last = "";
+                                if (content_last.is_string()) {
+                                    content_value_last = (std::string) content_last;
+                                }
+                                else if (content_last.is_array()) {
+                                    content_value_last = content_last[0].value("text", "");
+                                }
+                                if (role_i == "tool") {
+                                    content_value_last = "<< tool result >>";
+                                }
+                                SRV_INF("\n%s\n", content_value_last.c_str());
+                            }
+                        }
+                    }
+                }
+            }          
+            SRV_INF("%s", "\n------------------------------\n");
         }
         // Mmojo Server END
 
@@ -3791,6 +3887,7 @@ void server_routes::init_routes() {
             body,
             meta->chat_params,
             files);
+              
         return handle_completions_impl(
             req,
             SERVER_TASK_TYPE_COMPLETION,

@@ -100,6 +100,7 @@ struct server_slot {
     llama_tokens generated_tokens;
 
     // Mmojo Server START
+    std::string  generated_text_batch;
     size_t generated_token_count = 0;
     // Mmojo Server END
 
@@ -203,6 +204,7 @@ struct server_slot {
         generated_tokens.clear();
 
         // Mmojo Server START
+        generated_text_batch = "";
         generated_token_count = 0;
         // Mmojo Server END
 
@@ -1235,6 +1237,7 @@ private:
         }
       
         // Mmojo Server START
+        slot.generated_text_batch += token_str;
         slot.generated_token_count++;
         // Mmojo Server END
       
@@ -1366,7 +1369,7 @@ private:
             else {
                 int count = slot.generated_token_count;
                 if ((count > 0) && ((count % completion_interval) == 0)) {
-                    SRV_INF("Completing: %d tokens generated.\n", count);
+                    SRV_INF("Completing: %d tokens generated.\n%s\n", count, slot.generated_text_batch.c_str());
                 }
             }
         }

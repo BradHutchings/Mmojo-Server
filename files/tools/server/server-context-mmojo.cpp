@@ -1369,7 +1369,7 @@ private:
             else {
                 int count = slot.generated_token_count;
                 if ((count > 0) && ((count % completion_interval) == 0)) {
-                    SRV_INF("Completing: %d tokens generated.\n%s\n", count, slot.generated_text_batch.c_str());
+                    SRV_INF("\n--------------------\nCompleting: %d tokens generated.\n%s\n\n", count, slot.generated_text_batch.c_str());
                     slot.generated_text_batch = "";
                 }
             }

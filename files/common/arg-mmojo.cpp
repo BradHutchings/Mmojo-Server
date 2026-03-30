@@ -3959,6 +3959,22 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
 
+      add_opt(common_arg(
+        {"--show-messages-system"},
+        "show the system messages in regular output",
+        [](common_params & params) {
+            params.show_messages_system = true;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
+    add_opt(common_arg(
+        {"--dont-show-messages-system"},
+        "don't show the system messages in regular output",
+        [](common_params & params) {
+            params.show_messages_system = false;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
     add_opt(common_arg(
         {"--show-messages-debug"},
         "show debug information for messages diagnotic in regular output",
@@ -3983,7 +3999,23 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
             params.show_completion = false;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));
-    // Mmojo Server END  
+
+      add_opt(common_arg(
+        {"--show-completion-tokens"},
+        "show the completion tokens in regular output",
+        [](common_params & params) {
+            params.show_completion_tokens = true;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+
+    add_opt(common_arg(
+        {"--dont-show-completion-tokens"},
+        "don't show the completion tokens in regular output",
+        [](common_params & params) {
+            params.show_completion_tokens = false;
+        }
+    ).set_examples({LLAMA_EXAMPLE_SERVER}));
+// Mmojo Server END  
 
     return ctx_arg;
 }

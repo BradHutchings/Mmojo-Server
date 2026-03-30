@@ -1369,7 +1369,12 @@ private:
             else {
                 int count = slot.generated_token_count;
                 if ((count > 0) && ((count % completion_interval) == 0)) {
-                    SRV_INF("\n--------------------\nCompleting: %d tokens generated.\n%s\n\n", count, slot.generated_text_batch.c_str());
+                    if (params_base.show_completion_tokens) {
+                        SRV_INF("\n--------------------\nCompleting: %d tokens generated.\n%s\n\n", count, slot.generated_text_batch.c_str());
+                    }
+                    else {
+                        SRV_INF("Completing: %d tokens generated.\n", count);
+                    }
                     slot.generated_text_batch = "";
                 }
             }
@@ -3233,8 +3238,8 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
                             content_value_1 = content_1[0].value("text", "");
                         }
 
-                        if ((role_0 == "system") && (role_1 == "user")) {
-                            if (debug) SRV_INF("%s", "SHOW_MESSAGES: system / user .\n");
+                        if ((role_0 == "system") && (role_1 == "user") && params.show_messages_system) {
+                            if (debug) SRV_INF("%s", "SHOW_MESSAGES: system.\n");
                             SRV_INF("\n------------------------------\nSYSTEM PROMPT:\n%s\n------------------------------\n", content_value_0.c_str());
                         }
                     }

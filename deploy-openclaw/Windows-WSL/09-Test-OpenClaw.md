@@ -1,8 +1,6 @@
-## 08. Test OpenClaw
+## 09. Test OpenClaw
 ### About this Step
 You perform a few tests to demonstrate that OpenClaw is using your Mmojo Server for it's large language model (LLM) server.
-
-*As of this writing, the OpenClaw user interface feels flakey, especially when used with a small local LLM. There are a lot of things wrong with this project. I like to think they will eventually sort some out. -Brad 2026-02-23*
 
 ---
 ### Test OpenClaw
@@ -45,7 +43,7 @@ A future version of these instructions will show you how to configure Mmojo Serv
 ---
 ### Proceed
 - **Next:** This is the last step in this guide.
-- **Previous:** [07. Configure OpenClaw — Finish Configuration](07-Configure-OpenClaw-3.md)
+- **Previous:** [08. Configure OpenClaw — Finish Configuration](08-Configure-OpenClaw-3.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

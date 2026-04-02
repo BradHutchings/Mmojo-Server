@@ -1,4 +1,4 @@
-## 05. Configure OpenClaw &mdash; Mmojo Server
+## 06. Configure OpenClaw &mdash; Mmojo Server
 ### About this Step
 In this step, you will start working through OpenClaw configuration wizard. You will get through the configuration option of connecting OpenClaw to Mmojo Server.
 
@@ -108,8 +108,8 @@ There is more configuration left to complete. Continue on the next page.
 
 ---
 ### Proceed
-- **Next:** [06. Configure OpenClaw — Channels, Skills, and API Keys](06-Configure-OpenClaw-2.md)
-- **Previous:** [04. Install OpenClaw](04-Install-OpenClaw.md)
+- **Next:** [07. Configure OpenClaw — Channels, Skills, and API Keys](07-Configure-OpenClaw-2.md)
+- **Previous:** [05. Install OpenClaw](05-Install-OpenClaw.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

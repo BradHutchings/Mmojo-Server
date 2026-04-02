@@ -30,9 +30,12 @@ Here are the deployment steps:
 - [01. Prerequisites](01-Prerequisites.md) - What you need to deploy OpenClaw.
 - [02. Deploy Mmojo Server](02-Deploy-Mmojo-Server.md) - You will use another deploy guide to deploy Mmojo Server.  
 - [03. Prepare WSL - OpenClaw](03-Prepare-WSL-OpenClaw.md) - You will create a WSL instance for OpenClaw.
-- [04. Install OpenClaw](04-Install-OpenClaw.md) - Install OpenClaw and perform Quick Configuration.
-- [05. Connect OpenClaw to Mmojo Server](05-Connect-OpenClaw-to-Mmojo-Server.md) - Connect OpenClaw to Mmojo Server.
-- [06. Test OpenClaw](06-Test-OpenClaw.md) - Perform simple tests with OpenClaw.
+- [04. Mount Mmojo Share](04-Mount-Mmojo-Share.md) - Mount the Mmojo Share.
+- [05. Install OpenClaw](05-Install-OpenClaw.md) - Install OpenClaw.
+- [06. Configure OpenClaw &mdash; Mmojo Server](06-Configure-OpenClaw-1.md) - Configure OpenClaw to use Mmojo Server.
+- [07. Configure OpenClaw &mdash; Channels, Skills, and API Keys](07-Configure-OpenClaw-2.md) - Configure channels, skills, and API keys.
+- [08. Configure OpenClaw &mdash; Finish Configuration](08-Configure-OpenClaw-3.md) - Finish configuration of OpenClaw.
+- [09. Test OpenClaw](09-Test-OpenClaw.md) - Perform simple tests with OpenClaw.
   <br/><br/>
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)

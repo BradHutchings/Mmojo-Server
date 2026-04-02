@@ -1,4 +1,4 @@
-## 04. Install OpenClaw
+## 05. Install OpenClaw
 ### About this Step
 You will install OpenClaw in the `OpenClaw` WSL instance.
 
@@ -34,8 +34,8 @@ export PATH="/home/linux/.npm-global/bin:$PATH"
 
 ---
 ### Proceed
-- **Next:** [05. Configure OpenClaw — Mmojo Server](05-Configure-OpenClaw-1.md)
-- **Previous:** [03. Prepare WSL - OpenClaw](03-Prepare-WSL-OpenClaw.md)
+- **Next:** [06. Configure OpenClaw — Mmojo Server](06-Configure-OpenClaw-1.md)
+- **Previous:** [04. Mount Mmojo Share](04-Mount-Mmojo-Share.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

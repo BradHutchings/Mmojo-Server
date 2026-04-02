@@ -1,4 +1,4 @@
-## 06. Configure OpenClaw &mdash; Channels, Skills, and API Keys
+## 07. Configure OpenClaw &mdash; Channels, Skills, and API Keys
 ### About this Step
 In this step, you will configure channels, skills, and API keys.
 
@@ -14,9 +14,9 @@ Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` k
 
 **Search provider**
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/847ba469-0400-4c0c-8fa2-a4ef7d7c1b2e" />
+<img width="351" height="123" alt="image" src="https://github.com/user-attachments/assets/8c099443-4844-4e83-86ac-e871ad6d5815" />
 
-Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
+Use the <code>&darr;</code> key to choose `DuckDuckGo Search`, then hit the `ENTER` key.
 
 ---
 
@@ -72,8 +72,8 @@ There is more configuration left to complete. Continue on the next page.
 
 ---
 ### Proceed 
-- **Next:** [07. Configure OpenClaw — Finish Configuration](07-Configure-OpenClaw-3.md)
-- **Previous:** [05. Configure OpenClaw — Mmojo Server](05-Configure-OpenClaw-1.md)
+- **Next:** [08. Configure OpenClaw — Finish Configuration](08-Configure-OpenClaw-3.md)
+- **Previous:** [06. Configure OpenClaw — Mmojo Server](06-Configure-OpenClaw-1.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

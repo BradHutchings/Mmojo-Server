@@ -1,4 +1,4 @@
-## 07. Configure OpenClaw &mdash; Finish Configuration
+## 08. Configure OpenClaw &mdash; Finish Configuration
 ### About this Step
 In this step, you will configure channels and skills.
 
@@ -80,8 +80,8 @@ Enter "Fresh Install" for the backup name.
 
 ---
 ### Proceed
-- **Next:** [08. Test OpenClaw](08-Test-OpenClaw.md)
-- **Previous:** [06. Configure OpenClaw — Channels, Skills, and API Keys](06-Configure-OpenClaw-2.md)
+- **Next:** [09. Test OpenClaw](09-Test-OpenClaw.md)
+- **Previous:** [07. Configure OpenClaw — Channels, Skills, and API Keys](07-Configure-OpenClaw-2.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

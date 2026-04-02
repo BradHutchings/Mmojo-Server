@@ -438,8 +438,10 @@ struct common_params {
     bool    show_request              =    false;
     bool    show_prompt               =    false;
     bool    show_messages             =    false;
+    bool    show_messages_system      =    false;
     bool    show_messages_debug       =    false;
     bool    show_completion           =    false;
+    bool    show_completion_tokens    =    false;
     // Mmojo Server END
 
     int32_t n_batch               =  2048; // logical batch size for prompt processing (must be >=32 to use BLAS)

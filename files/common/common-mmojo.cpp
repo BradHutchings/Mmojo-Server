@@ -376,6 +376,11 @@ bool parse_cpu_mask(const std::string & mask, bool (&boolmask)[GGML_MAX_N_THREAD
 }
 
 void common_init() {
+#if defined(_WIN32)
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
+
     llama_log_set(common_log_default_callback, NULL);
 
 #ifdef NDEBUG
@@ -384,7 +389,7 @@ void common_init() {
     const char * build_type = " (debug)";
 #endif
 
-    LOG_INF("build: %d (%s) with %s for %s%s\n", LLAMA_BUILD_NUMBER, LLAMA_COMMIT, LLAMA_COMPILER, LLAMA_BUILD_TARGET, build_type);
+    LOG_DBG("build: %d (%s) with %s for %s%s\n", LLAMA_BUILD_NUMBER, LLAMA_COMMIT, LLAMA_COMPILER, LLAMA_BUILD_TARGET, build_type);
 }
 
 std::string common_params_get_system_info(const common_params & params) {
@@ -984,7 +989,7 @@ std::string fs_get_cache_directory() {
         cache_directory = std::getenv("LOCALAPPDATA");
 #elif defined(__EMSCRIPTEN__)
         GGML_ABORT("not implemented on this platform");
-      
+
 // Mmojo Server START
 // This could be automated by searching for "error Unknown architecture" and inserting the block 2 lines before. -Brad 2025-11-05
 #elif defined(COSMOCC)
@@ -1000,7 +1005,7 @@ std::string fs_get_cache_directory() {
         }
         
 // Mmojo Server END
-      
+
 #else
 #  error Unknown architecture
 #endif
@@ -1277,6 +1282,9 @@ llama_context * common_init_result::context() {
 }
 
 common_sampler * common_init_result::sampler(llama_seq_id seq_id) {
+    if (seq_id < 0 || seq_id >= (int) pimpl->samplers.size()) {
+        return nullptr;
+    }
     return pimpl->samplers[seq_id].get();
 }
 
@@ -1468,6 +1476,7 @@ struct llama_model_params common_model_params_to_llama(common_params & params) {
 
     mparams.progress_callback           = params.load_progress_callback;
     mparams.progress_callback_user_data = params.load_progress_callback_user_data;
+    mparams.no_alloc                    = params.no_alloc;
 
     return mparams;
 }

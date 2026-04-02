@@ -14,9 +14,9 @@ Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` k
 
 **Search provider**
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/847ba469-0400-4c0c-8fa2-a4ef7d7c1b2e" />
+<img width="351" height="123" alt="image" src="https://github.com/user-attachments/assets/8c099443-4844-4e83-86ac-e871ad6d5815" />
 
-Use the <code>&darr;</code> key to choose `Skip for now`, then hit the `ENTER` key.
+Use the <code>&darr;</code> key to choose `DuckDuckGo Search`, then hit the `ENTER` key.
 
 ---
 

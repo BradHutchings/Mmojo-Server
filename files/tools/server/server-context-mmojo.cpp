@@ -207,7 +207,7 @@ struct server_slot {
         generated_text_batch = "";
         generated_token_count = 0;
         // Mmojo Server END
-
+      
         generated_token_probs.clear();
         json_schema = json();
 
@@ -1240,7 +1240,7 @@ private:
         slot.generated_text_batch += token_str;
         slot.generated_token_count++;
         // Mmojo Server END
-      
+
         slot.has_next_token = true;
 
         // check if there is incomplete UTF-8 character at the end
@@ -2491,7 +2491,7 @@ private:
                         if (slot.task->params.stream && slot.task->params.return_progress) {
                             send_partial_response(slot, {}, true);
                           
-                            // Mmojo Server START
+                             // Mmojo Server START
                             // This could be automated by searching for "send_partial_response(slot, {}, true);" and inserting this block after. -Brad 2025-11-05
                             // This looks like the right spot to sleep.
                             if (params_base.n_batch_sleep_ms > 0) {
@@ -2500,7 +2500,7 @@ private:
                                 SLT_INF(slot, "%s", "Finished sleep after batch.\n");
                             }
                             // Mmojo Server END   
-                        }
+                       }
                     }
 
                     if (!slot.can_split()) {
@@ -2666,7 +2666,7 @@ private:
                                 }
                             }
                         }
-
+                      
                         // Mmojo Server START
                         // Replace SLT_INF in original code.
                         // At this point, we are starting on the batch at slot.prompt.n_tokens().

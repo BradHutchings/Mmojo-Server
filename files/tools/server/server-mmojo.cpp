@@ -103,6 +103,8 @@ int main(int argc, char ** argv) {
     // own arguments required by this example
     common_params params;
 
+    common_init();
+
     if (!common_params_parse(argc, argv, params, LLAMA_EXAMPLE_SERVER)) {
         return 1;
     }
@@ -133,13 +135,11 @@ int main(int argc, char ** argv) {
     }
 
     // Mmojo Server START
-    // This could be automated by looking for "common_init();" and inserting this block immediately after. -Brad 2025-11-05
+    // This could be automated by looking for "server_context ctx_server;" and inserting this block immediately after. -Brad 2026-04-02
     main_mmojo_server_3(params);
     printf("\n\n----------END: " PRODUCT_NAME  " -----------------------------------------------------\n\n");
     // Mmojo Server END
-
-    common_init();
-
+  
     // struct that contains llama context and inference
     server_context ctx_server;
 

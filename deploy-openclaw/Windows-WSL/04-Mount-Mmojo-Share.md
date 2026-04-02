@@ -7,7 +7,7 @@ Your Mmojo Share will be used to automatcally store models that you download fro
 If you don't have an SMB file share available to use on your computer or network, you can skip this step.
 
 **Skip Ahead:**
-- [04. Download Models](04-Download-Models.md)
+- [05. Install OpenClaw](04-Install-OpenClaw.md)
 
 ---
 ### Create Mmojo Share Mount Point and Mount Script

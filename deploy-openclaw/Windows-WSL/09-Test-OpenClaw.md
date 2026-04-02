@@ -2,8 +2,6 @@
 ### About this Step
 You perform a few tests to demonstrate that OpenClaw is using your Mmojo Server for it's large language model (LLM) server.
 
-*As of this writing, the OpenClaw user interface feels flakey, especially when used with a small local LLM. There are a lot of things wrong with this project. I like to think they will eventually sort some out. -Brad 2026-02-23*
-
 ---
 ### Test OpenClaw
 <img width="1271" height="660" alt="image" src="https://github.com/user-attachments/assets/7d17f1a9-7371-4d33-bb35-632ef57309d2" />

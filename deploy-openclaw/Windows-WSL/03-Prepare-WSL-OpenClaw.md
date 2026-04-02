@@ -256,7 +256,7 @@ It's OK to start from scratch and do it often. There is a lot going on to build 
 
 ---
 ### Proceed
-- **Next:** [04. Install OpenClaw](04-Install-OpenClaw.md)
+- **Next:** [04. Mount Mmojo Share](04-Mount-Mmojo-Share.md)
 - **Previous:** [02. Deploy Mmojo Server](02-Deploy-Mmojo-Server.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 

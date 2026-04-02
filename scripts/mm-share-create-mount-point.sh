@@ -31,8 +31,14 @@ fi
 # Create a `mm-share-mount.sh` script.
 #----------------------------------------
 echo "Copying $SHARE_DIR_MOUNT_SCRIPT script."
-cp "$REPO_DIR_SCRIPTS/-$SHARE_DIR_MOUNT_SCRIPT" "$HOME_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
-chmod a+x "$HOME_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
+if [ -d "$HOME_SCRIPTS" ]; then
+    cp "$REPO_DIR_SCRIPTS/-$SHARE_DIR_MOUNT_SCRIPT" "$HOME_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
+    chmod a+x "$HOME_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
+fi
+if [ -d "$HOME_OC_SCRIPTS" ]; then
+    cp "$REPO_DIR_SCRIPTS/-$SHARE_DIR_MOUNT_SCRIPT" "$HOME_OC_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
+    chmod a+x "$HOME_OC_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
+fi
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

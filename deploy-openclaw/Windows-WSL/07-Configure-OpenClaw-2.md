@@ -1,4 +1,4 @@
-## 06. Configure OpenClaw &mdash; Channels, Skills, and API Keys
+## 07. Configure OpenClaw &mdash; Channels, Skills, and API Keys
 ### About this Step
 In this step, you will configure channels, skills, and API keys.
 
@@ -72,8 +72,8 @@ There is more configuration left to complete. Continue on the next page.
 
 ---
 ### Proceed 
-- **Next:** [07. Configure OpenClaw — Finish Configuration](07-Configure-OpenClaw-3.md)
-- **Previous:** [05. Configure OpenClaw — Mmojo Server](05-Configure-OpenClaw-1.md)
+- **Next:** [08. Configure OpenClaw — Finish Configuration](08-Configure-OpenClaw-3.md)
+- **Previous:** [06. Configure OpenClaw — Mmojo Server](06-Configure-OpenClaw-1.md)
 - **Up:** [Deploy OpenClaw (WSL)](README.md)
 
 ---

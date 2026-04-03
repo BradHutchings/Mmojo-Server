@@ -373,10 +373,8 @@ bool server_http_context::init(const common_params & params) {
         while (ends_with(endpoint, "/")) {
             endpoint = endpoint.substr(0, endpoint.length() - 1);
         }
-
-        // LOG_INF("-- %s%s\n", "endpoint: ", endpoint.c_str());
         
-        // using embedded static index.html
+        // These support the relocated chat UI.
         srv->Get(endpoint, [](const httplib::Request & req, httplib::Response & res) {
             res.set_redirect(req.path + "/");
             return false;
@@ -396,40 +394,22 @@ bool server_http_context::init(const common_params & params) {
             res.set_content(reinterpret_cast<const char*>(bundle_css), bundle_css_len, "text/css; charset=utf-8");
             return false;
         });
-      
+
+        // This is so the relocated chat UI can get properties. 
         srv->Get(endpoint + "/props", [endpoint](const httplib::Request & req, httplib::Response & res) {
-            LOG_INF("Redirecting %s/props to /props\n", endpoint.c_str());
+            // LOG_INF("Redirecting %s/props to /props\n", endpoint.c_str());
             res.set_redirect("/props");
             return false;
         });
 
+        // This is so the relocated chat UI can call the v1 UI. 
         srv->Get(endpoint + "/v1/.*", [endpoint](const httplib::Request & req, httplib::Response & res) {
-            LOG_INF("Redirecting %s/v1/xxx to /v1/xxx\n", endpoint.c_str());
+            // LOG_INF("Redirecting %s/v1/xxx to /v1/xxx\n", endpoint.c_str());
             std::string new_path = req.path.substr(endpoint.length());
-            LOG_INF("-- new_path: %s\n", new_path.c_str());
+            // LOG_INF("-- new_path: %s\n", new_path.c_str());
             res.set_redirect(new_path);
             return false;
         });
-
-        /*
-        srv->Get(endpoint, [](const httplib::Request & req, httplib::Response & res) {
-              if (req.get_header_value("Accept-Encoding").find("gzip") == std::string::npos) {
-                  res.set_content("Error: gzip is not supported by this browser", "text/plain");
-              } else {
-                  res.set_header("Content-Encoding", "gzip");
-                  // COEP and COOP headers, required by pyodide (python interpreter)
-                  res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
-                  res.set_header("Cross-Origin-Opener-Policy", "same-origin");
-                  res.set_content(reinterpret_cast<const char*>(index_html), index_html_len, "text/html; charset=utf-8");
-              }
-              return false;
-          });
-  
-          srv->Get(endpoint + "/", [](const httplib::Request & req, httplib::Response & res) {
-              res.set_redirect(req.path.substr(0, req.path.length() - 1));
-              return false;
-          });
-        */
     }
     // Mmojo Server END
 

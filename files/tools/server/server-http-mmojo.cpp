@@ -398,15 +398,15 @@ bool server_http_context::init(const common_params & params) {
         });
 
         srv->Get(endpoint + "/props", [](const httplib::Request & req, httplib::Response & res) {
-            LOG_INF("Redirecting %s/props to /props\n", endpoint.c_str());
+            printf("Redirecting %s/props to /props\n", endpoint.c_str());
             res.set_redirect("/props");
             return false;
         });
 
         srv->Get(endpoint + R"/v1/.*", [endpoint](const httplib::Request & req, httplib::Response & res) {
-            LOG_INF("Redirecting %s/v1/*. to /v1/*.\n", endpoint.c_str());
+            printf("Redirecting %s/v1/*. to /v1/*.\n", endpoint.c_str());
             std::string new_path = req.path.substr(endpoint.length());
-            LOG_ING("-- new_path: %s\n", new_path.c_str());
+            printf("-- new_path: %s\n", new_path.c_str());
             res.set_redirect(new_path);
             return false;
         });

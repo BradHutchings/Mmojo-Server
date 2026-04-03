@@ -27,7 +27,9 @@
 
 #ifdef LLAMA_BUILD_WEBUI
 // auto generated files (see README.md for details)
-#include "index.html.gz.hpp"
+#include "index.html.hpp"
+#include "bundle.js.hpp"
+#include "bundle.css.hpp"
 // Mmojo Server START -- XXX
 // This could be automated by searhing for "loading.html.hpp" and replacing that line with this block.
 // #include "loading.html.hpp"
@@ -166,7 +168,11 @@ bool server_http_context::init(const common_params & params) {
             "/v1/health",
             "/models",
             "/v1/models",
-            "/api/tags"
+            "/api/tags",
+            "/",
+            "/index.html",
+            "/bundle.js",
+            "/bundle.css",
         };
 
         // If API key is not set, skip validation
@@ -174,8 +180,8 @@ bool server_http_context::init(const common_params & params) {
             return true;
         }
 
-        // If path is public or is static file, skip validation
-        if (public_endpoints.find(req.path) != public_endpoints.end() || req.path == "/") {
+        // If path is public or static file, skip validation
+        if (public_endpoints.find(req.path) != public_endpoints.end()) {
             return true;
         }
 
@@ -220,7 +226,7 @@ bool server_http_context::init(const common_params & params) {
         if (!ready) {
 #ifdef LLAMA_BUILD_WEBUI
             auto tmp = string_split<std::string>(req.path, '.');
-          
+            
             // Mmojo Server START -- XXX
             // if (req.path == "/" || tmp.back() == "html") {
             //    res.status = 503;
@@ -231,7 +237,7 @@ bool server_http_context::init(const common_params & params) {
                 res.status = 503;
                 res.set_content(reinterpret_cast<const char*>(loading_mmojo_html), loading_mmojo_html_len, "text/html; charset=utf-8");
             // Mmojo Server END
-              
+
             } else
 #endif
             {
@@ -273,7 +279,7 @@ bool server_http_context::init(const common_params & params) {
         }
         return httplib::Server::HandlerResponse::Unhandled;
     });
-  
+
     // Mmojo Server START
     srv->set_post_routing_handler([](const httplib::Request & req, httplib::Response & res) {
         std::string cacheControlValue = "max-age=3600";
@@ -336,22 +342,25 @@ bool server_http_context::init(const common_params & params) {
         } else {
 #ifdef LLAMA_BUILD_WEBUI
             // using embedded static index.html
-            srv->Get(params.api_prefix + "/", [](const httplib::Request & req, httplib::Response & res) {
-                if (req.get_header_value("Accept-Encoding").find("gzip") == std::string::npos) {
-                    res.set_content("Error: gzip is not supported by this browser", "text/plain");
-                } else {
-                    res.set_header("Content-Encoding", "gzip");
-                    // COEP and COOP headers, required by pyodide (python interpreter)
-                    res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
-                    res.set_header("Cross-Origin-Opener-Policy", "same-origin");
-                    res.set_content(reinterpret_cast<const char*>(index_html_gz), index_html_gz_len, "text/html; charset=utf-8");
-                }
+            srv->Get(params.api_prefix + "/", [](const httplib::Request & /*req*/, httplib::Response & res) {
+                // COEP and COOP headers, required by pyodide (python interpreter)
+                res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
+                res.set_header("Cross-Origin-Opener-Policy", "same-origin");
+                res.set_content(reinterpret_cast<const char*>(index_html), index_html_len, "text/html; charset=utf-8");
+                return false;
+            });
+            srv->Get(params.api_prefix + "/bundle.js", [](const httplib::Request & /*req*/, httplib::Response & res) {
+                res.set_content(reinterpret_cast<const char*>(bundle_js), bundle_js_len, "application/javascript; charset=utf-8");
+                return false;
+            });
+            srv->Get(params.api_prefix + "/bundle.css", [](const httplib::Request & /*req*/, httplib::Response & res) {
+                res.set_content(reinterpret_cast<const char*>(bundle_css), bundle_css_len, "text/css; charset=utf-8");
                 return false;
             });
 #endif
         }
     }
-  
+
     // Mmojo Server START
     // This can be automated by searching for "server_http_context::start" and inserting this block before the return true above. -Brad 2025-12-29
     // LOG_INF("%s%s\n", "default_ui_endpoint: ", params.default_ui_endpoint.c_str());
@@ -364,26 +373,43 @@ bool server_http_context::init(const common_params & params) {
         while (ends_with(endpoint, "/")) {
             endpoint = endpoint.substr(0, endpoint.length() - 1);
         }
-
-        // LOG_INF("-- %s%s\n", "endpoint: ", endpoint.c_str());
         
+        // These support the relocated chat UI.
         srv->Get(endpoint, [](const httplib::Request & req, httplib::Response & res) {
-            if (req.get_header_value("Accept-Encoding").find("gzip") == std::string::npos) {
-                res.set_content("Error: gzip is not supported by this browser", "text/plain");
-            } else {
-                res.set_header("Content-Encoding", "gzip");
-                // COEP and COOP headers, required by pyodide (python interpreter)
-                res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
-                res.set_header("Cross-Origin-Opener-Policy", "same-origin");
-                res.set_content(reinterpret_cast<const char*>(index_html_gz), index_html_gz_len, "text/html; charset=utf-8");
-            }
+            res.set_redirect(req.path + "/");
+            return false;
+        });
+        srv->Get(endpoint + "/", [](const httplib::Request & /*req*/, httplib::Response & res) {
+            // COEP and COOP headers, required by pyodide (python interpreter)
+            res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
+            res.set_header("Cross-Origin-Opener-Policy", "same-origin");
+            res.set_content(reinterpret_cast<const char*>(index_html), index_html_len, "text/html; charset=utf-8");
+            return false;
+        });
+        srv->Get(endpoint + "/bundle.js", [](const httplib::Request & /*req*/, httplib::Response & res) {
+            res.set_content(reinterpret_cast<const char*>(bundle_js), bundle_js_len, "application/javascript; charset=utf-8");
+            return false;
+        });
+        srv->Get(endpoint + "/bundle.css", [](const httplib::Request & /*req*/, httplib::Response & res) {
+            res.set_content(reinterpret_cast<const char*>(bundle_css), bundle_css_len, "text/css; charset=utf-8");
             return false;
         });
 
-        srv->Get(endpoint + "/", [](const httplib::Request & req, httplib::Response & res) {
-            res.set_redirect(req.path.substr(0, req.path.length() - 1));
+        // This is so the relocated chat UI can get properties. 
+        srv->Get(endpoint + "/props", [endpoint](const httplib::Request & req, httplib::Response & res) {
+            // LOG_INF("Redirecting %s/props to /props\n", endpoint.c_str());
+            res.set_redirect("/props");
             return false;
-        });        
+        });
+
+        // This is so the relocated chat UI can call the v1 UI. 
+        srv->Get(endpoint + "/v1/.*", [endpoint](const httplib::Request & req, httplib::Response & res) {
+            // LOG_INF("Redirecting %s/v1/xxx to /v1/xxx\n", endpoint.c_str());
+            std::string new_path = req.path.substr(endpoint.length());
+            // LOG_INF("-- new_path: %s\n", new_path.c_str());
+            res.set_redirect(new_path);
+            return false;
+        });
     }
     // Mmojo Server END
 

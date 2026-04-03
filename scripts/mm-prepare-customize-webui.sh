@@ -60,6 +60,11 @@ if [ -f tools/server/webui/.svelte-kit/output/prerendered/pages/index.html ]; th
     $MMOJO_SED -i -e "s/for new line/for new line./g" tools/server/webui/.svelte-kit/output/prerendered/pages/index.html
 fi
 
+# Recompile overwrites bundle.js
+if [ -f tools/server/public/bundle.js ]; then
+    $MMOJO_SED -i -e "s/\.\/v1\//\/v1\//g" tools/server/public/bundle.js
+fi
+
 mm-prepare-mmojo-complete.sh
 
 # if [ "$1" == "" ]; then

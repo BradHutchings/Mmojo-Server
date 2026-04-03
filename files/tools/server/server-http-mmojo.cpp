@@ -396,15 +396,15 @@ bool server_http_context::init(const common_params & params) {
             res.set_content(reinterpret_cast<const char*>(bundle_css), bundle_css_len, "text/css; charset=utf-8");
             return false;
         });
-
+      
         srv->Get(endpoint + "/props", [endpoint](const httplib::Request & req, httplib::Response & res) {
             LOG_INF("Redirecting %s/props to /props\n", endpoint.c_str());
             res.set_redirect("/props");
             return false;
         });
 
-        srv->Get(endpoint + R"/v1/.*", [endpoint](const httplib::Request & req, httplib::Response & res) {
-            LOG_INF("Redirecting %s/v1/\*. to /v1/\*.\n", endpoint.c_str());
+        srv->Get(endpoint + "/v1/.*", [endpoint](const httplib::Request & req, httplib::Response & res) {
+            LOG_INF("Redirecting %s/v1/xxx to /v1/xxx\n", endpoint.c_str());
             std::string new_path = req.path.substr(endpoint.length());
             LOG_INF("-- new_path: %s\n", new_path.c_str());
             res.set_redirect(new_path);

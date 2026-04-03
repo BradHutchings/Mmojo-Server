@@ -377,11 +377,11 @@ bool server_http_context::init(const common_params & params) {
         // LOG_INF("-- %s%s\n", "endpoint: ", endpoint.c_str());
         
         // using embedded static index.html
-        srv->Get(endpoint + "/", [](const httplib::Request & req, httplib::Response & res) {
-            res.set_redirect(req.path.substr(0, req.path.length() - 1));
+        srv->Get(endpoint, [](const httplib::Request & req, httplib::Response & res) {
+            res.set_redirect(req.path + "/");
             return false;
         });
-        srv->Get(endpoint, [](const httplib::Request & /*req*/, httplib::Response & res) {
+        srv->Get(endpoint + "/", [](const httplib::Request & /*req*/, httplib::Response & res) {
             // COEP and COOP headers, required by pyodide (python interpreter)
             res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
             res.set_header("Cross-Origin-Opener-Policy", "same-origin");

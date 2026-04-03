@@ -402,7 +402,7 @@ bool server_http_context::init(const common_params & params) {
             return false;
         });
 
-        srv->Get(endpoint + "/v1/.*", [](const httplib::Request & req, httplib::Response & res) {
+        srv->Get(endpoint + "/v1/.*", [endpoint](const httplib::Request & req, httplib::Response & res) {
             std::string new_path = req.path.substr(endpoint.length());
             res.set_redirect(new_path);
             return false;

@@ -396,7 +396,18 @@ bool server_http_context::init(const common_params & params) {
             res.set_content(reinterpret_cast<const char*>(bundle_css), bundle_css_len, "text/css; charset=utf-8");
             return false;
         });
-      
+
+        srv->Get(endpoint + "/props", [](const httplib::Request & req, httplib::Response & res) {
+            res.set_redirect("/props");
+            return false;
+        });
+
+        srv->Get(endpoint + "/v1/.*", [](const httplib::Request & req, httplib::Response & res) {
+            std::string new_path = req.path.substr(endpoint.length());
+            res.set_redirect(new_path);
+            return false;
+        });
+
         /*
         srv->Get(endpoint, [](const httplib::Request & req, httplib::Response & res) {
               if (req.get_header_value("Accept-Encoding").find("gzip") == std::string::npos) {

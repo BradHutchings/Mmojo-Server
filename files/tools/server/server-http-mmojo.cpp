@@ -376,23 +376,42 @@ bool server_http_context::init(const common_params & params) {
 
         // LOG_INF("-- %s%s\n", "endpoint: ", endpoint.c_str());
         
-        srv->Get(endpoint, [](const httplib::Request & req, httplib::Response & res) {
-            if (req.get_header_value("Accept-Encoding").find("gzip") == std::string::npos) {
-                res.set_content("Error: gzip is not supported by this browser", "text/plain");
-            } else {
-                res.set_header("Content-Encoding", "gzip");
-                // COEP and COOP headers, required by pyodide (python interpreter)
-                res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
-                res.set_header("Cross-Origin-Opener-Policy", "same-origin");
-                res.set_content(reinterpret_cast<const char*>(index_html), index_html_len, "text/html; charset=utf-8");
-            }
+        // using embedded static index.html
+        srv->Get(endpoint + "/", [](const httplib::Request & /*req*/, httplib::Response & res) {
+            // COEP and COOP headers, required by pyodide (python interpreter)
+            res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
+            res.set_header("Cross-Origin-Opener-Policy", "same-origin");
+            res.set_content(reinterpret_cast<const char*>(index_html), index_html_len, "text/html; charset=utf-8");
             return false;
         });
-
-        srv->Get(endpoint + "/", [](const httplib::Request & req, httplib::Response & res) {
-            res.set_redirect(req.path.substr(0, req.path.length() - 1));
+        srv->Get(endpoint + "/bundle.js", [](const httplib::Request & /*req*/, httplib::Response & res) {
+            res.set_content(reinterpret_cast<const char*>(bundle_js), bundle_js_len, "application/javascript; charset=utf-8");
             return false;
-        });        
+        });
+        srv->Get(endpoint + "/bundle.css", [](const httplib::Request & /*req*/, httplib::Response & res) {
+            res.set_content(reinterpret_cast<const char*>(bundle_css), bundle_css_len, "text/css; charset=utf-8");
+            return false;
+        });
+      
+        /*
+        srv->Get(endpoint, [](const httplib::Request & req, httplib::Response & res) {
+              if (req.get_header_value("Accept-Encoding").find("gzip") == std::string::npos) {
+                  res.set_content("Error: gzip is not supported by this browser", "text/plain");
+              } else {
+                  res.set_header("Content-Encoding", "gzip");
+                  // COEP and COOP headers, required by pyodide (python interpreter)
+                  res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
+                  res.set_header("Cross-Origin-Opener-Policy", "same-origin");
+                  res.set_content(reinterpret_cast<const char*>(index_html), index_html_len, "text/html; charset=utf-8");
+              }
+              return false;
+          });
+  
+          srv->Get(endpoint + "/", [](const httplib::Request & req, httplib::Response & res) {
+              res.set_redirect(req.path.substr(0, req.path.length() - 1));
+              return false;
+          });
+        */
     }
     // Mmojo Server END
 

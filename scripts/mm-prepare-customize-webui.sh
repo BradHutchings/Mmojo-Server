@@ -45,6 +45,9 @@ fi
 if [ -f tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte ]; then
     $MMOJO_SED -i -e "s/>llama.cpp<\/h1>/>$APP_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte
 fi
+if [ -f tools/server/public/bundle.js ]; then
+    $MMOJO_SED -i -e "s/\.\/v1\//\/v1\//g" tools/server/public/bundle.js
+fi
 cp tools/server/public/loading-mmojo.html ./loading-mmojo.html
 
 echo "Rebuilding chat user interface."

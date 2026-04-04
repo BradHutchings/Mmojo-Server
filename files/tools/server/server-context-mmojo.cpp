@@ -2543,7 +2543,10 @@ private:
                     // truncate any tokens that are beyond n_past for this slot
                     const llama_pos p0 = slot.prompt.tokens.pos_next();
 
-                    SLT_INF(slot, "n_tokens = %d, memory_seq_rm [%d, end)\n", slot.prompt.n_tokens(), p0);
+                    // Mmojo Server START
+                    // Comment this out:
+                    // SLT_INF(slot, "n_tokens = %d, memory_seq_rm [%d, end)\n", slot.prompt.n_tokens(), p0);
+                    // Mmojo Server END
 
                     if (!llama_memory_seq_rm(llama_get_memory(ctx), slot.id, p0, -1)) {
                         SLT_WRN(slot, "failed to truncate tokens with position >= %d - clearing the memory\n", p0);
@@ -2703,7 +2706,7 @@ private:
                         int completed = slot.prompt.n_tokens() - batch.n_tokens;
                         // completed = slot.prompt.n_tokens();
                         float percent_complete = (float) 100.0 * completed / slot.task->n_tokens();
-                        SLT_INF(slot, "prompt processing: %d / %d (%.1f%%) complete, batch size: %d\n", 
+                        SLT_INF(slot, "prompt processing: %d / %d (%.1f%%) complete, batch: %d\n", 
                           completed, slot.task->n_tokens(), percent_complete, batch.n_tokens );
                         // Mmojo Server END
                     }

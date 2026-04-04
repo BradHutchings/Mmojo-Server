@@ -12,3 +12,10 @@ chat
 8
 --ctx-size
 32768 
+--log-prefix
+--log-timestamps
+# --show-prompt
+--show-messages
+--dont-show-messages-system
+--show-completion
+# --show-completion-tokens

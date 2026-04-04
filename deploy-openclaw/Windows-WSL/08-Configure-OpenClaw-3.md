@@ -34,6 +34,7 @@ Source the `.bashrc` file. Create useful directories. Change some things in the 
 mkdir -p "$HOME/.openclaw/workspace/actions"
 mkdir -p "$HOME/.openclaw/workspace/reports"
 openclaw config set agents.defaults.timeoutSeconds 1200
+openclaw config set agents.defaults.llm.idleTimeoutSeconds 600
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].reasoning true
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].contextWindow 72000
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].maxTokens 72000

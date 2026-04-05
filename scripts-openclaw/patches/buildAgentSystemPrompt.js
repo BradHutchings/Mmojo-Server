@@ -1,6 +1,5 @@
 
-
-
+// Mmojo Patch START
 function buildAgentSystemPrompt_patch(params) {
         const acpEnabled = params.acpEnabled !== false;
         const sandboxedRuntime = params.sandboxInfo?.enabled === true;
@@ -305,3 +304,4 @@ function buildAgentSystemPrompt_patch(params) {
         lines.push("## Runtime", buildRuntimeLine(runtimeInfo, runtimeChannel, runtimeCapabilities, params.defaultThinkLevel), `Reasoning: ${reasoningLevel} (hidden unless on/stream). Toggle /reasoning; /status shows Reasoning when enabled.`);
         return lines.filter(Boolean).join("\n");
 }
+// Mmojo Patch END

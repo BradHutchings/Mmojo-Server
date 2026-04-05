@@ -80,6 +80,17 @@ oc-environment-backup.sh
 Enter "Fresh Install" for the backup name.
 
 ---
+### Updating OpenClaw
+When you see a notice that there is an update available for OpenClaw, **DO NOT** update it in the web browser user interface. Instead, open a terminal connection to your OpenClaw instance and run this command:
+
+```
+# Update the oc-repo.
+oc-update.sh
+```
+
+This will stop the OpenClaw gateway, update OpenClaw, patch a few important things in the compiled JavaScript, and then restart the OpenClaw gateway.
+
+---
 ### Proceed
 - **Next:** [09. Test OpenClaw](09-Test-OpenClaw.md)
 - **Previous:** [07. Configure OpenClaw — Channels, Skills, and API Keys](07-Configure-OpenClaw-2.md)

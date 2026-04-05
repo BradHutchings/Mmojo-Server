@@ -84,11 +84,11 @@ Enter "Fresh Install" for the backup name.
 When you see a notice that there is an update available for OpenClaw, **DO NOT** update it in the web browser user interface. Instead, open a terminal connection to your OpenClaw instance and run this command:
 
 ```
-# Update the oc-repo.
+mm-repo-update-local.sh
 oc-update.sh
 ```
 
-This will stop the OpenClaw gateway, update OpenClaw, patch a few important things in the compiled JavaScript, and then restart the OpenClaw gateway.
+This will update the local clone of the Mmojo Server repo, stop the OpenClaw gateway, update OpenClaw, patch a few important things in the compiled JavaScript, and then restart the OpenClaw gateway.
 
 ---
 ### Proceed

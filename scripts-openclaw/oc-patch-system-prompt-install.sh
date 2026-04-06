@@ -14,6 +14,7 @@ SCRIPT_NAME=$(basename -- "$0")
 # patch does not exist.
 ################################################################################
 
+echo "Installing system prompt patch."
 PATCH_FILE="$REPO_DIR/files-openclaw/patches/buildAgentSystemPrompt.js"
 DIST_DIR="$HOME/.npm-global/lib/node_modules/openclaw/dist"
 SOURCE_SEARCH="function buildAgentSystemPrompt(params)"
@@ -25,7 +26,6 @@ if [ -f "$SOURCE_FILE" ]; then
     PATCH_LINE=${PATCH_LINE_GREP%%:*}
     echo "PATCH_LINE_GREP: $PATCH_LINE_GREP"
     echo "PATCH_LINE: $PATCH_LINE"
-    echo
     if [ "$PATCH_LINE" != "" ] && [ "$PATCH_LINE" -gt "0" ]; then
 		echo "Already patched: $SOURCE_FILE."
 	else
@@ -38,6 +38,7 @@ if [ -f "$SOURCE_FILE" ]; then
 else
 	echo "No source file was found."
 fi
+echo
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

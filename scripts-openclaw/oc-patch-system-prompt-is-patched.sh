@@ -17,8 +17,8 @@ SCRIPT_NAME=$(basename -- "$0")
 DIST_DIR="$HOME/.npm-global/lib/node_modules/openclaw/dist"
 SOURCE_SEARCH="function buildAgentSystemPrompt(params)"
 PATCHED_SEARCH="Mmojo Patch START - buildAgentSystemPrompt"
-SOURCE_SEARCH="function buildAgentSystemPrompt(params)"
-if [ -f "$SOURCE_SEARCH" ]; then
+SOURCE_FILE=$(grep -lr --include="*.js" "$SOURCE_SEARCH" "$DIST_DIR")
+if [ -f "$SOURCE_FILE" ]; then
     echo "SOURCE_FILE: $SOURCE_FILE."
     PATCH_LINE_GREP=$(grep -n "$PATCHED_SEARCH" "$SOURCE_FILE")
     PATCH_LINE=${PATCH_LINE_GREP%%:*}

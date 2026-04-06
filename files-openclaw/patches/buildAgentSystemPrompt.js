@@ -312,29 +312,31 @@ function buildAgentSystemPrompt(params) {
             step = 1;
             var system_prompts_dir = path.join(workspace_parent, "system-prompts");
             step = 2;
-            const now = new Date();
-            step = 3;
-            const formatted_now = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-            step = 4;
-            const base_filename = "system-prompt-" + formatted_now;
-            step = 5;
-            var candidate_name = base_filename;
-            step = 6;
-            var system_prompt_file = fs.join(system_prompts_dir, candidate_name);
-            step = 7;
-            var suffix = 0;
-            step = 8;
-            while (fs.existsSync(system_prompt_file)) {
-                suffix++;
-                system_prompt_file = fs.join(system_prompts_dir, candidate_name + " " + suffix);
-            }
-            step = 9;
-            if (!fs.existsSync(system_prompt_file)) {
-                fs.writeFileSync(system_prompt_file, result);
+            if (fs.existsSync(system_prompts_dir) && fs.lstatSync(system_prompts_dir).isDirectory()) {
+                const now = new Date();
+                step = 3;
+                const formatted_now = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+                step = 4;
+                const base_filename = "system-prompt-" + formatted_now;
+                step = 5;
+                var candidate_name = base_filename;
+                step = 6;
+                var system_prompt_file = path.join(system_prompts_dir, candidate_name);
+                step = 7;
+                var suffix = 0;
+                step = 8;
+                while (fs.existsSync(system_prompt_file)) {
+                    suffix++;
+                    system_prompt_file = fs.join(system_prompts_dir, candidate_name + " " + suffix);
+                }
+                step = 9;
+                if (!fs.existsSync(system_prompt_file)) {
+                    fs.writeFileSync(system_prompt_file, result);
+                }
             }
         }
         catch (err) {
-            fs.writeFileSync("/home/linux/.openclaw/patched-system-prompt-error", "Error: " + step + "\n" + err.name + "\n" + err.message);
+            fs.writeFileSync("/home/linux/.openclaw/patched-system-prompt-error", "Error: " + step + "\n" + err.name + "\n" + err.message + "\n");
         }
         
         return result;

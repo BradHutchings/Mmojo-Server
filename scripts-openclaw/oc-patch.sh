@@ -17,7 +17,7 @@ SCRIPT_NAME=$(basename -- "$0")
 SEARCH="const BARE_SESSION_RESET_PROMPT_BASE = \".*\";"
 REPLACE="const BARE_SESSION_RESET_PROMPT_BASE = \"A new session was started via /new or /reset. Run your Session Startup sequence - read the required files before responding to the user. Then greet the user as instructed.\";"
 
-FILE=$(grep -lr --include="*.js" "$SEARCH" ./.npm-global/lib/node_modules/openclaw/dist)
+FILE=$(grep -lr --include="*.js" "$SEARCH" "$HOME/.npm-global/lib/node_modules/openclaw/dist")
 if [ -f "$FILE" ]; then
     $MMOJO_SED -i -e "s+${SEARCH}+${REPLACE}+g" $FILE
 fi
@@ -35,7 +35,7 @@ openclaw config set agents.defaults.llm.idleTimeoutSeconds 600
 
 SEARCH="timeoutMs: 15e3"
 REPLACE="timeoutMs: 600e3"
-FILE=$(grep -lr --include="llm-slug*.js" "$SEARCH" ./.npm-global/lib/node_modules/openclaw/dist)
+FILE=$(grep -lr --include="llm-slug*.js" "$SEARCH" "$HOME/.npm-global/lib/node_modules/openclaw/dist")
 if [ -f "$FILE" ]; then
     $MMOJO_SED -i -e "s+${SEARCH}+${REPLACE}+g" $FILE
 fi

@@ -11,6 +11,7 @@ SCRIPT_NAME=$(basename -- "$0")
 
 if [ "$(oc-gateway-status.sh)" == "Not running" ]; then
     echo "Starting the OpenClaw gateway."
+    echo ""
     system_prompts_dir="$HOME/.openclaw/system-prompts"
     if [ -d "$system_prompts_dir" ]; then
         rm "$system_prompts_dir/"*

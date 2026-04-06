@@ -29,7 +29,10 @@ if [ -f "$SOURCE_FILE" ]; then
     if [ "$PATCH_LINE" != "" ] && [ "$PATCH_LINE" -gt "0" ]; then
 		echo "Already patched: $SOURCE_FILE."
 	else
+		ACTIVE_FUNCTION="function buildAgentSystemPrompt(params)"
+		INACTIVE_FUNCTION="function buildAgentSystemPrompt_inactive(params)"
 		echo "Patching: $SOURCE_FILE."
+        $MMOJO_SED -i -e "s/$ACTIVE_FUNCTION/$INACTIVE_FUNCTION/g" "$SOURCE_FILE"
 		cat $PATCH_FILE >> $SOURCE_FILE
 	fi
 else

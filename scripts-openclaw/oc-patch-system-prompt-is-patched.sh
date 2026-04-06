@@ -25,7 +25,7 @@ if [ -f "$SOURCE_FILE" ]; then
     echo "PATCH_LINE_GREP: $PATCH_LINE_GREP"
     echo "PATCH_LINE: $PATCH_LINE"
     echo
-    if [ "$PATCH_LINE" -gt "0" ]; then
+    if [ "$PATCH_LINE" != "" ] && [ "$PATCH_LINE" -gt "0" ]; then
         echo "File is patched: $SOURCE_FILE."
     else
         echo "File is not patched: $SOURCE_FILE."

@@ -302,6 +302,26 @@ function buildAgentSystemPrompt(params) {
         if (!isMinimal) lines.push("## Silent Replies", `When you have nothing to say, respond with ONLY: ${SILENT_REPLY_TOKEN}`, "", "⚠️ Rules:", "- It must be your ENTIRE message — nothing else", `- Never append it to an actual response (never include "${SILENT_REPLY_TOKEN}" in real replies)`, "- Never wrap it in markdown or code blocks", "", `❌ Wrong: "Here's help... ${SILENT_REPLY_TOKEN}"`, `❌ Wrong: "${SILENT_REPLY_TOKEN}"`, `✅ Right: ${SILENT_REPLY_TOKEN}`, "");
         if (!isMinimal && heartbeatPrompt) lines.push("## Heartbeats", `Heartbeat prompt: ${heartbeatPrompt}`, "If you receive a heartbeat poll (a user message matching the heartbeat prompt above), and there is nothing that needs attention, reply exactly:", "HEARTBEAT_OK", "OpenClaw treats a leading/trailing \"HEARTBEAT_OK\" as a heartbeat ack (and may discard it).", "If something needs attention, do NOT include \"HEARTBEAT_OK\"; reply with the alert text instead.", "");
         lines.push("## Runtime", buildRuntimeLine(runtimeInfo, runtimeChannel, runtimeCapabilities, params.defaultThinkLevel), `Reasoning: ${reasoningLevel} (hidden unless on/stream). Toggle /reasoning; /status shows Reasoning when enabled.`);
-        return lines.filter(Boolean).join("\n");
+        // return lines.filter(Boolean).join("\n");
+
+        result = lines.filter(Boolean).join("\n");
+
+        var workspace_parent = path.dirname(params.workspaceDir);
+        var system_prompts_dir = path.join(workspace_parent, "system-prompts");
+        const now = new Date();
+        const formatted_now = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+        const base_filename = "system-prompt-" + formatted_now;
+        var candidate_name = base_filename;
+        var system_prompt_file = fs.join(system_prompts_dir, candidate_name);
+        var suffix = 0;
+        while (fs.existsSync(system_prompt_file)) {
+            suffix++;
+            system_prompt_file = fs.join(system_prompts_dir, candidate_name + " " + suffix);
+        }
+        if (!fs.existsSync(system_prompt_file)) {
+            fs.writeFileSync(system_prompt_file, result);
+        }
+        
+        return result;
 }
 // Mmojo Patch END

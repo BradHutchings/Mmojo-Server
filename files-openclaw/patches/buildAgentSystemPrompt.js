@@ -321,13 +321,13 @@ function buildAgentSystemPrompt(params) {
                 step = 5;
                 var suffix = 0;
                 step = 6;
-                var candidate_name = base_filename + "-" + num.toString().padStart(6, "0");
+                var candidate_name = base_filename + "-" + suffix.toString().padStart(6, "0");
                 step = 7;
                 var system_prompt_file = path.join(system_prompts_dir, candidate_name);
                 step = 8;
                 while (fs.existsSync(system_prompt_file)) {
                     suffix++;
-                    candidate_name = base_filename + "-" + num.toString().padStart(6, "0");
+                    candidate_name = base_filename + "-" + suffix.toString().padStart(6, "0");
                     system_prompt_file = path.join(system_prompts_dir, candidate_name);
                 }
                 step = 9;

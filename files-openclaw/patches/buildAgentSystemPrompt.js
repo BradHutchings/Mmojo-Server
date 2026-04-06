@@ -306,20 +306,28 @@ function buildAgentSystemPrompt(params) {
 
         result = lines.filter(Boolean).join("\n");
 
-        var workspace_parent = path.dirname(params.workspaceDir);
-        var system_prompts_dir = path.join(workspace_parent, "system-prompts");
-        const now = new Date();
-        const formatted_now = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-        const base_filename = "system-prompt-" + formatted_now;
-        var candidate_name = base_filename;
-        var system_prompt_file = fs.join(system_prompts_dir, candidate_name);
-        var suffix = 0;
-        while (fs.existsSync(system_prompt_file)) {
-            suffix++;
-            system_prompt_file = fs.join(system_prompts_dir, candidate_name + " " + suffix);
+        var step = 0;
+        try {
+            var workspace_parent = path.dirname(params.workspaceDir);
+            var system_prompts_dir = path.join(workspace_parent, "system-prompts");
+            const now = new Date();
+            const formatted_now = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+            const base_filename = "system-prompt-" + formatted_now;
+            var candidate_name = base_filename;
+            var system_prompt_file = fs.join(system_prompts_dir, candidate_name);
+            var suffix = 0;
+            step = 1;
+            while (fs.existsSync(system_prompt_file)) {
+                suffix++;
+                system_prompt_file = fs.join(system_prompts_dir, candidate_name + " " + suffix);
+            }
+            step = 2;
+            if (!fs.existsSync(system_prompt_file)) {
+                fs.writeFileSync(system_prompt_file, result);
+            }
         }
-        if (!fs.existsSync(system_prompt_file)) {
-            fs.writeFileSync(system_prompt_file, result);
+        catch (err) {
+            fs.writeFileSync("/home/linux/.openclaw/patched-system-prompt-error", "Error: " + step);
         }
         
         return result;

@@ -14,30 +14,29 @@ SCRIPT_NAME=$(basename -- "$0")
 # patch does not exist.
 ################################################################################
 
+PATCH_FILE="$REPO_DIR/files-openclaw/patches/buildAgentSystemPrompt.js"
 DIST_DIR="$HOME/.npm-global/lib/node_modules/openclaw/dist"
+SOURCE_SEARCH="function buildAgentSystemPrompt(params)"
 PATCHED_SEARCH="Mmojo Patch START - buildAgentSystemPrompt"
-PATCHED_FILE=$(grep -lr --include="*.js" "$PATCHED_FILE" "$DIST_DIR")
-INACTIVE_FUNCTION="function buildAgentSystemPrompt_inactive(params)"
-ACTIVE_FUNCTION="function buildAgentSystemPrompt(params)"
-if [ -f "$PATCHED_FILE" ]; then
-    echo "PATCHED_FILE: $PATCHED_FILE."
-    PATCH_LINE_GREP=$(grep -n "$PATCHED_SEARCH" "$PATCHED_FILE")
+SOURCE_FILE=$(grep -lr --include="*.js" "$SOURCE_SEARCH" "$DIST_DIR")
+if [ -f "$SOURCE_FILE" ]; then
+    echo "SOURCE_FILE: $SOURCE_FILE."
+    PATCH_LINE_GREP=$(grep -n "$PATCHED_SEARCH" "$SOURCE_FILE")
     PATCH_LINE=${PATCH_LINE_GREP%%:*}
     echo "PATCH_LINE_GREP: $PATCH_LINE_GREP"
     echo "PATCH_LINE: $PATCH_LINE"
     echo
-    if [ "$PATCH_LINE" -gt "0" ]; then
+    if [ "$PATCH_LINE" != "" ] && [ "$PATCH_LINE" -gt "0" ]; then
         # Remove the patch at the bottom
         # Restore the function name.
         echo "Removing patch: $PATCHED_FILE."
         $MMOJO_SED -i -e "/$PATCH_SEARCH/,\$d" "$PATCHED_FILE"
         $MMOJO_SED -i -e "s/$INACTIVE_FUNCTION/$ACTIVE_FUNCTION/g" "$PATCHED_FILE"
-    else
-        # Should never happen.
-        echo "Not patched: $PATCHED_FILE."
-    fi
+	else
+        echo "File is not patched: $SOURCE_FILE."
+	fi
 else
-    echo "No patched file was found."
+	echo "No source file was found."
 fi
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

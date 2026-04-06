@@ -319,7 +319,7 @@ function buildAgentSystemPrompt(params) {
                 step = 4;
                 const base_filename = "system-prompt-" + formatted_now;
                 step = 5;
-                var suffix = 0;
+                var suffix = 1;
                 step = 6;
                 var candidate_name = base_filename + "-" + suffix.toString().padStart(6, "0");
                 step = 7;

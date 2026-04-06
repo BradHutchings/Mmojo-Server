@@ -17,24 +17,20 @@ SCRIPT_NAME=$(basename -- "$0")
 PATCH_FILE="$REPO_DIR/files-openclaw/patches/buildAgentSystemPrompt.js"
 DIST_DIR="$HOME/.npm-global/lib/node_modules/openclaw/dist"
 SOURCE_SEARCH="function buildAgentSystemPrompt(params)"
-PATCH_SEARCH="Mmojo Patch START - buildAgentSystemPrompt"
+PATCHED_SEARCH="Mmojo Patch START - buildAgentSystemPrompt"
 SOURCE_FILE=$(grep -lr --include="*.js" "$SOURCE_SEARCH" "$DIST_DIR")
 if [ -f "$SOURCE_FILE" ]; then
     echo "SOURCE_FILE: $SOURCE_FILE."
-    PATCH_LINE_GREP=$(grep -n "$PATCH_SEARCH" "$SOURCE_FILE")
+    PATCH_LINE_GREP=$(grep -n "$PATCHED_SEARCH" "$SOURCE_FILE")
     PATCH_LINE=${PATCH_LINE_GREP%%:*}
     echo "PATCH_LINE_GREP: $PATCH_LINE_GREP"
     echo "PATCH_LINE: $PATCH_LINE"
     echo
-	if [ -f "$PATCH_FILE" ]; then
-		if [ "$PATCH_LINE" gt "0" ]; then
-			echo "Already patched: $SOURCE_FILE."
-		else
-			echo "Patching: $FILE."
-			cat $PATCH_FILE >> $SOURCE_FILE
-		fi
+	if [ "$PATCH_LINE" gt "0" ]; then
+		echo "Already patched: $SOURCE_FILE."
 	else
-	  echo "No patch file was found."
+		echo "Patching: $FILE."
+		cat $PATCH_FILE >> $SOURCE_FILE
 	fi
 else
 	echo "No source file was found."

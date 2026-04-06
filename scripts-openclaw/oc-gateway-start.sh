@@ -9,7 +9,14 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-openclaw gateway start
+if [ "$(oc-gateway-status.sh)" == "Not running" ]; then
+    echo "Starting the OpenClaw gateway."
+    system_prompts_dir="$HOME/.openclaw/system-prompts"
+    if [ -d "$system_prompts_dir" ]; then
+        rm "$system_prompts_dir/"*
+    fi
+    openclaw gateway start
+fi
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

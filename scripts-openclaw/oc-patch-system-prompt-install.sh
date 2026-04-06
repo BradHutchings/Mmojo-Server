@@ -29,7 +29,7 @@ if [ -f "$SOURCE_FILE" ]; then
     if [ "$PATCH_LINE" != "" ] && [ "$PATCH_LINE" -gt "0" ]; then
 		echo "Already patched: $SOURCE_FILE."
 	else
-		echo "Patching: $FILE."
+		echo "Patching: $SOURCE_FILE."
 		cat $PATCH_FILE >> $SOURCE_FILE
 	fi
 else

@@ -27,11 +27,13 @@ if [ -f "$SOURCE_FILE" ]; then
     echo "PATCH_LINE: $PATCH_LINE"
     echo
     if [ "$PATCH_LINE" != "" ] && [ "$PATCH_LINE" -gt "0" ]; then
+		ACTIVE_FUNCTION="function buildAgentSystemPrompt(params)"
+		INACTIVE_FUNCTION="function buildAgentSystemPrompt_inactive(params)"
         # Remove the patch at the bottom
         # Restore the function name.
         echo "Removing patch: $PATCHED_FILE."
-        $MMOJO_SED -i -e "/$PATCH_SEARCH/,\$d" "$PATCHED_FILE"
-        $MMOJO_SED -i -e "s/$INACTIVE_FUNCTION/$ACTIVE_FUNCTION/g" "$PATCHED_FILE"
+        $MMOJO_SED -i -e "/$PATCH_SEARCH/,\$d" "$SOURCE_FILE"
+        $MMOJO_SED -i -e "s/$INACTIVE_FUNCTION/$ACTIVE_FUNCTION/g" "$SOURCE_FILE"
 	else
         echo "File is not patched: $SOURCE_FILE."
 	fi

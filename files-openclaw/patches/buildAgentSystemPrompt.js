@@ -1,5 +1,5 @@
 
-// Mmojo Patch START
+// Mmojo Patch START - buildAgentSystemPrompt
 function buildAgentSystemPrompt_patch(params) {
         const acpEnabled = params.acpEnabled !== false;
         const sandboxedRuntime = params.sandboxInfo?.enabled === true;

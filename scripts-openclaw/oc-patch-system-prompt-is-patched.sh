@@ -29,9 +29,9 @@ if [ -f "$SOURCE_FILE" ]; then
     echo "PATCH_LINE: $PATCH_LINE"
     echo
     if [ "$PATCH_LINE" -gt "0" ]; then
-        echo "File is patched: $FILE."
+        echo "File is patched: $SOURCE_FILE."
     else
-        echo "File is not patched: $FILE."
+        echo "File is not patched: $SOURCE_FILE."
     fi
 else
     echo "No source file was found."

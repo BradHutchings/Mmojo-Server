@@ -327,7 +327,7 @@ function buildAgentSystemPrompt(params) {
                 step = 8;
                 while (fs.existsSync(system_prompt_file)) {
                     suffix++;
-                    system_prompt_file = fs.join(system_prompts_dir, candidate_name + " " + suffix);
+                    system_prompt_file = fs.join(system_prompts_dir, candidate_name + "-" + num.toString().padStart(6, "0"););
                 }
                 step = 9;
                 if (!fs.existsSync(system_prompt_file)) {

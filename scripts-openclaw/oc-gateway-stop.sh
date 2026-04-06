@@ -11,6 +11,7 @@ SCRIPT_NAME=$(basename -- "$0")
 
 if [ "$(oc-gateway-status.sh)" == "Running" ]; then
     echo "Stopping the OpenClaw gateway."
+    echo ""
     openclaw gateway stop
 fi
 

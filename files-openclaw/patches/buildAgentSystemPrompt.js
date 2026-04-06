@@ -319,15 +319,16 @@ function buildAgentSystemPrompt(params) {
                 step = 4;
                 const base_filename = "system-prompt-" + formatted_now;
                 step = 5;
-                var candidate_name = base_filename;
-                step = 6;
-                var system_prompt_file = path.join(system_prompts_dir, candidate_name);
-                step = 7;
                 var suffix = 0;
+                step = 6;
+                var candidate_name = base_filename + "-" + num.toString().padStart(6, "0");
+                step = 7;
+                var system_prompt_file = path.join(system_prompts_dir, candidate_name);
                 step = 8;
                 while (fs.existsSync(system_prompt_file)) {
                     suffix++;
-                    system_prompt_file = fs.join(system_prompts_dir, candidate_name + "-" + num.toString().padStart(6, "0"););
+                    candidate_name = base_filename + "-" + num.toString().padStart(6, "0");
+                    system_prompt_file = path.join(system_prompts_dir, candidate_name);
                 }
                 step = 9;
                 if (!fs.existsSync(system_prompt_file)) {

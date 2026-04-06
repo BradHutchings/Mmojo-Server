@@ -334,7 +334,7 @@ function buildAgentSystemPrompt(params) {
             }
         }
         catch (err) {
-            fs.writeFileSync("/home/linux/.openclaw/patched-system-prompt-error", "Error: " + step);
+            fs.writeFileSync("/home/linux/.openclaw/patched-system-prompt-error", "Error: " + step + "\n" + err.name + "\n" + error.message);
         }
         
         return result;

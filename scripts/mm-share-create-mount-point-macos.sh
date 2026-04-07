@@ -14,7 +14,7 @@ printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 #----------------------------------------
 if [ ! -d "$SHARE_DIR_MOUNT_POINT" ]; then
     echo "Creating Mmojo Share mount point - $SHARE_DIR_MOUNT_POINT."
-    sudo mkdir -p $SHARE_DIR_MOUNT_POINT
+    mkdir -p $SHARE_DIR_MOUNT_POINT
 fi
 
 #----------------------------------------

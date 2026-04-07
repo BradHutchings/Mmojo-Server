@@ -25,13 +25,8 @@ if [ ! -d $SHARE_DIR_MOUNT_POINT ]; then
 fi
 
 if [ "$HOST" == "[HOST]" ]; then
-   echo "Your mm-mount-mmojo-share.sh script is not configured."
+   echo "Your mm-share-mount.sh script is not configured."
    exit
-fi
-
-RUNNING_IN_WSL=0
-if [[ $(uname -r) =~ Microsoft|WSL ]]; then
-    RUNNING_IN_WSL=1
 fi
 
 if [[ ! $(findmnt $SHARE_DIR_MOUNT_POINT) ]]; then

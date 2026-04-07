@@ -85,10 +85,10 @@ Notice your new prompt.
 
 
 ---
-### Install homebrew and bash
+### Install homebrew
 Homebrew is the prefered package mamager for macOS.
 
-In the Terminal, signed in as the new mmojo user:
+In the Terminal, install homebrew:
 ```
 mkdir -p $HOME/homebrew
 curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/homebrew
@@ -98,6 +98,14 @@ brew update
 brew list
 
 brew install bash
+sudo cp $HOME/homebrew/bin/bash /usr/local
+```
+
+---
+### Install bash and gsed with homebrew
+In the Terminal, install bash and gsed with homebrew:
+```
+brew install bash gsed
 sudo cp $HOME/homebrew/bin/bash /usr/local
 ```
 

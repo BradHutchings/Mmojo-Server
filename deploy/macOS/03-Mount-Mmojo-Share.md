@@ -17,8 +17,6 @@ This script creates a mount point for the Mmojo Share and a script for mounting 
 mm-share-create-mount-point-macos.sh
 ```
 
-NEED TO IMPLEMENT THAT SCRIPT -MAC SPECIFIC - MOUNT IN $HOME/mm-share. Fix environment script.
-
 ---
 ### Edit the Mmojo Share Mount Script
 Edit the script to put your `COMPUTER` and `USER` names in. `Ctrl-X`, then `Y`, then `Enter` to exit and save.

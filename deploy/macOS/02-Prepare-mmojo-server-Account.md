@@ -75,7 +75,7 @@ You can prepend `(MmojoServer)-` to the shell prompt so you can easily indentify
 cat << EOF >> .zshrc
 PS1="(MmojoServer)-$PS1"
 EOF
-. .zshrc
+source .zshrc
 ```
 
 <img width="331" height="32" alt="image" src="https://github.com/user-attachments/assets/0610c9f1-e5b3-4a1d-b5f8-73a056d2fa1f" />

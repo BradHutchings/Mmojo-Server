@@ -9,7 +9,11 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-openclaw gateway stop
+if [ "$(oc-gateway-status.sh)" == "Running" ]; then
+    echo "Stopping the OpenClaw gateway."
+    echo ""
+    openclaw gateway stop
+fi
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

@@ -7,4 +7,20 @@
 --threads-http
 8
 --ctx-size
-32768 
+32768
+#----------------------------------------
+# GPU Flags:
+#----------------------------------------
+# -ngl
+# all
+#
+#----------------------------------------
+# Debug output flags:
+#----------------------------------------
+--log-prefix
+--log-timestamps
+# --show-prompt
+--show-messages
+--dont-show-messages-system
+--show-completion
+# --show-completion-tokens

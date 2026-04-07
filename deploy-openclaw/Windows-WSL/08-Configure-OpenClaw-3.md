@@ -34,6 +34,7 @@ Source the `.bashrc` file. Create useful directories. Change some things in the 
 mkdir -p "$HOME/.openclaw/workspace/actions"
 mkdir -p "$HOME/.openclaw/workspace/reports"
 openclaw config set agents.defaults.timeoutSeconds 1200
+openclaw config set agents.defaults.llm.idleTimeoutSeconds 600
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].reasoning true
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].contextWindow 72000
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].maxTokens 72000
@@ -77,6 +78,17 @@ oc-environment-backup.sh
 ```
 
 Enter "Fresh Install" for the backup name.
+
+---
+### Updating OpenClaw
+When you see a notice that there is an update available for OpenClaw, **DO NOT** update it in the web browser user interface. Instead, open a terminal connection to your OpenClaw instance and run this command:
+
+```
+mm-repo-update-local.sh
+oc-update.sh
+```
+
+This will update the local clone of the Mmojo Server repo, stop the OpenClaw gateway, update OpenClaw, patch a few important things in the compiled JavaScript, and then restart the OpenClaw gateway.
 
 ---
 ### Proceed

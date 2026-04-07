@@ -85,9 +85,7 @@ Notice your new prompt.
 
 
 ---
-### Install homebrew
-- **CAN THIS MOVE TO BUILD??**
-
+### Install homebrew and bash
 Homebrew is the prefered package mamager for macOS.
 
 In the Terminal, signed in as the new mmojo user:
@@ -98,6 +96,7 @@ echo 'eval "$($HOME/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 eval "$($HOME/homebrew/bin/brew shellenv)"
 brew update
 brew list
+brew install bash
 ```
 
 ---

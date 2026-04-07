@@ -31,7 +31,7 @@ fi
 
 if [[ ! $(findmnt $SHARE_DIR_MOUNT_POINT) ]]; then
    echo "Attempting to mount Mmojo Share as cifs. You may be prompted for your share password."
-   mount -t smbfs //$USER@$HOST/$SHARE $SHARE_DIR_MOUNT_POINT
+   mount_smbfs //$USER@$HOST/$SHARE $SHARE_DIR_MOUNT_POINT
 fi
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

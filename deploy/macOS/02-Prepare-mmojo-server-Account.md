@@ -24,33 +24,23 @@ fi
 ```
 
 ---
-### Delete your Existing mmojo User Account
-If you have a previous `mmojo` user account on your Mac, let's delete it and start over.
+### Delete your Existing mmojo-server User Account
+If you have a previous `mmojo-server` user account on your Mac, let's delete it and start over.
 
 - Log in as an admin user.
 - Settings > Users and Groups.
-- Delete the `mmojo` or `Mmojo Server` account.
+- Delete the `mmojo-server` or `Mmojo Server` account.
 
 ---
-### Create a new mmojo User Account
+### Create a new mmojo-server User Account
 - Log in as an admin user.
 - Settings > Users and Groups.
 - New account
-  - mmojo
+  - Administrator
+  - mmojo-server
   - Mmojo Server
   - admin123!
 - More details here.
-
----
-### Optional: Hide mmojo Account from Login Screen
-You won't need to log into your `mmojo` user account from the Desktop. You will log into from a Terminal via `su mmojo` or via SSH.
-
-Open a Terminal and paste this command:
-```
-sudo dscl . create /Users/mmojo IsHidden 1
-```
-
-Keep the Terminal open.
 
 ---
 ### Enable SSH
@@ -60,7 +50,7 @@ Settings > General > Sharing > Advanced
 
 
 ---
-### Login as mmojo
+### Login as mmojo-server
 Note: I think this would be better as ssh. Gotta try that.
 ```
 ssh mmojo@localhost

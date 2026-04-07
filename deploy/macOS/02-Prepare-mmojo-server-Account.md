@@ -53,7 +53,7 @@ Settings > General > Sharing > Advanced
 ### Login as mmojo-server
 Note: I think this would be better as ssh. Gotta try that.
 ```
-ssh mmojo@localhost
+ssh mmojo-server@localhost
 ```
 
 Are you sure you want to continue connecting?

@@ -17,6 +17,7 @@ fi
 
 hasSystemPromptPath=false
 patched=$(oc-patch-system-prompt-is-patched.sh)
+echo "patched: $patched"
 if [ "$patched" == "*File is patched*" ]; then
     echo "The system prompt patch is installed. Removing patch before updating."
     hasSystemPromptPath=true

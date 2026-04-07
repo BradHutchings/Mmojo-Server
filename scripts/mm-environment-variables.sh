@@ -58,6 +58,7 @@ export SHARE_DIR_MODELS="$SHARE_DIR_MOUNT_POINT/$MOOELS_DIR_NAME"
 export SHARE_DIR_PACKAGES="$SHARE_DIR_MOUNT_POINT/$PACKAGES_DIR_NAME"
 
 export SHARE_DIR_MOUNT_SCRIPT="mm-share-mount.sh"
+export SHARE_DIR_MOUNT_SCRIPT_MACOS="mm-share-mount-macos.sh"
 
 echo "Setting local models paths."
 export MODELS_DIR="$HOME/$MOOELS_DIR_NAME"

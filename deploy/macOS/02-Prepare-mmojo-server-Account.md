@@ -69,6 +69,21 @@ admin123!
 (picture su'd here.)
 
 ---
+### Remove sudo Timeout
+You will use the `sudo` command often, so let's make it not expire.
+```
+sudo visudo
+```
+
+Below the first `Defaults` section, paste this:
+```
+Defaults        env_reset,timestamp_timeout=-1
+```
+<img width="926" height="134" alt="image" src="https://github.com/user-attachments/assets/7793f414-3f52-4c38-93ee-801584e8b102" />
+
+`i` to insert, paste, `esc` after you paste, `:wq` to save and quit.
+
+---
 ### Customize the Shell Prompt
 You can prepend `(MmojoServer)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
 ```

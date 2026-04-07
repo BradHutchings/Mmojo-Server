@@ -37,7 +37,7 @@ ls -al $SHARE_DIR_MOUNT_POINT
 ---
 ### Proceed
 - **Next:** [04. Download Models](04-Download-Models.md)
-- **Previous:** [02. Prepare mmojo Account](02-Prepare-mmojo-Account.md)
+- **Previous:** [02. Prepare mmojo-server Account](02-Prepare-mmojo-server-Account.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---

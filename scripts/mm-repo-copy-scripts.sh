@@ -16,8 +16,9 @@ if [ -d "$HOME_SCRIPTS" ]; then
     chmod a+x $HOME_SCRIPTS/mm-*.sh
 
     # on darwin, change #!/bin/bash to "#!$HOME/homebrew/bin/bash"
-    # $MMOJO_SED -i -e "1c\#!/usr/local/bash" $HOME_SCRIPTS/mm-*.sh
-    $MMOJO_SED -i -e "1c\#!$HOME/homebrew/bin/bash" $HOME_SCRIPTS/mm-*.sh
+    if [ "$(uname -s)" = "Darwin" ]; then
+        $MMOJO_SED -i -e "1c\#!$HOME/homebrew/bin/bash" $HOME_SCRIPTS/mm-*.sh
+    fi
 fi
 
 if [ -d "$HOME_OC_SCRIPTS" ]; then
@@ -26,8 +27,11 @@ if [ -d "$HOME_OC_SCRIPTS" ]; then
     cp $REPO_DIR_SCRIPTS/mm-repo-*.sh $HOME_OC_SCRIPTS
     chmod a+x $HOME_OC_SCRIPTS/mm-*.sh
     chmod a+x $HOME_OC_SCRIPTS/oc-*.sh
-    $MMOJO_SED -i -e "1c\#!$HOME/homebrew/bin/bash" $HOME_OC_SCRIPTS/mm-*.sh
-    $MMOJO_SED -i -e "1c\#!$HOME/homebrew/bin/bash" $HOME_OC_SCRIPTS/oc-*.sh
+    # on darwin, change #!/bin/bash to "#!$HOME/homebrew/bin/bash"
+    if [ "$(uname -s)" = "Darwin" ]; then
+        $MMOJO_SED -i -e "1c\#!$HOME/homebrew/bin/bash" $HOME_SCRIPTS/mm-*.sh
+        $MMOJO_SED -i -e "1c\#!$HOME/homebrew/bin/bash" $HOME_OC_SCRIPTS/oc-*.sh
+    fi
 fi
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

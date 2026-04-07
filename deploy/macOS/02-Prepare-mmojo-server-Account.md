@@ -96,7 +96,9 @@ echo 'eval "$($HOME/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 eval "$($HOME/homebrew/bin/brew shellenv)"
 brew update
 brew list
+
 brew install bash
+sudo cp $HOME/homebrew/bin/bash /usr/local
 ```
 
 ---

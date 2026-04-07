@@ -153,11 +153,20 @@ export DEPLOY_DIR="$HOME/mm-deploy"
 export PROXY_DIR="$HOME/mm-proxy"
 
 # Run this script when user starts a session.
-SEARCH_STRING="\. mm-environment-variables.sh"
-COMMAND_STRING=". mm-environment-variables.sh"
-BASHRC_PATH="$HOME/.bashrc"
-if ! grep -q "$SEARCH_STRING" "$BASHRC_PATH"; then
-    echo $COMMAND_STRING >> $BASHRC_PATH
+if [ "$(uname -s)" = "Darwin" ]; then
+    SEARCH_STRING="source mm-environment-variables.sh"
+    COMMAND_STRING="source mm-environment-variables.sh"
+    ZSHRC_PATH="$HOME/.zshrc"
+    if ! grep -q "$SEARCH_STRING" "$ZSHRC_PATH"; then
+        echo $COMMAND_STRING >> $ZSHRC_PATH
+    fi
+else
+    SEARCH_STRING="\. mm-environment-variables.sh"
+    COMMAND_STRING=". mm-environment-variables.sh"
+    BASHRC_PATH="$HOME/.bashrc"
+    if ! grep -q "$SEARCH_STRING" "$BASHRC_PATH"; then
+        echo $COMMAND_STRING >> $BASHRC_PATH
+    fi
 fi
 
 if [ -z "$SAVE_PATH" ]; then

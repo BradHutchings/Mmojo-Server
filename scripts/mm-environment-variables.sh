@@ -48,8 +48,8 @@ export REPO_DIR_SCRIPTS_OPENCLAW="$REPO_DIR/scripts-openclaw"
 
 echo "Setting Mmojo Share paths."
 if [ "$(uname -s)" = "Darwin" ]; then
-# export SHARE_DIR_MOUNT_POINT="$HOME/mm-share"
-export SHARE_DIR_MOUNT_POINT="/Volumes/mm-share"
+export SHARE_DIR_MOUNT_POINT="$HOME/mm-share"
+# export SHARE_DIR_MOUNT_POINT="/Volumes/mm-share"
 else
 export SHARE_DIR_MOUNT_POINT="/mnt/mmojo"
 fi

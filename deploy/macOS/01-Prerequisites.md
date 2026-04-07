@@ -4,7 +4,7 @@
 This step contains prerequisites for deploying Mmojo Server using this recipe. We will install Mmojo Server in under in its own user account on your Mac.
 
 **Skip Ahead:**
-- [02. Prepare mmojo Account](02-Prepare-mmojo-Account.md)
+- [02. Prepare mmojo-server Account](02-Prepare-mmojo-server-Account.md)
 
 *When you are finished with this step, proceed to the next step using the **Proceed** links at the bottom of this page.*
 
@@ -18,7 +18,7 @@ You will need an administrator account on your Mac to complete these instruction
 
 ---
 ### Proceed
-- **Next:** [02. Prepare mmojo Account](02-Prepare-mmojo-Account.md)
+- **Next:** [02. Prepare mmojo-server Account](02-Prepare-mmojo-server-Account.md)
 - **Previous:** This is the first step in this guide.
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 

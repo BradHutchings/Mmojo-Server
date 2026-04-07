@@ -34,6 +34,9 @@ mm-models-download.sh
 cat << EOF >> $_MODEL_QUEUE
 Qwen3.5-2B-v3.5-q8_0.gguf
 Qwen3.5-4B-v3.5-q8_0.gguf
+Qwen3.5-9B-v3.5-q4-K-M.gguf
+Qwen3.5-9B-v3.5-q5-K-M.gguf
+Qwen3.5-9B-v3.5-q6-K.gguf
 Qwen3.5-9B-v3.5-q8_0.gguf
 EOF
 mm-models-download.sh

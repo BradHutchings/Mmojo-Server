@@ -154,8 +154,8 @@ if [ "$REPO_DIR" ]; then
 fi
 mkdir -p $REPO_DIR
 git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
-. $REPO_DIR_SCRIPTS/mm-environment-variables.sh
-. $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
+source $REPO_DIR_SCRIPTS/mm-environment-variables.sh
+source $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
 if ! grep -q "mm-env=" "$HOME/.zshrc"; then
 cat << EOF1 >> $HOME/.zshrc
 alias mm-env="source mm-environment-variables.sh"

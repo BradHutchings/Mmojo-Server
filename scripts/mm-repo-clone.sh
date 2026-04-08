@@ -19,10 +19,10 @@ mkdir -p $REPO_DIR
 git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
 
 # mm-repo-update-local.sh uses these variables, so set them first.
-. $REPO_DIR_SCRIPTS/mm-environment-variables.sh
+source $REPO_DIR_SCRIPTS/mm-environment-variables.sh
 
 # mm-repo-update-local.sh copies mm- scripts to $HOME/mm-scripts
-. $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
+$REPO_DIR_SCRIPTS/mm-repo-update-local.sh
 
 if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc

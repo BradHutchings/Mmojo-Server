@@ -147,6 +147,7 @@ The Mmojo Server Github repositort has scripts and tools for installing and buil
 ```
 export REPO_DIR="$HOME/mm-repo"
 export REPO_DIR_SCRIPTS="$REPO_DIR/scripts"
+export MMOJO_SED="/usr/local/gsed"
 cd $HOME
 if [ "$REPO_DIR" ]; then
   rm -r -f $REPO_DIR

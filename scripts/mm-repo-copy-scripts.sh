@@ -19,12 +19,10 @@ if [ -d "$HOME_SCRIPTS" ]; then
 
     # on darwin, change "/bin/bash" to "/usr/local/bash"
     if ($MMOJO_DARWIN); then
-        echo "- Darwin 3"
-        substitution='1c#!/usr/local/bash'
         cd "$HOME_SCRIPTS"
         for file in mm-*.sh; do
             echo "Fixing $file."
-            $MMOJO_SED -i -e '1c#!/usr/local/bash' $file
+            # $MMOJO_SED -i -e '1c#!/usr/local/bash' $file
         done
     fi
 fi

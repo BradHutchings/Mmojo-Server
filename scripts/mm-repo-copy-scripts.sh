@@ -10,7 +10,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-echo "Shell: $0"
+echo "Shell: $(readlink -f /proc/$$/exe)"
 
 wd=$(pwd)
 

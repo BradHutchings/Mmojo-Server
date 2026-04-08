@@ -24,12 +24,17 @@ source $REPO_DIR_SCRIPTS/mm-environment-variables.sh
 # mm-repo-update-local.sh copies mm- scripts to $HOME/mm-scripts
 $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
 
-if ! grep -q "mm-env=" "$HOME/.bashrc"; then
-cat << EOF1 >> $HOME/.bashrc
+rc_file=".bashrc"
+if [ "$(uname -s)" = "Darwin" ]; then
+    rc_file=".zshrc"
+fi
+
+if ! grep -q "mm-env=" "$HOME/$rc_file"; then
+cat << EOF1 >> $HOME/$rc_file
 alias mm-env=". mm-environment-variables.sh"
 mm-env
 EOF1
-source $HOME/.bashrc
+source $HOME/$rc_file
 fi
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

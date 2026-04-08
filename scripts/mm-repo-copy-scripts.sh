@@ -10,6 +10,13 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
+if [ -d "$HOME_SCRIPTS" ]; then
+    echo "Has directory: $HOME_SCRIPTS."
+    if [ "$(uname -s)" = "Darwin" ]; then
+        echo "- Darwin"
+    fi
+fi
+
 ### Links don't work - end up modifying repo files on chmod.
 if [ -d "$HOME_SCRIPTS" ]; then
     cp $REPO_DIR_SCRIPTS/mm-*.sh $HOME_SCRIPTS

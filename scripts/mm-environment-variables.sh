@@ -29,6 +29,12 @@ if [ "$(uname -s)" = "Darwin" ]; then
     export MMOJO_SED="/usr/local/gsed"
 fi
 
+echo "Setting MMOJO_RC_FILE."
+export MMOJO_RC_FILE=".bashrc"
+if [ "$(uname -s)" = "Darwin" ]; then
+    export MMOJO_RC_FILE=".zshrc"
+fi
+
 echo "Setting mm-scripts paths."
 export HOME_SCRIPTS="$HOME/mm-scripts"
 export TILDE_SCRIPTS="~/mm-scripts"

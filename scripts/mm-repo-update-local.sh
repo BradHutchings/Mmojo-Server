@@ -16,12 +16,6 @@ if [ -d "$REPO_DIR" ]; then
   git pull
   cd $WD
 
-  ### Links don't work - end up modifying repo files on chmod.
-  if [ -d "$HOME_SCRIPTS" ]; then
-      cp $REPO_DIR_SCRIPTS/mm-*.sh $HOME_SCRIPTS
-      chmod a+x $HOME_SCRIPTS/mm-*.sh
-  fi
-  
   mm-repo-copy-scripts.sh
 else
   echo "The $REPO_DIR directory does not exist."

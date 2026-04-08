@@ -33,7 +33,7 @@ if [ -d "$HOME_SCRIPTS" ]; then
     if ($MMOJO_DARWIN); then
         echo "- Darwin 3"
         substitution='1c#!/usr/local/bash'
-        for file in $HOME_SCRIPTS/mm-*.sh; do
+        for file in $HOME_SCRIPTS/mm-*.sh ; do
             echo "Fixing $file."
             $MMOJO_SED -i -e '1c#!/usr/local/bash' $file
         done

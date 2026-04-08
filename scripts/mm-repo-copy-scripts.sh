@@ -1,4 +1,5 @@
 #!/bin/bash
+exit 0
 
 ################################################################################
 # This script switches your local clone of the Mmojo Server repo to the main

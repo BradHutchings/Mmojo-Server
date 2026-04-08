@@ -28,7 +28,8 @@ if [ -d "$HOME_OC_SCRIPTS" ]; then
     cp $REPO_DIR_SCRIPTS/mm-share-*.sh $HOME_OC_SCRIPTS
     chmod a+x $HOME_OC_SCRIPTS/mm-*.sh
     chmod a+x $HOME_OC_SCRIPTS/oc-*.sh
-    # on darwin, change #!/bin/bash to "#!$HOME/homebrew/bin/bash"
+    
+    # on darwin, change "/bin/bash" to "/usr/local/bash"
     if [ "$(uname -s)" == "Darwin" ]; then
         $MMOJO_SED -i -e "1s|#!/usr/local/bash" $HOME_OC_SCRIPTS/mm-*.sh
         $MMOJO_SED -i -e "1s|#!/usr/local/bash" $HOME_OC_SCRIPTS/oc-*.sh

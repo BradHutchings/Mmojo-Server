@@ -16,11 +16,6 @@ if [ -d "$REPO_DIR" ]; then
   git pull
   cd $WD
 
-  # DELETE THIS BLOCK WHEN THE SCRIPTS ARE GONE. -Brad 2026-03-16
-  # These are the scripts. They need to be executable.
-  chmod -f a+x $REPO_DIR_SCRIPTS/3*.sh
-  chmod -f a+x $REPO_DIR_SCRIPTS/4*.sh
-
   ### Links don't work - end up modifying repo files on chmod.
   if [ -d "$HOME_SCRIPTS" ]; then
       cp $REPO_DIR_SCRIPTS/mm-*.sh $HOME_SCRIPTS

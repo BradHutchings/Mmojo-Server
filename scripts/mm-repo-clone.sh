@@ -24,7 +24,7 @@ source $REPO_DIR_SCRIPTS/mm-environment-variables.sh
 # mm-repo-update-local.sh copies mm- scripts to $HOME/mm-scripts
 $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
 
-if ! grep -q "mm-env=" "$HOME/$rc_file"; then
+if ! grep -q "mm-env=" "$HOME/$MMOJO_RC_FILE"; then
 cat << EOF1 >> $HOME/$MMOJO_RC_FILE
 alias mm-env=". mm-environment-variables.sh"
 mm-env

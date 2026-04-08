@@ -24,7 +24,7 @@ if [ -d "$HOME_SCRIPTS" ]; then
 
     # on darwin, change "/bin/bash" to "/usr/local/bash"
     if [ "$(uname -s)" = "Darwin" ]; then
-        echo "- Darwin"
+        $MMOJO_SED -i -e '1s|/bin/bash|/usr/local/bash|' $HOME_SCRIPTS/mm-*.sh
     fi
 fi
 

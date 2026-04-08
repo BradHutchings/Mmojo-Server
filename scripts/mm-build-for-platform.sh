@@ -11,11 +11,12 @@
 ################################################################################
 
 SCRIPT_NAME=$(basename -- "$0")
-printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2 $3.\n*\n$STARS\n\n"
+printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME $1 $2 $3 $4.\n*\n$STARS\n\n"
 
 processor=$(uname -m)
-variation=$1
-gpus=$2
+build_subdirectory=$1
+variation=$2
+gpus=$3
 
 if [ "$processor" == "arm64" ]; then
     processor="aarch64"
@@ -30,12 +31,16 @@ if [ "$variation" != "compatible" ] && [ "$variation" != "performant" ] && \
     variation="native"
 fi
 
+if [ "$build_subdirectory" == "" ]; then
+    build_subdirectory="build-$processor-$variation-$gpus"
+fi
+
 THIS_BUILD_DIR=$BUILD_DIR
-if [ "$3" == "llama-server" ]; then
+if [ "$4" == "llama-server" ]; then
     THIS_BUILD_DIR=$BUILD_DIR_LLAMA_SERVER
 fi
 
-BUILD_SUBDIRECTORY=""
+BUILD_SUBDIRECTORY=$build_subdirectory
 ARCH_LEVEL_PARAM=""
 GGML_PARAMS="-DGGML_NATIVE=OFF -DGGML_AVX=OFF -DGGML_AVX2=OFF -DGGML_BMI2=OFF -DGGML_F16C=OFF "
 GGML_PARAMS+="-DGGML_FMA=OFF -DGGML_SCHED_MAX_COPIES=4 -DGGML_SSE42=OFF -DGGML_USE_CPU_REPACK=OFF "
@@ -43,10 +48,8 @@ GGML_PARAMS+="-DGGML_USE_LLAMAFILE=OFF -DGGML_USE_OPENMP=OFF -DGGML_RPC=ON "
 VERBOSE="OFF"
 
 if [ $processor == "x86_64" ]; then
-    BUILD_SUBDIRECTORY="$EXECUTABLE_COMPATIBLE_X86_64"
     ARCH_LEVEL_PARAM=" -march=$ARCH_X86_64_COMPATIBLE "
     if [ $variation == "performant" ]; then
-        BUILD_SUBDIRECTORY="$EXECUTABLE_PERFORMANT_X86_64"
         ARCH_LEVEL_PARAM=" -march=$ARCH_X86_64_PERFORMANT  "
         # Reference that x86-64-v3 supports these:
         # https://infotechys.com/x86-64-v3-architecture/
@@ -54,19 +57,15 @@ if [ $processor == "x86_64" ]; then
         GGML_PARAMS+="-DGGML_SCHED_MAX_COPIES=4 -DGGML_SSE42=ON -DGGML_USE_CPU_REPACK=ON "
         GGML_PARAMS+="-DGGML_USE_LLAMAFILE=ON -DGGML_USE_OPENMP=ON "
     elif [ $variation == "native" ]; then
-        BUILD_SUBDIRECTORY="$EXECUTABLE_NATIVE_X86_64"
         ARCH_LEVEL_PARAM=" -march=$ARCH_X86_64_NATIVE  "
         GGML_PARAMS=""
     fi
 fi
 if [ $processor == "aarch64" ]; then
-    BUILD_SUBDIRECTORY="$EXECUTABLE_COMPATIBLE_AARCH64"
     ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_COMPATIBLE "
     if [ $variation == "performant" ]; then
-        BUILD_SUBDIRECTORY="$EXECUTABLE_PERFORMANT_AARCH64"
         ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_PERFORMANT  "
     elif [ $variation == "native" ]; then
-        BUILD_SUBDIRECTORY="$EXECUTABLE_NATIVE_AARCH64"
         ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_NATIVE "
         GGML_PARAMS=""
     fi
@@ -77,7 +76,6 @@ fi
 
 # Pass in pi as a variation to trigger this.
 if [ "$variation" == "pi" ]; then
-    BUILD_SUBDIRECTORY="$EXECUTABLE_RPI5_AARCH64"
     ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_NATIVE "
     GGML_PARAMS=""
     gpus=""
@@ -111,7 +109,7 @@ fi
 # Always build with RPC.
 GGML_PARAMS+=" -DGGML_RPC=ON";
 
-BUILD_SUBDIRECTORY+="$gpus"
+# BUILD_SUBDIRECTORY+="$gpus"
 
 echo "          Processor: $processor"
 echo "          Variation: $variation"

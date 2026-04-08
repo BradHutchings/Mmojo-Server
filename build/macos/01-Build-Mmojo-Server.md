@@ -11,7 +11,6 @@ Install the latest Xcode Tools from the App Store. The build will likely break i
 ### Install Dependencies
 Install dependencies. These may take 10 minutes or so to download and install.
 ```
-brew install gnu-sed
 brew install npm
 brew install gcc
 brew install cmake

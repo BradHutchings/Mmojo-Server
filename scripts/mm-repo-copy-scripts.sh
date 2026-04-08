@@ -16,7 +16,7 @@ if [ -d "$HOME_SCRIPTS" ]; then
     chmod a+x $HOME_SCRIPTS/mm-*.sh
 
     # on darwin, change "/bin/bash" to "/usr/local/bash"
-    if [ "$(uname -s)" == "Darwin" ]; then
+    if [ "$(uname -s)" = "Darwin" ]; then
         $MMOJO_SED -i -e '1c#!/usr/local/bash' $HOME_SCRIPTS/mm-*.sh
     fi
 fi
@@ -30,7 +30,7 @@ if [ -d "$HOME_OC_SCRIPTS" ]; then
     chmod a+x $HOME_OC_SCRIPTS/oc-*.sh
     
     # on darwin, change "/bin/bash" to "/usr/local/bash"
-    if [ "$(uname -s)" == "Darwin" ]; then
+    if [ "$(uname -s)" = "Darwin" ]; then
         $MMOJO_SED -i -e '1c#!/usr/local/bash' $HOME_OC_SCRIPTS/mm-*.sh
         $MMOJO_SED -i -e '1c#!/usr/local/bash' $HOME_OC_SCRIPTS/oc-*.sh
     fi

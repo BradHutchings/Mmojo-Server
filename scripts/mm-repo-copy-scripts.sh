@@ -12,20 +12,6 @@ SCRIPT_NAME=$(basename -- "$0")
 
 wd=$(pwd)
 
-if [ -d "$HOME_SCRIPTS" ]; then
-    echo "Has directory: $HOME_SCRIPTS."
-    if [ "$(uname -s)" = "Darwin" ]; then
-        echo "- Darwin 1"
-    fi
-fi
-
-if [ -d "$HOME_OC_SCRIPTS" ]; then
-    echo "Has directory: $HOME_OC_SCRIPTS."
-    if [ "$(uname -s)" = "Darwin" ]; then
-        echo "- Darwin 2"
-    fi
-fi
-
 ### Links don't work - end up modifying repo files on chmod.
 if [ -d "$HOME_SCRIPTS" ]; then
     cp $REPO_DIR_SCRIPTS/mm-*.sh $HOME_SCRIPTS
@@ -36,7 +22,7 @@ if [ -d "$HOME_SCRIPTS" ]; then
         echo "- Darwin 3"
         substitution='1c#!/usr/local/bash'
         cd "$HOME_SCRIPTS"
-        for file in mm-*.sh ; do
+        for file in mm-*.sh; do
             echo "Fixing $file."
             $MMOJO_SED -i -e '1c#!/usr/local/bash' $file
         done

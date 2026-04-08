@@ -13,14 +13,14 @@ SCRIPT_NAME=$(basename -- "$0")
 if [ -d "$HOME_SCRIPTS" ]; then
     echo "Has directory: $HOME_SCRIPTS."
     if [ "$(uname -s)" = "Darwin" ]; then
-        echo "- Darwin"
+        echo "- Darwin 1"
     fi
 fi
 
 if [ -d "$HOME_OC_SCRIPTS" ]; then
     echo "Has directory: $HOME_OC_SCRIPTS."
     if [ "$(uname -s)" = "Darwin" ]; then
-        echo "- Darwin"
+        echo "- Darwin 2"
     fi
 fi
 
@@ -31,7 +31,7 @@ if [ -d "$HOME_SCRIPTS" ]; then
 
     # on darwin, change "/bin/bash" to "/usr/local/bash"
     if ($MMOJO_DARWIN); then
-        echo "- Darwin"
+        echo "- Darwin 3"
     fi
 fi
 
@@ -45,8 +45,7 @@ if [ -d "$HOME_OC_SCRIPTS" ]; then
     
     # on darwin, change "/bin/bash" to "/usr/local/bash"
     if ($MMOJO_DARWIN); then
-        $MMOJO_SED -i -e '1s|/bin/bash|/usr/local/bash|' $HOME_OC_SCRIPTS/mm-*.sh
-        $MMOJO_SED -i -e '1s|/bin/bash|/usr/local/bash|' $HOME_OC_SCRIPTS/oc-*.sh
+        echo "- Darwin 4"
     fi
 fi
 

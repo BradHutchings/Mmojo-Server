@@ -33,7 +33,7 @@ if [ -d "$HOME_SCRIPTS" ]; then
     if ($MMOJO_DARWIN); then
         echo "- Darwin 3"
         substitution='1c#!/usr/local/bash'
-        /usr/local/gsed -i -e $substitution $HOME_SCRIPTS/mm-*.sh
+        /usr/local/gsed -i -e $substitution $HOME_SCRIPTS/mm-*
     fi
 fi
 

@@ -115,10 +115,11 @@ brew list
 
 ---
 ### Install bash and gsed with homebrew
-In the Terminal, install bash and gsed with homebrew:
+In the Terminal, install bash and gsed with homebrew, the copy them to `/usr/local`:
 ```
 brew install bash gsed
 sudo cp $HOME/homebrew/bin/bash /usr/local
+sudo cp $HOME/homebrew/bin/gsed /usr/local
 ```
 
 ---

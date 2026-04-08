@@ -61,7 +61,7 @@ if [ $(uname -m) = "x86_64" ]; then
     # _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
     # _TOUCH_FILE="build-macos-x86_64-$_BUILD_CHOICE$_GPUS_CHOICE"
 elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_$_BUILD_CHOICE_AARCH64$_GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/build-executable-aarch64$_BUILD_CHOICE$_GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _TOUCH_FILE="build-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE"

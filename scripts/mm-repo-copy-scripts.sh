@@ -10,6 +10,8 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
+wd=$(pwd)
+
 if [ -d "$HOME_SCRIPTS" ]; then
     echo "Has directory: $HOME_SCRIPTS."
     if [ "$(uname -s)" = "Darwin" ]; then
@@ -33,7 +35,8 @@ if [ -d "$HOME_SCRIPTS" ]; then
     if ($MMOJO_DARWIN); then
         echo "- Darwin 3"
         substitution='1c#!/usr/local/bash'
-        for file in $HOME_SCRIPTS/mm-* ; do
+        cd "$HOME_SCRIPTS"
+        for file in mm-*.sh ; do
             echo "Fixing $file."
             $MMOJO_SED -i -e '1c#!/usr/local/bash' $file
         done
@@ -53,6 +56,8 @@ if [ -d "$HOME_OC_SCRIPTS" ]; then
         echo "- Darwin 4"
     fi
 fi
+
+cd $wd
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

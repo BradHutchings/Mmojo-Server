@@ -23,15 +23,13 @@ unset CC
 unset CXX
 unset AR
 
-echo "Setting MMOJO_SED."
+echo "Setting MMOJO_DARWIN, MMOJO_SED and MMOJO_RC_FILE."
+export MMOJO_DARWIN=false
 export MMOJO_SED="sed"
-if [ "$(uname -s)" = "Darwin" ]; then
-    export MMOJO_SED="/usr/local/gsed"
-fi
-
-echo "Setting MMOJO_RC_FILE."
 export MMOJO_RC_FILE=".bashrc"
 if [ "$(uname -s)" = "Darwin" ]; then
+    export MMOJO_DARWIN=true
+    export MMOJO_SED="/usr/local/gsed"
     export MMOJO_RC_FILE=".zshrc"
 fi
 

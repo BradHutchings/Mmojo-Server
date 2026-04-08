@@ -31,7 +31,7 @@ if [ -d "$HOME_OC_SCRIPTS" ]; then
     # on darwin, change #!/bin/bash to "#!$HOME/homebrew/bin/bash"
     if [ "$(uname -s)" = "Darwin" ]; then
         $MMOJO_SED -i -e "1c\#!/usr/local/bash" $HOME_OC_SCRIPTS/mm-*.sh
-        $MMOJO_SED -i -e "1c\#!/usr/local/bash" $HOME_OC_SCRIPTS/mm-*.sh
+        $MMOJO_SED -i -e "1c\#!/usr/local/bash" $HOME_OC_SCRIPTS/oc-*.sh
     fi
 fi
 

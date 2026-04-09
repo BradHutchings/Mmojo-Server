@@ -1,4 +1,4 @@
-## 10. Port Forward to Mmojo Server
+## 11. Port Forward to Mmojo Server
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step (Optional)
 **THIS IS A HOT MESS. NO IDEA WHAT TO DO ABOUT IT YET.**
@@ -117,7 +117,7 @@ It is important that you use http, not https.
 ---
 ### Proceed
 - **Next:** This is the last step in this guide.
-- **Previous:** [09. Change Model](09-Change-Model.md)
+- **Previous:** [10. Change Model](10-Change-Model.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---

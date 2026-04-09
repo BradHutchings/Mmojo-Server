@@ -29,7 +29,7 @@ export MMOJO_SED="sed"
 export MMOJO_RC_FILE=".bashrc"
 if [ "$(uname -s)" = "Darwin" ]; then
     export MMOJO_DARWIN=true
-    export MMOJO_SED="/usr/local/gsed"
+    export MMOJO_SED="/usr/local/bin/gsed"
     export MMOJO_RC_FILE=".bashrc"
 fi
 

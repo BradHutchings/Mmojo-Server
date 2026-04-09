@@ -177,7 +177,7 @@ mm-env
 
 ---
 ### Proceed
-- **Next:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
+- **Next:** [03. Clone Mmojo Server Repo](03-Clone-Mmojo-Server-Repo.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 

@@ -1,4 +1,4 @@
-## 06. Test Mmojo Server
+## 07. Test Mmojo Server
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this step, you will choose a model and test Mmojo Server.
@@ -50,8 +50,8 @@ You will see your command prompt.
 
 ---
 ### Proceed
-- **Next:** [07. Make Command Aliases](07-Make-Command-Aliases.md)
-- **Previous:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
+- **Next:** [08. Make Command Aliases](08-Make-Command-Aliases.md)
+- **Previous:** [06. Download Mmojo Server](06-Download-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---

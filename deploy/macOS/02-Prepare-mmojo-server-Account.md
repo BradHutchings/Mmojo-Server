@@ -70,6 +70,7 @@ admin123!
 
 ---
 ### Remove sudo Timeout
+**COPY THESE FROM APPLIANCE INSTALL GUIDE.**
 You will use the `sudo` command often, so let's make it not expire.
 ```
 sudo visudo
@@ -84,23 +85,8 @@ Defaults        env_reset,timestamp_timeout=-1
 `i` to insert, paste, `esc` after you paste, `:wq` to save and quit.
 
 ---
-### Customize the Shell Prompt
-You can prepend `(MmojoServer)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
-```
-cat << EOF >> .zshrc
-PS1="(MmojoServer)-$PS1"
-EOF
-source .zshrc
-```
-
-<img width="331" height="32" alt="image" src="https://github.com/user-attachments/assets/0610c9f1-e5b3-4a1d-b5f8-73a056d2fa1f" />
-
-Notice your new prompt.
-
-
-
----
 ### Install homebrew
+**COPY THESE FROM APPLIANCE INSTALL GUIDE.**
 Homebrew is the prefered package mamager for macOS.
 
 In the Terminal, install homebrew:
@@ -115,6 +101,7 @@ brew list
 
 ---
 ### Install bash and gsed with homebrew
+**COPY THESE FROM APPLIANCE INSTALL GUIDE.**
 In the Terminal, install bash and gsed with homebrew, the copy them to `/usr/local`:
 ```
 brew install bash gsed
@@ -122,58 +109,6 @@ sudo cp $HOME/homebrew/bin/bash /usr/local
 sudo cp $HOME/homebrew/bin/gsed /usr/local
 ls -l /usr/local
 ```
-
----
-### Create `mm-scripts` Directory
-The `mm-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
-```
-export HOME_SCRIPTS="$HOME/mm-scripts"
-TILDE_SCRIPTS="~/mm-scripts"
-mkdir -p $HOME_SCRIPTS
-
-if [[ "${PATH}" != *"${HOME_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_SCRIPTS}"* ]]; then
-cat << EOF >> $HOME/.zshrc
-export PATH="\$PATH:$HOME_SCRIPTS"
-EOF
-fi
-
-source $HOME/.zshrc
-echo $PATH
-```
-
----
-### Clone the Mmojo Server Repository
-The Mmojo Server Github repositort has scripts and tools for installing and building Mmojo Server.
-```
-export REPO_DIR="$HOME/mm-repo"
-export REPO_DIR_SCRIPTS="$REPO_DIR/scripts"
-export MMOJO_SED="/usr/local/gsed"
-cd $HOME
-if [ "$REPO_DIR" ]; then
-  rm -r -f $REPO_DIR
-fi
-mkdir -p $REPO_DIR
-git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
-source $REPO_DIR_SCRIPTS/mm-environment-variables.sh
-$REPO_DIR_SCRIPTS/mm-repo-update-local.sh
-if ! grep -q "mm-env=" "$HOME/.zshrc"; then
-cat << EOF1 >> $HOME/.zshrc
-alias mm-env="source mm-environment-variables.sh"
-mm-env
-EOF1
-source $HOME/.zshrc
-fi
-```
-
-<details>
-  <summary><b>Optional:</b> If you're Brad working on writing these instructions, switch to the work-in-progress branch.</summary>
-  
-```
-mm-repo-branch-work-in-progress.sh
-mm-env
-```
-</details>
-
 
 ---
 ### Proceed

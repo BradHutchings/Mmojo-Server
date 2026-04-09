@@ -1,4 +1,4 @@
-## 09. Change Model
+## 10. Change Model
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this short step, we're going to stop Mmojo Server while keeping the Terminal session open, choose a new model, then start Mmojo Sever.
@@ -74,8 +74,8 @@ You will see your admin account prompt.
 
 ---
 ### Proceed
-- **Next:** [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) (Optional)
-- **Previous:** [08. Autostart Mmojo Server](08-Autostart-Mmojo-Server.md)
+- **Next:** [11. Port Forward to Mmojo Server](11-Port-Forward-to-Mmojo-Server.md) (Optional)
+- **Previous:** [09. Autostart Mmojo Server](09-Autostart-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---

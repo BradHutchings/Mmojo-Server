@@ -19,7 +19,7 @@ brad@BradHutchings.com<br/><br/>
 ### Deploy Mmojo Server
 Here are the deployment steps:
 - [01. Prerequisites](01-Prerequisites.md) - What you need to deploy Mmojo Server on macOS.  
-- [02. Prepare mmojo Account](02-Prepare-mmojo-Account.md) - Create a mmojo user account for Mmojo Server.
+- [02. Prepare mmojo-server Account](02-Prepare-mmojo-server-Account.md) - Create a `mmojo-server` user account for Mmojo Server.
 - [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md) - If you have a Mmojo Share, mount it.
 - [04. Download Models](04-Download-Models.md) - Download models for use with Mmojo Server from Hugging Face, or copy from your Mmojo Share.
 - [05. Download Mmojo Server](05-Download-Mmojo-Server.md) - Download Mmojo Server from Hugging Face and install it.

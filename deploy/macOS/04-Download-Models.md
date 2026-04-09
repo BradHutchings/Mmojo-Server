@@ -17,8 +17,14 @@ mm-models-download.sh
 **Optional:** There are more recent Gemma E2B and E4B models. Run this script to download them.
 ```
 cat << EOF >> $_MODEL_QUEUE
-Google-Gemma-E2B-Instruct-v3n-q8_0.gguf
-Google-Gemma-E4B-Instruct-v3n-q8_0.gguf
+Google-Gemma-E2B-Instruct-v4-q4_K_M.gguf
+Google-Gemma-E2B-Instruct-v4-q5_K_M.gguf
+Google-Gemma-E2B-Instruct-v4-q6_K.gguf
+Google-Gemma-E4B-Instruct-v4-q8_0.gguf
+Google-Gemma-E4B-Instruct-v4-q4_K_M.gguf
+Google-Gemma-E4B-Instruct-v4-q5_K_M.gguf
+Google-Gemma-E4B-Instruct-v4-q6_K.gguf
+Google-Gemma-E4B-Instruct-v4-q8_0.gguf
 EOF
 mm-models-download.sh
 ```
@@ -28,6 +34,9 @@ mm-models-download.sh
 cat << EOF >> $_MODEL_QUEUE
 Qwen3.5-2B-v3.5-q8_0.gguf
 Qwen3.5-4B-v3.5-q8_0.gguf
+Qwen3.5-9B-v3.5-q4-K-M.gguf
+Qwen3.5-9B-v3.5-q5-K-M.gguf
+Qwen3.5-9B-v3.5-q6-K.gguf
 Qwen3.5-9B-v3.5-q8_0.gguf
 EOF
 mm-models-download.sh

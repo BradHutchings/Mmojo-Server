@@ -58,15 +58,16 @@ if [[ $(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"* ]] && [ "$_BUILD_
     _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
     _TOUCH_FILE="build-aarch64-rpi5"
 elif [ $(uname -m) = "x86_64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-x86_64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-x86_64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-x86_64$_BUILD_CHOICE$_GPUS_CHOICE"
+    echo "Building for Intel Macs is not supported yet."
+    _BUILD_SUBDIR="$BUILD_DIR/$BUILD_SUBDIRECTORY_DEBIAN_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-macos-x86_64-native$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
+    _TOUCH_FILE="$BUILD_SUBDIRECTORY_DEBIAN_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
 elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-aarch64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _TOUCH_FILE="build-aarch64$_BUILD_CHOICE$_GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$BUILD_SUBDIRECTORY_DEBIAN_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="$BUILD_SUBDIRECTORY_DEBIAN_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
 mm-build-for-platform.sh "$_BUILD_CHOICE" "$_GPUS_CHOICE"
 ```

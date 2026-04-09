@@ -23,10 +23,14 @@ unset CC
 unset CXX
 unset AR
 
-echo "Setting MMOJO_SED."
+echo "Setting MMOJO_DARWIN, MMOJO_SED and MMOJO_RC_FILE."
+export MMOJO_DARWIN=false
 export MMOJO_SED="sed"
+export MMOJO_RC_FILE=".bashrc"
 if [ "$(uname -s)" = "Darwin" ]; then
-    export MMOJO_SED="gsed"
+    export MMOJO_DARWIN=true
+    export MMOJO_SED="/usr/local/gsed"
+    export MMOJO_RC_FILE=".zshrc"
 fi
 
 echo "Setting mm-scripts paths."
@@ -49,6 +53,7 @@ export REPO_DIR_SCRIPTS_OPENCLAW="$REPO_DIR/scripts-openclaw"
 echo "Setting Mmojo Share paths."
 if [ "$(uname -s)" = "Darwin" ]; then
 export SHARE_DIR_MOUNT_POINT="$HOME/mm-share"
+# export SHARE_DIR_MOUNT_POINT="/Volumes/mm-share"
 else
 export SHARE_DIR_MOUNT_POINT="/mnt/mmojo"
 fi
@@ -58,6 +63,7 @@ export SHARE_DIR_MODELS="$SHARE_DIR_MOUNT_POINT/$MOOELS_DIR_NAME"
 export SHARE_DIR_PACKAGES="$SHARE_DIR_MOUNT_POINT/$PACKAGES_DIR_NAME"
 
 export SHARE_DIR_MOUNT_SCRIPT="mm-share-mount.sh"
+export SHARE_DIR_MOUNT_SCRIPT_MACOS="mm-share-mount-macos.sh"
 
 echo "Setting local models paths."
 export MODELS_DIR="$HOME/$MOOELS_DIR_NAME"
@@ -151,11 +157,20 @@ export DEPLOY_DIR="$HOME/mm-deploy"
 export PROXY_DIR="$HOME/mm-proxy"
 
 # Run this script when user starts a session.
-SEARCH_STRING="\. mm-environment-variables.sh"
-COMMAND_STRING=". mm-environment-variables.sh"
-BASHRC_PATH="$HOME/.bashrc"
-if ! grep -q "$SEARCH_STRING" "$BASHRC_PATH"; then
-    echo $COMMAND_STRING >> $BASHRC_PATH
+if [ "$(uname -s)" = "Darwin" ]; then
+    SEARCH_STRING="source mm-environment-variables.sh"
+    COMMAND_STRING="source mm-environment-variables.sh"
+    ZSHRC_PATH="$HOME/.zshrc"
+    if ! grep -q "$SEARCH_STRING" "$ZSHRC_PATH"; then
+        echo $COMMAND_STRING >> $ZSHRC_PATH
+    fi
+else
+    SEARCH_STRING="\. mm-environment-variables.sh"
+    COMMAND_STRING=". mm-environment-variables.sh"
+    BASHRC_PATH="$HOME/.bashrc"
+    if ! grep -q "$SEARCH_STRING" "$BASHRC_PATH"; then
+        echo $COMMAND_STRING >> $BASHRC_PATH
+    fi
 fi
 
 if [ -z "$SAVE_PATH" ]; then

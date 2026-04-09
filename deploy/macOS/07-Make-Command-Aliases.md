@@ -27,6 +27,7 @@ echo "- mm-which   --> mm-model-which.sh"
 echo ""
 EOF
 fi
+source .zshrc
 ```
 
 ---

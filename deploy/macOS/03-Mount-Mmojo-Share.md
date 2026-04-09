@@ -17,8 +17,6 @@ This script creates a mount point for the Mmojo Share and a script for mounting 
 mm-share-create-mount-point-macos.sh
 ```
 
-NEED TO IMPLEMENT THAT SCRIPT -MAC SPECIFIC - MOUNT IN $HOME/mm-share. Fix environment script.
-
 ---
 ### Edit the Mmojo Share Mount Script
 Edit the script to put your `COMPUTER` and `USER` names in. `Ctrl-X`, then `Y`, then `Enter` to exit and save.
@@ -30,14 +28,14 @@ nano "$HOME_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
 ### Mount the Mmojo Share
 Mount the Mmojo share and list its contents. You may be prompted for your Mmojo Share password.
 ```
-mm-share-mount-macos.sh
+mm-share-mount.sh
 ls -al $SHARE_DIR_MOUNT_POINT
 ```
 
 ---
 ### Proceed
 - **Next:** [04. Download Models](04-Download-Models.md)
-- **Previous:** [02. Prepare mmojo Account](02-Prepare-mmojo-Account.md)
+- **Previous:** [02. Prepare mmojo-server Account](02-Prepare-mmojo-server-Account.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---

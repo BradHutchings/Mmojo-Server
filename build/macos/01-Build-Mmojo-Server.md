@@ -11,7 +11,6 @@ Install the latest Xcode Tools from the App Store. The build will likely break i
 ### Install Dependencies
 Install dependencies. These may take 10 minutes or so to download and install.
 ```
-brew install gnu-sed
 brew install npm
 brew install gcc
 brew install cmake
@@ -57,17 +56,17 @@ _RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
 if [ $(uname -m) = "x86_64" ]; then
     echo "Building for Intel Macs is not supported yet."
-    # _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_X86_64$_GPUS_CHOICE"
+    # _BUILD_SUBDIR="$BUILD_DIR/$BUILD_SUBDIRECTORY_MACOS_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
     # _PACKAGE_FILE="Mmojo-Server-macos-x86_64-native$_GPUS_CHOICE.zip"
     # _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
-    # _TOUCH_FILE="build-macos-x86_64-$_BUILD_CHOICE$_GPUS_CHOICE"
+    # _TOUCH_FILE="$BUILD_SUBDIRECTORY_MACOS_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
 elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_NATIVE_AARCH64$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-macos-arm64-native$_GPUS_CHOICE.zip"
-    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-arm64-native.zip"
-    _TOUCH_FILE="build-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_DIR/$BUILD_SUBDIRECTORY_MACOS_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="$BUILD_SUBDIRECTORY_MACOS_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
-mm-build-for-platform.sh "$_BUILD_CHOICE" "$_GPUS_CHOICE"
+mm-build-for-platform.sh "$_BUILD_SUBDIR" "$_BUILD_CHOICE" "$_GPUS_CHOICE"
 ```
 
 ---
@@ -80,7 +79,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE" ]; then
-        cp "$REPO_DIR/build/support-files/mmojo-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+        cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
     fi
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"

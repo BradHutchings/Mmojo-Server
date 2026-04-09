@@ -1,7 +1,7 @@
-## 02. Prepare mmojo Account
+## 02. Prepare mmojo-server Account
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
-You will create a `mmojo` user account on your Mac to deploy Mmojo Server. It will be useful for building Mmojo Server as well, if you decide to do that. This provides a little bit of sandboxing to both Mmojo Server and your Mac, as well as isolation of development tools.
+You will create a `mmojo-server` user account on your Mac to deploy Mmojo Server. It will be useful for building Mmojo Server as well, if you decide to do that. This provides a little bit of sandboxing to both Mmojo Server and your Mac, as well as isolation of development tools.
 
 ---
 ### Install Latest Xcode
@@ -24,33 +24,23 @@ fi
 ```
 
 ---
-### Delete your Existing mmojo User Account
-If you have a previous `mmojo` user account on your Mac, let's delete it and start over.
+### Delete your Existing mmojo-server User Account
+If you have a previous `mmojo-server` user account on your Mac, let's delete it and start over.
 
 - Log in as an admin user.
 - Settings > Users and Groups.
-- Delete the `mmojo` or `Mmojo Server` account.
+- Delete the `mmojo-server` or `Mmojo Server` account.
 
 ---
-### Create a new mmojo User Account
+### Create a new mmojo-server User Account
 - Log in as an admin user.
 - Settings > Users and Groups.
 - New account
-  - mmojo
+  - Administrator
+  - mmojo-server
   - Mmojo Server
   - admin123!
 - More details here.
-
----
-### Optional: Hide mmojo Account from Login Screen
-You won't need to log into your `mmojo` user account from the Desktop. You will log into from a Terminal via `su mmojo` or via SSH.
-
-Open a Terminal and paste this command:
-```
-sudo dscl . create /Users/mmojo IsHidden 1
-```
-
-Keep the Terminal open.
 
 ---
 ### Enable SSH
@@ -60,10 +50,10 @@ Settings > General > Sharing > Advanced
 
 
 ---
-### Login as mmojo
+### Login as mmojo-server
 Note: I think this would be better as ssh. Gotta try that.
 ```
-ssh mmojo@localhost
+ssh mmojo-server@localhost
 ```
 
 Are you sure you want to continue connecting?
@@ -79,13 +69,28 @@ admin123!
 (picture su'd here.)
 
 ---
+### Remove sudo Timeout
+You will use the `sudo` command often, so let's make it not expire.
+```
+sudo visudo
+```
+
+Below the first `Defaults` section, paste this:
+```
+Defaults        env_reset,timestamp_timeout=-1
+```
+<img width="926" height="134" alt="image" src="https://github.com/user-attachments/assets/7793f414-3f52-4c38-93ee-801584e8b102" />
+
+`i` to insert, paste, `esc` after you paste, `:wq` to save and quit.
+
+---
 ### Customize the Shell Prompt
 You can prepend `(MmojoServer)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
 ```
 cat << EOF >> .zshrc
 PS1="(MmojoServer)-$PS1"
 EOF
-. .zshrc
+source .zshrc
 ```
 
 <img width="331" height="32" alt="image" src="https://github.com/user-attachments/assets/0610c9f1-e5b3-4a1d-b5f8-73a056d2fa1f" />
@@ -96,11 +101,9 @@ Notice your new prompt.
 
 ---
 ### Install homebrew
-- **CAN THIS MOVE TO BUILD??**
-
 Homebrew is the prefered package mamager for macOS.
 
-In the Terminal, signed in as the new mmojo user:
+In the Terminal, install homebrew:
 ```
 mkdir -p $HOME/homebrew
 curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/homebrew
@@ -108,6 +111,16 @@ echo 'eval "$($HOME/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 eval "$($HOME/homebrew/bin/brew shellenv)"
 brew update
 brew list
+```
+
+---
+### Install bash and gsed with homebrew
+In the Terminal, install bash and gsed with homebrew, the copy them to `/usr/local`:
+```
+brew install bash gsed
+sudo cp $HOME/homebrew/bin/bash /usr/local
+sudo cp $HOME/homebrew/bin/gsed /usr/local
+ls -l /usr/local
 ```
 
 ---
@@ -134,17 +147,18 @@ The Mmojo Server Github repositort has scripts and tools for installing and buil
 ```
 export REPO_DIR="$HOME/mm-repo"
 export REPO_DIR_SCRIPTS="$REPO_DIR/scripts"
+export MMOJO_SED="/usr/local/gsed"
 cd $HOME
 if [ "$REPO_DIR" ]; then
   rm -r -f $REPO_DIR
 fi
 mkdir -p $REPO_DIR
 git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
-. $REPO_DIR_SCRIPTS/mm-environment-variables.sh
-. $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
+source $REPO_DIR_SCRIPTS/mm-environment-variables.sh
+$REPO_DIR_SCRIPTS/mm-repo-update-local.sh
 if ! grep -q "mm-env=" "$HOME/.zshrc"; then
 cat << EOF1 >> $HOME/.zshrc
-alias mm-env=". mm-environment-variables.sh"
+alias mm-env="source mm-environment-variables.sh"
 mm-env
 EOF1
 source $HOME/.zshrc

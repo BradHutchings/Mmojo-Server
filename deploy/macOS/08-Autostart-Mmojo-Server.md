@@ -13,8 +13,7 @@ cat << EOF >> $HOME/.zshrc
 echo "Starting Mmojo Server."
 mm-go
 echo ""
-echo "Close all MmojoServer WSL windows to stop Mmojo Server."
-echo "Or, type the alias: << mm-stop >>."
+echo "To stop Mmojo Server, type the alias: << mm-stop >>."
 echo ""
 EOF
 fi

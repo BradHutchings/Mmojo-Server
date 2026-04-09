@@ -1,4 +1,4 @@
-## 08. Autostart Mmojo Server
+## 09. Autostart Mmojo Server
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this short step, we're going to modify the mmojo user account so that it automatically starts Mmojo Server and has some useful command aliases for managing it. This will enable a workflow where you open a Terminal session with the mmojo account to launch it and close the Terminal window to stop it. 
@@ -7,8 +7,8 @@ In this short step, we're going to modify the mmojo user account so that it auto
 ### Autostart Mmojo Server
 Run this command:
 ```
-if ! grep -q "Starting Mmojo Server." "$HOME/.zshrc"; then
-cat << EOF >> $HOME/.zshrc
+if ! grep -q "Starting Mmojo Server." "$HOME/.bashrc"; then
+cat << EOF >> $HOME/.bashrc
 
 echo "Starting Mmojo Server."
 mm-go
@@ -33,8 +33,8 @@ Leave the Terminal window open for as long as you want to run Mmojo Server. When
 
 ---
 ### Proceed
-- **Next:** [09. Change Model](09-Change-Model.md)
-- **Previous:** [07. Make Command Aliases](07-Make-Command-Aliases.md)
+- **Next:** [10. Change Model](10-Change-Model.md)
+- **Previous:** [08. Make Command Aliases](08-Make-Command-Aliases.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---

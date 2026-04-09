@@ -1,4 +1,4 @@
-## 07. Make Command Aliases
+## 08. Make Command Aliases
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this short step, we're going to create some alias commands in `.zshrc` to make working with Mmojo Server from the command line easier. 
@@ -7,8 +7,8 @@ In this short step, we're going to create some alias commands in `.zshrc` to mak
 ### Make Command Aliases
 Run this command:
 ```
-if ! grep -q "alias mm-stop=" "$HOME/.zshrc"; then
-cat << EOF >> $HOME/.zshrc
+if ! grep -q "alias mm-stop=" "$HOME/.bashrc"; then
+cat << EOF >> $HOME/.bashrc
 
 alias mm-stop="mm-mmojo-server-stop.sh"
 alias mm-go="mm-mmojo-server-start.sh background"
@@ -27,13 +27,13 @@ echo "- mm-which   --> mm-model-which.sh"
 echo ""
 EOF
 fi
-source .zshrc
+source .bashrc
 ```
 
 ---
 ### Proceed
-- **Next:** [08. Autostart Mmojo Server](08-Autostart-Mmojo-Server.md)
-- **Previous:** [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
+- **Next:** [09. Autostart Mmojo Server](09-Autostart-Mmojo-Server.md)
+- **Previous:** [07. Test Mmojo Server](07-Test-Mmojo-Server.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---

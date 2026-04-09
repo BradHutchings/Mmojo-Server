@@ -18,15 +18,16 @@ brad@BradHutchings.com<br/><br/>
 ---
 ### Deploy Mmojo Server
 Here are the deployment steps:
-- [01. Prerequisites](01-Prerequisites.md) - What you need to deploy Mmojo Server on macOS.  
-- [02. Prepare mmojo-server Account](02-Prepare-mmojo-server-Account.md) - Create a `mmojo-server` user account for Mmojo Server.
-- [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md) - If you have a Mmojo Share, mount it.
-- [04. Download Models](04-Download-Models.md) - Download models for use with Mmojo Server from Hugging Face, or copy from your Mmojo Share.
-- [05. Download Mmojo Server](05-Download-Mmojo-Server.md) - Download Mmojo Server from Hugging Face and install it.
-- [06. Test Mmojo Server](06-Test-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
-- [07. Make Command Aliases](07-Make-Command-Aliases.md) - Add useful command aliases to `.bashrc`.
-- [08. Autostart Mmojo Server](08-Autostart-Mmojo-Server.md) - Choose model, start Mmojo Server, stop Mmojo Server.
-- [09. Change Model](09-Change-Model.md) - Stop Mmojo Server, choose a new model, start Mmojo Server.
+- [01. Prerequisites](01-Prerequisites.md) &mdash; What you need to deploy Mmojo Server on macOS.  
+- [02. Prepare mmojo-server Account](02-Prepare-mmojo-server-Account.md) &mdash; Create a `mmojo-server` user account for Mmojo Server.
+- [03. Clone Mmojo Server Repo](03-Clone-Mmojo-Server-Repo.md) &mdash; Clone the Mmojo Server Repo, get scripts working.
+- [04. Mount Mmojo Share](04-Mount-Mmojo-Share.md) &mdash; If you have a Mmojo Share, mount it.
+- [05. Download Models](05-Download-Models.md) &mdash; Download models for use with Mmojo Server from Hugging Face, or copy from your Mmojo Share.
+- [06. Download Mmojo Server](06-Download-Mmojo-Server.md) &mdash; Download Mmojo Server from Hugging Face and install it.
+- [07. Test Mmojo Server](07-Test-Mmojo-Server.md) &mdash; Choose model, start Mmojo Server, stop Mmojo Server.
+- [08. Make Command Aliases](08-Make-Command-Aliases.md) &mdash; Add useful command aliases to `.bashrc`.
+- [09. Autostart Mmojo Server](09-Autostart-Mmojo-Server.md) &mdash; Choose model, start Mmojo Server, stop Mmojo Server.
+- [10. Change Model](10-Change-Model.md) &mdash; Stop Mmojo Server, choose a new model, start Mmojo Server.
   <br/><br/>
 
 **Get Started:** [01. Prerequisites](01-Prerequisites.md)
@@ -34,7 +35,7 @@ Here are the deployment steps:
 ---
 ### Port Forward to Mmojo Server
 If you want Mmojo Server to accept connections from other computers on your network, you can set that up:
-- [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
+- [11. Port Forward to Mmojo Server](11-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
 
 ---
 ### Build Mmojo Server

@@ -1,4 +1,4 @@
-## 03. Mount Mmojo Share
+## 04. Mount Mmojo Share
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this step, you will mount your Mmojo Share, if you have one. Your Mmojo Share can be any SMB file share on your computer or your network. You will need it's host address, share name, username, and password.
@@ -34,8 +34,8 @@ ls -al $SHARE_DIR_MOUNT_POINT
 
 ---
 ### Proceed
-- **Next:** [04. Download Models](04-Download-Models.md)
-- **Previous:** [02. Prepare mmojo-server Account](02-Prepare-mmojo-server-Account.md)
+- **Next:** [05. Download Models](05-Download-Models.md)
+- **Previous:** [03. Clone Mmojo Server Repo](03-Clone-Mmojo-Server-Repo.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---

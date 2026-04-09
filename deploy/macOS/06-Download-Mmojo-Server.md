@@ -1,4 +1,4 @@
-## 05. Download Mmojo Server
+## 06. Download Mmojo Server
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this step, we will download Mmojo Server from Hugging Face.
@@ -51,8 +51,8 @@ Mmojo Server is installed. You are ready to test it!
 
 ---
 ### Proceed
-- **Next:**  [06. Test Mmojo Server](06-Test-Mmojo-Server.md)
-- **Previous:** [04. Download Models](04-Download-Models.md)
+- **Next:**  [07. Test Mmojo Server](07-Test-Mmojo-Server.md)
+- **Previous:** [05. Download Models](05-Download-Models.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---

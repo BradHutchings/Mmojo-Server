@@ -3,8 +3,6 @@
 ### About this Step
 You will create an `mm-scripts` directory, clone the Mmojo Server repo to the `mm-repo` directory, and start setting up your bash environment for deploying Mmojo Server.
 
-At this point, you should have set your `mmojo-server` account to use `/usr/local/bin/bash` as its shell. If you skipped this, go back and fix it, please.
-
 ---
 ### Customize the Shell Prompt
 You can prepend `(MmojoServer)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
@@ -52,7 +50,8 @@ fi
 mkdir -p $REPO_DIR
 git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
 source $REPO_DIR_SCRIPTS/mm-environment-variables.sh
-$REPO_DIR_SCRIPTS/mm-repo-update-local.sh
+/usr/local/bin/bash $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
+/usr/local/bin/bash $REPO_DIR_SCRIPTS/mm-repo-copy-scripts.sh
 if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc
 alias mm-env="source mm-environment-variables.sh"

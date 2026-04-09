@@ -35,7 +35,7 @@ Here are the deployment steps:
 ---
 ### Port Forward to Mmojo Server
 If you want Mmojo Server to accept connections from other computers on your network, you can set that up:
-- [10. Port Forward to Mmojo Server](10-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
+- [11. Port Forward to Mmojo Server](11-Port-Forward-to-Mmojo-Server.md) - **Optional:** Set up port forwarding with nginx.
 
 ---
 ### Build Mmojo Server

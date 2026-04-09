@@ -19,12 +19,12 @@ if [ -d "$HOME_SCRIPTS" ]; then
     cp $REPO_DIR_SCRIPTS/mm-*.sh $HOME_SCRIPTS
     chmod a+x $HOME_SCRIPTS/mm-*.sh
 
-    # on darwin, change "/bin/bash" to "/usr/local/bash"
+    # on darwin, change "/bin/bash" to "/usr/local/bin/bash"
     if ($MMOJO_DARWIN); then
         cd "$HOME_SCRIPTS"
         for file in mm-*.sh; do
             echo "Fixing $file."
-            # $MMOJO_SED -i -e '1c#!/usr/local/bash' $file
+            $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' $file
         done
     fi
 fi
@@ -38,8 +38,17 @@ if [ -d "$HOME_OC_SCRIPTS" ]; then
     chmod a+x $HOME_OC_SCRIPTS/oc-*.sh
     
     # on darwin, change "/bin/bash" to "/usr/local/bash"
+    # on darwin, change "/bin/bash" to "/usr/local/bin/bash"
     if ($MMOJO_DARWIN); then
-        echo "- Darwin 4"
+        cd "$HOME_OC_SCRIPTS"
+        for file in mm-*.sh; do
+            echo "Fixing $file."
+            $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' $file
+        done
+        for file in oc-*.sh; do
+            echo "Fixing $file."
+            $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' $file
+        done
     fi
 fi
 

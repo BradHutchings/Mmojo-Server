@@ -170,7 +170,6 @@ fi
 
 printf "\n$STARS\n*\n* FINISHED: mm-environment-variables.sh.\n*\n$STARS\n\n"
 
-
 ################################################################################
 #  This is an original script for the Mmojo Server repo. It is covered by
 #  the repo's MIT-style LICENSE:

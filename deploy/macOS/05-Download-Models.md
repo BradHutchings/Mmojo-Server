@@ -1,4 +1,4 @@
-## 04. Download Models
+## 05. Download Models
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this step, we will download models for use with Mmojo Server from Hugging Face. If you have setup a Mmojo Share and the models are already available there, the models will be copied from your Mmojo Share instead.
@@ -67,8 +67,8 @@ mm-models-download.sh
 
 ---
 ### Proceed
-- **Next:** [05. Download Mmojo Server](05-Download-Mmojo-Server.md)
-- **Previous:** [03. Mount Mmojo Share](03-Mount-Mmojo-Share.md)
+- **Next:** [06. Download Mmojo Server](06-Download-Mmojo-Server.md)
+- **Previous:** [04. Mount Mmojo Share](04-Mount-Mmojo-Share.md)
 - **Up:** [Deploy Mmojo Server on macOS](README.md)
 
 ---

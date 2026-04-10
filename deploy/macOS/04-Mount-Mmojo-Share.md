@@ -29,6 +29,7 @@ nano "$HOME_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
 Mount the Mmojo share and list its contents. You may be prompted for your Mmojo Share password.
 ```
 mm-share-mount.sh
+echo "ls -al $SHARE_DIR_MOUNT_POINT:"
 ls -al $SHARE_DIR_MOUNT_POINT
 ```
 

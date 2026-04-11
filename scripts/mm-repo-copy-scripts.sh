@@ -27,29 +27,6 @@ if [ -d "$HOME_SCRIPTS" ]; then
     fi
 fi
 
-if [ -d "$HOME_OC_SCRIPTS" ]; then
-    cp "$REPO_DIR_SCRIPTS_OPENCLAW/"oc-*.sh "$HOME_OC_SCRIPTS"
-    cp "$REPO_DIR_SCRIPTS/mm-environment-variables.sh" "$HOME_OC_SCRIPTS"
-    cp "$REPO_DIR_SCRIPTS/"mm-repo-*.sh "$HOME_OC_SCRIPTS"
-    cp "$REPO_DIR_SCRIPTS/"mm-share-*.sh "$HOME_OC_SCRIPTS"
-    chmod a+x "$HOME_OC_SCRIPTS/"mm-*.sh
-    chmod a+x "$HOME_OC_SCRIPTS/"oc-*.sh
-    
-    # on darwin, change "/bin/bash" to "/usr/local/bash"
-    # on darwin, change "/bin/bash" to "/usr/local/bin/bash"
-    if ($MMOJO_DARWIN); then
-        cd "$HOME_OC_SCRIPTS"
-        for file in mm-*.sh; do
-            # echo "Fixing $file."
-            $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
-        done
-        for file in oc-*.sh; do
-            # echo "Fixing $file."
-            $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
-        done
-    fi
-fi
-
 cd "$wd"
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

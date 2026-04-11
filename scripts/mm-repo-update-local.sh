@@ -9,8 +9,9 @@
 
 printf "\n$STARS\n*\n* STARTED: mm-update-local-mmojo-server-repo.sh.\n*\n$STARS\n\n"
 
+wd=$(pwd)
+
 if [ -d "$REPO_DIR" ]; then
-    wd=$(pwd)
     cd "$REPO_DIR"
     git reset --hard
     git pull
@@ -19,22 +20,23 @@ if [ -d "$REPO_DIR" ]; then
     if ($MMOJO_DARWIN); then
         cd "$REPO_DIR_SCRIPTS"
         for file in *.sh; do
-            # echo "Fixing $file."
+            echo "Fixing $file."
             $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
         done
 
         cd "$REPO_DIR_SCRIPTS_OPENCLAW"
         for file in *.sh; do
-            # echo "Fixing $file."
+            echo "Fixing $file."
             $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
         done
     fi
     
     mm-repo-copy-scripts.sh
-    cd "$wd"
 else
   echo "The $REPO_DIR directory does not exist."
 fi
+
+cd "$wd"
 
 printf "\n$STARS\n*\n* FINISHED: mm-update-local-mmojo-server-repo.sh.\n*\n$STARS\n\n"
 

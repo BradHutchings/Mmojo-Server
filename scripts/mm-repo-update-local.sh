@@ -11,10 +11,10 @@ printf "\n$STARS\n*\n* STARTED: mm-update-local-mmojo-server-repo.sh.\n*\n$STARS
 
 if [ -d "$REPO_DIR" ]; then
   WD=$(pwd)
-  cd $REPO_DIR
+  cd "$REPO_DIR"
   git reset --hard
   git pull
-  cd $WD
+  cd "$WD"
 
   mm-repo-copy-scripts.sh
 else

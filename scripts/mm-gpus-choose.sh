@@ -75,13 +75,15 @@ if [ ${#gpu_combos[@]} -gt "0" ]; then
         gpus="${gpus/METAL/MET}"
         
         # convert to lower case
-        if [ "$(uname -s)" = "Darwin" ]; then
-            # Old bash on macos is goofy
-            gpus=$(echo "$gpus" | tr '[:upper:]' '[:lower:]')
-        else
-            # Easier with new bash
-            gpus=${gpus,,}
-        fi
+        gpus=${gpus,,}
+
+#        if [ "$(uname -s)" = "Darwin" ]; then
+#            # Old bash on macos is goofy
+#            gpus=$(echo "$gpus" | tr '[:upper:]' '[:lower:]')
+#        else
+#            # Easier with new bash
+#            gpus=${gpus,,}
+#        fi
     fi
     echo "GPUs: $gpus"
 else

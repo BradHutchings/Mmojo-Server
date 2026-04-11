@@ -4,21 +4,6 @@
 You will create an `mm-scripts` directory, clone the Mmojo Server repo to the `mm-repo` directory, and start setting up your bash environment for deploying Mmojo Server.
 
 ---
-### Customize the Shell Prompt
-You can prepend `(MmojoServer)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
-```
-cat << EOF >> .bashrc
-PS1="(MmojoServer)-$PS1"
-EOF
-source .bashrc
-```
-
-<img width="331" height="32" alt="image" src="https://github.com/user-attachments/assets/0610c9f1-e5b3-4a1d-b5f8-73a056d2fa1f" />
-
-Notice your new prompt.
-
-
----
 ### Create `mm-scripts` Directory
 The `mm-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
 ```

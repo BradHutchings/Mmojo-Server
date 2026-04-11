@@ -22,9 +22,9 @@ fi
 ```
 URL=""
 if [ $(uname -m) = "x86_64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-x86_64-comp.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-x86_64-performant-met.zip"
 elif [ $(uname -m) = "aarch64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-arm64-perf-metal.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-aarch64-performant-met.zip"
 fi
 ```
 </details>

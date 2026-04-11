@@ -37,7 +37,7 @@ fi
 Choose the build type (native, performant, compatible):
 ```
 mm-build-choose.sh
-_BUILD_CHOICE="-$(cat /tmp/mm-build-choose.out)"
+_BUILD_CHOICE="$(cat /tmp/mm-build-choose.out)"
 rm /tmp/mm-build-choose.out
 ```
 
@@ -56,15 +56,15 @@ _RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
 if [ $(uname -m) = "x86_64" ]; then
     echo "Building for Intel Macs is not supported yet."
-    # _BUILD_SUBDIR="$BUILD_DIR/$BUILD_SUBDIRECTORY_MACOS_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
+    # _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_MACOS_X86_64-$_BUILD_CHOICE$_GPUS_CHOICE"
     # _PACKAGE_FILE="Mmojo-Server-macos-x86_64-native$_GPUS_CHOICE.zip"
     # _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
     # _TOUCH_FILE="$BUILD_SUBDIRECTORY_MACOS_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
 elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$BUILD_SUBDIRECTORY_MACOS_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _TOUCH_FILE="$BUILD_SUBDIRECTORY_MACOS_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_MACOS_AARCH64-$_BUILD_CHOICE$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-macos-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="macos-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
 mm-build-for-platform.sh "$_BUILD_SUBDIR" "$_BUILD_CHOICE" "$_GPUS_CHOICE"
 ```
@@ -76,7 +76,7 @@ Create a deploy directory:
 if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
     find $DEPLOY_DIR/* \( ! -name "*.gguf" -a ! -name "*-args" \) -delete
-    cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
+    cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE" ]; then
         cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
@@ -84,7 +84,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
-    cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
+    cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE" ]; then
         cp "$REPO_DIR/build/support-files/mmojo-rpc-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
     fi
@@ -112,6 +112,68 @@ ls -l $DEPLOY_DIR
 It should look like:
 
 <img width="500" height="191" alt="image" src="https://github.com/user-attachments/assets/b1d61521-6d05-4d3e-9cc7-d0de55f29c91" />
+
+---
+### Make a Stock Mmojo Server Package File
+Make a .zip pakcage files from your run directory. They are moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment. This package will have stock args and no `.gguf` file.
+
+Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
+```
+if test -n "$DEPLOY_DIR"; then
+    cd "$DEPLOY_DIR"
+    mv "$_PACKAGE_MMOJO_SERVER_ARGS_FILE" "$_PACKAGE_MMOJO_SERVER_ARGS_FILE-save"
+    cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+
+    zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_FILE
+    zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_ARGS_FILE
+    zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
+    zip -r "$_PACKAGE_FILE" Mmojo-Complete
+
+    rm "$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    mv "$_PACKAGE_MMOJO_SERVER_ARGS_FILE-save" "$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    echo
+    echo "Packages:"
+    ls -al "$PACKAGES_DIR"
+fi
+```
+
+---
+### Make a Stock Mmojo RPC Server Package File
+Make a .zip package file for RPC Mmojo Server from your run directory. It will be moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment. This package will have stock args.
+
+Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
+```
+if [ -d "$DEPLOY_DIR" ]; then
+    cd "$DEPLOY_DIR"
+    mv "$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE" "$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE-save"
+    cp "$REPO_DIR/build/support-files/mmojo-rpc-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
+
+    zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_FILE
+    zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE
+    zip "$_RPC_PACKAGE_FILE" LICENSE "$_TOUCH_FILE"
+
+    rm "$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
+    mv "$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE-save" "$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
+
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_RPC_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    echo
+    echo "Packages:"
+    ls -al "$PACKAGES_DIR"
+fi
+```
+
+---
+### Backup Package to Mmojo Share
+You can back the package up to your Mmojo Share.
+```
+mm-packages-backup.sh
+```
 
 ---
 ### Proceed

@@ -76,6 +76,14 @@ export BUILD_DIR_COSMOPOLITAN="$HOME/mm-build-cosmopolitan"
 export BUILD_DIR_OPENSSSL="$HOME/mm-build-openssl"
 export BUILD_DIR_VULKAN_SDK="$HOME/mm-build-vulkan-sdk"
 
+export BUILD_SUBDIRECTORY_DEBIAN_X86_64="build-debian-x86_64"
+export BUILD_SUBDIRECTORY_DEBIAN_AARCH64="build-debian-aarch64"
+export BUILD_SUBDIRECTORY_MACOS_X86_64="build-macos-x86_64"
+export BUILD_SUBDIRECTORY_MACOS_AARCH64="build-macos-aarch64"
+export BUILD_SUBDIRECTORY_COSMO_X86_64="build-cosmo-x86_64"
+export BUILD_SUBDIRECTORY_COSMO_AARCH64="build-cosmo-aarch64"
+export BUILD_SUBDIRECTORY_COSMO_APE="build-cosmo-ape"
+
 echo "Setting Build Pieces paths."
 export CERTIFICATES_DIR="$HOME/mm-certificates"
 export COSMOCC_DIR="$BUILD_DIR_COSMOPOLITAN/cosmocc"
@@ -151,18 +159,20 @@ export ARCH_AARCH64_NATIVE="native"
 # export ZIPALIGN="$HOME/tools/mm-zipalign"
 
 # Deploy directory for deployment only
-export DEPLOY_DIR="$HOME/mm-deploy"
+export DEPLOY_DIR_NAME="mm-deploy"
+export DEPLOY_DIR_PREFIX="$DEPLOY_DIR_NAME-"
+export DEPLOY_DIR="$HOME/$DEPLOY_DIR_NAME"
 
 # Proxy directory for deployment only
 export PROXY_DIR="$HOME/mm-proxy"
 
 # Run this script when user starts a session.
-SEARCH_STRING="source mm-environment-variables.sh"
-COMMAND_STRING="source mm-environment-variables.sh"
-RC_PATH="$HOME/$MMOJO_RC_FILE"
-if ! grep -q "$SEARCH_STRING" "$RC_PATH"; then
-    echo $COMMAND_STRING >> $RC_PATH
-fi
+# SEARCH_STRING="source mm-environment-variables.sh"
+# COMMAND_STRING="source mm-environment-variables.sh"
+# RC_PATH="$HOME/$MMOJO_RC_FILE"
+# if ! grep -q "$SEARCH_STRING" "$RC_PATH"; then
+#     echo $COMMAND_STRING >> $RC_PATH
+# fi
 
 if [ -z "$SAVE_PATH" ]; then
   export SAVE_PATH=$PATH

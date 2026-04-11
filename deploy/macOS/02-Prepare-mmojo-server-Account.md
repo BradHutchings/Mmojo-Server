@@ -70,7 +70,6 @@ admin123!
 
 ---
 ### Remove sudo Timeout
-**COPY THESE FROM APPLIANCE INSTALL GUIDE.**
 You will use the `sudo` command often, so let's make it not expire.
 ```
 sudo visudo
@@ -85,8 +84,7 @@ Defaults        env_reset,timestamp_timeout=-1
 `i` to insert, paste, `esc` after you paste, `:wq` to save and quit.
 
 ---
-### Install homebrew
-**COPY THESE FROM APPLIANCE INSTALL GUIDE.**
+### Install Homebrew, bash, gsed on appliance Account
 Homebrew is the prefered package mamager for macOS.
 
 In the Terminal, install homebrew:
@@ -96,19 +94,30 @@ curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $H
 echo 'eval "$($HOME/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 eval "$($HOME/homebrew/bin/brew shellenv)"
 brew update
+brew install bash gsed
 brew list
+echo "Copying bash and gsed to /ur/local/bin."
+sudo mkdir -p /usr/local/bin
+sudo cp $HOME/homebrew/bin/bash /usr/local/bin
+sudo cp $HOME/homebrew/bin/gsed /usr/local/bin
+echo "/usr/local/bin:"
+ls -l /usr/local/bin
 ```
 
 ---
-### Install bash and gsed with homebrew
-**COPY THESE FROM APPLIANCE INSTALL GUIDE.**
-In the Terminal, install bash and gsed with homebrew, the copy them to `/usr/local`:
+### Customize the Shell Prompt
+You can prepend `(MmojoServer)-` to the shell prompt so you can easily indentify which WSL instance you're working with.
 ```
-brew install bash gsed
-sudo cp $HOME/homebrew/bin/bash /usr/local
-sudo cp $HOME/homebrew/bin/gsed /usr/local
-ls -l /usr/local
+cat << EOF >> .bashrc
+PS1="(MmojoServer)-$PS1"
+EOF
+source .bashrc
 ```
+
+<img width="331" height="32" alt="image" src="https://github.com/user-attachments/assets/0610c9f1-e5b3-4a1d-b5f8-73a056d2fa1f" />
+
+Notice your new prompt.
+
 
 ---
 ### Proceed

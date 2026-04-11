@@ -114,6 +114,34 @@ It should look like:
 <img width="500" height="191" alt="image" src="https://github.com/user-attachments/assets/b1d61521-6d05-4d3e-9cc7-d0de55f29c91" />
 
 ---
+### Make a Stock mmojo-server Package File
+Make a .zip pakcage files from your run directory. They are moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment. This package will have stock args and no `.gguf` file.
+
+Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
+```
+if test -n "$DEPLOY_DIR"; then
+    cd "$DEPLOY_DIR"
+    mv "$_PACKAGE_MMOJO_SERVER_ARGS_FILE" "$_PACKAGE_MMOJO_SERVER_ARGS_FILE-save"
+    cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+
+    zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_FILE
+    zip "$_PACKAGE_FILE" $_PACKAGE_MMOJO_SERVER_ARGS_FILE
+    zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
+    zip -r "$_PACKAGE_FILE" Mmojo-Complete
+
+    rm $_PACKAGE_MMOJO_SERVER_ARGS_FILE
+    mv "$_PACKAGE_MMOJO_SERVER_ARGS_FILE-save" "$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    echo
+    echo "Packages:"
+    ls -al "$PACKAGES_DIR"
+fi
+```
+
+---
 ### Proceed
 - **Next:** [02. Test Mmojo Server](02-Test-Mmojo-Server.md)
 - **Previous:** This is the first step in this guide.

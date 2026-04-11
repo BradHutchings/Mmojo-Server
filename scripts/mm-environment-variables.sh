@@ -159,7 +159,9 @@ export ARCH_AARCH64_NATIVE="native"
 # export ZIPALIGN="$HOME/tools/mm-zipalign"
 
 # Deploy directory for deployment only
-export DEPLOY_DIR="$HOME/mm-deploy"
+export DEPLOY_DIR_NAME="mm-deploy"
+export DEPLOY_DIR_PREFIX="$DEPLOY_DIR_NAME-"
+export DEPLOY_DIR="$HOME/$DEPLOY_DIR_NAME"
 
 # Proxy directory for deployment only
 export PROXY_DIR="$HOME/mm-proxy"

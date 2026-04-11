@@ -19,13 +19,13 @@ if [ -d "$REPO_DIR" ]; then
     # on darwin, change "/bin/bash" to "/usr/local/bin/bash"
     if ($MMOJO_DARWIN); then
         cd "$REPO_DIR_SCRIPTS"
-        for file in *.sh; do
+        for file in mm*.sh; do
             echo "Fixing $file."
             $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
         done
 
         cd "$REPO_DIR_SCRIPTS_OPENCLAW"
-        for file in *.sh; do
+        for file in oc*.sh; do
             echo "Fixing $file."
             $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
         done

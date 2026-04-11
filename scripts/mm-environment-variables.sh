@@ -167,12 +167,12 @@ export DEPLOY_DIR="$HOME/$DEPLOY_DIR_NAME"
 export PROXY_DIR="$HOME/mm-proxy"
 
 # Run this script when user starts a session.
-SEARCH_STRING="source mm-environment-variables.sh"
-COMMAND_STRING="source mm-environment-variables.sh"
-RC_PATH="$HOME/$MMOJO_RC_FILE"
-if ! grep -q "$SEARCH_STRING" "$RC_PATH"; then
-    echo $COMMAND_STRING >> $RC_PATH
-fi
+# SEARCH_STRING="source mm-environment-variables.sh"
+# COMMAND_STRING="source mm-environment-variables.sh"
+# RC_PATH="$HOME/$MMOJO_RC_FILE"
+# if ! grep -q "$SEARCH_STRING" "$RC_PATH"; then
+#     echo $COMMAND_STRING >> $RC_PATH
+# fi
 
 if [ -z "$SAVE_PATH" ]; then
   export SAVE_PATH=$PATH

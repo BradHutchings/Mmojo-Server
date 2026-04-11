@@ -114,7 +114,7 @@ It should look like:
 <img width="500" height="191" alt="image" src="https://github.com/user-attachments/assets/b1d61521-6d05-4d3e-9cc7-d0de55f29c91" />
 
 ---
-### Make a Stock mmojo-server Package File
+### Make a Stock Mmojo Server Package File
 Make a .zip pakcage files from your run directory. They are moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment. This package will have stock args and no `.gguf` file.
 
 Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
@@ -139,6 +139,40 @@ if test -n "$DEPLOY_DIR"; then
     echo "Packages:"
     ls -al "$PACKAGES_DIR"
 fi
+```
+
+---
+### Make a Stock Mmojo RPC Server Package File
+Make a .zip package file for RPC Mmojo Server from your run directory. It will be moved to your `$PACKAGES_DIR` directory after zipping for later testing or deployment. This package will have stock args.
+
+Make a `.zip` package file and move it to your `$PACKAGES_DIR` directory:
+```
+if [ -d "$DEPLOY_DIR" ]; then
+    cd "$DEPLOY_DIR"
+    mv "$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE" "$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE-save"
+    cp "$REPO_DIR/build/support-files/mmojo-rpc-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
+
+    zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_FILE
+    zip "$_RPC_PACKAGE_FILE" $_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE
+    zip "$_RPC_PACKAGE_FILE" LICENSE "$_TOUCH_FILE"
+
+    rm "$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
+    mv "$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE-save" "$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
+
+    mkdir -p "$PACKAGES_DIR"
+    mv -f "$_RPC_PACKAGE_FILE" "$PACKAGES_DIR"
+    cd $HOME
+    echo
+    echo "Packages:"
+    ls -al "$PACKAGES_DIR"
+fi
+```
+
+---
+### Backup Package to Mmojo Share
+You can back the package up to your Mmojo Share.
+```
+mm-packages-backup.sh
 ```
 
 ---

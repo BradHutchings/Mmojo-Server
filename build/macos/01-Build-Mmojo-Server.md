@@ -129,7 +129,7 @@ if test -n "$DEPLOY_DIR"; then
     zip "$_PACKAGE_FILE" LICENSE "$_TOUCH_FILE" *.html
     zip -r "$_PACKAGE_FILE" Mmojo-Complete
 
-    rm $_PACKAGE_MMOJO_SERVER_ARGS_FILE
+    rm "$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
     mv "$_PACKAGE_MMOJO_SERVER_ARGS_FILE-save" "$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 
     mkdir -p "$PACKAGES_DIR"

@@ -64,7 +64,7 @@ elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
     _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_MACOS_AARCH64-$_BUILD_CHOICE$_GPUS_CHOICE"
     _PACKAGE_FILE="mmojo-server-macos-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _RPC_PACKAGE_FILE="mmojo-rpc-server-macos-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _TOUCH_FILE="$_BUILD_SUBDIR"
+    _TOUCH_FILE="macos-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
 mm-build-for-platform.sh "$_BUILD_SUBDIR" "$_BUILD_CHOICE" "$_GPUS_CHOICE"
 ```

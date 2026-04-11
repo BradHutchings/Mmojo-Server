@@ -10,8 +10,6 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-echo "Shell: $(readlink -f /proc/$$/exe)"
-
 wd=$(pwd)
 
 ### Links don't work - end up modifying repo files on chmod.

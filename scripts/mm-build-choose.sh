@@ -16,8 +16,8 @@ build="native"
 
 builds=()
 builds+=("native")
-builds+=("perf")
-builds+=("comp")
+builds+=("performant")
+builds+=("compatible")
 
 if [ ${#builds[@]} -gt "0" ]; then
     echo

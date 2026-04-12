@@ -39,7 +39,7 @@ if [ "$DEPLOY_DIR" != "" ] && [ "$URL" != "" ]; then
     mkdir -p $DEPLOY_DIR
     cd $DEPLOY_DIR
     rm -r -f "$DEPLOY_DIR"/*
-    wget $URL -O "mmojo-server.zip"
+    wget $URL -O "mmojo-server.zip" --no-check-certificate
     unzip "mmojo-server.zip"
     rm "mmojo-server.zip"
     cd $HOME

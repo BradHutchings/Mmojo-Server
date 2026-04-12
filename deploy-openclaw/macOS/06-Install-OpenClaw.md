@@ -1,4 +1,4 @@
-## 05. Install OpenClaw
+## 06. Install OpenClaw
 ### About this Step
 You will install OpenClaw in the `OpenClaw` account on your Mac.
 
@@ -15,8 +15,8 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 
 ---
 ### Proceed
-- **Next:** [06. Configure OpenClaw — Mmojo Server](06-Configure-OpenClaw-1.md)
-- **Previous:** [04. Mount Mmojo Share](04-Mount-Mmojo-Share.md)
+- **Next:** [07. Configure OpenClaw — Mmojo Server](07-Configure-OpenClaw-1.md)
+- **Previous:** [05. Mount Mmojo Share](05-Mount-Mmojo-Share.md)
 - **Up:** [Deploy OpenClaw on macOS](README.md)
 
 ---

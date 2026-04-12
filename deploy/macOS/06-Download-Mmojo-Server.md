@@ -23,7 +23,7 @@ fi
 URL=""
 if [ $(uname -m) = "x86_64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-x86_64-performant-met.zip"
-elif [ $(uname -m) = "aarch64" ]; then
+elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-aarch64-performant-met.zip"
 fi
 ```
@@ -39,7 +39,7 @@ if [ "$DEPLOY_DIR" != "" ] && [ "$URL" != "" ]; then
     mkdir -p $DEPLOY_DIR
     cd $DEPLOY_DIR
     rm -r -f "$DEPLOY_DIR"/*
-    wget $URL -O "mmojo-server.zip" --no-check-certificate
+    wget -O "mmojo-server.zip" --no-check-certificate $URL
     unzip "mmojo-server.zip"
     rm "mmojo-server.zip"
     cd $HOME

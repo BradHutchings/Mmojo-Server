@@ -1,4 +1,4 @@
-## Deploy OpenClaw (macOS)
+## Deploy OpenClaw on macOS
 ### About this Guide
 In this guide, you will deploy the open source OpenClaw agent platform. You will deploy OpenClaw in one account on your Mac and Mmojo Server in a separate account on your Mac. You will configure OpenClaw to use Mmojo Server as its LLM. You'll be ready to rock and roll with OpenClaw.
 

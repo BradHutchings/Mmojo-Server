@@ -41,6 +41,8 @@ if [ "$DEPLOY_DIR" != "" ] && [ "$URL" != "" ]; then
     rm -r -f "$DEPLOY_DIR"/*
     wget -O "mmojo-server.zip" --no-check-certificate $URL
     unzip "mmojo-server.zip"
+    $MMOJO_SED -i -e 's/# -ngl/-ngl/g' "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+    $MMOJO_SED -i -e 's/# all/all/g' "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
     rm "mmojo-server.zip"
     cd $HOME
     ls -al $DEPLOY_DIR

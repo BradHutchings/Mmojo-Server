@@ -1,4 +1,4 @@
-## 08. Configure OpenClaw &mdash; Finish Configuration
+## 09. Configure OpenClaw &mdash; Finish Configuration
 ### About this Step
 In this step, you will configure channels and skills.
 
@@ -92,8 +92,8 @@ This will update the local clone of the Mmojo Server repo, stop the OpenClaw gat
 
 ---
 ### Proceed
-- **Next:** [09. Test OpenClaw](09-Test-OpenClaw.md)
-- **Previous:** [07. Configure OpenClaw — Channels, Skills, and API Keys](07-Configure-OpenClaw-2.md)
+- **Next:** [10. Test OpenClaw](10-Test-OpenClaw.md)
+- **Previous:** [08. Configure OpenClaw — Channels, Skills, and API Keys](08-Configure-OpenClaw-2.md)
 - **Up:** [Deploy OpenClaw on macOS](README.md)
 
 ---

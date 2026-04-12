@@ -7,13 +7,13 @@ You will create an `oc-scripts` directory, clone the Mmojo Server repo to the `m
 ### Create `oc-scripts` Directory
 The `oc-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
 ```
-export HOME_SCRIPTS="$HOME/mm-scripts"
-TILDE_SCRIPTS="~/mm-scripts"
-mkdir -p $HOME_SCRIPTS
+export HOME_OC_SCRIPTS="$HOME/oc-scripts"
+TILDE_OC_SCRIPTS="~/oc-scripts"
+mkdir -p $HOME_OC_SCRIPTS
 
-if [[ "${PATH}" != *"${HOME_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_SCRIPTS}"* ]]; then
+if [[ "${PATH}" != *"${HOME_OC_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_OC_SCRIPTS}"* ]]; then
 cat << EOF >> $HOME/.bashrc
-export PATH="\$PATH:$HOME_SCRIPTS"
+export PATH="\$PATH:$HOME_OC_SCRIPTS"
 EOF
 fi
 

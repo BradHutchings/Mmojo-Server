@@ -9,7 +9,7 @@
 ### Proceed
 - **Next:** [04. Mount Mmojo Share](04-Mount-Mmojo-Share.md)
 - **Previous:** [02. Deploy Mmojo Server](02-Deploy-Mmojo-Server.md)
-- **Up:** [Deploy OpenClaw (macOS)](README.md)
+- **Up:** [Deploy OpenClaw on macOS)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

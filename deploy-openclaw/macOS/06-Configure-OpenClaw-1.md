@@ -110,7 +110,7 @@ There is more configuration left to complete. Continue on the next page.
 ### Proceed
 - **Next:** [07. Configure OpenClaw — Channels, Skills, and API Keys](07-Configure-OpenClaw-2.md)
 - **Previous:** [05. Install OpenClaw](05-Install-OpenClaw.md)
-- **Up:** [Deploy OpenClaw (WSL)](README.md)
+- **Up:** [Deploy OpenClaw on macOS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

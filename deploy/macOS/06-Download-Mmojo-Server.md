@@ -9,9 +9,9 @@ Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs. It is 
 ```
 URL=""
 if [ $(uname -m) = "x86_64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-x86_64-perf.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-x86_64-performant-met.zip"
 elif [ $(uname -m) = "arm64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-arm64-perf-metal.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-macos-aarch64-performant-met.zip"
 fi
 ```
 

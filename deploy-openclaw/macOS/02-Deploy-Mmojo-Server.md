@@ -28,7 +28,7 @@ mm-models-download.sh
 ### Proceed
 - **Next:** [03. Prepare macOS - OpenClaw](03-Prepare-macOS-OpenClaw.md)
 - **Previous:** [01. Prerequisites](01-Prerequisites.md)
-- **Up:** [Deploy OpenClaw (macOS)](README.md)
+- **Up:** [Deploy OpenClaw on macOS)](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

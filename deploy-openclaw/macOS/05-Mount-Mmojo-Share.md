@@ -21,7 +21,7 @@ mm-share-create-mount-point-macos.sh
 ### Edit the Mmojo Share Mount Script
 Edit the script to put your `COMPUTER` and `USER` names in. `Ctrl-X`, then `Y`, then `Enter` to exit and save.
 ```
-nano "$HOME_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
+nano "$HOME_OC_SCRIPTS/$SHARE_DIR_MOUNT_SCRIPT"
 ```
 
 ---

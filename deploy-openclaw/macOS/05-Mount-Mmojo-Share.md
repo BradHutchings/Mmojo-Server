@@ -1,4 +1,4 @@
-## 04. Mount Mmojo Share
+## 05. Mount Mmojo Share
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
 In this step, you will mount your Mmojo Share, if you have one. Your Mmojo Share can be any SMB file share on your computer or your network. You will need it's host address, share name, username, and password.
@@ -35,8 +35,8 @@ ls -al $SHARE_DIR_MOUNT_POINT
 
 ---
 ### Proceed
-- **Next:** [05. Install OpenClaw](05-Install-OpenClaw.md)
-- **Previous:** [03. Prepare macOS - OpenClaw](03-Prepare-macOS-OpenClaw.md)
+- **Next:** [06. Install OpenClaw](06-Install-OpenClaw.md)
+- **Previous:** [04. Clone Mmojo Server Repo](04-Clone-Mmojo-Server-Repo.md)
 - **Up:** [Deploy OpenClaw on macOS](README.md)
 
 

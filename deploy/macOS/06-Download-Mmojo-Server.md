@@ -50,6 +50,15 @@ fi
 Mmojo Server is installed. You are ready to test it!
 
 ---
+### Optional: Open Server to Outside Connections
+For default safety, the server only listens to localhost connections, i.e. apps on your computer. Run this snippet to edit the `mmojo-server-args` file and open Mmojo Server up to accept connections from other computers on your network:
+```
+if [ "$DEPLOY_DIR" != "" ]; then
+    $MMOJO_SED -i -e 's/127.0.0.1/0.0.0.0/g' "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+fi
+```
+
+---
 ### Proceed
 - **Next:**  [07. Test Mmojo Server](07-Test-Mmojo-Server.md)
 - **Previous:** [05. Download Models](05-Download-Models.md)

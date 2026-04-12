@@ -30,8 +30,9 @@ if [ -d "$REPO_DIR" ]; then
             $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
         done
     fi
-    
-    mm-repo-copy-scripts.sh
+
+    echo "Parent of this script: $dirname($0)"
+    $(dirname($0))/mm-repo-copy-scripts.sh
 else
   echo "The $REPO_DIR directory does not exist."
 fi

@@ -94,7 +94,7 @@ curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $H
 echo 'eval "$($HOME/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 eval "$($HOME/homebrew/bin/brew shellenv)"
 brew update
-brew install bash gsed
+brew install bash gsed wget
 brew list
 echo "Copying bash and gsed to /ur/local/bin."
 sudo mkdir -p /usr/local/bin
@@ -103,6 +103,10 @@ sudo cp $HOME/homebrew/bin/gsed /usr/local/bin
 echo "/usr/local/bin:"
 ls -l /usr/local/bin
 ```
+
+---
+### Set bash as Shell for Mmojo Server Account
+(instructions here.)
 
 ---
 ### Customize the Shell Prompt

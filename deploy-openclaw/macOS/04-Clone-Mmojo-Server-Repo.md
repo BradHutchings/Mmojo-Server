@@ -13,7 +13,7 @@ mkdir -p $HOME_OC_SCRIPTS
 
 if [[ "${PATH}" != *"${HOME_OC_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_OC_SCRIPTS}"* ]]; then
 cat << EOF >> $HOME/.bashrc
-export PATH="\$PATH:$HOME_OC_SCRIPTS"
+export PATH="$HOME_OC_SCRIPTS:\$PATH"
 EOF
 fi
 

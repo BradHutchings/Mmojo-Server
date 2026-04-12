@@ -16,8 +16,8 @@ alias mm-debug="mm-mmojo-server-start.sh"
 alias mm-running="mm-mmojo-server-status.sh"
 alias mm-model="mm-model-choose.sh"
 alias mm-which="mm-model-which.sh"
-alias mm-args="cat \$DELOY_DIR/\$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
-alias mm-args-edit="nano \$DELOY_DIR/\$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+alias mm-args="cat \$DEPLOY_DIR/\$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+alias mm-args-edit="nano \$DEPLOY_DIR/\$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 
 echo "Useful command aliases:"
 echo "- mm-stop      --> mm-mmojo-server-stop.sh"
@@ -26,8 +26,8 @@ echo "- mm-debug     --> mm-mmojo-server-start.sh             # Runs in foregrou
 echo "- mm-running   --> mm-mmojo-server-status.sh            # Is Mmojo Server running?"
 echo "- mm-model     --> mm-model-choose.sh"
 echo "- mm-which     --> mm-model-which.sh"
-echo "- mm-args      --> cat \$DELOY_DIR/\$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
-echo "- mm-args-edit --> nano \$DELOY_DIR/\$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+echo "- mm-args      --> cat \$DEPLOY_DIR/\$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+echo "- mm-args-edit --> nano \$DEPLOY_DIR/\$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
 echo ""
 EOF
 fi

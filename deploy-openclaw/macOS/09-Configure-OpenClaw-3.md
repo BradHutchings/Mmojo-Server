@@ -59,7 +59,7 @@ https://github.com/openclaw/openclaw/issues/5704#issuecomment-3938731743
 -->
 
 <details>
-  <summary><b>Optional:</b> Turn of Heartbeat. It's a mess.</summary>
+  <summary><b>Optional:</b> Turn off Heartbeat. It's a mess.</summary>
 <br/>
     
 ```

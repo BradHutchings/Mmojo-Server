@@ -26,12 +26,14 @@ if [ -d "$REPO_DIR" ]; then
 
         cd "$REPO_DIR_SCRIPTS_OPENCLAW"
         for file in oc*.sh; do
-            echo "Fixing $file."
+            # echo "Fixing $file."
             $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
         done
     fi
-    
-    mm-repo-copy-scripts.sh
+
+    parent=$(dirname -- $0)
+    echo "Parent of this script: $parent"
+    "$parent/mm-repo-copy-scripts.sh"
 else
   echo "The $REPO_DIR directory does not exist."
 fi

@@ -1,19 +1,19 @@
-## 03. Clone Mmojo Server Repo
+## 04. Clone Mmojo Server Repo
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
-You will create an `mm-scripts` directory, clone the Mmojo Server repo to the `mm-repo` directory, and start setting up your bash environment for deploying Mmojo Server.
+You will create an `oc-scripts` directory, clone the Mmojo Server repo to the `mm-repo` directory, and start setting up your bash environment for deploying Mmojo Server.
 
 ---
-### Create `mm-scripts` Directory
-The `mm-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
+### Create `oc-scripts` Directory
+The `oc-scripts` Directory will contain useful scripts we will use to manage Mmojo Server.
 ```
-export HOME_SCRIPTS="$HOME/mm-scripts"
-TILDE_SCRIPTS="~/mm-scripts"
-mkdir -p $HOME_SCRIPTS
+export HOME_OC_SCRIPTS="$HOME/oc-scripts"
+TILDE_OC_SCRIPTS="~/oc-scripts"
+mkdir -p $HOME_OC_SCRIPTS
 
-if [[ "${PATH}" != *"${HOME_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_SCRIPTS}"* ]]; then
+if [[ "${PATH}" != *"${HOME_OC_SCRIPTS}"* ]] && [[ "${PATH}" != *"${TILDE_OC_SCRIPTS}"* ]]; then
 cat << EOF >> $HOME/.bashrc
-export PATH="$HOME_SCRIPTS:\$PATH"
+export PATH="$HOME_OC_SCRIPTS:\$PATH"
 EOF
 fi
 
@@ -58,9 +58,9 @@ mm-env
 
 ---
 ### Proceed
-- **Next:** [04. Mount Mmojo Share](04-Mount-Mmojo-Share.md)
-- **Previous:** [02. Prepare mmojo-server Account](02-Prepare-mmojo-server-Account.md)
-- **Up:** [Deploy Mmojo Server on macOS](README.md)
+- **Next:** [05. Mount Mmojo Share](05-Mount-Mmojo-Share.md)
+- **Previous:** [03. Prepare macOS OpenClaw](03-Prepare-macOS-OpenClaw.md)
+- **Up:** [Deploy OpenClaw on macOS](README.md)
 
 ---
 [MIT-Style License](/LICENSE)<br/>

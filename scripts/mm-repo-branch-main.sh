@@ -10,17 +10,21 @@
 SCRIPT_NAME=$(basename -- "$0")
 printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-if [ -d "$REPO_DIR" ]; then
-  WD=$(pwd)
-  cd $REPO_DIR
-  git reset --hard
-  git checkout main
-  cd $WD
+wd=$(pwd)
 
-  mm-repo-copy-scripts.sh
+if [ -d "$REPO_DIR" ]; then
+    cd $REPO_DIR
+    git reset --hard
+    git checkout main
+
+    parent=$(dirname -- $0)
+    echo "Parent of this script: $parent"
+    "$parent/mm-repo-copy-scripts.sh"
 else
   echo "The $REPO_DIR directory does not exist."
 fi
+
+cd $wd
 
 printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 

@@ -80,6 +80,8 @@ if [ "$DEPLOY_DIR" != "" ]; then
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE" ]; then
         cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+        $MMOJO_SED -i -e 's/# -ngl/-ngl/g' "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+        $MMOJO_SED -i -e 's/# all/all/g' "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
     fi
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"

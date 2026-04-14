@@ -20,7 +20,7 @@ if [ -d "$REPO_DIR" ]; then
     if ($MMOJO_DARWIN); then
         cd "$REPO_DIR_SCRIPTS"
         for file in mm*.sh; do
-            echo "Fixing $file."
+            # echo "Fixing $file."
             $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
         done
 
@@ -32,8 +32,8 @@ if [ -d "$REPO_DIR" ]; then
     fi
 
     parent=$(dirname -- $0)
-    echo "Parent of this script: $parent"
-    "$parent/mm-repo-copy-scripts.sh"
+    # echo "Parent of this script: $parent"
+    bash "$parent/mm-repo-copy-scripts.sh"
 else
   echo "The $REPO_DIR directory does not exist."
 fi

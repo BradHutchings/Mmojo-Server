@@ -19,7 +19,7 @@ if [ "$background" != "" ]; then
     runInBackground=true;
 fi
 
-echo "- \$background: $background"
+echo "- \$background: \"$background\""
 echo "- \$runInBackground: $runInBackground"
 echo "- \$DEPLOY_DIR: $DEPLOY_DIR"
 echo "- \$_PACKAGE_MMOJO_SERVER_FILE: $_PACKAGE_MMOJO_SERVER_FILE"

@@ -32,7 +32,7 @@ if [ -d "$REPO_DIR" ]; then
     fi
 
     parent=$(dirname -- $0)
-    echo "Parent of this script: $parent"
+    # echo "Parent of this script: $parent"
     bash "$parent/mm-repo-copy-scripts.sh"
 else
   echo "The $REPO_DIR directory does not exist."

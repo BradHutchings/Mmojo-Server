@@ -29,12 +29,14 @@ APP_NAME=""
 if [ "$DEPLOY_DIR_NAME" == "" ]; then
     printf "\- Reading in mm-environment-variables.sh.\n"
     parent=$(dirname -- $0)
+    printf "\- \$parent: $parent\n"
     source "$parent/mm-environment-variables.sh"
 fi
 
 if [ ! -d "$DEPLOY_DIR" ]; then
     printf "\- Looking for \$DEPLOY_DIR.\n"
     parent=$(dirname -- $0)
+    printf "\- \$parent: $parent\n"
     DEPLOY_DIR="$parent/$DEPLOY_DIR_NAME"
 fi
 
@@ -76,6 +78,8 @@ if [ ! -z "$serverRunningId" ]; then
         fi
     fi
 fi
+
+exit
 
 if [ -z "$serverRunningId" ]; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then

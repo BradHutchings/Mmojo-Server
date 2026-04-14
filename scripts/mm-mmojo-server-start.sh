@@ -39,7 +39,7 @@ if [ ! -d "$DEPLOY_DIR" ]; then
     parent=$(dirname -- $0)
     grandparent=$(dirname -- $parent)
     echo "- \$parent: $parent"
-    echp "- \$grandparent: $grandparent"
+    echo "- \$grandparent: $grandparent"
     DEPLOY_DIR="$grandparent/$DEPLOY_DIR_NAME"
 fi
 

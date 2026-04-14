@@ -9,7 +9,7 @@
 
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
-echo("STARTED: $SCRIPT_NAME $1";
+echo "STARTED: $SCRIPT_NAME $1";
 
 background=$1
 runInBackground=false;

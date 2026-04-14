@@ -9,7 +9,7 @@
 
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
-echo "STARTED: $SCRIPT_NAME $1";
+printf "STARTED: $SCRIPT_NAME $1\n";
 
 background=$1
 runInBackground=false;
@@ -18,28 +18,28 @@ if [ "$background" != "" ]; then
     runInBackground=true;
 fi
 
-echo "- \$runInBackground: $runInBackground"
-echo "- \$DEPLOY_DIR: $DEPLOY_DIR"
-echo "- \$_PACKAGE_MMOJO_SERVER_FILE: $_PACKAGE_MMOJO_SERVER_FILE"
+printf "- \$runInBackground: $runInBackground\n"
+printf "- \$DEPLOY_DIR: $DEPLOY_DIR\n"
+printf "- \$_PACKAGE_MMOJO_SERVER_FILE: $_PACKAGE_MMOJO_SERVER_FILE\n"
 
 MMOJO_SERVER_EXEC=""
 MMOJO_SERVER_PARAMS=""
 APP_NAME=""
 
 if [ "$DEPLOY_DIR_NAME" == "" ]; then
-    echo "- Reading in mm-environment-variables.sh."
+    printf "- Reading in mm-environment-variables.sh.\n"
     parent=$(dirname -- $0)
     source "$parent/mm-environment-variables.sh"
 fi
 
 if [ ! -d "$DEPLOY_DIR" ]; then
-    echo "- Looking for \$DEPLOY_DIR."
+    printf "- Looking for \$DEPLOY_DIR.\n"
     parent=$(dirname -- $0)
     DEPLOY_DIR="$parent/$DEPLOY_DIR_NAME"
 fi
 
 if [ -d "$DEPLOY_DIR" ]; then
-    echo "- The \$DEPLOY_DIR \"$DEPLOY_DIR\" exists."
+    printf "- The \$DEPLOY_DIR \"$DEPLOY_DIR\" exists.\n"
     if [ -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_FILE" ]; then
         MMOJO_SERVER_EXEC="$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_FILE"
         APP_NAME="Mmojo Server"
@@ -59,7 +59,7 @@ if [ -d "$DEPLOY_DIR" ]; then
     fi
     MMOJO_SERVER_LOG="$MMOJO_SERVER_EXEC.log"
 else
-    echo "- The \$DEPLOY_DIR \"$DEPLOY_DIR\" does not exist."
+    printf "- The \$DEPLOY_DIR \"$DEPLOY_DIR\" does not exist.\n"
 fi
 
 serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))

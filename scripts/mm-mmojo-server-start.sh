@@ -9,6 +9,7 @@
 
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
+echo("STARTED: $SCRIPT_NAME $1";
 
 background=$1
 runInBackground=false;
@@ -25,6 +26,18 @@ fi
 MMOJO_SERVER_EXEC=""
 MMOJO_SERVER_PARAMS=""
 APP_NAME=""
+
+if [ "$DEPLOY_DIR_NAME" = "" ]; then
+    echo "- Reading in mm-environment-variables.sh."
+    parent=$(dirname -- $0)
+    bash "$parent/mm-environment-variables.sh"
+fi
+
+if [ ! -d "$DEPLOY_DIR" ]; then
+    echo "- Looking for \$DEPLOY_DIR."
+    parent=$(dirname -- $0)
+    DEPLOY_DIR="$parent/$DEPLOY_DIR_NAME"
+fi
 
 if [ -d "$DEPLOY_DIR" ]; then
     if [ -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_FILE" ]; then

@@ -19,7 +19,7 @@ if [ -d "$REPO_DIR" ]; then
   
     parent=$(dirname -- $0)
     echo "Parent of this script: $parent"
-    bash "$parent/mm-repo-copy-scripts.sh"
+    bash "$parent/mm-repo-update-local.sh"
 else
   echo "The $REPO_DIR directory does not exist."
 fi

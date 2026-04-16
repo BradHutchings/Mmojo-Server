@@ -35,6 +35,7 @@
 #include <exception>
 #include <signal.h>
 #include <thread> // for std::thread::hardware_concurrency
+#include <iostream>
 
 #if defined(_WIN32)
 #include <windows.h>
@@ -92,6 +93,7 @@ static server_http_context::handler_t ex_wrapper(server_http_context::handler_t 
 
 int main(int argc, char ** argv) {
     // Mmojo Server START
+    std::cout << std::unitbuf; // Enable automatic flushing
     printf("\n\n----------START: " PRODUCT_NAME " ---------------------------------------------------\n\n");
     main_mmojo_server_1(argv[0]);
     main_path_diagnostics();

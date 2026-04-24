@@ -4029,6 +4029,7 @@ common_params_context common_params_parser_init(common_params & params, llama_ex
         {"--completion-tokens-batch-size"}, "N",
         "Number of tokens reported at a time with --show-completion-tokens.",
         [](common_params & params, int value) {
+            value = std::max(0, value);
             params.completion_tokens_batch_size = value;
         }
     ).set_examples({LLAMA_EXAMPLE_SERVER}));

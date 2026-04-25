@@ -38,9 +38,14 @@ if ($hasSystemPromptPath); then
     oc-patch-system-prompt-install.sh
 fi
 
+# Updating may have started the gateway.
+# If it was running when this script started, but isn't running now, start it.
 if ($isRunning); then
-    echo "Starting OpenClaw gateway."
-    oc-gateway-start.sh
+    status=$(oc-gateway-status.sh) 
+    if [ "$status" != "Running" ]; then
+        echo "Starting OpenClaw gateway."
+        oc-gateway-start.sh
+    fi
 fi
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

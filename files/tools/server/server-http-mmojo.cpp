@@ -30,16 +30,20 @@
 #include "index.html.hpp"
 #include "bundle.js.hpp"
 #include "bundle.css.hpp"
-// Mmojo Server START -- XXX
+
+// Mmojo Server START
 // This could be automated by searhing for "loading.html.hpp" and replacing that line with this block.
 // #include "loading.html.hpp"
 #include "loading-mmojo.html.hpp"
+// Mmojo Server END
 
+#endif
+
+// Mmojo Server START
 // pre C++20 helpers.
 bool starts_with (std::string const &fullString, std::string const &beginning);
 bool ends_with (std::string const &fullString, std::string const &ending);
 // Mmojo Server END
-#endif
 
 //
 // HTTP implementation using cpp-httplib
@@ -168,7 +172,6 @@ bool server_http_context::init(const common_params & params) {
             "/v1/health",
             "/models",
             "/v1/models",
-            "/api/tags",
             "/",
             "/index.html",
             "/bundle.js",
@@ -226,7 +229,7 @@ bool server_http_context::init(const common_params & params) {
         if (!ready) {
 #ifdef LLAMA_BUILD_WEBUI
             auto tmp = string_split<std::string>(req.path, '.');
-            
+
             // Mmojo Server START -- XXX
             // if (req.path == "/" || tmp.back() == "html") {
             //    res.status = 503;
@@ -237,7 +240,7 @@ bool server_http_context::init(const common_params & params) {
                 res.status = 503;
                 res.set_content(reinterpret_cast<const char*>(loading_mmojo_html), loading_mmojo_html_len, "text/html; charset=utf-8");
             // Mmojo Server END
-
+            
             } else
 #endif
             {
@@ -279,7 +282,7 @@ bool server_http_context::init(const common_params & params) {
         }
         return httplib::Server::HandlerResponse::Unhandled;
     });
-
+  
     // Mmojo Server START
     srv->set_post_routing_handler([](const httplib::Request & req, httplib::Response & res) {
         std::string cacheControlValue = "max-age=3600";
@@ -412,7 +415,7 @@ bool server_http_context::init(const common_params & params) {
         });
     }
     // Mmojo Server END
-
+  
     return true;
 }
 
@@ -514,8 +517,9 @@ static void process_handler_response(server_http_req_ptr && request, server_http
             std::string chunk;
             bool has_next = response->next(chunk);
             if (!chunk.empty()) {
-                // TODO: maybe handle sink.write unsuccessful? for now, we rely on is_connection_closed()
-                sink.write(chunk.data(), chunk.size());
+                if (!sink.write(chunk.data(), chunk.size())) {
+                    return false;
+                }
                 SRV_DBG("http: streamed chunk: %s\n", chunk.c_str());
             }
             if (!has_next) {
@@ -544,6 +548,7 @@ void server_http_context::get(const std::string & path, const server_http_contex
             req.path,
             build_query_string(req),
             req.body,
+            {},
             req.is_connection_closed
         });
         server_http_res_ptr response = handler(*request);
@@ -553,12 +558,43 @@ void server_http_context::get(const std::string & path, const server_http_contex
 
 void server_http_context::post(const std::string & path, const server_http_context::handler_t & handler) const {
     pimpl->srv->Post(path_prefix + path, [handler](const httplib::Request & req, httplib::Response & res) {
+        std::string body = req.body;
+        std::map<std::string, uploaded_file> files;
+
+        if (req.is_multipart_form_data()) {
+            // translate text fields to a JSON object and use it as the body
+            json form_json = json::object();
+            for (const auto & [key, field] : req.form.fields) {
+                if (form_json.contains(key)) {
+                    // if the key already exists, convert it to an array
+                    if (!form_json[key].is_array()) {
+                        json existing_value = form_json[key];
+                        form_json[key] = json::array({existing_value});
+                    }
+                    form_json[key].push_back(field.content);
+                } else {
+                    form_json[key] = field.content;
+                }
+            }
+            body = form_json.dump();
+
+            // populate files from multipart form
+            for (const auto & [key, file] : req.form.files) {
+                files[key] = uploaded_file{
+                    raw_buffer(file.content.begin(), file.content.end()),
+                    file.filename,
+                    file.content_type,
+                };
+            }
+        }
+
         server_http_req_ptr request = std::make_unique<server_http_req>(server_http_req{
             get_params(req),
             get_headers(req),
             req.path,
             build_query_string(req),
-            req.body,
+            body,
+            std::move(files),
             req.is_connection_closed
         });
         server_http_res_ptr response = handler(*request);

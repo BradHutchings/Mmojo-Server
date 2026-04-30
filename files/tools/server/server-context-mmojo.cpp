@@ -4163,8 +4163,7 @@ void server_routes::init_routes() {
                     {"created",  std::time(0)},
                     {"owned_by", "llamacpp"},
                     {"meta",     model_meta},
-                    }},
-                },
+\                },
             }}
         };
 

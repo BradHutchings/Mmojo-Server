@@ -44,6 +44,11 @@ _GPUS_CHOICE=$(cat /tmp/mm-gpus-choose.out)
 rm /tmp/mm-gpus-choose.out
 ```
 
+Enable 8 CPU cores for the build:
+```
+export CMAKE_BUILD_PARALLEL_LEVEL=8
+```
+
 Build Mmojo Server with your build choice and gpus choice:
 ```
 _BUILD_SUBDIR=""

@@ -10,7 +10,7 @@
   brad@bradhutchings.com
 */
 
-#include "rpc-server-additions-mmojo.h"
+#include "common/rpc-server-additions-mmojo.h"
 #include "mmojo-args.h"
 
 #include <signal.h>

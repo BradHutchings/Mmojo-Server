@@ -9,7 +9,11 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-running=$(systemctl --user status openclaw-gateway.service | grep "running")
+if [ $MMOJO_DARWIN ]; then
+    running=$(launchctl print gui/$(id -u openclaw)/ai.openclaw.gateway | grep "state = running")
+else
+    running=$(systemctl --user status openclaw-gateway.service | grep "running")
+fi
 
 if [ "$running" != "" ]; then
     echo "Running"

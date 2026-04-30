@@ -9,6 +9,8 @@
 
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n**********\n*\n* STARTED: $SCRIPT_NAME $1.\n*\n**********\n\n"
+echo "STARTED: $SCRIPT_NAME \"$1\"";
+echo "- $(date)"
 
 background=$1
 runInBackground=false;
@@ -17,16 +19,33 @@ if [ "$background" != "" ]; then
     runInBackground=true;
 fi
 
-# echo "runInBackground: $runInBackground"
-
-# printf "\n\$DEPLOY_DIR: $DEPLOY_DIR\n\n"
-# printf "\n\$_PACKAGE_MMOJO_SERVER_FILE: $_PACKAGE_MMOJO_SERVER_FILE\n\n"
+echo "- \$background: \"$background\""
+echo "- \$runInBackground: $runInBackground"
+echo "- \$DEPLOY_DIR: $DEPLOY_DIR"
+echo "- \$_PACKAGE_MMOJO_SERVER_FILE: $_PACKAGE_MMOJO_SERVER_FILE"
 
 MMOJO_SERVER_EXEC=""
 MMOJO_SERVER_PARAMS=""
 APP_NAME=""
 
+if [ "$DEPLOY_DIR_NAME" == "" ]; then
+    echo "- Reading in mm-environment-variables.sh.\n"
+    parent=$(dirname -- $0)
+    echo "- \$parent: $parent"
+    source "$parent/mm-environment-variables.sh"
+fi
+
+if [ ! -d "$DEPLOY_DIR" ]; then
+    echo "- Looking for \$DEPLOY_DIR.\n"
+    parent=$(dirname -- $0)
+    grandparent=$(dirname -- $parent)
+    echo "- \$parent: $parent"
+    echo "- \$grandparent: $grandparent"
+    DEPLOY_DIR="$grandparent/$DEPLOY_DIR_NAME"
+fi
+
 if [ -d "$DEPLOY_DIR" ]; then
+    echo "- The \$DEPLOY_DIR \"$DEPLOY_DIR\" exists."
     if [ -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_FILE" ]; then
         MMOJO_SERVER_EXEC="$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_FILE"
         APP_NAME="Mmojo Server"
@@ -46,7 +65,7 @@ if [ -d "$DEPLOY_DIR" ]; then
     fi
     MMOJO_SERVER_LOG="$MMOJO_SERVER_EXEC.log"
 else
-    echo "The run directory < $DEPLOY_DIR > does not exist."
+    echo "- The \$DEPLOY_DIR \"$DEPLOY_DIR\" does not exist."
 fi
 
 serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
@@ -56,7 +75,7 @@ serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
 if [ ! -z "$serverRunningId" ]; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
         if (! $runInBackground); then
-            echo "Stopping Mmojo Server with process id: $serverRunningId."
+            echo "- Stopping Mmojo Server with process id: $serverRunningId."
             kill $serverRunningId
             sleep 5s
             serverRunningId=$((pgrep -x "mmojo-server") || (pgrep -x "llama-server"))
@@ -67,12 +86,12 @@ fi
 if [ -z "$serverRunningId" ]; then
     if [ -f "$MMOJO_SERVER_EXEC" ]; then
         COMMAND="$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
-        echo $COMMAND
-        echo ""
+        echo "- \$COMMAND: $COMMAND"
         if ($runInBackground); then
-            echo "Starting $APP_NAME in the background."
+            echo "- Starting $APP_NAME in the background."
             nohup bash -c "$COMMAND" > /dev/null 2>&1 &
         else
+            echo "- Starting $APP_NAME in the foreground."
             # COMMAND="$MMOJO_SERVER_EXEC $MMOJO_SERVER_PARAMS"
             # echo $COMMAND
             # echo ""
@@ -82,7 +101,7 @@ if [ -z "$serverRunningId" ]; then
     fi
 else
     if (! $runInBackground); then
-        echo "Mmojo Server is already running with process id: $serverRunningId."
+        echo "- Mmojo Server is already running with process id: $serverRunningId."
     fi
 fi
 

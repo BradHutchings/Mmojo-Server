@@ -1385,14 +1385,14 @@ private:
         SLT_DBG(slot, "n_decoded = %d, n_remaining = %d, next token: %5d '%s'\n", slot.n_decoded, slot.n_remaining, result.tok, token_str.c_str());
       
         // Mmojo Server START
-        int completion_interval = 50;
         if (params_base.show_completion) {
+            int batch_size = params_base.completion_tokens_batch_size;
             if (!slot.has_next_token) {
                 SRV_INF("\n------------------------------\nCompletion:\n%s\n------------------------------\n", slot.generated_text.c_str());
             }
             else {
                 int count = slot.generated_token_count;
-                if ((count > 0) && ((count % completion_interval) == 0)) {
+                if ((count > 0) && (batch_size > 0) && ((count % batch_size) == 0)) {
                     if (params_base.show_completion_tokens) {
                         SRV_INF("\n--------------------\nCompleting: %d tokens generated.\n%s\n\n", count, slot.generated_text_batch.c_str());
                     }

@@ -144,7 +144,7 @@ export _PACKAGE_MMOJO_RPC_SERVER_FILE="mmojo-rpc-server"
 export _PACKAGE_MMOJO_RPC_SERVER_APE_FILE="mmojo-rpc-server-ape"
 export _PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE="mmojo-rpc-server-args"
 
-echo "Setting architectuire value for compilers."
+echo "Setting architecture value for compilers."
 export ARCH_X86_64_COMPATIBLE="x86-64"
 export ARCH_X86_64_PERFORMANT="x86-64-v3"
 export ARCH_X86_64_NATIVE="native"

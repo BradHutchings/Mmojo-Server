@@ -19,28 +19,39 @@ hasSystemPromptPath=false
 patched=$(oc-patch-system-prompt-is-patched.sh)
 echo "patched: $patched"
 if [[ "$patched" == *"File is patched"* ]]; then
+    echo
     echo "The system prompt patch is installed. Removing patch before updating."
     hasSystemPromptPath=true
     oc-patch-system-prompt-remove.sh
 fi
 
 if ($isRunning); then
+    echo
     echo "Stopping OpenClaw gateway."
     oc-gateway-stop.sh
 fi
 
 openclaw update
 
+echo
+echo "Installing patches."
 oc-patch.sh
 
 if ($hasSystemPromptPath); then
+    echo
     echo "Installing system prompt patch."
     oc-patch-system-prompt-install.sh
 fi
 
+# Updating may have started the gateway.
+# If it was running when this script started, but isn't running now, start it.
 if ($isRunning); then
-    echo "Starting OpenClaw gateway."
-    oc-gateway-start.sh
+    status=$(oc-gateway-status.sh) 
+    if [ "$status" != "Running" ]; then
+        echo
+        echo "Starting OpenClaw gateway."
+        oc-gateway-start.sh
+    fi
 fi
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

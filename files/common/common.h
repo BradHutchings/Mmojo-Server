@@ -442,6 +442,7 @@ struct common_params {
     bool    show_messages_debug       =    false;
     bool    show_completion           =    false;
     bool    show_completion_tokens    =    false;
+    int32_t  completion_tokens_batch_size  = 50;
     // Mmojo Server END
 
     int32_t n_batch               =  2048; // logical batch size for prompt processing (must be >=32 to use BLAS)

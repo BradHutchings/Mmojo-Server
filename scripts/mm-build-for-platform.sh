@@ -116,7 +116,7 @@ echo "          Variation: $variation"
 echo "               GPUs: $gpus"
 echo "         arch param: $ARCH_LEVEL_PARAM"
 echo "       subdirectory: $BUILD_SUBDIRECTORY"
-echo "        building in: $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY"
+echo "        building in: $BUILD_SUBDIRECTORY"
 echo "        GGML Params: $GGML_PARAMS"
 echo "\$MMOJO_EXTRA_PARAMS: $MMOJO_EXTRA_PARAMS"
 echo
@@ -126,8 +126,8 @@ if [ -d "$THIS_BUILD_DIR" ] && [ "$BUILD_SUBDIRECTORY" != "" ]; then
 
     # This is dangerous if $BUILD_SUBDIRECTORY is ""! See "if" statement above.
     # -DGGML_NATIVE=ON
-    if [ "$THIS_BUILD_DIR/$BUILD_SUBDIRECTORY" != "" ] && [ -d "$THIS_BUILD_DIR/$BUILD_SUBDIRECTORY" ]; then
-        rm -r -f $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY
+    if [ "$BUILD_SUBDIRECTORY" != "" ] && [ -d "$BUILD_SUBDIRECTORY" ]; then
+        rm -r -f $BUILD_SUBDIRECTORY
     fi
     cmake -B "$BUILD_SUBDIRECTORY" -DBUILD_SHARED_LIBS=OFF -DLLAMA_CURL=OFF -DLLAMA_OPENSSL=ON \
         -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$ARCH_LEVEL_PARAM" -DCMAKE_CXX_FLAGS="$ARCH_LEVEL_PARAM" \
@@ -136,8 +136,8 @@ if [ -d "$THIS_BUILD_DIR" ] && [ "$BUILD_SUBDIRECTORY" != "" ]; then
     
     # Show off what we built
     printf "\nBuild of CPU Test of llama.cpp is complete.\n\n"
-    printf "\$ ls -al $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY/bin/\n"
-    ls -al $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY/bin
+    printf "\$ ls -al $BUILD_SUBDIRECTORY/bin/\n"
+    ls -al $BUILD_SUBDIRECTORY/bin
 
     echo
     echo "Build command: cmake --build \"$BUILD_SUBDIRECTORY\""

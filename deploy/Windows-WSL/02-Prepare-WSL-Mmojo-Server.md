@@ -200,8 +200,8 @@ fi
 mkdir -p $REPO_DIR
 git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
 source $REPO_DIR_SCRIPTS/mm-environment-variables.sh
-/usr/local/bin/bash $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
-/usr/local/bin/bash $REPO_DIR_SCRIPTS/mm-repo-copy-scripts.sh
+bash $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
+bash $REPO_DIR_SCRIPTS/mm-repo-copy-scripts.sh
 if ! grep -q "mm-env=" "$HOME/.bashrc"; then
 cat << EOF1 >> $HOME/.bashrc
 alias mm-env=". mm-environment-variables.sh"

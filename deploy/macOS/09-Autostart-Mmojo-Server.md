@@ -5,7 +5,9 @@ In this step, we're going to install a `launchd` daemon to start Mmojo Server at
 
 ---
 ### Create LaunchDameon plist File
-duso cat << EOF >> /Library/LaunchDaemons/net.mmojo.mmojo-server.plist
+Create `/Library/LaunchDaemons/net.mmojo.mmojo-server.plist`:
+```
+sudo cat << EOF >> /Library/LaunchDaemons/net.mmojo.mmojo-server.plist
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -35,6 +37,7 @@ duso cat << EOF >> /Library/LaunchDaemons/net.mmojo.mmojo-server.plist
 </dict>
 </plist>
 EOF
+```
 
 ---
 ### Load the Job

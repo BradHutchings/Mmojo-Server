@@ -181,7 +181,7 @@ static std::string fs_get_cache_directory() {
         cache_directory = std::getenv("LOCALAPPDATA");
 #elif defined(__EMSCRIPTEN__)
         GGML_ABORT("not implemented on this platform");
-
+      
 // Mmojo Server START
 // This could be automated by searching for "error Unknown architecture" and inserting the block 2 lines before. -Brad 2025-11-05
 #elif defined(COSMOCC)
@@ -197,7 +197,7 @@ static std::string fs_get_cache_directory() {
         }
         
 // Mmojo Server END
-
+      
 #else
 #  error Unknown architecture
 #endif
@@ -362,7 +362,7 @@ int main(int argc, char * argv[]) {
     const char * cache_dir = nullptr;
     std::string cache_dir_str;
     if (params.use_cache) {
-        cache_dir_str = fs_get_cache_directory() + "rpc/";
+        cache_dir_str = fs_get_cache_directory() + "rpc" + DIRECTORY_SEPARATOR;
         if (!fs_create_directory_with_parents(cache_dir_str)) {
             fprintf(stderr, "Failed to create cache directory: %s\n", cache_dir_str.c_str());
             return 1;

@@ -11,7 +11,7 @@
 */
 
 #include "rpc-server-additions-mmojo.h"
-#include "mmojo-args.h"
+#include "common/mmojo-args.h"
 
 #include <signal.h>
 #include <dirent.h>

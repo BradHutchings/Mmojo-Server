@@ -44,6 +44,11 @@ _GPUS_CHOICE=$(cat /tmp/mm-gpus-choose.out)
 rm /tmp/mm-gpus-choose.out
 ```
 
+Enable 8 CPU cores for the build:
+```
+export CMAKE_BUILD_PARALLEL_LEVEL=8
+```
+
 Build Mmojo Server with your build choice and gpus choice:
 ```
 _BUILD_SUBDIR=""
@@ -59,12 +64,12 @@ if [[ $(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"* ]] && [ "$_BUILD_
     _TOUCH_FILE="build-aarch64-rpi5"
 elif [ $(uname -m) = "x86_64" ]; then
     echo "Building for Intel Macs is not supported yet."
-    _BUILD_SUBDIR="$BUILD_DIR/$BUILD_SUBDIRECTORY_DEBIAN_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_DEBIAN_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-macos-x86_64-native$_GPUS_CHOICE.zip"
     _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
     _TOUCH_FILE="$BUILD_SUBDIRECTORY_DEBIAN_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
 elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
-    _BUILD_SUBDIR="$BUILD_DIR/$BUILD_SUBDIRECTORY_DEBIAN_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_DEBIAN_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
     _PACKAGE_FILE="Mmojo-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _TOUCH_FILE="$BUILD_SUBDIRECTORY_DEBIAN_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
@@ -79,7 +84,7 @@ Create a `$DEPLOY_DIR` directory and copy Mmojo Server, Mmojo RPC Server, and su
 if [ "$DEPLOY_DIR" != "" ]; then
     mkdir -p "$DEPLOY_DIR"
     find $DEPLOY_DIR/* \( ! -name "*.gguf" -a ! -name "*-args" \) -delete
-    cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
+    cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE" ]; then
         cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
@@ -87,11 +92,11 @@ if [ "$DEPLOY_DIR" != "" ]; then
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
-    cp "$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
+    cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE" ]; then
         cp "$REPO_DIR/build/support-files/mmojo-rpc-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
     fi
-    cp "$_BUILD_SUBDIR/bin/llama-quantize" "$DEPLOY_DIR"
+    cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/llama-quantize" "$DEPLOY_DIR"
     touch "$DEPLOY_DIR/$_TOUCH_FILE"
 fi
 ```

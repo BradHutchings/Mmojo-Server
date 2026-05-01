@@ -32,10 +32,10 @@ if [ -f tools/server/webui/src/lib/components/app/chat/ChatForm/ChatFormHelperTe
     # Sentences need punctuation!
     $MMOJO_SED -i -e "s/for new line/for new line./g" tools/server/webui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte
 fi
-if [ -f tools/server/webui/src/routes/(chat)/+page.svelte ]; then
+if [ -f tools/server/webui/src/routes/\(chat\)/+page.svelte ]; then
     $MMOJO_SED -i -e "s/>{APP_NAME}<\/title>/>$APP_NAME<\/title>/g" tools/server/webui/src/routes/(chat)/+page.svelte
 fi
-if [ -f tools/server/webui/src/routes/(chat)/chat/[id]/+page.svelte ]; then
+if [ -f tools/server/webui/src/routes/\(chat\)/chat/[id]/+page.svelte ]; then
     $MMOJO_SED -i -e "s/ - llama.cpp<\/title>/ - $APP_SHORT_NAME<\/title>/g" tools/server/webui/src/routes/(chat)/chat/[id]/+page.svelte
 fi
 

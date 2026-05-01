@@ -32,20 +32,18 @@ if [ -f tools/server/webui/src/lib/components/app/chat/ChatForm/ChatFormHelperTe
     # Sentences need punctuation!
     $MMOJO_SED -i -e "s/for new line/for new line./g" tools/server/webui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte
 fi
-if [ -f tools/server/webui/src/routes/+page.svelte ]; then
-    # $MMOJO_SED -i -e "s/>llama.cpp - AI Chat Interface<\/title>/>$APP_NAME<\/title>/g" tools/server/webui/src/routes/+page.svelte
-    $MMOJO_SED -i -e "s/>llama.cpp<\/title>/>$APP_NAME<\/title>/g" tools/server/webui/src/routes/+page.svelte
+if [ -f tools/server/webui/src/routes/(chat)/+page.svelte ]; then
+    $MMOJO_SED -i -e "s/>{APP_NAME}<\/title>/>$APP_NAME<\/title>/g" tools/server/webui/src/routes/(chat)/+page.svelte
 fi
-if [ -f tools/server/webui/src/routes/chat/[id]/+page.svelte ]; then
-    $MMOJO_SED -i -e "s/ - llama.cpp<\/title>/ - $APP_SHORT_NAME<\/title>/g" tools/server/webui/src/routes/chat/[id]/+page.svelte
+if [ -f tools/server/webui/src/routes/(chat)/chat/[id]/+page.svelte ]; then
+    $MMOJO_SED -i -e "s/ - llama.cpp<\/title>/ - $APP_SHORT_NAME<\/title>/g" tools/server/webui/src/routes/(chat)/chat/[id]/+page.svelte
 fi
 
 if [ -f tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte ]; then
-    $MMOJO_SED -i -e "s/>llama.cpp<\/h1>/>$APP_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte
     $MMOJO_SED -i -e "s/>Hello there<\/h1>/>$APP_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte
 fi
 if [ -f tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte ]; then
-    $MMOJO_SED -i -e "s/llama.cpp<\/h1>/$APP_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte
+    $MMOJO_SED -i -e "s/{APP_NAME}<\/h1>/$APP_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte
 fi
 cp tools/server/public/loading-mmojo.html ./loading-mmojo.html
 

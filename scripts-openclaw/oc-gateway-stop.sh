@@ -12,7 +12,32 @@ SCRIPT_NAME=$(basename -- "$0")
 if [ "$(oc-gateway-status.sh)" == "Running" ]; then
     echo "Stopping the OpenClaw gateway."
     echo ""
-    openclaw gateway stop
+    
+    if [ "$MMOJO_DARWIN" == "true" ]; then
+        local_list=$(launchctl list | grep ai.openclaw.gateway)
+        local_is_running=false
+        if [ "$local_list" != "" ]; then
+            local_is_running=true
+        fi
+        
+        system_list=$(sudo launchctl list | grep ai.openclaw.gateway)
+        system_is_running=false
+        if [ "$system_list" != "" ]; then
+            system_is_running=true
+        fi
+
+        if [ "$local_is_running" == "true" ]; then
+            echo "- Stopping local OpenClaw gateway agent."
+            launchctl stop ai.openclaw.gateway
+        fi
+
+        if [ "$system_is_running" == "true" ]; then
+            echo "- Stopping system OpenClaw gateway daemon."
+            sudo launchctl stop ai.openclaw.gateway
+        fi
+    else
+        openclaw gateway stop
+    fi
 fi
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

@@ -17,12 +17,14 @@ if [ "$(oc-gateway-status.sh)" == "Running" ]; then
         local_list=$(launchctl list | grep ai.openclaw.gateway)
         local_is_running=false
         if [ "$local_list" != "" ]; then
+            echo "- Local OpenClaw gateway agent is running."
             local_is_running=true
         fi
         
         system_list=$(sudo launchctl list | grep ai.openclaw.gateway)
         system_is_running=false
         if [ "$system_list" != "" ]; then
+            echo "- System OpenClaw gateway agent is running."
             system_is_running=true
         fi
 

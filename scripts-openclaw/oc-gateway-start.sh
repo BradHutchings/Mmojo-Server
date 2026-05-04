@@ -24,7 +24,7 @@ if [ "$(oc-gateway-status.sh)" == "Not running" ]; then
         system_list=$(sudo launchctl list | grep ai.openclaw.gateway)
         system_is_running=false
         if [ "$system_list" != "" ]; then
-            echo "- System OpenClaw gateway agent is running."
+            echo "- System OpenClaw gateway daemon is running."
             system_is_running=true
         fi
 

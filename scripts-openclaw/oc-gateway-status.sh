@@ -9,7 +9,7 @@
 SCRIPT_NAME=$(basename -- "$0")
 # printf "\n$STARS\n*\n* STARTED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
-if [ $MMOJO_DARWIN ]; then
+if [ "$MMOJO_DARWIN" == "true" ]; then
     running=$(launchctl print gui/$(id -u openclaw)/ai.openclaw.gateway | grep "state = running")
 
     local_list=$(launchctl list | grep ai.openclaw.gateway)

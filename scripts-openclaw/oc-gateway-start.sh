@@ -12,11 +12,35 @@ SCRIPT_NAME=$(basename -- "$0")
 if [ "$(oc-gateway-status.sh)" == "Not running" ]; then
     echo "Starting the OpenClaw gateway."
     echo ""
-    system_prompts_dir="$HOME/.openclaw/system-prompts"
-    if [ -d "$system_prompts_dir" ]; then
-        rm "$system_prompts_dir/"*
+
+    if [ "$MMOJO_DARWIN" == "true" ]; then
+        local_list=$(launchctl list | grep ai.openclaw.gateway)
+        local_is_running=false
+        if [ "$local_list" != "" ]; then
+            local_is_running=true
+        fi
+        
+        system_list=$(sudo launchctl list | grep ai.openclaw.gateway)
+        system_is_running=false
+        if [ "$system_list" != "" ]; then
+            system_is_running=true
+        fi
+
+        if [ "$local_is_running" == "false" ] && [ "$system_is_running" == "false" ]; then
+            if [ ! -f "/Library/LaunchDaemons/ai.openclaw.gateway.plist" ]; then
+                sudo cp "~/Library/LaunchAgents/ai.openclaw.gateway.plist" "/Library/LaunchDaemons/ai.openclaw.gateway.plist"
+            fi
+            launchctl unload ~/Library/LaunchAgents/ai.openclaw.gateway.plist
+            sudo launchctl load /Library/LaunchDaemons/ai.openclaw.gateway.plist
+            sudo launchctl start ai.openclaw.gateway
+        fi
+    else
+        system_prompts_dir="$HOME/.openclaw/system-prompts"
+        if [ -d "$system_prompts_dir" ]; then
+            rm "$system_prompts_dir/"*
+        fi
+        openclaw gateway start
     fi
-    openclaw gateway start
 fi
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

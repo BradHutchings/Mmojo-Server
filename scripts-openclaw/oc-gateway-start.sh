@@ -17,21 +17,29 @@ if [ "$(oc-gateway-status.sh)" == "Not running" ]; then
         local_list=$(launchctl list | grep ai.openclaw.gateway)
         local_is_running=false
         if [ "$local_list" != "" ]; then
+            echo "- Local OpenClaw gateway agent is running."
             local_is_running=true
         fi
         
         system_list=$(sudo launchctl list | grep ai.openclaw.gateway)
         system_is_running=false
         if [ "$system_list" != "" ]; then
+            echo "- System OpenClaw gateway agent is running."
             system_is_running=true
         fi
 
         if [ "$local_is_running" == "false" ] && [ "$system_is_running" == "false" ]; then
             if [ ! -f "/Library/LaunchDaemons/ai.openclaw.gateway.plist" ]; then
+                echo "- Copying local agent plist to system daemon directory."
                 sudo cp "~/Library/LaunchAgents/ai.openclaw.gateway.plist" "/Library/LaunchDaemons/ai.openclaw.gateway.plist"
             fi
+            echo "- Unloading local agent."
             launchctl unload ~/Library/LaunchAgents/ai.openclaw.gateway.plist
+
+            echo "- Loading system daemon."
             sudo launchctl load /Library/LaunchDaemons/ai.openclaw.gateway.plist
+
+            echo "- Starting system daemon."
             sudo launchctl start ai.openclaw.gateway
         fi
     else

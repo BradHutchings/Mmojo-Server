@@ -31,11 +31,13 @@ if [ "$(oc-gateway-status.sh)" == "Running" ]; then
         if [ "$local_is_running" == "true" ]; then
             echo "- Stopping local OpenClaw gateway agent."
             launchctl stop ai.openclaw.gateway
+            launchctl unload "~/Library/LaunchAgents/ai.openclaw.gateway.plist"
         fi
 
         if [ "$system_is_running" == "true" ]; then
             echo "- Stopping system OpenClaw gateway daemon."
             sudo launchctl stop ai.openclaw.gateway
+            sudo launchctl unload "/Library/LaunchDaemons/ai.openclaw.gateway.plist"
         fi
     else
         openclaw gateway stop

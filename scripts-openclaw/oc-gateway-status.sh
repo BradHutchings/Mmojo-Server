@@ -34,7 +34,7 @@ else
     running=$(systemctl --user status openclaw-gateway.service | grep "running")
 fi
 
-if [ "$running" != "" ]; then
+if [ "$running" == "true" ]; then
     echo "Running"
 else
     echo "Not running"

@@ -33,9 +33,35 @@ if [ "$(oc-gateway-status.sh)" == "Not running" ]; then
                 echo "- Copying local agent plist to system daemon directory."
                 sudo cp "~/Library/LaunchAgents/ai.openclaw.gateway.plist" "/Library/LaunchDaemons/ai.openclaw.gateway.plist"
 
+                file="/Library/LaunchDaemons/ai.openclaw.gateway.plist"
+                after="<string>ai.openclaw.gateway</string>"
+                search="<key>UserName</key>"
+                plist="/tmp/plist"
+
+cat << EOF > $plist
+
+    <key>UserName</key>
+    <string>openclaw</string>
+    <key>GroupName</key>
+    <string>staff</string>
+
+EOF
+
+                search=$(sed -n '2p' $plist)
+                insertLine=$(grep -n -m 1 $after $file | cut -d: -f1)
+
+                found=$(grep $search $file)
+                if [ "$found" == "" ]; then
+                    echo "  - Patching $file."
+                    echo "    - Inserting UserName and GroupName."
+                    sudo sed -i -e "${insertLine}r $plist" $file
+                else
+                    echo "  - $file is already patched."
+                fi
+
                 # Add this to the main <dict> in that .plist:
                 #     <key>UserName</key>
-                #     <string>mmojo-server</string>
+                #     <string>openclaw</string>
                 #     <key>GroupName</key>
                 #     <string>staff</string>
                 # Otherwise, root runs it and ends up owning $HOME/.openclaw/openclaw.json.

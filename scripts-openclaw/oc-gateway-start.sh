@@ -50,7 +50,7 @@ cat << EOF > $plist
 EOF
 
                 search=$(sed -n '2p' $plist)
-                insertLine=$(grep -n -m 1 $after $file | cut -d: -f1)
+                insertLine=$(sudo grep -n -m 1 $after $file | cut -d: -f1)
                 echo "-----"
                 sudo grep -n -m 1 $after $file
                 sudo grep -n -m 1 $after $file | cut -d: -f1
@@ -58,7 +58,7 @@ EOF
                 echo "insertLine: $insertLine"
                 echo "-----"
 
-                found=$(grep $search $file)
+                found=$(sudo grep $search $file)
                 if [ "$found" == "" ]; then
                     sedCommand="${insertLine}r $plist"
                     echo "  - Patching $file."

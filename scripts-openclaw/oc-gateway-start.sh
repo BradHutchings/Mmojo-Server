@@ -51,6 +51,12 @@ EOF
 
                 search=$(sed -n '2p' $plist)
                 insertLine=$(grep -n -m 1 $after $file | cut -d: -f1)
+                echo "-----"
+                grep -n -m 1 $after $file
+                grep -n -m 1 $after $file | cut -d: -f1
+                echo "-----"
+                echo "insertLine: $insertLine"
+                echo "-----"
 
                 found=$(grep $search $file)
                 if [ "$found" == "" ]; then

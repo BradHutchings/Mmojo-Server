@@ -31,9 +31,11 @@ if [ "$(oc-gateway-status.sh)" == "Not running" ]; then
         if [ "$local_is_running" == "false" ] && [ "$system_is_running" == "false" ]; then
             if [ ! -f "/Library/LaunchDaemons/ai.openclaw.gateway.plist" ]; then
                 echo "- Copying local agent plist to system daemon directory."
-                sudo cp "~/Library/LaunchAgents/ai.openclaw.gateway.plist" "/Library/LaunchDaemons/ai.openclaw.gateway.plist"
-
+                original="$HOME/Library/LaunchAgents/ai.openclaw.gateway.plist"
                 file="/Library/LaunchDaemons/ai.openclaw.gateway.plist"
+
+                sudo cp "$original" "$file"
+
                 after="<string>ai.openclaw.gateway</string>"
                 search="<key>UserName</key>"
                 plist="/tmp/plist"

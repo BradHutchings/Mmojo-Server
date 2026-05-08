@@ -54,9 +54,11 @@ EOF
 
                 found=$(grep $search $file)
                 if [ "$found" == "" ]; then
+                    sedCommand="${insertLine}r $plist"
                     echo "  - Patching $file."
                     echo "    - Inserting UserName and GroupName."
-                    sudo sed -i -e "${insertLine}r $plist" $file
+                    echo "    - sedCommand: $sedCommand"
+                    # sudo sed -i -e "${insertLine}r $plist" $file
                 else
                     echo "  - $file is already patched."
                 fi

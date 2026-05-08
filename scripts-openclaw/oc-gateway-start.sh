@@ -32,7 +32,15 @@ if [ "$(oc-gateway-status.sh)" == "Not running" ]; then
             if [ ! -f "/Library/LaunchDaemons/ai.openclaw.gateway.plist" ]; then
                 echo "- Copying local agent plist to system daemon directory."
                 sudo cp "~/Library/LaunchAgents/ai.openclaw.gateway.plist" "/Library/LaunchDaemons/ai.openclaw.gateway.plist"
+
+                # Add this to the main <dict> in that .plist:
+                #     <key>UserName</key>
+                #     <string>mmojo-server</string>
+                #     <key>GroupName</key>
+                #     <string>staff</string>
+                # Otherwise, root runs it and ends up owning $HOME/.openclaw/openclaw.json.
             fi
+
             echo "- Unloading local agent."
             launchctl unload ~/Library/LaunchAgents/ai.openclaw.gateway.plist
 

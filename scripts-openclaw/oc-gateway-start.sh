@@ -38,7 +38,7 @@ if [ "$(oc-gateway-status.sh)" == "Not running" ]; then
 
                 after="<string>ai.openclaw.gateway</string>"
                 search="<key>UserName</key>"
-                plist="/tmp/plist"
+                plist="plist.txt"
 
 cat << EOF > $plist
 

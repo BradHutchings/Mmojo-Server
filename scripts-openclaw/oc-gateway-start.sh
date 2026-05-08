@@ -64,7 +64,7 @@ EOF
                     echo "  - Patching $file."
                     echo "    - Inserting UserName and GroupName."
                     echo "    - sedCommand: $sedCommand"
-                    # sudo sed -i -e "${insertLine}r $plist" $file
+                    sudo sed -i -e "${insertLine}r $plist" $file
                 else
                     echo "  - $file is already patched."
                 fi

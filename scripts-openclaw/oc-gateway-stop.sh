@@ -42,6 +42,9 @@ if [ "$(oc-gateway-status.sh)" == "Running" ]; then
     else
         openclaw gateway stop
     fi
+else
+    echo "The OpenClaw gateway does not appear to be running."
+    echo ""
 fi
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"

@@ -45,8 +45,8 @@ openclaw gateway restart
 If you want to access the OpenClaw web control from another computer on your network, do this. Please keep the computer running OpenClaw behaind a router, as this would be very insecure on an open network.
 ```
 openclaw config set gateway.bind "lan"
-openclaw config set gateway.controlUi.allowInsecureAuth true
-openclaw config set gateway.controlUi.dangerouslyDisableDeviceAuth true
+# openclaw config set gateway.controlUi.allowInsecureAuth true
+# openclaw config set gateway.controlUi.dangerouslyDisableDeviceAuth true
 openclaw config set gateway.controlUi.allowedOrigins[0] "*"
 openclaw config set gateway.controlUi.allowedOrigins[1] "http://localhost:18789"
 openclaw config set gateway.controlUi.allowedOrigins[2] "http://127.0.0.1:18789"

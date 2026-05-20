@@ -39,6 +39,7 @@ openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].reasoning 
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].contextWindow 72000
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].maxTokens 72000
 openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].compat.supportsDeveloperRole false
+openclaw config set models.providers.mmojo-server-127-0-0-1.models[0].request.allowPrivateNetwork true
 openclaw gateway restart
 ```
 

@@ -3578,7 +3578,7 @@ private:
             {"vocab_type",  llama_vocab_type            (vocab)},
             {"n_vocab",     llama_vocab_n_tokens        (vocab)},
             {"n_ctx_train", llama_model_n_ctx_train     (model_tgt)},
-            {"n_ctx",       llama_n_ctx                 (ctx)},
+            {"n_ctx",       llama_n_ctx                 (ctx_tgt)},
             {"n_embd",      llama_model_n_embd          (model_tgt)},
             {"n_params",    llama_model_n_params        (model_tgt)},
             {"size",        llama_model_size            (model_tgt)},

@@ -429,25 +429,10 @@ bool server_http_context::init(const common_params & params) {
                     res.set_redirect(req.path + "/");
                     return false;
                 });
-                srv->Get(endpoint + "/", [](const httplib::Request & /*req*/, httplib::Response & res) {
-                    // COEP and COOP headers, required by pyodide (python interpreter)
-                    res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
-                    res.set_header("Cross-Origin-Opener-Policy", "same-origin");
-                    // res.set_content(reinterpret_cast<const char*>(index_html), index_html_len, "text/html; charset=utf-8");
-                    res.set_content(serve_asset("index.html", "text/html; charset=utf-8", true));
-                    return false;
-                });
-                srv->Get(endpoint + "/bundle.js", [](const httplib::Request & /*req*/, httplib::Response & res) {
-                    // res.set_content(reinterpret_cast<const char*>(bundle_js), bundle_js_len, "application/javascript; charset=utf-8");
-                    res.set_content(serve_asset("bundle.js",  "application/javascript; charset=utf-8", false));
-                    return false;
-                });
-                srv->Get(endpoint + "/bundle.css", [](const httplib::Request & /*req*/, httplib::Response & res) {
-                    // res.set_content(reinterpret_cast<const char*>(bundle_css), bundle_css_len, "text/css; charset=utf-8");
-                    res.set_content(serve_asset("bundle.css", "text/css; charset=utf-8", false));
-                    return false;
-                });
-        
+                srv->Get(endpoint + "/", serve_asset("index.html", "text/html; charset=utf-8", true));
+                srv->Get(endpoint + "/bundle.js",  serve_asset("bundle.js",  "application/javascript; charset=utf-8", false));
+                srv->Get(endpoint + "/bundle.css", serve_asset("bundle.css", "text/css; charset=utf-8",               false));
+                      
                 // This is so the relocated chat UI can get properties. 
                 srv->Get(endpoint + "/props", [endpoint](const httplib::Request & req, httplib::Response & res) {
                     // LOG_INF("Redirecting %s/props to /props\n", endpoint.c_str());

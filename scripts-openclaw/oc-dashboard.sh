@@ -11,6 +11,13 @@ SCRIPT_NAME=$(basename -- "$0")
 
 openclaw dashboard --no-open
 
+if ($MMOJO_DARWIN); then
+    pbpaste | sed -e "s/127.0.0.1/$(hostname)/" | pbcopy
+    url=$(pbpaste)
+    echo
+    echo "Dashboard: $url"
+fi
+
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 
 ################################################################################

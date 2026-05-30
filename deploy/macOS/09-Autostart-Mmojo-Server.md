@@ -1,7 +1,59 @@
 ## 09. Autostart Mmojo Server
 **THIS GUIDE IS IN PROGRESS.**
 ### About this Step
-In this short step, we're going to modify the mmojo user account so that it automatically starts Mmojo Server and has some useful command aliases for managing it. This will enable a workflow where you open a Terminal session with the mmojo account to launch it and close the Terminal window to stop it. 
+In this step, we're going to install a `launchd` daemon to start Mmojo Server at machine startup, and we're going to add to `.bashrc` to start Mmojo at login if it is not already running.
+
+---
+### Create LaunchDameon plist File
+Create `/Library/LaunchDaemons/net.mmojo.mmojo-server.plist`:
+```
+sudo cat << EOF >> /Library/LaunchDaemons/net.mmojo.mmojo-server.plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>net.mmojo.mmojo-server</string>
+    <key>Program</key>
+    <string>/Users/mmojo-server/mm-deploy/mmojo-server</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <false/>
+    <key>WorkingDirectory</key>
+    <string>/Users/mmojo-server/mm-deploy</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/mmojo-server/mm-deploy/launchd-out</string>
+    <key>__StandardErrorPath</key>
+    <string>/Users/mmojo-server/mm-deploy/launchd-err</string>
+
+    <key>UserName</key>
+    <string>mmojo-server</string>
+    <key>GroupName</key>
+    <string>staff</string>
+    <key>InitGroups</key>
+    <true/>
+</dict>
+</plist>
+EOF
+```
+
+---
+### Load the Job
+Use `launchctl bootstrap` to load the job:
+```
+sudo launchctl bootstrap system/ /Library/LaunchDaemons/net.mmojo.mmojo-server.plist
+```
+
+---
+### Start the Job
+Use `launchctl kickstart` to load the job:
+```
+sudo launchctl kickstart system/net.mmojo.mmojo-server
+```
+
+*Note: I need to figure out how `mm-mmojo-server-start.sh` and `mm-mmojo-server-stop.sh` will work with this. -Brad 2026-05-01*
 
 ---
 ### Autostart Mmojo Server

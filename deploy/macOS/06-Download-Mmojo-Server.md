@@ -4,6 +4,13 @@
 In this step, we will download Mmojo Server from Hugging Face.
 
 ---
+### Install OpenSLL
+Install OpenSSL support.
+```
+brew install openssl@3
+```
+
+---
 ### Set Mmojo Server Download URL
 Set the URL for the Mmojo Server package that runs on recent x86_64 CPUs. It is currently unkown if this build runs on any aarch64 (arm64) Windows computers.
 ```

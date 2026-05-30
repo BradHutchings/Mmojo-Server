@@ -290,7 +290,10 @@ int llama_server(int argc, char ** argv) {
                 endpoint = endpoint.substr(0, endpoint.length() - 1);
             }
         }
-      
+
+        SRV_WRN("endpoint: %s\n", endpoint.c_str());
+        SRV_WRN("%s", "-----------------\n");
+
         ctx_http.get (endpoint + "/tools",           ex_wrapper(tools.handle_get));
         ctx_http.post(endpoint + "/tools",           ex_wrapper(tools.handle_post));
         // Mmojo Server END

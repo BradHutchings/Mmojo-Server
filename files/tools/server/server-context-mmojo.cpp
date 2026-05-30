@@ -3565,23 +3565,23 @@ private:
         general_size_label[0] = 0;
         general_license[0] = 0;
 
-        llama_model_meta_val_str(model, "general.architecture", general_architecture, 64);
-        llama_model_meta_val_str(model, "general.type", general_type, 64);
-        llama_model_meta_val_str(model, "general.name", general_name, 64);
-        llama_model_meta_val_str(model, "general.version",      general_version, 64);
-        llama_model_meta_val_str(model, "general.finetune",     general_finetune, 64);
-        llama_model_meta_val_str(model, "general.basename",     general_basename, 64);
-        llama_model_meta_val_str(model, "general.size_label",   general_size_label, 64);
-        llama_model_meta_val_str(model, "general.license",      general_license, 64);
+        llama_model_meta_val_str(model_tgt, "general.architecture", general_architecture, 64);
+        llama_model_meta_val_str(model_tgt, "general.type", general_type, 64);
+        llama_model_meta_val_str(model_tgt, "general.name", general_name, 64);
+        llama_model_meta_val_str(model_tgt, "general.version",      general_version, 64);
+        llama_model_meta_val_str(model_tgt, "general.finetune",     general_finetune, 64);
+        llama_model_meta_val_str(model_tgt, "general.basename",     general_basename, 64);
+        llama_model_meta_val_str(model_tgt, "general.size_label",   general_size_label, 64);
+        llama_model_meta_val_str(model_tgt, "general.license",      general_license, 64);
 
         return json {
             {"vocab_type",  llama_vocab_type            (vocab)},
             {"n_vocab",     llama_vocab_n_tokens        (vocab)},
-            {"n_ctx_train", llama_model_n_ctx_train     (model)},
+            {"n_ctx_train", llama_model_n_ctx_train     (model_tgt)},
             {"n_ctx",       llama_n_ctx                 (ctx)},
-            {"n_embd",      llama_model_n_embd          (model)},
-            {"n_params",    llama_model_n_params        (model)},
-            {"size",        llama_model_size            (model)},
+            {"n_embd",      llama_model_n_embd          (model_tgt)},
+            {"n_params",    llama_model_n_params        (model_tgt)},
+            {"size",        llama_model_size            (model_tgt)},
             {"general.architecture", general_architecture },
             {"general.type", general_type },
             {"general.name", general_name },

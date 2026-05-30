@@ -24,40 +24,68 @@ fi
 cd $THIS_BUILD_DIR
 
 echo "Customizing chat user interface files."
-if [ -f tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte ]; then
+
+file="tools/ui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte"
+if [ -f "$file" ]; then
     # Sentences need punctuation!
-    $MMOJO_SED -i -e "s/upload files to get started/upload files to get started./g" tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte
-fi
-if [ -f tools/server/webui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte ]; then
-    # Sentences need punctuation!
-    $MMOJO_SED -i -e "s/for new line/for new line./g" tools/server/webui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte
-fi
-if [ -f tools/server/webui/src/routes/\(chat\)/+page.svelte ]; then
-    $MMOJO_SED -i -e "s/>{APP_NAME}<\/title>/>$APP_SHORT_NAME<\/title>/g" tools/server/webui/src/routes/\(chat\)/+page.svelte
-fi
-if [ -f tools/server/webui/src/routes/\(chat\)/chat/[id]/+page.svelte ]; then
-    $MMOJO_SED -i -e "s/ - llama.cpp<\/title>/ - $APP_SHORT_NAME<\/title>/g" tools/server/webui/src/routes/\(chat\)/chat/[id]/+page.svelte
+    $MMOJO_SED -i -e "s/upload files to get started/upload files to get started./g" "$file"
+else
+    echo "FILE NOT FOUND: $file"
 fi
 
-if [ -f tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte ]; then
-    $MMOJO_SED -i -e "s/>Hello there<\/h1>/>$APP_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte
+file="tools/ui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte"
+if [ -f "$file" ]; then
+    # Sentences need punctuation!
+    $MMOJO_SED -i -e "s/for new line/for new line./g" "$file"
+else
+    echo "FILE NOT FOUND: $file"
 fi
-if [ -f tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte ]; then
-    $MMOJO_SED -i -e "s/{APP_NAME}<\/h1>/$APP_SHORT_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte
+
+file="tools/ui/src/routes/\(chat\)/+page.svelte"
+if [ -f "$file" ]; then
+    $MMOJO_SED -i -e "s/>{APP_NAME}<\/title>/>$APP_SHORT_NAME<\/title>/g" "$file"
+else
+    echo "FILE NOT FOUND: $file"
 fi
+
+file="tools/server/webui/src/routes/\(chat\)/chat/[id]/+page.svelte"
+if [ -f "$file" ]; then
+    $MMOJO_SED -i -e "s/ - llama.cpp<\/title>/ - $APP_SHORT_NAME<\/title>/g" "$file"
+else
+    echo "FILE NOT FOUND: $file"
+fi
+
+file="tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte"
+if [ -f "$file" ]; then
+    $MMOJO_SED -i -e "s/>Hello there<\/h1>/>$APP_NAME<\/h1>/g" "$file"
+else
+    echo "FILE NOT FOUND: $file"
+fi
+
+file="tools/ui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte"
+if [ -f "$file" ]; then
+    $MMOJO_SED -i -e "s/{APP_NAME}<\/h1>/$APP_SHORT_NAME<\/h1>/g" "$file"
+else
+    echo "FILE NOT FOUND: $file"
+fi
+
+echo "NEED TO SORT OUT WHAT TO DO WITH loading-mmojo.html."
 cp tools/server/public/loading-mmojo.html ./loading-mmojo.html
 
 echo "Rebuilding chat user interface."
 SAVE_WD=$(pwd)
-cd tools/server/webui
+cd tools/ui
 npm i
 npm run build
 cd $SAVE_WD
 mv loading-mmojo.html tools/server/public/loading-mmojo.html
 
 # Somehow the Svelte recompile misses the "for new line". No idea why. -Brad 2026-03-15
-if [ -f tools/server/webui/.svelte-kit/output/prerendered/pages/index.html ]; then
-    $MMOJO_SED -i -e "s/for new line/for new line./g" tools/server/webui/.svelte-kit/output/prerendered/pages/index.html
+file="tools/server/webui/.svelte-kit/output/prerendered/pages/index.html"
+if [ -f "$file" ]; then
+    $MMOJO_SED -i -e "s/for new line/for new line./g" "$file"
+else
+    echo "FILE NOT FOUND: $file"
 fi
 
 # Recompile overwrites bundle.js

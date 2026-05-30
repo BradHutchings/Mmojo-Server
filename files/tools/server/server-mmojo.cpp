@@ -281,8 +281,8 @@ int llama_server(int argc, char ** argv) {
             // ctx_http.get ("/tools",           ex_wrapper(tools.handle_get));
             // ctx_http.post("/tools",           ex_wrapper(tools.handle_post));
 
-        std::string endpoint = "";
-        if (params.default_ui_endpoint != "") {
+        std::string endpoint = params.default_ui_endpoint;
+        if (endpoint != "") {
             if (!starts_with(endpoint, "/")) {
                 endpoint = "/" + endpoint;
             }

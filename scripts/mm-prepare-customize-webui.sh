@@ -48,14 +48,14 @@ else
     echo "FILE NOT FOUND: $file"
 fi
 
-file="tools/server/webui/src/routes/\(chat\)/chat/[id]/+page.svelte"
+file="tools/ui/src/routes/\(chat\)/chat/[id]/+page.svelte"
 if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/ - llama.cpp<\/title>/ - $APP_SHORT_NAME<\/title>/g" "$file"
 else
     echo "FILE NOT FOUND: $file"
 fi
 
-file="tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte"
+file="tools/ui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte"
 if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/>Hello there<\/h1>/>$APP_NAME<\/h1>/g" "$file"
 else

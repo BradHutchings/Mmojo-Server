@@ -405,59 +405,73 @@ bool server_http_context::init(const common_params & params) {
                     return false;
                 };
             };
-
-            // Mmojo Server START
-            // This can be automated by searching for:
-            //    srv->Get(params.api_prefix + "/",
-                  
-            // REPLACE THESE LINES:
-            //    srv->Get(params.api_prefix + "/",           serve_asset("index.html", "text/html; charset=utf-8",              true));
-            //    srv->Get(params.api_prefix + "/bundle.js",  serve_asset("bundle.js",  "application/javascript; charset=utf-8", false));
-            //    srv->Get(params.api_prefix + "/bundle.css", serve_asset("bundle.css", "text/css; charset=utf-8",               false));
-      
-            if (params.default_ui_endpoint != "") {
-                std::string endpoint = params.default_ui_endpoint;
-                if (!starts_with(endpoint, "/")) {
-                    endpoint = "/" + endpoint;
-                }
-                while (ends_with(endpoint, "/")) {
-                    endpoint = endpoint.substr(0, endpoint.length() - 1);
-                }
-                
-                // These support the relocated chat UI.
-                srv->Get(endpoint, [](const httplib::Request & req, httplib::Response & res) {
-                    res.set_redirect(req.path + "/");
-                    return false;
-                });
-                srv->Get(endpoint + "/", serve_asset("index.html", "text/html; charset=utf-8", true));
-                srv->Get(endpoint + "/bundle.js",  serve_asset("bundle.js",  "application/javascript; charset=utf-8", false));
-                srv->Get(endpoint + "/bundle.css", serve_asset("bundle.css", "text/css; charset=utf-8",               false));
-                      
-                // This is so the relocated chat UI can get properties. 
-                srv->Get(endpoint + "/props", [endpoint](const httplib::Request & req, httplib::Response & res) {
-                    // LOG_INF("Redirecting %s/props to /props\n", endpoint.c_str());
-                    res.set_redirect("/props");
-                    return false;
-                });
-        
-                // This is so the relocated chat UI can call the v1 UI. 
-                srv->Get(endpoint + "/v1/.*", [endpoint](const httplib::Request & req, httplib::Response & res) {
-                    // LOG_INF("Redirecting %s/v1/xxx to /v1/xxx\n", endpoint.c_str());
-                    std::string new_path = req.path.substr(endpoint.length());
-                    // LOG_INF("-- new_path: %s\n", new_path.c_str());
-                    res.set_redirect(new_path);
-                    return false;
-                });
-            }
-            else {
-                srv->Get(params.api_prefix + "/",           serve_asset("index.html", "text/html; charset=utf-8",              true));
-                srv->Get(params.api_prefix + "/bundle.js",  serve_asset("bundle.js",  "application/javascript; charset=utf-8", false));
-                srv->Get(params.api_prefix + "/bundle.css", serve_asset("bundle.css", "text/css; charset=utf-8",               false));
-            }
-            // Mmojo Server END
           
+            srv->Get(params.api_prefix + "/",           serve_asset("index.html", "text/html; charset=utf-8",              true));
+            srv->Get(params.api_prefix + "/bundle.js",  serve_asset("bundle.js",  "application/javascript; charset=utf-8", false));
+            srv->Get(params.api_prefix + "/bundle.css", serve_asset("bundle.css", "text/css; charset=utf-8",               false));
 #endif
         }
+
+        // Mmojo Server START
+        if (params.default_ui_endpoint != "") {
+            auto serve_asset = [](const std::string & name, const char * mime, bool with_isolation_headers) {
+                return [name, mime, with_isolation_headers](const httplib::Request & req, httplib::Response & res) {
+                    const llama_ui_asset * a = llama_ui_find_asset(name.c_str());
+                    if (!a) {
+                        res.status = 404;
+                        return false;
+                    }
+                    res.set_header("ETag", a->etag);
+                    // Check If-None-Match for conditional GET (304 Not Modified)
+                    if (const std::string & inm = req.get_header_value("If-None-Match");
+                        !inm.empty() && inm == a->etag) {
+                        res.status = 304;
+                        return false;
+                    }
+                    if (with_isolation_headers) {
+                        // COEP and COOP headers, required by pyodide (python interpreter)
+                        res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
+                        res.set_header("Cross-Origin-Opener-Policy", "same-origin");
+                    }
+                    res.set_content(reinterpret_cast<const char*>(a->data), a->size, mime);
+                    return false;
+                };
+            };
+      
+            std::string endpoint = params.default_ui_endpoint;
+            if (!starts_with(endpoint, "/")) {
+                endpoint = "/" + endpoint;
+            }
+            while (ends_with(endpoint, "/")) {
+                endpoint = endpoint.substr(0, endpoint.length() - 1);
+            }
+                
+            // These support the relocated chat UI.
+            srv->Get(endpoint, [](const httplib::Request & req, httplib::Response & res) {
+                res.set_redirect(req.path + "/");
+                return false;
+            });
+            srv->Get(endpoint + "/", serve_asset("index.html", "text/html; charset=utf-8", true));
+            srv->Get(endpoint + "/bundle.js",  serve_asset("bundle.js",  "application/javascript; charset=utf-8", false));
+            srv->Get(endpoint + "/bundle.css", serve_asset("bundle.css", "text/css; charset=utf-8",               false));
+                      
+            // This is so the relocated chat UI can get properties. 
+            srv->Get(endpoint + "/props", [endpoint](const httplib::Request & req, httplib::Response & res) {
+                // LOG_INF("Redirecting %s/props to /props\n", endpoint.c_str());
+                res.set_redirect("/props");
+                return false;
+            });
+    
+            // This is so the relocated chat UI can call the v1 UI. 
+            srv->Get(endpoint + "/v1/.*", [endpoint](const httplib::Request & req, httplib::Response & res) {
+                // LOG_INF("Redirecting %s/v1/xxx to /v1/xxx\n", endpoint.c_str());
+                std::string new_path = req.path.substr(endpoint.length());
+                // LOG_INF("-- new_path: %s\n", new_path.c_str());
+                res.set_redirect(new_path);
+                return false;
+            });
+        }
+        // Mmojo Server END
     }
   
     return true;

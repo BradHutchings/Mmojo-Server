@@ -25,50 +25,47 @@ cd $THIS_BUILD_DIR
 
 echo "Customizing chat user interface files."
 
-# NOT FOUND - "for new line"
-file="tools/ui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte"
-if [ -f "$file" ]; then
-    # Sentences need punctuation!
-    $MMOJO_SED -i -e "s/for new line/for new line./g" "$file"
-else
-    echo "FILE NOT FOUND: $file"
-fi
-
-# FIXED?? -- NOT FOUND
-# Page title on front page.
+echo "- Fixing page title on front page."
 file="tools/ui/src/routes/(chat)/+page.svelte"
 if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/>{APP_NAME}<\/title>/>$APP_SHORT_NAME<\/title>/g" "$file"
 else
-    echo "FILE NOT FOUND: $file"
+    echo "  - FILE NOT FOUND: $file"
 fi
 
-# FIXED?? -- NOT FOUND
-# Page title on chat page.
+echo "- Fixing page title on chat page."
 file="tools/ui/src/routes/(chat)/chat/[id]/+page.svelte"
 if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/{APP_NAME}/$APP_SHORT_NAME/g" "$file"
 else
-    echo "FILE NOT FOUND: $file"
+    echo "  - FILE NOT FOUND: $file"
 fi
 
-# Welcome message and instructions of front page.
+echo "- Fixing welcome message and instructions of front page."
 file="tools/ui/src/lib/components/app/chat/ChatScreen/ChatScreenGreeting.svelte"
 if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/Hello there/$APP_NAME/g" "$file"
     $MMOJO_SED -i -e "s/files to get started/files to get started./g" "$file"
 else
-    echo "FILE NOT FOUND: $file"
+    echo "  - FILE NOT FOUND: $file"
 fi
 
-# FIXED?? -- NOT FOUND
-# file="tools/ui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte"
+echo "- Fixing header on sidebar."
 file="tools/ui/src/lib/components/app/navigation/SidebarNavigation/SidebarNavigation.svelte"
 if [ -f "$file" ]; then
-    $MMOJO_SED -i -e "s/{APP_NAME}/$APP_SHORT_NAME/g" "$file"
+    $MMOJO_SED -i -e "s/{APP_NAME}/$APP_NAME/g" "$file"
 else
-    echo "FILE NOT FOUND: $file"
+    echo "  - FILE NOT FOUND: $file"
 fi
+
+# NOT FOUND - "for new line"
+# file="tools/ui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte"
+# if [ -f "$file" ]; then
+#     # Sentences need punctuation!
+#     $MMOJO_SED -i -e "s/for new line/for new line./g" "$file"
+# else
+#     echo "FILE NOT FOUND: $file"
+# fi
 
 echo "NEED TO SORT OUT WHAT TO DO WITH loading-mmojo.html."
 cp tools/server/public/loading-mmojo.html ./loading-mmojo.html
@@ -82,20 +79,19 @@ cd $SAVE_WD
 mv loading-mmojo.html tools/server/public/loading-mmojo.html
 
 # Somehow the Svelte recompile misses the "for new line". No idea why. -Brad 2026-03-15
-file="tools/server/webui/.svelte-kit/output/prerendered/pages/index.html"
-if [ -f "$file" ]; then
-    $MMOJO_SED -i -e "s/for new line/for new line./g" "$file"
-else
-    echo "FILE NOT FOUND: $file"
-fi
+# file="tools/server/webui/.svelte-kit/output/prerendered/pages/index.html"
+# if [ -f "$file" ]; then
+#     $MMOJO_SED -i -e "s/for new line/for new line./g" "$file"
+# else
+#     echo "FILE NOT FOUND: $file"
+# fi
 
-# Recompile generates bundle.js, right?
-# file="tools/server/public/bundle.js"
+echo "- Fixing bundle.js after recompile."
 file="tools/ui/dist/bundle.js"
 if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/\.\/v1\//\/v1\//g" "$file"
 else
-    echo "FILE NOT FOUND: $file"
+    echo "  - FILE NOT FOUND: $file"
 fi
 
 mm-prepare-mmojo-complete.sh

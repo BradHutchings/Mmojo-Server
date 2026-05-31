@@ -35,6 +35,7 @@ else
 fi
 
 # FIXED?? -- NOT FOUND
+# Page title on front page.
 file="tools/ui/src/routes/(chat)/+page.svelte"
 if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/>{APP_NAME}<\/title>/>$APP_SHORT_NAME<\/title>/g" "$file"
@@ -43,13 +44,15 @@ else
 fi
 
 # FIXED?? -- NOT FOUND
+# Page title on chat page.
 file="tools/ui/src/routes/(chat)/chat/[id]/+page.svelte"
 if [ -f "$file" ]; then
-    $MMOJO_SED -i -e "s/ - llama.cpp<\/title>/ - $APP_SHORT_NAME<\/title>/g" "$file"
+    $MMOJO_SED -i -e "s/{APP_NAME}/$APP_SHORT_NAME/g" "$file"
 else
     echo "FILE NOT FOUND: $file"
 fi
 
+# Welcome message and instructions of front page.
 file="tools/ui/src/lib/components/app/chat/ChatScreen/ChatScreenGreeting.svelte"
 if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/Hello there/$APP_NAME/g" "$file"

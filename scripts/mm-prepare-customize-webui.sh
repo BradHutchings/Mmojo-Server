@@ -33,6 +33,7 @@ else
     echo "FILE NOT FOUND: $file"
 fi
 
+# NOT FOUND - "for new line"
 file="tools/ui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte"
 if [ -f "$file" ]; then
     # Sentences need punctuation!
@@ -41,14 +42,16 @@ else
     echo "FILE NOT FOUND: $file"
 fi
 
-file="tools/ui/src/routes/\(chat\)/+page.svelte"
+# FIXED?? -- NOT FOUND
+file="tools/ui/src/routes/(chat)/+page.svelte"
 if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/>{APP_NAME}<\/title>/>$APP_SHORT_NAME<\/title>/g" "$file"
 else
     echo "FILE NOT FOUND: $file"
 fi
 
-file="tools/ui/src/routes/\(chat\)/chat/[id]/+page.svelte"
+# FIXED?? -- NOT FOUND
+file="tools/ui/src/routes/(chat)/chat/[id]/+page.svelte"
 if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/ - llama.cpp<\/title>/ - $APP_SHORT_NAME<\/title>/g" "$file"
 else
@@ -62,9 +65,11 @@ else
     echo "FILE NOT FOUND: $file"
 fi
 
-file="tools/ui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte"
+# FIXED?? -- NOT FOUND
+# file="tools/ui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte"
+file="tools/ui/src/lib/components/app/navigation/SidebarNavigation/SidebarNavigation.svelte"
 if [ -f "$file" ]; then
-    $MMOJO_SED -i -e "s/{APP_NAME}<\/h1>/$APP_SHORT_NAME<\/h1>/g" "$file"
+    $MMOJO_SED -i -e "s/{APP_NAME}/$APP_SHORT_NAME/g" "$file"
 else
     echo "FILE NOT FOUND: $file"
 fi
@@ -88,9 +93,13 @@ else
     echo "FILE NOT FOUND: $file"
 fi
 
-# Recompile overwrites bundle.js
-if [ -f tools/server/public/bundle.js ]; then
+# Recompile generates bundle.js, right?
+# file="tools/server/public/bundle.js"
+file="tools/ui/dist/bundle.js"
+if [ -f "$file" ]; then
     $MMOJO_SED -i -e "s/\.\/v1\//\/v1\//g" tools/server/public/bundle.js
+else
+    echo "FILE NOT FOUND: $file"
 fi
 
 mm-prepare-mmojo-complete.sh

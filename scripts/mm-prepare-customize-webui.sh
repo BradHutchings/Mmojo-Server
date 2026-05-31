@@ -58,17 +58,8 @@ else
     echo "  - FILE NOT FOUND: $file"
 fi
 
-# NOT FOUND - "for new line"
-# file="tools/ui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte"
-# if [ -f "$file" ]; then
-#     # Sentences need punctuation!
-#     $MMOJO_SED -i -e "s/for new line/for new line./g" "$file"
-# else
-#     echo "FILE NOT FOUND: $file"
-# fi
-
-echo "NEED TO SORT OUT WHAT TO DO WITH loading-mmojo.html."
-cp tools/server/public/loading-mmojo.html ./loading-mmojo.html
+# echo "NEED TO SORT OUT WHAT TO DO WITH loading-mmojo.html."
+# cp tools/server/public/loading-mmojo.html ./loading-mmojo.html
 
 echo "Rebuilding chat user interface."
 SAVE_WD=$(pwd)
@@ -78,13 +69,8 @@ npm run build
 cd $SAVE_WD
 mv loading-mmojo.html tools/server/public/loading-mmojo.html
 
-# Somehow the Svelte recompile misses the "for new line". No idea why. -Brad 2026-03-15
-# file="tools/server/webui/.svelte-kit/output/prerendered/pages/index.html"
-# if [ -f "$file" ]; then
-#     $MMOJO_SED -i -e "s/for new line/for new line./g" "$file"
-# else
-#     echo "FILE NOT FOUND: $file"
-# fi
+mv "tools/ui/static/loading.html" "tools/ui/static/loading-orig.html"
+cp "tools/server/public/loading-mmojo.html" "tools/ui/static/loading.html"
 
 echo "- Fixing bundle.js after recompile."
 file="tools/ui/dist/bundle.js"

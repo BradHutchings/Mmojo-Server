@@ -97,7 +97,7 @@ fi
 # file="tools/server/public/bundle.js"
 file="tools/ui/dist/bundle.js"
 if [ -f "$file" ]; then
-    $MMOJO_SED -i -e "s/\.\/v1\//\/v1\//g" tools/server/public/bundle.js
+    $MMOJO_SED -i -e "s/\.\/v1\//\/v1\//g" "$file"
 else
     echo "FILE NOT FOUND: $file"
 fi

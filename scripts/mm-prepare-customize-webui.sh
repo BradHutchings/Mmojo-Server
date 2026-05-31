@@ -25,14 +25,6 @@ cd $THIS_BUILD_DIR
 
 echo "Customizing chat user interface files."
 
-file="tools/ui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte"
-if [ -f "$file" ]; then
-    # Sentences need punctuation!
-    $MMOJO_SED -i -e "s/upload files to get started/upload files to get started./g" "$file"
-else
-    echo "FILE NOT FOUND: $file"
-fi
-
 # NOT FOUND - "for new line"
 file="tools/ui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte"
 if [ -f "$file" ]; then
@@ -58,9 +50,10 @@ else
     echo "FILE NOT FOUND: $file"
 fi
 
-file="tools/ui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte"
+file="tools/ui/src/lib/components/app/chat/ChatScreen/ChatScreenGreeting.svelte"
 if [ -f "$file" ]; then
-    $MMOJO_SED -i -e "s/>Hello there<\/h1>/>$APP_NAME<\/h1>/g" "$file"
+    $MMOJO_SED -i -e "s/Hello there/$APP_NAME/g" "$file"
+    $MMOJO_SED -i -e "s/files to get started/files to get started./g" "$file"
 else
     echo "FILE NOT FOUND: $file"
 fi

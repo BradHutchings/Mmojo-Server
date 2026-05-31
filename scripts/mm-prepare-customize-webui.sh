@@ -67,10 +67,6 @@ cd tools/ui
 npm i
 npm run build
 cd $SAVE_WD
-mv loading-mmojo.html tools/server/public/loading-mmojo.html
-
-# mv "tools/ui/static/loading.html" "tools/ui/static/loading-orig.html"
-# cp "tools/server/public/loading-mmojo.html" "tools/ui/static/loading.html"
 
 mv "tools/ui/dist/loading.html" "tools/ui/dist/loading-orig.html"
 cp "tools/ui/dist/loading-mmojo.html" "tools/ui/dist/loading.html"

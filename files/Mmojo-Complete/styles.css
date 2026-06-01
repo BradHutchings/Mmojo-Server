@@ -529,8 +529,8 @@ ul, li {
 #files-list {
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: var(--color2);
-    border-color: var(--color2);
+    background-color: var(--color5);
+    border-color: var(--color5);
     color: var(--grey-dark);
     border-radius: 0.5rem;
     xx-margin-right: 0.5rem;
@@ -555,7 +555,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color7);
+    background-color: var(--color5);
     color: var(--grey-dark);
 }
 

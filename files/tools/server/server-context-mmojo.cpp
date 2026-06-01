@@ -492,8 +492,8 @@ struct server_slot {
         float percent_complete = (float) 100.0 * n_prompt_tokens_processed / task->n_tokens();
 
         // batch.n_tokens is 0. Not ideal.
-        SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, batch: %d\n\n", 
-          n_prompt_tokens_processed, task->n_tokens(), percent_complete, batch.n_tokens );
+        SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, batch: %d, time: %6.2f sec, tokens/sec: %.2f\n\n", 
+          n_prompt_tokens_processed, task->n_tokens(), percent_complete, batch.n_tokens, t_prompt_processing / 1e3, n_prompt_second );
     }
     // Mmojo Server END
 

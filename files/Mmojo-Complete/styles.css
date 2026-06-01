@@ -15,12 +15,12 @@
     --color8: #C9C9B6;
     --color9: #778DA9;
     --color10: #415A77;
-    --grey-black: ##000000;
+    --grey-black: #000000;
     --grey-dark: #404040;
     --grey-medium: #808080;
     --grey-light: #C0C0C0;
     --grey-lightlight: #E0E0E0;
-    --grey-white: #000000;
+    --grey-white: #FFFFFF;
 
     --main-spacing: 0.5rem;
 }
@@ -566,7 +566,8 @@ ul, li {
     background-color: var(--color2);
     border-color: var(--color5);
     color: var(--grey-dark);
-    margin-bottom: 0px;
+    xx-margin-bottom: 0px;
+    margin: 0.25rem 0.25rem;
     flex-grow: 1;
 }
 

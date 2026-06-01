@@ -31,6 +31,7 @@
 
         <div id="title-bar" class="row">
             <div id="mmojo-complete" onclick="WorkAreaFocus();">Mmojo Complete is Private.</div>
+            <img id="files-icon" src="images/settings-64.png" onclick="ToggleFiles(event);" title="Toggle Files" />
             <img id="settings-icon" src="images/settings-64.png" onclick="ToggleSettings(event);" title="Toggle Settings" />
             <img id="tools-icon" src="images/tools-64.png" onclick="ToggleTools(event);" title="Toggle Tools" />
             <img id="help-icon" src="images/help-64.png" onclick="Help(event);" title="Help"/>
@@ -145,6 +146,21 @@
             </div>
         </div>
 
+        <div id="files-area" class="row">
+            <div id="files-list" class="row-item">
+            </div>
+            <div id="file-view" class="row-item">
+                <div id="file-name" class="row">
+                </div>
+                <textarea id="file-contents" class="row">
+                </textarea>
+                <div id="file-controls" class="row-item">
+                    <button id="file-download" class="clear-button hidden" onclick="FileDownload();">Download</button>
+                    <button id="file-save-as" class="clear-button hidden" onclick="FileSaveAs();">Save As...</button>
+                </div>
+            </div>
+        </div>
+        
         <div id="status" class="row hidden" onclick="WorkAreaFocus();">
             <div id="status-text"><b>Status:</b> The status goes here.</div>
             <div id="status-space" class="space"></div>

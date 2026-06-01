@@ -487,8 +487,8 @@ struct server_slot {
         SLT_INF(*this, "prompt processing, n_tokens = %6d, progress = %.2f, t = %6.2f s / %.2f tokens per second\n",
                 n_prompt_tokens_processed, f_progress, t_prompt_processing / 1e3, n_prompt_second);
       
-        int completed = slot.prompt.n_tokens() - batch.n_tokens;
-        // completed = slot.prompt.n_tokens();
+        int completed = prompt.n_tokens() - batch.n_tokens;
+        // completed = prompt.n_tokens();
         float percent_complete = (float) 100.0 * completed / task->n_tokens();
     
         SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, batch: %d\n\n", 
@@ -3840,7 +3840,7 @@ std::unique_ptr<server_res_generator> server_routes::handle_completions_impl(
 
                         SRV_INF("%s", "\n------------------------------\n");
 
-                        for (int i = 0; i < messages_size; i++) {
+                        for (std::size_t i = 0; i < messages_size; i++) {
                             if (debug) SRV_INF("%s", "SHOW_MESSAGES: json message_i.\n");
                             json message_i = messages[i];
                             if (debug) SRV_INF("%s", "SHOW_MESSAGES: json role_i.\n");

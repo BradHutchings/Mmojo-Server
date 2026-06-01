@@ -112,6 +112,7 @@ struct server_slot {
     // Mmojo Server START
     std::string  generated_text_batch;
     size_t generated_token_count = 0;
+    size_t last_batch_size = 0;
     // Mmojo Server END
 
     std::vector<completion_token_output> generated_token_probs;
@@ -224,6 +225,7 @@ struct server_slot {
         // Mmojo Server START
         generated_text_batch = "";
         generated_token_count = 0;
+        last_batch_size = 0;
         // Mmojo Server END
       
         generated_token_probs.clear();
@@ -476,7 +478,7 @@ struct server_slot {
     }
 
     // Mmojo Server START
-    void print_timings_pp(llama_batch& batch) const {
+    void print_timings_pp() const {
         const double n_prompt_second = 1e3 / t_prompt_processing * n_prompt_tokens_processed;
         const double f_progress = (float) prompt.n_tokens() / task->n_tokens();
 
@@ -492,8 +494,8 @@ struct server_slot {
         float percent_complete = (float) 100.0 * n_prompt_tokens_processed / task->n_tokens();
 
         // batch.n_tokens is 0. Not ideal.
-        SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, batch: %d, time: %6.2f sec, tokens/sec: %.2f\n\n", 
-          n_prompt_tokens_processed, task->n_tokens(), percent_complete, batch.n_tokens, t_prompt_processing / 1e3, n_prompt_second );
+        SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, last batch: %d, time: %6.2f sec, tokens/sec: %.2f\n\n", 
+          n_prompt_tokens_processed, task->n_tokens(), percent_complete, last_batch_size, t_prompt_processing / 1e3, n_prompt_second );
     }
     // Mmojo Server END
 
@@ -2927,7 +2929,7 @@ private:
                     const int64_t t_current = ggml_time_us();
                     slot.t_prompt_processing = (t_current - slot.t_start_process_prompt) / 1e3;
                     // Mmojo Server START
-                    slot.print_timings_pp(batch);
+                    slot.print_timings_pp();
                     // Mmojo Server END
 
                     // truncate any tokens that are beyond n_past for this slot
@@ -3103,6 +3105,10 @@ private:
                         */
                         // Mmojo Server END
                     }
+
+                    // Mmojo Server START
+                    last_batch_size = batch.n_tokens;
+                    // Mmojo Server END
 
                     const auto pos_min = llama_memory_seq_pos_min(llama_get_memory(ctx_tgt), slot.id);
                     const auto pos_max = llama_memory_seq_pos_max(llama_get_memory(ctx_tgt), slot.id);

@@ -542,12 +542,11 @@ ul, li {
     overflow-x: hidden;
     overflow-y: scroll;
     user-select: none;
-    background-color: var(--color5);
-    border-color: var(--color5);
+    background-color: var(--grey-white);
+    border-color: var(--grey-white);
     color: var(--grey-dark);
     border-radius: 0.5rem;
     overflow: hidden;
-    padding: 0.5rem;
     margin-left: 0.5rem;
     flex-grow: 1;
 }
@@ -556,7 +555,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color2);
+    background-color: var(--color7);
     color: var(--grey-dark);
 }
 
@@ -565,6 +564,7 @@ ul, li {
     flex-wrap: wrap;
     user-select: none;
     background-color: var(--color2);
+    border-color: var(--color5);
     color: var(--grey-dark);
     margin-bottom: 0px;
     flex-grow: 1;

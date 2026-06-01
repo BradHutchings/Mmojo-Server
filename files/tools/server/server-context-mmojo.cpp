@@ -489,7 +489,7 @@ struct server_slot {
       
         int completed = slot.prompt.n_tokens() - batch.n_tokens;
         // completed = slot.prompt.n_tokens();
-        float percent_complete = (float) 100.0 * completed / slot.task->n_tokens();
+        float percent_complete = (float) 100.0 * completed / task->n_tokens();
     
         SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, batch: %d\n\n", 
           completed, task->n_tokens(), percent_complete, batch.n_tokens );

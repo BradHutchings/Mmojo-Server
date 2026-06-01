@@ -493,7 +493,7 @@ struct server_slot {
     
         SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, batch: %d\n\n", 
           completed, task->n_tokens(), percent_complete, batch.n_tokens );
-        SLT_INF(*this, "----------\n");
+        SLT_INF(*this, "----------\n", completed);
     }
     // Mmojo Server END
 

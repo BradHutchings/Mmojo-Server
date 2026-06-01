@@ -475,7 +475,8 @@ struct server_slot {
         SLT_INF(*this, "n_decoded = %6d, tg = %6.2f t/s\n", n_decoded, n_gen_second);
     }
 
-    void print_timings_pp() const {
+    // Mmojo Server START
+    void print_timings_pp(llama_batch& batch) const {
         const double n_prompt_second = 1e3 / t_prompt_processing * n_prompt_tokens_processed;
         const double f_progress = (float) prompt.n_tokens() / task->n_tokens();
 
@@ -485,7 +486,15 @@ struct server_slot {
 
         SLT_INF(*this, "prompt processing, n_tokens = %6d, progress = %.2f, t = %6.2f s / %.2f tokens per second\n",
                 n_prompt_tokens_processed, f_progress, t_prompt_processing / 1e3, n_prompt_second);
+      
+        int completed = slot.prompt.n_tokens() - batch.n_tokens;
+        // completed = slot.prompt.n_tokens();
+        float percent_complete = (float) 100.0 * completed / slot.task->n_tokens();
+    
+        SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, batch: %d\n\n", 
+          completed, task->n_tokens(), percent_complete, batch.n_tokens );
     }
+    // Mmojo Server END
 
     void print_timings() const {
         const double t_prompt        =       t_prompt_processing / n_prompt_tokens_processed;
@@ -2916,7 +2925,9 @@ private:
 
                     const int64_t t_current = ggml_time_us();
                     slot.t_prompt_processing = (t_current - slot.t_start_process_prompt) / 1e3;
-                    slot.print_timings_pp();
+                    // Mmojo Server START
+                    slot.print_timings_pp(batch);
+                    // Mmojo Server END
 
                     // truncate any tokens that are beyond n_past for this slot
                     const llama_pos p0 = slot.prompt.tokens.pos_next();

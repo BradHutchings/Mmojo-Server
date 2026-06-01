@@ -627,6 +627,7 @@ ul, li {
     overflow: clip;
 }
 
+#file-download, #file-save-as,
 #status-start, #status-stop, #status-undo, #status-clear {
     font-size: 0.8rem;
     min-width: 4rem;

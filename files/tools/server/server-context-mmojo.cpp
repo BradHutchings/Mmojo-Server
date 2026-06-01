@@ -487,13 +487,13 @@ struct server_slot {
         SLT_INF(*this, "prompt processing, n_tokens = %6d, progress = %.2f, t = %6.2f s / %.2f tokens per second\n",
                 n_prompt_tokens_processed, f_progress, t_prompt_processing / 1e3, n_prompt_second);
       
-        int completed = prompt.n_tokens() - batch.n_tokens;
+        // int completed = prompt.n_tokens() - batch.n_tokens;
         // completed = prompt.n_tokens();
-        float percent_complete = (float) 100.0 * completed / task->n_tokens();
-    
+        float percent_complete = (float) 100.0 * n_prompt_tokens_processed / task->n_tokens();
+
+        // batch.n_tokens is 0. Not ideal.
         SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, batch: %d\n\n", 
-          completed, task->n_tokens(), percent_complete, batch.n_tokens );
-        SLT_INF(*this, "----------\n", completed);
+          n_prompt_tokens_processed, task->n_tokens(), percent_complete, batch.n_tokens );
     }
     // Mmojo Server END
 
@@ -3092,6 +3092,7 @@ private:
                         }
                       
                         // Mmojo Server START
+                        /*
                         // llama.cpp code removed the SLT_INF about prompt processing progress. -Brad 2026-05-30.
                         // At this point, we are starting on the batch at slot.prompt.n_tokens().
                         int completed = slot.prompt.n_tokens() - batch.n_tokens;
@@ -3099,6 +3100,7 @@ private:
                         float percent_complete = (float) 100.0 * completed / slot.task->n_tokens();
                         SLT_INF(slot, "prompt processing: %d / %d (%.1f%%) complete, batch: %d\n", 
                           completed, slot.task->n_tokens(), percent_complete, batch.n_tokens );
+                        */
                         // Mmojo Server END
                     }
 

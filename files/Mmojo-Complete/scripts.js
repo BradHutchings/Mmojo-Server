@@ -218,6 +218,15 @@ function FindElements() {
     elements.clearCue               = document.getElementById("clear-cue");
     elements.preview                = document.getElementById("preview");
 
+	elements.filesArea				= document.getElementById("files-area");
+	elements.filesList				= document.getElementById("files-list");
+	elements.fileView				= document.getElementById("file-view");
+	elements.fileName				= document.getElementById("file-name");
+	elements.fileContents			= document.getElementById("file-contents");
+	elements.fileControls			= document.getElementById("file-controls");
+	elements.fileDownload			= document.getElementById("file-download");
+	elements.fileSaveAs				= document.getElementById("file-save-as");
+
     elements.status                 = document.getElementById("status");
     elements.statusText             = document.getElementById("status-text");
     elements.statusStart            = document.getElementById("status-start");
@@ -1352,6 +1361,22 @@ async function GetModelInfoFromServer() {
     }
 }
 
+function ToggleFiles(event) {
+    event.stopPropagation();
+	if (elements.filesArea.classList.contains("hidden")) {
+    	HideElement(elements.workArea);
+    	ShowElement(elements.filesArea);
+	}
+	else {
+    	HideElement(elements.filesArea);
+    	ShowElement(elements.workArea);
+	}
+
+	HideElement(elements.settings);
+    HideElement(elements.toolsArea);
+    HideElement(elements.printSettings);
+}
+
 function ToggleSettings(event) {
     event.stopPropagation();
     elements.workAreaText.focus()
@@ -1913,6 +1938,12 @@ function GetElapsedTimeString(ms) {
     return result;
 }
 
+function FileDownload() {
+	console.log("FileDownload() - to be implemented.");
+}
 
+function FileSaveAs() {
+	console.log("FileSaveAs() - to be implemented.");
+}
 
 

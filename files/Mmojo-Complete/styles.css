@@ -305,7 +305,7 @@ ul, li {
     font-weight: bold;
 }
 
-#settings-icon, #tools-icon, #help-icon, #chat-icon, 
+#files-icon, #settings-icon, #tools-icon, #help-icon, #chat-icon, 
 #read-icon, #download-icon, #print-icon, #bookmark-icon, 
 #color-wheel-icon, #full-screen-icon {
     width: 1.6rem;
@@ -518,6 +518,74 @@ ul, li {
     padding: 0.25rem 0.5rem;
     margin-top: 0.25rem;
 }
+
+#files-area {
+    flex-grow: 1;
+    xx-overflow: hidden;
+    padding: 0rem 0rem 0rem 0rem;
+    background: none;
+}
+
+#files-list {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: var(--color2);
+    border-color: var(--color2);
+    color: var(--grey-dark);
+    border-radius: 0.5rem;
+    xx-margin-right: 0.5rem;
+    width: 10rem;
+    flex-grow: 0;
+}
+
+#file-view {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    user-select: none;
+    background-color: var(--color5);
+    color: var(--grey-dark);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    flex-grow: 1;
+}
+
+#file-name {
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color7);
+    color: var(--grey-dark);
+}
+
+#file-contents {
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color7);
+    color: var(--grey-dark);
+}
+
+#file-controls {
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color7);
+    color: var(--grey-dark);
+}
+
+#file-download {
+
+}
+
+#file-save-as {
+
+}
+
+
+
+
 
 #clear-cue {
     xx-display: none;

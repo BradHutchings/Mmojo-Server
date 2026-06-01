@@ -566,15 +566,8 @@ ul, li {
     user-select: none;
     background-color: var(--color5);
     color: var(--grey-dark);
+    margin-bottom: 0px;
     flex-grow: 1;
-}
-
-#file-controls {
-    min-height: 1.4rem;
-    flex-wrap: wrap;
-    user-select: none;
-    background-color: var(--color5);
-    color: var(--grey-dark);
 }
 
 #file-download {

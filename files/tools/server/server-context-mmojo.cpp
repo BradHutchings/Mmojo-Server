@@ -481,7 +481,7 @@ struct server_slot {
     // Replace the whole print_timings_pp() function.
     void print_timings_pp() const {
         const double n_prompt_second = 1e3 / t_prompt_processing * n_prompt_tokens_processed;
-        const double f_progress = (float) prompt.n_tokens() / task->n_tokens();
+        // const double f_progress = (float) prompt.n_tokens() / task->n_tokens();
 
         if (t_prompt_processing < 3000.0) {
             // return;
@@ -493,7 +493,7 @@ struct server_slot {
         float percent_complete = (float) 100.0 * n_prompt_tokens_processed / task->n_tokens();
 
         // batch.n_tokens is 0. Not ideal.
-        SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, last batch: %d, time: %6.2f sec, tokens/sec: %.2f\n", 
+        SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, last batch: %d, time: %.2f sec, tokens/sec: %.2f\n", 
           n_prompt_tokens_processed, task->n_tokens(), percent_complete, last_batch_size, t_prompt_processing / 1e3, n_prompt_second );
     }
     // Mmojo Server END
@@ -2927,9 +2927,7 @@ private:
 
                     const int64_t t_current = ggml_time_us();
                     slot.t_prompt_processing = (t_current - slot.t_start_process_prompt) / 1e3;
-                    // Mmojo Server START
                     slot.print_timings_pp();
-                    // Mmojo Server END
 
                     // truncate any tokens that are beyond n_past for this slot
                     const llama_pos p0 = slot.prompt.tokens.pos_next();
@@ -3091,18 +3089,6 @@ private:
                         if (!n_before_user_known && !near_prompt_end) {
                             do_checkpoint = false;
                         }
-                      
-                        // Mmojo Server START
-                        /*
-                        // llama.cpp code removed the SLT_INF about prompt processing progress. -Brad 2026-05-30.
-                        // At this point, we are starting on the batch at slot.prompt.n_tokens().
-                        int completed = slot.prompt.n_tokens() - batch.n_tokens;
-                        // completed = slot.prompt.n_tokens();
-                        float percent_complete = (float) 100.0 * completed / slot.task->n_tokens();
-                        SLT_INF(slot, "prompt processing: %d / %d (%.1f%%) complete, batch: %d\n", 
-                          completed, slot.task->n_tokens(), percent_complete, batch.n_tokens );
-                        */
-                        // Mmojo Server END
                     }
 
                     // Mmojo Server START

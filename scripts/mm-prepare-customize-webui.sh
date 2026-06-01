@@ -58,9 +58,6 @@ else
     echo "  - FILE NOT FOUND: $file"
 fi
 
-# echo "NEED TO SORT OUT WHAT TO DO WITH loading-mmojo.html."
-# cp tools/server/public/loading-mmojo.html ./loading-mmojo.html
-
 echo "Rebuilding chat user interface."
 SAVE_WD=$(pwd)
 cd tools/ui
@@ -68,6 +65,7 @@ npm i
 npm run build
 cd $SAVE_WD
 
+echo "Replacing loading.html with loading-mmojo.html."
 mv "tools/ui/dist/loading.html" "tools/ui/dist/loading-orig.html"
 cp "tools/ui/dist/loading-mmojo.html" "tools/ui/dist/loading.html"
 

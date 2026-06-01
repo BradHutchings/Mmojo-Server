@@ -542,8 +542,8 @@ ul, li {
     overflow-x: hidden;
     overflow-y: scroll;
     user-select: none;
-    background-color: var(--grey-white);
-    border-color: var(--grey-white);
+    background-color: var(--color4);
+    border-color: var(--color4);
     color: var(--grey-dark);
     border-radius: 0.5rem;
     overflow: hidden;
@@ -564,10 +564,10 @@ ul, li {
     flex-wrap: wrap;
     user-select: none;
     background-color: var(--color2);
-    border-color: var(--color5);
+    border-color: var(--color2);
     color: var(--grey-dark);
     xx-margin-bottom: 0px;
-    margin: 0.25rem 0.25rem;
+    margin: 0rem 0rem;
     flex-grow: 1;
 }
 

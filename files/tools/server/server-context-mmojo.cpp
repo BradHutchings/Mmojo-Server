@@ -3107,7 +3107,7 @@ private:
                     }
 
                     // Mmojo Server START
-                    last_batch_size = batch.n_tokens;
+                    slot.last_batch_size = batch.n_tokens;
                     // Mmojo Server END
 
                     const auto pos_min = llama_memory_seq_pos_min(llama_get_memory(ctx_tgt), slot.id);

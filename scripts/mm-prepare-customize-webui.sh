@@ -24,45 +24,57 @@ fi
 cd $THIS_BUILD_DIR
 
 echo "Customizing chat user interface files."
-if [ -f tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte ]; then
-    # Sentences need punctuation!
-    $MMOJO_SED -i -e "s/upload files to get started/upload files to get started./g" tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte
-fi
-if [ -f tools/server/webui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte ]; then
-    # Sentences need punctuation!
-    $MMOJO_SED -i -e "s/for new line/for new line./g" tools/server/webui/src/lib/components/app/chat/ChatForm/ChatFormHelperText.svelte
-fi
-if [ -f tools/server/webui/src/routes/\(chat\)/+page.svelte ]; then
-    $MMOJO_SED -i -e "s/>{APP_NAME}<\/title>/>$APP_SHORT_NAME<\/title>/g" tools/server/webui/src/routes/\(chat\)/+page.svelte
-fi
-if [ -f tools/server/webui/src/routes/\(chat\)/chat/[id]/+page.svelte ]; then
-    $MMOJO_SED -i -e "s/ - llama.cpp<\/title>/ - $APP_SHORT_NAME<\/title>/g" tools/server/webui/src/routes/\(chat\)/chat/[id]/+page.svelte
+
+echo "- Fixing page title on front page."
+file="tools/ui/src/routes/(chat)/+page.svelte"
+if [ -f "$file" ]; then
+    $MMOJO_SED -i -e "s/>{APP_NAME}<\/title>/>$APP_SHORT_NAME<\/title>/g" "$file"
+else
+    echo "  - FILE NOT FOUND: $file"
 fi
 
-if [ -f tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte ]; then
-    $MMOJO_SED -i -e "s/>Hello there<\/h1>/>$APP_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatScreen/ChatScreen.svelte
+echo "- Fixing page title on chat page."
+file="tools/ui/src/routes/(chat)/chat/[id]/+page.svelte"
+if [ -f "$file" ]; then
+    $MMOJO_SED -i -e "s/{APP_NAME}/$APP_SHORT_NAME/g" "$file"
+else
+    echo "  - FILE NOT FOUND: $file"
 fi
-if [ -f tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte ]; then
-    $MMOJO_SED -i -e "s/{APP_NAME}<\/h1>/$APP_SHORT_NAME<\/h1>/g" tools/server/webui/src/lib/components/app/chat/ChatSidebar/ChatSidebar.svelte
+
+echo "- Fixing welcome message and instructions of front page."
+file="tools/ui/src/lib/components/app/chat/ChatScreen/ChatScreenGreeting.svelte"
+if [ -f "$file" ]; then
+    $MMOJO_SED -i -e "s/Hello there/$APP_NAME/g" "$file"
+    $MMOJO_SED -i -e "s/files to get started/files to get started./g" "$file"
+else
+    echo "  - FILE NOT FOUND: $file"
 fi
-cp tools/server/public/loading-mmojo.html ./loading-mmojo.html
+
+echo "- Fixing header on sidebar."
+file="tools/ui/src/lib/components/app/navigation/SidebarNavigation/SidebarNavigation.svelte"
+if [ -f "$file" ]; then
+    $MMOJO_SED -i -e "s/{APP_NAME}/$APP_NAME/g" "$file"
+else
+    echo "  - FILE NOT FOUND: $file"
+fi
 
 echo "Rebuilding chat user interface."
 SAVE_WD=$(pwd)
-cd tools/server/webui
+cd tools/ui
 npm i
 npm run build
 cd $SAVE_WD
-mv loading-mmojo.html tools/server/public/loading-mmojo.html
 
-# Somehow the Svelte recompile misses the "for new line". No idea why. -Brad 2026-03-15
-if [ -f tools/server/webui/.svelte-kit/output/prerendered/pages/index.html ]; then
-    $MMOJO_SED -i -e "s/for new line/for new line./g" tools/server/webui/.svelte-kit/output/prerendered/pages/index.html
-fi
+echo "Replacing loading.html with loading-mmojo.html."
+mv "tools/ui/dist/loading.html" "tools/ui/dist/loading-orig.html"
+cp "tools/ui/dist/loading-mmojo.html" "tools/ui/dist/loading.html"
 
-# Recompile overwrites bundle.js
-if [ -f tools/server/public/bundle.js ]; then
-    $MMOJO_SED -i -e "s/\.\/v1\//\/v1\//g" tools/server/public/bundle.js
+echo "- Fixing bundle.js after recompile."
+file="tools/ui/dist/bundle.js"
+if [ -f "$file" ]; then
+    $MMOJO_SED -i -e "s/\.\/v1\//\/v1\//g" "$file"
+else
+    echo "  - FILE NOT FOUND: $file"
 fi
 
 mm-prepare-mmojo-complete.sh

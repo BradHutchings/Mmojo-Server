@@ -2098,7 +2098,7 @@ function GetCodeBlocksInWorkArea() {
 			markDownFileLines.shift();
 
 			// add something to result.
-			let codeBlock = GetCodeBlock(text, firstItem.indent, firstItem.line + 1, secondItem.line - 1, firstItem.codeType);
+			let codeBlock = GetCodeBlock(wat, firstItem.indent, firstItem.line + 1, secondItem.line - 1, firstItem.codeType);
 			result.push(codeBlock);
 		}
 		else {

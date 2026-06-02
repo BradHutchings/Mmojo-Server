@@ -1959,6 +1959,24 @@ function GetMarkdownFilesInWorkArea() {
 	let watLines = wat.split(/\r?\n/);
 	let markDownFileLines = [];
 
+	const regex = /^(\s*)```([A-Za-z0-9+_]*)\s*/
+	for (let i = 0; i < watLines.length; i++) {
+		if (let match = regex.exec(wat) !== null) {
+			console.log("  - matched: [" + i + "] " + currentWatLine);
+			console.log("  - indent: [" + match[0] + "]";
+			console.log("  - type: [" + match[1] + "]";
+
+			markDownFileLines.push({
+				indent: match[0].length,
+				type: match[1]
+			});
+		}
+	}
+
+	console.log("\n\nmarkDownFileLines:");
+	console.log(markDownFileLines);
+	
+	/*
 	console.log("watLines.length: " + watLines.length);
 	for (let i = 0; i < watLines.length; i++) {
 		currentWatLine = watLines[i].trim();
@@ -1968,6 +1986,7 @@ function GetMarkdownFilesInWorkArea() {
 			console.log("  - matched: [" + i + "] " + currentWatLine);
 		}
 	}
+	*/
 }
 
 function FileCopy() {

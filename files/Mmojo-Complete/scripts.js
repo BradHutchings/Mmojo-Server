@@ -1961,10 +1961,11 @@ function GetMarkdownFilesInWorkArea() {
 
 	console.log("watLines.length: " + watLines.length);
 	for (let i = 0; i < watLines.length; i++) {
-		currentWatLine = watLines[i].trim;
+		currentWatLine = watLines[i].trim();
+		// console.log("- considering: [" + i + "] " + currentWatLine);
 		const regex = /^```([A-Za-z0-9+_]*)/;
 		if (regex.test(currentWatLine)) {
-			console.log("- matched: [" + i + "] " + currentWatLine);
+			console.log("  - matched: [" + i + "] " + currentWatLine);
 		}
 	}
 }

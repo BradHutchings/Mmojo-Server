@@ -2025,6 +2025,7 @@ function GetCodeBlocksInWorkArea() {
 
 	if (logThis) console.log("GetMarkdownFilesInWorkArea() - in progress.");
 
+	let startMS = Date.now();
 	let wat = elements.workAreaText.value;
 	let watLines = wat.split(/\r?\n/);
 	let markDownFileLines = [];
@@ -2112,8 +2113,10 @@ function GetCodeBlocksInWorkArea() {
 		}
 	}
 
+	let elapsedMS = Date.now() - startMS;
 	if (logThis) {
 		console.log("- result:\n" + JSON.stringify(result));
+		console.log("- elapsedMS: " + elapsedMS);
 	}
 	return result;
 }

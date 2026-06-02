@@ -1985,9 +1985,8 @@ function GetMarkdownFilesInWorkArea() {
 	}
 
 	if (true) {
-		let markDownFileLinesCopy = markDownFileLines.slice();
 		console.log("\n\nmarkDownFileLines:");
-		console.log(JSON.stringify(markDownFileLinesCopy));
+		console.log(JSON.stringify(markDownFileLines));
 	}
 
 	// markDownFileLines is an array of ``` lines.
@@ -2005,7 +2004,7 @@ function GetMarkdownFilesInWorkArea() {
 		console.log("  - secondItem:\n" + JSON.stringify(secondItem));
 
 		// secondItem needs to be a closing ```.
-		if (secondItem.codetype != "") {
+		if (secondItem.codeType != "") {
 			console.log("  - Pair does not match: secondItem.codetype != \"\".");
 			matchingPair = false;
 		}
@@ -2029,8 +2028,8 @@ function GetMarkdownFilesInWorkArea() {
 		}
 		else {
 			console.log("- Non-matching pair:");
-			console.log("  - firstItem:\n" + firstItem);
-			console.log("  - secondItem:\n" + secondItem);
+			console.log("  - firstItem:\n" + JSON.stringify(firstItem));
+			console.log("  - secondItem:\n" + JSON.stringify(secondItem));
 			markDownFileLines.shift();
 		}
 	}

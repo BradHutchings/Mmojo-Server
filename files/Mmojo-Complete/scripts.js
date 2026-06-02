@@ -1960,6 +1960,7 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 
 	let textLines = text.split(/\r?\n/);
 	indent = Math.max(indent, 0);
+	indent = 0;
 	
 	if ((startLine >= 0) && (startLine < textLines.length) && (endLine > startLine) && (endLine < textLines.length)) {
 		// slice(start, end) -- starts on item start, ends on item before end.

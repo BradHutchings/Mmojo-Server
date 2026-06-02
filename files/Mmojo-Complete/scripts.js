@@ -1961,8 +1961,9 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 	let textLines = text.split(/\r?\n/);
 	indent = Math.max(indent, 0);
 	
-	if ((startLine >= 0) && (startLine < textLines.length) && (endLine >= startLine) && (endLine < textLines.length)) {
-		let blockTextLines = textLines.slice(startLine, endLine);
+	if ((startLine >= 0) && (startLine < textLines.length) && (endLine > startLine) && (endLine < textLines.length)) {
+		// slice(start, end) -- starts on item start, ends on item before end.
+		let blockTextLines = textLines.slice(startLine, endLine + 1);
 		if (indent > 0) {
 			let indentSpaces = ' '.repeat(indent);
 			for (let i = 0; i < blockTextLines.length; i++) {

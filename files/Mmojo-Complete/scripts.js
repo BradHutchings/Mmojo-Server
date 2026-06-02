@@ -1951,9 +1951,78 @@ function GetElapsedTimeString(ms) {
     return result;
 }
 
-function GetMarkdownFilesInWorkArea() {
-	console.log("GetMarkdownFilesInWorkArea() - in progress.");
+function GetCodeBlock(text, indent, startLine, endLine, codeType) {
+	let result = {
+		"codeType": codeType,	   // e.g. "javascript", or blank.
+		"contents": "",    		   // from startLine to endLine in text.
+		"filename": ""	   		   // parsed from first line.
+	};
+
+	let textLines = text.split(/\r?\n/);
+	indent = Math.max(indent, 0);
+	
+	if (startLine >= 0) && (startLine < textLines.length) && (endLine >= startLine) && (endLine < textLines.length)) {
+		let blockTextLines = textLines.slice(startLine, endLine);
+		if (indent > 0) {
+			let indentSpaces = ' '.repeat(indent);
+			for (let i = 0; i < blockTextLines.length; i++) {
+				let line = blockTextLines[i];
+				if (line.startsWith(indentSpaces)) {
+					blockTextLines[i] = line.replace(indentSpaces, '');
+				}
+			}
+		}
+		result.contents = blockTextLines.join("\n");
+	}
+
+	if (codeType == "javascript") {
+		const regex = "[A-Za-z0-9-_.]+\.js]"
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "html") {
+		const regex = "[A-Za-z0-9-_.]+\.html]"
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "css") {
+		const regex = "[A-Za-z0-9-_.]+\.css]"
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "python") {
+		const regex = "[A-Za-z0-9-_.]+\.py]"
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "powershell") {
+		const regex = "[A-Za-z0-9-_.]+\.ps1]"
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+
+	return result;
+}
+
+function GetCodeBlocksInWorkArea() {
 	let result = [];
+		// Each item: {
+		//    "codeType": e.g. "javascript", or blank.
+		//	  "contents": what's inside the code block.
+		//	  "filename": proposed filename from first line, or blank.
+	let logThis = true;
+
+	if (logThis) console.log("GetMarkdownFilesInWorkArea() - in progress.");
 
 	let wat = elements.workAreaText.value;
 	let watLines = wat.split(/\r?\n/);
@@ -1969,7 +2038,7 @@ function GetMarkdownFilesInWorkArea() {
 			let codeType = match[2];
 			let index = match.index;
 
-			if (true) {
+			if (logThis && false) {
 				console.log("  - matched: [" + line + "] " + currentWatLine);
 				console.log("  - indent: \"" + indentString + "\"");
 				console.log("  - indent: " + indent);
@@ -1984,7 +2053,7 @@ function GetMarkdownFilesInWorkArea() {
 		}
 	}
 
-	if (true) {
+	if (logThis && true) {
 		console.log("\n\nmarkDownFileLines:");
 		console.log(JSON.stringify(markDownFileLines));
 	}
@@ -1999,40 +2068,53 @@ function GetMarkdownFilesInWorkArea() {
 		let secondItem = markDownFileLines[1];
 		let matchingPair = true;	// assume they match, find a reason they don't.
 
-		console.log("- Considering pair:");
-		console.log("  - firstItem:\n" + JSON.stringify(firstItem));
-		console.log("  - secondItem:\n" + JSON.stringify(secondItem));
+		if (logThis && false) {
+			console.log("- Considering pair:");
+			console.log("  - firstItem:\n" + JSON.stringify(firstItem));
+			console.log("  - secondItem:\n" + JSON.stringify(secondItem));
+		}
 
 		// secondItem needs to be a closing ```.
 		if (secondItem.codeType != "") {
-			console.log("  - Pair does not match: secondItem.codeType != \"\".");
+			if (logThis && false) console.log("  - Pair does not match: secondItem.codeType != \"\".");
 			matchingPair = false;
 		}
 
 		// indents have to match.
 		if (firstItem.indent != secondItem.indent) {
-			console.log("  - Pair does not match: firstItem.indent != secondItem.indent.");
+			if (logThis && false) console.log("  - Pair does not match: firstItem.indent != secondItem.indent.");
 			matchingPair = false;
 		}
 
 		// If we have a matching pair, add it to results, remove both items.
 		// If not, remove the firstItem.
 		if (matchingPair) {
-			console.log("- Matching pair:");
-			console.log("  - firstItem:\n" + JSON.stringify(firstItem));
-			console.log("  - secondItem:\n" + JSON.stringify(secondItem));
+			if (logThis && true) {
+				console.log("- Matching pair:");
+				console.log("  - firstItem:\n" + JSON.stringify(firstItem));
+				console.log("  - secondItem:\n" + JSON.stringify(secondItem));
+			}
 			markDownFileLines.shift();
 			markDownFileLines.shift();
 
 			// add something to result.
+			let codeBlock = GetCodeBlock(text, firstItem.indent, firstItem.line +`1, secondItem.line - 1, firstItem.codeType) {
+			result.push(codeBlock);
 		}
 		else {
-			console.log("- Non-matching pair:");
-			console.log("  - firstItem:\n" + JSON.stringify(firstItem));
-			console.log("  - secondItem:\n" + JSON.stringify(secondItem));
+			if (logThis && false) {
+				console.log("- Non-matching pair:");
+				console.log("  - firstItem:\n" + JSON.stringify(firstItem));
+				console.log("  - secondItem:\n" + JSON.stringify(secondItem));
+			}
 			markDownFileLines.shift();
 		}
 	}
+
+	if (logThis) {
+		console.log("- result:\n" + JSON.stringify(result));
+	}
+	return result;
 }
 
 function FileCopy() {

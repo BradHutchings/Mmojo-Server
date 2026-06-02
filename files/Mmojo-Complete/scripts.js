@@ -2005,7 +2005,7 @@ function GetMarkdownFilesInWorkArea() {
 
 		// secondItem needs to be a closing ```.
 		if (secondItem.codeType != "") {
-			console.log("  - Pair does not match: secondItem.codetype != \"\".");
+			console.log("  - Pair does not match: secondItem.codeType != \"\".");
 			matchingPair = false;
 		}
 

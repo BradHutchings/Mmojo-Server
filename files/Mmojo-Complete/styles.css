@@ -571,6 +571,15 @@ ul, li {
     flex-grow: 1;
 }
 
+#file-name-text {
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-grow: 1;
+    color: var(--grey-black);
+    text-wrap: nowrap;
+    overflow: clip;
+}
+
 #file-download {
 
 }
@@ -628,7 +637,7 @@ ul, li {
     overflow: clip;
 }
 
-#file-download, #file-save-as,
+#file-copy, #file-download, #file-save-as,
 #status-start, #status-stop, #status-undo, #status-clear {
     font-size: 0.8rem;
     min-width: 4rem;

@@ -1968,11 +1968,14 @@ function GetMarkdownFilesInWorkArea() {
 			let indent = indentString.length;
 			let codeType = match[2];
 			let index = match.index;
-			console.log("  - matched: [" + line + "] " + currentWatLine);
-			console.log("  - indent: \"" + indentString + "\"");
-			console.log("  - indent: " + indent);
-			console.log("  - codeType: " + codeType);
 
+			if (false) {
+				console.log("  - matched: [" + line + "] " + currentWatLine);
+				console.log("  - indent: \"" + indentString + "\"");
+				console.log("  - indent: " + indent);
+				console.log("  - codeType: " + codeType);
+			}
+			
 			markDownFileLines.push({
 				"line": line,
 				"indent": indent,
@@ -1981,8 +1984,49 @@ function GetMarkdownFilesInWorkArea() {
 		}
 	}
 
-	console.log("\n\nmarkDownFileLines:");
-	console.log(markDownFileLines);	
+	if (true) {
+		console.log("\n\nmarkDownFileLines:");
+		console.log(markDownFileLines);
+	}
+
+	// markDownFileLines is an array of ``` lines.
+	// While there are at least two items in markDownFileLines, consider the firat two
+	// as a possible code block to save, if they match. If they don't match, remove the
+	// first item and continue.
+
+	while (markDownFileLines.length >= 2) {
+		let firstItem = markDownFileLines[0];
+		let secondItem = markDownFileLines[1];
+		let matchingPair = true;	// assume they match, find a reason they don't.
+
+		// secondItem needs to be a closing ```.
+		if (secondItem.codetype != "") {
+			matchingPair = false;
+		}
+
+		// indents have to match.
+		if (firstItem.indent != secondItem.indent) {
+			matchingPair = false;
+		}
+
+		// If we have a matching pair, add it to results, remove both items.
+		// If not, remove the firstItem.
+		if (matchingPair) {
+			console.log("- Matching pair:");
+			console.log("  - firstItem:\n" + firstItem);
+			console.log("  - secondItem:\n" + secondItem);
+			markDownFileLines.shift();
+			markDownFileLines.shift();
+
+			// add something to result.
+		}
+		else {
+			console.log("- Non-matching pair:");
+			console.log("  - firstItem:\n" + firstItem);
+			console.log("  - secondItem:\n" + secondItem);
+			markDownFileLines.shift();
+		}
+	}
 }
 
 function FileCopy() {

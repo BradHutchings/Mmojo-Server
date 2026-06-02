@@ -538,6 +538,31 @@ ul, li {
     flex-grow: 0;
 }
 
+#file-list-item-template {
+    border: 2px #000000;
+    margin: 4px 4px;
+}
+
+.file-list-item {
+    border: 2px #000000;
+    margin: 4px 4px;
+}
+
+.file-list-item-name {
+    border: 2px #000000;
+    margin: 4px 4px;
+}
+
+.file-list-item-code {
+    border: 2px #000000;
+    margin: 4px 4px;
+}
+
+.file-list-item-snippet {
+    border: 2px #000000;
+    margin: 4px 4px;
+}
+
 #file-view {
     overflow-x: hidden;
     overflow-y: scroll;

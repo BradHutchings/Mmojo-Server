@@ -1964,8 +1964,8 @@ function GetMarkdownFilesInWorkArea() {
 		let match = regex.exec(wat);
 		if (match !== null) {
 			console.log("  - matched: [" + i + "] " + currentWatLine);
-			console.log("  - indent: [" + match[0] + "]";
-			console.log("  - type: [" + match[1] + "]";
+			console.log("  - indent: [" + match[0] + "]");
+			console.log("  - type: [" + match[1] + "]");
 
 			markDownFileLines.push({
 				indent: match[0].length,

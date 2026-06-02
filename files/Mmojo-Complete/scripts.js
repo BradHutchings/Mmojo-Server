@@ -1966,7 +1966,6 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 
 	let textLines = text.split(/\r?\n/);
 	indent = Math.max(indent, 0);
-	indent = 0;
 
 	if (logThis) console.log("- indent:" + indent);
 	if (logThis) console.log("- textLines.length:" + textLines.length);

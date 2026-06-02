@@ -1985,8 +1985,9 @@ function GetMarkdownFilesInWorkArea() {
 	}
 
 	if (true) {
+		let markDownFileLinesCopy = markDownFileLines.slice();
 		console.log("\n\nmarkDownFileLines:");
-		console.log(markDownFileLines);
+		console.log(JSON.stringify(markDownFileLinesCopy));
 	}
 
 	// markDownFileLines is an array of ``` lines.
@@ -1999,13 +2000,19 @@ function GetMarkdownFilesInWorkArea() {
 		let secondItem = markDownFileLines[1];
 		let matchingPair = true;	// assume they match, find a reason they don't.
 
+		console.log("- Considering pair:");
+		console.log("  - firstItem:\n" + JSON.stringify(firstItem));
+		console.log("  - secondItem:\n" + JSON.stringify(secondItem));
+
 		// secondItem needs to be a closing ```.
 		if (secondItem.codetype != "") {
+			console.log("  - Pair does not match: secondItem.codetype != \"\".");
 			matchingPair = false;
 		}
 
 		// indents have to match.
 		if (firstItem.indent != secondItem.indent) {
+			console.log("  - Pair does not match: firstItem.indent != secondItem.indent.");
 			matchingPair = false;
 		}
 
@@ -2013,8 +2020,8 @@ function GetMarkdownFilesInWorkArea() {
 		// If not, remove the firstItem.
 		if (matchingPair) {
 			console.log("- Matching pair:");
-			console.log("  - firstItem:\n" + firstItem);
-			console.log("  - secondItem:\n" + secondItem);
+			console.log("  - firstItem:\n" + JSON.stringify(firstItem));
+			console.log("  - secondItem:\n" + JSON.stringify(secondItem));
 			markDownFileLines.shift();
 			markDownFileLines.shift();
 

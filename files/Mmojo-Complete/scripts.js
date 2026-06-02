@@ -1951,6 +1951,28 @@ function GetElapsedTimeString(ms) {
     return result;
 }
 
+function GetMarkdownFilesInWorkArea() {
+	console.log("GetMarkdownFilesInWorkArea() - in progress.");
+	let result = [];
+
+	let wat = elements.workAreaText.value;
+	let watLines = wat.split(/\r?\n/);
+	let markDownFileLines = [];
+
+	console.log("watLines.length: " + watLines.length);
+	for (let i = 0; i < watLines.length; i++) {
+		currentWatLine = watLines[i].trim;
+		const regex = /```[A-Za-z0-9_+]*/;
+		if (regex.test(currentWatLine)) {
+			console.log("- matched: " + i + " " + currentWatLine);
+		}
+	}
+}
+
+function FileCopy() {
+	console.log("FileCopy() - to be implemented.");
+}
+
 function FileDownload() {
 	console.log("FileDownload() - to be implemented.");
 }

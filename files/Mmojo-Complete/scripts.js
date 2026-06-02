@@ -1957,6 +1957,9 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 		"contents": "",    		   // from startLine to endLine in text.
 		"filename": ""	   		   // parsed from first line.
 	};
+	let logThis = true;
+
+	if (logThis) console.log("GetCodeBlock() - in progress.");
 
 	let textLines = text.split(/\r?\n/);
 	indent = Math.max(indent, 0);
@@ -1975,6 +1978,9 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 			}
 		}
 		result.contents = blockTextLines.join("\n");
+		if (logThis) console.log("- startLine:\n" + startLine);
+		if (logThis) console.log("- endLine:\n" + endLine);
+		if (logThis) console.log("- result.contents:\n" + result.contents);
 	}
 
 	if (codeType == "javascript") {

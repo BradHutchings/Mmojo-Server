@@ -1960,36 +1960,29 @@ function GetMarkdownFilesInWorkArea() {
 	let markDownFileLines = [];
 
 	const regex = /^(\s*)```([A-Za-z0-9+_]*)\s*/
-	for (let i = 0; i < watLines.length; i++) {
-		let currentWatLine = watLines[i];
+	for (let line = 0; line < watLines.length; line++) {
+		let currentWatLine = watLines[line];
 		let match = regex.exec(currentWatLine);
 		if (match !== null) {
-			console.log("  - matched: [" + i + "] " + currentWatLine);
-			console.log("  - indent: [" + match[0] + "]");
-			console.log("  - type: [" + match[1] + "]");
+			let indentString = match[1];
+			let indent = match[1].length;
+			let codeType = match[2];
+			let index = match.index;
+			console.log("  - matched: [" + line + "] " + currentWatLine);
+			console.log("  - indent: \"" + indentString + "\"");
+			console.log("  - indent: " + indent.kength);
+			console.log("  - codeType: " + codeType);
 
 			markDownFileLines.push({
-				line: i,
-				indent: match[0].length,
-				type: match[1]
+				"line": line,
+				"indent": indent,
+				"codeType": codeType
 			});
 		}
 	}
 
 	console.log("\n\nmarkDownFileLines:");
-	console.log(markDownFileLines);
-	
-	/*
-	console.log("watLines.length: " + watLines.length);
-	for (let i = 0; i < watLines.length; i++) {
-		currentWatLine = watLines[i].trim();
-		// console.log("- considering: [" + i + "] " + currentWatLine);
-		const regex = /^```([A-Za-z0-9+_]*)/;
-		if (regex.test(currentWatLine)) {
-			console.log("  - matched: [" + i + "] " + currentWatLine);
-		}
-	}
-	*/
+	console.log(markDownFileLines);	
 }
 
 function FileCopy() {

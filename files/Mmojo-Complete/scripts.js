@@ -182,6 +182,7 @@ function FindElements() {
     elements.mmojoComplete        	    = document.getElementById("mmojo-complete");
     elements.settingsIcon               = document.getElementById("settings-icon");
     elements.toolsIcon                  = document.getElementById("tools-icon");
+    elements.filesIcon                  = document.getElementById("files-icon");
     elements.helpIcon                   = document.getElementById("help-icon");
 
     elements.toolsArea                  = document.getElementById("tools-area");

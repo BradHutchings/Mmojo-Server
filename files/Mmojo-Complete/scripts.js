@@ -1969,7 +1969,7 @@ function GetMarkdownFilesInWorkArea() {
 			let codeType = match[2];
 			let index = match.index;
 
-			if (false) {
+			if (true) {
 				console.log("  - matched: [" + line + "] " + currentWatLine);
 				console.log("  - indent: \"" + indentString + "\"");
 				console.log("  - indent: " + indent);

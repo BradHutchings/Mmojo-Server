@@ -1960,11 +1960,17 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 	let logThis = true;
 
 	if (logThis) console.log("GetCodeBlock() - in progress.");
+	if (logThis) console.log("- indent:" + indent);
+	if (logThis) console.log("- startLine:" + startLine);
+	if (logThis) console.log("- endLine:" + endLine);
 
 	let textLines = text.split(/\r?\n/);
 	indent = Math.max(indent, 0);
 	indent = 0;
-	
+
+	if (logThis) console.log("- indent:" + indent);
+	if (logThis) console.log("- textLines.length:" + textLines.length);
+
 	if ((startLine >= 0) && (startLine < textLines.length) && (endLine > startLine) && (endLine < textLines.length)) {
 		// slice(start, end) -- starts on item start, ends on item before end.
 		let blockTextLines = textLines.slice(startLine, endLine + 1);
@@ -1978,9 +1984,10 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 			}
 		}
 		result.contents = blockTextLines.join("\n");
-		if (logThis) console.log("- startLine:\n" + startLine);
-		if (logThis) console.log("- endLine:\n" + endLine);
-		if (logThis) console.log("- result.contents:\n" + result.contents);
+		if (logThis) console.log("- Getting result.contents:\n");
+		if (logThis) console.log("  - startLine:\n" + startLine);
+		if (logThis) console.log("  - endLine:\n" + endLine);
+		if (logThis) console.log("  - result.contents:\n" + result.contents);
 	}
 
 	if (codeType == "javascript") {

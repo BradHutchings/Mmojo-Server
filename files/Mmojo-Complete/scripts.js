@@ -156,7 +156,10 @@ function PageLoaded() {
         UpdateStatus();
     }, 200);
 
-    
+	setInterval(function() {
+        ShowHideFilesIcon();
+    }, 3000);
+
     checked = localStorage.getItem('showCopyAndPaste');
     if (checked === "true") {
         elements.showCopyAndPasteCheckbox.checked = true;
@@ -1957,7 +1960,7 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 		"contents": "",    		   // from startLine to endLine in text.
 		"filename": ""	   		   // parsed from first line.
 	};
-	let logThis = true;
+	let logThis = false;
 
 	if (logThis) console.log("GetCodeBlock() - in progress.");
 	if (logThis) console.log("- indent:" + indent);
@@ -2132,6 +2135,24 @@ function GetCodeBlocksInWorkArea() {
 		console.log("- elapsedMS: " + elapsedMS);
 	}
 	return result;
+}
+
+function ShowHideFilesIcon() {
+	let codeBlocks = GetCodeBlocksInWorkArea();
+	let showIcon = (Array.isArray(codeBlocks) && (codeBlocks.length > 0));
+
+	if (showIcon) {
+		ShowElement(elements.filesIcon);
+	}
+	else {
+		HideElement(elements.filesIcon);
+	}
+
+	/*
+	setTimeout(() => {
+		ShowHideFilesIcon();
+	}, 3000);
+	*/
 }
 
 function FileCopy() {

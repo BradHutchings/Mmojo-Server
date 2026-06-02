@@ -325,7 +325,6 @@ function HandleCopyPasteMouseEnter(copyPasteItem) {
             parseInt(previewComputedStyle.paddingRight.slice(0, -2)) - 
             parseInt(previewComputedStyle.borderRightWidth.slice(0, -2));
 
-
         previewRect.height = workAreaTextRect.height - vInset -
             parseInt(previewComputedStyle.paddingTop.slice(0, -2)) - 
             parseInt(previewComputedStyle.paddingBottom.slice(0, -2));
@@ -1365,11 +1364,13 @@ function ToggleFiles(event) {
     event.stopPropagation();
 	if (elements.filesArea.classList.contains("hidden")) {
     	HideElement(elements.workArea);
+    	HideElement(elements.status);
     	ShowElement(elements.filesArea);
 	}
 	else {
     	HideElement(elements.filesArea);
     	ShowElement(elements.workArea);
+    	ShowElement(elements.status);
 	}
 
 	HideElement(elements.settings);
@@ -1379,6 +1380,10 @@ function ToggleFiles(event) {
 
 function ToggleSettings(event) {
     event.stopPropagation();
+	if (!elements.filesArea.classList.contains("hidden")) {
+		ToggleFiles(event);
+	}
+	
     elements.workAreaText.focus()
     ToggleShowElement(elements.settings);
     HideElement(elements.toolsArea);
@@ -1394,7 +1399,11 @@ function ToggleSettings(event) {
 
 function ToggleTools(event) {
     event.stopPropagation();
-    elements.workAreaText.focus()
+	if (!elements.filesArea.classList.contains("hidden")) {
+		ToggleFiles(event);
+	}
+
+	elements.workAreaText.focus()
     ToggleShowElement(elements.toolsArea);
     HideElement(elements.settings);
     HideElement(elements.printSettings);
@@ -1402,7 +1411,11 @@ function ToggleTools(event) {
 
 function TogglePrintSettings() {
     elements.workAreaText.focus()
-    ToggleShowElement(elements.printSettings)
+	if (!elements.filesArea.classList.contains("hidden")) {
+		ToggleFiles(event);
+	}
+
+	ToggleShowElement(elements.printSettings)
     HideElement(elements.settings);
     HideElement(elements.toolsArea);
 }

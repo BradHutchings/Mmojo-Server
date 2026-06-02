@@ -1990,35 +1990,35 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 	}
 
 	if (codeType == "javascript") {
-		const regex = "[A-Za-z0-9-_.]+\.js]";
+		const regex = "[A-Za-z0-9-_.]+\.js";
 		let match = result.contents.match(regex);
 		if (match !== null) {
 			result.filename = match[0];
 		}
 	}
 	else if (codeType == "html") {
-		const regex = "[A-Za-z0-9-_.]+\.html]";
+		const regex = "[A-Za-z0-9-_.]+\.html";
 		let match = result.contents.match(regex);
 		if (match !== null) {
 			result.filename = match[0];
 		}
 	}
 	else if (codeType == "css") {
-		const regex = "[A-Za-z0-9-_.]+\.css]";
+		const regex = "[A-Za-z0-9-_.]+\.css";
 		let match = result.contents.match(regex);
 		if (match !== null) {
 			result.filename = match[0];
 		}
 	}
 	else if (codeType == "python") {
-		const regex = "[A-Za-z0-9-_.]+\.py]";
+		const regex = "[A-Za-z0-9-_.]+\.py";
 		let match = result.contents.match(regex);
 		if (match !== null) {
 			result.filename = match[0];
 		}
 	}
 	else if (codeType == "powershell") {
-		const regex = "[A-Za-z0-9-_.]+\.ps1]";
+		const regex = "[A-Za-z0-9-_.]+\.ps1";
 		let match = result.contents.match(regex);
 		if (match !== null) {
 			result.filename = match[0];

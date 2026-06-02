@@ -1961,14 +1961,15 @@ function GetMarkdownFilesInWorkArea() {
 
 	const regex = /^(\s*)```([A-Za-z0-9+_]*)\s*/
 	for (let i = 0; i < watLines.length; i++) {
-		let watLine = watLines[i];
-		let match = regex.exec(watLine);
+		let currentWatLine = watLines[i];
+		let match = regex.exec(currentWatLine);
 		if (match !== null) {
 			console.log("  - matched: [" + i + "] " + currentWatLine);
 			console.log("  - indent: [" + match[0] + "]");
 			console.log("  - type: [" + match[1] + "]");
 
 			markDownFileLines.push({
+				line: i,
 				indent: match[0].length,
 				type: match[1]
 			});

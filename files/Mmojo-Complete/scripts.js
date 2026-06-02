@@ -1971,7 +1971,7 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 	if (logThis) console.log("- indent:" + indent);
 	if (logThis) console.log("- textLines.length:" + textLines.length);
 
-	if ((startLine >= 0) && (startLine < textLines.length) && (endLine > startLine) && (endLine < textLines.length)) {
+	if ((startLine >= 0) && (startLine < textLines.length) && (endLine >= startLine) && (endLine < textLines.length)) {
 		// slice(start, end) -- starts on item start, ends on item before end.
 		let blockTextLines = textLines.slice(startLine, endLine + 1);
 		if (indent > 0) {

@@ -1959,18 +1959,18 @@ function GetMarkdownFilesInWorkArea() {
 	let watLines = wat.split(/\r?\n/);
 	let markDownFileLines = [];
 
-	const regex = /^(\s*)```([A-Za-z0-9+_]*)\s*/
+	const regex = /^(\s*)```([A-Za-z0-9+_]*)\s*$/
 	for (let line = 0; line < watLines.length; line++) {
 		let currentWatLine = watLines[line];
 		let match = regex.exec(currentWatLine);
 		if (match !== null) {
 			let indentString = match[1];
-			let indent = match[1].length;
+			let indent = indentString.length;
 			let codeType = match[2];
 			let index = match.index;
 			console.log("  - matched: [" + line + "] " + currentWatLine);
 			console.log("  - indent: \"" + indentString + "\"");
-			console.log("  - indent: " + indent.kength);
+			console.log("  - indent: " + indent);
 			console.log("  - codeType: " + codeType);
 
 			markDownFileLines.push({

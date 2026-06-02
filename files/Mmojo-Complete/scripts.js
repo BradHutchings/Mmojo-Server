@@ -2038,7 +2038,7 @@ function GetCodeBlocksInWorkArea() {
 		//    "codeType": e.g. "javascript", or blank.
 		//	  "contents": what's inside the code block.
 		//	  "filename": proposed filename from first line, or blank.
-	let logThis = true;
+	let logThis = false;
 
 	if (logThis) console.log("GetMarkdownFilesInWorkArea() - in progress.");
 
@@ -2148,12 +2148,10 @@ function ShowHideFilesIcon() {
 	else {
 		HideElement(elements.filesIcon);
 	}
+}
 
-	/*
-	setTimeout(() => {
-		ShowHideFilesIcon();
-	}, 3000);
-	*/
+function FileListItemClicked() {
+	console.log("FileListItemClicked() - to be implemented.");
 }
 
 function FileCopy() {

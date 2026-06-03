@@ -527,6 +527,7 @@ ul, li {
 }
 
 #files-list {
+    display: block;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: var(--color5);
@@ -536,8 +537,8 @@ ul, li {
     xx-margin-right: 0.5rem;
     width: 15rem;
     padding: 0.5rem;
-    flex-grow: 0;
-    flex-wrap: nowrap;
+    xx-flex-grow: 0;
+    xx-flex-wrap: nowrap;
     overflow: auto;
 }
 

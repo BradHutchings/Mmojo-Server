@@ -2160,7 +2160,8 @@ function PopulateFilesList() {
 	if (logThis) console.log("PopulateFilesList()");
 	if (logThis) console.log("- fileListItemCount: " + fileListItemCount);
 	if (logThis) console.log("- codeBlocks.length: " + codeBlocks.length);
-	
+
+	// Grow the files-list.
 	while (fileListItemCount < codeBlocks.length) {
 		if (logThis) console.log("- Adding a files-list-item.");
 		let clonedItem = elements.filesListItemTemplate.cloneNode(true);
@@ -2171,9 +2172,8 @@ function PopulateFilesList() {
 		if (logThis) console.log("  - codeBlocks.length: " + codeBlocks.length);
 	}
 
-	if (true) {
+	// Shrink the files-list.
 	while (fileListItemCount > codeBlocks.length) {
-		// remove the last one
 		if (logThis) console.log("- Removing the last files-list-item.");
 		const lastChild = elements.filesList.lastElementChild;
 		elements.filesList.removeChild(lastChild);
@@ -2181,7 +2181,23 @@ function PopulateFilesList() {
 		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
 		if (logThis) console.log("  - codeBlocks.length: " + codeBlocks.length);
 	}
-	}	
+
+	// Set the contents of the files-list items.
+	fileListItemCount = elements.filesList.childElementCount - 1;
+	let count = Math.min(fileListItemCount, codeBlocks.length);
+	for (let i = 1; i < count; i++) {
+		let filesListItem = elements.filesList.children[i];
+		let codeBlock = codeBlocks[i - 1];
+		let filename = codeBlock.filename;
+		let codeType = codeBlock.codeType;
+
+		if (filename == "")	filename = "No filename specified.";
+		if (codeType == "") codeType = "No type specified.";
+		
+		filesListItem.children[0].innerText = filename;
+		filesListItem.children[1].innerText = codeType;
+		filesListItem.children[2].innerText = codeBlock.content;
+	}
 }
 
 function FileListItemClicked() {

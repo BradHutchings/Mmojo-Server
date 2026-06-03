@@ -2176,7 +2176,7 @@ function PopulateFilesList() {
 		// remove the last one
 		if (logThis) console.log("- Removing the last files-list-item.");
 		const lastChild = elements.filesListItemTemplate.lastElementChild;
-		elements.filesListItemTemplate.removeChild(lastChild);
+		elements.filesList.removeChild(lastChild);
 		fileListItemCount = elements.filesList.childElementCount - 1;
 		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
 		if (logThis) console.log("  - codeBlocks.length: " + codeBlocks.length);

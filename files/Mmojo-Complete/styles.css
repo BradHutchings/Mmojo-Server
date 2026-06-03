@@ -548,7 +548,7 @@ ul, li {
 
 /* Track */
 #files-list::-webkit-scrollbar-track {
-    background: var(--color5);
+    background: var(--color2);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -556,7 +556,7 @@ ul, li {
 
 /* Handle */
 #files-list::-webkit-scrollbar-thumb {
-    background: var(--color3);
+    background: var(--color5);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;

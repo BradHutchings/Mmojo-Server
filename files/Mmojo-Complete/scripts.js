@@ -2240,7 +2240,7 @@ function FilesListItemClicked(event) {
 }
 
 function ShowCodeBlock(codeBlock) {
-	let logThis = true;
+	let logThis = false;
 	
 	if (logThis) console.log("ShowCodeBlock() - in progress.");
 
@@ -2265,16 +2265,34 @@ function ShowSelectedFile() {
 	
 	if (logThis) console.log("ShowSelectedFile() - in progress.");
 
-	selectedCodeBlock = null;
+	codeBlock = null;
 	count = elements.filesList.childElementCount - 1;
 	for (let i = 1; i <= count; i++) {
 		let child = elements.filesList.children[i];
 		if (child.classList.contains("files-list-item-selected")) {
-			selectedCodeBlock = child.codeBlock;
+			codeBlock = child.codeBlock;
 		}
 	}
 
-	ShowCodeBlock(selectedCodeBlock);
+	if (codeBlock !== null) {
+		if (codeBlock.filename !== "") {
+			elements.fileName.innerHTML = "<b>Filename:</b> " + codeBlock.filename;
+		}
+		else {
+			elements.fileName.innerHTML = "<b>No filename specified.</b>";
+		}
+		elements.fileContents.value = codeBlock.contents;
+		ShowElement(elements.fileCopy);
+		ShowElement(elements.fileDownload);
+		ShowElement(elements.fileSaveAs);
+	}
+	else {
+		elements.fileName.innerHTML = "Please click a code block in the list at left.";
+		elements.fileContents.value = "";
+		HideElement(elements.fileCopy);
+		HideElement(elements.fileDownload);
+		HideElement(elements.fileSaveAs);
+	}
 }
 
 function FileCopy(event) {

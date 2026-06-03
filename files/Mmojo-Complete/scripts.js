@@ -2038,6 +2038,22 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 			result.filename = match[0];
 		}
 	}
+	else if (codeType == "json") {
+		result.filename = "config.json"
+		const regex = "[A-Za-z0-9-_.]+\.json";
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "yaml") {
+		result.filename = "config.yaml"
+		const regex = "[A-Za-z0-9-_.]+\.yaml";
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
 	else {
 		result.filename = "untitled.txt"
 	}
@@ -2248,6 +2264,28 @@ function FilesListItemClicked(event) {
 	ShowSelectedFile();
 }
 
+function FilesListItemDoubleClicked() {
+	let logThis = true;
+	
+	if (logThis) console.log("FilesListItemDoubleClicked() - in progress.");
+	if (logThis) console.log("- event:\n" + JSON.stringify(event));
+	if (logThis) console.log("- event.currentTarget.classList:\n" + JSON.stringify(event.currentTarget.classList));
+
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	let filesListItem = null;
+	if (event.currentTarget.classList.contains("files-list-item")) {
+		filesListItem = event.currentTarget;
+	}
+
+	codeBlock = SelectedCodeBlock();
+	if (codeBlick !== null) {
+		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(codeBlock));
+	}
+}
+
 function FilesListDeselect(event) {
 	if ((event !== undefined) && (event !== null)) {
         event.stopPropagation();
@@ -2286,17 +2324,6 @@ function ShowSelectedFile() {
 	if (logThis) console.log("ShowSelectedFile() - in progress.");
 
 	codeBlock = SelectedCodeBlock();
-
-	/*
-	codeBlock = null;
-	count = elements.filesList.childElementCount - 1;
-	for (let i = 1; i <= count; i++) {
-		let child = elements.filesList.children[i];
-		if (child.classList.contains("files-list-item-selected")) {
-			codeBlock = child.codeBlock;
-		}
-	}
-	*/
 
 	if (codeBlock !== null) {
 		if (codeBlock.filename !== "") {

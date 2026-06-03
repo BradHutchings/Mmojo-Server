@@ -224,6 +224,7 @@ function FindElements() {
 
 	elements.filesArea				= document.getElementById("files-area");
 	elements.filesList				= document.getElementById("files-list");
+	elements.filesListItemTemplate	= document.getElementById("files-list-item-template");
 	elements.fileView				= document.getElementById("file-view");
 	elements.fileName				= document.getElementById("file-name");
 	elements.fileContents			= document.getElementById("file-contents");
@@ -1367,6 +1368,7 @@ async function GetModelInfoFromServer() {
 function ToggleFiles(event) {
     event.stopPropagation();
 	if (elements.filesArea.classList.contains("hidden")) {
+		PopulateFilesList();
     	HideElement(elements.workArea);
     	HideElement(elements.status);
     	ShowElement(elements.filesArea);
@@ -2148,6 +2150,25 @@ function ShowHideFilesIcon() {
 	else {
 		HideElement(elements.filesIcon);
 	}
+}
+
+function PopulateFilesList() {
+	let codeBlocks = GetCodeBlocksInWorkArea();
+	let fileListItemCount = document.querySelectorAll('.file-list-item').length;
+
+	while (fileListItemCount < (codeBlocks.length + 1)) {
+		// add one to end
+		let clonedItem = elements.filesListItemTemplate.cloneNode(true);
+		clonedItem.id = "files-list-item-" + fileListItemCount;
+		elements.filesList.appendChild(clonedItem);
+		fileListItemCount = document.querySelectorAll('.file-list-item').length;
+	}
+
+	if (false) {
+	while (fileListItemCount > (codeBlocks.length + 1)) {
+		// remove the last one
+	}
+	}	
 }
 
 function FileListItemClicked() {

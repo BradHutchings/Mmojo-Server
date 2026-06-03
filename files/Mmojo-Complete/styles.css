@@ -539,11 +539,11 @@ ul, li {
     flex-grow: 0;
 }
 
-#file-list-item-template {
+#files-list-item-template {
     xx-visibility: hidden;
 }
 
-.file-list-item {
+.files-list-item {
     flex-direction: column;
     background-color: var(--color2);
     xx-border: 2px solid #000000;
@@ -552,19 +552,19 @@ ul, li {
     padding: 0.5rem;
 }
 
-.file-list-item-name {
+.files-list-item-name {
     height: 1.2rem;
     border: 1px solid #C0C0C0;
     margin-bottom: 0.5rem;
 }
 
-.file-list-item-code-type {
+.files-list-item-code-type {
     height: 1.2rem;
     border: 1px solid #C0C0C0;
     margin-bottom: 0.5rem;
 }
 
-.file-list-item-snippet {
+.files-list-item-snippet {
     height: 3.2rem;
     border: 1px solid #C0C0C0;
 }

@@ -2281,7 +2281,7 @@ function FilesListItemDoubleClicked() {
 	}
 
 	codeBlock = SelectedCodeBlock();
-	if (codeBlick !== null) {
+	if (codeBlock !== null) {
 		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(codeBlock));
 	}
 }

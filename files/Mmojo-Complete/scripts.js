@@ -2155,18 +2155,20 @@ function ShowHideFilesIcon() {
 function PopulateFilesList() {
 	let logThis = true;
 	let codeBlocks = GetCodeBlocksInWorkArea();
-	let fileListItemCount = document.querySelectorAll('.filea-list-item').length;
+	// let fileListItemCount = document.querySelectorAll('.filea-list-item').length;
+	let fileListItemCount = elements.filesList.childElementCount - 1;
 
 	if (logThis) console.log("PopulateFilesList()");
 	if (logThis) console.log("- fileListItemCount: " + fileListItemCount);
 	if (logThis) console.log("- codeBlocks.length: " + codeBlocks.length);
 	
-	while (fileListItemCount < (codeBlocks.length + 1)) {
+	while (fileListItemCount < codeBlocks.length) {
 		if (logThis) console.log("- Adding a files-list-item.");
 		let clonedItem = elements.filesListItemTemplate.cloneNode(true);
 		clonedItem.id = "files-list-item-" + fileListItemCount;
 		elements.filesList.appendChild(clonedItem);
-		fileListItemCount = document.querySelectorAll('.files-list-item').length;
+		// fileListItemCount = document.querySelectorAll('.files-list-item').length;
+		fileListItemCount = elements.filesList.childElementCount - 1;
 		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
 		if (logThis) console.log("  - codeBlocks.length: " + codeBlocks.length);
 	}

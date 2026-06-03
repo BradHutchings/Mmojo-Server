@@ -2310,7 +2310,9 @@ function FilesListItemDoubleClicked(event) {
 
 		elements.workAreaText.focus();
 		elements.workAreaText.setSelectionRange(selectionStart, selectionStart);
-		ScrollToSelectionStart();
+		setTimeout(() => {
+			ScrollToSelectionStart();
+		}, 500);
 	}
 }
 

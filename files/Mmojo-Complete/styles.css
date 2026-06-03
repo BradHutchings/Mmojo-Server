@@ -535,37 +535,35 @@ ul, li {
     border-radius: 0.5rem;
     xx-margin-right: 0.5rem;
     width: 15rem;
-    padding: 0.25rem;
+    padding: 0.5rem;
     flex-grow: 0;
 }
 
 #file-list-item-template {
-    border: 2px solid #000000;
-    xx-margin: 4px 4px;
+    xx-visibility: hidden;
 }
 
 .file-list-item {
     flex-direction: column;
     border: 2px solid #000000;
-    xx-margin: 4px 4px;
+    margin-bottom: 0.5rem;
 }
 
 .file-list-item-name {
     height: 1.2rem;
     border: 2px solid #000000;
-    margin: 4px 4px;
+    margin-bottom: 0.25rem;
 }
 
 .file-list-item-code-type {
     height: 1.2rem;
     border: 2px solid #000000;
-    margin: 4px 4px;
+    margin-bottom: 0.25rem;
 }
 
 .file-list-item-snippet {
     height: 3.2rem;
     border: 2px solid #000000;
-    margin: 4px 4px;
 }
 
 #file-view {

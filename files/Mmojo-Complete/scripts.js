@@ -2345,6 +2345,10 @@ function FileDownload(event) {
 		const link = document.createElement('a');
 		link.style.display = 'none';
 		link.href = url;
+
+		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(codeBlock));
+		
+		
 		// link.download = codeBlock.filename;
 		link.download = "whatever.text";
 	

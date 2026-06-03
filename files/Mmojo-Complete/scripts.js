@@ -2256,7 +2256,7 @@ function FilesListDeselect(event) {
 }
 
 function ShowSelectedFile() {
-	let logThis = true;
+	let logThis = false;
 	
 	if (logThis) console.log("ShowSelectedFile() - in progress.");
 

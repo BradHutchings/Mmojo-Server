@@ -541,6 +541,7 @@ ul, li {
 }
 
 #files-list-item-template {
+    display: none;
     visibility: hidden;
     background-color: var(--grey-lightlight);
 }
@@ -552,6 +553,7 @@ ul, li {
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
+    width: 100%;
     overflow: hidden;
 }
 

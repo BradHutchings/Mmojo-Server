@@ -229,6 +229,7 @@ function FindElements() {
 	elements.fileName				= document.getElementById("file-name");
 	elements.fileContents			= document.getElementById("file-contents");
 	elements.fileControls			= document.getElementById("file-controls");
+	elements.fileCopy				= document.getElementById("file-copy");
 	elements.fileDownload			= document.getElementById("file-download");
 	elements.fileSaveAs				= document.getElementById("file-save-as");
 

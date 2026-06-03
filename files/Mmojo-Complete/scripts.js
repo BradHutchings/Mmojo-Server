@@ -1965,7 +1965,7 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 	};
 	let logThis = false;
 
-	if (logThis) console.log("GetCodeBlock() - in progress.");
+	if (logThis) console.log("GetCodeBlock()");
 	if (logThis) console.log("- indent:" + indent);
 	if (logThis) console.log("- startLine:" + startLine);
 	if (logThis) console.log("- endLine:" + endLine);
@@ -2042,7 +2042,7 @@ function GetCodeBlocksInWorkArea() {
 		//	  "filename": proposed filename from first line, or blank.
 	let logThis = false;
 
-	if (logThis) console.log("GetMarkdownFilesInWorkArea() - in progress.");
+	if (logThis) console.log("GetMarkdownFilesInWorkArea()");
 
 	let startMS = Date.now();
 	let wat = elements.workAreaText.value;
@@ -2153,15 +2153,22 @@ function ShowHideFilesIcon() {
 }
 
 function PopulateFilesList() {
+	let logThis = true;
 	let codeBlocks = GetCodeBlocksInWorkArea();
-	let fileListItemCount = document.querySelectorAll('.file-list-item').length;
+	let fileListItemCount = document.querySelectorAll('.filea-list-item').length;
 
+	if (logThis) console.log("PopulateFilesList()");
+	if (logThis) console.log("- fileListItemCount: " + fileListItemCount);
+	if (logThis) console.log("- codeBlocks.length: " + codeBlocks.length);
+	
 	while (fileListItemCount < (codeBlocks.length + 1)) {
-		// add one to end
+		if (logThis) console.log("- Adding a files-list-item.");
 		let clonedItem = elements.filesListItemTemplate.cloneNode(true);
 		clonedItem.id = "files-list-item-" + fileListItemCount;
 		elements.filesList.appendChild(clonedItem);
 		fileListItemCount = document.querySelectorAll('.file-list-item').length;
+		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
+		if (logThis) console.log("  - codeBlocks.length: " + codeBlocks.length);
 	}
 
 	if (false) {

@@ -536,10 +536,35 @@ ul, li {
     border-radius: 0.5rem;
     xx-margin-right: 0.5rem;
     width: 15rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 0rem;
     xx-flex-grow: 0;
     xx-flex-wrap: nowrap;
     overflow: auto;
+}
+
+#files-list::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+/* Track */
+#files-list::-webkit-scrollbar-track {
+    background: var(--color3);
+    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Handle */
+#files-list::-webkit-scrollbar-thumb {
+    background: var(--color5);
+    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Handle on hover */
+#files-list::-webkit-scrollbar-thumb:hover {
+    background: var(--color1);
 }
 
 #files-list-item-template {

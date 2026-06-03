@@ -1448,15 +1448,17 @@ function ScrollToSelectionStart() {
 	//	elements.workAreaText.dispatchEvent(new KeyboardEvent('keypress', {charCode: 39}));
 	//	elements.workAreaText.dispatchEvent(new KeyboardEvent('keypress', {charCode: 37}));
 
-	const rightArrowEvent = new KeyboardEvent('keydown', {
-	  key: 'ArrowRight',
-	  code: 'ArrowRight',
-	  keyCode: 39,
-	  which: 39,
-	  bubbles: true,
-	  cancelable: true
-	});
-	elements.workAreaText.dispatchEvent(rightArrowEvent);
+	setTimeout(() => {
+		const rightArrowEvent = new KeyboardEvent('keydown', {
+		  key: 'ArrowRight',
+		  code: 'ArrowRight',
+		  keyCode: 39,
+		  which: 39,
+		  bubbles: true,
+		  cancelable: true
+		});
+		elements.workAreaText.dispatchEvent(rightArrowEvent);
+	}, 500);
 
 	const leftArrowEvent = new KeyboardEvent('keydown', {
 	  key: 'ArrowLeft',
@@ -1466,7 +1468,7 @@ function ScrollToSelectionStart() {
 	  bubbles: true,
 	  cancelable: true
 	});
-	elements.workAreaText.dispatchEvent(leftArrowEvent);
+	//	elements.workAreaText.dispatchEvent(leftArrowEvent);
 }
 
 function MakeHash() {

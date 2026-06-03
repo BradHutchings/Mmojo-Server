@@ -2185,7 +2185,7 @@ function PopulateFilesList() {
 	// Set the contents of the files-list items.
 	fileListItemCount = elements.filesList.childElementCount - 1;
 	let count = Math.min(fileListItemCount, codeBlocks.length);
-	for (let i = 1; i < count; i++) {
+	for (let i = 1; i <= count; i++) {
 		let filesListItem = elements.filesList.children[i];
 		let codeBlock = codeBlocks[i - 1];
 		let filename = codeBlock.filename;
@@ -2196,7 +2196,7 @@ function PopulateFilesList() {
 		
 		filesListItem.children[0].innerText = filename;
 		filesListItem.children[1].innerText = codeType;
-		filesListItem.children[2].innerText = codeBlock.content;
+		filesListItem.children[2].innerText = codeBlock.contents;
 	}
 }
 

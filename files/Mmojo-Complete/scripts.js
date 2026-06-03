@@ -2175,7 +2175,7 @@ function PopulateFilesList() {
 	while (fileListItemCount > codeBlocks.length) {
 		// remove the last one
 		if (logThis) console.log("- Removing the last files-list-item.");
-		const lastChild = elements.filesListItemTemplate.lastElementChild;
+		const lastChild = elements.filesList.lastElementChild;
 		elements.filesList.removeChild(lastChild);
 		fileListItemCount = elements.filesList.childElementCount - 1;
 		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);

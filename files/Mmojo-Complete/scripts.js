@@ -2155,36 +2155,41 @@ function ShowHideFilesIcon() {
 function PopulateFilesList() {
 	let logThis = true;
 	let codeBlocks = GetCodeBlocksInWorkArea();
+	let codeBlocksCount = codeBlocks.length;
 	let fileListItemCount = elements.filesList.childElementCount - 1;
+
+	codeBlocksCount = Math.mac(codeBlocksCount, 10);
 
 	if (logThis) console.log("PopulateFilesList()");
 	if (logThis) console.log("- fileListItemCount: " + fileListItemCount);
 	if (logThis) console.log("- codeBlocks.length: " + codeBlocks.length);
 
 	// Grow the files-list.
-	while (fileListItemCount < codeBlocks.length) {
+	while (fileListItemCount < codeBlocksCount) {
 		if (logThis) console.log("- Adding a files-list-item.");
 		let clonedItem = elements.filesListItemTemplate.cloneNode(true);
 		clonedItem.id = "files-list-item-" + fileListItemCount;
 		elements.filesList.appendChild(clonedItem);
 		fileListItemCount = elements.filesList.childElementCount - 1;
 		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
-		if (logThis) console.log("  - codeBlocks.length: " + codeBlocks.length);
+		if (logThis) console.log("  - codeBlocksCount: " + codeBlocksCount);
 	}
 
 	// Shrink the files-list.
-	while (fileListItemCount > codeBlocks.length) {
+	while (fileListItemCount > codeBlocksCount) {
 		if (logThis) console.log("- Removing the last files-list-item.");
 		const lastChild = elements.filesList.lastElementChild;
 		elements.filesList.removeChild(lastChild);
 		fileListItemCount = elements.filesList.childElementCount - 1;
 		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
-		if (logThis) console.log("  - codeBlocks.length: " + codeBlocks.length);
+		if (logThis) console.log("  - codeBlocksCount: " + codeBlocksCount);
 	}
 
 	// Set the contents of the files-list items.
 	fileListItemCount = elements.filesList.childElementCount - 1;
-	let count = Math.min(fileListItemCount, codeBlocks.length);
+	codeBlocksCount = codeBlocks.length;
+	
+	let count = Math.min(fileListItemCount, codeBlocksCount);
 	for (let i = 1; i <= count; i++) {
 		let filesListItem = elements.filesList.children[i];
 		let codeBlock = codeBlocks[i - 1];

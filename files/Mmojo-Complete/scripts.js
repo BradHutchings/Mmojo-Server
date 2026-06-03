@@ -2318,7 +2318,8 @@ function FileCopy(event) {
 
 	codeBlock = SelectedCodeBlock();
 	if (codeBlock !== null) {
-		await navigator.clipboard.writeText(codeBlock.contents);
+		navigator.clipboard.writeText(codeBlock.contents);
+		// await navigator.clipboard.writeText(codeBlock.contents);
 	}
 }
 

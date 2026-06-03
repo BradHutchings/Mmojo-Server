@@ -1999,6 +1999,7 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 	}
 
 	if (codeType == "javascript") {
+		result.filename = "script.js"
 		const regex = "[A-Za-z0-9-_.]+\.js";
 		let match = result.contents.match(regex);
 		if (match !== null) {
@@ -2006,6 +2007,7 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 		}
 	}
 	else if (codeType == "html") {
+		result.filename = "index.html"
 		const regex = "[A-Za-z0-9-_.]+\.html";
 		let match = result.contents.match(regex);
 		if (match !== null) {
@@ -2013,6 +2015,7 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 		}
 	}
 	else if (codeType == "css") {
+		result.filename = "style.css"
 		const regex = "[A-Za-z0-9-_.]+\.css";
 		let match = result.contents.match(regex);
 		if (match !== null) {
@@ -2020,6 +2023,7 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 		}
 	}
 	else if (codeType == "python") {
+		result.filename = "app.py"
 		const regex = "[A-Za-z0-9-_.]+\.py";
 		let match = result.contents.match(regex);
 		if (match !== null) {
@@ -2027,11 +2031,15 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 		}
 	}
 	else if (codeType == "powershell") {
+		result.filename = "script.ps1"
 		const regex = "[A-Za-z0-9-_.]+\.ps1";
 		let match = result.contents.match(regex);
 		if (match !== null) {
 			result.filename = match[0];
 		}
+	}
+	else {
+		result.filename = "untitled.txt"
 	}
 
 	return result;

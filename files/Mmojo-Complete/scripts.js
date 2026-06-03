@@ -2210,10 +2210,10 @@ function FilesListItemClicked(event) {
 	
 	if (logThis) console.log("FilesListItemClicked() - in progress.");
 	if (logThis) console.log("- event:\n" + JSON.stringify(event));
-	if (logThis) console.log("- event.target.classList:\n" + JSON.stringify(event.target.classList));
+	if (logThis) console.log("- event.currentTarget.classList:\n" + JSON.stringify(event.currentTarget.classList));
 
 	let filesListItem = null;
-	if (event.target.classList.contains("files-list-item")) {
+	if (event.currentTarget.classList.contains("files-list-item")) {
 		filesListItem = event.target;
 	}
 

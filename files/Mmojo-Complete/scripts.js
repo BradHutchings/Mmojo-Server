@@ -2158,8 +2158,6 @@ function PopulateFilesList() {
 	let codeBlocksCount = codeBlocks.length;
 	let fileListItemCount = elements.filesList.childElementCount - 1;
 
-	codeBlocksCount = Math.max(codeBlocksCount, 10);
-
 	if (logThis) console.log("PopulateFilesList()");
 	if (logThis) console.log("- fileListItemCount: " + fileListItemCount);
 	if (logThis) console.log("- codeBlocks.length: " + codeBlocks.length);
@@ -2198,26 +2196,40 @@ function PopulateFilesList() {
 
 		if (filename == "")	filename = "No filename specified.";
 		if (codeType == "") codeType = "No type specified.";
-		
+
+		filesListItem.codeBlockIndex = i;
+		filesListItem.codeBlock = codeBlock;
 		filesListItem.children[0].innerText = filename;
 		filesListItem.children[1].innerText = codeType;
 		filesListItem.children[2].innerText = codeBlock.contents;
 	}
 }
 
-function FileListItemClicked() {
-	console.log("FileListItemClicked() - to be implemented.");
+function FilesListItemClicked(event) {
+	let logThis = true;
+	
+	if (logThis) console.log("FilesListItemClicked() - in progress.");
+
+	let filesListItem = null;
+	if (event.target.classList.contains("files-list-item")) {
+		filesListItem = event.target;
+	}
+
+	if (filesListItem !== null) {
+		if (logThis) console.log("- codeBlockIndex: " + filesListItem.codeBlockIndex);
+		if (logThis) console.log("- codeBlock:\n" + filesListItem.codeBlock);
+	}
 }
 
-function FileCopy() {
+function FileCopy(event) {
 	console.log("FileCopy() - to be implemented.");
 }
 
-function FileDownload() {
+function FileDownload(event) {
 	console.log("FileDownload() - to be implemented.");
 }
 
-function FileSaveAs() {
+function FileSaveAs(event) {
 	console.log("FileSaveAs() - to be implemented.");
 }
 

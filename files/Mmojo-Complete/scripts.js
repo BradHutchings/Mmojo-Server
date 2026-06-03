@@ -2326,7 +2326,39 @@ function FileCopy(event) {
 }
 
 function FileDownload(event) {
-	console.log("FileDownload() - to be implemented.");
+	let logThis = false;
+	
+	if (logThis) console.log("FileDownload() - in progress.");
+
+	codeBlock = SelectedCodeBlock();
+	if (codeBlock !== null) {
+		//	Qwen3.5 9B generated a code sample adapted here.
+		//	Cue: "Write me some javascript code to download text as a named file in the browser."
+		
+		// Create a Blob object containing the text data.
+		const blob = new Blob([codeBlock.contents], { type: 'text/plain' });
+	
+		// Create a URL for the Blob.
+		const url = URL.createObjectURL(blob);
+	
+		// Create a link element.
+		const a = document.createElement('a');
+		a.href = url;
+		a.download = codeBlock.filename;
+	
+		// Append the link to the DOM.  This is necessary for Firefox.
+		document.body.appendChild(a);
+	
+		// Programmatically click the link to trigger the download.
+		a.click();
+	
+		// Clean up the URL.
+		URL.revokeObjectURL(url);
+	
+		// Remove the link from the DOM.
+		document.body.removeChild(a);
+	}
+	
 	elements.fileContents.focus();
 }
 

@@ -2214,7 +2214,7 @@ function FilesListItemClicked(event) {
 
 	let filesListItem = null;
 	if (event.currentTarget.classList.contains("files-list-item")) {
-		filesListItem = event.target;
+		filesListItem = event.currentTarget;
 	}
 
 	if (filesListItem !== null) {

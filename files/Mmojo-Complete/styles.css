@@ -584,6 +584,10 @@ ul, li {
     overflow: hidden;
 }
 
+.files-list-item-selected {
+    background: var(--color5);
+}
+
 .files-list-item-name {
     height: 1.2rem;
     margin-bottom: 0.5rem;

@@ -2297,7 +2297,7 @@ function FilesListItemDoubleClicked(event) {
 
 		selectionStart = 0;
 		for (let i = 0; i < codeBlock.startLine; i++) {
-			selectionStart += watLines[i].length;
+			selectionStart += watLines[i].length + 1;
 		}
 
 		elements.workAreaText.focus();

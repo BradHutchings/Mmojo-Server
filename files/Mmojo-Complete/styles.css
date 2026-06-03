@@ -554,19 +554,19 @@ ul, li {
 
 .file-list-item-name {
     height: 1.2rem;
-    border: 2px solid #000000;
-    margin-bottom: 0.25rem;
+    border: 2px solid #C0C0C0;
+    margin-bottom: 0.5rem;
 }
 
 .file-list-item-code-type {
     height: 1.2rem;
-    border: 2px solid #000000;
-    margin-bottom: 0.25rem;
+    border: 2px solid #C0C0C0;
+    margin-bottom: 0.5rem;
 }
 
 .file-list-item-snippet {
     height: 3.2rem;
-    border: 2px solid #000000;
+    border: 2px solid #C0C0C0;
 }
 
 #file-view {

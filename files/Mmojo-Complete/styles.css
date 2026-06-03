@@ -545,7 +545,8 @@ ul, li {
 
 .file-list-item {
     flex-direction: column;
-    border: 2px solid #000000;
+    background-color: var(--color2);
+    xx-border: 2px solid #000000;
     margin-bottom: 0.5rem;
 }
 

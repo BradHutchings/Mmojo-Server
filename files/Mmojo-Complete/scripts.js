@@ -2321,14 +2321,18 @@ function FileCopy(event) {
 		navigator.clipboard.writeText(codeBlock.contents);
 		// await navigator.clipboard.writeText(codeBlock.contents);
 	}
+
+	elements.fileView.focus();
 }
 
 function FileDownload(event) {
 	console.log("FileDownload() - to be implemented.");
+	elements.fileView.focus();
 }
 
 function FileSaveAs(event) {
 	console.log("FileSaveAs() - to be implemented.");
+	elements.fileView.focus();
 }
 
 

@@ -2318,21 +2318,21 @@ function FileCopy(event) {
 
 	codeBlock = SelectedCodeBlock();
 	if (codeBlock !== null) {
+		// don't need to call this async.
 		navigator.clipboard.writeText(codeBlock.contents);
-		// await navigator.clipboard.writeText(codeBlock.contents);
 	}
 
-	elements.fileView.focus();
+	elements.fileContents.focus();
 }
 
 function FileDownload(event) {
 	console.log("FileDownload() - to be implemented.");
-	elements.fileView.focus();
+	elements.fileContents.focus();
 }
 
 function FileSaveAs(event) {
 	console.log("FileSaveAs() - to be implemented.");
-	elements.fileView.focus();
+	elements.fileContents.focus();
 }
 
 

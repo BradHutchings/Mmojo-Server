@@ -2217,7 +2217,7 @@ function FilesListItemClicked(event) {
 
 	if (filesListItem !== null) {
 		if (logThis) console.log("- codeBlockIndex: " + filesListItem.codeBlockIndex);
-		if (logThis) console.log("- codeBlock:\n" + filesListItem.codeBlock);
+		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(filesListItem.codeBlock));
 	}
 }
 

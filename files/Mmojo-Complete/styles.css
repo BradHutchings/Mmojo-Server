@@ -537,6 +537,7 @@ ul, li {
     width: 15rem;
     padding: 0.5rem;
     flex-grow: 0;
+    flex-wrap: nowrap;
     overflow: auto;
 }
 

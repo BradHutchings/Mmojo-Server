@@ -631,18 +631,6 @@ ul, li {
     color: var(--grey-dark);
 }
 
-#file-contents {
-    min-height: 1.4rem;
-    flex-wrap: wrap;
-    user-select: none;
-    background-color: var(--color2);
-    border-color: var(--color2);
-    color: var(--grey-dark);
-    xx-margin-bottom: 0px;
-    margin: 0rem 0rem;
-    flex-grow: 1;
-}
-
 #file-name {
     margin-top: auto;
     margin-bottom: auto;
@@ -650,6 +638,17 @@ ul, li {
     color: var(--grey-black);
     text-wrap: nowrap;
     overflow: clip;
+}
+
+#file-contents {
+    min-height: 1.4rem;
+    user-select: none;
+    background-color: var(--color2);
+    border-color: var(--color2);
+    color: var(--grey-dark);
+    margin: 0rem 0rem;
+    flex-grow: 1;
+    overflow: auto;
 }
 
 #file-copy {

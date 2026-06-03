@@ -2356,7 +2356,7 @@ function FileDownload(event) {
 		link.href = url;
 		
 		let filename = codeBlock.filename;
-		if ((filename === null) || (filename === "") {
+		if ((filename === null) || (filename === "")) {
 			filename = "Untitled.txt"
 		}
 		link.download = filename;

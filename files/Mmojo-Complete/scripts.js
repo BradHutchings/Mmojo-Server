@@ -226,6 +226,7 @@ function FindElements() {
 	elements.filesList				= document.getElementById("files-list");
 	elements.filesListItemTemplate	= document.getElementById("files-list-item-template");
 	elements.fileView				= document.getElementById("file-view");
+	elements.fileViewHeader			= document.getElementById("file-view-header");
 	elements.fileName				= document.getElementById("file-name");
 	elements.fileContents			= document.getElementById("file-contents");
 	elements.fileControls			= document.getElementById("file-controls");
@@ -2214,6 +2215,10 @@ function FilesListItemClicked(event) {
 	if (logThis) console.log("- event:\n" + JSON.stringify(event));
 	if (logThis) console.log("- event.currentTarget.classList:\n" + JSON.stringify(event.currentTarget.classList));
 
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
 	let filesListItem = null;
 	if (event.currentTarget.classList.contains("files-list-item")) {
 		filesListItem = event.currentTarget;
@@ -2230,34 +2235,9 @@ function FilesListItemClicked(event) {
 		filesListItem.classList.add("files-list-item-selected");
 		if (logThis) console.log("- codeBlockIndex: " + filesListItem.codeBlockIndex);
 		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(filesListItem.codeBlock));
-		// ShowCodeBlock(filesListItem.codeBlock);
-	}
-	else {
-		// ShowCodeBlock(null);
 	}
 
 	ShowSelectedFile();
-}
-
-function ShowCodeBlock(codeBlock) {
-	let logThis = false;
-	
-	if (logThis) console.log("ShowCodeBlock() - in progress.");
-
-	if (codeBlock !== null) {
-		elements.fileName.innerHTML = "<b>Filename:</b> " + codeBlock.filename;
-		elements.fileContents.value = codeBlock.contents;
-		ShowElement(elements.fileCopy);
-		ShowElement(elements.fileDownload);
-		ShowElement(elements.fileSaveAs);
-	}
-	else {
-		elements.fileName.innerHTML = "Please click a code block in the list at left.";
-		elements.fileContents.value = "";
-		HideElement(elements.fileCopy);
-		HideElement(elements.fileDownload);
-		HideElement(elements.fileSaveAs);
-	}
 }
 
 function ShowSelectedFile() {

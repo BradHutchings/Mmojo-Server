@@ -2156,7 +2156,7 @@ function ShowHideFilesIcon() {
 }
 
 function PopulateFilesList() {
-	let logThis = true;
+	let logThis = false;
 	let codeBlocks = GetCodeBlocksInWorkArea();
 	let codeBlocksCount = codeBlocks.length;
 	let fileListItemCount = elements.filesList.childElementCount - 1;
@@ -2255,11 +2255,31 @@ function FilesListDeselect(event) {
 	ShowSelectedFile();
 }
 
+function SelectedCodeBlock() {
+	let logThis = false;
+	let result = null;
+	
+	if (logThis) console.log("SelectedCodeBlock() - in progress.");
+	
+	count = elements.filesList.childElementCount - 1;
+	for (let i = 1; i <= count; i++) {
+		let child = elements.filesList.children[i];
+		if (child.classList.contains("files-list-item-selected")) {
+			result = child.codeBlock;
+		}
+	}
+
+	return result;
+}
+
 function ShowSelectedFile() {
 	let logThis = false;
 	
 	if (logThis) console.log("ShowSelectedFile() - in progress.");
 
+	codeBlock = SelectedCodeBlock();
+
+	/*
 	codeBlock = null;
 	count = elements.filesList.childElementCount - 1;
 	for (let i = 1; i <= count; i++) {
@@ -2268,6 +2288,7 @@ function ShowSelectedFile() {
 			codeBlock = child.codeBlock;
 		}
 	}
+	*/
 
 	if (codeBlock !== null) {
 		if (codeBlock.filename !== "") {
@@ -2291,7 +2312,14 @@ function ShowSelectedFile() {
 }
 
 function FileCopy(event) {
-	console.log("FileCopy() - to be implemented.");
+	let logThis = false;
+	
+	if (logThis) console.log("FileCopy() - in progress.");
+
+	codeBlock = SelectedCodeBlock();
+	if (codeBlock !== null) {
+		await navigator.clipboard.writeText(codeBlock.contents);
+	}
 }
 
 function FileDownload(event) {

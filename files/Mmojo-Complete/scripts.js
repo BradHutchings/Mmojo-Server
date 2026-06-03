@@ -1962,9 +1962,11 @@ function GetElapsedTimeString(ms) {
 
 function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 	let result = {
-		"codeType": codeType,	   // e.g. "javascript", or blank.
-		"contents": "",    		   // from startLine to endLine in text.
-		"filename": ""	   		   // parsed from first line.
+		"codeType": codeType,					// e.g. "javascript", or blank.
+		"contents": "",							// from startLine to endLine in text.
+		"filename": "",							// parsed from first line.
+		"startLine": startLine,					// line code block starts on.
+		"endLine": endLine						// line code block ends on.
 	};
 	let logThis = false;
 
@@ -2067,6 +2069,8 @@ function GetCodeBlocksInWorkArea() {
 		//    "codeType": e.g. "javascript", or blank.
 		//	  "contents": what's inside the code block.
 		//	  "filename": proposed filename from first line, or blank.
+		//    "startLine": line code block starts on.
+		//    "endLine": line code block ends on.
 	let logThis = false;
 
 	if (logThis) console.log("GetMarkdownFilesInWorkArea()");
@@ -2264,7 +2268,7 @@ function FilesListItemClicked(event) {
 	ShowSelectedFile();
 }
 
-function FilesListItemDoubleClicked() {
+function FilesListItemDoubleClicked(event) {
 	let logThis = true;
 	
 	if (logThis) console.log("FilesListItemDoubleClicked() - in progress.");
@@ -2283,6 +2287,21 @@ function FilesListItemDoubleClicked() {
 	codeBlock = SelectedCodeBlock();
 	if (codeBlock !== null) {
 		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(codeBlock));
+
+		if (!elements.filesArea.classList.contains("hidden")) {
+			ToggleFiles(event);
+		}
+
+		let wat = elements.workAreaText.value;
+		let watLines = wat.split(/\r?\n/);
+
+		selectionStart = 0;
+		for (let i = 0; i < codeBlock.startLine; i++) {
+			selectionStart += watLines[i].length;
+		}
+
+		elements.workAreaText.focus();
+		elements.workAreaText.setSelectionRange(selectionStart, selectionStart);
 	}
 }
 

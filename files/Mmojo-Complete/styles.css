@@ -574,9 +574,8 @@ ul, li {
 }
 
 .files-list-item {
-    flex-direction: column;
-    xx-background-color: var(--color5);
-    border: 1px solid var(--grey-lightlight);
+    display: block;
+    border: 1px solid var(--grey-medium);
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
     padding: 0.5rem;

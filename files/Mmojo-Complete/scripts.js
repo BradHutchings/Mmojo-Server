@@ -2155,7 +2155,6 @@ function ShowHideFilesIcon() {
 function PopulateFilesList() {
 	let logThis = true;
 	let codeBlocks = GetCodeBlocksInWorkArea();
-	// let fileListItemCount = document.querySelectorAll('.filea-list-item').length;
 	let fileListItemCount = elements.filesList.childElementCount - 1;
 
 	if (logThis) console.log("PopulateFilesList()");
@@ -2167,15 +2166,20 @@ function PopulateFilesList() {
 		let clonedItem = elements.filesListItemTemplate.cloneNode(true);
 		clonedItem.id = "files-list-item-" + fileListItemCount;
 		elements.filesList.appendChild(clonedItem);
-		// fileListItemCount = document.querySelectorAll('.files-list-item').length;
 		fileListItemCount = elements.filesList.childElementCount - 1;
 		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
 		if (logThis) console.log("  - codeBlocks.length: " + codeBlocks.length);
 	}
 
-	if (false) {
-	while (fileListItemCount > (codeBlocks.length + 1)) {
+	if (true) {
+	while (fileListItemCount > codeBlocks.length) {
 		// remove the last one
+		if (logThis) console.log("- Removing the last files-list-item.");
+		const lastChild = elements.filesListItemTemplate.lastElementChild;
+		elements.filesListItemTemplate.removeChild(lastChild);
+		fileListItemCount = elements.filesList.childElementCount - 1;
+		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
+		if (logThis) console.log("  - codeBlocks.length: " + codeBlocks.length);
 	}
 	}	
 }

@@ -2251,6 +2251,8 @@ function FilesListDeselect(event) {
 		let child = elements.filesList.children[i];
 		child.classList.remove("files-list-item-selected");
 	}
+
+	ShowSelectedFile();
 }
 
 function ShowSelectedFile() {

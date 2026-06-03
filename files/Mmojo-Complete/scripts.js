@@ -2240,6 +2240,19 @@ function FilesListItemClicked(event) {
 	ShowSelectedFile();
 }
 
+function FilesListDeselect(event) {
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	// for each child of elements.filesList, remove files-list-item-selected from class list
+	count = elements.filesList.childElementCount - 1;
+	for (let i = 1; i <= count; i++) {
+		let child = elements.filesList.children[i];
+		child.classList.remove("files-list-item-selected");
+	}
+}
+
 function ShowSelectedFile() {
 	let logThis = true;
 	

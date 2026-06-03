@@ -2326,7 +2326,7 @@ function FileCopy(event) {
 }
 
 function FileDownload(event) {
-	let logThis = false;
+	let logThis = true;
 	
 	if (logThis) console.log("FileDownload() - in progress.");
 
@@ -2342,21 +2342,23 @@ function FileDownload(event) {
 		const url = URL.createObjectURL(blob);
 	
 		// Create a link element.
-		const a = document.createElement('a');
-		a.href = url;
-		a.download = codeBlock.filename;
+		const link = document.createElement('a');
+		link.style.display = 'none';
+		link.href = url;
+		link.download = codeBlock.filename;
 	
 		// Append the link to the DOM.  This is necessary for Firefox.
-		document.body.appendChild(a);
+		document.body.appendChild(link);
 	
 		// Programmatically click the link to trigger the download.
-		a.click();
-	
+		link.click();
+
+		// Remove the link from the DOM.
+		document.body.removeChild(link);
+
 		// Clean up the URL.
 		URL.revokeObjectURL(url);
 	
-		// Remove the link from the DOM.
-		document.body.removeChild(a);
 	}
 	
 	elements.fileContents.focus();

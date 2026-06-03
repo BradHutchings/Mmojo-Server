@@ -1369,6 +1369,7 @@ function ToggleFiles(event) {
     event.stopPropagation();
 	if (elements.filesArea.classList.contains("hidden")) {
 		PopulateFilesList();
+		ShowSelectedFile();
     	HideElement(elements.workArea);
     	HideElement(elements.status);
     	ShowElement(elements.filesArea);
@@ -2206,7 +2207,7 @@ function PopulateFilesList() {
 }
 
 function FilesListItemClicked(event) {
-	let logThis = true;
+	let logThis = false;
 	
 	if (logThis) console.log("FilesListItemClicked() - in progress.");
 	if (logThis) console.log("- event:\n" + JSON.stringify(event));
@@ -2228,7 +2229,51 @@ function FilesListItemClicked(event) {
 		filesListItem.classList.add("files-list-item-selected");
 		if (logThis) console.log("- codeBlockIndex: " + filesListItem.codeBlockIndex);
 		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(filesListItem.codeBlock));
+		// ShowCodeBlock(filesListItem.codeBlock);
 	}
+	else {
+		// ShowCodeBlock(null);
+	}
+
+	ShowSelectedFile();
+}
+
+function ShowCodeBlock(codeBlock) {
+	let logThis = true;
+	
+	if (logThis) console.log("ShowCodeBlock() - in progress.");
+
+	if (codeBlock !== null) {
+		elements.fileName.innerHTML = "<b>Filename:</b> " + codeBlock.filename;
+		elements.fileContents.value = codeBlock.contents;
+		ShowElement(elements.fileCopy);
+		ShowElement(elements.fileDownload);
+		ShowElement(elements.fileSaveAs);
+	}
+	else {
+		elements.fileName.innerHTML = "Please click a code block in the list at left.";
+		elements.fileContents.value = "";
+		HideElement(elements.fileCopy);
+		HideElement(elements.fileDownload);
+		HideElement(elements.fileSaveAs);
+	}
+}
+
+function ShowSelectedFile() {
+	let logThis = true;
+	
+	if (logThis) console.log("ShowSelectedFile() - in progress.");
+
+	selectedCodeBlock = null;
+	count = elements.filesList.childElementCount - 1;
+	for (let i = 1; i <= count; i++) {
+		let child = elements.filesList.children[i];
+		if (child.classList.contains("files-list-item-selected")) {
+			selectedCodeBlock = child.codeBlock;
+		}
+	}
+
+	ShowCodeBlock(selectedCodeBlock);
 }
 
 function FileCopy(event) {

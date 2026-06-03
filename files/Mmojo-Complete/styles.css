@@ -541,6 +541,7 @@ ul, li {
 
 #files-list-item-template {
     xx-visibility: hidden;
+    background-color: var(gray-light);
 }
 
 .files-list-item {

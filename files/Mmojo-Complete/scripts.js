@@ -1442,6 +1442,7 @@ function ScrollToEnd() {
 }
 
 function ScrollToSelectionStart() {
+	console.log("ScrollToSelectionStart");
 	elements.workAreaText.focus();
 
 	//	send right arrow key, then left arrow key.

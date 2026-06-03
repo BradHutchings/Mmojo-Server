@@ -560,23 +560,24 @@ ul, li {
 
 .files-list-item-name {
     height: 1.2rem;
-    border: 1px solid #C0C0C0;
+    xx-border: 1px solid #C0C0C0;
     margin-bottom: 0.5rem;
     overflow: hidden;
     text-wrap: nowrap;
+    text-weight: bold;
 }
 
 .files-list-item-code-type {
     height: 1.2rem;
-    border: 1px solid #C0C0C0;
+    xx-border: 1px solid #C0C0C0;
     margin-bottom: 0.5rem;
     overflow: hidden;
     text-wrap: nowrap;
 }
 
 .files-list-item-snippet {
-    height: 3.2rem;
-    border: 1px solid #C0C0C0;
+    height: 3.6rem;
+    xx-border: 1px solid #C0C0C0;
     overflow: hidden;
     text-wrap: nowrap;
 }

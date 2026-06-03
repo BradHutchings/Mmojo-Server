@@ -554,6 +554,7 @@ ul, li {
     margin-bottom: 0.5rem;
     padding: 0.5rem;
     width: 100%;
+    box-sizing: border-box;
     overflow: hidden;
 }
 
@@ -562,6 +563,7 @@ ul, li {
     border: 1px solid #C0C0C0;
     margin-bottom: 0.5rem;
     overflow: hidden;
+    text-wrap: nowrap;
 }
 
 .files-list-item-code-type {
@@ -569,12 +571,14 @@ ul, li {
     border: 1px solid #C0C0C0;
     margin-bottom: 0.5rem;
     overflow: hidden;
+    text-wrap: nowrap;
 }
 
 .files-list-item-snippet {
     height: 3.2rem;
     border: 1px solid #C0C0C0;
     overflow: hidden;
+    text-wrap: nowrap;
 }
 
 #file-view {

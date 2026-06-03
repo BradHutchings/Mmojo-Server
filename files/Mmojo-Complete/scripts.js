@@ -1442,50 +1442,24 @@ function ScrollToEnd() {
 }
 
 function ScrollToSelectionStart() {
+	// Help from Google Gemini on this. Allegedly no-flicker.
+	// https://share.google/aimode/AvqJraXA5OSjvJwbq
+
+	elements.workAreaText.focus();
+	
 	const originalText = elements.workAreaText.value;
-	const startIdx = elements.workAreaText.selectionStart;
-	const endIdx = elements.workAreaText.selectionEnd;
+	const selectionStart = elements.workAreaText.selectionStart;
+	const selectionEnd = elements.workAreaText.selectionEnd;
 	
-	// 3. Slice the text exactly where the selection begins
-	elements.workAreaText.value = originalText.substring(0, startIdx);
+	// Slice the text exactly where the selection begins
+	elements.workAreaText.value = originalText.substring(0, selectionStart);
 	
-	// 4. Force the textarea to scroll to the very bottom of this sliced text
+	// Force the textarea to scroll to the very bottom of this sliced text
 	elements.workAreaText.scrollTop = elements.workAreaText.scrollHeight;
 	
-	// 5. Restore original text and re-apply selection bounds seamlessly
+	// Restore original text and re-apply selection bounds seamlessly
 	elements.workAreaText.value = originalText;
-	elements.workAreaText.setSelectionRange(startIdx, endIdx);
-}
-
-function ScrollToSelectionStartXX() {
-	console.log("ScrollToSelectionStart");
-	elements.workAreaText.focus();
-
-	//	send right arrow key, then left arrow key.
-	//	elements.workAreaText.dispatchEvent(new KeyboardEvent('keypress', {charCode: 39}));
-	//	elements.workAreaText.dispatchEvent(new KeyboardEvent('keypress', {charCode: 37}));
-
-	setTimeout(() => {
-		const rightArrowEvent = new KeyboardEvent('keydown', {
-		  key: 'ArrowRight',
-		  code: 'ArrowRight',
-		  keyCode: 39,
-		  which: 39,
-		  bubbles: true,
-		  cancelable: true
-		});
-		elements.workAreaText.dispatchEvent(rightArrowEvent);
-	}, 500);
-
-	const leftArrowEvent = new KeyboardEvent('keydown', {
-	  key: 'ArrowLeft',
-	  code: 'ArrowLeft',
-	  keyCode: 37,
-	  which: 37,
-	  bubbles: true,
-	  cancelable: true
-	});
-	//	elements.workAreaText.dispatchEvent(leftArrowEvent);
+	elements.workAreaText.setSelectionRange(selectionStart, selectionEnd);
 }
 
 function MakeHash() {
@@ -2350,9 +2324,7 @@ function FilesListItemDoubleClicked(event) {
 
 		elements.workAreaText.focus();
 		elements.workAreaText.setSelectionRange(selectionStart, selectionStart);
-		setTimeout(() => {
-			ScrollToSelectionStart();
-		}, 500);
+		ScrollToSelectionStart();
 	}
 }
 

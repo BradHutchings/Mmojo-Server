@@ -2158,7 +2158,7 @@ function PopulateFilesList() {
 	let codeBlocksCount = codeBlocks.length;
 	let fileListItemCount = elements.filesList.childElementCount - 1;
 
-	codeBlocksCount = Math.mac(codeBlocksCount, 10);
+	codeBlocksCount = Math.max(codeBlocksCount, 10);
 
 	if (logThis) console.log("PopulateFilesList()");
 	if (logThis) console.log("- fileListItemCount: " + fileListItemCount);

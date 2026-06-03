@@ -2334,7 +2334,7 @@ function FileCopy(event) {
 }
 
 function FileDownload(event) {
-	let logThis = true;
+	let logThis = false;
 	
 	if (logThis) console.log("FileDownload() - in progress.");
 

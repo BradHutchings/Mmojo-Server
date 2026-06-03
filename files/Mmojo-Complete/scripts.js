@@ -1445,8 +1445,28 @@ function ScrollToSelectionStart() {
 	elements.workAreaText.focus();
 
 	//	send right arrow key, then left arrow key.
-	elements.workAreaText.dispatchEvent(new KeyboardEvent('keypress', {charCode: 39}));
-	elements.workAreaText.dispatchEvent(new KeyboardEvent('keypress', {charCode: 37}));
+	//	elements.workAreaText.dispatchEvent(new KeyboardEvent('keypress', {charCode: 39}));
+	//	elements.workAreaText.dispatchEvent(new KeyboardEvent('keypress', {charCode: 37}));
+
+	const rightArrowEvent = new KeyboardEvent('keydown', {
+	  key: 'ArrowRight',
+	  code: 'ArrowRight',
+	  keyCode: 39,
+	  which: 39,
+	  bubbles: true,
+	  cancelable: true
+	});
+	elements.workAreaText.dispatchEvent(rightArrowEvent);
+
+	const leftArrowEvent = new KeyboardEvent('keydown', {
+	  key: 'ArrowLeft',
+	  code: 'ArrowLeft',
+	  keyCode: 37,
+	  which: 37,
+	  bubbles: true,
+	  cancelable: true
+	});
+	elements.workAreaText.dispatchEvent(leftArrowEvent);
 }
 
 function MakeHash() {

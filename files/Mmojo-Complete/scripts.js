@@ -1440,6 +1440,14 @@ function ScrollToEnd() {
     elements.workAreaText.setSelectionRange(workAreaTexLength, workAreaTexLength);
 }
 
+function ScrollToSelectionStart() {
+	elements.workAreaText.focus();
+
+	//	send right arrow key, then left arrow key.
+	elements.workAreaText.dispatchEvent(new KeyboardEvent('keypress', {charCode: 39}));
+	elements.workAreaText.dispatchEvent(new KeyboardEvent('keypress', {charCode: 37}));
+}
+
 function MakeHash() {
     let logThis = false;
     if (kLogging || logThis) console.log("MakeHash(" + completed + ")");
@@ -2302,6 +2310,7 @@ function FilesListItemDoubleClicked(event) {
 
 		elements.workAreaText.focus();
 		elements.workAreaText.setSelectionRange(selectionStart, selectionStart);
+		ScrollToSelectionStart();
 	}
 }
 

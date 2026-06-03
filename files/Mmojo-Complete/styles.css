@@ -534,19 +534,20 @@ ul, li {
     color: var(--grey-dark);
     border-radius: 0.5rem;
     xx-margin-right: 0.5rem;
-    width: 10rem;
+    width: 15rem;
+    padding: 0.25rem;
     flex-grow: 0;
 }
 
 #file-list-item-template {
     border: 2px solid #000000;
-    margin: 4px 4px;
+    xx-margin: 4px 4px;
 }
 
 .file-list-item {
     flex-direction: column;
     border: 2px solid #000000;
-    margin: 4px 4px;
+    xx-margin: 4px 4px;
 }
 
 .file-list-item-name {

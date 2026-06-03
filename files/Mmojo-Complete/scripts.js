@@ -1442,6 +1442,22 @@ function ScrollToEnd() {
 }
 
 function ScrollToSelectionStart() {
+	const originalText = elements.workAreaText.value;
+	const startIdx = elements.workAreaText.selectionStart;
+	const endIdx = elements.workAreaText.selectionEnd;
+	
+	// 3. Slice the text exactly where the selection begins
+	elements.workAreaText.value = originalText.substring(0, startIdx);
+	
+	// 4. Force the textarea to scroll to the very bottom of this sliced text
+	elements.workAreaText.scrollTop = elements.workAreaText.scrollHeight;
+	
+	// 5. Restore original text and re-apply selection bounds seamlessly
+	elements.workAreaText.value = originalText;
+	elements.workAreaText.setSelectionRange(startIdx, endIdx);
+}
+
+function ScrollToSelectionStartXX() {
 	console.log("ScrollToSelectionStart");
 	elements.workAreaText.focus();
 

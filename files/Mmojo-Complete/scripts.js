@@ -2217,7 +2217,15 @@ function FilesListItemClicked(event) {
 		filesListItem = event.currentTarget;
 	}
 
+	// for each child of elements.filesList, remove files-list-item-selected from class list
+	count = elements.filesList.childElementCount - 1;
+	for (let i = 1; i <= count; i++) {
+		let child = elements.filesList.children[i];
+		child.classList.remove("files-list-item-selected");
+	}
+	
 	if (filesListItem !== null) {
+		filesListItem.classList.add("files-list-item-selected");
 		if (logThis) console.log("- codeBlockIndex: " + filesListItem.codeBlockIndex);
 		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(filesListItem.codeBlock));
 	}

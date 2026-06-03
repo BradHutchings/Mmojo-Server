@@ -2345,7 +2345,8 @@ function FileDownload(event) {
 		const link = document.createElement('a');
 		link.style.display = 'none';
 		link.href = url;
-		link.download = codeBlock.filename;
+		// link.download = codeBlock.filename;
+		link.download = "whatever.text";
 	
 		// Append the link to the DOM.  This is necessary for Firefox.
 		document.body.appendChild(link);

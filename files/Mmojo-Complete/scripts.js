@@ -1380,6 +1380,7 @@ function ToggleFiles(event) {
     	HideElement(elements.filesArea);
     	ShowElement(elements.workArea);
     	ShowElement(elements.status);
+		elements.workArea.focus();
 	}
 
 	HideElement(elements.settings);
@@ -2277,7 +2278,7 @@ function FilesListItemClicked(event) {
 }
 
 function FilesListItemDoubleClicked(event) {
-	let logThis = true;
+	let logThis = false;
 	
 	if (logThis) console.log("FilesListItemDoubleClicked() - in progress.");
 	if (logThis) console.log("- event:\n" + JSON.stringify(event));

@@ -547,7 +547,9 @@ ul, li {
     flex-direction: column;
     background-color: var(--color2);
     xx-border: 2px solid #000000;
+    border-radius: 0.5rem;
     margin-bottom: 0.5rem;
+    padding: 0.5rem;
 }
 
 .file-list-item-name {

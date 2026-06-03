@@ -571,7 +571,6 @@ ul, li {
     display: none;
     visibility: hidden;
     background-color: var(--grey-lightlight);
-    user-select: none;
 }
 
 .files-list-item {
@@ -583,6 +582,7 @@ ul, li {
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    user-select: none;
 }
 
 .files-list-item-selected {

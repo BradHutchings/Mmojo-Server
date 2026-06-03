@@ -2342,6 +2342,7 @@ function FileDownload(event) {
 	if (codeBlock !== null) {
 		//	Qwen3.5 9B generated a code sample adapted here.
 		//	Cue: "Write me some javascript code to download text as a named file in the browser."
+		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(codeBlock));
 		
 		// Create a Blob object containing the text data.
 		const blob = new Blob([codeBlock.contents], { type: 'text/plain' });
@@ -2353,12 +2354,12 @@ function FileDownload(event) {
 		const link = document.createElement('a');
 		link.style.display = 'none';
 		link.href = url;
-
-		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(codeBlock));
 		
-		
-		// link.download = codeBlock.filename;
-		link.download = "whatever.text";
+		let filename = codeBlock.filename;
+		if ((filename === null) || (filename === "") {
+			filename = "Untitled.txt"
+		}
+		link.download = filename;
 	
 		// Append the link to the DOM.  This is necessary for Firefox.
 		document.body.appendChild(link);
@@ -2371,7 +2372,6 @@ function FileDownload(event) {
 
 		// Clean up the URL.
 		URL.revokeObjectURL(url);
-	
 	}
 	
 	elements.fileContents.focus();

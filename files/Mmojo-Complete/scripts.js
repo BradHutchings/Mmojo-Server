@@ -2166,7 +2166,7 @@ function PopulateFilesList() {
 		let clonedItem = elements.filesListItemTemplate.cloneNode(true);
 		clonedItem.id = "files-list-item-" + fileListItemCount;
 		elements.filesList.appendChild(clonedItem);
-		fileListItemCount = document.querySelectorAll('.file-list-item').length;
+		fileListItemCount = document.querySelectorAll('.files-list-item').length;
 		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
 		if (logThis) console.log("  - codeBlocks.length: " + codeBlocks.length);
 	}

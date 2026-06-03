@@ -622,7 +622,7 @@ ul, li {
     flex-grow: 1;
 }
 
-#file-name {
+#file-view-header {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
@@ -642,13 +642,17 @@ ul, li {
     flex-grow: 1;
 }
 
-#file-name-text {
+#file-name {
     margin-top: auto;
     margin-bottom: auto;
     flex-grow: 1;
     color: var(--grey-black);
     text-wrap: nowrap;
     overflow: clip;
+}
+
+#file-copy {
+
 }
 
 #file-download {

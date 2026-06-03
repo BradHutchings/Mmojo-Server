@@ -540,7 +540,7 @@ ul, li {
 }
 
 #files-list-item-template {
-    xx-visibility: hidden;
+    visibility: hidden;
     background-color: var(--grey-lightlight);
 }
 

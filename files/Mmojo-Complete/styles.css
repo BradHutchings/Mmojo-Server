@@ -526,6 +526,27 @@ ul, li {
     background: none;
 }
 
+#files-area-header {
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color5);
+    color: var(--grey-dark);
+}
+
+#directory-name {
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-grow: 1;
+    color: var(--grey-black);
+    text-wrap: nowrap;
+    overflow: clip;
+}
+
+#directory-choose {
+
+}
+
 #files-list {
     display: block;
     overflow-x: hidden;
@@ -651,6 +672,13 @@ ul, li {
     overflow: auto;
 }
 
+/*
+#file-copy, #file-download, #file-save-as {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+*/
+
 #file-copy {
 
 }
@@ -712,6 +740,7 @@ ul, li {
     overflow: clip;
 }
 
+#directory-choose,
 #file-copy, #file-download, #file-save-as,
 #status-start, #status-stop, #status-undo, #status-clear {
     font-size: 0.8rem;

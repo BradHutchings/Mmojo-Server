@@ -94,6 +94,8 @@ script.mmojoCompleteClicked = false;         //  This is that header showing Mmo
 script.statusMode = kStatusMode.editing;
 script.statusMessage = "";
 
+script.showDirectoryUI = false;
+
 function ShowElement(elt) {
     if (elt.classList.contains("hidden")) {
         elt.classList.remove("hidden");
@@ -1380,7 +1382,12 @@ function ToggleFiles(event) {
     	HideElement(elements.workArea);
     	HideElement(elements.status);
 
-		//	HideElement(elements.filesAreaHeader);
+		if (script.showDirectoryUI) {
+			ShowElement(elements.filesAreaHeader);
+		}
+		else {
+			HideElement(elements.filesAreaHeader);
+		}
     	ShowElement(elements.filesArea);
 	}
 	else {

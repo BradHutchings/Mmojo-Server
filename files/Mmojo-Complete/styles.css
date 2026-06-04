@@ -547,6 +547,13 @@ ul, li {
 
 }
 
+#files-area-body {
+    flex-grow: 1;
+    xx-overflow: hidden;
+    padding: 0rem 0rem 0rem 0rem;
+    background: none;
+}
+
 #files-list {
     display: block;
     overflow-x: hidden;

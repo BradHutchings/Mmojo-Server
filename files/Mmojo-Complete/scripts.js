@@ -232,7 +232,7 @@ function FindElements() {
 	elements.fileControls			= document.getElementById("file-controls");
 	elements.fileCopy				= document.getElementById("file-copy");
 	elements.fileDownload			= document.getElementById("file-download");
-	elements.fileSaveAs				= document.getElementById("file-save-as");
+	// elements.fileSaveAs				= document.getElementById("file-save-as");
 
     elements.status                 = document.getElementById("status");
     elements.statusText             = document.getElementById("status-text");
@@ -2377,14 +2377,14 @@ function ShowSelectedFile() {
 		elements.fileContents.value = codeBlock.contents;
 		ShowElement(elements.fileCopy);
 		ShowElement(elements.fileDownload);
-		ShowElement(elements.fileSaveAs);
+		//	ShowElement(elements.fileSaveAs);
 	}
 	else {
 		elements.fileName.innerHTML = "Please click a code block in the list at left.";
 		elements.fileContents.value = "";
 		HideElement(elements.fileCopy);
 		HideElement(elements.fileDownload);
-		HideElement(elements.fileSaveAs);
+		//	HideElement(elements.fileSaveAs);
 	}
 }
 
@@ -2446,9 +2446,15 @@ function FileDownload(event) {
 	elements.fileContents.focus();
 }
 
+/*
 function FileSaveAs(event) {
 	console.log("FileSaveAs() - to be implemented.");
 	elements.fileContents.focus();
+}
+*/
+
+function DirectoryChoose(event) {
+	console.log("DirectoryChoose() - to be implemented.");
 }
 
 

@@ -1380,7 +1380,7 @@ function ToggleFiles(event) {
     	HideElement(elements.workArea);
     	HideElement(elements.status);
 
-		HideElement(elements.filesAreaHeader);
+		//	HideElement(elements.filesAreaHeader);
     	ShowElement(elements.filesArea);
 	}
 	else {

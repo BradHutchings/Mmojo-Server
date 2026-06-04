@@ -534,7 +534,7 @@ ul, li {
     color: var(--grey-dark);
 }
 
-#directory-name {
+#files-directory-name {
     margin-top: auto;
     margin-bottom: auto;
     flex-grow: 1;
@@ -543,7 +543,11 @@ ul, li {
     overflow: clip;
 }
 
-#directory-choose {
+#files-directory-choose {
+
+}
+
+#files-download-all {
 
 }
 
@@ -747,7 +751,7 @@ ul, li {
     overflow: clip;
 }
 
-#directory-choose,
+#files-directory-choose, #files-download-all,
 #file-copy, #file-download, #file-save-as,
 #status-start, #status-stop, #status-undo, #status-clear {
     font-size: 0.8rem;

@@ -2460,8 +2460,12 @@ function FileSaveAs(event) {
 }
 */
 
-function DirectoryChoose(event) {
-	console.log("DirectoryChoose() - to be implemented.");
+function FilesDirectoryChoose(event) {
+	console.log("FilesDirectoryChoose() - to be implemented.");
+}
+
+function FilesDownloadAll(event) {
+	console.log("FilesDownloadAll() - to be implemented.");
 }
 
 

@@ -149,13 +149,12 @@
         <div id="files-area" class="row-item hidden">
             <div id="files-area-header" class="row">
                 <div id="files-directory-name"><b>Directory:</b> Directory is not implemented yet.</div>
-                <button id="files-directory-choose" onclick="DirectoryChoose();">Choose</button>
-                <button id="files-download-all" onclick="DownloadAll();">Download All</button>
+                <button id="files-directory-choose" onclick="FilesDirectoryChoose();">Choose</button>
+                <button id="files-download-all" onclick="FilesDownloadAll();">Download All</button>
             </div>
             <div id="files-area-body" class="row">
                 <div id="files-list" class="row-item" onclick="FilesListDeselect(event);">
-                    <div id="files-list-item-template" class="files-list-item x-hidden" onclick="FilesListItemClicked(event);"
-                        ondblclick="FilesListItemDoubleClicked(event);">
+                    <div id="files-list-item-template" class="files-list-item x-hidden" onclick="FilesListItemClicked(event);" ondblclick="FilesListItemDoubleClicked(event);">
                         <div class="files-list-item-name">(file name)</div>
                         <div class="files-list-item-code-type">(code type)</div>
                         <div class="files-list-item-snippet">(snippet)</div>

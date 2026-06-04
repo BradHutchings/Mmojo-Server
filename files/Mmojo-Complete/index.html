@@ -146,23 +146,31 @@
             </div>
         </div>
 
-        <div id="files-area" class="row hidden">
-            <div id="files-list" class="row-item" onclick="FilesListDeselect(event);">
-                <div id="files-list-item-template" class="files-list-item x-hidden" onclick="FilesListItemClicked(event);"
-                    ondblclick="FilesListItemDoubleClicked(event);">
-                    <div class="files-list-item-name">(file name)</div>
-                    <div class="files-list-item-code-type">(code type)</div>
-                    <div class="files-list-item-snippet">(snippet)</div>
-                </div>
+        <div id="files-area" class="row-item hidden">
+            <div id="files-area-header" class="row">
+                <div id="directory-name"><b>Directory:</b> Directory name goes here.</div>
+                <button id="directory-choose" onclick="DirectoryChoose();">Choose</button>
             </div>
-            <div id="file-view" class="row-item">
-                <div id="file-view-header" class="row">
-                    <div id="file-name"><b>Filename:</b> File name goes here.</div>
-                    <button id="file-copy" onclick="FileCopy();">Copy</button>
-                    <button id="file-download" onclick="FileDownload();">Download</button>
-                    <button id="file-save-as" onclick="FileSaveAs();">Save As...</button>
-               </div>
-                <textarea id="file-contents" class="row" placeholder="" readonly="readonly"></textarea>
+            <div id="files-area-body" class="row">
+                <div id="files-list" class="row-item" onclick="FilesListDeselect(event);">
+                    <div id="files-list-item-template" class="files-list-item x-hidden" onclick="FilesListItemClicked(event);"
+                        ondblclick="FilesListItemDoubleClicked(event);">
+                        <div class="files-list-item-name">(file name)</div>
+                        <div class="files-list-item-code-type">(code type)</div>
+                        <div class="files-list-item-snippet">(snippet)</div>
+                    </div>
+                </div>
+                <div id="file-view" class="row-item">
+                    <div id="file-view-header" class="row">
+                        <div id="file-name"><b>Filename:</b> File name goes here.</div>
+                        <button id="file-copy" onclick="FileCopy();">Copy</button>
+                        <button id="file-download" onclick="FileDownload();">Download</button>
+                        <!--
+                        <button id="file-save-as" onclick="FileSaveAs();">Save As...</button>
+                        -->
+                   </div>
+                    <textarea id="file-contents" class="row" placeholder="" readonly="readonly"></textarea>
+                </div>
             </div>
         </div>
         

@@ -173,10 +173,16 @@ function UpdateBookmark() {
         elements.bookmark.href = js;
     }
     else if (bookmarkTypeLink) {
+        const currentUrl = window.location.href; 
+        const parentURL = new URL('./', currentUrl).pathname; 
+        var location = parentURL.href + hash;
+
+        /*
         var rootUrl = window.location.protocol + "//" + window.location.host;
         if (kLogging || logThis) console.log(rootUrl);
 
         var location = rootUrl + hash;
+        */
 
         elements.bookmark.href = location;
     }

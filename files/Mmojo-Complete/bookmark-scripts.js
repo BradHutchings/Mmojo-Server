@@ -174,7 +174,7 @@ function UpdateBookmark() {
     }
     else if (bookmarkTypeLink) {
         const currentUrl = window.location.href; 
-        const parentURL = new URL('./', currentUrl).pathname; 
+        const parentURL = new URL('./', currentUrl); 
         var location = parentURL.href + hash;
 
         /*

@@ -2537,7 +2537,7 @@ function FilesDownloadAll(event) {
 		}
 
 		if (codeblock_i !== null) {
-			if (logThis) console.log("- Downloading: " + codeblock_i.filename + " (" + i + ")"; 
+			if (logThis) console.log("- Downloading: " + codeblock_i.filename + " (" + i + ")"); 
 		}
 	}
 

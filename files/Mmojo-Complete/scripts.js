@@ -228,7 +228,7 @@ function FindElements() {
 	elements.filesAreaHeader		= document.getElementById("files-area-header");
 	elements.filesDirectoryName		= document.getElementById("files-directory-name");
 	elements.filesDirectoryChoose	= document.getElementById("files-directory-choose");
-	elements.filesDownloadAll		= document.getElementById("files-doanload-all");
+	elements.filesDownloadAll		= document.getElementById("files-download-all");
 	elements.filesAreaBody			= document.getElementById("files-area-body");
 	elements.filesList				= document.getElementById("files-list");
 	elements.filesListItemTemplate	= document.getElementById("files-list-item-template");

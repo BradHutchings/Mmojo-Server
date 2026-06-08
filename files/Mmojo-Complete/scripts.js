@@ -2531,7 +2531,7 @@ function FilesDownloadAll(event) {
 			let codeBlock_j = child.codeBlock;
 
 			if ((codeblock_i !== null) && (codeblock_j !== null) && (codeblock_i.filename === codeblock_j.filename)) {
-				if (logThis) console.log("- same filename: " + codeblock_i + " ("i + ", " + j + ")");
+				if (logThis) console.log("- same filename: " + codeblock_i.filename + " (" + i + ", " + j + ")");
 				codeBlock_i = null;
 			}
 		}

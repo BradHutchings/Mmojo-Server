@@ -2475,7 +2475,7 @@ function UpdateFilesDirectoryName() {
 
 	let directoryHTML = "<b>Directory:</b> Browser \"Downloads\" directory, unique names."
 	if (script.directoryHandle !== null) {
-		directoryHTML = "<b>Directory:</b> " + script.directoryHandle.name);
+		directoryHTML = "<b>Directory:</b> " + script.directoryHandle.name;
 	}
 
 	elements.filesDirectoryName.innerHTML = directoryHTML;

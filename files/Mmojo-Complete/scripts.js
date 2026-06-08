@@ -2531,13 +2531,13 @@ function FilesDownloadAll(event) {
 			let codeBlock_j = child.codeBlock;
 
 			if ((codeblock_i !== null) && (codeblock_j !== null) && (codeblock_i.filename === codeblock_j.filename)) {
-				console.log("- same filename: " + codeblock_i + " ("i + ", " + j + ")";
+				if (logThis) console.log("- same filename: " + codeblock_i + " ("i + ", " + j + ")");
 				codeBlock_i = null;
 			}
 		}
 
 		if (codeblock_i !== null) {
-			console.log("- Downloading: " + codeblock_i.filename + " (" + i + ")"; 
+			if (logThis) console.log("- Downloading: " + codeblock_i.filename + " (" + i + ")"; 
 		}
 	}
 

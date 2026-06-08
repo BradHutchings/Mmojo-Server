@@ -2467,8 +2467,22 @@ function FileSaveAs(event) {
 }
 */
 
-function FilesDirectoryChoose(event) {
+async function FilesDirectoryChoose(event) {
 	console.log("FilesDirectoryChoose() - to be implemented.");
+
+	try {
+		// Opens the native OS directory selector
+		const dirHandle = await window.showDirectoryPicker({
+		mode: 'readwrite' // Use 'read' for read-only access
+		});
+	
+		// Iterate through the files inside the directory
+		for await (const entry of dirHandle.values()) {
+			console.log(`${entry.kind}: ${entry.name}`);
+		}
+	} catch (err) {
+		console.error('Directory selection failed or was canceled:', err);
+	}
 }
 
 function FilesDownloadAll(event) {

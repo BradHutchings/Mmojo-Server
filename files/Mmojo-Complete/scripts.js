@@ -239,7 +239,6 @@ function FindElements() {
 	elements.fileControls			= document.getElementById("file-controls");
 	elements.fileCopy				= document.getElementById("file-copy");
 	elements.fileDownload			= document.getElementById("file-download");
-	// elements.fileSaveAs				= document.getElementById("file-save-as");
 
     elements.status                 = document.getElementById("status");
     elements.statusText             = document.getElementById("status-text");
@@ -1377,7 +1376,7 @@ async function GetModelInfoFromServer() {
 function ToggleFiles(event) {
     event.stopPropagation();
 	if (elements.filesArea.classList.contains("hidden")) {
-		UpdateFilesDirectoryName();
+		ShowFilesDirectoryName();
 		
 		PopulateFilesList();
 		ShowSelectedFile();
@@ -2272,6 +2271,8 @@ function PopulateFilesList() {
 		filesListItem.children[1].innerText = codeType;
 		filesListItem.children[2].innerText = codeBlock.contents;
 	}
+
+	ShowFilesDirectoryName();
 }
 
 function FilesListItemClicked(event) {
@@ -2468,7 +2469,7 @@ function FileDownload(event) {
 	elements.fileContents.focus();
 }
 
-function UpdateFilesDirectoryName() {
+function ShowFilesDirectoryName() {
 	let logThis = false;
 	
 	if (logThis) console.log("UpdateFilesDirectory() - in progress.");
@@ -2479,6 +2480,14 @@ function UpdateFilesDirectoryName() {
 	}
 
 	elements.filesDirectoryName.innerHTML = directoryHTML;
+
+	let fileCount = elements.filesList.childElementCount - 1;
+	if (fileCount > 0) {
+		ShowElement(elements.filesDownloadAll);
+	}
+	else {
+		HideElement(elements.filesDownloadAll);
+	}
 }
 
 async function FilesDirectoryChoose(event) {
@@ -2502,7 +2511,7 @@ async function FilesDirectoryChoose(event) {
 			console.error('Directory selection failed or was canceled:', err);
 		}
 		
-		UpdateFilesDirectoryName();
+		ShowFilesDirectoryName();
 	}
 }
 

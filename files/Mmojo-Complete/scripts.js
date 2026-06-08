@@ -94,7 +94,7 @@ script.mmojoCompleteClicked = false;         //  This is that header showing Mmo
 script.statusMode = kStatusMode.editing;
 script.statusMessage = "";
 
-script.showDirectoryUI = false;
+script.showDirectoryUI = (window.showDirectoryPicker !== null);
 
 function ShowElement(elt) {
     if (elt.classList.contains("hidden")) {

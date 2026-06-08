@@ -2516,7 +2516,31 @@ async function FilesDirectoryChoose(event) {
 }
 
 function FilesDownloadAll(event) {
-	console.log("FilesDownloadAll() - to be implemented.");
+	let logThis = false;
+	
+	if (logThis) console.log("FilesDownloadAll() - in progress.");
+
+	// loop over all the code blocks
+	count = elements.filesList.childElementCount - 1;
+	for (let i = 1; i <= count; i++) {
+		let child = elements.filesList.children[i];
+		let codeBlock_i = child.codeBlock;
+
+		for (let j = i + 1; j <= count; j++) {
+			let child = elements.filesList.children[j];
+			let codeBlock_j = child.codeBlock;
+
+			if ((codeblock_i !== null) && (codeblock_j !== null) && (codeblock_i.filename === codeblock_j.filename)) {
+				console.log("- same filename: " + codeblock_i + " ("i + ", " + j + ")";
+				codeBlock_i = null;
+			}
+		}
+
+		if (codeblock_i !== null) {
+			console.log("- Downloading: " + codeblock_i.filename + " (" + i + ")"; 
+		}
+	}
+
 }
 
 

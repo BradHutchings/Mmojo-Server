@@ -93,8 +93,8 @@ script.stoppedAfterTokens = 0;
 script.mmojoCompleteClicked = false;         //  This is that header showing Mmojo Complete (should be a contant kAppName) or the model name.
 script.statusMode = kStatusMode.editing;
 script.statusMessage = "";
-
 script.showDirectoryUI = (typeof window.showDirectoryPicker === "function");
+script.directoryHandle = null;
 
 function ShowElement(elt) {
     if (elt.classList.contains("hidden")) {
@@ -1377,6 +1377,8 @@ async function GetModelInfoFromServer() {
 function ToggleFiles(event) {
     event.stopPropagation();
 	if (elements.filesArea.classList.contains("hidden")) {
+		UpdateFilesDirectoryName();
+		
 		PopulateFilesList();
 		ShowSelectedFile();
     	HideElement(elements.workArea);
@@ -2406,6 +2408,9 @@ function FileCopy(event) {
 	let logThis = false;
 	
 	if (logThis) console.log("FileCopy() - in progress.");
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
 
 	codeBlock = SelectedCodeBlock();
 	if (codeBlock !== null) {
@@ -2420,6 +2425,9 @@ function FileDownload(event) {
 	let logThis = false;
 	
 	if (logThis) console.log("FileDownload() - in progress.");
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
 
 	codeBlock = SelectedCodeBlock();
 	if (codeBlock !== null) {
@@ -2460,28 +2468,41 @@ function FileDownload(event) {
 	elements.fileContents.focus();
 }
 
-/*
-function FileSaveAs(event) {
-	console.log("FileSaveAs() - to be implemented.");
-	elements.fileContents.focus();
+function UpdateFilesDirectoryName() {
+	let logThis = false;
+	
+	if (logThis) console.log("UpdateFilesDirectory() - in progress.");
+
+	let directoryHTML = "<b>Directory:</b> Browser \"Downloads\" directory, unique names."
+	if (script.directoryHandle !== null) {
+		directoryHTML = "<b>Directory:</b> " + script.directoryHandle.name);
+	}
+
+	elements.filesDirectoryName.innerHTML = directoryHTML;
 }
-*/
 
 async function FilesDirectoryChoose(event) {
-	console.log("FilesDirectoryChoose() - to be implemented.");
-
-	try {
-		// Opens the native OS directory selector
-		const dirHandle = await window.showDirectoryPicker({
-		mode: 'readwrite' // Use 'read' for read-only access
-		});
+	let logThis = false;
 	
-		// Iterate through the files inside the directory
-		for await (const entry of dirHandle.values()) {
-			console.log(`${entry.kind}: ${entry.name}`);
+	if (logThis) console.log("FilesDirectoryChoose() - in progress.");
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	if (script.showDirectoryUI) {
+		try {
+			// Opens the native OS directory selector
+			const dirHandle = await window.showDirectoryPicker({
+				mode: 'readwrite' // Use 'read' for read-only access
+			});
+		
+			script.directoryHandle = dirHandle;
+			
+		} catch (err) {
+			console.error('Directory selection failed or was canceled:', err);
 		}
-	} catch (err) {
-		console.error('Directory selection failed or was canceled:', err);
+		
+		UpdateFilesDirectoryName();
 	}
 }
 

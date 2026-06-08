@@ -2513,10 +2513,12 @@ async function FilesDirectoryChoose(event) {
 		
 		ShowFilesDirectoryName();
 	}
+
+	elements.fileContents.focus();
 }
 
 function FilesDownloadAll(event) {
-	let logThis = false;
+	let logThis = true;
 	
 	if (logThis) console.log("FilesDownloadAll() - in progress.");
 
@@ -2541,6 +2543,7 @@ function FilesDownloadAll(event) {
 		}
 	}
 
+	elements.fileContents.focus();
 }
 
 

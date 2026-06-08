@@ -2530,14 +2530,14 @@ function FilesDownloadAll(event) {
 			let child = elements.filesList.children[j];
 			let codeBlock_j = child.codeBlock;
 
-			if ((codeblock_i !== null) && (codeblock_j !== null) && (codeblock_i.filename === codeblock_j.filename)) {
-				if (logThis) console.log("- same filename: " + codeblock_i.filename + " (" + i + ", " + j + ")");
+			if ((codeBlock_i !== null) && (codeBlock_j !== null) && (codeBlock_i.filename === codeBlock_j.filename)) {
+				if (logThis) console.log("- same filename: " + codeBlock_i.filename + " (" + i + ", " + j + ")");
 				codeBlock_i = null;
 			}
 		}
 
-		if (codeblock_i !== null) {
-			if (logThis) console.log("- Downloading: " + codeblock_i.filename + " (" + i + ")"); 
+		if (codeBlock_i !== null) {
+			if (logThis) console.log("- Downloading: " + codeBlock_i.filename + " (" + i + ")"); 
 		}
 	}
 

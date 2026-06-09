@@ -2422,15 +2422,11 @@ function FileCopy(event) {
 	elements.fileContents.focus();
 }
 
-function FileDownload(event) {
+function DownloadToBrowserDownloadsDirectory(codeBlock) {
 	let logThis = false;
 	
-	if (logThis) console.log("FileDownload() - in progress.");
-	if ((event !== undefined) && (event !== null)) {
-        event.stopPropagation();
-    }
+	if (logThis) console.log("DownloadToBrowserDownloadsDirectory() - in progress.");
 
-	codeBlock = SelectedCodeBlock();
 	if (codeBlock !== null) {
 		//	Qwen3.5 9B generated a code sample adapted here.
 		//	Cue: "Write me some javascript code to download text as a named file in the browser."
@@ -2464,6 +2460,20 @@ function FileDownload(event) {
 
 		// Clean up the URL.
 		URL.revokeObjectURL(url);
+	}
+}
+
+function FileDownload(event) {
+	let logThis = false;
+	
+	if (logThis) console.log("FileDownload() - in progress.");
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	codeBlock = SelectedCodeBlock();
+	if (codeBlock !== null) {
+		DownloadToBrowserDownloadsDirectory(codeBlock);
 	}
 	
 	elements.fileContents.focus();
@@ -2521,6 +2531,9 @@ function FilesDownloadAll(event) {
 	let logThis = true;
 	
 	if (logThis) console.log("FilesDownloadAll() - in progress.");
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
 
 	// loop over all the code blocks
 	count = elements.filesList.childElementCount - 1;
@@ -2539,7 +2552,13 @@ function FilesDownloadAll(event) {
 		}
 
 		if (codeBlock_i !== null) {
-			if (logThis) console.log("- Downloading: " + codeBlock_i.filename + " (" + i + ")"); 
+			if (script.directoryHandle !== null) {
+				if (logThis) console.log("- Downloading: " + codeBlock_i.filename + " (" + i + ") to " + script.directoryHandle.name + "."); 
+			}
+			else {
+				if (logThis) console.log("- Downloading: " + codeBlock_i.filename + " (" + i + ") to browser \"Downloads\" directory."); 
+				DownloadToBrowserDownloadsDirectory(codeBlock);
+			}
 		}
 	}
 

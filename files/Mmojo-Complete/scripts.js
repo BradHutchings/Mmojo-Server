@@ -2423,7 +2423,7 @@ function FileCopy(event) {
 }
 
 function DownloadToBrowserDownloadsDirectory(codeBlock) {
-	let logThis = false;
+	let logThis = true;
 	
 	if (logThis) console.log("DownloadToBrowserDownloadsDirectory() - in progress.");
 
@@ -2557,7 +2557,7 @@ function FilesDownloadAll(event) {
 			}
 			else {
 				if (logThis) console.log("- Downloading: " + codeBlock_i.filename + " (" + i + ") to browser \"Downloads\" directory."); 
-				DownloadToBrowserDownloadsDirectory(codeBlock);
+				DownloadToBrowserDownloadsDirectory(codeBlock_i);
 			}
 		}
 	}

@@ -520,6 +520,7 @@ ul, li {
 }
 
 #files-area {
+    flex-direction: column;
     flex-grow: 1;
     xx-overflow: hidden;
     padding: 0rem 0rem 0rem 0rem;

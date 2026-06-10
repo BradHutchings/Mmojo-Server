@@ -93,7 +93,7 @@ script.stoppedAfterTokens = 0;
 script.mmojoCompleteClicked = false;         //  This is that header showing Mmojo Complete (should be a contant kAppName) or the model name.
 script.statusMode = kStatusMode.editing;
 script.statusMessage = "";
-script.showDirectoryUI = (typeof window.showDirectoryPicker === "function");
+script.hasDirectoryPicker = (typeof window.showDirectoryPicker === "function");
 script.directoryHandle = null;
 
 function ShowElement(elt) {
@@ -1383,12 +1383,14 @@ function ToggleFiles(event) {
     	HideElement(elements.workArea);
     	HideElement(elements.status);
 
-		if (script.showDirectoryUI) {
+		/*
+		if (script.hasDirectoryPicker) {
 			ShowElement(elements.filesAreaHeader);
 		}
 		else {
 			HideElement(elements.filesAreaHeader);
 		}
+		*/
     	ShowElement(elements.filesArea);
 	}
 	else {
@@ -2514,6 +2516,9 @@ function ShowFilesDirectoryName() {
 	if (script.directoryHandle !== null) {
 		directoryHTML = "<b>Directory:</b> " + script.directoryHandle.name;
 	}
+	if (!script.hasDirectoryPicker) {
+		directoryHTML += " Choosing a directory requires a secure context.";
+	}
 
 	elements.filesDirectoryName.innerHTML = directoryHTML;
 
@@ -2534,7 +2539,7 @@ async function FilesDirectoryChoose(event) {
         event.stopPropagation();
     }
 
-	if (script.showDirectoryUI) {
+	if (script.hasDirectoryPicker) {
 		try {
 			// Opens the native OS directory selector
 			const dirHandle = await window.showDirectoryPicker({

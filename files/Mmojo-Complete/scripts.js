@@ -2422,7 +2422,7 @@ function FileCopy(event) {
 	elements.fileContents.focus();
 }
 
-function SaveToDirectory(codeBlock) {
+async function SaveToDirectory(codeBlock) {
 	let logThis = true;
 	
 	if (logThis) console.log("SaveToDirectory() - in progress.");
@@ -2555,7 +2555,7 @@ async function FilesDirectoryChoose(event) {
 	elements.fileContents.focus();
 }
 
-function FilesDownloadAll(event) {
+async function FilesDownloadAll(event) {
 	let logThis = true;
 	
 	if (logThis) console.log("FilesDownloadAll() - in progress.");
@@ -2582,7 +2582,7 @@ function FilesDownloadAll(event) {
 		if (codeBlock_i !== null) {
 			if (script.directoryHandle !== null) {
 				if (logThis) console.log("- Saving: " + codeBlock_i.filename + " (" + i + ") to " + script.directoryHandle.name + ".");
-				SaveToDirectory(codeBlock_i);
+				await SaveToDirectory(codeBlock_i);
 			}
 			else {
 				if (logThis) console.log("- Downloading: " + codeBlock_i.filename + " (" + i + ") to browser \"Downloads\" directory."); 

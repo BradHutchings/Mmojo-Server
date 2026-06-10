@@ -2439,7 +2439,6 @@ async function SaveToDirectory(codeBlock) {
 				await writable.write(codeBlock.contents);
 				
 				// Close the file and write the contents to disk.
-				await writable.flush();
 				await writable.close();
 			}
 			catch(err) {

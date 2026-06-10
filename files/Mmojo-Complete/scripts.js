@@ -2428,7 +2428,24 @@ function SaveToDirectory(codeBlock) {
 	if (logThis) console.log("SaveToDirectory() - in progress.");
 
 	if (codeBlock !== null) {
-
+		if (script.directoryHandle !== null) {
+			try {
+				const fileHandle = await script.directoryHandle.getFileHandle(codeBlock.filename, { create: true });			
+				
+				// Create a FileSystemWritableFileStream to write to.
+				const writable = await fileHandle.createWritable();
+				
+				// Write the contents of the file to the stream.
+				await writable.write(codeBlock.contents);
+				
+				// Close the file and write the contents to disk.
+				await writable.flush();
+				await writable.close();
+			}
+			catch(err) {
+				console.error('Writing the file failed: ', err);
+			}
+		}
 	}
 }
 
@@ -2527,7 +2544,8 @@ async function FilesDirectoryChoose(event) {
 		
 			script.directoryHandle = dirHandle;
 			
-		} catch (err) {
+		}
+		catch (err) {
 			console.error('Directory selection failed or was canceled:', err);
 		}
 		

@@ -2516,8 +2516,13 @@ function ShowFilesDirectoryName() {
 	if (script.directoryHandle !== null) {
 		directoryHTML = "<b>Directory:</b> " + script.directoryHandle.name;
 	}
-	if (!script.hasDirectoryPicker) {
+	
+	if (script.hasDirectoryPicker) {
+		ShowElement(elements.filesDirectoryChoose);
+	}
+	else {
 		directoryHTML += " Choosing a directory requires a secure context.";
+		HideElement(elements.filesDirectoryChoose);
 	}
 
 	elements.filesDirectoryName.innerHTML = directoryHTML;

@@ -2425,7 +2425,7 @@ function FileCopy(event) {
 }
 
 async function SaveToDirectory(codeBlock) {
-	let logThis = true;
+	let logThis = false;
 	
 	if (logThis) console.log("SaveToDirectory() - in progress.");
 
@@ -2451,7 +2451,7 @@ async function SaveToDirectory(codeBlock) {
 }
 
 function DownloadToBrowserDownloadsDirectory(codeBlock) {
-	let logThis = true;
+	let logThis = false;
 	
 	if (logThis) console.log("DownloadToBrowserDownloadsDirectory() - in progress.");
 
@@ -2565,7 +2565,7 @@ async function FilesDirectoryChoose(event) {
 }
 
 async function FilesDownloadAll(event) {
-	let logThis = true;
+	let logThis = false;
 	
 	if (logThis) console.log("FilesDownloadAll() - in progress.");
 	if ((event !== undefined) && (event !== null)) {

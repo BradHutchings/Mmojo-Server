@@ -20,18 +20,19 @@ const kTokenizeURL = kServerURL + "/tokenize"
 const kMmojoComplete = "Mmojo Complete is Private.";
 
 const kStatusMode = Object.freeze({
-    preparing:                          1,      // page loading, not ready for editing.
-    editing:                            2,      // work area is being edited.
-    evaluating:                         3,      // start of evaulating.
-    evaluating_progress:                4,      // evaluating has sent progress.
-    evaluating_finishing:               5,      // finishing with prompt - last batch?.
-    completing:                         6,      // generating new tokens.
-    completed:                          7,      // show completion time in status prior to any editing.
-    stopped_by_word:                    8,
-    stopped_after:                      9,
-    stopped_by_user:                    10,
-    replaying:                          11,
-    error:                              12,
+    preparing:				1,      // page loading, not ready for editing.
+    editing:                2,      // work area is being edited.
+    evaluating:             3,      // start of evaulating.
+    evaluating_progress:    4,      // evaluating has sent progress.
+    evaluating_finishing:   5,      // finishing with prompt - last batch?.
+    completing:             6,      // generating new tokens.
+    completed:              7,      // show completion time in status prior to any editing.
+    stopped_by_word:        8,
+    stopped_after:          9,
+    stopped_by_user:        10,
+	ready_to_replay:		11,
+    replaying:              12,
+    error:                  13,
 });
 
 const kStatusText = Object.freeze({
@@ -46,6 +47,7 @@ const kStatusText = Object.freeze({
     stopped_by_word:        "Stopped by \"[word]\".",
     stopped_after:          "Stopped after [tokens_predicted] tokens.",
     stopped_by_user:        "Stopped by you.",
+	ready_to_replay:		"Ready to replay.",
     replaying:              "Replaying.",
     error:                  "Error.",
 });
@@ -72,8 +74,6 @@ var elements = {};                  // Fine to have this in global space.
 
 var script = {};
 script.completingController = null;
-script.completing = false;          // Replace this with a mode: kMode_Typing, kMode_Completing, kMode_Replaying
-script.replaying = false;
 script.metadata = {};
 script.modelName = "";
 script.contextWindowSize = 0;
@@ -95,6 +95,22 @@ script.statusMode = kStatusMode.editing;
 script.statusMessage = "";
 script.hasDirectoryPicker = (typeof window.showDirectoryPicker === "function");
 script.directoryHandle = null;
+
+//	REMOVE THESE -Brad 2026-06-11
+//	script.completing = false;          // Replace this with a mode: kMode_Typing, kMode_Completing, kMode_Replaying
+//	script.replaying = false;
+
+function IsCompleting() {
+	var result = (script.statusMode === kStatusMode.completing);
+
+	return result;
+}
+
+function IsReplaying() {
+	var result = (script.statusMode === kStatusMode.replaying);
+
+	return result;
+}
 
 function ShowElement(elt) {
     if (elt.classList.contains("hidden")) {
@@ -509,7 +525,7 @@ function StopWordsSetFocus() {
 }
 
 function Complete() {
-    if (!script.completing && !script.replaying) {
+    if (!script.IsCompleting() && !script.Replaying()) {
         PushChange();
 
         script.statusMode = kStatusMode.evaluating;
@@ -562,13 +578,17 @@ function Complete() {
 }
 
 function SetCompleting(value) {
-    if (script.completing != value) {
-        script.completing = value;
+    if (script.IsCompleting() != value) {
+		//	something else should set this if value is false.
+        //	script.completing = value;
+		if (value) {
+			script.statusMode = kStatusMode.completing;
+		}
 
         ShowHideStatusButtons();
         EnableCopyPaste();
 
-        if (script.completing) {
+        if (script.IsCompleting()) {
             //  elements.statusStop.focus();
         
             elements.workAreaText.readOnly = true;
@@ -810,7 +830,7 @@ function StopCompleting() {
 }
 
 function Replay(completed) {
-    if (!script.replaying && !script.completing) {
+    if (!script.IsCompleting() && !script.Replaying()) {
         PushChange();
 
         SetReplaying(true);
@@ -821,7 +841,7 @@ function Replay(completed) {
         var i = 0;
 
         function type() {
-            if (script.replaying && (i < words.length)) {
+            if (script.Replaying() && (i < words.length)) {
                 var newText = '';
                 if (i > 0) {
                     newText = ' ';
@@ -846,12 +866,15 @@ function Replay(completed) {
 }
 
 function SetReplaying(value) {
-    if (script.replaying != value) {
-        script.replaying = value;
+    if (script.Replaying() != value) {
+        //	script.replaying = value;
+		if (value) {
+            script.statusMode = kStatusMode.replaying;
+		}
 
         ShowHideStatusButtons();
 
-        if (script.replaying) {
+        if (script.Replaying()) {
             //  elements.statusStop.focus();
         
             elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
@@ -874,7 +897,7 @@ function StopReplaying() {
 }
 
 function WorkAreaTextPaste() {
-    if (!script.completing && !script.replaying) {
+    if (!script.IsCompleting() && !script.Replaying()) {
         // Force this to happen after the paste. If you double paste
         // too quickly, it will get caught in the same change.
         setTimeout(() => {
@@ -890,28 +913,28 @@ function WorkAreaTextPaste() {
 }
 
 function ShowHideStatusButtons() {
-    if ((elements.workAreaText.value != '') && !script.completing && !script.replaying) {
+    if ((elements.workAreaText.value != '') && !script.IsCompleting() && !script.Replaying()) {
         ShowElement(elements.statusStart);
     }
     else {
         HideElement(elements.statusStart);
     }
 
-    if (script.completing || script.replaying) {
+    if (script.IsCompleting() || script.Replaying()) {
         ShowElement(elements.statusStop);
     }
     else {
         HideElement(elements.statusStop);
     }
 
-    if ((script.isMobile || true) && (elements.workAreaText.value != '') && (undoStack.length > 0) && !script.completing && !script.replaying) {
+    if ((script.isMobile || true) && (elements.workAreaText.value != '') && (undoStack.length > 0) && !script.IsCompleting() && !script.Replaying()) {
         ShowElement(elements.statusUndo);
     }
     else {
         HideElement(elements.statusUndo);
     }
 
-    if ((script.isMobile || true) && (elements.workAreaText.value != '') && !script.completing && !script.replaying) {
+    if ((script.isMobile || true) && (elements.workAreaText.value != '') && !script.IsCompleting() && !script.Replaying()) {
         ShowElement(elements.statusClear);
     }
     else {
@@ -1028,6 +1051,9 @@ function UpdateStatus() {
     else if (script.statusMode == kStatusMode.stopped_by_user) {
         status += kStatusText.stopped_by_user;
     }
+    else if (script.statusMode == kStatusMode.ready_to_replay) {
+        status += kStatusText.ready_to_replay;
+    }
     else if (script.statusMode == kStatusMode.replaying) {
         status += kStatusText.replaying;
     }
@@ -1043,7 +1069,7 @@ function WorkAreaTextKeyDown(event) {
     if (kLogging || logThis) console.log('WorkAreaTextKeyDown()');
     
     // if we're completing, return true
-    if (script.completing) {
+    if (script.IsCompleting()) {
         if (kLogging || logThis) console.log('- completing');
         event.preventDefault();
 
@@ -1056,7 +1082,7 @@ function WorkAreaTextKeyDown(event) {
         }
     }
 
-    else if (script.replaying) {
+    else if (script.Replaying()) {
         if (kLogging || logThis) console.log('- replaying');
         event.preventDefault();
 

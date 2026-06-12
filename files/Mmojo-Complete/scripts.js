@@ -101,7 +101,11 @@ script.directoryHandle = null;
 //	script.replaying = false;
 
 function IsCompleting() {
-	var result = (script.statusMode === kStatusMode.completing);
+	var result =
+		(script.statusMode === kStatusMode.evaluating) ||
+		(script.statusMode === kStatusMode.evaluating_progress) ||
+		(script.statusMode === kStatusMode.evaluating_finishing) ||
+		(script.statusMode === kStatusMode.completing);
 
 	return result;
 }
@@ -2641,5 +2645,38 @@ async function FilesDownloadAll(event) {
 
 	elements.fileContents.focus();
 }
+
+function StatusStartClicked() {
+	WorkAreaFocus();
+
+	if (script.replayText !== "") {
+		Replay();
+	}
+	else {
+		Complete();
+	}
+}
+
+function StatusStopClicked() {
+	WorkAreaFocus();
+
+	if (IsCompleting()) {
+		StopCompleting();
+	}
+	else if (IsReplaying()) {
+		StopReplaying();
+	}
+}
+
+function StatusUndoClicked() {
+	WorkAreaFocus();
+	UndoChange();
+}
+
+function StatusClearClicked() {
+	WorkAreaFocus();
+	ClearWorkArea();
+}
+
 
 

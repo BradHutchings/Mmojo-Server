@@ -829,7 +829,7 @@ function StopCompleting() {
     }
 }
 
-function Replay(completed) {
+function Replay() {
     if (!IsCompleting() && !IsReplaying()) {
         PushChange();
 
@@ -837,7 +837,7 @@ function Replay(completed) {
         script.statusMode = kStatusMode.replaying;
  
         var workAreaText = elements.workAreaText.value;
-        var words = completed.split(' ');
+        var words = script.replayText.split(' ');
         var i = 0;
 
         function type() {
@@ -853,11 +853,12 @@ function Replay(completed) {
                 setTimeout(type, kReplayDelay);
             }
             else {
-                elements.workAreaText.value = workAreaText + completed;
+                elements.workAreaText.value = workAreaText + script.replayText;
                 ScrollToEnd();
 
                 SetReplaying(false);
-                script.completedContent = completed;
+                script.completedContent = script.replayText;
+				script.replayText = "";
             }
         }
         
@@ -1107,7 +1108,12 @@ function WorkAreaTextKeyDown(event) {
         event.preventDefault();
 
         setTimeout(() => {
-            Complete();
+			if (script.replayText !== "") {
+				Replay();
+			}
+			else {
+            	Complete();
+			}
         }, 500);
     }
 
@@ -1781,7 +1787,7 @@ function UseHash() {
 		
 		if (autoComplete) {
 	        setTimeout(() => {
-	            Replay(completed);
+	            Replay();
 	        }, kWaitToComplete);
 		}
     }

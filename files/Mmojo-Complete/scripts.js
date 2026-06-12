@@ -874,24 +874,23 @@ function SetReplaying(value) {
 		}
 		else {
 			script.statusMode = kStatusMode.editing;
+			PushChange();
 		}
+	}
+	
+	ShowHideStatusButtons();
 
-        ShowHideStatusButtons();
-
-        if (IsReplaying()) {
-            //  elements.statusStop.focus();
-        
-            elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
-            // elements.workAreaText.style.borderColor = "var(--color6)";
-            elements.workAreaText.focus();
-        }
-        else {
-            elements.workAreaText.style.backgroundColor = "var(--color2)";
-            // elements.workAreaText.style.borderColor = "var(--color2)";
-            elements.workAreaText.focus();
-
-            PushChange();
-        }
+	if (IsReplaying()) {
+		//  elements.statusStop.focus();
+	
+		elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
+		// elements.workAreaText.style.borderColor = "var(--color6)";
+		elements.workAreaText.focus();
+	}
+	else {
+		elements.workAreaText.style.backgroundColor = "var(--color2)";
+		// elements.workAreaText.style.borderColor = "var(--color2)";
+		elements.workAreaText.focus();
     }
 }
 

@@ -177,10 +177,10 @@
         <div id="status" class="row hidden" onclick="WorkAreaFocus();">
             <div id="status-text"><b>Status:</b> The status goes here.</div>
             <div id="status-space" class="space"></div>
-            <button id="status-start" onclick="WorkAreaFocus(); Complete();">Start</button>
-            <button id="status-stop" onclick="WorkAreaFocus(); StopCompleting();">Stop</button>
-            <button id="status-undo" onclick="WorkAreaFocus(); UndoChange();">Undo</button>
-            <button id="status-clear" onclick="WorkAreaFocus(); ClearWorkArea();">Clear</button>
+            <button id="status-start" onclick="StatusStartClicked();">Start</button>
+            <button id="status-stop" onclick="StatusStopClicked();">Stop</button>
+            <button id="status-undo" onclick="StatusUndoClicked();">Undo</button>
+            <button id="status-clear" onclick="StatusClearClicked();">Clear</button>
         </div>
 
         <div id="gutter" class="row">

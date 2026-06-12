@@ -525,7 +525,7 @@ function StopWordsSetFocus() {
 }
 
 function Complete() {
-    if (!script.IsCompleting() && !script.Replaying()) {
+    if (!IsCompleting() && !IsReplaying()) {
         PushChange();
 
         script.statusMode = kStatusMode.evaluating;
@@ -578,7 +578,7 @@ function Complete() {
 }
 
 function SetCompleting(value) {
-    if (script.IsCompleting() != value) {
+    if (IsCompleting() != value) {
 		//	something else should set this if value is false.
         //	script.completing = value;
 		if (value) {
@@ -588,7 +588,7 @@ function SetCompleting(value) {
         ShowHideStatusButtons();
         EnableCopyPaste();
 
-        if (script.IsCompleting()) {
+        if (IsCompleting()) {
             //  elements.statusStop.focus();
         
             elements.workAreaText.readOnly = true;
@@ -830,7 +830,7 @@ function StopCompleting() {
 }
 
 function Replay(completed) {
-    if (!script.IsCompleting() && !script.Replaying()) {
+    if (!IsCompleting() && !IsReplaying()) {
         PushChange();
 
         SetReplaying(true);
@@ -841,7 +841,7 @@ function Replay(completed) {
         var i = 0;
 
         function type() {
-            if (script.Replaying() && (i < words.length)) {
+            if (IsReplaying() && (i < words.length)) {
                 var newText = '';
                 if (i > 0) {
                     newText = ' ';
@@ -866,7 +866,7 @@ function Replay(completed) {
 }
 
 function SetReplaying(value) {
-    if (script.Replaying() != value) {
+    if (IsReplaying() != value) {
         //	script.replaying = value;
 		if (value) {
             script.statusMode = kStatusMode.replaying;
@@ -874,7 +874,7 @@ function SetReplaying(value) {
 
         ShowHideStatusButtons();
 
-        if (script.Replaying()) {
+        if (IsReplaying()) {
             //  elements.statusStop.focus();
         
             elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
@@ -897,7 +897,7 @@ function StopReplaying() {
 }
 
 function WorkAreaTextPaste() {
-    if (!script.IsCompleting() && !script.Replaying()) {
+    if (!IsCompleting() && !IsReplaying()) {
         // Force this to happen after the paste. If you double paste
         // too quickly, it will get caught in the same change.
         setTimeout(() => {
@@ -913,28 +913,28 @@ function WorkAreaTextPaste() {
 }
 
 function ShowHideStatusButtons() {
-    if ((elements.workAreaText.value != '') && !script.IsCompleting() && !script.Replaying()) {
+    if ((elements.workAreaText.value != '') && !IsCompleting() && !IsReplaying()) {
         ShowElement(elements.statusStart);
     }
     else {
         HideElement(elements.statusStart);
     }
 
-    if (script.IsCompleting() || script.Replaying()) {
+    if (IsCompleting() || IsReplaying()) {
         ShowElement(elements.statusStop);
     }
     else {
         HideElement(elements.statusStop);
     }
 
-    if ((script.isMobile || true) && (elements.workAreaText.value != '') && (undoStack.length > 0) && !script.IsCompleting() && !script.Replaying()) {
+    if ((script.isMobile || true) && (elements.workAreaText.value != '') && (undoStack.length > 0) && !IsCompleting() && !IsReplaying()) {
         ShowElement(elements.statusUndo);
     }
     else {
         HideElement(elements.statusUndo);
     }
 
-    if ((script.isMobile || true) && (elements.workAreaText.value != '') && !script.IsCompleting() && !script.Replaying()) {
+    if ((script.isMobile || true) && (elements.workAreaText.value != '') && !IsCompleting() && !IsReplaying()) {
         ShowElement(elements.statusClear);
     }
     else {
@@ -1069,7 +1069,7 @@ function WorkAreaTextKeyDown(event) {
     if (kLogging || logThis) console.log('WorkAreaTextKeyDown()');
     
     // if we're completing, return true
-    if (script.IsCompleting()) {
+    if (IsCompleting()) {
         if (kLogging || logThis) console.log('- completing');
         event.preventDefault();
 
@@ -1082,7 +1082,7 @@ function WorkAreaTextKeyDown(event) {
         }
     }
 
-    else if (script.Replaying()) {
+    else if (IsReplaying()) {
         if (kLogging || logThis) console.log('- replaying');
         event.preventDefault();
 

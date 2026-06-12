@@ -1777,7 +1777,8 @@ function UseHash() {
     elements.workAreaText.disabled = false;
     elements.workAreaText.focus();
     ScrollToEnd();
-    
+
+	script.replayText = "";
     if ((completed == '') && (elements.workAreaText.value != '') && autoComplete) {
         setTimeout(() => {
             Complete();

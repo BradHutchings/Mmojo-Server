@@ -1224,6 +1224,8 @@ redoStack = new Array();
 function PushChange() {
 	var logThis = true;
 	if (logThis) console.log("PushChange()");
+	if (logThis) console.log("- undoStack.length: " + undoStack.length);
+	if (logThis) console.log("- redoStack.length: " + redoStack.length);
 	
     var changed = false;
 
@@ -1258,6 +1260,7 @@ function PushChange() {
 function UndoChange() {
 	var logThis = true;
 	if (logThis) console.log("UndoChange()");
+	if (logThis) console.log("- undoStack.length: " + undoStack.length);
 	
     // text has changed since last command. Create an item and push it onto redoSack.
     if (undoStack.length > 0) {
@@ -1301,6 +1304,7 @@ function UndoChange() {
 function RedoChange() {
 	var logThis = true;
 	if (logThis) console.log("RedoChange()");
+	if (logThis) console.log("- redoStack.length: " + redoStack.length);
 
 	if (redoStack.length > 0) {
         if (logThis) console.log("- Redoing change.");

@@ -36,20 +36,20 @@ const kStatusMode = Object.freeze({
 });
 
 const kStatusText = Object.freeze({
-    preparing:              "Preparing.",
-    editing_typeSomething:  "Awaiting your cue.",
-    editing_ready:          "Ready.",
-    evaluating:             "Evaluating.",
-    evaluating_progress:    "Evaluating ",
-    evaluating_finishing:   "Finishing evaluating.",
-    completing:             "Completing.",
-    completed:              "Completed in [elapsed_time].",
-    stopped_by_word:        "Stopped by \"[word]\".",
-    stopped_after:          "Stopped after [tokens_predicted] tokens.",
-    stopped_by_user:        "Stopped by you.",
-	ready_to_replay:		"Ready to replay.",
-    replaying:              "Replaying.",
-    error:                  "Error.",
+    preparing:              	"Preparing.",
+    editing_empty:				"Awaiting your cue.",
+    editing_ready_to_complete:  "Ready to complete.",
+    evaluating:             	"Evaluating.",
+    evaluating_progress:    	"Evaluating ",
+    evaluating_finishing:   	"Finishing evaluating.",
+    completing:             	"Completing.",
+    completed:              	"Completed in [elapsed_time].",
+    stopped_by_word:        	"Stopped by \"[word]\".",
+    stopped_after:          	"Stopped after [tokens_predicted] tokens.",
+    stopped_by_user:        	"Stopped by you.",
+	ready_to_replay:			"Ready to replay.",
+    replaying:              	"Replaying.",
+    error:                  	"Error.",
 });
 
 const kModeCueLink = "cue-link";
@@ -960,18 +960,21 @@ function UpdateStatus() {
         status += kStatusText.preparing;
     }
     else if (script.statusMode == kStatusMode.editing) {
+        let workAreaLength = elements.workAreaText.value.length;
+		if (workAreaLength == 0) {
+            status += kStatusText.editing_empty;
+		}
+		else {
+            status += kStatusText.editing_ready_to_complete;
+		}
         var w = elements.content.offsetWidth;
         if (w >= 400) {
-            status += kStatusText.editing_typeSomething;
             if (script.contextWindowSize > 0) {
                 status += " <b>Tokens:</b> " + script.tokenCount + " / " + script.contextWindowSize + ".";
             }
             else if (script.tokenCount > 0) {
                 status += " <b>Tokens:</b> " + script.tokenCount + ".";
             }
-        }
-        else {
-            status += kStatusText.editing_ready;
         }
     }
     else if (script.statusMode == kStatusMode.evaluating) {
@@ -1136,10 +1139,12 @@ function WorkAreaTextKeyDown(event) {
     else {
         // This will change the content area, so forget completedContent.
         script.completedContent = "";
+		script.replayText = "";
         script.statusMode = kStatusMode.editing;
         EnableCopyPaste();
     }
 
+	UpdateStatus();
     ShowHideStatusButtons();
 }
 

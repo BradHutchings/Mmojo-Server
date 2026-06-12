@@ -90,7 +90,7 @@ script.evaluatingTokensProcessed = 0;
 script.evaluatingTokensTotal = 0;
 script.stoppedByWord = "";
 script.stoppedAfterTokens = 0;
-script.mmojoCompleteClicked = false;         //  This is that header showing Mmojo Complete (should be a contant kAppName) or the model name.
+script.replayText = "";
 script.statusMode = kStatusMode.editing;
 script.statusMessage = "";
 script.hasDirectoryPicker = (typeof window.showDirectoryPicker === "function");
@@ -1773,9 +1773,15 @@ function UseHash() {
         }, kWaitToComplete);
     }
     else if ((completed != null) && (completed != '')) {
-        setTimeout(() => {
-            Replay(completed);
-        }, kWaitToComplete);
+		script.statusMode = kStatusMode.ready_to_replay;
+		script.replayText = completed;
+		UpdateStatus():
+		
+		if (autoComplete) {
+	        setTimeout(() => {
+	            Replay(completed);
+	        }, kWaitToComplete);
+		}
     }
 
     // show or hide stop words.

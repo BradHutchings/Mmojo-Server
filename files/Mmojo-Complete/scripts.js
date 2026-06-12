@@ -1775,7 +1775,7 @@ function UseHash() {
     else if ((completed != null) && (completed != '')) {
 		script.statusMode = kStatusMode.ready_to_replay;
 		script.replayText = completed;
-		UpdateStatus():
+		UpdateStatus();
 		
 		if (autoComplete) {
 	        setTimeout(() => {

@@ -871,6 +871,9 @@ function SetReplaying(value) {
 		if (value) {
             script.statusMode = kStatusMode.replaying;
 		}
+		else {
+			script.statusMode = kStatusMode.editing;
+		}
 
         ShowHideStatusButtons();
 
@@ -886,7 +889,6 @@ function SetReplaying(value) {
             // elements.workAreaText.style.borderColor = "var(--color2)";
             elements.workAreaText.focus();
 
-            script.statusMode = kStatusMode.editing;
             PushChange();
         }
     }

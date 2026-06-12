@@ -1222,6 +1222,9 @@ undoStack = new Array();
 redoStack = new Array();
 
 function PushChange() {
+	var logThis = true;
+	if (logThis) console.log("PushChange()");
+	
     var changed = false;
 
     if (undoStack.length == 0) {
@@ -1236,8 +1239,8 @@ function PushChange() {
     }
 
     if (changed) {
-        if (kLogging) console.log("Pushing change.");
-        if (kLogging) console.log(elements.workAreaText.value.length);
+        if (logThis) console.log("- Pushing change.");
+        if (logThis) console.log("- " + elements.workAreaText.value.length);
         item = {
             workAreaText:       elements.workAreaText.value,
             selectionStart:     elements.workAreaText.selectionStart,
@@ -1246,16 +1249,19 @@ function PushChange() {
         }
         undoStack.push(item);
         redoStack.length = 0;
-        if (kLogging) LogUndoRedoStacks();
+        if (logThis) LogUndoRedoStacks();
     }
 
     EnableCopyPaste();
 }
 
 function UndoChange() {
+	var logThis = true;
+	if (logThis) console.log("UndoChange()");
+	
     // text has changed since last command. Create an item and push it onto redoSack.
     if (undoStack.length > 0) {
-        if (kLogging) console.log("Undoing change.");
+        if (logThis) console.log("- Undoing change.");
         item = undoStack.at(-1);   // top of stack
 
         if (elements.workAreaText.value != item.workAreaText) {
@@ -1265,11 +1271,11 @@ function UndoChange() {
             redoStack.push(item);
         }
 
-        if (kLogging) console.log("Popping item from undoStack, pushing to redoStack.");
+        if (logThis) console.log("- Popping item from undoStack, pushing to redoStack.");
         item = undoStack.pop();
         redoStack.push(item);
 
-        if (kLogging) console.log("Setting workAreaText to top of undoStack.");
+        if (logThis) console.log("- Setting workAreaText to top of undoStack.");
         if (undoStack.length > 0) {
             item = undoStack.at(-1);
             elements.workAreaText.value             = item.workAreaText;
@@ -1293,21 +1299,24 @@ function UndoChange() {
 }
 
 function RedoChange() {
-    if (redoStack.length > 0) {
-        if (kLogging) console.log("Redoing change.");
+	var logThis = true;
+	if (logThis) console.log("RedoChange()");
 
-        if (kLogging) console.log("Popping item from redoStack, pushing to undoStack.");
+	if (redoStack.length > 0) {
+        if (logThis) console.log("- Redoing change.");
+
+        if (logThis) console.log("- Popping item from redoStack, pushing to undoStack.");
         item = redoStack.pop();
         undoStack.push(item);
 
-        if (kLogging) console.log("Setting workAreaText to top of undoStack.");
+        if (logThis) console.log("- Setting workAreaText to top of undoStack.");
         elements.workAreaText.value             = item.workAreaText;
         elements.workAreaText.selectionStart    = item.selectionStart;
         elements.workAreaText.selectionEnd      = item.selectionEnd;
         script.completedContent                 = item.completedContent;
 
-        if (kLogging) console.log(elements.workAreaText.value.length);
-        if (kLogging) LogUndoRedoStacks();
+        if (logThis) console.log("- " + elements.workAreaText.value.length);
+        if (logThis) LogUndoRedoStacks();
     }
 
     EnableCopyPaste();

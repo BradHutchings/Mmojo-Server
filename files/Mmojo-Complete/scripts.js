@@ -824,9 +824,11 @@ function StopCompleting() {
         script.completingController = null;
         script.manualStop = true;
 
-        ShowHideStatusButtons();
         script.statusMode = kStatusMode.stopped_by_user;
         SetCompleting(false);
+		UpdateStatus();
+        ShowHideStatusButtons();
+		PushChange();
 
         elements.workAreaText.focus();
         ScrollToEnd();

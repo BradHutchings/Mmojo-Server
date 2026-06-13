@@ -597,14 +597,18 @@ function SetCompleting(value) {
         
             elements.workAreaText.readOnly = true;
             elements.workAreaText.caretColor = "transparent";
-            elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
+			elements.workAreaText.classList.add("working");
+
+            // elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
             // elements.workAreaText.style.borderColor = "var(--color6)";
             elements.workAreaText.focus();
         }
         else {
             elements.workAreaText.readOnly = false;
             elements.workAreaText.caretColor = null;
-            elements.workAreaText.style.backgroundColor = "var(--color2)";
+			elements.workAreaText.classList.remove("working");
+
+			// elements.workAreaText.style.backgroundColor = "var(--color2)";
             // elements.workAreaText.style.borderColor = "var(--color2)";
             elements.workAreaText.focus();
 
@@ -890,11 +894,14 @@ function SetReplaying(value) {
 		//  elements.statusStop.focus();
 	
 		elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
+		elements.workAreaText.classList.add("working");
 		// elements.workAreaText.style.borderColor = "var(--color6)";
+
 		elements.workAreaText.focus();
 	}
 	else {
-		elements.workAreaText.style.backgroundColor = "var(--color2)";
+		elements.workAreaText.classList.remove("working");
+		// elements.workAreaText.style.backgroundColor = "var(--color2)";
 		// elements.workAreaText.style.borderColor = "var(--color2)";
 		elements.workAreaText.focus();
     }

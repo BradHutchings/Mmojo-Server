@@ -461,9 +461,6 @@ ul, li {
 #work-area-text {
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: var(--color2);
-    border-color: var(--color2);
-    color: var(--grey-dark);
     border-radius: 0.5rem;
     xx-margin-right: 0.5rem;
     flex-grow: 1;
@@ -478,9 +475,16 @@ ul, li {
     border-color: var(--color1);
 }
 
+.editing {
+    background-color: var(--color2);
+    border-color: var(--color2);
+    color: var(--grey-dark);
+}
+
 .working {
     background-color: var(--grey-lightlight);
     border-color: var(--color6);
+    color: var(--grey-dark);
 }
 
 #copy-paste {

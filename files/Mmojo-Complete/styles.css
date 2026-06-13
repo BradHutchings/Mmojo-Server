@@ -478,6 +478,11 @@ ul, li {
     border-color: var(--color1);
 }
 
+.working {
+    background-color = var(--grey-lightlight);
+    border-color: var(--color6);
+}
+
 #copy-paste {
     overflow-x: hidden;
     overflow-y: scroll;

@@ -1231,7 +1231,7 @@ undoStack = new Array();
 redoStack = new Array();
 
 function PushChange() {
-	var logThis = true;
+	var logThis = false;
 	if (logThis) console.log("PushChange()");
 	if (logThis) console.log("- undoStack.length: " + undoStack.length);
 	if (logThis) console.log("- redoStack.length: " + redoStack.length);
@@ -1267,7 +1267,7 @@ function PushChange() {
 }
 
 function UndoChange() {
-	var logThis = true;
+	var logThis = false;
 	if (logThis) console.log("UndoChange()");
 	if (logThis) console.log("- undoStack.length: " + undoStack.length);
 	
@@ -1311,7 +1311,7 @@ function UndoChange() {
 }
 
 function RedoChange() {
-	var logThis = true;
+	var logThis = false;
 	if (logThis) console.log("RedoChange()");
 	if (logThis) console.log("- redoStack.length: " + redoStack.length);
 

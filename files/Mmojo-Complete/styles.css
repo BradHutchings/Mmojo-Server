@@ -479,7 +479,7 @@ ul, li {
 }
 
 .working {
-    background-color = var(--grey-lightlight);
+    background-color: var(--grey-lightlight);
     border-color: var(--color6);
 }
 

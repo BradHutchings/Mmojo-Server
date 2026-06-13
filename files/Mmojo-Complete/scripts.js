@@ -893,8 +893,8 @@ function SetReplaying(value) {
 	if (IsReplaying()) {
 		//  elements.statusStop.focus();
 	
-		elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
 		elements.workAreaText.classList.add("working");
+		// elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
 		// elements.workAreaText.style.borderColor = "var(--color6)";
 
 		elements.workAreaText.focus();

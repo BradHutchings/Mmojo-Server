@@ -154,6 +154,9 @@ function UpdateBookmark() {
     if (bookmarkTypeScript) {
         // The bookmark won't run at all on the Google new tab page in Chrome. So weird. -Brad 2025-06-04
 
+        cue = cue.replace(/[\\"']/g, '\\$&');
+        cue = cue.replace(/\n/g, '\\n');
+
         var js =
             "javascript:(() => { \n" + 
             "    let hash = '" + hash + "';\n" +
@@ -162,7 +165,7 @@ function UpdateBookmark() {
             "        location.hash = hash;\n" +
             "    }\n" +
             "    else if (activeElt) {\n" +
-            "        let cue = \"" + cue.replace(/[\\"']/g, '\\$&') + "\";\n" +
+            "        let cue = \"" + cue + "\";\n" +
             "        let value = (" + (mode == "append") + ") ? activeElt.value + cue : cue;\n" +
             "        activeElt.value = value;\n" +
             "    }\n" + 

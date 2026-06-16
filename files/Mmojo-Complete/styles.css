@@ -15,12 +15,12 @@
     --color8: #C9C9B6;
     --color9: #778DA9;
     --color10: #415A77;
-    --grey-black: ##000000;
+    --grey-black: #000000;
     --grey-dark: #404040;
     --grey-medium: #808080;
     --grey-light: #C0C0C0;
     --grey-lightlight: #E0E0E0;
-    --grey-white: #000000;
+    --grey-white: #FFFFFF;
 
     --main-spacing: 0.5rem;
 }
@@ -305,7 +305,7 @@ ul, li {
     font-weight: bold;
 }
 
-#settings-icon, #tools-icon, #help-icon, #chat-icon, 
+#files-icon, #settings-icon, #tools-icon, #help-icon, #chat-icon, 
 #read-icon, #download-icon, #print-icon, #bookmark-icon, 
 #color-wheel-icon, #full-screen-icon {
     width: 1.6rem;
@@ -461,9 +461,6 @@ ul, li {
 #work-area-text {
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: var(--color2);
-    border-color: var(--color2);
-    color: var(--grey-dark);
     border-radius: 0.5rem;
     xx-margin-right: 0.5rem;
     flex-grow: 1;
@@ -476,6 +473,18 @@ ul, li {
 
 #work-area-text:focus {
     border-color: var(--color1);
+}
+
+.editing {
+    background-color: var(--color2);
+    border-color: var(--color2);
+    color: var(--grey-dark);
+}
+
+.working {
+    background-color: var(--grey-lightlight);
+    border-color: var(--color6);
+    color: var(--grey-dark);
 }
 
 #copy-paste {
@@ -518,6 +527,194 @@ ul, li {
     padding: 0.25rem 0.5rem;
     margin-top: 0.25rem;
 }
+
+#files-area {
+    flex-direction: column;
+    flex-grow: 1;
+    xx-overflow: hidden;
+    padding: 0rem 0rem 0rem 0rem;
+    background: none;
+}
+
+#files-area-header {
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color5);
+    color: var(--grey-dark);
+}
+
+#files-directory-name {
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-grow: 1;
+    color: var(--grey-black);
+    text-wrap: nowrap;
+    overflow: clip;
+}
+
+#files-directory-choose {
+
+}
+
+#files-download-all {
+
+}
+
+#files-area-body {
+    flex-grow: 1;
+    xx-overflow: hidden;
+    padding: 0rem 0rem 0rem 0rem;
+    background: none;
+}
+
+#files-list {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: var(--color2);
+    border-color: var(--color2);
+    color: var(--grey-dark);
+    border-radius: 0.5rem;
+    width: 15rem;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 0rem;
+    overflow: auto;
+}
+
+#files-list::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+/* Track */
+#files-list::-webkit-scrollbar-track {
+    background: var(--color3);
+    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Handle */
+#files-list::-webkit-scrollbar-thumb {
+    background: var(--color5);
+    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Handle on hover */
+#files-list::-webkit-scrollbar-thumb:hover {
+    background: var(--color1);
+}
+
+#files-list-item-template {
+    display: none;
+    visibility: hidden;
+    background-color: var(--grey-lightlight);
+}
+
+.files-list-item {
+    display: block;
+    border: 1px solid var(--grey-medium);
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    user-select: none;
+}
+
+.files-list-item-selected {
+    background: var(--color5);
+}
+
+.files-list-item-name {
+    height: 1.2rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-wrap: nowrap;
+    font-weight: bold;
+}
+
+.files-list-item-code-type {
+    height: 1.2rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-wrap: nowrap;
+}
+
+.files-list-item-snippet {
+    height: 3.6rem;
+    overflow: hidden;
+    text-wrap: nowrap;
+}
+
+#file-view {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    user-select: none;
+    background-color: var(--color4);
+    border-color: var(--color4);
+    color: var(--grey-dark);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-left: 0.5rem;
+    flex-grow: 1;
+}
+
+#file-view-header {
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--color5);
+    color: var(--grey-dark);
+}
+
+#file-name {
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-grow: 1;
+    color: var(--grey-black);
+    text-wrap: nowrap;
+    overflow: clip;
+}
+
+#file-contents {
+    min-height: 1.4rem;
+    user-select: none;
+    background-color: var(--color2);
+    border-color: var(--color2);
+    color: var(--grey-dark);
+    margin: 0rem 0rem;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+/*
+#file-copy, #file-download, #file-save-as {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+*/
+
+#file-copy {
+
+}
+
+#file-download {
+
+}
+
+#file-save-as {
+
+}
+
+
+
+
 
 #clear-cue {
     xx-display: none;
@@ -564,6 +761,8 @@ ul, li {
     overflow: clip;
 }
 
+#files-directory-choose, #files-download-all,
+#file-copy, #file-download, #file-save-as,
 #status-start, #status-stop, #status-undo, #status-clear {
     font-size: 0.8rem;
     min-width: 4rem;

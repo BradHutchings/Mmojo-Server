@@ -33,6 +33,7 @@
             <div id="mmojo-complete" onclick="WorkAreaFocus();">Mmojo Complete is Private.</div>
             <img id="settings-icon" src="images/settings-64.png" onclick="ToggleSettings(event);" title="Toggle Settings" />
             <img id="tools-icon" src="images/tools-64.png" onclick="ToggleTools(event);" title="Toggle Tools" />
+            <img id="files-icon" src="images/files-64.png" class="hidden" onclick="ToggleFiles(event);" title="Toggle Files" />
             <img id="help-icon" src="images/help-64.png" onclick="Help(event);" title="Help"/>
         </div>
 
@@ -129,7 +130,7 @@
         </div>
 
         <div id="work-area" class="row">
-            <textarea id="work-area-text" class="row-item" disabled onkeydown="WorkAreaTextKeyDown(event);" 
+            <textarea id="work-area-text" class="row-item editing" disabled onkeydown="WorkAreaTextKeyDown(event);" 
                 onclick="WorkAreaTextClicked(event);" onpaste="WorkAreaTextPaste(event);"
                 ondrop="ShowHideStatusButtons();"
                 placeholder=""></textarea>
@@ -145,13 +146,41 @@
             </div>
         </div>
 
+        <div id="files-area" class="row hidden">
+            <div id="files-area-header" class="row">
+                <div id="files-directory-name"><b>Directory:</b> Directory is not implemented yet.</div>
+                <button id="files-directory-choose" onclick="FilesDirectoryChoose();">Choose</button>
+                <button id="files-download-all" onclick="FilesDownloadAll();">Download All</button>
+            </div>
+            <div id="files-area-body" class="row">
+                <div id="files-list" class="row-item" onclick="FilesListDeselect(event);">
+                    <div id="files-list-item-template" class="files-list-item x-hidden" onclick="FilesListItemClicked(event);" ondblclick="FilesListItemDoubleClicked(event);">
+                        <div class="files-list-item-name">(file name)</div>
+                        <div class="files-list-item-code-type">(code type)</div>
+                        <div class="files-list-item-snippet">(snippet)</div>
+                    </div>
+                </div>
+                <div id="file-view" class="row-item">
+                    <div id="file-view-header" class="row">
+                        <div id="file-name"><b>Filename:</b> File name goes here.</div>
+                        <button id="file-copy" onclick="FileCopy();">Copy</button>
+                        <button id="file-download" onclick="FileDownload();">Download</button>
+                        <!--
+                        <button id="file-save-as" onclick="FileSaveAs();">Save As...</button>
+                        -->
+                   </div>
+                    <textarea id="file-contents" class="row" placeholder="" readonly="readonly"></textarea>
+                </div>
+            </div>
+        </div>
+        
         <div id="status" class="row hidden" onclick="WorkAreaFocus();">
             <div id="status-text"><b>Status:</b> The status goes here.</div>
             <div id="status-space" class="space"></div>
-            <button id="status-start" onclick="WorkAreaFocus(); Complete();">Start</button>
-            <button id="status-stop" onclick="WorkAreaFocus(); StopCompleting();">Stop</button>
-            <button id="status-undo" onclick="WorkAreaFocus(); UndoChange();">Undo</button>
-            <button id="status-clear" onclick="WorkAreaFocus(); ClearWorkArea();">Clear</button>
+            <button id="status-start" onclick="StatusStartClicked();">Start</button>
+            <button id="status-stop" onclick="StatusStopClicked();">Stop</button>
+            <button id="status-undo" onclick="StatusUndoClicked();">Undo</button>
+            <button id="status-clear" onclick="StatusClearClicked();">Clear</button>
         </div>
 
         <div id="gutter" class="row">

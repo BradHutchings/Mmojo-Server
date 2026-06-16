@@ -20,34 +20,36 @@ const kTokenizeURL = kServerURL + "/tokenize"
 const kMmojoComplete = "Mmojo Complete is Private.";
 
 const kStatusMode = Object.freeze({
-    preparing:                          1,      // page loading, not ready for editing.
-    editing:                            2,      // work area is being edited.
-    evaluating:                         3,      // start of evaulating.
-    evaluating_progress:                4,      // evaluating has sent progress.
-    evaluating_finishing:               5,      // finishing with prompt - last batch?.
-    completing:                         6,      // generating new tokens.
-    completed:                          7,      // show completion time in status prior to any editing.
-    stopped_by_word:                    8,
-    stopped_after:                      9,
-    stopped_by_user:                    10,
-    replaying:                          11,
-    error:                              12,
+    preparing:				1,      // page loading, not ready for editing.
+    editing:                2,      // work area is being edited.
+    evaluating:             3,      // start of evaulating.
+    evaluating_progress:    4,      // evaluating has sent progress.
+    evaluating_finishing:   5,      // finishing with prompt - last batch?.
+    completing:             6,      // generating new tokens.
+    completed:              7,      // show completion time in status prior to any editing.
+    stopped_by_word:        8,
+    stopped_after:          9,
+    stopped_by_user:        10,
+	ready_to_replay:		11,
+    replaying:              12,
+    error:                  13,
 });
 
 const kStatusText = Object.freeze({
-    preparing:              "Preparing.",
-    editing_typeSomething:  "Awaiting your cue.",
-    editing_ready:          "Ready.",
-    evaluating:             "Evaluating.",
-    evaluating_progress:    "Evaluating ",
-    evaluating_finishing:   "Finishing evaluating.",
-    completing:             "Completing.",
-    completed:              "Completed in [elapsed_time].",
-    stopped_by_word:        "Stopped by \"[word]\".",
-    stopped_after:          "Stopped after [tokens_predicted] tokens.",
-    stopped_by_user:        "Stopped by you.",
-    replaying:              "Replaying.",
-    error:                  "Error.",
+    preparing:              	"Preparing.",
+    editing_empty:				"Awaiting your cue.",
+    editing_ready_to_complete:  "Ready to complete.",
+    evaluating:             	"Evaluating.",
+    evaluating_progress:    	"Evaluating ",
+    evaluating_finishing:   	"Finishing evaluating.",
+    completing:             	"Completing.",
+    completed:              	"Completed in [elapsed_time].",
+    stopped_by_word:        	"Stopped by \"[word]\".",
+    stopped_after:          	"Stopped after [tokens_predicted] tokens.",
+    stopped_by_user:        	"Stopped by you.",
+	ready_to_replay:			"Ready to replay.",
+    replaying:              	"Replaying.",
+    error:                  	"Error.",
 });
 
 const kModeCueLink = "cue-link";
@@ -72,8 +74,6 @@ var elements = {};                  // Fine to have this in global space.
 
 var script = {};
 script.completingController = null;
-script.completing = false;          // Replace this with a mode: kMode_Typing, kMode_Completing, kMode_Replaying
-script.replaying = false;
 script.metadata = {};
 script.modelName = "";
 script.contextWindowSize = 0;
@@ -90,9 +90,31 @@ script.evaluatingTokensProcessed = 0;
 script.evaluatingTokensTotal = 0;
 script.stoppedByWord = "";
 script.stoppedAfterTokens = 0;
-script.mmojoCompleteClicked = false;         //  This is that header showing Mmojo Complete (should be a contant kAppName) or the model name.
+script.replayText = "";
 script.statusMode = kStatusMode.editing;
 script.statusMessage = "";
+script.hasDirectoryPicker = (typeof window.showDirectoryPicker === "function");
+script.directoryHandle = null;
+
+//	REMOVE THESE -Brad 2026-06-11
+//	script.completing = false;          // Replace this with a mode: kMode_Typing, kMode_Completing, kMode_Replaying
+//	script.replaying = false;
+
+function IsCompleting() {
+	var result =
+		(script.statusMode === kStatusMode.evaluating) ||
+		(script.statusMode === kStatusMode.evaluating_progress) ||
+		(script.statusMode === kStatusMode.evaluating_finishing) ||
+		(script.statusMode === kStatusMode.completing);
+
+	return result;
+}
+
+function IsReplaying() {
+	var result = (script.statusMode === kStatusMode.replaying);
+
+	return result;
+}
 
 function ShowElement(elt) {
     if (elt.classList.contains("hidden")) {
@@ -156,7 +178,10 @@ function PageLoaded() {
         UpdateStatus();
     }, 200);
 
-    
+	setInterval(function() {
+        ShowHideFilesIcon();
+    }, 3000);
+
     checked = localStorage.getItem('showCopyAndPaste');
     if (checked === "true") {
         elements.showCopyAndPasteCheckbox.checked = true;
@@ -179,6 +204,7 @@ function FindElements() {
     elements.mmojoComplete        	    = document.getElementById("mmojo-complete");
     elements.settingsIcon               = document.getElementById("settings-icon");
     elements.toolsIcon                  = document.getElementById("tools-icon");
+    elements.filesIcon                  = document.getElementById("files-icon");
     elements.helpIcon                   = document.getElementById("help-icon");
 
     elements.toolsArea                  = document.getElementById("tools-area");
@@ -217,6 +243,22 @@ function FindElements() {
     elements.copyPasteSpace         = document.getElementById("copy-paste-space");
     elements.clearCue               = document.getElementById("clear-cue");
     elements.preview                = document.getElementById("preview");
+
+	elements.filesArea				= document.getElementById("files-area");
+	elements.filesAreaHeader		= document.getElementById("files-area-header");
+	elements.filesDirectoryName		= document.getElementById("files-directory-name");
+	elements.filesDirectoryChoose	= document.getElementById("files-directory-choose");
+	elements.filesDownloadAll		= document.getElementById("files-download-all");
+	elements.filesAreaBody			= document.getElementById("files-area-body");
+	elements.filesList				= document.getElementById("files-list");
+	elements.filesListItemTemplate	= document.getElementById("files-list-item-template");
+	elements.fileView				= document.getElementById("file-view");
+	elements.fileViewHeader			= document.getElementById("file-view-header");
+	elements.fileName				= document.getElementById("file-name");
+	elements.fileContents			= document.getElementById("file-contents");
+	elements.fileControls			= document.getElementById("file-controls");
+	elements.fileCopy				= document.getElementById("file-copy");
+	elements.fileDownload			= document.getElementById("file-download");
 
     elements.status                 = document.getElementById("status");
     elements.statusText             = document.getElementById("status-text");
@@ -315,7 +357,6 @@ function HandleCopyPasteMouseEnter(copyPasteItem) {
             parseInt(previewComputedStyle.paddingLeft.slice(0, -2)) - 
             parseInt(previewComputedStyle.paddingRight.slice(0, -2)) - 
             parseInt(previewComputedStyle.borderRightWidth.slice(0, -2));
-
 
         previewRect.height = workAreaTextRect.height - vInset -
             parseInt(previewComputedStyle.paddingTop.slice(0, -2)) - 
@@ -488,7 +529,7 @@ function StopWordsSetFocus() {
 }
 
 function Complete() {
-    if (!script.completing && !script.replaying) {
+    if (!IsCompleting() && !IsReplaying()) {
         PushChange();
 
         script.statusMode = kStatusMode.evaluating;
@@ -541,30 +582,38 @@ function Complete() {
 }
 
 function SetCompleting(value) {
-    if (script.completing != value) {
-        script.completing = value;
+    if (IsCompleting() != value) {
+		//	something else should set this if value is false.
+        //	script.completing = value;
+		if (value) {
+			script.statusMode = kStatusMode.completing;
+		}
+	}
 
-        ShowHideStatusButtons();
-        EnableCopyPaste();
+    ShowHideStatusButtons();
+    EnableCopyPaste();
 
-        if (script.completing) {
-            //  elements.statusStop.focus();
-        
-            elements.workAreaText.readOnly = true;
-            elements.workAreaText.caretColor = "transparent";
-            elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
-            // elements.workAreaText.style.borderColor = "var(--color6)";
-            elements.workAreaText.focus();
-        }
-        else {
-            elements.workAreaText.readOnly = false;
-            elements.workAreaText.caretColor = null;
-            elements.workAreaText.style.backgroundColor = "var(--color2)";
-            // elements.workAreaText.style.borderColor = "var(--color2)";
-            elements.workAreaText.focus();
+	if (IsCompleting()) {
+		//  elements.statusStop.focus();
+	
+		elements.workAreaText.readOnly = true;
+		elements.workAreaText.caretColor = "transparent";
+		elements.workAreaText.classList.add("working");
 
-            PushChange();
-        }
+		// elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
+		// elements.workAreaText.style.borderColor = "var(--color6)";
+		elements.workAreaText.focus();
+	}
+	else {
+		elements.workAreaText.readOnly = false;
+		elements.workAreaText.caretColor = null;
+		elements.workAreaText.classList.remove("working");
+
+		// elements.workAreaText.style.backgroundColor = "var(--color2)";
+		// elements.workAreaText.style.borderColor = "var(--color2)";
+		elements.workAreaText.focus();
+
+		PushChange();
     }
 }
 
@@ -779,28 +828,30 @@ function StopCompleting() {
         script.completingController = null;
         script.manualStop = true;
 
-        ShowHideStatusButtons();
         script.statusMode = kStatusMode.stopped_by_user;
         SetCompleting(false);
+		UpdateStatus();
+        ShowHideStatusButtons();
+		PushChange();
 
         elements.workAreaText.focus();
         ScrollToEnd();
     }
 }
 
-function Replay(completed) {
-    if (!script.replaying && !script.completing) {
+function Replay() {
+    if (!IsCompleting() && !IsReplaying()) {
         PushChange();
 
         SetReplaying(true);
         script.statusMode = kStatusMode.replaying;
  
         var workAreaText = elements.workAreaText.value;
-        var words = completed.split(' ');
+        var words = script.replayText.split(' ');
         var i = 0;
 
         function type() {
-            if (script.replaying && (i < words.length)) {
+            if (IsReplaying() && (i < words.length)) {
                 var newText = '';
                 if (i > 0) {
                     newText = ' ';
@@ -812,11 +863,12 @@ function Replay(completed) {
                 setTimeout(type, kReplayDelay);
             }
             else {
-                elements.workAreaText.value = workAreaText + completed;
+                elements.workAreaText.value = workAreaText + script.replayText;
                 ScrollToEnd();
 
                 SetReplaying(false);
-                script.completedContent = completed;
+                script.completedContent = script.replayText;
+				script.replayText = "";
             }
         }
         
@@ -825,26 +877,33 @@ function Replay(completed) {
 }
 
 function SetReplaying(value) {
-    if (script.replaying != value) {
-        script.replaying = value;
+    if (IsReplaying() != value) {
+        //	script.replaying = value;
+		if (value) {
+            script.statusMode = kStatusMode.replaying;
+		}
+		else {
+			script.statusMode = kStatusMode.editing;
+			PushChange();
+		}
+	}
+	
+	ShowHideStatusButtons();
 
-        ShowHideStatusButtons();
+	if (IsReplaying()) {
+		//  elements.statusStop.focus();
+	
+		elements.workAreaText.classList.add("working");
+		// elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
+		// elements.workAreaText.style.borderColor = "var(--color6)";
 
-        if (script.replaying) {
-            //  elements.statusStop.focus();
-        
-            elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
-            // elements.workAreaText.style.borderColor = "var(--color6)";
-            elements.workAreaText.focus();
-        }
-        else {
-            elements.workAreaText.style.backgroundColor = "var(--color2)";
-            // elements.workAreaText.style.borderColor = "var(--color2)";
-            elements.workAreaText.focus();
-
-            script.statusMode = kStatusMode.editing;
-            PushChange();
-        }
+		elements.workAreaText.focus();
+	}
+	else {
+		elements.workAreaText.classList.remove("working");
+		// elements.workAreaText.style.backgroundColor = "var(--color2)";
+		// elements.workAreaText.style.borderColor = "var(--color2)";
+		elements.workAreaText.focus();
     }
 }
 
@@ -853,7 +912,7 @@ function StopReplaying() {
 }
 
 function WorkAreaTextPaste() {
-    if (!script.completing && !script.replaying) {
+    if (!IsCompleting() && !IsReplaying()) {
         // Force this to happen after the paste. If you double paste
         // too quickly, it will get caught in the same change.
         setTimeout(() => {
@@ -869,28 +928,28 @@ function WorkAreaTextPaste() {
 }
 
 function ShowHideStatusButtons() {
-    if ((elements.workAreaText.value != '') && !script.completing && !script.replaying) {
+    if ((elements.workAreaText.value != '') && !IsCompleting() && !IsReplaying()) {
         ShowElement(elements.statusStart);
     }
     else {
         HideElement(elements.statusStart);
     }
 
-    if (script.completing || script.replaying) {
+    if (IsCompleting() || IsReplaying()) {
         ShowElement(elements.statusStop);
     }
     else {
         HideElement(elements.statusStop);
     }
 
-    if ((script.isMobile || true) && (elements.workAreaText.value != '') && (undoStack.length > 0) && !script.completing && !script.replaying) {
+    if ((script.isMobile || true) && (elements.workAreaText.value != '') && (undoStack.length > 0) && !IsCompleting() && !IsReplaying()) {
         ShowElement(elements.statusUndo);
     }
     else {
         HideElement(elements.statusUndo);
     }
 
-    if ((script.isMobile || true) && (elements.workAreaText.value != '') && !script.completing && !script.replaying) {
+    if ((script.isMobile || true) && (elements.workAreaText.value != '') && !IsCompleting() && !IsReplaying()) {
         ShowElement(elements.statusClear);
     }
     else {
@@ -910,18 +969,21 @@ function UpdateStatus() {
         status += kStatusText.preparing;
     }
     else if (script.statusMode == kStatusMode.editing) {
+        let workAreaLength = elements.workAreaText.value.length;
+		if (workAreaLength == 0) {
+            status += kStatusText.editing_empty;
+		}
+		else {
+            status += kStatusText.editing_ready_to_complete;
+		}
         var w = elements.content.offsetWidth;
         if (w >= 400) {
-            status += kStatusText.editing_typeSomething;
             if (script.contextWindowSize > 0) {
                 status += " <b>Tokens:</b> " + script.tokenCount + " / " + script.contextWindowSize + ".";
             }
             else if (script.tokenCount > 0) {
                 status += " <b>Tokens:</b> " + script.tokenCount + ".";
             }
-        }
-        else {
-            status += kStatusText.editing_ready;
         }
     }
     else if (script.statusMode == kStatusMode.evaluating) {
@@ -1007,6 +1069,9 @@ function UpdateStatus() {
     else if (script.statusMode == kStatusMode.stopped_by_user) {
         status += kStatusText.stopped_by_user;
     }
+    else if (script.statusMode == kStatusMode.ready_to_replay) {
+        status += kStatusText.ready_to_replay;
+    }
     else if (script.statusMode == kStatusMode.replaying) {
         status += kStatusText.replaying;
     }
@@ -1022,7 +1087,7 @@ function WorkAreaTextKeyDown(event) {
     if (kLogging || logThis) console.log('WorkAreaTextKeyDown()');
     
     // if we're completing, return true
-    if (script.completing) {
+    if (IsCompleting()) {
         if (kLogging || logThis) console.log('- completing');
         event.preventDefault();
 
@@ -1035,7 +1100,7 @@ function WorkAreaTextKeyDown(event) {
         }
     }
 
-    else if (script.replaying) {
+    else if (IsReplaying()) {
         if (kLogging || logThis) console.log('- replaying');
         event.preventDefault();
 
@@ -1058,7 +1123,12 @@ function WorkAreaTextKeyDown(event) {
         event.preventDefault();
 
         setTimeout(() => {
-            Complete();
+			if (script.replayText !== "") {
+				Replay();
+			}
+			else {
+            	Complete();
+			}
         }, 500);
     }
 
@@ -1078,10 +1148,12 @@ function WorkAreaTextKeyDown(event) {
     else {
         // This will change the content area, so forget completedContent.
         script.completedContent = "";
+		script.replayText = "";
         script.statusMode = kStatusMode.editing;
         EnableCopyPaste();
     }
 
+	UpdateStatus();
     ShowHideStatusButtons();
 }
 
@@ -1159,6 +1231,11 @@ undoStack = new Array();
 redoStack = new Array();
 
 function PushChange() {
+	var logThis = false;
+	if (logThis) console.log("PushChange()");
+	if (logThis) console.log("- undoStack.length: " + undoStack.length);
+	if (logThis) console.log("- redoStack.length: " + redoStack.length);
+	
     var changed = false;
 
     if (undoStack.length == 0) {
@@ -1173,8 +1250,8 @@ function PushChange() {
     }
 
     if (changed) {
-        if (kLogging) console.log("Pushing change.");
-        if (kLogging) console.log(elements.workAreaText.value.length);
+        if (logThis) console.log("- Pushing change.");
+        if (logThis) console.log("- " + elements.workAreaText.value.length);
         item = {
             workAreaText:       elements.workAreaText.value,
             selectionStart:     elements.workAreaText.selectionStart,
@@ -1183,16 +1260,20 @@ function PushChange() {
         }
         undoStack.push(item);
         redoStack.length = 0;
-        if (kLogging) LogUndoRedoStacks();
+        if (logThis) LogUndoRedoStacks();
     }
 
     EnableCopyPaste();
 }
 
 function UndoChange() {
+	var logThis = false;
+	if (logThis) console.log("UndoChange()");
+	if (logThis) console.log("- undoStack.length: " + undoStack.length);
+	
     // text has changed since last command. Create an item and push it onto redoSack.
     if (undoStack.length > 0) {
-        if (kLogging) console.log("Undoing change.");
+        if (logThis) console.log("- Undoing change.");
         item = undoStack.at(-1);   // top of stack
 
         if (elements.workAreaText.value != item.workAreaText) {
@@ -1202,11 +1283,11 @@ function UndoChange() {
             redoStack.push(item);
         }
 
-        if (kLogging) console.log("Popping item from undoStack, pushing to redoStack.");
+        if (logThis) console.log("- Popping item from undoStack, pushing to redoStack.");
         item = undoStack.pop();
         redoStack.push(item);
 
-        if (kLogging) console.log("Setting workAreaText to top of undoStack.");
+        if (logThis) console.log("- Setting workAreaText to top of undoStack.");
         if (undoStack.length > 0) {
             item = undoStack.at(-1);
             elements.workAreaText.value             = item.workAreaText;
@@ -1230,21 +1311,25 @@ function UndoChange() {
 }
 
 function RedoChange() {
-    if (redoStack.length > 0) {
-        if (kLogging) console.log("Redoing change.");
+	var logThis = false;
+	if (logThis) console.log("RedoChange()");
+	if (logThis) console.log("- redoStack.length: " + redoStack.length);
 
-        if (kLogging) console.log("Popping item from redoStack, pushing to undoStack.");
+	if (redoStack.length > 0) {
+        if (logThis) console.log("- Redoing change.");
+
+        if (logThis) console.log("- Popping item from redoStack, pushing to undoStack.");
         item = redoStack.pop();
         undoStack.push(item);
 
-        if (kLogging) console.log("Setting workAreaText to top of undoStack.");
+        if (logThis) console.log("- Setting workAreaText to top of undoStack.");
         elements.workAreaText.value             = item.workAreaText;
         elements.workAreaText.selectionStart    = item.selectionStart;
         elements.workAreaText.selectionEnd      = item.selectionEnd;
         script.completedContent                 = item.completedContent;
 
-        if (kLogging) console.log(elements.workAreaText.value.length);
-        if (kLogging) LogUndoRedoStacks();
+        if (logThis) console.log("- " + elements.workAreaText.value.length);
+        if (logThis) LogUndoRedoStacks();
     }
 
     EnableCopyPaste();
@@ -1352,8 +1437,44 @@ async function GetModelInfoFromServer() {
     }
 }
 
+function ToggleFiles(event) {
+    event.stopPropagation();
+	if (elements.filesArea.classList.contains("hidden")) {
+		ShowFilesDirectoryName();
+		
+		PopulateFilesList();
+		ShowSelectedFile();
+    	HideElement(elements.workArea);
+    	HideElement(elements.status);
+
+		/*
+		if (script.hasDirectoryPicker) {
+			ShowElement(elements.filesAreaHeader);
+		}
+		else {
+			HideElement(elements.filesAreaHeader);
+		}
+		*/
+    	ShowElement(elements.filesArea);
+	}
+	else {
+    	HideElement(elements.filesArea);
+    	ShowElement(elements.workArea);
+    	ShowElement(elements.status);
+		elements.workAreaText.focus();
+	}
+
+	HideElement(elements.settings);
+    HideElement(elements.toolsArea);
+    HideElement(elements.printSettings);
+}
+
 function ToggleSettings(event) {
     event.stopPropagation();
+	if (!elements.filesArea.classList.contains("hidden")) {
+		ToggleFiles(event);
+	}
+	
     elements.workAreaText.focus()
     ToggleShowElement(elements.settings);
     HideElement(elements.toolsArea);
@@ -1369,7 +1490,11 @@ function ToggleSettings(event) {
 
 function ToggleTools(event) {
     event.stopPropagation();
-    elements.workAreaText.focus()
+	if (!elements.filesArea.classList.contains("hidden")) {
+		ToggleFiles(event);
+	}
+
+	elements.workAreaText.focus()
     ToggleShowElement(elements.toolsArea);
     HideElement(elements.settings);
     HideElement(elements.printSettings);
@@ -1377,7 +1502,11 @@ function ToggleTools(event) {
 
 function TogglePrintSettings() {
     elements.workAreaText.focus()
-    ToggleShowElement(elements.printSettings)
+	if (!elements.filesArea.classList.contains("hidden")) {
+		ToggleFiles(event);
+	}
+
+	ToggleShowElement(elements.printSettings)
     HideElement(elements.settings);
     HideElement(elements.toolsArea);
 }
@@ -1391,6 +1520,27 @@ function ScrollToEnd() {
     }
     let workAreaTexLength = elements.workAreaText.value.length;
     elements.workAreaText.setSelectionRange(workAreaTexLength, workAreaTexLength);
+}
+
+function ScrollToSelectionStart() {
+	// Help from Google Gemini on this. Allegedly no-flicker.
+	// https://share.google/aimode/AvqJraXA5OSjvJwbq
+
+	elements.workAreaText.focus();
+	
+	const originalText = elements.workAreaText.value;
+	const selectionStart = elements.workAreaText.selectionStart;
+	const selectionEnd = elements.workAreaText.selectionEnd;
+	
+	// Slice the text exactly where the selection begins
+	elements.workAreaText.value = originalText.substring(0, selectionStart);
+	
+	// Force the textarea to scroll to the very bottom of this sliced text
+	elements.workAreaText.scrollTop = elements.workAreaText.scrollHeight;
+	
+	// Restore original text and re-apply selection bounds seamlessly
+	elements.workAreaText.value = originalText;
+	elements.workAreaText.setSelectionRange(selectionStart, selectionEnd);
 }
 
 function MakeHash() {
@@ -1654,16 +1804,23 @@ function UseHash() {
     elements.workAreaText.disabled = false;
     elements.workAreaText.focus();
     ScrollToEnd();
-    
+
+	script.replayText = "";
     if ((completed == '') && (elements.workAreaText.value != '') && autoComplete) {
         setTimeout(() => {
             Complete();
         }, kWaitToComplete);
     }
     else if ((completed != null) && (completed != '')) {
-        setTimeout(() => {
-            Replay(completed);
-        }, kWaitToComplete);
+		script.statusMode = kStatusMode.ready_to_replay;
+		script.replayText = completed;
+		UpdateStatus();
+		
+		if (autoComplete) {
+	        setTimeout(() => {
+	            Replay();
+	        }, kWaitToComplete);
+		}
     }
 
     // show or hide stop words.
@@ -1913,6 +2070,641 @@ function GetElapsedTimeString(ms) {
     return result;
 }
 
+function GetCodeBlock(text, indent, startLine, endLine, codeType) {
+	let result = {
+		"codeType": codeType,					// e.g. "javascript", or blank.
+		"contents": "",							// from startLine to endLine in text.
+		"filename": "",							// parsed from first line.
+		"startLine": startLine,					// line code block starts on.
+		"endLine": endLine						// line code block ends on.
+	};
+	let logThis = false;
+
+	if (logThis) console.log("GetCodeBlock()");
+	if (logThis) console.log("- indent:" + indent);
+	if (logThis) console.log("- startLine:" + startLine);
+	if (logThis) console.log("- endLine:" + endLine);
+
+	let textLines = text.split(/\r?\n/);
+	indent = Math.max(indent, 0);
+
+	if (logThis) console.log("- indent:" + indent);
+	if (logThis) console.log("- textLines.length:" + textLines.length);
+
+	if ((startLine >= 0) && (startLine < textLines.length) && (endLine >= startLine) && (endLine < textLines.length)) {
+		// slice(start, end) -- starts on item start, ends on item before end.
+		let blockTextLines = textLines.slice(startLine, endLine + 1);
+		if (indent > 0) {
+			let indentSpaces = ' '.repeat(indent);
+			for (let i = 0; i < blockTextLines.length; i++) {
+				let line = blockTextLines[i];
+				if (line.startsWith(indentSpaces)) {
+					blockTextLines[i] = line.replace(indentSpaces, '');
+				}
+			}
+		}
+		result.contents = blockTextLines.join("\n");
+		if (logThis) console.log("- Getting result.contents:\n");
+		if (logThis) console.log("  - startLine:\n" + startLine);
+		if (logThis) console.log("  - endLine:\n" + endLine);
+		if (logThis) console.log("  - result.contents:\n" + result.contents);
+	}
+
+	if (codeType == "javascript") {
+		result.filename = "script.js"
+		const regex = "[A-Za-z0-9-_.]+\.js";
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "html") {
+		result.filename = "index.html"
+		const regex = "[A-Za-z0-9-_.]+\.html";
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "css") {
+		result.filename = "style.css"
+		const regex = "[A-Za-z0-9-_.]+\.css";
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "python") {
+		result.filename = "app.py"
+		const regex = "[A-Za-z0-9-_.]+\.py";
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "powershell") {
+		result.filename = "script.ps1"
+		const regex = "[A-Za-z0-9-_.]+\.ps1";
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "json") {
+		result.filename = "config.json"
+		const regex = "[A-Za-z0-9-_.]+\.json";
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else if (codeType == "yaml") {
+		result.filename = "config.yaml"
+		const regex = "[A-Za-z0-9-_.]+\.yaml";
+		let match = result.contents.match(regex);
+		if (match !== null) {
+			result.filename = match[0];
+		}
+	}
+	else {
+		result.filename = "untitled.txt"
+	}
+
+	return result;
+}
+
+function GetCodeBlocksInWorkArea() {
+	let result = [];
+		// Each item: {
+		//    "codeType": e.g. "javascript", or blank.
+		//	  "contents": what's inside the code block.
+		//	  "filename": proposed filename from first line, or blank.
+		//    "startLine": line code block starts on.
+		//    "endLine": line code block ends on.
+	let logThis = false;
+
+	if (logThis) console.log("GetMarkdownFilesInWorkArea()");
+
+	let startMS = Date.now();
+	let wat = elements.workAreaText.value;
+	let watLines = wat.split(/\r?\n/);
+	let markDownFileLines = [];
+
+	const regex = /^(\s*)```([A-Za-z0-9+_]*)\s*$/
+	for (let line = 0; line < watLines.length; line++) {
+		let currentWatLine = watLines[line];
+		let match = regex.exec(currentWatLine);
+		if (match !== null) {
+			let indentString = match[1];
+			let indent = indentString.length;
+			let codeType = match[2];
+			let index = match.index;
+
+			if (logThis && false) {
+				console.log("  - matched: [" + line + "] " + currentWatLine);
+				console.log("  - indent: \"" + indentString + "\"");
+				console.log("  - indent: " + indent);
+				console.log("  - codeType: " + codeType);
+			}
+			
+			markDownFileLines.push({
+				"line": line,
+				"indent": indent,
+				"codeType": codeType
+			});
+		}
+	}
+
+	if (logThis && true) {
+		console.log("\n\nmarkDownFileLines:");
+		console.log(JSON.stringify(markDownFileLines));
+	}
+
+	// markDownFileLines is an array of ``` lines.
+	// While there are at least two items in markDownFileLines, consider the firat two
+	// as a possible code block to save, if they match. If they don't match, remove the
+	// first item and continue.
+
+	while (markDownFileLines.length >= 2) {
+		let firstItem = markDownFileLines[0];
+		let secondItem = markDownFileLines[1];
+		let matchingPair = true;	// assume they match, find a reason they don't.
+
+		if (logThis && false) {
+			console.log("- Considering pair:");
+			console.log("  - firstItem:\n" + JSON.stringify(firstItem));
+			console.log("  - secondItem:\n" + JSON.stringify(secondItem));
+		}
+
+		// secondItem needs to be a closing ```.
+		if (secondItem.codeType != "") {
+			if (logThis && false) console.log("  - Pair does not match: secondItem.codeType != \"\".");
+			matchingPair = false;
+		}
+
+		// indents have to match.
+		if (firstItem.indent != secondItem.indent) {
+			if (logThis && false) console.log("  - Pair does not match: firstItem.indent != secondItem.indent.");
+			matchingPair = false;
+		}
+
+		// If we have a matching pair, add it to results, remove both items.
+		// If not, remove the firstItem.
+		if (matchingPair) {
+			if (logThis && true) {
+				console.log("- Matching pair:");
+				console.log("  - firstItem:\n" + JSON.stringify(firstItem));
+				console.log("  - secondItem:\n" + JSON.stringify(secondItem));
+			}
+			markDownFileLines.shift();
+			markDownFileLines.shift();
+
+			// add something to result.
+			let codeBlock = GetCodeBlock(wat, firstItem.indent, firstItem.line + 1, secondItem.line - 1, firstItem.codeType);
+			result.push(codeBlock);
+		}
+		else {
+			if (logThis && false) {
+				console.log("- Non-matching pair:");
+				console.log("  - firstItem:\n" + JSON.stringify(firstItem));
+				console.log("  - secondItem:\n" + JSON.stringify(secondItem));
+			}
+			markDownFileLines.shift();
+		}
+	}
+
+	let elapsedMS = Date.now() - startMS;
+	if (logThis) {
+		console.log("- result:\n" + JSON.stringify(result));
+		console.log("- elapsedMS: " + elapsedMS);
+	}
+	return result;
+}
+
+function ShowHideFilesIcon() {
+	let codeBlocks = GetCodeBlocksInWorkArea();
+	let showIcon = (Array.isArray(codeBlocks) && (codeBlocks.length > 0));
+
+	if (showIcon) {
+		ShowElement(elements.filesIcon);
+	}
+	else {
+		HideElement(elements.filesIcon);
+	}
+}
+
+function PopulateFilesList() {
+	let logThis = false;
+	let codeBlocks = GetCodeBlocksInWorkArea();
+	let codeBlocksCount = codeBlocks.length;
+	let fileListItemCount = elements.filesList.childElementCount - 1;
+
+	if (logThis) console.log("PopulateFilesList()");
+	if (logThis) console.log("- fileListItemCount: " + fileListItemCount);
+	if (logThis) console.log("- codeBlocks.length: " + codeBlocks.length);
+
+	// Grow the files-list.
+	while (fileListItemCount < codeBlocksCount) {
+		if (logThis) console.log("- Adding a files-list-item.");
+		let clonedItem = elements.filesListItemTemplate.cloneNode(true);
+		clonedItem.id = "files-list-item-" + fileListItemCount;
+		elements.filesList.appendChild(clonedItem);
+		fileListItemCount = elements.filesList.childElementCount - 1;
+		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
+		if (logThis) console.log("  - codeBlocksCount: " + codeBlocksCount);
+	}
+
+	// Shrink the files-list.
+	while (fileListItemCount > codeBlocksCount) {
+		if (logThis) console.log("- Removing the last files-list-item.");
+		const lastChild = elements.filesList.lastElementChild;
+		elements.filesList.removeChild(lastChild);
+		fileListItemCount = elements.filesList.childElementCount - 1;
+		if (logThis) console.log("  - fileListItemCount: " + fileListItemCount);
+		if (logThis) console.log("  - codeBlocksCount: " + codeBlocksCount);
+	}
+
+	// Set the contents of the files-list items.
+	fileListItemCount = elements.filesList.childElementCount - 1;
+	codeBlocksCount = codeBlocks.length;
+	
+	let count = Math.min(fileListItemCount, codeBlocksCount);
+	for (let i = 1; i <= count; i++) {
+		let filesListItem = elements.filesList.children[i];
+		let codeBlock = codeBlocks[i - 1];
+		let filename = codeBlock.filename;
+		let codeType = codeBlock.codeType;
+
+		if (filename == "")	filename = "No filename specified.";
+		if (codeType == "") codeType = "No type specified.";
+
+		filesListItem.codeBlockIndex = i;
+		filesListItem.codeBlock = codeBlock;
+		filesListItem.children[0].innerText = filename;
+		filesListItem.children[1].innerText = codeType;
+		filesListItem.children[2].innerText = codeBlock.contents;
+	}
+
+	ShowFilesDirectoryName();
+}
+
+function FilesListItemClicked(event) {
+	let logThis = false;
+	
+	if (logThis) console.log("FilesListItemClicked() - in progress.");
+	if (logThis) console.log("- event:\n" + JSON.stringify(event));
+	if (logThis) console.log("- event.currentTarget.classList:\n" + JSON.stringify(event.currentTarget.classList));
+
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	let filesListItem = null;
+	if (event.currentTarget.classList.contains("files-list-item")) {
+		filesListItem = event.currentTarget;
+	}
+
+	// for each child of elements.filesList, remove files-list-item-selected from class list
+	count = elements.filesList.childElementCount - 1;
+	for (let i = 1; i <= count; i++) {
+		let child = elements.filesList.children[i];
+		child.classList.remove("files-list-item-selected");
+	}
+	
+	if (filesListItem !== null) {
+		filesListItem.classList.add("files-list-item-selected");
+		if (logThis) console.log("- codeBlockIndex: " + filesListItem.codeBlockIndex);
+		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(filesListItem.codeBlock));
+	}
+
+	ShowSelectedFile();
+}
+
+function FilesListItemDoubleClicked(event) {
+	let logThis = false;
+	
+	if (logThis) console.log("FilesListItemDoubleClicked() - in progress.");
+	if (logThis) console.log("- event:\n" + JSON.stringify(event));
+	if (logThis) console.log("- event.currentTarget.classList:\n" + JSON.stringify(event.currentTarget.classList));
+
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	let filesListItem = null;
+	if (event.currentTarget.classList.contains("files-list-item")) {
+		filesListItem = event.currentTarget;
+	}
+
+	codeBlock = SelectedCodeBlock();
+	if (codeBlock !== null) {
+		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(codeBlock));
+
+		if (!elements.filesArea.classList.contains("hidden")) {
+			ToggleFiles(event);
+		}
+
+		let wat = elements.workAreaText.value;
+		let watLines = wat.split(/\r?\n/);
+
+		selectionStart = 0;
+		for (let i = 0; i < codeBlock.startLine; i++) {
+			selectionStart += watLines[i].length + 1;
+		}
+
+		elements.workAreaText.focus();
+		elements.workAreaText.setSelectionRange(selectionStart, selectionStart);
+		ScrollToSelectionStart();
+	}
+}
+
+function FilesListDeselect(event) {
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	// for each child of elements.filesList, remove files-list-item-selected from class list
+	count = elements.filesList.childElementCount - 1;
+	for (let i = 1; i <= count; i++) {
+		let child = elements.filesList.children[i];
+		child.classList.remove("files-list-item-selected");
+	}
+
+	ShowSelectedFile();
+}
+
+function SelectedCodeBlock() {
+	let logThis = false;
+	let result = null;
+	
+	if (logThis) console.log("SelectedCodeBlock() - in progress.");
+	
+	count = elements.filesList.childElementCount - 1;
+	for (let i = 1; i <= count; i++) {
+		let child = elements.filesList.children[i];
+		if (child.classList.contains("files-list-item-selected")) {
+			result = child.codeBlock;
+		}
+	}
+
+	return result;
+}
+
+function ShowSelectedFile() {
+	let logThis = false;
+	
+	if (logThis) console.log("ShowSelectedFile() - in progress.");
+
+	codeBlock = SelectedCodeBlock();
+
+	if (codeBlock !== null) {
+		if (codeBlock.filename !== "") {
+			elements.fileName.innerHTML = "<b>Filename:</b> " + codeBlock.filename;
+		}
+		else {
+			elements.fileName.innerHTML = "<b>No filename specified.</b>";
+		}
+		elements.fileContents.value = codeBlock.contents;
+		ShowElement(elements.fileCopy);
+		ShowElement(elements.fileDownload);
+		//	ShowElement(elements.fileSaveAs);
+	}
+	else {
+		elements.fileName.innerHTML = "Please click a code block in the list at left.";
+		elements.fileContents.value = "";
+		HideElement(elements.fileCopy);
+		HideElement(elements.fileDownload);
+		//	HideElement(elements.fileSaveAs);
+	}
+}
+
+function FileCopy(event) {
+	let logThis = false;
+	
+	if (logThis) console.log("FileCopy() - in progress.");
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	codeBlock = SelectedCodeBlock();
+	if (codeBlock !== null) {
+		// don't need to call this async.
+		navigator.clipboard.writeText(codeBlock.contents);
+	}
+
+	elements.fileContents.focus();
+}
+
+async function SaveToDirectory(codeBlock) {
+	let logThis = false;
+	
+	if (logThis) console.log("SaveToDirectory() - in progress.");
+
+	if (codeBlock !== null) {
+		if (script.directoryHandle !== null) {
+			try {
+				const fileHandle = await script.directoryHandle.getFileHandle(codeBlock.filename, { create: true });			
+				
+				// Create a FileSystemWritableFileStream to write to.
+				const writable = await fileHandle.createWritable();
+				
+				// Write the contents of the file to the stream.
+				await writable.write(codeBlock.contents);
+				
+				// Close the file and write the contents to disk.
+				await writable.close();
+			}
+			catch(err) {
+				console.error('Writing the file failed: ', err);
+			}
+		}
+	}
+}
+
+function DownloadToBrowserDownloadsDirectory(codeBlock) {
+	let logThis = false;
+	
+	if (logThis) console.log("DownloadToBrowserDownloadsDirectory() - in progress.");
+
+	if (codeBlock !== null) {
+		//	Qwen3.5 9B generated a code sample adapted here.
+		//	Cue: "Write me some javascript code to download text as a named file in the browser."
+		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(codeBlock));
+		
+		// Create a Blob object containing the text data.
+		const blob = new Blob([codeBlock.contents], { type: 'text/plain' });
+	
+		// Create a URL for the Blob.
+		const url = URL.createObjectURL(blob);
+	
+		// Create a link element.
+		const link = document.createElement('a');
+		link.style.display = 'none';
+		link.href = url;
+		
+		let filename = codeBlock.filename;
+		if ((filename === null) || (filename === "")) {
+			filename = "Untitled.txt"
+		}
+		link.download = filename;
+	
+		// Append the link to the DOM.  This is necessary for Firefox.
+		document.body.appendChild(link);
+	
+		// Programmatically click the link to trigger the download.
+		link.click();
+
+		// Remove the link from the DOM.
+		document.body.removeChild(link);
+
+		// Clean up the URL.
+		URL.revokeObjectURL(url);
+	}
+}
+
+function FileDownload(event) {
+	let logThis = false;
+	
+	if (logThis) console.log("FileDownload() - in progress.");
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	codeBlock = SelectedCodeBlock();
+	if (codeBlock !== null) {
+		DownloadToBrowserDownloadsDirectory(codeBlock);
+	}
+	
+	elements.fileContents.focus();
+}
+
+function ShowFilesDirectoryName() {
+	let logThis = false;
+	
+	if (logThis) console.log("UpdateFilesDirectory() - in progress.");
+
+	let directoryHTML = "<b>Directory:</b> Browser \"Downloads\" directory, unique names."
+	if (script.directoryHandle !== null) {
+		directoryHTML = "<b>Directory:</b> " + script.directoryHandle.name;
+	}
+	
+	if (script.hasDirectoryPicker) {
+		ShowElement(elements.filesDirectoryChoose);
+	}
+	else {
+		directoryHTML += " Choosing a directory requires a secure context.";
+		HideElement(elements.filesDirectoryChoose);
+	}
+
+	elements.filesDirectoryName.innerHTML = directoryHTML;
+
+	let fileCount = elements.filesList.childElementCount - 1;
+	if (fileCount > 0) {
+		ShowElement(elements.filesDownloadAll);
+	}
+	else {
+		HideElement(elements.filesDownloadAll);
+	}
+}
+
+async function FilesDirectoryChoose(event) {
+	let logThis = false;
+	
+	if (logThis) console.log("FilesDirectoryChoose() - in progress.");
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	if (script.hasDirectoryPicker) {
+		try {
+			// Opens the native OS directory selector
+			const dirHandle = await window.showDirectoryPicker({
+				mode: 'readwrite' // Use 'read' for read-only access
+			});
+		
+			script.directoryHandle = dirHandle;
+			
+		}
+		catch (err) {
+			console.error('Directory selection failed or was canceled:', err);
+		}
+		
+		ShowFilesDirectoryName();
+	}
+
+	elements.fileContents.focus();
+}
+
+async function FilesDownloadAll(event) {
+	let logThis = false;
+	
+	if (logThis) console.log("FilesDownloadAll() - in progress.");
+	if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	// loop over all the code blocks
+	count = elements.filesList.childElementCount - 1;
+	for (let i = 1; i <= count; i++) {
+		let child = elements.filesList.children[i];
+		let codeBlock_i = child.codeBlock;
+
+		for (let j = i + 1; j <= count; j++) {
+			let child = elements.filesList.children[j];
+			let codeBlock_j = child.codeBlock;
+
+			if ((codeBlock_i !== null) && (codeBlock_j !== null) && (codeBlock_i.filename === codeBlock_j.filename)) {
+				if (logThis) console.log("- same filename: " + codeBlock_i.filename + " (" + i + ", " + j + ")");
+				codeBlock_i = null;
+			}
+		}
+
+		if (codeBlock_i !== null) {
+			if (script.directoryHandle !== null) {
+				if (logThis) console.log("- Saving: " + codeBlock_i.filename + " (" + i + ") to " + script.directoryHandle.name + ".");
+				await SaveToDirectory(codeBlock_i);
+			}
+			else {
+				if (logThis) console.log("- Downloading: " + codeBlock_i.filename + " (" + i + ") to browser \"Downloads\" directory."); 
+				DownloadToBrowserDownloadsDirectory(codeBlock_i);
+			}
+		}
+	}
+
+	elements.fileContents.focus();
+}
+
+function StatusStartClicked() {
+	WorkAreaFocus();
+
+	if (script.replayText !== "") {
+		Replay();
+	}
+	else {
+		Complete();
+	}
+}
+
+function StatusStopClicked() {
+	WorkAreaFocus();
+
+	if (IsCompleting()) {
+		StopCompleting();
+	}
+	else if (IsReplaying()) {
+		StopReplaying();
+	}
+}
+
+function StatusUndoClicked() {
+	WorkAreaFocus();
+	UndoChange();
+}
+
+function StatusClearClicked() {
+	WorkAreaFocus();
+	ClearWorkArea();
+}
 
 
 

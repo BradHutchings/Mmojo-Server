@@ -56,6 +56,7 @@ const kModeCueLink = "cue-link";
 const kModeCueScript = "cue-script";
 const kModeAppend = "append";
 const kModePrepend = "prepend";
+const kModePaste = "paste";
 const kModeReplace = "replace";
 const kModeReplaceRegEx = "replace-regex";
 
@@ -1738,6 +1739,15 @@ function UseHash() {
 
             PushChange();
         }
+		else if (mode == kModePaste) {
+            // Update contents of elements.workAreaText.value. Replace selection with cue.
+            if (cue != "") {
+				elements.workAreaText.setRangeText(cue); 
+                completed = "";
+                autoComplete = false;
+                PushChange();
+			}
+		}
         else if (mode == kModeReplace) {
             // Update contents of elements.workAreaText.value. Replace cue with completed.
             let text = elements.workAreaText.value;

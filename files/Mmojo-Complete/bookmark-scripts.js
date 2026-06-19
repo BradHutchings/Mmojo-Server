@@ -11,11 +11,12 @@ const kModeCueLink = "cue-link";
 const kModeCueScript = "cue-script";
 const kModeAppend = "append";
 const kModePrepend = "prepend";
+const kModePaste = "paste";
 const kModeReplace = "replace";
 const kModeReplaceRegEx = "replace-regex";
-const kModes = [kModeCueLink, kModeCueScript, kModeAppend, kModePrepend, kModeReplace, kModeReplaceRegEx];
+const kModes = [kModeCueLink, kModeCueScript, kModeAppend, kModePrepend, kModePaste, kModeReplace, kModeReplaceRegEx];
 const kLinkModes = [kModeCueLink];
-const kScriptModes = [kModeCueScript, kModeAppend, kModePrepend, kModeReplace, kModeReplaceRegEx];
+const kScriptModes = [kModeCueScript, kModeAppend, kModePrepend, kModePaste, kModeReplace, kModeReplaceRegEx];
 
 var elements = {};
 var textChanged = true;

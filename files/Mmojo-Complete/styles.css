@@ -122,7 +122,8 @@ button:focus {
 
 button:hover {
     color: var(--grey-black);
-    background: var(--control-border);
+    background: var(--main-scheme-light);
+    xx-background: var(--control-border);
 }
 
 /* On mobile, make sure it doesn't stick to hovering after click. */

@@ -11,8 +11,8 @@
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color7);
-    color: var(--grey-dark);
+    background-color: var(--header-scheme-medium);
+    color: var(--text-dark);
 }
 
 #label {
@@ -32,7 +32,7 @@
 }
 
 #bookmark:link, #bookmark:visited, #bookmark:hover, #bookmark:active {
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #stop-words-break {
@@ -90,14 +90,14 @@
 #cue-text, #completed-text {
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: var(--color2);
-    border-color: var(--color2);
-    color: var(--grey-dark);
+    background-color: var(--main-scheme-light);
+    border-color: var(--main-scheme-light);
+    color: var(--text-dark);
     border-radius: 0.5rem;
     flex-grow: 1;
 }
 
 #cue-text::selection, #completed-text::selection {
-    background-color: var(--color7);
+    background-color: var(--header-scheme-medium);
     color: var(--color4);
 }

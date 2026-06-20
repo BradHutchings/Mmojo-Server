@@ -14,6 +14,9 @@
     
     --background: #F0EFEB;        /* --color4: #F0EFEB;    */
     --control-border: #A5A58D;    /* --color6: #A5A58D;    */
+    --text-dark: #404040;         /* --grey-dark: #404040; */
+    --text-medium: #808080;
+    --text-light: #C0C0C0;
 
     /* THESE COLORS ARE NOT USED -- WERE PART OF ORIGINAL PEACH/OLIVE SCHEME. */
     --color8: #C9C9B6;            /* --color8: #C9C9B6;    */

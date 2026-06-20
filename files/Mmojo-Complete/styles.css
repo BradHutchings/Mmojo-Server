@@ -64,7 +64,7 @@ html {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
 
-    xxcolor: var(--grey-black) !important;
+    xxcolor: var(--text-dark) !important;
     font-family: Arial !important;
     font-size: 1em !important;
  }
@@ -91,7 +91,7 @@ label, #model-labelxx, #updated-labelxx {
 select {
     font-family: inherit;
     font-size: inherit;
-    color: var(--grey-black);
+    color: var(--text-dark);
     background: var(--main-scheme-lightest);
     border: 1px solid var(--control-border);
     border-radius: 0.5rem;
@@ -105,7 +105,7 @@ select:focus {
 button {
     font-family: inherit;
     font-size: inherit;
-    color: var(--grey-black);
+    color: var(--text-dark);
     background: var(--main-scheme-lightest);
     border: 1px solid var(--control-border);
     border-radius: 0.5rem;
@@ -119,19 +119,19 @@ button:focus {
 }
 
 button:hover {
-    color: var(--grey-black);
+    color: var(--text-dark);
     background: var(--main-scheme-light);
     xx-background: var(--control-border);
 }
 
 /* On mobile, make sure it doesn't stick to hovering after click. */
 button:not(:focus):hover {
-    color: var(--grey-black);
+    color: var(--text-dark);
     background: var(--main-scheme-lightest);
 }
 
 button:active {
-    color: var(--grey-black);
+    color: var(--text-dark);
     background: var(--main-scheme-light);
     xx-color: var(--main-scheme-lightest);
     xx-background: var(--header-scheme-medium);
@@ -140,7 +140,7 @@ button:active {
 input {
     font-family: inherit;
     font-size: inherit;
-    color: var(--grey-black);
+    color: var(--text-dark);
     border: 1px solid var(--control-border);
     border-radius: 0.5rem;
     padding: 0.25rem;
@@ -157,9 +157,9 @@ input[type="text"]:focus {
 
 input[type="checkbox"] {
     appearance: none;
-    color: var(--grey-dark);
+    color: var(--text-dark);
     background-color: var(--main-scheme-lightest);
-    border: 3px solid var(--grey-dark);
+    border: 3px solid var(--text-dark);
     border-radius: 0rem;
 }
 
@@ -174,9 +174,9 @@ input[type="checkbox"]:focus {
 
 input[type="radio"] {
     appearance: none;
-    color: var(--grey-dark);
+    color: var(--text-dark);
     background-color: var(--main-scheme-lightest);
-    border: 3px solid var(--grey-dark);
+    border: 3px solid var(--text-dark);
     border-radius: 1rem;
 }
 
@@ -193,7 +193,7 @@ textarea {
     font-family: inherit;
     font-size: inherit;
 
-    color: var(--grey-black);
+    color: var(--text-dark);
     background-color: var(--grey-white);
     resize: none;
     border: 4px solid var(--grey-white);
@@ -325,7 +325,7 @@ ul, li {
     flex-wrap: wrap;
     user-select: none;
     background-color: var(--header-scheme-medium);
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #mmojo-complete {
@@ -358,7 +358,7 @@ ul, li {
     flex-wrap: wrap;
     user-select: none;
     background-color: var(--header-scheme-medium);
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #tools-area {
@@ -366,7 +366,7 @@ ul, li {
     flex-wrap: wrap;
     user-select: none;
     background-color: #00000000;
-    color: var(--grey-dark);
+    color: var(--text-dark);
     padding: 0rem 0rem;
 }
 
@@ -390,7 +390,7 @@ ul, li {
     flex-wrap: wrap;
     user-select: none;
     background-color: var(--header-scheme-medium);
-    color: var(--grey-dark);
+    color: var(--text-dark);
     margin-bottom: 0rem;
 }
 
@@ -415,14 +415,14 @@ ul, li {
     margin-right: 0.75rem;
     margin-top: auto;
     margin-bottom: auto;
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #updated {
     display: inline-block;
     margin-top: auto;
     margin-bottom: auto;
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #show-copy-and-paste-checkbox {
@@ -468,7 +468,7 @@ ul, li {
     flex-wrap: wrap;
     user-select: none;
     background-color: var(--header-scheme-medium);
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #picture-url {
@@ -502,7 +502,7 @@ ul, li {
 
 #work-area-text::selection {
     background-color: var(--main-scheme-darkest);
-    color: var(--grey-black);
+    color: var(--text-dark);
 
     xx-background-color: var(--header-scheme-medium);
     xx-color: var(--background);
@@ -515,13 +515,13 @@ ul, li {
 .editing {
     background-color: var(--main-scheme-light);
     border-color: var(--main-scheme-light);
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 .working {
     background-color: var(--grey-lightlight);
     border-color: var(--grey-lightlight);
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #copy-paste {
@@ -529,7 +529,7 @@ ul, li {
     overflow-y: scroll;
     user-select: none;
     background-color: var(--thumb);
-    color: var(--grey-dark);
+    color: var(--text-dark);
     border-radius: 0.5rem;
     overflow: hidden;
     padding: 0.5rem;
@@ -578,14 +578,14 @@ ul, li {
     flex-wrap: wrap;
     user-select: none;
     background-color: var(--thumb);
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #files-directory-name {
     margin-top: auto;
     margin-bottom: auto;
     flex-grow: 1;
-    color: var(--grey-black);
+    color: var(--text-dark);
     text-wrap: nowrap;
     overflow: clip;
 }
@@ -611,7 +611,7 @@ ul, li {
     overflow-y: auto;
     background-color: var(--main-scheme-light);
     border-color: var(--main-scheme-light);
-    color: var(--grey-dark);
+    color: var(--text-dark);
     border-radius: 0.5rem;
     width: 15rem;
     padding-left: 0.5rem;
@@ -695,7 +695,7 @@ ul, li {
     user-select: none;
     background-color: var(--background);
     border-color: var(--background);
-    color: var(--grey-dark);
+    color: var(--text-dark);
     border-radius: 0.5rem;
     overflow: hidden;
     margin-left: 0.5rem;
@@ -707,14 +707,14 @@ ul, li {
     flex-wrap: wrap;
     user-select: none;
     background-color: var(--thumb);
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #file-name {
     margin-top: auto;
     margin-bottom: auto;
     flex-grow: 1;
-    color: var(--grey-black);
+    color: var(--text-dark);
     text-wrap: nowrap;
     overflow: clip;
 }
@@ -724,7 +724,7 @@ ul, li {
     user-select: none;
     background-color: var(--main-scheme-light);
     border-color: var(--main-scheme-light);
-    color: var(--grey-dark);
+    color: var(--text-dark);
     margin: 0rem 0rem;
     flex-grow: 1;
     overflow: auto;
@@ -768,7 +768,7 @@ ul, li {
     bottom: 200px;
     user-select: none;
     background-color: var(--main-scheme-lightest);
-    color: var(--grey-dark);
+    color: var(--text-dark);
     border-left: 0.5rem solid var(--background);
     border-bottom: 0.5rem solid var(--background);
     border-radius: 0.5rem;
@@ -783,7 +783,7 @@ ul, li {
     flex-wrap: nowrap;
 
     background-color: var(--header-scheme-medium);
-    color: var(--grey-dark);
+    color: var(--text-dark);
     min-height: 1.6rem;
     user-select: none;
     overflow: clip;
@@ -793,7 +793,7 @@ ul, li {
     margin-top: auto;
     margin-bottom: auto;
     flex-grow: 0;
-    color: var(--grey-black);
+    color: var(--text-dark);
     text-wrap: nowrap;
     overflow: clip;
 }
@@ -810,7 +810,7 @@ ul, li {
 #gutter {
     font-size: 1rem;
     background-color: var(--header-scheme-medium);
-    color: var(--grey-dark);
+    color: var(--text-dark);
     min-height: 1.6rem;
     user-select: none;
 }

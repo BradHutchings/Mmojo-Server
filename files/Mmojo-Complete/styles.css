@@ -17,6 +17,7 @@
     --text-dark: #404040;         /* --grey-dark: #404040; */
     --text-medium: #808080;
     --text-light: #C0C0C0;
+    --working: #E0E0E0;           /* --grey-lightlight: #E0E0E0; working + file card */
 
     /* THESE COLORS ARE NOT USED -- WERE PART OF ORIGINAL PEACH/OLIVE SCHEME. */
     --color8: #C9C9B6;            /* --color8: #C9C9B6;    */
@@ -164,7 +165,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-    background-color: var(--grey-medium);
+    background-color: var(--main-scheme-dark);
 }
 
 input[type="checkbox"]:focus {
@@ -181,7 +182,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked {
-    background-color: var(--grey-medium);
+    background-color: var(--main-scheme-dark);
 }
 
 input[type="radio"]:focus {
@@ -519,8 +520,8 @@ ul, li {
 }
 
 .working {
-    background-color: var(--grey-lightlight);
-    border-color: var(--grey-lightlight);
+    background-color: var(--working);
+    border-color: var(--working);
     color: var(--text-dark);
 }
 
@@ -650,12 +651,14 @@ ul, li {
     display: none;
     visibility: hidden;
     background-color: var(--grey-lightlight);
+    border: 1px solid var(--grey-medium);
+    border-radius: 0.5rem;
 }
 
 .files-list-item {
     display: block;
-    border: 1px solid var(--grey-medium);
-    border-radius: 0.5rem;
+    xx-border: 1px solid var(--grey-medium);
+    xx-border-radius: 0.5rem;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
     width: 100%;

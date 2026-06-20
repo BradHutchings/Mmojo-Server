@@ -10,6 +10,8 @@
     --main-scheme-dark: #DDBEA9;        /* --color5: #DDBEA9;    */
     --main-scheme-darkest: #CB997E;     /* --color1: #CB997E;    */
 
+    --header-scheme-lightest: #EBEBD3;  /* net new               */
+    --header-scheme-light: #D1D1BC;     /* net new               */
     --header-scheme-medium: #B7B7A4;    /* --color7: #B7B7A4;    */
     
     --background: #F0EFEB;        /* --color4: #F0EFEB;    */
@@ -136,8 +138,6 @@ button:not(:focus):hover {
 button:active {
     color: var(--text-dark);
     background: var(--main-scheme-light);
-    xx-color: var(--main-scheme-lightest);
-    xx-background: var(--header-scheme-medium);
 }
 
 input {
@@ -360,7 +360,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--header-scheme-medium);
+    background-color: var(--header-scheme-light);
     color: var(--text-dark);
 }
 
@@ -379,7 +379,7 @@ ul, li {
     flex-wrap: wrap;
     flex-grow: 8;
     flex-shrink: 20;
-    background-color: var(--header-scheme-medium);
+    background-color: var(--header-scheme-light);
     margin-right: 0.5rem;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
@@ -392,7 +392,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--header-scheme-medium);
+    background-color: var(--header-scheme-light);
     color: var(--text-dark);
     margin-bottom: 0rem;
 }
@@ -470,7 +470,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--header-scheme-medium);
+    background-color: var(--header-scheme-light);
     color: var(--text-dark);
 }
 
@@ -580,7 +580,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--header-scheme-medium);
+    background-color: var(--header-scheme-light);
     color: var(--text-dark);
 }
 
@@ -709,7 +709,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--main-scheme-dark);
+    background-color: var(--header-scheme-lightest);
     color: var(--text-dark);
 }
 

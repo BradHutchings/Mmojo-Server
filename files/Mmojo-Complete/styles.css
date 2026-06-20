@@ -650,15 +650,13 @@ ul, li {
 #files-list-item-template {
     display: none;
     visibility: hidden;
-    background-color: var(--grey-lightlight);
-    border: 1px solid var(--grey-medium);
-    border-radius: 0.5rem;
 }
 
 .files-list-item {
     display: block;
-    xx-border: 1px solid var(--grey-medium);
-    xx-border-radius: 0.5rem;
+    background-color: var(--grey-lightlight);
+    border: 1px solid var(--grey-medium);
+    border-radius: 0.5rem;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
     width: 100%;

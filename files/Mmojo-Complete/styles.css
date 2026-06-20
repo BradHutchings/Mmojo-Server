@@ -5,6 +5,39 @@
 */
 
 :root {
+    --main-scheme-lightest: #FFF1E6;    /* --color3: #FFF1E6;    */
+    --main-scheme-light: #EDDCD2;       /* --color2: #EDDCD2;    */
+    --main-scheme-dark: #DDBEA9;        /* --color5: #DDBEA9;    */
+    --main-scheme-darkest: #CB997E;     /* --color1: #CB997E;    */
+
+    --header-scheme-medium: #B7B7A4;    /* --color7: #B7B7A4;    */
+    
+    --background: #F0EFEB;        /* --color4: #F0EFEB;    */
+    --control-border: #A5A58D;    /* --color6: #A5A58D;    */
+
+    --color8: #C9C9B6;            /* --color8: #C9C9B6;    */
+    --color9: #778DA9;            /* --color9: #778DA9;    */
+    --color10: #415A77;           /* --color10: #415A77;   */
+
+    /* DELETE THESE */
+    --control: #FFF1E6;           /* --color3: #FFF1E6;    */
+    --editing: #EDDCD2;           /* --color2: #EDDCD2;    */
+    --thumb: #DDBEA9;             /* --color5: #DDBEA9;    */
+    --focus: #CB997E;             /* --color1: #CB997E;    */
+    /* ---------- */
+
+    --grey-black: #000000;
+    --grey-dark: #404040;
+    --grey-medium: #808080;
+    --grey-light: #C0C0C0;
+    --grey-lightlight: #E0E0E0;
+    --grey-white: #FFFFFF;
+
+    --main-spacing: 0.5rem;
+}
+
+/*
+:root {
     --color1: #CB997E;
     --color2: #EDDCD2;
     --color3: #FFF1E6;
@@ -24,6 +57,7 @@
 
     --main-spacing: 0.5rem;
 }
+*/
 
 html {
     /* 100dvh should make the page resize when keyboard appears. */
@@ -38,8 +72,7 @@ html {
  }
 
 body {
-    background: var(--color4);
-    /* background: linear-gradient(-45deg, var(--color3) 0%, var(--color4) 100%); */
+    background: var(--background);
 
     margin: 0px 0px 0px 0px;
     xx-padding: 0.5rem 0.5rem 0.5rem 0.5rem;
@@ -61,13 +94,13 @@ select {
     font-family: inherit;
     font-size: inherit;
     color: var(--grey-black);
-    background: var(--color3);
-    border: 1px solid var(--color6);
+    background: var(--main-scheme-lightest);
+    border: 1px solid var(--control-border);
     border-radius: 0.5rem;
 }
 
 select:focus {
-    outline: 4px solid var(--color1);
+    outline: 4px solid var(--main-scheme-darkest);
     outline-offset: 1px;
 }
 
@@ -75,56 +108,56 @@ button {
     font-family: inherit;
     font-size: inherit;
     color: var(--grey-black);
-    background: var(--color3);
-    border: 1px solid var(--color6);
+    background: var(--main-scheme-lightest);
+    border: 1px solid var(--control-border);
     border-radius: 0.5rem;
     padding: 0.25rem 0.5rem;
     max-height: 1.75rem;
 }
 
 button:focus {
-    outline: 4px solid var(--color1);
+    outline: 4px solid var(--main-scheme-darkest);
     outline-offset: 1px;
 }
 
 button:hover {
     color: var(--grey-black);
-    background: var(--color6);
+    background: var(--control-border);
 }
 
 /* On mobile, make sure it doesn't stick to hovering after click. */
 button:not(:focus):hover {
     color: var(--grey-black);
-    background: var(--color3);
+    background: var(--main-scheme-lightest);
 }
 
 button:active {
-    color: var(--color3);
-    background: var(--color7);
+    color: var(--main-scheme-lightest);
+    background: var(--header-scheme-medium);
 }
 
 input {
     font-family: inherit;
     font-size: inherit;
     color: var(--grey-black);
-    border: 1px solid var(--color6);
+    border: 1px solid var(--control-border);
     border-radius: 0.5rem;
     padding: 0.25rem;
 }
 
 input[type="text"] {
-    background: var(--color3);
+    background: var(--main-scheme-lightest);
 }
 
 input[type="text"]:focus {
-    outline: 4px solid var(--color1);
+    outline: 4px solid var(--main-scheme-darkest);
     outline-offset: 1px;
 }
 
 input[type="checkbox"] {
     appearance: none;
     color: var(--grey-dark);
-    background-color: var(--color3);
+    background-color: var(--main-scheme-lightest);
     border: 3px solid var(--grey-dark);
     border-radius: 0rem;
 }
@@ -134,14 +167,14 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:focus {
-    outline: 4px solid var(--color1);
+    outline: 4px solid var(--main-scheme-darkest);
     outline-offset: 1px;
 }
 
 input[type="radio"] {
     appearance: none;
     color: var(--grey-dark);
-    background-color: var(--color3);
+    background-color: var(--main-scheme-lightest);
     border: 3px solid var(--grey-dark);
     border-radius: 1rem;
 }
@@ -151,7 +184,7 @@ input[type="radio"]:checked {
 }
 
 input[type="radio"]:focus {
-    outline: 4px solid var(--color1);
+    outline: 4px solid var(--main-scheme-darkest);
     outline-offset: 1px;
 }
 
@@ -170,7 +203,7 @@ textarea {
 }
 
 textarea:focus {
-    border: 4px solid var(--color1);
+    border: 4px solid var(--main-scheme-darkest);
 }
 
 textarea::-webkit-scrollbar {
@@ -179,7 +212,7 @@ textarea::-webkit-scrollbar {
 
 /* Track */
 textarea::-webkit-scrollbar-track {
-    background: var(--color3);
+    background: var(--main-scheme-lightest);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -187,7 +220,7 @@ textarea::-webkit-scrollbar-track {
 
 /* Handle */
 textarea::-webkit-scrollbar-thumb {
-    background: var(--color5);
+    background: var(--thumb);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -195,7 +228,7 @@ textarea::-webkit-scrollbar-thumb {
 
 /* Handle on hover */
 textarea::-webkit-scrollbar-thumb:hover {
-    background: var(--color1);
+    background: var(--main-scheme-darkest);
 }
 
 ul, li {
@@ -204,7 +237,7 @@ ul, li {
 }
 
 #content {
-    background: var(--color4);
+    background: var(--background);
     /* min-width: 700px; */
     width: 100%;
     height: 100%;
@@ -274,7 +307,7 @@ ul, li {
 
 .vertical-divider {
     width: 0px;
-    border-left: 1px dashed var(--color3);
+    border-left: 1px dashed var(--main-scheme-lightest);
     margin-left: 0.75rem;
     margin-right: 0.75rem;
 }
@@ -282,7 +315,7 @@ ul, li {
 .horizontal-divider {
     width: 100%;
     height: 0px;
-    border-top: 1px dashed var(--color3);
+    border-top: 1px dashed var(--main-scheme-lightest);
     margin-top: 0.75rem;
 }
 
@@ -290,7 +323,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color7);
+    background-color: var(--header-scheme-medium);
     color: var(--grey-dark);
 }
 
@@ -323,7 +356,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color7);
+    background-color: var(--header-scheme-medium);
     color: var(--grey-dark);
 }
 
@@ -342,7 +375,7 @@ ul, li {
     flex-wrap: wrap;
     flex-grow: 8;
     flex-shrink: 20;
-    background-color: var(--color7);
+    background-color: var(--header-scheme-medium);
     margin-right: 0.5rem;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
@@ -355,7 +388,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color7);
+    background-color: var(--header-scheme-medium);
     color: var(--grey-dark);
     margin-bottom: 0rem;
 }
@@ -433,7 +466,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color7);
+    background-color: var(--header-scheme-medium);
     color: var(--grey-dark);
 }
 
@@ -467,23 +500,26 @@ ul, li {
 }
 
 #work-area-text::selection {
-    background-color: var(--color7);
-    color: var(--color4);
+    background-color: var(--main-scheme-darkest);
+    color: var(--grey-black);
+
+    xx-background-color: var(--header-scheme-medium);
+    xx-color: var(--background);
 }
 
 #work-area-text:focus {
-    border-color: var(--color1);
+    border-color: var(--main-scheme-darkest);
 }
 
 .editing {
-    background-color: var(--color2);
-    border-color: var(--color2);
+    background-color: var(--main-scheme-light);
+    border-color: var(--main-scheme-light);
     color: var(--grey-dark);
 }
 
 .working {
     background-color: var(--grey-lightlight);
-    border-color: var(--color6);
+    border-color: var(--grey-lightlight);
     color: var(--grey-dark);
 }
 
@@ -491,7 +527,7 @@ ul, li {
     overflow-x: hidden;
     overflow-y: scroll;
     user-select: none;
-    background-color: var(--color5);
+    background-color: var(--thumb);
     color: var(--grey-dark);
     border-radius: 0.5rem;
     overflow: hidden;
@@ -540,7 +576,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color5);
+    background-color: var(--thumb);
     color: var(--grey-dark);
 }
 
@@ -572,8 +608,8 @@ ul, li {
     display: block;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: var(--color2);
-    border-color: var(--color2);
+    background-color: var(--main-scheme-light);
+    border-color: var(--main-scheme-light);
     color: var(--grey-dark);
     border-radius: 0.5rem;
     width: 15rem;
@@ -590,7 +626,7 @@ ul, li {
 
 /* Track */
 #files-list::-webkit-scrollbar-track {
-    background: var(--color3);
+    background: var(--main-scheme-lightest);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -598,7 +634,7 @@ ul, li {
 
 /* Handle */
 #files-list::-webkit-scrollbar-thumb {
-    background: var(--color5);
+    background: var(--thumb);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -606,7 +642,7 @@ ul, li {
 
 /* Handle on hover */
 #files-list::-webkit-scrollbar-thumb:hover {
-    background: var(--color1);
+    background: var(--main-scheme-darkest);
 }
 
 #files-list-item-template {
@@ -628,7 +664,7 @@ ul, li {
 }
 
 .files-list-item-selected {
-    background: var(--color5);
+    background: var(--thumb);
 }
 
 .files-list-item-name {
@@ -656,8 +692,8 @@ ul, li {
     overflow-x: hidden;
     overflow-y: scroll;
     user-select: none;
-    background-color: var(--color4);
-    border-color: var(--color4);
+    background-color: var(--background);
+    border-color: var(--background);
     color: var(--grey-dark);
     border-radius: 0.5rem;
     overflow: hidden;
@@ -669,7 +705,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color5);
+    background-color: var(--thumb);
     color: var(--grey-dark);
 }
 
@@ -685,8 +721,8 @@ ul, li {
 #file-contents {
     min-height: 1.4rem;
     user-select: none;
-    background-color: var(--color2);
-    border-color: var(--color2);
+    background-color: var(--main-scheme-light);
+    border-color: var(--main-scheme-light);
     color: var(--grey-dark);
     margin: 0rem 0rem;
     flex-grow: 1;
@@ -730,10 +766,10 @@ ul, li {
     top: 40px;
     bottom: 200px;
     user-select: none;
-    background-color: var(--color3);
+    background-color: var(--main-scheme-lightest);
     color: var(--grey-dark);
-    border-left: 0.5rem solid var(--color4);
-    border-bottom: 0.5rem solid var(--color4);
+    border-left: 0.5rem solid var(--background);
+    border-bottom: 0.5rem solid var(--background);
     border-radius: 0.5rem;
     xx-border-top-right-radius: 0rem;
     padding: 1rem 1rem;
@@ -745,7 +781,7 @@ ul, li {
     xx-visibility: hidden;
     flex-wrap: nowrap;
 
-    background-color: var(--color7);
+    background-color: var(--header-scheme-medium);
     color: var(--grey-dark);
     min-height: 1.6rem;
     user-select: none;
@@ -772,7 +808,7 @@ ul, li {
 
 #gutter {
     font-size: 1rem;
-    background-color: var(--color7);
+    background-color: var(--header-scheme-medium);
     color: var(--grey-dark);
     min-height: 1.6rem;
     user-select: none;

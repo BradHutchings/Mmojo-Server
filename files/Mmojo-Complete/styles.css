@@ -25,12 +25,14 @@
     --color10: #415A77;           /* --color10: #415A77;   */
     /* -------------------- */
 
+    /* THESE COLORS ARE NOT USED -- UTILITY GREYS. */
     --grey-black: #000000;        /* most text -- maybe have --text */
     --grey-dark: #404040;         /* some controls? */
     --grey-medium: #808080;       /* radio, checkbox, a border on files page that should be --control-border */
     --grey-light: #C0C0C0;        /* nothing */
     --grey-lightlight: #E0E0E0;   /* working + file card */
     --grey-white: #FFFFFF;        /* default background and border for textarea. */
+    /* -------------------- */
 
     --main-spacing: 0.5rem;
 }
@@ -195,9 +197,9 @@ textarea {
     font-size: inherit;
 
     color: var(--text-dark);
-    background-color: var(--grey-white);
+    background-color: var(--main-scheme-light);
+    border: 4px solid var(--main-scheme-light);
     resize: none;
-    border: 4px solid var(--grey-white);
     outline: none;
     padding: 1rem;
     overflow: hidden;
@@ -574,11 +576,11 @@ ul, li {
     background: none;
 }
 
-#files-area-header {
+#files-directory {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--main-scheme-dark);
+    background-color: var(--header-scheme-medium);
     color: var(--text-dark);
 }
 

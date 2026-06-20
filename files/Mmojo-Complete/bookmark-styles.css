@@ -11,7 +11,7 @@
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--header-scheme-medium);
+    background-color: var(--header-medium);
     color: var(--text-dark);
 }
 
@@ -90,14 +90,14 @@
 #cue-text, #completed-text {
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: var(--main-scheme-light);
-    border-color: var(--main-scheme-light);
+    background-color: var(--content-light);
+    border-color: var(--content-light);
     color: var(--text-dark);
     border-radius: 0.5rem;
     flex-grow: 1;
 }
 
 #cue-text::selection, #completed-text::selection {
-    background-color: var(--header-scheme-medium);
-    color: var(--color4);
+    background-color: var(--content-darkest);
+    color: var(--text-dark);
 }

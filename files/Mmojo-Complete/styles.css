@@ -654,8 +654,8 @@ ul, li {
 
 .files-list-item {
     display: block;
-    background-color: var(--grey-lightlight);
-    border: 1px solid var(--grey-medium);
+    background-color: var(--main-scheme-lightest);
+    border: 1px solid var(--control-border);
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
     padding: 0.5rem;

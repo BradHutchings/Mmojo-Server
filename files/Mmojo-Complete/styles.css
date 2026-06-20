@@ -133,8 +133,10 @@ button:not(:focus):hover {
 }
 
 button:active {
-    color: var(--main-scheme-lightest);
-    background: var(--header-scheme-medium);
+    color: var(--grey-black);
+    background: var(--main-scheme-light);
+    xx-color: var(--main-scheme-lightest);
+    xx-background: var(--header-scheme-medium);
 }
 
 input {

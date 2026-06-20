@@ -15,23 +15,18 @@
     --background: #F0EFEB;        /* --color4: #F0EFEB;    */
     --control-border: #A5A58D;    /* --color6: #A5A58D;    */
 
+    /* THESE COLORS ARE NOT USED -- WERE PART OF ORIGINAL PEACH/OLIVE SCHEME. */
     --color8: #C9C9B6;            /* --color8: #C9C9B6;    */
     --color9: #778DA9;            /* --color9: #778DA9;    */
     --color10: #415A77;           /* --color10: #415A77;   */
+    /* -------------------- */
 
-    /* DELETE THESE */
-    --control: #FFF1E6;           /* --color3: #FFF1E6;    */
-    --editing: #EDDCD2;           /* --color2: #EDDCD2;    */
-    --thumb: #DDBEA9;             /* --color5: #DDBEA9;    */
-    --focus: #CB997E;             /* --color1: #CB997E;    */
-    /* ---------- */
-
-    --grey-black: #000000;
-    --grey-dark: #404040;
-    --grey-medium: #808080;
-    --grey-light: #C0C0C0;
-    --grey-lightlight: #E0E0E0;
-    --grey-white: #FFFFFF;
+    --grey-black: #000000;        /* most text -- maybe have --text */
+    --grey-dark: #404040;         /* some controls? */
+    --grey-medium: #808080;       /* radio, checkbox, a border on files page that should be --control-border */
+    --grey-light: #C0C0C0;        /* nothing */
+    --grey-lightlight: #E0E0E0;   /* working + file card */
+    --grey-white: #FFFFFF;        /* default background and border for textarea. */
 
     --main-spacing: 0.5rem;
 }

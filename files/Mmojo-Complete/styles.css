@@ -222,7 +222,7 @@ textarea::-webkit-scrollbar-track {
 
 /* Handle */
 textarea::-webkit-scrollbar-thumb {
-    background: var(--thumb);
+    background: var(--main-scheme-dark);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -529,7 +529,7 @@ ul, li {
     overflow-x: hidden;
     overflow-y: scroll;
     user-select: none;
-    background-color: var(--thumb);
+    background-color: var(--main-scheme-dark);
     color: var(--text-dark);
     border-radius: 0.5rem;
     overflow: hidden;
@@ -578,7 +578,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--thumb);
+    background-color: var(--main-scheme-dark);
     color: var(--text-dark);
 }
 
@@ -636,7 +636,7 @@ ul, li {
 
 /* Handle */
 #files-list::-webkit-scrollbar-thumb {
-    background: var(--thumb);
+    background: var(--main-scheme-dark);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -668,7 +668,7 @@ ul, li {
 }
 
 .files-list-item-selected {
-    background: var(--thumb);
+    background: var(--main-scheme-dark);
 }
 
 .files-list-item-name {
@@ -709,7 +709,7 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--thumb);
+    background-color: var(--main-scheme-dark);
     color: var(--text-dark);
 }
 

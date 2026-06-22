@@ -519,18 +519,6 @@ ul, li {
     user-select: none;
 }
 
-#work-area-text::-webkit-scrollbar-thumb {
-    background: var(--content-dark);
-    border-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-}
-
-/* Handle on hover */
-#work-area-text::-webkit-scrollbar-thumb:hover {
-    background: var(--content-darkest);
-}
-
 .editing {
     background-color: var(--content-light);
     border-color: var(--content-light);
@@ -541,6 +529,21 @@ ul, li {
     background-color: var(--working);
     border-color: var(--working);
     color: var(--text-dark);
+}
+
+#help-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    xx-margin-right: 0.5rem;
+    flex-grow: 1;
+    background-color: var(--content-light);
+    border-color: var(--content-light);
+    color: var(--text-dark);
+}
+
+#help-text {
+    user-select: none;
 }
 
 #copy-paste {

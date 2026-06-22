@@ -78,7 +78,6 @@ body {
     background: var(--background);
 
     margin: 0px 0px 0px 0px;
-    xx-padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     padding: var(--main-spacing) var(--main-spacing) var(--main-spacing) var(--main-spacing);
 
     height: calc(100% - (2 * var(--main-spacing)));
@@ -126,7 +125,6 @@ button:focus {
 button:hover {
     color: var(--text-dark);
     background: var(--content-light);
-    xx-background: var(--control-border);
 }
 
 /* On mobile, make sure it doesn't stick to hovering after click. */
@@ -254,34 +252,24 @@ ul, li {
     flex-direction: column;
     flex-wrap: nowrap;
     position: relative;
-    xx-border: 2px solid #FF0000;
-    xx-border-radius: 0.5rem;
-    xx-padding: 8px;
 }
 
 .row {
     min-height: 6rem;
     margin-bottom: var(--main-spacing);
     padding: 1.0rem 1.0rem 1.0rem 1.0rem;
-    xx-padding-right: 0.5rem;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     background-color: hsla(211, 36%, 66%, 1);
-    xx-border: 2px solid #FFFFFF;
     border-radius: 0.5rem;
-    xx-overflow: hidden;
 }
 
 .row-item {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    xx-width: 6rem;
     min-height: 6rem;
-    xx-flex-grow: 1;
-    xx-padding: 1.0rem;
-    xx-border: 2px solid #FFFFFF40;
     border-radius: 0.5rem;
 }
 
@@ -290,8 +278,6 @@ ul, li {
     margin-bottom: 0.75rem;
     flex-grow: 8;
     flex-shrink: 20;
-    xx-border: 2px solid #FFFFFF;
-    xx-border-radius: 0.5rem;
 }
 
 .break {
@@ -354,9 +340,6 @@ ul, li {
 }
 
 #settings {
-    xx-display: none;
-    xx-visibility: hidden;
-
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
@@ -386,9 +369,6 @@ ul, li {
 }
 
 #tools {
-    xx-display: none;
-    xx-visibility: hidden;
-
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
@@ -441,32 +421,20 @@ ul, li {
 }
 
 #stop-words-break {
-    xx-display: none;
-    xx-visibility: hidden;
+
 }
 
 #stop-words-label {
-    xx-display: none;
-    xx-visibility: hidden;
 
-    xxmargin-right: 0.25rem;
-    xxmargin-top: auto;
-    xxmargin-bottom: auto;
 }
 
 #stop-words {
-    xx-display: none;
-    xx-visibility: hidden;
-
     margin-right: 1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
 
 #print-settings {
-    xx-display: none;
-    xx-visibility: hidden;
-
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
@@ -490,7 +458,6 @@ ul, li {
 
 #work-area {
     flex-grow: 1;
-    xx-overflow: hidden;
     padding: 0rem 0rem 0rem 0rem;
     background: none;
 }
@@ -499,16 +466,12 @@ ul, li {
     overflow-x: hidden;
     overflow-y: auto;
     border-radius: 0.5rem;
-    xx-margin-right: 0.5rem;
     flex-grow: 1;
 }
 
 #work-area-text::selection {
     background-color: var(--content-darkest);
     color: var(--text-dark);
-
-    xx-background-color: var(--header-medium);
-    xx-color: var(--background);
 }
 
 #work-area-text:focus {
@@ -535,7 +498,6 @@ ul, li {
     overflow-x: hidden;
     overflow-y: auto;
     border-radius: 0.5rem;
-    xx-margin-right: 0.5rem;
     flex-grow: 1;
     background-color: var(--content-light);
     border-color: var(--content-light);
@@ -596,9 +558,6 @@ ul, li {
 }
 
 .remove-button {
-    xx-display: none;
-    xx-visibility: hidden;
-
     font-size: 0.8rem;
     min-width: 4.2rem;
     padding: 0.25rem 0.5rem;
@@ -615,7 +574,6 @@ ul, li {
 #files-area {
     flex-direction: column;
     flex-grow: 1;
-    xx-overflow: hidden;
     padding: 0rem 0rem 0rem 0rem;
     background: none;
 }
@@ -647,7 +605,6 @@ ul, li {
 
 #files-area-body {
     flex-grow: 1;
-    xx-overflow: hidden;
     padding: 0rem 0rem 0rem 0rem;
     background: none;
 }
@@ -801,13 +758,9 @@ ul, li {
 
 
 #clear-cue {
-    xx-display: none;
-    xx-visibility: hidden;
 }
 
 #preview {
-    xx-display: none;
-    xx-visibility: hidden;
     position: fixed;
     left: 40px;
     right: 200px;
@@ -819,14 +772,11 @@ ul, li {
     border-left: 0.5rem solid var(--background);
     border-bottom: 0.5rem solid var(--background);
     border-radius: 0.5rem;
-    xx-border-top-right-radius: 0rem;
     padding: 1rem 1rem;
     overflow: hidden;
 }
 
 #status {
-    xx-display: none;
-    xx-visibility: hidden;
     flex-wrap: nowrap;
 
     background-color: var(--header-medium);
@@ -942,10 +892,6 @@ ul, li {
 }
 
 @media screen and (min-width: 601px) {
-    #xx-status-clear {
-        display: none;
-        visibility: hidden;
-    }
 }
   
 .hidden {

@@ -542,6 +542,31 @@ ul, li {
     color: var(--text-dark);
 }
 
+#help-container::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+/* Track */
+#help-container::-webkit-scrollbar-track {
+    background: var(--content-lightest);
+    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Handle */
+#help-container::-webkit-scrollbar-thumb {
+    background: var(--content-dark);
+    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Handle on hover */
+#help-container::-webkit-scrollbar-thumb:hover {
+    background: var(--content-darkest);
+}
+
 #help-text {
     user-select: none;
 }

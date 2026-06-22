@@ -519,7 +519,7 @@ ul, li {
     user-select: none;
 }
 
-#work-area-text-inner::-webkit-scrollbar-thumb {
+#work-area-text-inner:-webkit-scrollbar-thumb {
     background: var(--content-dark);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
@@ -527,7 +527,7 @@ ul, li {
 }
 
 /* Handle on hover */
-#work-area-text-inner::-webkit-scrollbar-thumb:hover {
+#work-area-text-inner:-webkit-scrollbar-thumb:hover {
     background: var(--content-darkest);
 }
 

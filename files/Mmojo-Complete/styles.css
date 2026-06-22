@@ -515,6 +515,10 @@ ul, li {
     border-color: var(--content-darkest);
 }
 
+#work-area-text-inner {
+    user-select: none;
+}
+
 .editing {
     background-color: var(--content-light);
     border-color: var(--content-light);

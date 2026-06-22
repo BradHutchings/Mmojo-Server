@@ -1113,7 +1113,8 @@ function WorkAreaTextKeyDown(event) {
     }
 
     // if we're not completing or replaying, and we get a return key, kick off completing.
-    else if ((event.keyCode == 13) && !event.shiftKey) {
+    // else if ((event.keyCode == 13) && !event.shiftKey) {
+    else if ((event.keyCode == 13) && event.shiftKey) {
         if (kLogging || logThis) console.log("Enter key was pressed.");
 
         if (event.ctrlKey) {

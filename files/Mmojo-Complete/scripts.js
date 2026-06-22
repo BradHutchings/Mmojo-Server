@@ -1568,7 +1568,6 @@ function ToggleHelp(event) {
     HideElement(elements.printSettings);
 
 	if (elements.helpContainer.classList.contains("hidden")) {
-	{
     	HideElement(elements.status);
     	HideElement(elements.filesArea);
     	ShowElement(elements.helpContainer);

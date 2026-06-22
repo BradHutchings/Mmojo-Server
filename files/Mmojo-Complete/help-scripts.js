@@ -30,6 +30,7 @@ var instructions =
             "<li>Set temperature, tokens, and stop words.</li>\n" +
         "</ul>\n" +
         "<li><img src=\"images/tools-64.png\" class=\"inline-image\" /><b>Tools:</b> Shows <b>Information</b> panel and <b>Tools</b> panel.</li>\n" + 
+        "<li><img src=\"images/files-64.png\" class=\"inline-image\" /><b>Files:</b> Shows <b>Files</b> panel when work area contains markdown files.</li>\n" + 
         "<li><img src=\"images/help-64.png\" class=\"inline-image\" /><b>Help:</b> You found this page!</li>\n" + 
     "</ul>\n" +
 

@@ -63,8 +63,10 @@ const kModeReplaceRegEx = "replace-regex";
 const kWorkAreaTextPlaceholder = 
     "Welcome to Mmojo Complete, delivered to you from your own Mmojo Server. " +
     "Anything you do with LLMs in the cloud, you can do here, privately.\n\n" +
-    "Type some text in this work area that will get the language model started. The text you type is called a \"cue\".\n\n" +
-    "Once you've entered your cue, click the Start button at the bottom or type the ENTER key to start completing.\n\n" +
+    "Type some text in this work area that will get the language model started. The " +
+	"text you type is called a \"cue\".\n\n" +
+    "Once you've entered your cue, click the Start button at the bottom or hold down " + 
+	"the SHIFT key type the ENTER key to start completing.\n\n" +
     "Remember: You are intelligent. LLMs do not think. Chat is an illusion.\n\n" +
     "Click the ? button (top-right) for more help.";
 
@@ -1113,7 +1115,6 @@ function WorkAreaTextKeyDown(event) {
     }
 
     // if we're not completing or replaying, and we get a return key, kick off completing.
-    // else if ((event.keyCode == 13) && !event.shiftKey) {
     else if ((event.keyCode == 13) && event.shiftKey) {
         if (kLogging || logThis) console.log("Enter key was pressed.");
 

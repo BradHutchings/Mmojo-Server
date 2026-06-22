@@ -60,16 +60,16 @@ var instructions =
     "</ul>\n" +
 
     "<hr />\n" +
-    "<h3>Mmojo Knowledge Appliance: Change the Model:</h3>\n" +
-    "<p>If you are running Mmojo Server on a Mmojo Knowledge Appliance, you can use the Mmojo Controls page to change which large language " +
+    "<h3>Mmojo Appliance: Change the Model:</h3>\n" +
+    "<p>If you are running Mmojo Server on a Mmojo Appliance, you can use the Mmojo Controls page to change which large language " +
         "model Mmojo Server uses:</p>\n" +
     "<ul>\n" +
     "<li><a href=\"/controls\" target=\"_blank\">Mmojo Controls</a></li>\n" +
     "</ul>\n" +
 
     "<hr />\n" +
-    "<h3>Mmojo Knowledge Appliance: Install Our Certificate Authority:</h3>\n" +
-    "<p>To remove security warnings for the Mmojo Knowledge Appliance on your devices and to allow the Mmojo app to install on " +
+    "<h3>Mmojo Appliance: Install Our Certificate Authority:</h3>\n" +
+    "<p>To remove security warnings for the Mmojo Appliance on your devices and to allow the Mmojo app to install on " +
         "your phones and tablets, please download and install our Certificate Authority on your devices.</p>\n\n" +
     "<ul>\n" +
     "<li><a href=\"/CA.crt\" >Mmojo Certificate Authority</a></li>\n" +

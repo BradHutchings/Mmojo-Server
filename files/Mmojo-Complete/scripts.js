@@ -2158,12 +2158,6 @@ function EditBookmark(event) {
     elements.workAreaText.focus();
 }
 
-function Help(event) {
-    event.stopPropagation();
-    elements.workAreaText.focus();
-    window.open('help.html', '_blank');
-}
-
 function GetElapsedTimeString(ms) {
     var logThis = false;
 

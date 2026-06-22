@@ -9,7 +9,7 @@ var instructions =
     "<p>These shortcuts are designed for desktop interaction, but also work if you have a physical keyboard attached to " +
         "your mobile device.</p>" +
     "<ul>\n" +
-        "<li>Holed down the SHIFT key and type the <b>RETURN</b> or <b>ENTER</b> key to start completing.</li>\n" + 
+        "<li>Hold down the SHIFT key and type the <b>RETURN</b> or <b>ENTER</b> key to start completing.</li>\n" + 
         "<li>Type <b>CTRL-SHIFT-RETURN</b> or <b>CTRL-SHIFT-ENTER</b> to make a new line in the Work Area and start completing. " +
             "This is useful when chatting using your name as a stop word.</li>\n" +
         "<li><b>CTRL-Click</b> (Windows and Linux) or <b>OPTION-Click</b> (Mac) to delete everything after the place you click. " +

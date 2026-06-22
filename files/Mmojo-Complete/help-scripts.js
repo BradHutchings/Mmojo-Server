@@ -87,7 +87,7 @@ var instructions =
 function PageLoaded() {
     FindElements();
 
-    elements.workAreaTextInner.innerHTML = instructions;
+    elements.helpText.innerHTML = instructions;
 
 }
 
@@ -98,11 +98,10 @@ function FindElements() {
     elements.printContent           = document.getElementById("print-content");
 
     elements.titleBar               = document.getElementById("title-bar");
-    elements.workAreaText           = document.getElementById("work-area-text");
-    elements.workAreaTextInner      = document.getElementById("work-area-text-inner");
+    elements.helpContainer          = document.getElementById("help-container");
+    elements.helpText               = document.getElementById("help-text");
 }
 
 function LoadPrint() {
-    elements.printContent.innerHTML = elements.workAreaTextInner.innerHTML;
-    // elements.printContent.style.fontSize = printSize;
+    elements.printContent.innerHTML = elements.helpText.innerHTML;
 }

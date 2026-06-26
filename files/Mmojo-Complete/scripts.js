@@ -349,6 +349,28 @@ function FindElements() {
 	elements.helpContainer			= document.getElementById("help-container");
 	elements.helpText				= document.getElementById("help-text");
 
+	elements.bookmarkMaker					= document.getElementById("bookmark-maker");
+	elements.bookmarkSettings				= document.getElementById("bookmark-settings");
+	elements.bookmarkLabel					= document.getElementById("bookmark-label");
+	elements.bookmarkLabelSpace				= document.getElementById("bookmark-label-space");
+	elements.bookmarkLinkLabel				= document.getElementById("bookmark-link-label");
+	elements.bookmarkLink					= document.getElementById("bookmark-link");
+	elements.bookmarkTemperatureBreak		= document.getElementById("bookmark-temperature-break");
+	elements.bookmarkTemperature			= document.getElementById("bookmark-temperature");
+	elements.bookmarkTokens					= document.getElementById("bookmark-tokens");
+	elements.bookmarkStopWordsBreak			= document.getElementById("bookmark-stop-words-break");
+	elements.bookmarkStopWordsCheckbox		= document.getElementById("bookmark-stop-words-checkbox");
+	elements.bookmarkStopWords				= document.getElementById("bookmark-stop-words");
+	elements.bookmarkModeBreak				= document.getElementById("bookmark-mode-break");
+	elements.bookmarkMode					= document.getElementById("bookmark-mode");
+	elements.bookmarkAutoCompleteCheckbox	= document.getElementById("bookmark-auto-complete-checkbox");
+	elements.bookmarkClearSpace				= document.getElementById("bookmark-clear-space");
+	elements.bookmarkClear					= document.getElementById("bookmark-clear");
+	elements.bookmarkCue					= document.getElementById("bookmark-cue");
+	elements.bookmarkCueText				= document.getElementById("bookmark-cue-text");
+	elements.bookmarkCompleted				= document.getElementById("bookmark-completed");
+	elements.bookmarkCueText				= document.getElementById("bookmark-completed-text");
+
     elements.status                 = document.getElementById("status");
     elements.statusText             = document.getElementById("status-text");
     elements.statusStart            = document.getElementById("status-start");
@@ -1528,6 +1550,10 @@ async function GetModelInfoFromServer() {
 
 function ToggleFiles(event) {
     event.stopPropagation();
+	if (!elements.bookmarkMaker.classList.contains("hidden")) {
+		ToggleBookmarkMaker(event);
+	}
+
 	if (elements.filesArea.classList.contains("hidden")) {
 		ShowFilesDirectoryName();
 		
@@ -1560,8 +1586,38 @@ function ToggleFiles(event) {
     HideElement(elements.helpContainer);
 }
 
+function ToggelBookmarkMaker(event) {
+    event.stopPropagation();
+	if (!elements.filesArea.classList.contains("hidden")) {
+		ToggleFiles(event);
+	}
+
+	HideElement(elements.settings);
+    HideElement(elements.toolsArea);
+    HideElement(elements.printSettings);
+    HideElement(elements.helpContainer);
+
+	if (elements.bookmarkMaker.classList.contains("hidden")) {
+    	HideElement(elements.workArea);
+    	HideElement(elements.status);
+    	ShowElement(elements.bookmarkMaker);
+	}
+	else {
+    	HideElement(elements.bookmarkMaker);
+		ShowElement(elements.workArea);
+    	ShowElement(elements.status);
+		elements.workAreaText.focus();
+	}
+}
+
 function ToggleHelp(event) {
     event.stopPropagation();
+	if (!elements.filesArea.classList.contains("hidden")) {
+		ToggleFiles(event);
+	}
+	if (!elements.bookmarkMaker.classList.contains("hidden")) {
+		ToggleBookmarkMaker(event);
+	}
 
 	HideElement(elements.settings);
     HideElement(elements.toolsArea);
@@ -1585,6 +1641,9 @@ function ToggleSettings(event) {
 	if (!elements.filesArea.classList.contains("hidden")) {
 		ToggleFiles(event);
 	}
+	if (!elements.bookmarkMaker.classList.contains("hidden")) {
+		ToggleBookmarkMaker(event);
+	}
 	
     elements.workAreaText.focus();
     ToggleShowElement(elements.settings);
@@ -1605,6 +1664,9 @@ function ToggleTools(event) {
 	if (!elements.filesArea.classList.contains("hidden")) {
 		ToggleFiles(event);
 	}
+	if (!elements.bookmarkMaker.classList.contains("hidden")) {
+		ToggleBookmarkMaker(event);
+	}
 
 	elements.workAreaText.focus()
     ToggleShowElement(elements.toolsArea);
@@ -1617,6 +1679,9 @@ function TogglePrintSettings() {
     elements.workAreaText.focus();
 	if (!elements.filesArea.classList.contains("hidden")) {
 		ToggleFiles(event);
+	}
+	if (!elements.bookmarkMaker.classList.contains("hidden")) {
+		ToggleBookmarkMaker(event);
 	}
 
 	ToggleShowElement(elements.printSettings)

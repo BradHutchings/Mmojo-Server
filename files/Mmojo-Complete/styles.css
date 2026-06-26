@@ -905,6 +905,7 @@ ul, li {
 #bookmark-completed {
     flex-grow: 1;
     padding: 0rem 0rem 0rem 0rem;
+    margin-bottom: 0rem;
     background: none;
 }
 

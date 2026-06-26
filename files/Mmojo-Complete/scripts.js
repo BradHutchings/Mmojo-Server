@@ -1593,9 +1593,9 @@ function ToggleBookmarkMaker(event) {
 	}
 
 	HideElement(elements.settings);
-    HideElement(elements.toolsArea);
     HideElement(elements.printSettings);
     HideElement(elements.helpContainer);
+    ShowElement(elements.toolsArea);
 
 	if (elements.bookmarkMaker.classList.contains("hidden")) {
     	HideElement(elements.workArea);

@@ -75,19 +75,19 @@
     height: 1.2rem;
 }
 
-#cue-text-area {
+#bookmark-cue {
     flex-grow: 1;
     padding: 0rem 0rem 0rem 0rem;
     background: none;
 }
 
-#completed-text-area {
+#bookmark-completed {
     flex-grow: 3;
     padding: 0rem 0rem 0rem 0rem;
     background: none;
 }
 
-#cue-text, #completed-text {
+#bookmark-cue-text, #bookmark-completed-text {
     overflow-x: hidden;
     overflow-y: auto;
     background-color: var(--content-light);

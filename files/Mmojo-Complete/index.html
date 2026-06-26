@@ -34,7 +34,7 @@
             <img id="settings-icon" src="images/settings-64.png" onclick="ToggleSettings(event);" title="Toggle Settings" />
             <img id="tools-icon" src="images/tools-64.png" onclick="ToggleTools(event);" title="Toggle Tools" />
             <img id="files-icon" src="images/files-64.png" class="hidden" onclick="ToggleFiles(event);" title="Toggle Files" />
-            <img id="help-icon" src="images/help-64.png" onclick="Help(event);" title="Help"/>
+            <img id="help-icon" src="images/help-64.png" onclick="ToggleHelp(event);" title="Help"/>
         </div>
 
         <div id="tools-area" class="row hidden" onclick="WorkAreaFocus();">
@@ -146,8 +146,12 @@
             </div>
         </div>
 
+        <div id="help-container" class="row hidden editing">
+            <div id="help-text"></div>
+        </div>
+
         <div id="files-area" class="row hidden">
-            <div id="files-area-header" class="row">
+            <div id="files-directory" class="row">
                 <div id="files-directory-name"><b>Directory:</b> Directory is not implemented yet.</div>
                 <button id="files-directory-choose" onclick="FilesDirectoryChoose();">Choose</button>
                 <button id="files-download-all" onclick="FilesDownloadAll();">Download All</button>
@@ -176,8 +180,8 @@
 
         <div id="bookmark-maker" class="row hidden">
             <div id="bookmark-settings" class="row" 
-                ondrop="settings_drop(event);"
-                ondragover="settings_dragover(event);"
+                ondrop="BookmarkSettingsDrop(event);"
+                ondragover="BookmarkSettingsDragOver(event);"
                 >
     
                 <label for="bookmark-settings-label">Label:</label>
@@ -239,7 +243,6 @@
     
                 <div id="bookmark-settings-clear-space" class="space"></div>
                 <button id="bookmark-settings-clear" class="clear-button" onclick="ClearBookmarkMaker();">Clear</button>
-    
             </div>
     
             <div id="bookmark-cue" class="row">
@@ -251,10 +254,8 @@
                 <textarea id="bookmamrk-completed-text" class="row-item"  onkeydown="TextChanged();"
                     placeholder=""></textarea>
     
-            </div>
-    
+            </div>    
         </div>
-
         
         <div id="status" class="row hidden" onclick="WorkAreaFocus();">
             <div id="status-text"><b>Status:</b> The status goes here.</div>

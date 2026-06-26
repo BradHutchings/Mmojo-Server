@@ -903,7 +903,7 @@ ul, li {
 }
 
 #bookmark-completed {
-    flex-grow: 3;
+    flex-grow: 1;
     padding: 0rem 0rem 0rem 0rem;
     background: none;
 }

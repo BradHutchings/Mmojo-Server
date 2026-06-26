@@ -1586,7 +1586,7 @@ function ToggleFiles(event) {
     HideElement(elements.helpContainer);
 }
 
-function ToggelBookmarkMaker(event) {
+function ToggleBookmarkMaker(event) {
     event.stopPropagation();
 	if (!elements.filesArea.classList.contains("hidden")) {
 		ToggleFiles(event);

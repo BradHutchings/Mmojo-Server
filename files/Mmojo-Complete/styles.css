@@ -842,6 +842,12 @@ ul, li {
     margin-right: 0.5rem;
 }
 
+#bookmark-maker {
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0px 0px 0px 0px;
+}
+
 #bookmark-settings {
     display: flex;
     visibility: visible;

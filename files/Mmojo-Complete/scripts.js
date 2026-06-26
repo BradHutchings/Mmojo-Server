@@ -1324,17 +1324,38 @@ function KeyPress(event) {
     var evtobj = window.event? event : e
 
     if (event.ctrlKey && !event.shiftKey && (event.key == 'z')) {
-        if (kLogging) console.log('ctrl-b');
+        if (kLogging) console.log('ctrl-z');
         event.preventDefault();
 
         UndoChange();
     }
 
     if (event.ctrlKey && event.shiftKey && (event.key == 'Z')) {
-        if (kLogging) console.log('ctrl-shift-b');
+        if (kLogging) console.log('ctrl-shift-Z');
         event.preventDefault();
 
         RedoChange();
+    }
+
+    if (event.ctrlKey && !event.shiftKey && (event.key == 'b')) {
+        if (kLogging) console.log('ctrl-b');
+        event.preventDefault();
+
+		ToggleBookmarkMaker(event);
+    }
+
+    if (event.ctrlKey && !event.shiftKey && (event.key == 'e')) {
+        if (kLogging) console.log('ctrl-e');
+        event.preventDefault();
+
+		ToggleSettings(event);
+    }
+
+    if (event.ctrlKey && !event.shiftKey && (event.key == 't')) {
+        if (kLogging) console.log('ctrl-e');
+        event.preventDefault();
+
+		ToggleTools(event);
     }
 }
 

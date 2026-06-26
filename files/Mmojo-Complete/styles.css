@@ -891,7 +891,7 @@ ul, li {
     visibility: inherit;
 }
 
-$bookmark-stop-words-checkbox, #bookmark-auto-complete-checkbox {
+#bookmark-stop-words-checkbox, #bookmark-auto-complete-checkbox {
     margin-right: 0.25rem;
     width: 1.2rem;
     height: 1.2rem;

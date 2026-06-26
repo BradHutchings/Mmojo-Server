@@ -1351,7 +1351,7 @@ function KeyPress(event) {
 		ToggleSettings(event);
     }
 
-    if (event.ctrlKey && !event.shiftKey && (event.key == 't')) {
+    if (event.ctrlKey && !event.shiftKey && (event.key == 'l')) {
         if (kLogging) console.log('ctrl-e');
         event.preventDefault();
 

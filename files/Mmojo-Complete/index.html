@@ -52,7 +52,7 @@
                 <img id="read-icon" src="images/read-64.png" onclick="Read(event)" title="Read Work Area" />
                 <img id="download-icon" src="images/download-64.png" onclick="Download(event)" title="Download Work Area" />
                 <img id="print-icon" src="images/print-64.png" onclick="TogglePrintSettings(event);" title="Print Work Area"/>
-                <img id="bookmark-icon" src="images/bookmark-64.png" onclick="EditBookmark(event);" title="Bookmark Maker"/>
+                <img id="bookmark-icon" src="images/bookmark-64.png" onclick="ToggelBookmarkMaker(event);" title="Bookmark Maker"/>
                 <img id="full-screen-icon" src="images/fullscreen-64.png" onclick="ToggleFullScreen(event);" title="Toggle Full Screen"/>
             </div>
         </div>
@@ -184,16 +184,16 @@
                 ondragover="BookmarkSettingsDragOver(event);"
                 >
     
-                <label for="bookmark-settings-label">Label:</label>
-                <input id="bookmark-settings-label" type="text" oninput="UpdateBookmark();" />
-                <div id="bookmark-space" class="space"></div>
+                <label for="bookmark-label">Label:</label>
+                <input id="bookmark-label" type="text" oninput="UpdateBookmark();" />
+                <div id="bookmark-label-space" class="space"></div>
     
                 <label id="bookmark-link-label" for="bookmark">Bookmark:</label>
                 <a id="bookmark-link" href="/#"></a>
     
-                <div id="bookmark-settings-temperature-break" class="break"></div>
-                <label for="bookmark-settings-temperature">Temperature:</label>
-                <select id="bookmark-settings-temperature" onchange="UpdateBookmark();">
+                <div id="bookmark-temperature-break" class="break"></div>
+                <label for="bookmark-temperature">Temperature:</label>
+                <select id="bookmark-temperature" onchange="UpdateBookmark();">
                     <option value="" selected></option>
                     <option value="0.00">0.00</option>
                     <option value="0.10">0.10</option>
@@ -204,8 +204,8 @@
                     <option value="1.00">1.00</option>
                 </select>
                 <div class="vertical-divider"></div>
-                <label for="bookmark-settings-tokens">Tokens:</label>
-                <select id="bookmark-settings-tokens" onchange="UpdateBookmark();">
+                <label for="bookmark-tokens">Tokens:</label>
+                <select id="bookmark-tokens" onchange="UpdateBookmark();">
                     <option value="" selected></option>
                     <option value="-1">Complete</option>
                     <option value="5">5</option>
@@ -218,17 +218,16 @@
                     <option value="10000">10,000</option>
                 </select>
             
-                <div id="bookmark-settings-stop-words-break" class="break"></div>
-                <input id="bookmark-settings-stop-words-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
-                <label for="bookmark-settings-stop-words-checkbox">Stop Words</label>
+                <div id="bookmark-stop-words-break" class="break"></div>
+                <input id="bookmark-stop-words-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
+                <label for="bookmark-stop-words-checkbox">Stop Words</label>
                 <div class="vertical-divider"></div>
-                <label for="bookmark-settings-stop-words">Stop Words</label>
-                <input id="bookmark-settings-stop-words" type="text" oninput="UpdateBookmark();"/>
+                <label for="bookmark-stop-words">Stop Words</label>
+                <input id="bookmark-stop-words" type="text" oninput="UpdateBookmark();"/>
     
-                <div id="bookmark-settings-options-break" class="break"></div>
-    
-                <label for="bookmark-settings-mode">Mode:</label>
-                <select id="bookmark-settings-mode" onchange="UpdateBookmark();">
+                <div id="bookmark-mode-break" class="break"></div>
+                <label for="bookmark-mode">Mode:</label>
+                <select id="bookmark-mode" onchange="UpdateBookmark();">
                     <option value="cue-link" selected>Cue (Link)</option>
                     <option value="cue-script">Cue (Script)</option>
                     <option value="append">Append</option>
@@ -238,11 +237,11 @@
                 </select>
     
                 <div class="vertical-divider"></div>
-                <input id="bookmark-settings-auto-complete-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
-                <label for="bookmark-settings-auto-complete-checkbox">Auto-Complete</label>
+                <input id="bookmark-auto-complete-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
+                <label for="bookmark-auto-complete-checkbox">Auto-Complete</label>
     
-                <div id="bookmark-settings-clear-space" class="space"></div>
-                <button id="bookmark-settings-clear" class="clear-button" onclick="ClearBookmarkMaker();">Clear</button>
+                <div id="bookmark-clear-space" class="space"></div>
+                <button id="bookmark-clear" class="clear-button" onclick="ClearBookmarkMaker();">Clear</button>
             </div>
     
             <div id="bookmark-cue" class="row">

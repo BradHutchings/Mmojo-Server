@@ -59,6 +59,9 @@ const kModePrepend = "prepend";
 const kModePaste = "paste";
 const kModeReplace = "replace";
 const kModeReplaceRegEx = "replace-regex";
+const kModes = [kModeCueLink, kModeCueScript, kModeAppend, kModePrepend, kModePaste, kModeReplace, kModeReplaceRegEx];
+const kLinkModes = [kModeCueLink];
+const kScriptModes = [kModeCueScript, kModeAppend, kModePrepend, kModePaste, kModeReplace, kModeReplaceRegEx];
 
 const kWorkAreaTextPlaceholder = 
     "Welcome to Mmojo Complete, delivered to you from your own Mmojo Server. " +
@@ -152,7 +155,22 @@ var kHelpHTML =
     "</ul>\n" +
     "<div style=\"height: 2rem;\"></div>\n\n";
 
+const isMmojoBookmarkPage = true;
+var bookmarkTextChanged = true;
 
+const kBookmarksCompletedTextPlaceholder = 
+    "The Bookmark Maker makes web browser bookmarks and links for automating Mmojo Complete.\n\n" +
+    "The settings are in the olive area at top:\n" +
+    "    - Label lets you set the label for the bookmark so you don't have to rename it.\n" +
+    "    - Temperature, Tokens, and Stop Words work as they do in Mmojo Complete Tool.\n" +
+    "    - If the Auto-Complete checkbox is checked, opening the bookmark will cause the model to automatically start completing.\n" +
+    "    - Append will append the cue to what's in the work area. Use to make clarifying bookmarks.\n" +
+    "    - Replace will update the work area text, replacing the text in the top peach area with text in the bottom peach area. Use to make clarifying bookmarks.\n" +
+    "The top peach area if for your cue.\n\n" +
+    "The bottom peach area (this area) is for completed text you wish to play back. You can simulate the model responding with a known response.\n\n" +
+    "A bookmark link is continually updated at the top right of the olive area. " +
+        "Click the link to open it in a new tab or drag the link to the Bookmarks Bar in your web browser.\n\n" +
+    "Updated: " + kUpdated;
 
 var elements = {};                  // Fine to have this in global space.
 
@@ -238,6 +256,8 @@ function PageLoaded() {
     elements.workAreaText.focus();
 
     elements.helpText.innerHTML = kHelpHTML;
+	
+    elements.bookmarkCompletedText.placeholder = kBookmarksCompletedTextPlaceholder;
 
     EnableControls();
     if (script.isMobile) {
@@ -267,6 +287,14 @@ function PageLoaded() {
 	setInterval(function() {
         ShowHideFilesIcon();
     }, 3000);
+
+	setInterval(function() {
+        if (bookmarkTextChanged) {
+            // console.log('Text has changed.');
+            UpdateBookmark();
+        }
+    }, 1000);
+
 
     checked = localStorage.getItem('showCopyAndPaste');
     if (checked === "true") {
@@ -369,7 +397,7 @@ function FindElements() {
 	elements.bookmarkCue					= document.getElementById("bookmark-cue");
 	elements.bookmarkCueText				= document.getElementById("bookmark-cue-text");
 	elements.bookmarkCompleted				= document.getElementById("bookmark-completed");
-	elements.bookmarkCueText				= document.getElementById("bookmark-completed-text");
+	elements.bookmarkCompletedText			= document.getElementById("bookmark-completed-text");
 
     elements.status                 = document.getElementById("status");
     elements.statusText             = document.getElementById("status-text");
@@ -2909,5 +2937,365 @@ function StatusClearClicked() {
 	ClearWorkArea();
 }
 
+function UpdateBookmark() {
+    let logThis = false;
+    if (kLogging || logThis) console.log("UpdateBookmark()");
 
+    bookmarkTextChanged = false;
 
+    let hash = "#";
+    let label = elements.bookmarkLabel.value;
+
+    let temperature = elements.bookmarkTemperature.value;
+    let tokens = elements.bookmarkTokens.value;
+    let stopWordsText = elements.bookmarkStopWords.value;
+    if (!elements.bookmarkStopWordsCheckbox.checked) {
+        stopWordsText = '';
+    }
+    let autoComplete = elements.bookmarkAutoCompleteCheckbox.checked;
+    let mode = elements.bookmarkMode.value;
+
+    if (!kModes.includes(mode)) {
+        mode = kModeCueLink;
+    }
+    let bookmarkTypeLink = kLinkModes.includes(mode);
+    let bookmarkTypeScript = kScriptModes.includes(mode);
+
+    let cue = elements.bookmarkCueText.value
+    let completed = elements.bookmarkCompletedText.value
+
+    var data = {
+        "label": label,
+        "temperature": temperature,
+        "tokens": tokens,
+        "stop-words": stopWordsText,
+        "auto-complete": autoComplete,
+        "mode": mode,
+        "cue": cue,
+        "completed": completed,
+    }
+
+    if (kLogging || logThis) console.log(data);
+    if (kLogging || logThis) console.log("----------")
+
+    let dataJson = JSON.stringify(data);
+    hash = '#' + btoa(encodeURIComponent(dataJson));
+
+    if (kLogging || logThis) console.log(dataJson);
+
+    if (label == '') {
+        label = "Mmojo Complete"
+        if (cue != '') {
+            label = (append) ? "+++ Complete: " : "Complete: ";
+            label = label + cue.split(' ').slice(0,10).join(' ');
+            label = label.replaceAll('\n', ' ');
+        }
+        else if (completed != '') {
+            label = 'Completed: ';
+            label = label + completed.split(' ').slice(0,10).join(' ');
+            label = label.replaceAll('\n', ' ');
+        }
+    }
+
+    if (kLogging || logThis) console.log("- dataJson:\n" + dataJson);
+    if (kLogging || logThis) console.log("- hash:\n" + hash);
+    if (kLogging || logThis) console.log("- label:\n" + label);
+
+    let bookmarkLabel = "Bookmark:";
+    if (bookmarkTypeLink) {
+        bookmarkLabel = "Link Bookmark:"
+    }
+    else if (bookmarkTypeScript) {
+        bookmarkLabel = "Script Bookmark:"
+    }
+
+    elements.bookmarkLinkLabel.innerText = bookmarkLabel;
+    elements.bookmarkLink.innerText = label;
+
+    if (bookmarkTypeScript) {
+        // The bookmark won't run at all on the Google new tab page in Chrome. So weird. -Brad 2025-06-04
+
+        cue = cue.replace(/[\\"']/g, '\\$&');
+        cue = cue.replace(/\n/g, '\\n');
+
+        var js =
+            "javascript:(() => { \n" + 
+            "    let hash = '" + hash + "';\n" +
+            "    let activeElt = document.activeElement;\n" +
+            "    if (typeof isMmojoPage !== 'undefined') {\n" +
+            "        location.hash = hash;\n" +
+            "    }\n" +
+            "    else if (activeElt) {\n" +
+            "        let cue = \"" + cue + "\";\n" +
+            "        let value = (" + (mode == "append") + ") ? activeElt.value + cue : cue;\n" +
+            "        activeElt.value = value;\n" +
+            "    }\n" + 
+            "})();"
+
+        if (kLogging || logThis) console.log(js);
+
+        elements.bookmarkLink.href = js;
+    }
+    else if (bookmarkTypeLink) {
+        // This will work with server behind a proxy with a path. -Brad 2026-06-06.
+        const currentUrl = window.location.href; 
+        const parentURL = new URL('./', currentUrl); 
+        var location = parentURL.href + hash;
+
+        elements.bookmarkLink.href = location;
+    }
+}
+
+function BookmarkTextChanged() {
+    bookmarkTextChanged = true;
+}
+
+function ClearBookmarkMaker() {
+    let logThis = false;
+    if (kLogging || logThis) console.log("ClearBookmarkMaker()");
+
+    let label = "";
+    let temperature = "";
+    let tokens = "";
+    let stopWords = "";
+    let mode = kModeCueLink;
+    let autoComplete = false;
+    let cue = "";
+    let completed = "";
+
+    elements.bookmarkLabel.value = label;
+    elements.bookmarkTemperature.value = temperature;
+    elements.bookmarkTokens.value = tokens;
+    elements.bookmarkStopWordsCheckbox.checked = (stopWords != '');
+    elements.bookmarkStopWords.value = stopWords;
+    elements.bookmarkMode.value = mode;
+    elements.bookmarkAutoCompleteCheckbox.checked = autoComplete;
+
+    elements.bookmarkCueText.value = cue;
+    elements.bookmarkCimpletedText.value = completed;
+
+    UpdateBookmark();
+}
+
+function bookmark_drop(event) {
+    let logThis = false;
+    if (kLogging || logThis) console.log("bookmark_drop(event)");
+
+    event.preventDefault();
+
+    try {
+        let bookmarkData = "";
+        let hash = "";
+        let jsonData = "";
+        let data = "";
+    
+        if (kLogging || logThis) console.log("event.dataTransfer.types: " + event.dataTransfer.types);
+
+        if (event.dataTransfer.types.includes("text/plain")) {
+            if (kLogging || logThis) console.log("event.dataTransfer.types has text/plain.");
+            bookmarkData = event.dataTransfer.getData("text/plain");
+        }
+
+        if (kLogging || logThis) console.log("bookmarkData: " + bookmarkData);
+
+        var hostUrl = window.location.protocol + "//" + window.location.host;
+
+        if (bookmarkData.startsWith("javascript:(") && bookmarkData.endsWith("();")) {
+            if (kLogging || logThis) console.log("This is one of our script bookmarks.");
+
+            let regex = /'.*?'/g;
+            let matches = bookmarkData.match(regex);
+            let match = matches[0];
+            if (kLogging || logThis) console.log("match: " + match);
+            hash = match.replaceAll('#', '').replaceAll('\'', '');
+            if (kLogging || logThis) console.log("hash: " + hash);
+
+            UseBookmarkHash(hash);
+        }
+        else if (bookmarkData.startsWith(hostUrl)) {
+            if (kLogging || logThis) console.log("This is one of our link bookmarks.");
+
+            let regex = /#.*/g;
+            let matches = bookmarkData.match(regex);
+            let match = matches[0];
+            if (kLogging || logThis) console.log("match: " + match);
+            hash = match.replaceAll('#', '').replaceAll('\'', '');
+            if (kLogging || logThis) console.log("hash: " + hash);
+
+            UseBookmarkHash(hash);
+        }
+    }
+    catch {
+        if (kLogging || logThis) console.log("settings_drop() catch");
+    }
+
+    UpdateBookmark();
+}
+
+function bookmark_dragover(event) {
+    // if (kLogging) console.log("drag over");
+    event.preventDefault();
+}
+
+function UseBookmarkHash(hash) {
+    let logThis = false;
+    if (kLogging || logThis) console.log("UseBookmarkHash() -- " + hash);
+
+    let label = null;
+    let temperature = null;
+    let tokens = null;
+    let stopWords = null;
+    let mode = kModeCueLink;
+    let autoComplete = false;
+    let cue = "";
+    let completed = "";
+
+    // If something goes wrong, restore the settings.
+    let saveLabelValue = elements.bookmarkLabel.value;
+    let saveTemperatureValue = elements.bookmarkTemperature.value;
+    let saveTokensValue = elements.bookmarkTokens.value;
+    let saveStopWordsCheckboxValue = elements.bookmarkStopWordsCheckbox.checked;
+    let saveStopWordsValue = elements.bookmarkStopWords.value;
+    let saveModeValue = elements.bookmarkMode.value;
+    let saveAutoCompleteValue = elements.bookmarkAutoCompleteCheckbox.checked;
+    let saveCueTextValue = elements.bookmarkCueText.value;
+    let saveCompletedTextValue = elements.bookmarkCompletedText.value;
+
+    try {
+        var dataJson = decodeURIComponent(atob(hash.replace('#', '')));
+
+        if (dataJson != '') {
+            if (kLogging || logThis) console.log("dataJson:");
+            if (kLogging || logThis) console.log(dataJson);
+            var data = JSON.parse(dataJson);
+            if (kLogging || logThis) console.log("data:");
+            if (kLogging || logThis) console.log(data);
+
+            // content will be pasted in immediately.
+            // completed will be pasted in by replayer.
+
+            if ('label' in data) {
+                label = data['label'];
+                elements.bookmarkLabel.value = label;
+            }
+            else {
+                elements.bookmarkLabel.value = '';
+            }
+
+            if ('temperature' in data) {
+                temperature = data['temperature'];
+                elements.bookmarkTemperature.value = temperature;
+            }
+            else {
+                elements.bookmarkTemperature.value = '0.25';
+            }
+
+            if ('tokens' in data) {
+                tokens = data['tokens'];;
+                elements.bookmarkTokens.value = tokens;
+            }
+            else {
+                elements.bookmarkTokens.value = '-1';
+            }
+
+            if ('stop-words' in data) {
+                stopWords = data['stop-words'];
+                elements.bookmarkStopWordsCheckbox.checked = (stopWords != "");
+                elements.bookmarkStopWords.value = stopWords;
+            }
+            else {
+                elements.bookmarkStopWordsCheckbox.checked = false
+                elements.bookmarkStopWords.value = '';
+            }
+
+            if ('mode' in data) {
+                mode = data['mode'];
+                if (kLogging || logThis) console.log("mode: " + mode);
+                if (!kModes.includes(mode)) {
+                    mode = kModeCueLink;
+                }
+                if (kLogging || logThis) console.log("mode: " + mode);
+                elements.bookmarkMode.value = mode;
+            }
+            else {
+                elements.bookmarkMode.value = kModeCueLink;
+            }
+
+            if ('auto-complete' in data) {
+                autoComplete = data['auto-complete'];
+                elements.bookmarkAutoCompleteCheckbox.checked = autoComplete;
+            }
+            else {
+                elements.bookmarkAutoCompleteCheckbox.checked = false;
+            }
+
+            if ('cue' in data) {
+                cue = data['cue'];
+                elements.bookmarkCueText.value = cue;
+            }
+            else {
+                elements.bookmarkCueText.value = '';
+            }
+
+            if ('completed' in data) {
+                completed = data['completed'];
+                elements.bookmarkCompletedText.value = completed;
+            }
+            else {
+                elements.bookmarkCompletedText.value = '';
+            }
+
+            // convert old generate to complete.
+            if ('generated' in data) {
+                completed = data['generated'];
+                elements.bookmarkCompletedText.value = completed;
+            }
+
+            if ('auto-generate' in data) {
+                autoComplete = data['auto-generate'];
+                elements.bookmarkAutoCompleteCheckbox.checked = autoComplete;
+            }
+
+            // convert old append and replace to modes.
+            if ('append' in data) {
+                let append = data['append'];
+                if (append) {
+                    elements.bookmarkMode.value = kModeAppend;
+                }
+            }
+
+            if ('replace' in data) {
+                let replace = data['replace'];
+                if (replace) {
+                    elements.bookmarkMode.value = kModeReplace;
+                }
+            }
+
+            if (kLogging || logThis) console.log('- cue:');
+            if (kLogging || logThis) console.log(cue);
+            if (kLogging || logThis) console.log('- completed:');
+            if (kLogging || logThis) console.log(completed);
+        }
+    }
+    catch {
+        if (kLogging || logThis) console.log("UseHash() catch");
+
+        elements.bookmarkLabel.value = saveLabelValue;
+        elements.bookmarkTemperature.value = saveTemperatureValue;
+        elements.bookmarkTokens.value = saveTokensValue;
+        elements.bookmarkStopWordsCheckbox.checked = saveStopWordsCheckboxValue;
+        elements.bookmarkStopWords.value = saveStopWordsValue;
+
+        elements.bookmarkAutoCompleteCheckbox.checked = saveAutoCompleteValue;
+        elements.bookmarkMode.value = saveModeValue;
+
+        elements.bookmarkCueText.value = saveCueTextValue;
+        elements.bookmarkCompletedText.value = saveCompletedTextValue;
+    }
+
+    elements.bookmarkCue.focus();
+    UpdateBookmark();
+
+    // updatingHash = true;
+    // location.hash = '';
+}

@@ -1811,7 +1811,7 @@ function MakeHash() {
         }
     }
     let mode = kModeCueLink;
-    let autoComplete = true;
+    let autoComplete = false;
 
     var label = 'Mmojo Complete';
     if (cue != '') {

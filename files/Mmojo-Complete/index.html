@@ -179,11 +179,7 @@
         </div>
 
         <div id="bookmark-maker" class="row hidden">
-            <div id="bookmark-settings" class="row" 
-                ondrop="BookmarkSettingsDrop(event);"
-                ondragover="BookmarkSettingsDragOver(event);"
-                >
-    
+            <div id="bookmark-settings" class="row" ondrop="BookmarkOnDrop(event);" ondragover="BookmarkOnDragOver(event);" >
                 <label for="bookmark-label">Label:</label>
                 <input id="bookmark-label" type="text" oninput="UpdateBookmark();" />
                 <div id="bookmark-label-space" class="space"></div>
@@ -245,12 +241,12 @@
             </div>
     
             <div id="bookmark-cue" class="row">
-                <textarea id="bookmark-cue-text" class="row-item" onkeydown="TextChanged();"
+                <textarea id="bookmark-cue-text" class="row-item" onkeydown="BookmarkTextChanged();"
                     placeholder=""></textarea>
                 </div>
     
             <div id="bookmark-completed" class="row">
-                <textarea id="bookmark-completed-text" class="row-item"  onkeydown="TextChanged();"
+                <textarea id="bookmark-completed-text" class="row-item"  onkeydown="BookmarkTextChanged();"
                     placeholder=""></textarea>
     
             </div>    

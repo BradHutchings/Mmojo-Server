@@ -1647,6 +1647,9 @@ function ToggleBookmarkMaker(event) {
     ShowElement(elements.toolsArea);
 
 	if (elements.bookmarkMaker.classList.contains("hidden")) {
+		let hash = MakeHash();
+		UseBookmarkHash(hash);
+		
     	HideElement(elements.workArea);
     	HideElement(elements.status);
     	ShowElement(elements.bookmarkMaker);

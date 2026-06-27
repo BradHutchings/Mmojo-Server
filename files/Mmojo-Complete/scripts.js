@@ -3072,14 +3072,14 @@ function ClearBookmarkMaker() {
     elements.bookmarkAutoCompleteCheckbox.checked = autoComplete;
 
     elements.bookmarkCueText.value = cue;
-    elements.bookmarkCimpletedText.value = completed;
+    elements.bookmarkCompletedText.value = completed;
 
     UpdateBookmark();
 }
 
-function bookmark_drop(event) {
+function BookmarkOnDrop(event) {
     let logThis = false;
-    if (kLogging || logThis) console.log("bookmark_drop(event)");
+    if (kLogging || logThis) console.log("BookmarkOnDrop(event)");
 
     event.preventDefault();
 
@@ -3132,9 +3132,11 @@ function bookmark_drop(event) {
     UpdateBookmark();
 }
 
-function bookmark_dragover(event) {
-    // if (kLogging) console.log("drag over");
-    event.preventDefault();
+function BookmarkOnDragOver(event) {
+    let logThis = false;
+    if (kLogging || logThis) console.log("BookmarkOnDragOver(event)");
+
+	event.preventDefault();
 }
 
 function UseBookmarkHash(hash) {

@@ -959,6 +959,8 @@ async function StartCompleting(workAreaText, temperature, tokens, stopWords) {
 
     script.completingController = null;
     SetCompleting(false);
+
+	console.log("*** script.completedContent: " + script.completedContent);
 }
 
 function StopCompleting() {

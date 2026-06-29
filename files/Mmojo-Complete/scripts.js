@@ -1775,7 +1775,7 @@ function ScrollToSelectionStart() {
 }
 
 function MakeHash() {
-    let logThis = false;
+    let logThis = true;
     if (kLogging || logThis) console.log("MakeHash(" + completed + ")");
     if (kLogging || logThis) console.trace();
 
@@ -1784,16 +1784,19 @@ function MakeHash() {
     if (script.completedContent === undefined) {
         script.completedContent = '';
     }
+	if (kLogging || logThis) console.log("- script.completedContent: " + script.completedContent);
 
     var workAreaText = elements.workAreaText.value;
     var cue = '';
     var completed = '';
 
     if ((script.completedContent != '') && (workAreaText.endsWith(script.completedContent))) {
+		if (kLogging || logThis) console.log("- Have cue and completed.");
         cue = workAreaText.substring(0, workAreaText.length - script.completedContent.length);
         completed = script.completedContent;
     }
     else {
+		if (kLogging || logThis) console.log("- Have cue.");
         cue = workAreaText;
         completed = "";
     }
@@ -1831,7 +1834,7 @@ function MakeHash() {
     }
 
     var dataJson = JSON.stringify(data);
-    if (kLogging || logThis) console.log("dataJson: " + dataJson);
+    if (kLogging || logThis) console.log("- dataJson: " + dataJson);
 
     var hash = "";
     try {
@@ -1840,7 +1843,7 @@ function MakeHash() {
     catch {
         hash = "";
     }
-    if (kLogging || logThis) console.log("hash: " + hash);
+    if (kLogging || logThis) console.log("- hash: " + hash);
 
     result = hash;
     return result;

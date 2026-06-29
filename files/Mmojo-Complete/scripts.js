@@ -1775,7 +1775,7 @@ function ScrollToSelectionStart() {
 }
 
 function MakeHash() {
-    let logThis = true;
+    let logThis = false;
     if (kLogging || logThis) console.log("MakeHash(" + completed + ")");
     if (kLogging || logThis) console.trace();
 

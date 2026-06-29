@@ -2357,8 +2357,10 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 	}
 	else if (codeType == "html") {
 		result.filename = "index.html"
-		const regex = "[A-Za-z0-9-_.]+\.html";
+		// const regex = "[A-Za-z0-9-_.]+\.html";
+		const regex = /[A-Za-z0-9-_.]+\.html/;
 		let match = result.contents.match(regex);
+		if (logThis) console.log("  - html match: " + match);
 		if (match !== null) {
 			result.filename = match[0];
 		}

@@ -959,8 +959,6 @@ async function StartCompleting(workAreaText, temperature, tokens, stopWords) {
 
     script.completingController = null;
     SetCompleting(false);
-
-	console.log("*** script.completedContent: " + script.completedContent);
 }
 
 function StopCompleting() {
@@ -1286,7 +1284,7 @@ function WorkAreaTextKeyDown(event) {
         elements.workAreaText.setSelectionRange(workAreaLength, workAreaLength);
     }
 
-    else {
+    else if (!event.ctrlKey) {
         // This will change the content area, so forget completedContent.
         script.completedContent = "";
 		script.replayText = "";
@@ -1382,7 +1380,7 @@ function KeyPress(event) {
     }
 
     if (event.ctrlKey && !event.shiftKey && (event.key == 'l')) {
-        if (kLogging) console.log('ctrl-e');
+        if (kLogging) console.log('ctrl-l');
         event.preventDefault();
 
 		ToggleTools(event);

@@ -85,7 +85,7 @@ body {
     display: flex;
 }
 
-label, #model-labelxx, #updated-labelxx {
+label {
     margin-right: 0.25rem;
     margin-top: auto;
     margin-bottom: auto;
@@ -389,7 +389,7 @@ ul, li {
     margin-right: 0.75rem;
 }
 
-#temperature, #tokens, #mode, #print-size, #picture-width {
+#temperature, #tokens, #theme, #bookmark-mode, #print-size, #picture-width {
     margin-right: 0.75rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -967,6 +967,8 @@ ul, li {
     #tokens-divider, #tokens-label, #tokens,
     #stop-words-divider, #stop-words-checkbox,  #stop-words-checkbox-label,
     #stop-words-break, #stop-words-label, #stop-words,
+    #theme-label, #theme,
+    $api-key-label, #api-key,
     #print-size-break, #print-size-label, #print-size,
     #picture-width-divider, #picture-width-label, #picture-width,
     #picture-url-break, #picture-url-label, #picture-url,

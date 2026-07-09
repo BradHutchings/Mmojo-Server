@@ -296,10 +296,20 @@ function PageLoaded() {
     }, 1000);
 
 
-    checked = localStorage.getItem('showCopyAndPaste');
+    var checked = localStorage.getItem('showCopyAndPaste');
     if (checked === "true") {
         elements.showCopyAndPasteCheckbox.checked = true;
     }
+
+	var apiKey = localStorage.getItem('apiKey');
+	elements.apiKey.value = apiKey;
+
+	var theme = localStorage.getItem('theme');
+	if (theme == "") {
+		theme = "peach-olive";
+	}
+	elements.theme.value = theme;
+
     EnableControls();
 }
 
@@ -338,6 +348,10 @@ function FindElements() {
     elements.stopWordsBreak             = document.getElementById("stop-words-break");
     elements.stopWordsLabel             = document.getElementById("stop-words-label");
     elements.stopWords                  = document.getElementById("stop-words");
+    elements.apiKeyLabel             	= document.getElementById("api-key-label");
+    elements.apiKey                  	= document.getElementById("api-key");
+    elements.themeLabel             	= document.getElementById("theme-label");
+    elements.theme                  	= document.getElementById("theme-key");
 
     elements.printSettings          = document.getElementById("print-settings");
     elements.printSize              = document.getElementById("print-size");
@@ -661,6 +675,26 @@ function EnableCopyPaste() {
     });
 }
 
+function APIKeyChanged(event) {
+    if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	var apiKey = elements.apiKey.value;
+	localStorage.setItem('apiKey', apiKey);
+    console.log("Set apiKey to: \"" + apiKey + "\".");
+}
+
+function ThemeChanged(event) {
+    if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	var theme = elements.theme.value;
+	localStorage.setItem('theme', theme);
+    console.log("Set theme to: \"" + theme + "\".");
+}
+
 function StopWordsSetFocus() {
     elements.stopWords.focus();
     let stopWordsLength = elements.stopWords.value.length;
@@ -699,6 +733,9 @@ function Complete() {
         if (!elements.stopWordsCheckbox.checked) {
             stopWords = [];
         }
+
+		var apiKey = elements.apiKey.value;
+        if (kLogging) console.log('API Key: ' + apiKey);
 
         if (kLogging) console.log(workAreaText);
 

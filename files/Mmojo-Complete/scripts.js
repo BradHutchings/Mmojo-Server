@@ -695,16 +695,16 @@ function ThemeChanged(event) {
     if (kLogging) console.log("Set theme to: \"" + theme + "\".");
 
 	if (theme === "light") {
-		elements.body.classlist.add("theme-light");
-		elements.body.classlist.remove("theme-dark");
+		elements.body.classList.add("theme-light");
+		elements.body.classList.remove("theme-dark");
 	}
 	else if (theme === "dark") {
-		elements.body.classlist.remove("theme-light");
-		elements.body.classlist.add("theme-dark");
+		elements.body.classList.remove("theme-light");
+		elements.body.classList.add("theme-dark");
 	}
 	else {
-		elements.body.classlist.remove("theme-light");
-		elements.body.classlist.remove("theme-dark");
+		elements.body.classList.remove("theme-light");
+		elements.body.classList.remove("theme-dark");
 	}
 }
 

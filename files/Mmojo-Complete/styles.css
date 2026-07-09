@@ -39,7 +39,7 @@
     --main-spacing: 0.5rem;
 }
 
-/*
+/* ORIGINAL COLOR SCHEME AND NAMES
 :root {
     --color1: #CB997E;
     --color2: #EDDCD2;
@@ -83,6 +83,52 @@ body {
     height: calc(100% - (2 * var(--main-spacing)));
     overflow: hidden;
     display: flex;
+}
+
+body.theme-light {
+    /* Content Colors */
+    --content-lightest: #FFFFFF;
+    --content-light: #F5F5F5;
+    --content-dark: #E0E0E0;
+    --content-darkest: #B0B0B0;
+
+    /* Header Colors */
+    --header-lightest: #FFFFFF;
+    --header-light: #F0F0F0;
+    --header-medium: #D0D0D0;
+
+    /* Backgrounds */
+    --background: #FFFFFF;
+    --working: #F9F9F9;
+
+    /* Controls & Text */
+    --control-border: #CCCCCC;
+    --text-dark: #333333;
+    --text-medium: #666666;
+    --text-light: #999999;
+}
+
+body.theme-dark {
+    /* Content Colors */
+    --content-lightest: #2C2C2C;
+    --content-light: #3C3C3C;
+    --content-dark: #4C4C4C;
+    --content-darkest: #606060;
+
+    /* Header Colors */
+    --header-lightest: #222222;
+    --header-light: #2A2A2A;
+    --header-medium: #3A3A3A;
+
+    /* Backgrounds */
+    --background: #121212;
+    --working: #1E1E1E;
+
+    /* Controls & Text */
+    --control-border: #444444;
+    --text-dark: #E0E0E0;
+    --text-medium: #B0B0B0;
+    --text-light: #808080;
 }
 
 label {

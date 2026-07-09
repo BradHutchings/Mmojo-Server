@@ -97,6 +97,10 @@
             <input id="stop-words" type="text" class="hidden" onclick="EnableControls(event);" />
 
             <div id="settings-break-2" class="break"></div>
+            <label id="api-key-label" for="sapi-key">API Key:</label>
+            <input id="api-key" type="text" onclick="EnableControls(event);" />
+
+            <div id="theme-divider" class="vertical-divider"></div>
             <label id="theme-label" for="theme">Theme:</label>
             <select id="theme" onclick="EnableControls(event);">
                 <option value="peach-olive" selected>Peach Olive</option>
@@ -104,9 +108,6 @@
                 <option value="dark">Dark</option>
             </select>
 
-            <div id="settings-break-3" class="break"></div>
-            <label id="api-key-label" for="sapi-key">API Key:</label>
-            <input id="api-key" type="text" onclick="EnableControls(event);" />
         </div>
 
         <div id="print-settings" class="row hidden" onclick="WorkAreaFocus();">

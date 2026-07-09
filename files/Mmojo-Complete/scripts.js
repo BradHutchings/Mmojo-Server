@@ -693,6 +693,19 @@ function ThemeChanged(event) {
 	var theme = elements.theme.value;
 	localStorage.setItem('theme', theme);
     if (kLogging) console.log("Set theme to: \"" + theme + "\".");
+
+	if (theme === "light") {
+		elements.body.classlist.add("theme-light");
+		elements.body.classlist.remove("theme-dark");
+	}
+	else if (theme === "dark") {
+		elements.body.classlist.remove("theme-light");
+		elements.body.classlist.add("theme-dark");
+	}
+	else {
+		elements.body.classlist.remove("theme-light");
+		elements.body.classlist.remove("theme-dark");
+	}
 }
 
 function StopWordsSetFocus() {

@@ -647,11 +647,11 @@ function ShowCopyAndPasteChanged(event) {
 
     if (elements.showCopyAndPasteCheckbox.checked) {
         localStorage.setItem('showCopyAndPaste', 'true');
-        console.log("Set showCopyAndPaste true.");
+        if (kLogging) console.log("Set showCopyAndPaste true.");
     }
     else {
         localStorage.setItem('showCopyAndPaste', 'false');
-        console.log("Set showCopyAndPaste false.");
+        if (kLogging) console.log("Set showCopyAndPaste false.");
     }
 }
 
@@ -682,7 +682,7 @@ function APIKeyChanged(event) {
 
 	var apiKey = elements.apiKey.value;
 	localStorage.setItem('apiKey', apiKey);
-    console.log("Set apiKey to: \"" + apiKey + "\".");
+    if (kLogging) console.log("Set apiKey to: \"" + apiKey + "\".");
 }
 
 function ThemeChanged(event) {
@@ -692,7 +692,7 @@ function ThemeChanged(event) {
 
 	var theme = elements.theme.value;
 	localStorage.setItem('theme', theme);
-    console.log("Set theme to: \"" + theme + "\".");
+    if (kLogging) console.log("Set theme to: \"" + theme + "\".");
 }
 
 function StopWordsSetFocus() {

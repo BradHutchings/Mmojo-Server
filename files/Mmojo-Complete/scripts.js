@@ -351,7 +351,7 @@ function FindElements() {
     elements.apiKeyLabel             	= document.getElementById("api-key-label");
     elements.apiKey                  	= document.getElementById("api-key");
     elements.themeLabel             	= document.getElementById("theme-label");
-    elements.theme                  	= document.getElementById("theme-key");
+    elements.theme                  	= document.getElementById("theme");
 
     elements.printSettings          = document.getElementById("print-settings");
     elements.printSize              = document.getElementById("print-size");

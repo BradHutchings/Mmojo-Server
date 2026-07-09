@@ -305,7 +305,7 @@ function PageLoaded() {
 	elements.apiKey.value = apiKey;
 
 	var theme = localStorage.getItem('theme');
-	if (theme == "") {
+	if ((theme === undefined) || (theme === null)) {
 		theme = "peach-olive";
 	}
 	elements.theme.value = theme;

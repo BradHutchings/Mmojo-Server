@@ -388,6 +388,11 @@ ul, li {
     margin-right: 0rem;
 }
 
+#settings-icon {
+      background-image: url('images/settings-64.png');
+}
+
+
 #settings {
     min-height: 1.4rem;
     flex-wrap: wrap;

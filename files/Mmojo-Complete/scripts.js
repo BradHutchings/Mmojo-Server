@@ -262,7 +262,7 @@ function PageLoaded() {
     EnableControls();
     if (script.isMobile) {
         HideElement(elements.bookmarkIcon);
-        HideElement(elements.fullScreenIcon);
+        HideElement(elements.fullscreenIcon);
     }
 
     script.statusMode = kStatusMode.editing;
@@ -345,7 +345,7 @@ function FindElements() {
     elements.printIcon                  = document.getElementById("print-icon");
     elements.bookmarkIcon               = document.getElementById("bookmark-icon");
     //  elements.colorWheelIcon             = document.getElementById("color-wheel-icon");
-    elements.fullScreenIcon             = document.getElementById("full-screen-icon");
+    elements.fullscreenIcon             = document.getElementById("fullscreen-icon");
 
     elements.settings                   = document.getElementById("settings");
     elements.showCopyAndPasteCheckbox   = document.getElementById("show-copy-and-paste-checkbox");
@@ -1398,10 +1398,10 @@ function ToggleFullScreen(event) {
 
 function FullscreenChange() {
     if (document.fullscreenElement) {
-        elements.fullScreenIcon.src = "images/restore-64.png";
+        elements.fullscreenIcon.src = "images/restore-64.png";
     }
     else {
-        elements.fullScreenIcon.src = "images/fullscreen-64.png";
+        elements.fullscreenIcon.src = "images/fullscreen-64.png";
     }
 }
 

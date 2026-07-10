@@ -21,6 +21,12 @@
     --text-light: #C0C0C0;
     --working: #E0E0E0;           /* --grey-lightlight: #E0E0E0; working + file card */
 
+    /* Icons */
+    --settings-icon: url('images/settings-64.png');
+    --tools-icon: url('images/tools-64.png');
+    --files-icon: url('images/files-64.png');
+    --help-icon: url('images/help-64.png');
+
     /* THESE COLORS ARE NOT USED -- WERE PART OF ORIGINAL PEACH/OLIVE SCHEME. */
     --color8: #C9C9B6;            /* --color8: #C9C9B6;    */
     --color9: #778DA9;            /* --color9: #778DA9;    */
@@ -389,10 +395,24 @@ ul, li {
 }
 
 #settings-icon {
-    background-image: url('images/settings-64.png');
+    background-image: var(--settings-icon);
     background-size: contain;
 }
 
+#tools-icon {
+    background-image: var(--tools-icon);
+    background-size: contain;
+}
+
+#files-icon {
+    background-image: var(--files-icon);
+    background-size: contain;
+}
+
+#help-icon {
+    background-image: var(--help-icon);
+    background-size: contain;
+}
 
 #settings {
     min-height: 1.4rem;

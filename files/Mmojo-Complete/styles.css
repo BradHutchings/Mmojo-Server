@@ -389,7 +389,8 @@ ul, li {
 }
 
 #settings-icon {
-      background-image: url('images/settings-64.png');
+    background-image: url('images/settings-64.png');
+    background-size: contain;
 }
 
 

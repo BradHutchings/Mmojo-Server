@@ -305,18 +305,7 @@ function PageLoaded() {
 	var apiKey = localStorage.getItem('apiKey');
 	elements.apiKey.value = apiKey;
 
-	var theme = localStorage.getItem("theme");
-	if ((theme === undefined) || (theme === null)) {
-		theme = "peach-olive";
-	}
-	elements.theme.value = theme;
-	
-	if (theme === "light") {
-		elements.body.classList.add("theme-light");
-	}
-	else if (theme === "dark") {
-		elements.body.classList.add("theme-dark");
-	}
+	UseTheme();
 
     EnableControls();
 }
@@ -703,18 +692,7 @@ function ThemeChanged(event) {
 	localStorage.setItem("theme", theme);
     if (kLogging) console.log("Set theme to: \"" + theme + "\".");
 
-	if (theme === "light") {
-		elements.body.classList.add("theme-light");
-		elements.body.classList.remove("theme-dark");
-	}
-	else if (theme === "dark") {
-		elements.body.classList.remove("theme-light");
-		elements.body.classList.add("theme-dark");
-	}
-	else {
-		elements.body.classList.remove("theme-light");
-		elements.body.classList.remove("theme-dark");
-	}
+	UseTheme();
 }
 
 function StopWordsSetFocus() {
@@ -1751,25 +1729,31 @@ function ToggleHelp(event) {
 
 function ToggleSettings(event) {
     event.stopPropagation();
-	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles(event);
-	}
-	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker(event);
-	}
-	
-    elements.workAreaText.focus();
-    ToggleShowElement(elements.settings);
-    HideElement(elements.toolsArea);
-    HideElement(elements.printSettings);
-    HideElement(elements.helpContainer);
 
-    if (elements.settings.classList.contains("hidden")) {
-        elements.workAreaText.focus()
-    }
-    else {
-        elements.showCopyAndPasteCheckbox.focus()
-    }
+	if (event.shiftKey) {
+		NextTheme();
+	}
+	else {
+		if (!elements.filesArea.classList.contains("hidden")) {
+			ToggleFiles(event);
+		}
+		if (!elements.bookmarkMaker.classList.contains("hidden")) {
+			ToggleBookmarkMaker(event);
+		}
+		
+	    elements.workAreaText.focus();
+	    ToggleShowElement(elements.settings);
+	    HideElement(elements.toolsArea);
+	    HideElement(elements.printSettings);
+	    HideElement(elements.helpContainer);
+	
+	    if (elements.settings.classList.contains("hidden")) {
+	        elements.workAreaText.focus()
+	    }
+	    else {
+	        elements.showCopyAndPasteCheckbox.focus()
+	    }
+	}
 }
 
 function ToggleTools(event) {
@@ -3369,4 +3353,47 @@ function UseBookmarkHash(hash) {
 
     // updatingHash = true;
     // location.hash = '';
+}
+
+function UseTheme() {
+	var theme = localStorage.getItem("theme");
+	if ((theme === undefined) || (theme === null)) {
+		theme = "peach-olive";
+	}
+	elements.theme.value = theme;
+	
+	if (theme === "light") {
+		elements.body.classList.add("theme-light");
+		elements.body.classList.remove("theme-dark");
+	}
+	else if (theme === "dark") {
+		elements.body.classList.remove("theme-light");
+		elements.body.classList.add("theme-dark");
+	}
+	else {
+		elements.body.classList.remove("theme-light");
+		elements.body.classList.remove("theme-dark");
+	}	
+}
+
+function NextTheme() {
+	var theme = localStorage.getItem("theme");
+	if ((theme === undefined) || (theme === null)) {
+		theme = "peach-olive";
+	}
+
+	if (theme === "peach-olive") {
+		theme = "light";
+	}
+	else if (theme === "light") {
+		theme = "dark";
+	}
+	else if (theme === "dark") {
+		theme = "peach-olive";
+	}
+	else
+		theme = "peach-olive";
+	}
+
+	UseTheme();
 }

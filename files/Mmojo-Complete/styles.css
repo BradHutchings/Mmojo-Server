@@ -388,6 +388,8 @@ ul, li {
 #color-wheel-icon, #full-screen-icon {
     width: 1.6rem;
     margin-right: 0.8rem;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 #help-icon, #full-screen-icon {
@@ -396,22 +398,18 @@ ul, li {
 
 #settings-icon {
     background-image: var(--settings-icon);
-    background-size: contain;
 }
 
 #tools-icon {
     background-image: var(--tools-icon);
-    background-size: contain;
 }
 
 #files-icon {
     background-image: var(--files-icon);
-    background-size: contain;
 }
 
 #help-icon {
     background-image: var(--help-icon);
-    background-size: contain;
 }
 
 #settings {

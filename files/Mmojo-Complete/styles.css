@@ -33,6 +33,7 @@
     --print-icon: url('images/print-64.png');
     --bookmark-icon: url('images/bookmark-64.png');
     --fullscreen-icon: url('images/fullscreen-64.png');
+    --restore-icon: url('images/restore-64.png');
 
     /* THESE COLORS ARE NOT USED -- WERE PART OF ORIGINAL PEACH/OLIVE SCHEME. */
     --color8: #C9C9B6;            /* --color8: #C9C9B6;    */
@@ -155,6 +156,7 @@ body.theme-dark {
     --print-icon: url('images/print-light-64.png');
     --bookmark-icon: url('images/bookmark-light-64.png');
     --fullscreen-icon: url('images/fullscreen-light-64.png');
+    --restore-icon: url('images/restore-light-64.png');
 }
 
 label {
@@ -405,14 +407,14 @@ ul, li {
 
 #files-icon, #settings-icon, #tools-icon, #help-icon, #chat-icon, 
 #read-icon, #download-icon, #print-icon, #bookmark-icon, 
-#color-wheel-icon, #fullscreen-icon {
+#color-wheel-icon, #fullscreen-icon, #restore-icon {
     width: 1.6rem;
     margin-right: 0.8rem;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-#help-icon, #fullscreen-icon {
+#help-icon, #fullscreen-icon, #restore-icon {
     margin-right: 0rem;
 }
 
@@ -454,6 +456,10 @@ ul, li {
 
 #fullscreen-icon {
     background-image: var(--fullscreen-icon);
+}
+
+#restore-icon {
+    background-image: var(--restore-icon);
 }
 
 #settings {

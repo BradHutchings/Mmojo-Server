@@ -27,6 +27,13 @@
     --files-icon: url('images/files-64.png');
     --help-icon: url('images/help-64.png');
 
+    --chat-icon: url('images/chat-64.png');
+    --read-icon: url('images/read-64.png');
+    --download-icon: url('images/download-64.png');
+    --print-icon: url('images/print-64.png');
+    --bookmark-icon: url('images/bookmark-64.png');
+    --fullscreen-icon: url('images/fullscreen-64.png');
+
     /* THESE COLORS ARE NOT USED -- WERE PART OF ORIGINAL PEACH/OLIVE SCHEME. */
     --color8: #C9C9B6;            /* --color8: #C9C9B6;    */
     --color9: #778DA9;            /* --color9: #778DA9;    */
@@ -410,6 +417,30 @@ ul, li {
 
 #help-icon {
     background-image: var(--help-icon);
+}
+
+#chat-icon {
+    background-image: var(--chat-icon);
+}
+
+#read-icon {
+    background-image: var(--read-icon);
+}
+
+#download-icon {
+    background-image: var(--download-icon);
+}
+
+#print-icon {
+    background-image: var(--print-icon);
+}
+
+#bookmark-icon {
+    background-image: var(--bookmark-icon);
+}
+
+#fullscreen-icon {
+    background-image: var(--fullscreen-icon);
 }
 
 #settings {

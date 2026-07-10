@@ -3394,6 +3394,7 @@ function NextTheme() {
 	else {
 		theme = "peach-olive";
 	}
-
+	
+	localStorage.setItem("theme", theme);
 	UseTheme();
 }

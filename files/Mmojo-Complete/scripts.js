@@ -3391,7 +3391,7 @@ function NextTheme() {
 	else if (theme === "dark") {
 		theme = "peach-olive";
 	}
-	else
+	else {
 		theme = "peach-olive";
 	}
 

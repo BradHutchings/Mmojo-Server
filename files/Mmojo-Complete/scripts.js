@@ -263,6 +263,7 @@ function PageLoaded() {
     if (script.isMobile) {
         HideElement(elements.bookmarkIcon);
         HideElement(elements.fullscreenIcon);
+        HideElement(elements.restoreIcon);
     }
 
     script.statusMode = kStatusMode.editing;
@@ -346,6 +347,7 @@ function FindElements() {
     elements.bookmarkIcon               = document.getElementById("bookmark-icon");
     //  elements.colorWheelIcon             = document.getElementById("color-wheel-icon");
     elements.fullscreenIcon             = document.getElementById("fullscreen-icon");
+    elements.restoreIcon             = document.getElementById("restore-icon");
 
     elements.settings                   = document.getElementById("settings");
     elements.showCopyAndPasteCheckbox   = document.getElementById("show-copy-and-paste-checkbox");
@@ -1398,10 +1400,12 @@ function ToggleFullScreen(event) {
 
 function FullscreenChange() {
     if (document.fullscreenElement) {
-        elements.fullscreenIcon.src = "images/restore-64.png";
+        elements.fullscreenIcon.classList.add("hidden");
+        elements.restoreIcon.classList.remove("hidden");
     }
     else {
-        elements.fullscreenIcon.src = "images/fullscreen-64.png";
+        elements.fullscreenIcon.classList.remove("hidden");
+        elements.restoreIcon.classList.add("hidden");
     }
 }
 

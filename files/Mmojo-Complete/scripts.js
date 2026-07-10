@@ -304,11 +304,18 @@ function PageLoaded() {
 	var apiKey = localStorage.getItem('apiKey');
 	elements.apiKey.value = apiKey;
 
-	var theme = localStorage.getItem('theme');
+	var theme = localStorage.getItem("theme");
 	if ((theme === undefined) || (theme === null)) {
 		theme = "peach-olive";
 	}
 	elements.theme.value = theme;
+	
+	if (theme === "light") {
+		elements.body.classList.add("theme-light");
+	}
+	else if (theme === "dark") {
+		elements.body.classList.add("theme-dark");
+	}
 
     EnableControls();
 }
@@ -691,7 +698,7 @@ function ThemeChanged(event) {
     }
 
 	var theme = elements.theme.value;
-	localStorage.setItem('theme', theme);
+	localStorage.setItem("theme", theme);
     if (kLogging) console.log("Set theme to: \"" + theme + "\".");
 
 	if (theme === "light") {

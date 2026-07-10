@@ -148,6 +148,11 @@ body.theme-dark {
     --tools-icon: url('images/tools-light-64.png');
     --files-icon: url('images/files-light-64.png');
     --help-icon: url('images/help-light-64.png');
+
+    --chat-icon: url('images/chat-light-64.png');
+    --read-icon: url('images/read-light-64.png');
+    --download-icon: url('images/download-light-64.png');
+    --print-icon: url('images/print-light-64.png');
 }
 
 label {

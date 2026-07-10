@@ -153,6 +153,8 @@ body.theme-dark {
     --read-icon: url('images/read-light-64.png');
     --download-icon: url('images/download-light-64.png');
     --print-icon: url('images/print-light-64.png');
+    --bookmark-icon: url('images/bookmark-light-64.png');
+    --fullscreen-icon: url('images/fullscreen-light-64.png');
 }
 
 label {

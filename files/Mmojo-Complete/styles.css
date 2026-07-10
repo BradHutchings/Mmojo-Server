@@ -403,14 +403,14 @@ ul, li {
 
 #files-icon, #settings-icon, #tools-icon, #help-icon, #chat-icon, 
 #read-icon, #download-icon, #print-icon, #bookmark-icon, 
-#color-wheel-icon, #full-screen-icon {
+#color-wheel-icon, #fullscreen-icon {
     width: 1.6rem;
     margin-right: 0.8rem;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-#help-icon, #full-screen-icon {
+#help-icon, #fullscreen-icon {
     margin-right: 0rem;
 }
 

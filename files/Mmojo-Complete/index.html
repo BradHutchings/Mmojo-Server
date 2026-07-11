@@ -59,8 +59,15 @@
         </div>
 
         <div id="settings" class="row hidden" onclick="WorkAreaFocus();">
+        <label class="checkbox-container" id="show-copy-and-paste-checkbox-label">One
+            <input type="checkbox" id="show-copy-and-paste-checkbox" onclick="EnableControls(event);" onchange="ShowCopyAndPasteChanged(event);">
+            <span class="checkbox-checkmark"></span>
+        </label>
+
+            <!--
             <input id="show-copy-and-paste-checkbox" type="checkbox" onclick="EnableControls(event);" onchange="ShowCopyAndPasteChanged(event);" />
             <label id="show-copy-and-paste-checkbox-label" for="show-copy-and-paste-checkbox">Show Copy &amp; Paste</label>
+            -->
             <div id="settings-break-1" class="break"></div>
 
             <label id="temperature-label" for="temperature">Temperature:</label>

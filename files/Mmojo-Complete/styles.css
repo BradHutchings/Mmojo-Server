@@ -238,10 +238,10 @@ input[type="text"]:focus {
 .checkbox-container {
   display: block;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
+  padding-left: 1.2rem;
+  xx-margin-bottom: 12px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 1rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -262,19 +262,19 @@ input[type="text"]:focus {
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
+    height: 1rem;
+    width: 1rem;
+    background-color: var(--content-lightest);;
 }
 
 /* On mouse-over, add a grey background color */
 .checkbox-container:hover input ~ .checkbox-checkmark {
-    background-color: #ccc;
+    background-color: var(--content-dark);
 }
 
 /* When the checkbox is checked, add a blue background */
 .checkbox-container input:checked ~ .checkbox-checkmark {
-    background-color: #2196F3;
+    background-color: var(--content-dark);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */

@@ -275,6 +275,11 @@ input[type="text"]:focus {
     background-color: var(--content-dark);
 }
 
+.checkbox-container:focus input ~ .checkbox-checkmark {
+    outline: 4px solid var(--content-darkest);
+    outline-offset: 1px;
+}
+
 /* When the checkbox is checked, add a blue background */
 .checkbox-container input:checked ~ .checkbox-checkmark {
     xx-background-color: var(--content-dark);
@@ -294,10 +299,10 @@ input[type="text"]:focus {
 
 /* Style the checkmark/indicator */
 .checkbox-container .checkbox-checkmark:after {
-    left: 0.25rem;
-    top: -0.3rem;
+    left: 0.4rem;
+    top: -0.5rem;
     width: 0.3rem;
-    height: 0.8rem;
+    height: 1.0rem;
     border: solid var(--text-dark);
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);

@@ -264,7 +264,10 @@ input[type="text"]:focus {
     left: 0;
     height: 1rem;
     width: 1rem;
-    background-color: var(--content-lightest);;
+    background-color: var(--content-lightest);
+    border: 3px solid var(--text-dark);
+    border-radius: 0rem;
+    color: var(--text-dark);
 }
 
 /* On mouse-over, add a grey background color */

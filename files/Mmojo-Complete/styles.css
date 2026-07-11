@@ -238,7 +238,8 @@ input[type="text"]:focus {
 .checkbox-container {
     display: block;
     position: relative;
-    padding-left: 1.4rem;
+    padding-left: 1.5rem;
+    padding-left: calc(1.3rem + 3px);
     padding-top: 3px;
     xx-margin-bottom: 12px;
     cursor: pointer;

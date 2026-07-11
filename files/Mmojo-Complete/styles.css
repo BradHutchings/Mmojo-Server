@@ -275,7 +275,7 @@ input[type="text"]:focus {
     background-color: var(--content-dark);
 }
 
-.checkbox-container:focus input ~ .checkbox-checkmark {
+.checkbox-container input:focus ~ .checkbox-checkmark {
     outline: 4px solid var(--content-darkest);
     outline-offset: 1px;
 }

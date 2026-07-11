@@ -268,12 +268,12 @@ input[type="text"]:focus {
 }
 
 /* On mouse-over, add a grey background color */
-.checkbox-container:hover input ~ .checkmark {
+.checkbox-container:hover input ~ .checkbox-checkmark {
     background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.checkbox-container input:checked ~ .checkmark {
+.checkbox-container input:checked ~ .checkbox-checkmark {
     background-color: #2196F3;
 }
 
@@ -285,12 +285,12 @@ input[type="text"]:focus {
 }
 
 /* Show the checkmark when checked */
-.checkbox-container input:checked ~ .checkmark:after {
+.checkbox-container input:checked ~ .checkbox-checkmark:after {
     display: block;
 }
 
 /* Style the checkmark/indicator */
-.checkbox-container .checkmark:after {
+.checkbox-container .checkbox-checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;

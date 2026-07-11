@@ -236,16 +236,17 @@ input[type="text"]:focus {
 /* CSS checkbox */
 
 .checkbox-container {
-  display: block;
-  position: relative;
-  padding-left: 1.2rem;
-  xx-margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 1rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    display: block;
+    position: relative;
+    padding-left: 1.4rem;
+    padding-top: 3px;
+    xx-margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* Hide the browser's default checkbox */
@@ -277,7 +278,7 @@ input[type="text"]:focus {
 
 /* When the checkbox is checked, add a blue background */
 .checkbox-container input:checked ~ .checkbox-checkmark {
-    background-color: var(--content-dark);
+    xx-background-color: var(--content-dark);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */

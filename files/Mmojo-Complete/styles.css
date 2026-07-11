@@ -280,6 +280,11 @@ input[type="text"]:focus {
     outline-offset: 1px;
 }
 
+.checkbox-container input:active ~ .checkbox-checkmark {
+    outline: 4px solid var(--content-darkest);
+    outline-offset: 1px;
+}
+
 /* When the checkbox is checked, add a blue background */
 .checkbox-container input:checked ~ .checkbox-checkmark {
     xx-background-color: var(--content-dark);

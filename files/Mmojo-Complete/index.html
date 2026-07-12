@@ -31,10 +31,10 @@
 
         <div id="title-bar" class="row">
             <div id="mmojo-complete" onclick="WorkAreaFocus();">Mmojo Complete is Private.</div>
-            <img id="settings-icon" src="images/settings-64.png" onclick="ToggleSettings(event);" title="Toggle Settings" />
-            <img id="tools-icon" src="images/tools-64.png" onclick="ToggleTools(event);" title="Toggle Tools" />
-            <img id="files-icon" src="images/files-64.png" class="hidden" onclick="ToggleFiles(event);" title="Toggle Files" />
-            <img id="help-icon" src="images/help-64.png" onclick="Help(event);" title="Help"/>
+            <div id="settings-icon" onclick="ToggleSettings(event);" title="Toggle Settings" ></div>
+            <div id="tools-icon" onclick="ToggleTools(event);" title="Toggle Tools" ></div>
+            <div id="files-icon" class="hidden" onclick="ToggleFiles(event);" title="Toggle Files" ></div>
+            <div id="help-icon" onclick="ToggleHelp(event);" title="Help" ></div>
         </div>
 
         <div id="tools-area" class="row hidden" onclick="WorkAreaFocus();">
@@ -48,19 +48,27 @@
 
             </div>
             <div id="tools" class="row" onclick="WorkAreaFocus();">
-                <img id="chat-icon" src="images/chat-64.png" onclick="Chat(event);" title="Mmojo Chat" />
-                <img id="read-icon" src="images/read-64.png" onclick="Read(event)" title="Read Work Area" />
-                <img id="download-icon" src="images/download-64.png" onclick="Download(event)" title="Download Work Area" />
-                <img id="print-icon" src="images/print-64.png" onclick="TogglePrintSettings(event);" title="Print Work Area"/>
-                <img id="bookmark-icon" src="images/bookmark-64.png" onclick="EditBookmark(event);" title="Bookmark Maker"/>
-                <img id="full-screen-icon" src="images/fullscreen-64.png" onclick="ToggleFullScreen(event);" title="Toggle Full Screen"/>
+                <div id="chat-icon" onclick="Chat(event);" title="Mmojo Chat" ></div>
+                <div id="read-icon" onclick="Read(event)" title="Read Work Area" ></div>
+                <div id="download-icon" onclick="Download(event)" title="Download Work Area" ></div>
+                <div id="print-icon" onclick="TogglePrintSettings(event);" title="Print Work Area" ></div>
+                <div id="bookmark-icon" onclick="ToggleBookmarkMaker(event);" title="Bookmark Maker" ></div>
+                <div id="fullscreen-icon" onclick="ToggleFullScreen(event);" title="Full Screen" ></div>
+                <div id="restore-icon" class="hidden" onclick="ToggleFullScreen(event);" title="Exit Full Screen" ></div>
             </div>
         </div>
 
         <div id="settings" class="row hidden" onclick="WorkAreaFocus();">
+            <label class="checkbox-container" id="show-copy-and-paste-checkbox-label">Show Copy &amp; Paste
+                <input type="checkbox" id="show-copy-and-paste-checkbox" onclick="EnableControls(event);" onchange="ShowCopyAndPasteChanged(event);">
+                <span class="checkbox-checkmark"></span>
+            </label>
+
+            <!--
             <input id="show-copy-and-paste-checkbox" type="checkbox" onclick="EnableControls(event);" onchange="ShowCopyAndPasteChanged(event);" />
             <label id="show-copy-and-paste-checkbox-label" for="show-copy-and-paste-checkbox">Show Copy &amp; Paste</label>
-            <div id="views-break" class="break"></div>
+            -->
+            <div id="settings-break-1" class="break"></div>
 
             <label id="temperature-label" for="temperature">Temperature:</label>
             <select id="temperature" onclick="EnableControls(event);">
@@ -89,12 +97,32 @@
             </select>
 
             <div id="stop-words-divider" class="vertical-divider"></div>
+            <label class="checkbox-container" id="stop-words-checkbox-label">Stop Words
+                <input type="checkbox" id="stop-words-checkbox" onclick="EnableControls(event);" onchange="StopWordsSetFocus(event);">
+                <span class="checkbox-checkmark"></span>
+            </label>
+            
+            <!--
             <input id="stop-words-checkbox" type="checkbox" onclick="EnableControls(event);" onchange="EnableControls(); StopWordsSetFocus();" />
             <label id="stop-words-checkbox-label" for="stop-words-checkbox">Stop Words</label>
+            -->
 
             <div id="stop-words-break" class="break hidden"></div>
             <label id="stop-words-label" for="stop-words" class="hidden">Stop Words:</label>
             <input id="stop-words" type="text" class="hidden" onclick="EnableControls(event);" />
+
+            <div id="settings-break-2" class="break"></div>
+            <label id="api-key-label" class="hidden" for="api-key">API Key:</label>
+            <input id="api-key" class="hidden" type="text" onclick="EnableControls(event);" onkeyup="APIKeyChanged(event);" onchange="APIKeyChanged(event);" />
+
+            <div id="theme-divider" class="vertical-divider hidden"></div>
+            <label id="theme-label" for="theme">Theme:</label>
+            <select id="theme" onclick="EnableControls(event);" onchange="ThemeChanged(event);" >
+                <option value="peach-olive" selected>Peach Olive</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+
         </div>
 
         <div id="print-settings" class="row hidden" onclick="WorkAreaFocus();">
@@ -146,8 +174,12 @@
             </div>
         </div>
 
+        <div id="help-container" class="row hidden editing">
+            <div id="help-text"></div>
+        </div>
+
         <div id="files-area" class="row hidden">
-            <div id="files-area-header" class="row">
+            <div id="files-directory" class="row">
                 <div id="files-directory-name"><b>Directory:</b> Directory is not implemented yet.</div>
                 <button id="files-directory-choose" onclick="FilesDirectoryChoose();">Choose</button>
                 <button id="files-download-all" onclick="FilesDownloadAll();">Download All</button>
@@ -172,6 +204,92 @@
                     <textarea id="file-contents" class="row" placeholder="" readonly="readonly"></textarea>
                 </div>
             </div>
+        </div>
+
+        <div id="bookmark-maker" class="row hidden">
+            <div id="bookmark-settings" class="row" ondrop="BookmarkOnDrop(event);" ondragover="BookmarkOnDragOver(event);" >
+                <label for="bookmark-label">Label:</label>
+                <input id="bookmark-label" type="text" oninput="UpdateBookmark();" />
+                <div id="bookmark-label-space" class="space"></div>
+    
+                <label id="bookmark-link-label">Bookmark:</label>
+                <a id="bookmark-link" href="/#"></a>
+    
+                <div id="bookmark-temperature-break" class="break"></div>
+                <label for="bookmark-temperature">Temperature:</label>
+                <select id="bookmark-temperature" onchange="UpdateBookmark();">
+                    <option value="" selected></option>
+                    <option value="0.00">0.00</option>
+                    <option value="0.10">0.10</option>
+                    <option value="0.25">0.25</option>
+                    <option value="0.50">0.50</option>
+                    <option value="0.75">0.75</option>
+                    <option value="0.90">0.90</option>
+                    <option value="1.00">1.00</option>
+                </select>
+                <div class="vertical-divider"></div>
+                <label for="bookmark-tokens">Tokens:</label>
+                <select id="bookmark-tokens" onchange="UpdateBookmark();">
+                    <option value="" selected></option>
+                    <option value="-1">Complete</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                    <option value="5000">5000</option>
+                    <option value="10000">10,000</option>
+                </select>
+            
+                <div id="bookmark-stop-words-break" class="break"></div>
+                <label class="checkbox-container" id="bookmark-stop-words-checkbox-label">Stop Words
+                    <input type="checkbox" id="bookmark-stop-words-checkbox" onclick="EnableControls(event);" onchange="StopWordsSetFocus(event);">
+                    <span class="checkbox-checkmark"></span>
+                </label>
+                <!--
+                <input id="bookmark-stop-words-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
+                <label for="bookmark-stop-words-checkbox">Stop Words</label>
+                -->
+                <div class="vertical-divider"></div>
+                <label for="bookmark-stop-words">Stop Words</label>
+                <input id="bookmark-stop-words" type="text" oninput="UpdateBookmark();"/>
+    
+                <div id="bookmark-mode-break" class="break"></div>
+                <label for="bookmark-mode">Mode:</label>
+                <select id="bookmark-mode" onchange="UpdateBookmark();">
+                    <option value="cue-link" selected>Cue (Link)</option>
+                    <option value="cue-script">Cue (Script)</option>
+                    <option value="append">Append</option>
+                    <option value="prepend">Prepend</option>
+                    <option value="replace">Replace</option>
+                    <option value="replace-regex">Replace (RegEx)</option>
+                </select>
+    
+                <div class="vertical-divider"></div>
+                <label class="checkbox-container" id="bookmark-auto-complete-checkbox-label">Auto-Complete
+                    <input type="checkbox" id="bookmark-auto-complete-checkbox" onclick="EnableControls(event);" onchange="StopWordsSetFocus(event);">
+                    <span class="checkbox-checkmark"></span>
+                </label>
+                <!--
+                <input id="bookmark-auto-complete-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
+                <label for="bookmark-auto-complete-checkbox">Auto-Complete</label>
+                -->
+    
+                <div id="bookmark-clear-space" class="space"></div>
+                <button id="bookmark-clear" class="clear-button" onclick="ClearBookmarkMaker();">Clear</button>
+            </div>
+    
+            <div id="bookmark-cue" class="row">
+                <textarea id="bookmark-cue-text" class="row-item" onkeydown="BookmarkTextChanged();"
+                    placeholder=""></textarea>
+                </div>
+    
+            <div id="bookmark-completed" class="row">
+                <textarea id="bookmark-completed-text" class="row-item"  onkeydown="BookmarkTextChanged();"
+                    placeholder=""></textarea>
+    
+            </div>    
         </div>
         
         <div id="status" class="row hidden" onclick="WorkAreaFocus();">

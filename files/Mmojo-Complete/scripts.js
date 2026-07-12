@@ -56,19 +56,122 @@ const kModeCueLink = "cue-link";
 const kModeCueScript = "cue-script";
 const kModeAppend = "append";
 const kModePrepend = "prepend";
+const kModePaste = "paste";
 const kModeReplace = "replace";
 const kModeReplaceRegEx = "replace-regex";
+const kModes = [kModeCueLink, kModeCueScript, kModeAppend, kModePrepend, kModePaste, kModeReplace, kModeReplaceRegEx];
+const kLinkModes = [kModeCueLink];
+const kScriptModes = [kModeCueScript, kModeAppend, kModePrepend, kModePaste, kModeReplace, kModeReplaceRegEx];
 
 const kWorkAreaTextPlaceholder = 
     "Welcome to Mmojo Complete, delivered to you from your own Mmojo Server. " +
     "Anything you do with LLMs in the cloud, you can do here, privately.\n\n" +
-    "Type some text in this work area that will get the language model started. The text you type is called a \"cue\".\n\n" +
-    "Once you've entered your cue, click the Start button at the bottom or type the ENTER key to start completing.\n\n" +
+    "Type some text in this work area that will get the language model started. The " +
+	"text you type is called a \"cue\".\n\n" +
+    "Once you've entered your cue, click the Start button at the bottom or hold down " + 
+	"the SHIFT key type the ENTER key to start completing.\n\n" +
     "Remember: You are intelligent. LLMs do not think. Chat is an illusion.\n\n" +
     "Click the ? button (top-right) for more help.";
 
 const kCompletionMinimumTimeMS = 1500;
 
+var kHelpHTML = 
+    "<h3>Shortcuts for the Work Area:</h3>\n" +
+    "<p>These shortcuts are designed for desktop interaction, but also work if you have a physical keyboard attached to " +
+        "your mobile device.</p>" +
+    "<ul>\n" +
+        "<li>Hold down the <b>SHIFT</b> key and type the <b>RETURN</b> or <b>ENTER</b> key to start completing.</li>\n" + 
+        "<li>Type <b>CTRL-SHIFT-RETURN</b> or <b>CTRL-SHIFT-ENTER</b> to make a new line in the Work Area and start completing. " +
+            "This is useful when chatting using your name as a stop word.</li>\n" +
+        "<li><b>CTRL-Click</b> (Windows and Linux) or <b>OPTION-Click</b> (Mac) to delete everything after the place you click. " +
+            "This is useful for backing up and redoing the completed text.</li>\n" +
+        "<li><b>CTRL-Z</b> and <b>SHIFT-CTRL-Z</b> undo and redo, respectively, to and from previous completion points.</li>\n" +
+        "<li>Click the <b>Copy</b> and <b>Paste</b> buttons at the right to save your work and switch between it.</li>\n" +
+        "<li>The number of tokens in the Work Area and available in the model's context window are shown in the <b>Status</b> " +
+            "area, bottom right.</li>\n" +
+    "</ul>\n" +
+
+
+    "<hr />\n" +
+    "<h3>Icons (Top Right):</h3>\n" +
+    "<ul>\n" +
+        "<li><img src=\"images/settings-64.png\" class=\"inline-image\" /><b>Settings:</b> Shows <b>Settings</b> panel.\n" + 
+        "<ul>\n" +
+            "<li>Show and hide the copy / paste controls.</li>\n" +
+            "<li>Set temperature, tokens, and stop words.</li>\n" +
+            "<li>Choose a theme. You can also hold down the <b>SHIFT</b> key and click the <b>Settings</b> icon to cycle through themes.</li>\n" +
+        "</ul>\n" +
+        "<li><img src=\"images/tools-64.png\" class=\"inline-image\" /><b>Tools:</b> Shows <b>Information</b> panel and <b>Tools</b> panel.</li>\n" + 
+        "<li><img src=\"images/files-64.png\" class=\"inline-image\" /><b>Files:</b> Shows <b>Files</b> panel when work area contains markdown files.</li>\n" + 
+        "<li><img src=\"images/help-64.png\" class=\"inline-image\" /><b>Help:</b> You found this panel!</li>\n" + 
+    "</ul>\n" +
+
+    "<hr />\n" +
+    "<h3>Information Panel:</h3>\n" +
+    "<ul>\n" +
+        "<li><b>Model</b> indicates which model Mmojo Server is using.</li>\n" +
+        "<li><b>Mmojo Server</b> indicates when your Mmojo Server application and Mmojo Complete were built.</li>\n" +
+    "</ul>\n" +
+
+    "<hr />\n" +
+    "<h3>Tools Panel:</h3>\n" +
+    "<ul>\n" +
+        "<li><img src=\"images/chat-64.png\" class=\"inline-image\" /><b>Chat:</b> Click for a more standard chat-style interface.</li>\n" + 
+        "<li><img src=\"images/read-64.png\" class=\"inline-image\" /><b>Read:</b> Click to have the computer read the (selected) Work Area text.</li>\n" + 
+        "<li><img src=\"images/download-64.png\" class=\"inline-image\" /><b>Download:</b> Click to download the Work Area text.</li>\n" + 
+        "<li><img src=\"images/print-64.png\" class=\"inline-image\" /><b>Print:</b> Click to show the <b>Print</b> panel.</li>\n" + 
+        "<li><img src=\"images/bookmark-64.png\" class=\"inline-image\" /><b>Bookmark:</b> Click to show the <b>Bookmark</b> panel.</li>\n" + 
+        "<li><img src=\"images/fullscreen-64.png\" class=\"inline-image\" /><b>Full Screen:</b> Toggle between full screen and window display.</li>\n" +
+    "</ul>\n" +
+
+    "<hr />\n" +
+    "<h3>Print Panel:</h3>\n" +
+    "<ul>\n" +
+        "<li><b>Print Size</b>, <b>Picture Width</b>, and <b>Picture URL</b> are for printing.</li>\n" +
+        "<li>To print what's in the Work Area, print the page.</li>\n" +
+    "</ul>\n" +
+
+    "<hr />\n" +
+    "<h3>Mmojo Appliance: Change the Model:</h3>\n" +
+    "<p>If you are running Mmojo Server on a Mmojo Appliance, you can use the Mmojo Controls page to change which large language " +
+        "model Mmojo Server uses:</p>\n" +
+    "<ul>\n" +
+    "<li><a href=\"/controls\" target=\"_blank\">Mmojo Controls</a></li>\n" +
+    "</ul>\n" +
+
+    "<hr />\n" +
+    "<h3>Mmojo Appliance: Install Our Certificate Authority:</h3>\n" +
+    "<p>To remove security warnings for the Mmojo Appliance on your devices and to allow the Mmojo app to install on " +
+        "your phones and tablets, please download and install our Certificate Authority on your devices.</p>\n\n" +
+    "<ul>\n" +
+    "<li><a href=\"/CA.crt\" >Mmojo Certificate Authority</a></li>\n" +
+    "</ul>\n\n" +
+    "<p><i>Please install our Certificate Authority only on devices that you own and control.</i></p>\n\n" +
+
+    "<hr />\n" +
+    "<h3>More Information:</h3>\n" +
+    "For more information and updates, please visit:\n\n" +
+    "<ul>\n" +
+    "<li><a href=\"https://Mmojo.net\" target=\"_blank\">https://Mmojo.net</a></li>\n" +
+    "</ul>\n" +
+    "<div style=\"height: 2rem;\"></div>\n\n";
+
+const isMmojoBookmarkPage = true;
+var bookmarkTextChanged = true;
+
+const kBookmarksCompletedTextPlaceholder = 
+    "The Bookmark Maker makes web browser bookmarks and links for automating Mmojo Complete.\n\n" +
+    "The settings are in the olive area at top:\n" +
+    "    - Label lets you set the label for the bookmark so you don't have to rename it.\n" +
+    "    - Temperature, Tokens, and Stop Words work as they do in Mmojo Complete Tool.\n" +
+    "    - If the Auto-Complete checkbox is checked, opening the bookmark will cause the model to automatically start completing.\n" +
+    "    - Append will append the cue to what's in the work area. Use to make clarifying bookmarks.\n" +
+    "    - Replace will update the work area text, replacing the text in the top peach area with text in the bottom peach area. Use to make clarifying bookmarks.\n" +
+    "The top peach area if for your cue.\n\n" +
+    "The bottom peach area (this area) is for completed text you wish to play back. You can simulate the model responding with a known response.\n\n" +
+    "A bookmark link is continually updated at the top right of the olive area. " +
+        "Click the link to open it in a new tab or drag the link to the Bookmarks Bar in your web browser.\n\n" +
+    "Updated: " + kUpdated;
 
 var elements = {};                  // Fine to have this in global space.
 
@@ -153,10 +256,15 @@ function PageLoaded() {
     elements.workAreaText.value = '';
     elements.workAreaText.focus();
 
+    elements.helpText.innerHTML = kHelpHTML;
+	
+    elements.bookmarkCompletedText.placeholder = kBookmarksCompletedTextPlaceholder;
+
     EnableControls();
     if (script.isMobile) {
         HideElement(elements.bookmarkIcon);
-        HideElement(elements.fullScreenIcon);
+        HideElement(elements.fullscreenIcon);
+        HideElement(elements.restoreIcon);
     }
 
     script.statusMode = kStatusMode.editing;
@@ -182,10 +290,24 @@ function PageLoaded() {
         ShowHideFilesIcon();
     }, 3000);
 
-    checked = localStorage.getItem('showCopyAndPaste');
+	setInterval(function() {
+        if (bookmarkTextChanged) {
+            // console.log('Text has changed.');
+            UpdateBookmark();
+        }
+    }, 1000);
+
+
+    var checked = localStorage.getItem('showCopyAndPaste');
     if (checked === "true") {
         elements.showCopyAndPasteCheckbox.checked = true;
     }
+
+	var apiKey = localStorage.getItem('apiKey');
+	elements.apiKey.value = apiKey;
+
+	UseTheme();
+
     EnableControls();
 }
 
@@ -214,7 +336,8 @@ function FindElements() {
     elements.printIcon                  = document.getElementById("print-icon");
     elements.bookmarkIcon               = document.getElementById("bookmark-icon");
     //  elements.colorWheelIcon             = document.getElementById("color-wheel-icon");
-    elements.fullScreenIcon             = document.getElementById("full-screen-icon");
+    elements.fullscreenIcon             = document.getElementById("fullscreen-icon");
+    elements.restoreIcon             = document.getElementById("restore-icon");
 
     elements.settings                   = document.getElementById("settings");
     elements.showCopyAndPasteCheckbox   = document.getElementById("show-copy-and-paste-checkbox");
@@ -224,6 +347,10 @@ function FindElements() {
     elements.stopWordsBreak             = document.getElementById("stop-words-break");
     elements.stopWordsLabel             = document.getElementById("stop-words-label");
     elements.stopWords                  = document.getElementById("stop-words");
+    elements.apiKeyLabel             	= document.getElementById("api-key-label");
+    elements.apiKey                  	= document.getElementById("api-key");
+    elements.themeLabel             	= document.getElementById("theme-label");
+    elements.theme                  	= document.getElementById("theme");
 
     elements.printSettings          = document.getElementById("print-settings");
     elements.printSize              = document.getElementById("print-size");
@@ -259,6 +386,31 @@ function FindElements() {
 	elements.fileControls			= document.getElementById("file-controls");
 	elements.fileCopy				= document.getElementById("file-copy");
 	elements.fileDownload			= document.getElementById("file-download");
+
+	elements.helpContainer			= document.getElementById("help-container");
+	elements.helpText				= document.getElementById("help-text");
+
+	elements.bookmarkMaker					= document.getElementById("bookmark-maker");
+	elements.bookmarkSettings				= document.getElementById("bookmark-settings");
+	elements.bookmarkLabel					= document.getElementById("bookmark-label");
+	elements.bookmarkLabelSpace				= document.getElementById("bookmark-label-space");
+	elements.bookmarkLinkLabel				= document.getElementById("bookmark-link-label");
+	elements.bookmarkLink					= document.getElementById("bookmark-link");
+	elements.bookmarkTemperatureBreak		= document.getElementById("bookmark-temperature-break");
+	elements.bookmarkTemperature			= document.getElementById("bookmark-temperature");
+	elements.bookmarkTokens					= document.getElementById("bookmark-tokens");
+	elements.bookmarkStopWordsBreak			= document.getElementById("bookmark-stop-words-break");
+	elements.bookmarkStopWordsCheckbox		= document.getElementById("bookmark-stop-words-checkbox");
+	elements.bookmarkStopWords				= document.getElementById("bookmark-stop-words");
+	elements.bookmarkModeBreak				= document.getElementById("bookmark-mode-break");
+	elements.bookmarkMode					= document.getElementById("bookmark-mode");
+	elements.bookmarkAutoCompleteCheckbox	= document.getElementById("bookmark-auto-complete-checkbox");
+	elements.bookmarkClearSpace				= document.getElementById("bookmark-clear-space");
+	elements.bookmarkClear					= document.getElementById("bookmark-clear");
+	elements.bookmarkCue					= document.getElementById("bookmark-cue");
+	elements.bookmarkCueText				= document.getElementById("bookmark-cue-text");
+	elements.bookmarkCompleted				= document.getElementById("bookmark-completed");
+	elements.bookmarkCompletedText			= document.getElementById("bookmark-completed-text");
 
     elements.status                 = document.getElementById("status");
     elements.statusText             = document.getElementById("status-text");
@@ -494,11 +646,11 @@ function ShowCopyAndPasteChanged(event) {
 
     if (elements.showCopyAndPasteCheckbox.checked) {
         localStorage.setItem('showCopyAndPaste', 'true');
-        console.log("Set showCopyAndPaste true.");
+        if (kLogging) console.log("Set showCopyAndPaste true.");
     }
     else {
         localStorage.setItem('showCopyAndPaste', 'false');
-        console.log("Set showCopyAndPaste false.");
+        if (kLogging) console.log("Set showCopyAndPaste false.");
     }
 }
 
@@ -520,6 +672,28 @@ function EnableCopyPaste() {
             removeButton.style.visibility = "hidden";
         }
     });
+}
+
+function APIKeyChanged(event) {
+    if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	var apiKey = elements.apiKey.value;
+	localStorage.setItem('apiKey', apiKey);
+    if (kLogging) console.log("Set apiKey to: \"" + apiKey + "\".");
+}
+
+function ThemeChanged(event) {
+    if ((event !== undefined) && (event !== null)) {
+        event.stopPropagation();
+    }
+
+	var theme = elements.theme.value;
+	localStorage.setItem("theme", theme);
+    if (kLogging) console.log("Set theme to: \"" + theme + "\".");
+
+	UseTheme();
 }
 
 function StopWordsSetFocus() {
@@ -560,6 +734,9 @@ function Complete() {
         if (!elements.stopWordsCheckbox.checked) {
             stopWords = [];
         }
+
+		var apiKey = elements.apiKey.value;
+        if (kLogging) console.log('API Key: ' + apiKey);
 
         if (kLogging) console.log(workAreaText);
 
@@ -1112,7 +1289,7 @@ function WorkAreaTextKeyDown(event) {
     }
 
     // if we're not completing or replaying, and we get a return key, kick off completing.
-    else if ((event.keyCode == 13) && !event.shiftKey) {
+    else if ((event.keyCode == 13) && event.shiftKey) {
         if (kLogging || logThis) console.log("Enter key was pressed.");
 
         if (event.ctrlKey) {
@@ -1145,7 +1322,7 @@ function WorkAreaTextKeyDown(event) {
         elements.workAreaText.setSelectionRange(workAreaLength, workAreaLength);
     }
 
-    else {
+    else if (!event.ctrlKey) {
         // This will change the content area, so forget completedContent.
         script.completedContent = "";
 		script.replayText = "";
@@ -1202,10 +1379,12 @@ function ToggleFullScreen(event) {
 
 function FullscreenChange() {
     if (document.fullscreenElement) {
-        elements.fullScreenIcon.src = "images/restore-64.png";
+        elements.fullscreenIcon.classList.add("hidden");
+        elements.restoreIcon.classList.remove("hidden");
     }
     else {
-        elements.fullScreenIcon.src = "images/fullscreen-64.png";
+        elements.fullscreenIcon.classList.remove("hidden");
+        elements.restoreIcon.classList.add("hidden");
     }
 }
 
@@ -1213,17 +1392,38 @@ function KeyPress(event) {
     var evtobj = window.event? event : e
 
     if (event.ctrlKey && !event.shiftKey && (event.key == 'z')) {
-        if (kLogging) console.log('ctrl-b');
+        if (kLogging) console.log('ctrl-z');
         event.preventDefault();
 
         UndoChange();
     }
 
     if (event.ctrlKey && event.shiftKey && (event.key == 'Z')) {
-        if (kLogging) console.log('ctrl-shift-b');
+        if (kLogging) console.log('ctrl-shift-Z');
         event.preventDefault();
 
         RedoChange();
+    }
+
+    if (event.ctrlKey && !event.shiftKey && (event.key == 'b')) {
+        if (kLogging) console.log('ctrl-b');
+        event.preventDefault();
+
+		ToggleBookmarkMaker(event);
+    }
+
+    if (event.ctrlKey && !event.shiftKey && (event.key == 'e')) {
+        if (kLogging) console.log('ctrl-e');
+        event.preventDefault();
+
+		ToggleSettings(event);
+    }
+
+    if (event.ctrlKey && !event.shiftKey && (event.key == 'l')) {
+        if (kLogging) console.log('ctrl-l');
+        event.preventDefault();
+
+		ToggleTools(event);
     }
 }
 
@@ -1439,6 +1639,10 @@ async function GetModelInfoFromServer() {
 
 function ToggleFiles(event) {
     event.stopPropagation();
+	if (!elements.bookmarkMaker.classList.contains("hidden")) {
+		ToggleBookmarkMaker(event);
+	}
+
 	if (elements.filesArea.classList.contains("hidden")) {
 		ShowFilesDirectoryName();
 		
@@ -1464,28 +1668,93 @@ function ToggleFiles(event) {
 		elements.workAreaText.focus();
 	}
 
+    HideElement(elements.helpContainer);
 	HideElement(elements.settings);
     HideElement(elements.toolsArea);
     HideElement(elements.printSettings);
+    HideElement(elements.helpContainer);
 }
 
-function ToggleSettings(event) {
+function ToggleBookmarkMaker(event) {
     event.stopPropagation();
 	if (!elements.filesArea.classList.contains("hidden")) {
 		ToggleFiles(event);
 	}
-	
-    elements.workAreaText.focus()
-    ToggleShowElement(elements.settings);
+
+	HideElement(elements.settings);
+    HideElement(elements.printSettings);
+    HideElement(elements.helpContainer);
+    ShowElement(elements.toolsArea);
+
+	if (elements.bookmarkMaker.classList.contains("hidden")) {
+		let hash = MakeHash();
+		UseBookmarkHash(hash);
+		
+    	HideElement(elements.workArea);
+    	HideElement(elements.status);
+    	ShowElement(elements.bookmarkMaker);
+	}
+	else {
+    	HideElement(elements.bookmarkMaker);
+		ShowElement(elements.workArea);
+    	ShowElement(elements.status);
+		elements.workAreaText.focus();
+	}
+}
+
+function ToggleHelp(event) {
+    event.stopPropagation();
+	if (!elements.filesArea.classList.contains("hidden")) {
+		ToggleFiles(event);
+	}
+	if (!elements.bookmarkMaker.classList.contains("hidden")) {
+		ToggleBookmarkMaker(event);
+	}
+
+	HideElement(elements.settings);
     HideElement(elements.toolsArea);
     HideElement(elements.printSettings);
 
-    if (elements.settings.classList.contains("hidden")) {
-        elements.workAreaText.focus()
-    }
-    else {
-        elements.showCopyAndPasteCheckbox.focus()
-    }
+	if (elements.helpContainer.classList.contains("hidden")) {
+    	HideElement(elements.workArea);
+    	HideElement(elements.status);
+    	ShowElement(elements.helpContainer);
+	}
+	else {
+    	HideElement(elements.helpContainer);
+		ShowElement(elements.workArea);
+    	ShowElement(elements.status);
+		elements.workAreaText.focus();
+	}
+}
+
+function ToggleSettings(event) {
+    event.stopPropagation();
+
+	if (event.shiftKey) {
+		NextTheme();
+	}
+	else {
+		if (!elements.filesArea.classList.contains("hidden")) {
+			ToggleFiles(event);
+		}
+		if (!elements.bookmarkMaker.classList.contains("hidden")) {
+			ToggleBookmarkMaker(event);
+		}
+		
+	    elements.workAreaText.focus();
+	    ToggleShowElement(elements.settings);
+	    HideElement(elements.toolsArea);
+	    HideElement(elements.printSettings);
+	    HideElement(elements.helpContainer);
+	
+	    if (elements.settings.classList.contains("hidden")) {
+	        elements.workAreaText.focus()
+	    }
+	    else {
+	        elements.showCopyAndPasteCheckbox.focus()
+	    }
+	}
 }
 
 function ToggleTools(event) {
@@ -1493,22 +1762,30 @@ function ToggleTools(event) {
 	if (!elements.filesArea.classList.contains("hidden")) {
 		ToggleFiles(event);
 	}
+	if (!elements.bookmarkMaker.classList.contains("hidden")) {
+		ToggleBookmarkMaker(event);
+	}
 
 	elements.workAreaText.focus()
     ToggleShowElement(elements.toolsArea);
     HideElement(elements.settings);
     HideElement(elements.printSettings);
+    HideElement(elements.helpContainer);
 }
 
 function TogglePrintSettings() {
-    elements.workAreaText.focus()
+    elements.workAreaText.focus();
 	if (!elements.filesArea.classList.contains("hidden")) {
 		ToggleFiles(event);
+	}
+	if (!elements.bookmarkMaker.classList.contains("hidden")) {
+		ToggleBookmarkMaker(event);
 	}
 
 	ToggleShowElement(elements.printSettings)
     HideElement(elements.settings);
     HideElement(elements.toolsArea);
+    HideElement(elements.helpContainer);
 }
 
 function ScrollToEnd() {
@@ -1553,16 +1830,19 @@ function MakeHash() {
     if (script.completedContent === undefined) {
         script.completedContent = '';
     }
+	if (kLogging || logThis) console.log("- script.completedContent: " + script.completedContent);
 
     var workAreaText = elements.workAreaText.value;
     var cue = '';
     var completed = '';
 
     if ((script.completedContent != '') && (workAreaText.endsWith(script.completedContent))) {
+		if (kLogging || logThis) console.log("- Have cue and completed.");
         cue = workAreaText.substring(0, workAreaText.length - script.completedContent.length);
         completed = script.completedContent;
     }
     else {
+		if (kLogging || logThis) console.log("- Have cue.");
         cue = workAreaText;
         completed = "";
     }
@@ -1580,7 +1860,7 @@ function MakeHash() {
         }
     }
     let mode = kModeCueLink;
-    let autoComplete = true;
+    let autoComplete = false;
 
     var label = 'Mmojo Complete';
     if (cue != '') {
@@ -1600,7 +1880,7 @@ function MakeHash() {
     }
 
     var dataJson = JSON.stringify(data);
-    if (kLogging || logThis) console.log("dataJson: " + dataJson);
+    if (kLogging || logThis) console.log("- dataJson: " + dataJson);
 
     var hash = "";
     try {
@@ -1609,7 +1889,7 @@ function MakeHash() {
     catch {
         hash = "";
     }
-    if (kLogging || logThis) console.log("hash: " + hash);
+    if (kLogging || logThis) console.log("- hash: " + hash);
 
     result = hash;
     return result;
@@ -1738,6 +2018,15 @@ function UseHash() {
 
             PushChange();
         }
+		else if (mode == kModePaste) {
+            // Update contents of elements.workAreaText.value. Replace selection with cue.
+            if (cue != "") {
+				elements.workAreaText.setRangeText(cue); 
+                completed = "";
+                autoComplete = false;
+                PushChange();
+			}
+		}
         else if (mode == kModeReplace) {
             // Update contents of elements.workAreaText.value. Replace cue with completed.
             let text = elements.workAreaText.value;
@@ -2035,12 +2324,6 @@ function EditBookmark(event) {
     elements.workAreaText.focus();
 }
 
-function Help(event) {
-    event.stopPropagation();
-    elements.workAreaText.focus();
-    window.open('help.html', '_blank');
-}
-
 function GetElapsedTimeString(ms) {
     var logThis = false;
 
@@ -2120,8 +2403,10 @@ function GetCodeBlock(text, indent, startLine, endLine, codeType) {
 	}
 	else if (codeType == "html") {
 		result.filename = "index.html"
-		const regex = "[A-Za-z0-9-_.]+\.html";
+		// const regex = "[A-Za-z0-9-_.]+\.html";
+		const regex = /[A-Za-z0-9-_.]+\.html/;
 		let match = result.contents.match(regex);
+		if (logThis) console.log("  - html match: " + match);
 		if (match !== null) {
 			result.filename = match[0];
 		}
@@ -2706,5 +2991,411 @@ function StatusClearClicked() {
 	ClearWorkArea();
 }
 
+function UpdateBookmark() {
+    let logThis = false;
+    if (kLogging || logThis) console.log("UpdateBookmark()");
 
+    bookmarkTextChanged = false;
 
+    let hash = "#";
+    let label = elements.bookmarkLabel.value;
+
+    let temperature = elements.bookmarkTemperature.value;
+    let tokens = elements.bookmarkTokens.value;
+    let stopWordsText = elements.bookmarkStopWords.value;
+    if (!elements.bookmarkStopWordsCheckbox.checked) {
+        stopWordsText = '';
+    }
+    let autoComplete = elements.bookmarkAutoCompleteCheckbox.checked;
+    let mode = elements.bookmarkMode.value;
+
+    if (!kModes.includes(mode)) {
+        mode = kModeCueLink;
+    }
+    let bookmarkTypeLink = kLinkModes.includes(mode);
+    let bookmarkTypeScript = kScriptModes.includes(mode);
+
+    let cue = elements.bookmarkCueText.value
+    let completed = elements.bookmarkCompletedText.value
+
+    var data = {
+        "label": label,
+        "temperature": temperature,
+        "tokens": tokens,
+        "stop-words": stopWordsText,
+        "auto-complete": autoComplete,
+        "mode": mode,
+        "cue": cue,
+        "completed": completed,
+    }
+
+    if (kLogging || logThis) console.log(data);
+    if (kLogging || logThis) console.log("----------")
+
+    let dataJson = JSON.stringify(data);
+    hash = '#' + btoa(encodeURIComponent(dataJson));
+
+    if (kLogging || logThis) console.log(dataJson);
+
+    if (label == '') {
+        label = "Mmojo Complete"
+        if (cue != '') {
+            label = (append) ? "+++ Complete: " : "Complete: ";
+            label = label + cue.split(' ').slice(0,10).join(' ');
+            label = label.replaceAll('\n', ' ');
+        }
+        else if (completed != '') {
+            label = 'Completed: ';
+            label = label + completed.split(' ').slice(0,10).join(' ');
+            label = label.replaceAll('\n', ' ');
+        }
+    }
+
+    if (kLogging || logThis) console.log("- dataJson:\n" + dataJson);
+    if (kLogging || logThis) console.log("- hash:\n" + hash);
+    if (kLogging || logThis) console.log("- label:\n" + label);
+
+    let bookmarkLabel = "Bookmark:";
+    if (bookmarkTypeLink) {
+        bookmarkLabel = "Link Bookmark:"
+    }
+    else if (bookmarkTypeScript) {
+        bookmarkLabel = "Script Bookmark:"
+    }
+
+    elements.bookmarkLinkLabel.innerText = bookmarkLabel;
+    elements.bookmarkLink.innerText = label;
+
+    if (bookmarkTypeScript) {
+        // The bookmark won't run at all on the Google new tab page in Chrome. So weird. -Brad 2025-06-04
+
+        cue = cue.replace(/[\\"']/g, '\\$&');
+        cue = cue.replace(/\n/g, '\\n');
+
+        var js =
+            "javascript:(() => { \n" + 
+            "    let hash = '" + hash + "';\n" +
+            "    let activeElt = document.activeElement;\n" +
+            "    if (typeof isMmojoPage !== 'undefined') {\n" +
+            "        location.hash = hash;\n" +
+            "    }\n" +
+            "    else if (activeElt) {\n" +
+            "        let cue = \"" + cue + "\";\n" +
+            "        let value = (" + (mode == "append") + ") ? activeElt.value + cue : cue;\n" +
+            "        activeElt.value = value;\n" +
+            "    }\n" + 
+            "})();"
+
+        if (kLogging || logThis) console.log(js);
+
+        elements.bookmarkLink.href = js;
+    }
+    else if (bookmarkTypeLink) {
+        // This will work with server behind a proxy with a path. -Brad 2026-06-06.
+        const currentUrl = window.location.href; 
+        const parentURL = new URL('./', currentUrl); 
+        var location = parentURL.href + hash;
+
+        elements.bookmarkLink.href = location;
+    }
+}
+
+function BookmarkTextChanged() {
+    bookmarkTextChanged = true;
+}
+
+function ClearBookmarkMaker() {
+    let logThis = false;
+    if (kLogging || logThis) console.log("ClearBookmarkMaker()");
+
+    let label = "";
+    let temperature = "";
+    let tokens = "";
+    let stopWords = "";
+    let mode = kModeCueLink;
+    let autoComplete = false;
+    let cue = "";
+    let completed = "";
+
+    elements.bookmarkLabel.value = label;
+    elements.bookmarkTemperature.value = temperature;
+    elements.bookmarkTokens.value = tokens;
+    elements.bookmarkStopWordsCheckbox.checked = (stopWords != '');
+    elements.bookmarkStopWords.value = stopWords;
+    elements.bookmarkMode.value = mode;
+    elements.bookmarkAutoCompleteCheckbox.checked = autoComplete;
+
+    elements.bookmarkCueText.value = cue;
+    elements.bookmarkCompletedText.value = completed;
+
+    UpdateBookmark();
+}
+
+function BookmarkOnDrop(event) {
+    let logThis = false;
+    if (kLogging || logThis) console.log("BookmarkOnDrop(event)");
+
+    event.preventDefault();
+
+    try {
+        let bookmarkData = "";
+        let hash = "";
+        let jsonData = "";
+        let data = "";
+    
+        if (kLogging || logThis) console.log("event.dataTransfer.types: " + event.dataTransfer.types);
+
+        if (event.dataTransfer.types.includes("text/plain")) {
+            if (kLogging || logThis) console.log("event.dataTransfer.types has text/plain.");
+            bookmarkData = event.dataTransfer.getData("text/plain");
+        }
+
+        if (kLogging || logThis) console.log("bookmarkData: " + bookmarkData);
+
+        var hostUrl = window.location.protocol + "//" + window.location.host;
+
+        if (bookmarkData.startsWith("javascript:(") && bookmarkData.endsWith("();")) {
+            if (kLogging || logThis) console.log("This is one of our script bookmarks.");
+
+            let regex = /'.*?'/g;
+            let matches = bookmarkData.match(regex);
+            let match = matches[0];
+            if (kLogging || logThis) console.log("match: " + match);
+            hash = match.replaceAll('#', '').replaceAll('\'', '');
+            if (kLogging || logThis) console.log("hash: " + hash);
+
+            UseBookmarkHash(hash);
+        }
+        else if (bookmarkData.startsWith(hostUrl)) {
+            if (kLogging || logThis) console.log("This is one of our link bookmarks.");
+
+            let regex = /#.*/g;
+            let matches = bookmarkData.match(regex);
+            let match = matches[0];
+            if (kLogging || logThis) console.log("match: " + match);
+            hash = match.replaceAll('#', '').replaceAll('\'', '');
+            if (kLogging || logThis) console.log("hash: " + hash);
+
+            UseBookmarkHash(hash);
+        }
+    }
+    catch {
+        if (kLogging || logThis) console.log("settings_drop() catch");
+    }
+
+    UpdateBookmark();
+}
+
+function BookmarkOnDragOver(event) {
+    let logThis = false;
+    if (kLogging || logThis) console.log("BookmarkOnDragOver(event)");
+
+	event.preventDefault();
+}
+
+function UseBookmarkHash(hash) {
+    let logThis = false;
+    if (kLogging || logThis) console.log("UseBookmarkHash() -- " + hash);
+
+    let label = null;
+    let temperature = null;
+    let tokens = null;
+    let stopWords = null;
+    let mode = kModeCueLink;
+    let autoComplete = false;
+    let cue = "";
+    let completed = "";
+
+    // If something goes wrong, restore the settings.
+    let saveLabelValue = elements.bookmarkLabel.value;
+    let saveTemperatureValue = elements.bookmarkTemperature.value;
+    let saveTokensValue = elements.bookmarkTokens.value;
+    let saveStopWordsCheckboxValue = elements.bookmarkStopWordsCheckbox.checked;
+    let saveStopWordsValue = elements.bookmarkStopWords.value;
+    let saveModeValue = elements.bookmarkMode.value;
+    let saveAutoCompleteValue = elements.bookmarkAutoCompleteCheckbox.checked;
+    let saveCueTextValue = elements.bookmarkCueText.value;
+    let saveCompletedTextValue = elements.bookmarkCompletedText.value;
+
+    try {
+        var dataJson = decodeURIComponent(atob(hash.replace('#', '')));
+
+        if (dataJson != '') {
+            if (kLogging || logThis) console.log("dataJson:");
+            if (kLogging || logThis) console.log(dataJson);
+            var data = JSON.parse(dataJson);
+            if (kLogging || logThis) console.log("data:");
+            if (kLogging || logThis) console.log(data);
+
+            // content will be pasted in immediately.
+            // completed will be pasted in by replayer.
+
+            if ('label' in data) {
+                label = data['label'];
+                elements.bookmarkLabel.value = label;
+            }
+            else {
+                elements.bookmarkLabel.value = '';
+            }
+
+            if ('temperature' in data) {
+                temperature = data['temperature'];
+                elements.bookmarkTemperature.value = temperature;
+            }
+            else {
+                elements.bookmarkTemperature.value = '0.25';
+            }
+
+            if ('tokens' in data) {
+                tokens = data['tokens'];;
+                elements.bookmarkTokens.value = tokens;
+            }
+            else {
+                elements.bookmarkTokens.value = '-1';
+            }
+
+            if ('stop-words' in data) {
+                stopWords = data['stop-words'];
+                elements.bookmarkStopWordsCheckbox.checked = (stopWords != "");
+                elements.bookmarkStopWords.value = stopWords;
+            }
+            else {
+                elements.bookmarkStopWordsCheckbox.checked = false
+                elements.bookmarkStopWords.value = '';
+            }
+
+            if ('mode' in data) {
+                mode = data['mode'];
+                if (kLogging || logThis) console.log("mode: " + mode);
+                if (!kModes.includes(mode)) {
+                    mode = kModeCueLink;
+                }
+                if (kLogging || logThis) console.log("mode: " + mode);
+                elements.bookmarkMode.value = mode;
+            }
+            else {
+                elements.bookmarkMode.value = kModeCueLink;
+            }
+
+            if ('auto-complete' in data) {
+                autoComplete = data['auto-complete'];
+                elements.bookmarkAutoCompleteCheckbox.checked = autoComplete;
+            }
+            else {
+                elements.bookmarkAutoCompleteCheckbox.checked = false;
+            }
+
+            if ('cue' in data) {
+                cue = data['cue'];
+                elements.bookmarkCueText.value = cue;
+            }
+            else {
+                elements.bookmarkCueText.value = '';
+            }
+
+            if ('completed' in data) {
+                completed = data['completed'];
+                elements.bookmarkCompletedText.value = completed;
+            }
+            else {
+                elements.bookmarkCompletedText.value = '';
+            }
+
+            // convert old generate to complete.
+            if ('generated' in data) {
+                completed = data['generated'];
+                elements.bookmarkCompletedText.value = completed;
+            }
+
+            if ('auto-generate' in data) {
+                autoComplete = data['auto-generate'];
+                elements.bookmarkAutoCompleteCheckbox.checked = autoComplete;
+            }
+
+            // convert old append and replace to modes.
+            if ('append' in data) {
+                let append = data['append'];
+                if (append) {
+                    elements.bookmarkMode.value = kModeAppend;
+                }
+            }
+
+            if ('replace' in data) {
+                let replace = data['replace'];
+                if (replace) {
+                    elements.bookmarkMode.value = kModeReplace;
+                }
+            }
+
+            if (kLogging || logThis) console.log('- cue:');
+            if (kLogging || logThis) console.log(cue);
+            if (kLogging || logThis) console.log('- completed:');
+            if (kLogging || logThis) console.log(completed);
+        }
+    }
+    catch {
+        if (kLogging || logThis) console.log("UseHash() catch");
+
+        elements.bookmarkLabel.value = saveLabelValue;
+        elements.bookmarkTemperature.value = saveTemperatureValue;
+        elements.bookmarkTokens.value = saveTokensValue;
+        elements.bookmarkStopWordsCheckbox.checked = saveStopWordsCheckboxValue;
+        elements.bookmarkStopWords.value = saveStopWordsValue;
+
+        elements.bookmarkAutoCompleteCheckbox.checked = saveAutoCompleteValue;
+        elements.bookmarkMode.value = saveModeValue;
+
+        elements.bookmarkCueText.value = saveCueTextValue;
+        elements.bookmarkCompletedText.value = saveCompletedTextValue;
+    }
+
+    elements.bookmarkCue.focus();
+    UpdateBookmark();
+
+    // updatingHash = true;
+    // location.hash = '';
+}
+
+function UseTheme() {
+	var theme = localStorage.getItem("theme");
+	if ((theme === undefined) || (theme === null)) {
+		theme = "peach-olive";
+	}
+	elements.theme.value = theme;
+	
+	if (theme === "light") {
+		elements.body.classList.add("theme-light");
+		elements.body.classList.remove("theme-dark");
+	}
+	else if (theme === "dark") {
+		elements.body.classList.remove("theme-light");
+		elements.body.classList.add("theme-dark");
+	}
+	else {
+		elements.body.classList.remove("theme-light");
+		elements.body.classList.remove("theme-dark");
+	}	
+}
+
+function NextTheme() {
+	var theme = localStorage.getItem("theme");
+	if ((theme === undefined) || (theme === null)) {
+		theme = "peach-olive";
+	}
+
+	if (theme === "peach-olive") {
+		theme = "light";
+	}
+	else if (theme === "light") {
+		theme = "dark";
+	}
+	else if (theme === "dark") {
+		theme = "peach-olive";
+	}
+	else {
+		theme = "peach-olive";
+	}
+	
+	localStorage.setItem("theme", theme);
+	UseTheme();
+}

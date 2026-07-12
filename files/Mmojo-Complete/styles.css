@@ -5,6 +5,56 @@
 */
 
 :root {
+    --content-lightest: #FFF1E6;    /* --color3: #FFF1E6;    */
+    --content-light: #EDDCD2;       /* --color2: #EDDCD2;    */
+    --content-dark: #DDBEA9;        /* --color5: #DDBEA9;    */
+    --content-darkest: #CB997E;     /* --color1: #CB997E;    */
+
+    --header-lightest: #dbdbd2;  /* net new               */
+    --header-light: #c9c9bb;     /* net new               */
+    --header-medium: #B7B7A4;    /* --color7: #B7B7A4;    */
+    
+    --background: #F0EFEB;        /* --color4: #F0EFEB;    */
+    --control-border: #A5A58D;    /* --color6: #A5A58D;    */
+    --text-dark: #404040;         /* --grey-dark: #404040; */
+    --text-medium: #808080;
+    --text-light: #C0C0C0;
+    --working: #E0E0E0;           /* --grey-lightlight: #E0E0E0; working + file card */
+
+    /* Icons */
+    --settings-icon: url('images/settings-64.png');
+    --tools-icon: url('images/tools-64.png');
+    --files-icon: url('images/files-64.png');
+    --help-icon: url('images/help-64.png');
+
+    --chat-icon: url('images/chat-64.png');
+    --read-icon: url('images/read-64.png');
+    --download-icon: url('images/download-64.png');
+    --print-icon: url('images/print-64.png');
+    --bookmark-icon: url('images/bookmark-64.png');
+    --fullscreen-icon: url('images/fullscreen-64.png');
+    --restore-icon: url('images/restore-64.png');
+
+    /* THESE COLORS ARE NOT USED -- WERE PART OF ORIGINAL PEACH/OLIVE SCHEME. */
+    --color8: #C9C9B6;            /* --color8: #C9C9B6;    */
+    --color9: #778DA9;            /* --color9: #778DA9;    */
+    --color10: #415A77;           /* --color10: #415A77;   */
+    /* -------------------- */
+
+    /* THESE COLORS ARE NOT USED -- UTILITY GREYS. */
+    --grey-black: #000000;        /* most text -- maybe have --text */
+    --grey-dark: #404040;         /* some controls? */
+    --grey-medium: #808080;       /* radio, checkbox, a border on files page that should be --control-border */
+    --grey-light: #C0C0C0;        /* nothing */
+    --grey-lightlight: #E0E0E0;   /* working + file card */
+    --grey-white: #FFFFFF;        /* default background and border for textarea. */
+    /* -------------------- */
+
+    --main-spacing: 0.5rem;
+}
+
+/* ORIGINAL COLOR SCHEME AND NAMES
+:root {
     --color1: #CB997E;
     --color2: #EDDCD2;
     --color3: #FFF1E6;
@@ -24,6 +74,7 @@
 
     --main-spacing: 0.5rem;
 }
+*/
 
 html {
     /* 100dvh should make the page resize when keyboard appears. */
@@ -32,17 +83,15 @@ html {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
 
-    xxcolor: var(--grey-black) !important;
+    xxcolor: var(--text-dark) !important;
     font-family: Arial !important;
     font-size: 1em !important;
  }
 
 body {
-    background: var(--color4);
-    /* background: linear-gradient(-45deg, var(--color3) 0%, var(--color4) 100%); */
+    background: var(--background);
 
     margin: 0px 0px 0px 0px;
-    xx-padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     padding: var(--main-spacing) var(--main-spacing) var(--main-spacing) var(--main-spacing);
 
     height: calc(100% - (2 * var(--main-spacing)));
@@ -50,7 +99,67 @@ body {
     display: flex;
 }
 
-label, #model-labelxx, #updated-labelxx {
+body.theme-light {
+    /* Content Colors */
+    --content-lightest: #FFFFFF;
+    --content-light: #F5F5F5;
+    --content-dark: #E0E0E0;
+    --content-darkest: #B0B0B0;
+
+    /* Header Colors */
+    --header-lightest: #FFFFFF;
+    --header-light: #F0F0F0;
+    --header-medium: #D0D0D0;
+
+    /* Backgrounds */
+    --background: #FFFFFF;
+    --working: #F9F9F9;
+
+    /* Controls & Text */
+    --control-border: #CCCCCC;
+    --text-dark: #333333;
+    --text-medium: #666666;
+    --text-light: #999999;
+}
+
+body.theme-dark {
+    /* Content Colors */
+    --content-lightest: #2C2C2C;
+    --content-light: #3C3C3C;
+    --content-dark: #4C4C4C;
+    --content-darkest: #606060;
+
+    /* Header Colors */
+    --header-lightest: #222222;
+    --header-light: #2A2A2A;
+    --header-medium: #3A3A3A;
+
+    /* Backgrounds */
+    --background: #121212;
+    --working: #1E1E1E;
+
+    /* Controls & Text */
+    --control-border: #444444;
+    --text-dark: #E0E0E0;
+    --text-medium: #B0B0B0;
+    --text-light: #808080;
+
+    /* Icons */
+    --settings-icon: url('images/settings-light-64.png');
+    --tools-icon: url('images/tools-light-64.png');
+    --files-icon: url('images/files-light-64.png');
+    --help-icon: url('images/help-light-64.png');
+
+    --chat-icon: url('images/chat-light-64.png');
+    --read-icon: url('images/read-light-64.png');
+    --download-icon: url('images/download-light-64.png');
+    --print-icon: url('images/print-light-64.png');
+    --bookmark-icon: url('images/bookmark-light-64.png');
+    --fullscreen-icon: url('images/fullscreen-light-64.png');
+    --restore-icon: url('images/restore-light-64.png');
+}
+
+label {
     margin-right: 0.25rem;
     margin-top: auto;
     margin-bottom: auto;
@@ -60,109 +169,200 @@ label, #model-labelxx, #updated-labelxx {
 select {
     font-family: inherit;
     font-size: inherit;
-    color: var(--grey-black);
-    background: var(--color3);
-    border: 1px solid var(--color6);
+    color: var(--text-dark);
+    background: var(--content-lightest);
+    border: 1px solid var(--control-border);
     border-radius: 0.5rem;
+    height: 1.6rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
 }
 
 select:focus {
-    outline: 4px solid var(--color1);
+    outline: 4px solid var(--content-darkest);
     outline-offset: 1px;
 }
 
 button {
     font-family: inherit;
     font-size: inherit;
-    color: var(--grey-black);
-    background: var(--color3);
-    border: 1px solid var(--color6);
+    color: var(--text-dark);
+    background: var(--content-lightest);
+    border: 1px solid var(--control-border);
     border-radius: 0.5rem;
     padding: 0.25rem 0.5rem;
     max-height: 1.75rem;
 }
 
 button:focus {
-    outline: 4px solid var(--color1);
+    outline: 4px solid var(--content-darkest);
     outline-offset: 1px;
 }
 
 button:hover {
-    color: var(--grey-black);
-    background: var(--color6);
+    color: var(--text-dark);
+    background: var(--content-light);
 }
 
 /* On mobile, make sure it doesn't stick to hovering after click. */
 button:not(:focus):hover {
-    color: var(--grey-black);
-    background: var(--color3);
+    color: var(--text-dark);
+    background: var(--content-lightest);
 }
 
 button:active {
-    color: var(--color3);
-    background: var(--color7);
+    color: var(--text-dark);
+    background: var(--content-light);
 }
 
 input {
     font-family: inherit;
     font-size: inherit;
-    color: var(--grey-black);
-    border: 1px solid var(--color6);
+    color: var(--text-dark);
+    border: 1px solid var(--control-border);
     border-radius: 0.5rem;
     padding: 0.25rem;
 }
 
 input[type="text"] {
-    background: var(--color3);
+    background: var(--content-lightest);
 }
 
 input[type="text"]:focus {
-    outline: 4px solid var(--color1);
+    outline: 4px solid var(--content-darkest);
     outline-offset: 1px;
 }
 
-input[type="checkbox"] {
-    appearance: none;
-    color: var(--grey-dark);
-    background-color: var(--color3);
-    border: 3px solid var(--grey-dark);
-    border-radius: 0rem;
-}
+/* 
+    CSS checkbox
+    Inspired by: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_checkbox
+    Problem: Fully styled checkbox widget that matches our look.
+*/
 
-input[type="checkbox"]:checked {
-    background-color: var(--grey-medium);
-}
+    .checkbox-container {
+        display: block;
+        position: relative;
+        padding-left: calc(1.2rem + 3px + 3px);
+        cursor: pointer;
+        font-size: 1rem;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    /* Hide the browser's default checkbox */
+    .checkbox-container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
 
-input[type="checkbox"]:focus {
-    outline: 4px solid var(--color1);
-    outline-offset: 1px;
-}
+    /* Create a custom checkbox */
+    .checkbox-checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: calc(1rem - 0.2rem);
+        width: calc(1rem - 0.2rem);
+        background-color: var(--content-lightest);
+        border: 3px solid var(--text-dark);
+        border-radius: 0rem;
+        color: var(--text-dark);
+    }
 
-input[type="radio"] {
-    appearance: none;
-    color: var(--grey-dark);
-    background-color: var(--color3);
-    border: 3px solid var(--grey-dark);
-    border-radius: 1rem;
-}
+    /* On mouse-over, add a highlight background color. */
+    .checkbox-container:hover input ~ .checkbox-checkmark {
+        background-color: var(--content-dark);
+    }
+    
+    /* On focus, add an outline. */
+    .checkbox-container input:focus ~ .checkbox-checkmark {
+        outline: 4px solid var(--content-darkest);
+        outline-offset: 1px;
+    }
 
-input[type="radio"]:checked {
-    background-color: var(--grey-medium);
-}
+    /* On active tracking, add an outline. */
+    .checkbox-container input:active ~ .checkbox-checkmark {
+        outline: 4px solid var(--content-darkest);
+        outline-offset: 1px;
+    }
 
-input[type="radio"]:focus {
-    outline: 4px solid var(--color1);
-    outline-offset: 1px;
-}
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkbox-checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .checkbox-container input:checked ~ .checkbox-checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator. This uses a border to make an "L" and rotates it. */
+    .checkbox-container .checkbox-checkmark:after {
+        left: 0.4rem;
+        top: -0.5rem;
+        width: 0.3rem;
+        height: 1.0rem;
+        border: solid var(--text-dark);
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+/* ---------------------------------------- */
+
+    input[type="checkbox"] {
+        appearance: none;
+        color: var(--text-dark);
+        background-color: var(--content-lightest);
+        border: 3px solid var(--text-dark);
+        border-radius: 0rem;
+    }
+    
+    input[type="checkbox"]:checked {
+        background-color: var(--content-dark);
+    }
+    
+    input[type="checkbox"]:focus {
+        outline: 4px solid var(--content-darkest);
+        outline-offset: 1px;
+    }
+
+/* ---------------------------------------- */
+
+    input[type="radio"] {
+        appearance: none;
+        color: var(--text-dark);
+        background-color: var(--content-lightest);
+        border: 3px solid var(--text-dark);
+        border-radius: 1rem;
+    }
+    
+    input[type="radio"]:checked {
+        background-color: var(--content-dark);
+    }
+    
+    input[type="radio"]:focus {
+        outline: 4px solid var(--content-darkest);
+        outline-offset: 1px;
+    }
+
+/* ---------------------------------------- */
 
 textarea {
     font-family: inherit;
     font-size: inherit;
 
-    color: var(--grey-black);
-    background-color: var(--grey-white);
+    color: var(--text-dark);
+    background-color: var(--content-light);
+    border: 4px solid var(--content-light);
     resize: none;
-    border: 4px solid var(--grey-white);
     outline: none;
     padding: 1rem;
     overflow: hidden;
@@ -170,7 +370,7 @@ textarea {
 }
 
 textarea:focus {
-    border: 4px solid var(--color1);
+    border: 4px solid var(--content-darkest);
 }
 
 textarea::-webkit-scrollbar {
@@ -179,7 +379,7 @@ textarea::-webkit-scrollbar {
 
 /* Track */
 textarea::-webkit-scrollbar-track {
-    background: var(--color3);
+    background: var(--content-lightest);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -187,7 +387,7 @@ textarea::-webkit-scrollbar-track {
 
 /* Handle */
 textarea::-webkit-scrollbar-thumb {
-    background: var(--color5);
+    background: var(--content-dark);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -195,7 +395,7 @@ textarea::-webkit-scrollbar-thumb {
 
 /* Handle on hover */
 textarea::-webkit-scrollbar-thumb:hover {
-    background: var(--color1);
+    background: var(--content-darkest);
 }
 
 ul, li {
@@ -204,7 +404,7 @@ ul, li {
 }
 
 #content {
-    background: var(--color4);
+    background: var(--background);
     /* min-width: 700px; */
     width: 100%;
     height: 100%;
@@ -217,34 +417,24 @@ ul, li {
     flex-direction: column;
     flex-wrap: nowrap;
     position: relative;
-    xx-border: 2px solid #FF0000;
-    xx-border-radius: 0.5rem;
-    xx-padding: 8px;
 }
 
 .row {
     min-height: 6rem;
     margin-bottom: var(--main-spacing);
     padding: 1.0rem 1.0rem 1.0rem 1.0rem;
-    xx-padding-right: 0.5rem;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     background-color: hsla(211, 36%, 66%, 1);
-    xx-border: 2px solid #FFFFFF;
     border-radius: 0.5rem;
-    xx-overflow: hidden;
 }
 
 .row-item {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    xx-width: 6rem;
     min-height: 6rem;
-    xx-flex-grow: 1;
-    xx-padding: 1.0rem;
-    xx-border: 2px solid #FFFFFF40;
     border-radius: 0.5rem;
 }
 
@@ -253,8 +443,6 @@ ul, li {
     margin-bottom: 0.75rem;
     flex-grow: 8;
     flex-shrink: 20;
-    xx-border: 2px solid #FFFFFF;
-    xx-border-radius: 0.5rem;
 }
 
 .break {
@@ -274,7 +462,7 @@ ul, li {
 
 .vertical-divider {
     width: 0px;
-    border-left: 1px dashed var(--color3);
+    border-left: 1px dashed var(--content-lightest);
     margin-left: 0.75rem;
     margin-right: 0.75rem;
 }
@@ -282,7 +470,7 @@ ul, li {
 .horizontal-divider {
     width: 100%;
     height: 0px;
-    border-top: 1px dashed var(--color3);
+    border-top: 1px dashed var(--content-lightest);
     margin-top: 0.75rem;
 }
 
@@ -290,8 +478,8 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color7);
-    color: var(--grey-dark);
+    background-color: var(--header-medium);
+    color: var(--text-dark);
 }
 
 #mmojo-complete {
@@ -307,24 +495,67 @@ ul, li {
 
 #files-icon, #settings-icon, #tools-icon, #help-icon, #chat-icon, 
 #read-icon, #download-icon, #print-icon, #bookmark-icon, 
-#color-wheel-icon, #full-screen-icon {
+#color-wheel-icon, #fullscreen-icon, #restore-icon {
     width: 1.6rem;
     margin-right: 0.8rem;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-#help-icon, #full-screen-icon {
+#help-icon, #fullscreen-icon, #restore-icon {
     margin-right: 0rem;
 }
 
-#settings {
-    xx-display: none;
-    xx-visibility: hidden;
+#settings-icon {
+    background-image: var(--settings-icon);
+}
 
+#tools-icon {
+    background-image: var(--tools-icon);
+}
+
+#files-icon {
+    background-image: var(--files-icon);
+}
+
+#help-icon {
+    background-image: var(--help-icon);
+}
+
+#chat-icon {
+    background-image: var(--chat-icon);
+}
+
+#read-icon {
+    background-image: var(--read-icon);
+}
+
+#download-icon {
+    background-image: var(--download-icon);
+}
+
+#print-icon {
+    background-image: var(--print-icon);
+}
+
+#bookmark-icon {
+    background-image: var(--bookmark-icon);
+}
+
+#fullscreen-icon {
+    background-image: var(--fullscreen-icon);
+}
+
+#restore-icon {
+    background-image: var(--restore-icon);
+}
+
+#settings {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color7);
-    color: var(--grey-dark);
+    background-color: var(--header-light);
+    color: var(--text-dark);
 }
 
 #tools-area {
@@ -332,7 +563,7 @@ ul, li {
     flex-wrap: wrap;
     user-select: none;
     background-color: #00000000;
-    color: var(--grey-dark);
+    color: var(--text-dark);
     padding: 0rem 0rem;
 }
 
@@ -342,21 +573,18 @@ ul, li {
     flex-wrap: wrap;
     flex-grow: 8;
     flex-shrink: 20;
-    background-color: var(--color7);
+    background-color: var(--header-light);
     margin-right: 0.5rem;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
 }
 
 #tools {
-    xx-display: none;
-    xx-visibility: hidden;
-
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color7);
-    color: var(--grey-dark);
+    background-color: var(--header-light);
+    color: var(--text-dark);
     margin-bottom: 0rem;
 }
 
@@ -369,7 +597,7 @@ ul, li {
     margin-right: 0.75rem;
 }
 
-#temperature, #tokens, #mode, #print-size, #picture-width {
+#temperature, #tokens, #theme, #bookmark-mode, #print-size, #picture-width {
     margin-right: 0.75rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -381,14 +609,14 @@ ul, li {
     margin-right: 0.75rem;
     margin-top: auto;
     margin-bottom: auto;
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #updated {
     display: inline-block;
     margin-top: auto;
     margin-bottom: auto;
-    color: var(--grey-dark);
+    color: var(--text-dark);
 }
 
 #show-copy-and-paste-checkbox {
@@ -404,37 +632,25 @@ ul, li {
 }
 
 #stop-words-break {
-    xx-display: none;
-    xx-visibility: hidden;
+
 }
 
 #stop-words-label {
-    xx-display: none;
-    xx-visibility: hidden;
 
-    xxmargin-right: 0.25rem;
-    xxmargin-top: auto;
-    xxmargin-bottom: auto;
 }
 
 #stop-words {
-    xx-display: none;
-    xx-visibility: hidden;
-
     margin-right: 1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
 
 #print-settings {
-    xx-display: none;
-    xx-visibility: hidden;
-
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color7);
-    color: var(--grey-dark);
+    background-color: var(--header-light);
+    color: var(--text-dark);
 }
 
 #picture-url {
@@ -453,7 +669,6 @@ ul, li {
 
 #work-area {
     flex-grow: 1;
-    xx-overflow: hidden;
     padding: 0rem 0rem 0rem 0rem;
     background: none;
 }
@@ -462,37 +677,79 @@ ul, li {
     overflow-x: hidden;
     overflow-y: auto;
     border-radius: 0.5rem;
-    xx-margin-right: 0.5rem;
     flex-grow: 1;
 }
 
 #work-area-text::selection {
-    background-color: var(--color7);
-    color: var(--color4);
+    background-color: var(--content-darkest);
+    color: var(--text-dark);
 }
 
 #work-area-text:focus {
-    border-color: var(--color1);
+    border-color: var(--content-darkest);
+}
+
+#work-area-text-inner {
+    user-select: none;
 }
 
 .editing {
-    background-color: var(--color2);
-    border-color: var(--color2);
-    color: var(--grey-dark);
+    background-color: var(--content-light);
+    border-color: var(--content-light);
+    color: var(--text-dark);
 }
 
 .working {
-    background-color: var(--grey-lightlight);
-    border-color: var(--color6);
-    color: var(--grey-dark);
+    background-color: var(--working);
+    border-color: var(--working);
+    color: var(--text-dark);
+}
+
+#help-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    flex-grow: 1;
+    background-color: var(--content-light);
+    border-color: var(--content-light);
+    color: var(--text-dark);
+}
+
+#help-container::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+/* Track */
+#help-container::-webkit-scrollbar-track {
+    background: var(--content-lightest);
+    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Handle */
+#help-container::-webkit-scrollbar-thumb {
+    background: var(--content-dark);
+    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Handle on hover */
+#help-container::-webkit-scrollbar-thumb:hover {
+    background: var(--content-darkest);
+}
+
+#help-text {
+    user-select: none;
 }
 
 #copy-paste {
     overflow-x: hidden;
     overflow-y: scroll;
     user-select: none;
-    background-color: var(--color5);
-    color: var(--grey-dark);
+    background-color: var(--content-dark);
+    color: var(--text-dark);
     border-radius: 0.5rem;
     overflow: hidden;
     padding: 0.5rem;
@@ -512,9 +769,6 @@ ul, li {
 }
 
 .remove-button {
-    xx-display: none;
-    xx-visibility: hidden;
-
     font-size: 0.8rem;
     min-width: 4.2rem;
     padding: 0.25rem 0.5rem;
@@ -531,24 +785,23 @@ ul, li {
 #files-area {
     flex-direction: column;
     flex-grow: 1;
-    xx-overflow: hidden;
     padding: 0rem 0rem 0rem 0rem;
     background: none;
 }
 
-#files-area-header {
+#files-directory {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color5);
-    color: var(--grey-dark);
+    background-color: var(--header-light);
+    color: var(--text-dark);
 }
 
 #files-directory-name {
     margin-top: auto;
     margin-bottom: auto;
     flex-grow: 1;
-    color: var(--grey-black);
+    color: var(--text-dark);
     text-wrap: nowrap;
     overflow: clip;
 }
@@ -563,7 +816,6 @@ ul, li {
 
 #files-area-body {
     flex-grow: 1;
-    xx-overflow: hidden;
     padding: 0rem 0rem 0rem 0rem;
     background: none;
 }
@@ -572,9 +824,9 @@ ul, li {
     display: block;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: var(--color2);
-    border-color: var(--color2);
-    color: var(--grey-dark);
+    background-color: var(--content-light);
+    border-color: var(--content-light);
+    color: var(--text-dark);
     border-radius: 0.5rem;
     width: 15rem;
     padding-left: 0.5rem;
@@ -590,7 +842,7 @@ ul, li {
 
 /* Track */
 #files-list::-webkit-scrollbar-track {
-    background: var(--color3);
+    background: var(--content-lightest);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -598,7 +850,7 @@ ul, li {
 
 /* Handle */
 #files-list::-webkit-scrollbar-thumb {
-    background: var(--color5);
+    background: var(--content-dark);
     border-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -606,18 +858,18 @@ ul, li {
 
 /* Handle on hover */
 #files-list::-webkit-scrollbar-thumb:hover {
-    background: var(--color1);
+    background: var(--content-darkest);
 }
 
 #files-list-item-template {
     display: none;
     visibility: hidden;
-    background-color: var(--grey-lightlight);
 }
 
 .files-list-item {
     display: block;
-    border: 1px solid var(--grey-medium);
+    background-color: var(--content-lightest);
+    border: 1px solid var(--control-border);
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
@@ -628,7 +880,7 @@ ul, li {
 }
 
 .files-list-item-selected {
-    background: var(--color5);
+    background: var(--content-dark);
 }
 
 .files-list-item-name {
@@ -656,9 +908,9 @@ ul, li {
     overflow-x: hidden;
     overflow-y: scroll;
     user-select: none;
-    background-color: var(--color4);
-    border-color: var(--color4);
-    color: var(--grey-dark);
+    background-color: var(--background);
+    border-color: var(--background);
+    color: var(--text-dark);
     border-radius: 0.5rem;
     overflow: hidden;
     margin-left: 0.5rem;
@@ -669,15 +921,15 @@ ul, li {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
-    background-color: var(--color5);
-    color: var(--grey-dark);
+    background-color: var(--header-lightest);
+    color: var(--text-dark);
 }
 
 #file-name {
     margin-top: auto;
     margin-bottom: auto;
     flex-grow: 1;
-    color: var(--grey-black);
+    color: var(--text-dark);
     text-wrap: nowrap;
     overflow: clip;
 }
@@ -685,9 +937,9 @@ ul, li {
 #file-contents {
     min-height: 1.4rem;
     user-select: none;
-    background-color: var(--color2);
-    border-color: var(--color2);
-    color: var(--grey-dark);
+    background-color: var(--content-light);
+    border-color: var(--content-light);
+    color: var(--text-dark);
     margin: 0rem 0rem;
     flex-grow: 1;
     overflow: auto;
@@ -717,36 +969,29 @@ ul, li {
 
 
 #clear-cue {
-    xx-display: none;
-    xx-visibility: hidden;
 }
 
 #preview {
-    xx-display: none;
-    xx-visibility: hidden;
     position: fixed;
     left: 40px;
     right: 200px;
     top: 40px;
     bottom: 200px;
     user-select: none;
-    background-color: var(--color3);
-    color: var(--grey-dark);
-    border-left: 0.5rem solid var(--color4);
-    border-bottom: 0.5rem solid var(--color4);
+    background-color: var(--content-lightest);
+    color: var(--text-dark);
+    border-left: 0.5rem solid var(--background);
+    border-bottom: 0.5rem solid var(--background);
     border-radius: 0.5rem;
-    xx-border-top-right-radius: 0rem;
     padding: 1rem 1rem;
     overflow: hidden;
 }
 
 #status {
-    xx-display: none;
-    xx-visibility: hidden;
     flex-wrap: nowrap;
 
-    background-color: var(--color7);
-    color: var(--grey-dark);
+    background-color: var(--header-medium);
+    color: var(--text-dark);
     min-height: 1.6rem;
     user-select: none;
     overflow: clip;
@@ -756,7 +1001,7 @@ ul, li {
     margin-top: auto;
     margin-bottom: auto;
     flex-grow: 0;
-    color: var(--grey-black);
+    color: var(--text-dark);
     text-wrap: nowrap;
     overflow: clip;
 }
@@ -772,8 +1017,8 @@ ul, li {
 
 #gutter {
     font-size: 1rem;
-    background-color: var(--color7);
-    color: var(--grey-dark);
+    background-color: var(--header-medium);
+    color: var(--text-dark);
     min-height: 1.6rem;
     user-select: none;
 }
@@ -806,6 +1051,88 @@ ul, li {
     width: 1.2rem;
     height: 1.2rem;
     margin-right: 0.5rem;
+}
+
+#bookmark-maker {
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0px 0px 0px 0px;
+    background: var(--background);
+}
+
+#bookmark-settings {
+    display: flex;
+    visibility: visible;
+
+    min-height: 1.4rem;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: var(--header-lightest);
+    color: var(--text-dark);
+}
+
+#bookmark-label {
+    margin-right: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 20rem;
+}
+
+#bookmark-link {
+    max-width: 20rem;
+    text-wrap: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#bookmark-link:link, #bookmark-link:visited, #bookmark-link:hover, #bookmark-link:active {
+    color: var(--text-dark);
+}
+
+#bookmark-stop-words-break {
+    display: inherit;
+    visibility: inherit;
+}
+
+#bookmark-stop-words {
+    display: inherit;
+    visibility: inherit;
+}
+
+#bookmark-stop-words-checkbox, #bookmark-auto-complete-checkbox {
+    margin-right: 0.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+#bookmark-cue {
+    flex-grow: 1;
+    padding: 0rem 0rem 0rem 0rem;
+    background: none;
+}
+
+#bookmark-completed {
+    flex-grow: 1;
+    padding: 0rem 0rem 0rem 0rem;
+    margin-bottom: 0rem;
+    background: none;
+}
+
+#bookmark-cue-text, #bookmark-completed-text {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: var(--content-light);
+    border-color: var(--content-light);
+    color: var(--text-dark);
+    border-radius: 0.5rem;
+    flex-grow: 1;
+}
+
+#bookmark-cue-text::selection, #bookmark-completed-text::selection {
+    background-color: var(--content-darkest);
+    color: var(--text-dark);
 }
 
 @media print {
@@ -848,6 +1175,8 @@ ul, li {
     #tokens-divider, #tokens-label, #tokens,
     #stop-words-divider, #stop-words-checkbox,  #stop-words-checkbox-label,
     #stop-words-break, #stop-words-label, #stop-words,
+    #theme-label, #theme,
+    $api-key-label, #api-key,
     #print-size-break, #print-size-label, #print-size,
     #picture-width-divider, #picture-width-label, #picture-width,
     #picture-url-break, #picture-url-label, #picture-url,
@@ -858,10 +1187,6 @@ ul, li {
 }
 
 @media screen and (min-width: 601px) {
-    #xx-status-clear {
-        display: none;
-        visibility: hidden;
-    }
 }
   
 .hidden {

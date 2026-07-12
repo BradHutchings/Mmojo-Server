@@ -291,7 +291,7 @@ bool server_http_context::init(const common_params & params) {
                 // Replace the "if" statement in llama.cpp version.
                 const auto tmp = string_split<std::string>(req.path, '.');
                 if (req.path == "/" || tmp.back() == "html" || ends_with(req.path, "/") || ends_with(req.path, ".html")) {
-                    if (const llama_ui_asset * a = llama_ui_find_asset("loading.html")) {
+                    if (const llama_ui_asset * a = llama_ui_find_asset("loading-mmojo.html")) {
                         res.status = 503;
                         res.set_content(reinterpret_cast<const char*>(a->data), a->size, "text/html; charset=utf-8");
                         return false;

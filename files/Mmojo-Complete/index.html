@@ -97,8 +97,15 @@
             </select>
 
             <div id="stop-words-divider" class="vertical-divider"></div>
+            <label class="checkbox-container" id="stop-words-checkbox-label">Stop Words
+                <input type="checkbox" id="stop-words-checkbox" onclick="EnableControls(event);" onchange="StopWordsSetFocus(event);">
+                <span class="checkbox-checkmark"></span>
+            </label>
+            
+            <!--
             <input id="stop-words-checkbox" type="checkbox" onclick="EnableControls(event);" onchange="EnableControls(); StopWordsSetFocus();" />
             <label id="stop-words-checkbox-label" for="stop-words-checkbox">Stop Words</label>
+            -->
 
             <div id="stop-words-break" class="break hidden"></div>
             <label id="stop-words-label" for="stop-words" class="hidden">Stop Words:</label>
@@ -236,8 +243,14 @@
                 </select>
             
                 <div id="bookmark-stop-words-break" class="break"></div>
+                <label class="checkbox-container" id="bookmark-stop-words-checkbox-label">Stop Words
+                    <input type="checkbox" id="bookmark-stop-words-checkbox" onclick="EnableControls(event);" onchange="StopWordsSetFocus(event);">
+                    <span class="checkbox-checkmark"></span>
+                </label>
+                <!--
                 <input id="bookmark-stop-words-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
                 <label for="bookmark-stop-words-checkbox">Stop Words</label>
+                -->
                 <div class="vertical-divider"></div>
                 <label for="bookmark-stop-words">Stop Words</label>
                 <input id="bookmark-stop-words" type="text" oninput="UpdateBookmark();"/>
@@ -254,8 +267,14 @@
                 </select>
     
                 <div class="vertical-divider"></div>
+                <label class="checkbox-container" id="bookmark-auto-complete-checkbox-label">Auto-Complete
+                    <input type="checkbox" id="bookmark-auto-complete-checkbox" onclick="EnableControls(event);" onchange="StopWordsSetFocus(event);">
+                    <span class="checkbox-checkmark"></span>
+                </label>
+                <!--
                 <input id="bookmark-auto-complete-checkbox" type="checkbox" onchange="UpdateBookmark();"/>
                 <label for="bookmark-auto-complete-checkbox">Auto-Complete</label>
+                -->
     
                 <div id="bookmark-clear-space" class="space"></div>
                 <button id="bookmark-clear" class="clear-button" onclick="ClearBookmarkMaker();">Clear</button>

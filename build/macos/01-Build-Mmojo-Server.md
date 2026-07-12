@@ -102,6 +102,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE" ]; then
         cp "$REPO_DIR/build/support-files/mmojo-rpc-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE"
     fi
+    cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/llama-quantize" "$DEPLOY_DIR"
     touch "$DEPLOY_DIR/$_TOUCH_FILE"
 fi
 ```

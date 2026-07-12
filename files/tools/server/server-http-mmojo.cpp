@@ -283,7 +283,24 @@ bool server_http_context::init(const common_params & params) {
             */
           
             if (frontend_paths.count(req.path)) {
-                return true; // frontend asset, allow it to load and show "loading"
+                // Mmojo Server START
+                // Replace the "return true" line with this block.
+                // return true; // frontend asset, allow it to load and show "loading"
+              
+                // This changed in June/July 2025. Not sure if this code is needed.
+                // Replace the "if" statement in llama.cpp version.
+                const auto tmp = string_split<std::string>(req.path, '.');
+                if (req.path == "/" || tmp.back() == "html" || ends_with(req.path, "/") || ends_with(req.path, ".html")) {
+                    if (const llama_ui_asset * a = llama_ui_find_asset("loading.html")) {
+                        res.status = 503;
+                        res.set_content(reinterpret_cast<const char*>(a->data), a->size, "text/html; charset=utf-8");
+                        return false;
+                    }
+                }
+                else {
+                    return true;
+                }
+                // Mmojo Server END
             }
             // no endpoints are allowed to be accessed when the server is not ready
             // this is to prevent any data races or inconsistent states

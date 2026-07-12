@@ -16,6 +16,13 @@ brew install gcc
 brew install cmake
 ```
 
+If they're already installed, upodate them.
+```
+brew update -y npm
+brew update -y gcc
+brew update -y cmake
+```
+
 `npm` seems to get caught up with certificate problems, so run this:
 ```
 npm config set strict-ssl false

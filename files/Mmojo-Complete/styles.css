@@ -233,128 +233,127 @@ input[type="text"]:focus {
     outline-offset: 1px;
 }
 
-/* CSS checkbox */
+/* 
+    CSS checkbox
+    Inspired by: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_checkbox
+    Problem: Fully styled checkbox widget that matches our look.
+*/
 
-.checkbox-container {
-    display: block;
-    position: relative;
-    padding-left: calc(1.2rem + 3px + 3px);
-    xx-padding-top: 3px;
-    cursor: pointer;
-    font-size: 1rem;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
+    .checkbox-container {
+        display: block;
+        position: relative;
+        padding-left: calc(1.2rem + 3px + 3px);
+        cursor: pointer;
+        font-size: 1rem;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    /* Hide the browser's default checkbox */
+    .checkbox-container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
 
-/* Hide the browser's default checkbox */
-.checkbox-container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
+    /* Create a custom checkbox */
+    .checkbox-checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: calc(1rem - 0.2rem);
+        width: calc(1rem - 0.2rem);
+        background-color: var(--content-lightest);
+        border: 3px solid var(--text-dark);
+        border-radius: 0rem;
+        color: var(--text-dark);
+    }
 
-/* Create a custom checkbox */
-.checkbox-checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: calc(1rem - 0.2rem);
-    width: calc(1rem - 0.2rem);
-    background-color: var(--content-lightest);
-    border: 3px solid var(--text-dark);
-    border-radius: 0rem;
-    color: var(--text-dark);
-}
+    /* On mouse-over, add a highlight background color. */
+    .checkbox-container:hover input ~ .checkbox-checkmark {
+        background-color: var(--content-dark);
+    }
+    
+    /* On focus, add an outline. */
+    .checkbox-container input:focus ~ .checkbox-checkmark {
+        outline: 4px solid var(--content-darkest);
+        outline-offset: 1px;
+    }
 
-/* On mouse-over, add a grey background color */
-.checkbox-container:hover input ~ .checkbox-checkmark {
-    background-color: var(--content-dark);
-}
+    /* On active tracking, add an outline. */
+    .checkbox-container input:active ~ .checkbox-checkmark {
+        outline: 4px solid var(--content-darkest);
+        outline-offset: 1px;
+    }
 
-.checkbox-container input:focus ~ .checkbox-checkmark {
-    outline: 4px solid var(--content-darkest);
-    outline-offset: 1px;
-}
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkbox-checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
 
-.checkbox-container input:active ~ .checkbox-checkmark {
-    outline: 4px solid var(--content-darkest);
-    outline-offset: 1px;
-}
+    /* Show the checkmark when checked */
+    .checkbox-container input:checked ~ .checkbox-checkmark:after {
+        display: block;
+    }
 
-/* When the checkbox is checked, add a blue background */
-.checkbox-container input:checked ~ .checkbox-checkmark {
-    xx-background-color: var(--content-dark);
-}
+    /* Style the checkmark/indicator. This uses a border to make an "L" and rotates it. */
+    .checkbox-container .checkbox-checkmark:after {
+        left: 0.4rem;
+        top: -0.5rem;
+        width: 0.3rem;
+        height: 1.0rem;
+        border: solid var(--text-dark);
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
 
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkbox-checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
+/* ---------------------------------------- */
 
-/* Show the checkmark when checked */
-.checkbox-container input:checked ~ .checkbox-checkmark:after {
-    display: block;
-}
+    input[type="checkbox"] {
+        appearance: none;
+        color: var(--text-dark);
+        background-color: var(--content-lightest);
+        border: 3px solid var(--text-dark);
+        border-radius: 0rem;
+    }
+    
+    input[type="checkbox"]:checked {
+        background-color: var(--content-dark);
+    }
+    
+    input[type="checkbox"]:focus {
+        outline: 4px solid var(--content-darkest);
+        outline-offset: 1px;
+    }
 
-/* Style the checkmark/indicator */
-.checkbox-container .checkbox-checkmark:after {
-    left: 0.4rem;
-    top: -0.5rem;
-    width: 0.3rem;
-    height: 1.0rem;
-    border: solid var(--text-dark);
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
+/* ---------------------------------------- */
 
+    input[type="radio"] {
+        appearance: none;
+        color: var(--text-dark);
+        background-color: var(--content-lightest);
+        border: 3px solid var(--text-dark);
+        border-radius: 1rem;
+    }
+    
+    input[type="radio"]:checked {
+        background-color: var(--content-dark);
+    }
+    
+    input[type="radio"]:focus {
+        outline: 4px solid var(--content-darkest);
+        outline-offset: 1px;
+    }
 
-
-
-
-
-
-
-input[type="checkbox"] {
-    appearance: none;
-    color: var(--text-dark);
-    background-color: var(--content-lightest);
-    border: 3px solid var(--text-dark);
-    border-radius: 0rem;
-}
-
-input[type="checkbox"]:checked {
-    background-color: var(--content-dark);
-}
-
-input[type="checkbox"]:focus {
-    outline: 4px solid var(--content-darkest);
-    outline-offset: 1px;
-}
-
-input[type="radio"] {
-    appearance: none;
-    color: var(--text-dark);
-    background-color: var(--content-lightest);
-    border: 3px solid var(--text-dark);
-    border-radius: 1rem;
-}
-
-input[type="radio"]:checked {
-    background-color: var(--content-dark);
-}
-
-input[type="radio"]:focus {
-    outline: 4px solid var(--content-darkest);
-    outline-offset: 1px;
-}
+/* ---------------------------------------- */
 
 textarea {
     font-family: inherit;

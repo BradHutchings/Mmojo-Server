@@ -34,8 +34,7 @@ The best path to start your Mmojo Server journey goes like this:
    - Debian Linux using the [Deploy Mmojo Server on Debian / Ubintu](/deploy/Debian-Ubuntu/README.md) guide.
    - Raspberry Pi using the [Deploy Mmojo Server on Raspberry Pi](/deploy/Raspberry-Pi/README.md) guide.
    - More platforms are coming soon.
-3. Get started with OpenClaw using the [OpenClaw (Windows WSL)](/deploy-openclaw/Windows-WSL/README.md) guide.
-4. [Build Mmojo Server](/build/README.md) or [Build llama-server](/build-llama-server/README.md).
+3. [Build Mmojo Server](/build/README.md) or [Build llama-server](/build-llama-server/README.md).
 
 ---
 *The [MIT-Style License](/LICENSE) is intended to let you use all the code you like from this repo however you want, but protects my documentation from clowns who would mis-appropriate it. Don't be that clown.*

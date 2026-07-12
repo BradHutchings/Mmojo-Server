@@ -99,6 +99,7 @@ var kHelpHTML =
         "<ul>\n" +
             "<li>Show and hide the copy / paste controls.</li>\n" +
             "<li>Set temperature, tokens, and stop words.</li>\n" +
+            "<li>Choose a theme. You can also hold down the <b>SHIFY</b> key and click to the <b>Settings</b> icon to cycle through themes.</li>\n" +
         "</ul>\n" +
         "<li><img src=\"images/tools-64.png\" class=\"inline-image\" /><b>Tools:</b> Shows <b>Information</b> panel and <b>Tools</b> panel.</li>\n" + 
         "<li><img src=\"images/files-64.png\" class=\"inline-image\" /><b>Files:</b> Shows <b>Files</b> panel when work area contains markdown files.</li>\n" + 
@@ -119,7 +120,7 @@ var kHelpHTML =
         "<li><img src=\"images/read-64.png\" class=\"inline-image\" /><b>Read:</b> Click to have the computer read the (selected) Work Area text.</li>\n" + 
         "<li><img src=\"images/download-64.png\" class=\"inline-image\" /><b>Download:</b> Click to download the Work Area text.</li>\n" + 
         "<li><img src=\"images/print-64.png\" class=\"inline-image\" /><b>Print:</b> Click to show the <b>Print</b> panel.</li>\n" + 
-        "<li><img src=\"images/bookmark-64.png\" class=\"inline-image\" /><b>Bookmark:</b> Click to open the Bookmark Maker.</li>\n" + 
+        "<li><img src=\"images/bookmark-64.png\" class=\"inline-image\" /><b>Bookmark:</b> Click to show the <b>Bookmark</b> panel.</li>\n" + 
         "<li><img src=\"images/fullscreen-64.png\" class=\"inline-image\" /><b>Full Screen:</b> Toggle between full screen and window display.</li>\n" +
     "</ul>\n" +
 

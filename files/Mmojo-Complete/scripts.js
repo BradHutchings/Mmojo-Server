@@ -99,11 +99,11 @@ var kHelpHTML =
         "<ul>\n" +
             "<li>Show and hide the copy / paste controls.</li>\n" +
             "<li>Set temperature, tokens, and stop words.</li>\n" +
-            "<li>Choose a theme. You can also hold down the <b>SHIFY</b> key and click to the <b>Settings</b> icon to cycle through themes.</li>\n" +
+            "<li>Choose a theme. You can also hold down the <b>SHIFT</b> key and click the <b>Settings</b> icon to cycle through themes.</li>\n" +
         "</ul>\n" +
         "<li><img src=\"images/tools-64.png\" class=\"inline-image\" /><b>Tools:</b> Shows <b>Information</b> panel and <b>Tools</b> panel.</li>\n" + 
         "<li><img src=\"images/files-64.png\" class=\"inline-image\" /><b>Files:</b> Shows <b>Files</b> panel when work area contains markdown files.</li>\n" + 
-        "<li><img src=\"images/help-64.png\" class=\"inline-image\" /><b>Help:</b> You found this page!</li>\n" + 
+        "<li><img src=\"images/help-64.png\" class=\"inline-image\" /><b>Help:</b> You found this panel!</li>\n" + 
     "</ul>\n" +
 
     "<hr />\n" +

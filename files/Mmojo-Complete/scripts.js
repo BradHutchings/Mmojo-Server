@@ -1719,7 +1719,6 @@ function IconClickedHelp(event) {
 }
 
 function IconClickedPrint(event) {
-	console.log("Showing print panel.");
 	if (elements.print.classList.contains("hidden")) {
 		ShowPanel(event, "print");
 	}
@@ -1733,7 +1732,7 @@ function IconClickedBookmark(event) {
 		ShowPanel(event, "bookmark");
 	}
 	else {
-		ShowPanel(event, "work-area");
+		ShowPanel(event, "tools");
 	}
 }
 

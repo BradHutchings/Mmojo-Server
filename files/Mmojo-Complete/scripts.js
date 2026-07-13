@@ -329,9 +329,9 @@ function FindElements() {
     elements.filesIcon                  = document.getElementById("files-icon");
     elements.helpIcon                   = document.getElementById("help-icon");
 
-    elements.toolsArea                  = document.getElementById("tools-area");
     elements.tools                      = document.getElementById("tools");
-    elements.chatIcon                   = document.getElementById("chat-icon");
+    elements.model                  = document.getElementById("model");
+    //	elements.chatIcon                   = document.getElementById("chat-icon");
     elements.downloadIcon               = document.getElementById("download-icon");
     elements.printIcon                  = document.getElementById("print-icon");
     elements.bookmarkIcon               = document.getElementById("bookmark-icon");
@@ -350,45 +350,43 @@ function FindElements() {
     elements.apiKey                  	= document.getElementById("api-key");
     elements.themeLabel             	= document.getElementById("theme-label");
     elements.theme                  	= document.getElementById("theme");
+    elements.updated                	= document.getElementById("updated");
 
-    elements.print          		= document.getElementById("print");
-    elements.printSize              = document.getElementById("print-size");
-    elements.pictureWidth           = document.getElementById("picture-width");
-    elements.pictureUrlBreak        = document.getElementById("picture-url-break");
-    elements.pictureUrl             = document.getElementById("picture-url");
-    elements.printPrintButton       = document.getElementById("print-print-button");
-    elements.printCancelButton       = document.getElementById("print-cancel-button");
+    elements.print          			= document.getElementById("print");
+    elements.printSize              	= document.getElementById("print-size");
+    elements.pictureWidth           	= document.getElementById("picture-width");
+    elements.pictureUrlBreak        	= document.getElementById("picture-url-break");
+    elements.pictureUrl             	= document.getElementById("picture-url");
+    elements.printPrintButton       	= document.getElementById("print-print-button");
+    elements.printCancelButton       	= document.getElementById("print-cancel-button");
 
-    elements.model                  = document.getElementById("model");
-    elements.updated                = document.getElementById("updated");
+    elements.workArea               	= document.getElementById("work-area");
+    elements.workAreaText           	= document.getElementById("work-area-text");
 
-    elements.workArea               = document.getElementById("work-area");
-    elements.workAreaText           = document.getElementById("work-area-text");
+    elements.copyPaste              	= document.getElementById("copy-paste");    
+    elements.copyPasteItem          	= document.getElementById("copy-paste-item");
+    elements.copyPasteSpace         	= document.getElementById("copy-paste-space");
+    elements.clearCue               	= document.getElementById("clear-cue");
+    elements.preview                	= document.getElementById("preview");
 
-    elements.copyPaste              = document.getElementById("copy-paste");    
-    elements.copyPasteItem          = document.getElementById("copy-paste-item");
-    elements.copyPasteSpace         = document.getElementById("copy-paste-space");
-    elements.clearCue               = document.getElementById("clear-cue");
-    elements.preview                = document.getElementById("preview");
+	elements.filesArea					= document.getElementById("files-area");
+	elements.filesAreaHeader			= document.getElementById("files-area-header");
+	elements.filesDirectoryName			= document.getElementById("files-directory-name");
+	elements.filesDirectoryChoose		= document.getElementById("files-directory-choose");
+	elements.filesDownloadAll			= document.getElementById("files-download-all");
+	elements.filesAreaBody				= document.getElementById("files-area-body");
+	elements.filesList					= document.getElementById("files-list");
+	elements.filesListItemTemplate		= document.getElementById("files-list-item-template");
+	elements.fileView					= document.getElementById("file-view");
+	elements.fileViewHeader				= document.getElementById("file-view-header");
+	elements.fileName					= document.getElementById("file-name");
+	elements.fileContents				= document.getElementById("file-contents");
+	elements.fileControls				= document.getElementById("file-controls");
+	elements.fileCopy					= document.getElementById("file-copy");
+	elements.fileDownload				= document.getElementById("file-download");
 
-	elements.filesArea				= document.getElementById("files-area");
-	elements.filesAreaHeader		= document.getElementById("files-area-header");
-	elements.filesDirectoryName		= document.getElementById("files-directory-name");
-	elements.filesDirectoryChoose	= document.getElementById("files-directory-choose");
-	elements.filesDownloadAll		= document.getElementById("files-download-all");
-	elements.filesAreaBody			= document.getElementById("files-area-body");
-	elements.filesList				= document.getElementById("files-list");
-	elements.filesListItemTemplate	= document.getElementById("files-list-item-template");
-	elements.fileView				= document.getElementById("file-view");
-	elements.fileViewHeader			= document.getElementById("file-view-header");
-	elements.fileName				= document.getElementById("file-name");
-	elements.fileContents			= document.getElementById("file-contents");
-	elements.fileControls			= document.getElementById("file-controls");
-	elements.fileCopy				= document.getElementById("file-copy");
-	elements.fileDownload			= document.getElementById("file-download");
-
-	elements.helpContainer			= document.getElementById("help-container");
-	elements.helpText				= document.getElementById("help-text");
+	elements.helpContainer				= document.getElementById("help-container");
+	elements.helpText					= document.getElementById("help-text");
 
 	elements.bookmarkMaker					= document.getElementById("bookmark-maker");
 	elements.bookmarkSettings				= document.getElementById("bookmark-settings");
@@ -412,16 +410,16 @@ function FindElements() {
 	elements.bookmarkCompleted				= document.getElementById("bookmark-completed");
 	elements.bookmarkCompletedText			= document.getElementById("bookmark-completed-text");
 
-    elements.status                 = document.getElementById("status");
-    elements.statusText             = document.getElementById("status-text");
-    elements.statusStart            = document.getElementById("status-start");
-    elements.statusStop             = document.getElementById("status-stop");
-    elements.statusUndo             = document.getElementById("status-undo");
-    elements.statusClear            = document.getElementById("status-clear");
+    elements.status                 	= document.getElementById("status");
+    elements.statusText             	= document.getElementById("status-text");
+    elements.statusStart            	= document.getElementById("status-start");
+    elements.statusStop             	= document.getElementById("status-stop");
+    elements.statusUndo             	= document.getElementById("status-undo");
+    elements.statusClear            	= document.getElementById("status-clear");
 
-    elements.gutter                 = document.getElementById("gutter");
-    elements.link                   = document.getElementById("link");
-    elements.copyright              = document.getElementById("copyright");
+    elements.gutter                 	= document.getElementById("gutter");
+    elements.link                  		= document.getElementById("link");
+    elements.copyright              	= document.getElementById("copyright");
 
     document.addEventListener("fullscreenchange", FullscreenChange);
     document.addEventListener("keydown", KeyPress);
@@ -1637,8 +1635,8 @@ function ShowPanel(event, panel) {
 	if (!elements.settings.classList.contains("hidden") && (panel != "settings")) {
 		HideElement(elements.settings);
 	}
-	if (!elements.toolsArea.classList.contains("hidden") && (panel != "tools") && (panel != "print") && (panel != "bookmark")) {
-    	HideElement(elements.toolsArea);
+	if (!elements.tools.classList.contains("hidden") && (panel != "tools") && (panel != "print") && (panel != "bookmark")) {
+    	HideElement(elements.tools);
 	}
 	if (!elements.print.classList.contains("hidden") && (panel != "print")) {
     	HideElement(elements.print);
@@ -1667,11 +1665,10 @@ function ShowPanel(event, panel) {
 	if (elements.settings.classList.contains("hidden") && (panel == "settings")) {
 		ShowElement(elements.settings);
 	}
-	if (elements.toolsArea.classList.contains("hidden") && ((panel == "tools") || (panel == "print") || (panel == "bookmark"))) {
-    	ShowElement(elements.toolsArea);
+	if (elements.tools.classList.contains("hidden") && ((panel == "tools") || (panel == "print") || (panel == "bookmark"))) {
+    	ShowElement(elements.tools);
 	}
 	if (elements.print.classList.contains("hidden") && (panel == "print")) {
-    	ShowElement(elements.toolsArea);
     	ShowElement(elements.print);
 	}
 }
@@ -1692,7 +1689,7 @@ function IconClickedSettings(event) {
 }
 
 function IconClickedTools(event) {
-	if (elements.toolsArea.classList.contains("hidden")) {
+	if (elements.tools.classList.contains("hidden")) {
 		ShowPanel(event, "tools");
 	}
 	else {
@@ -1786,7 +1783,7 @@ function ToggleFiles_Old(event) {
 
     HideElement(elements.helpContainer);
 	HideElement(elements.settings);
-    HideElement(elements.toolsArea);
+    HideElement(elements.tools);
     HideElement(elements.print);
     HideElement(elements.helpContainer);
 }
@@ -1800,7 +1797,7 @@ function ToggleBookmarkMaker_Old(event) {
 	HideElement(elements.settings);
     HideElement(elements.print);
     HideElement(elements.helpContainer);
-    ShowElement(elements.toolsArea);
+    ShowElement(elements.tools);
 
 	if (elements.bookmarkMaker.classList.contains("hidden")) {
 		let hash = MakeHash();

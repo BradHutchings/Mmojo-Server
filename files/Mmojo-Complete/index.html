@@ -44,8 +44,10 @@
                 <label id="model-label">Model:</label>
                 <div id="model"></div>
                 <div id="updated-space" class="space"></div>
+                <!--
                 <label id="updated-label" class="hidden">Mmojo Server:</label>
                 <div id="updated" class="hidden">Date</div>
+                -->
 
             <!--
             </div>
@@ -116,7 +118,9 @@
             <label id="stop-words-label" for="stop-words" class="hidden">Stop Words:</label>
             <input id="stop-words" type="text" class="hidden" onclick="EnableControls(event);" />
 
-            <div id="settings-break-2" class="break hidden"></div>
+            <div id="settings-break-2" class="break"></div>
+            <label id="updated-label" class="">Mmojo Server:</label>
+            <div id="updated" class="">Date</div>
             <label id="api-key-label" class="hidden" for="api-key">API Key:</label>
             <input id="api-key" class="hidden" type="text" onclick="EnableControls(event);" onkeyup="APIKeyChanged(event);" onchange="APIKeyChanged(event);" />
 

@@ -283,7 +283,7 @@ bool server_http_context::init(const common_params & params) {
             */
 
             // Mmojo Server START
-            if ((req.path == "/") || (req.path == "index.html")) {
+            if ((req.path == "/") || (req.path == "/index.html")) {
                 // in the PATH directory.
                 res.set_redirect("/loading.html");
                 return true;

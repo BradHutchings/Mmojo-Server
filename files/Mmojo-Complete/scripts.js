@@ -1616,7 +1616,7 @@ async function GetModelInfoFromServer() {
 function ShowPanel(event, panel) {
     event.stopPropagation();
 
-	if ((panel === undefined) || (panel === null) || (panel === """)) {
+	if ((panel === undefined) || (panel === null) || (panel === "")) {
 		panel = "work-area";
 	}
 

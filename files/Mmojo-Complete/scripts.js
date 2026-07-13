@@ -335,9 +335,8 @@ function FindElements() {
     elements.downloadIcon               = document.getElementById("download-icon");
     elements.printIcon                  = document.getElementById("print-icon");
     elements.bookmarkIcon               = document.getElementById("bookmark-icon");
-    //  elements.colorWheelIcon             = document.getElementById("color-wheel-icon");
     elements.fullscreenIcon             = document.getElementById("fullscreen-icon");
-    elements.restoreIcon             = document.getElementById("restore-icon");
+    elements.restoreIcon             	= document.getElementById("restore-icon");
 
     elements.settings                   = document.getElementById("settings");
     elements.showCopyAndPasteCheckbox   = document.getElementById("show-copy-and-paste-checkbox");
@@ -352,12 +351,13 @@ function FindElements() {
     elements.themeLabel             	= document.getElementById("theme-label");
     elements.theme                  	= document.getElementById("theme");
 
-    elements.printSettings          = document.getElementById("print-settings");
+    elements.print          		= document.getElementById("print");
     elements.printSize              = document.getElementById("print-size");
     elements.pictureWidth           = document.getElementById("picture-width");
     elements.pictureUrlBreak        = document.getElementById("picture-url-break");
     elements.pictureUrl             = document.getElementById("picture-url");
-    elements.print                  = document.getElementById("print");
+    elements.printPrintButton       = document.getElementById("print-print-button");
+    elements.printCancelButton       = document.getElementById("print-cancel-button");
 
     elements.model                  = document.getElementById("model");
     elements.updated                = document.getElementById("updated");
@@ -777,8 +777,6 @@ function SetCompleting(value) {
 		elements.workAreaText.caretColor = "transparent";
 		elements.workAreaText.classList.add("working");
 
-		// elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
-		// elements.workAreaText.style.borderColor = "var(--color6)";
 		elements.workAreaText.focus();
 	}
 	else {
@@ -786,8 +784,6 @@ function SetCompleting(value) {
 		elements.workAreaText.caretColor = null;
 		elements.workAreaText.classList.remove("working");
 
-		// elements.workAreaText.style.backgroundColor = "var(--color2)";
-		// elements.workAreaText.style.borderColor = "var(--color2)";
 		elements.workAreaText.focus();
 
 		PushChange();
@@ -1071,15 +1067,10 @@ function SetReplaying(value) {
 		//  elements.statusStop.focus();
 	
 		elements.workAreaText.classList.add("working");
-		// elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
-		// elements.workAreaText.style.borderColor = "var(--color6)";
-
 		elements.workAreaText.focus();
 	}
 	else {
 		elements.workAreaText.classList.remove("working");
-		// elements.workAreaText.style.backgroundColor = "var(--color2)";
-		// elements.workAreaText.style.borderColor = "var(--color2)";
 		elements.workAreaText.focus();
     }
 }
@@ -1360,23 +1351,6 @@ function WorkAreaFocus() {
     elements.workAreaText.focus();
 }
 
-function ToggleFullScreen(event) {
-    event.stopPropagation();
-
-    var elt = document.documentElement;
-
-    if (document.fullscreenElement) {
-        if (kLogging) ('Exit fullscreen.');
-        document.exitFullscreen();
-    }
-    else {
-        if (kLogging) ('Enter fullscreen.');
-        document.documentElement.requestFullscreen();
-    }
-
-    elements.workAreaText.focus();
-}
-
 function FullscreenChange() {
     if (document.fullscreenElement) {
         elements.fullscreenIcon.classList.add("hidden");
@@ -1409,21 +1383,23 @@ function KeyPress(event) {
         if (kLogging) console.log('ctrl-b');
         event.preventDefault();
 
-		ToggleBookmarkMaker(event);
+		// bookmark panel needs a close button to just show work area.
+		// ShowPanel(event, "bookmark");
+		IconClickedBookmark(event);
     }
 
     if (event.ctrlKey && !event.shiftKey && (event.key == 'e')) {
         if (kLogging) console.log('ctrl-e');
         event.preventDefault();
 
-		ToggleSettings(event);
+		ShowPanel(event, "settings");
     }
 
     if (event.ctrlKey && !event.shiftKey && (event.key == 'l')) {
         if (kLogging) console.log('ctrl-l');
         event.preventDefault();
 
-		ToggleTools(event);
+		ShowPanel(event, "tools");
     }
 }
 
@@ -1637,10 +1613,162 @@ async function GetModelInfoFromServer() {
     }
 }
 
-function ToggleFiles(event) {
+function ShowPanel(event, panel) {
+    event.stopPropagation();
+
+	// Hide all panels
+	if (!elements.filesArea.classList.contains("hidden") && (panel != "files")) {
+    	HideElement(elements.filesArea);
+	}
+	if (!elements.bookmarkMaker.classList.contains("hidden") && (panel != "bookmark")) {
+    	HideElement(elements.bookmarkMaker);
+	}
+	if (!elements.helpContainer.classList.contains("hidden") && (panel != "help")) {
+    	HideElement(elements.helpContainer);
+	}
+	if (!elements.workArea.classList.contains("hidden") && ((panel == "files") || (panel == "bookmark") || (panel == "help"))) {
+    	HideElement(elements.workArea);
+    	HideElement(elements.status);
+	}
+	if (!elements.settings.classList.contains("hidden") && (panel != "settings")) {
+		HideElement(elements.settings);
+	}
+	if (!elements.toolsArea.classList.contains("hidden") && (panel != "tools")) {
+    	HideElement(elements.toolsArea);
+	}
+	if (!elements.print.classList.contains("hidden") && (panel != "print")) {
+    	HideElement(elements.print);
+	}
+	
+	// Show the right panels
+	if (elements.filesArea.classList.contains("hidden") && (panel == "files")) {
+		ShowFilesDirectoryName();
+		PopulateFilesList();
+		ShowSelectedFile();
+    	ShowElement(elements.filesArea);
+	}
+	if (elements.bookmarkMaker.classList.contains("hidden") && (panel == "bookmark")) {
+		let hash = MakeHash();
+		UseBookmarkHash(hash);
+    	ShowElement(elements.bookmarkMaker);
+	}
+	if (elements.helpContainer.classList.contains("hidden") && (panel -= "help")) {
+    	ShowElement(elements.helpContainer);
+	}
+	if (elements.workArea.classList.contains("hidden") && ((panel != "files") && (panel != "bookmark") && (panel != "help"))) {
+    	ShowElement(elements.workArea);
+    	ShowElement(elements.status);
+		elements.workAreaText.focus();
+	}
+	if (elements.settings.classList.contains("hidden") && (panel == "settings")) {
+		ShowElement(elements.settings);
+	}
+	if (elements.toolsArea.classList.contains("hidden") && (panel == "tools")) {
+    	ShowElement(elements.toolsArea);
+	}
+	if (elements.print.classList.contains("hidden") && (panel == "print")) {
+    	ShowElement(elements.print);
+	}
+}
+
+function IconClickedSettings(event) {
+	if (event.shiftKey) {
+		NextTheme();
+    	event.stopPropagation();
+	}
+	else {
+		if (elements.settings.classList.contains("hidden")) {
+			ShowPanel("settings");
+		}
+		else {
+			ShowPanel("work-area");
+		}
+	}
+}
+
+function IconClickedTools(event) {
+	if (elements.toolsArea.classList.contains("hidden")) {
+		ShowPanel("tools");
+	}
+	else {
+		ShowPanel("work-area");
+	}
+}
+
+function IconClickedFiles(event) {
+	if (elements.filesArea.classList.contains("hidden")) {
+		ShowPanel(event, "files");
+	}
+	else {
+		ShowPanel(event, "work-area");
+	}
+}
+
+function IconClickedHelp(event) {
+	if (elements.helpContainer.classList.contains("hidden")) {
+		ShowPanel("help");
+	}
+	else {
+		ShowPanel("work-area");
+	}
+}
+
+function IconClickedPrint(event) {
+	if (elements.print.classList.contains("hidden")) {
+		ShowPanel("print");
+	}
+	else {
+		ShowPanel("work-area");
+	}
+}
+
+function IconClickedBookmark(event) {
+	if (elements.bookmarkMaker.classList.contains("hidden")) {
+		ShowPanel(event, "bookmark");
+	}
+	else {
+		ShowPanel(event, "work-area");
+	}
+}
+
+function IconClickedFullScreen(event) {
+    event.stopPropagation();
+
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+	}
+}
+
+function IconClickedRestore(event) {
+    event.stopPropagation();
+
+    if (document.fullscreenElement) {
+        if (kLogging) ('Exit fullscreen.');
+        document.exitFullscreen();
+    }
+}
+
+function ToggleFullScreen_Old(event) {
+    event.stopPropagation();
+
+    var elt = document.documentElement;
+
+    if (document.fullscreenElement) {
+        if (kLogging) ('Exit fullscreen.');
+        document.exitFullscreen();
+    }
+    else {
+        if (kLogging) ('Enter fullscreen.');
+        document.documentElement.requestFullscreen();
+    }
+
+    elements.workAreaText.focus();
+}
+
+function ToggleFiles_Old(event) {
     event.stopPropagation();
 	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker(event);
+		ToggleBookmarkMaker_Old(event);
 	}
 
 	if (elements.filesArea.classList.contains("hidden")) {
@@ -1671,18 +1799,18 @@ function ToggleFiles(event) {
     HideElement(elements.helpContainer);
 	HideElement(elements.settings);
     HideElement(elements.toolsArea);
-    HideElement(elements.printSettings);
+    HideElement(elements.print);
     HideElement(elements.helpContainer);
 }
 
-function ToggleBookmarkMaker(event) {
+function ToggleBookmarkMaker_Old(event) {
     event.stopPropagation();
 	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles(event);
+		ToggleFiles_Old(event);
 	}
 
 	HideElement(elements.settings);
-    HideElement(elements.printSettings);
+    HideElement(elements.print);
     HideElement(elements.helpContainer);
     ShowElement(elements.toolsArea);
 
@@ -1702,18 +1830,18 @@ function ToggleBookmarkMaker(event) {
 	}
 }
 
-function ToggleHelp(event) {
+function ToggleHelp_Old(event) {
     event.stopPropagation();
 	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles(event);
+		ToggleFiles_Old(event);
 	}
 	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker(event);
+		ToggleBookmarkMaker_Old(event);
 	}
 
 	HideElement(elements.settings);
     HideElement(elements.toolsArea);
-    HideElement(elements.printSettings);
+    HideElement(elements.print);
 
 	if (elements.helpContainer.classList.contains("hidden")) {
     	HideElement(elements.workArea);
@@ -1728,7 +1856,7 @@ function ToggleHelp(event) {
 	}
 }
 
-function ToggleSettings(event) {
+function ToggleSettings_Old(event) {
     event.stopPropagation();
 
 	if (event.shiftKey) {
@@ -1736,16 +1864,16 @@ function ToggleSettings(event) {
 	}
 	else {
 		if (!elements.filesArea.classList.contains("hidden")) {
-			ToggleFiles(event);
+			ToggleFiles_Old(event);
 		}
 		if (!elements.bookmarkMaker.classList.contains("hidden")) {
-			ToggleBookmarkMaker(event);
+			ToggleBookmarkMaker_Old(event);
 		}
 		
 	    elements.workAreaText.focus();
 	    ToggleShowElement(elements.settings);
 	    HideElement(elements.toolsArea);
-	    HideElement(elements.printSettings);
+	    HideElement(elements.print);
 	    HideElement(elements.helpContainer);
 	
 	    if (elements.settings.classList.contains("hidden")) {
@@ -1757,32 +1885,32 @@ function ToggleSettings(event) {
 	}
 }
 
-function ToggleTools(event) {
+function ToggleTools_Old(event) {
     event.stopPropagation();
 	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles(event);
+		ToggleFiles_Old(event);
 	}
 	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker(event);
+		ToggleBookmarkMaker_Old(event);
 	}
 
 	elements.workAreaText.focus()
     ToggleShowElement(elements.toolsArea);
     HideElement(elements.settings);
-    HideElement(elements.printSettings);
+    HideElement(elements.print);
     HideElement(elements.helpContainer);
 }
 
-function TogglePrintSettings() {
+function TogglePrintSettings_Old() {
     elements.workAreaText.focus();
 	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles(event);
+		ToggleFiles_Old(event);
 	}
 	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker(event);
+		ToggleBookmarkMaker_Old(event);
 	}
 
-	ToggleShowElement(elements.printSettings)
+	ToggleShowElement(elements.print)
     HideElement(elements.settings);
     HideElement(elements.toolsArea);
     HideElement(elements.helpContainer);
@@ -2686,7 +2814,7 @@ function FilesListItemDoubleClicked(event) {
 		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(codeBlock));
 
 		if (!elements.filesArea.classList.contains("hidden")) {
-			ToggleFiles(event);
+			ShowPanel(event, "work-area");
 		}
 
 		let wat = elements.workAreaText.value;

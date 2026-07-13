@@ -116,7 +116,6 @@ var kHelpHTML =
     "<hr />\n" +
     "<h3>Tools Panel:</h3>\n" +
     "<ul>\n" +
-        "<li><img src=\"images/chat-64.png\" class=\"inline-image\" /><b>Chat:</b> Click for a more standard chat-style interface.</li>\n" + 
         "<li><img src=\"images/read-64.png\" class=\"inline-image\" /><b>Read:</b> Click to have the computer read the (selected) Work Area text.</li>\n" + 
         "<li><img src=\"images/download-64.png\" class=\"inline-image\" /><b>Download:</b> Click to download the Work Area text.</li>\n" + 
         "<li><img src=\"images/print-64.png\" class=\"inline-image\" /><b>Print:</b> Click to show the <b>Print</b> panel.</li>\n" + 
@@ -331,7 +330,6 @@ function FindElements() {
 
     elements.tools                      = document.getElementById("tools");
     elements.model                  = document.getElementById("model");
-    //	elements.chatIcon                   = document.getElementById("chat-icon");
     elements.downloadIcon               = document.getElementById("download-icon");
     elements.printIcon                  = document.getElementById("print-icon");
     elements.bookmarkIcon               = document.getElementById("bookmark-icon");
@@ -2218,13 +2216,6 @@ async function CountTokens() {
 
 function UpdatePicture() {
 
-}
-
-function Chat(event) {
-    event.stopPropagation();
-    elements.workAreaText.focus();
-
-    window.open('/chat', '_blank');
 }
 
 function Read(event) {

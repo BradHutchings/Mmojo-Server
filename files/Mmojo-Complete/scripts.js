@@ -1639,7 +1639,7 @@ function ShowPanel(event, panel) {
 	if (!elements.settings.classList.contains("hidden") && (panel != "settings")) {
 		HideElement(elements.settings);
 	}
-	if (!elements.toolsArea.classList.contains("hidden") && (panel != "tools") && (panel != "print")) {
+	if (!elements.toolsArea.classList.contains("hidden") && (panel != "tools") && (panel != "print") && (panel != "bookmark")) {
     	HideElement(elements.toolsArea);
 	}
 	if (!elements.print.classList.contains("hidden") && (panel != "print")) {
@@ -1670,7 +1670,7 @@ function ShowPanel(event, panel) {
 		console.log("- showing settings.")
 		ShowElement(elements.settings);
 	}
-	if (elements.toolsArea.classList.contains("hidden") && (panel == "tools")) {
+	if (elements.toolsArea.classList.contains("hidden") && ((panel == "tools" || (panel == "print") || (panel == "bookmark")) {
 		console.log("- showing tools.")
     	ShowElement(elements.toolsArea);
 	}

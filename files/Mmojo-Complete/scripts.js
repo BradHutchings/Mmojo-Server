@@ -1678,20 +1678,20 @@ function IconClickedSettings(event) {
 	}
 	else {
 		if (elements.settings.classList.contains("hidden")) {
-			ShowPanel("settings");
+			ShowPanel(event, "settings");
 		}
 		else {
-			ShowPanel("work-area");
+			ShowPanel(event, "work-area");
 		}
 	}
 }
 
 function IconClickedTools(event) {
 	if (elements.toolsArea.classList.contains("hidden")) {
-		ShowPanel("tools");
+		ShowPanel(event, "tools");
 	}
 	else {
-		ShowPanel("work-area");
+		ShowPanel(event, "work-area");
 	}
 }
 
@@ -1706,19 +1706,19 @@ function IconClickedFiles(event) {
 
 function IconClickedHelp(event) {
 	if (elements.helpContainer.classList.contains("hidden")) {
-		ShowPanel("help");
+		ShowPanel(event, "help");
 	}
 	else {
-		ShowPanel("work-area");
+		ShowPanel(event, "work-area");
 	}
 }
 
 function IconClickedPrint(event) {
 	if (elements.print.classList.contains("hidden")) {
-		ShowPanel("print");
+		ShowPanel(event, "print");
 	}
 	else {
-		ShowPanel("work-area");
+		ShowPanel(event, "work-area");
 	}
 }
 

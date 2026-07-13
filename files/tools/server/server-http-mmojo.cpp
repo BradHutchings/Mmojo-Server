@@ -446,10 +446,25 @@ bool server_http_context::init(const common_params & params) {
                     return false;
                 };
             };
+          
+            // Mmojo Server START
+            std::string prefix = params.api_prefix;
+            std::string ui_endpoint = params.default_ui_endpoint;
+            if (ui_endpoint != "") {
+                prefix = prefix + "/" + ui_endpoint;
+                while (ends_with(prefix, "/")) {
+                    prefix = prefix.substr(0, endpoint.length() - 1);
+                }
+            }
+            // Mmojo Server END
 
+            // Mmojo Server START
             // main index file
-            srv->Get(params.api_prefix + "/",           serve_asset_cached("index.html", true));
-            srv->Get(params.api_prefix + "/index.html", serve_asset_cached("index.html", true));
+            //  srv->Get(params.api_prefix + "/",           serve_asset_cached("index.html", true));
+            //  srv->Get(params.api_prefix + "/index.html", serve_asset_cached("index.html", true));
+            srv->Get(prefix + "/",           serve_asset_cached("index.html", true));
+            srv->Get(prefix + "/index.html", serve_asset_cached("index.html", true));
+            // Mmojo Server END
 
             // All remaining assets registered directly from the embedded asset table.
             // PWA revalidation files (sw.js, manifest, version.json) use no-cache;
@@ -465,9 +480,16 @@ bool server_http_context::init(const common_params & params) {
                 if (a.name == "index.html") continue;  // served at "/" and "/index.html" above
                 if (no_cache_names.count(a.name)) {
                     SRV_DBG("serve nocache for %s\n", a.name.c_str());
-                    srv->Get(params.api_prefix + "/" + a.name, serve_asset_nocache(a.name));
+                  
+                    // Mmojo Server START
+                    //  srv->Get(params.api_prefix + "/" + a.name, serve_asset_nocache(a.name));
+                    srv->Get(prefix + "/" + a.name, serve_asset_nocache(a.name));
+                    // Mmojo Server END
                 } else {
-                    srv->Get(params.api_prefix + "/" + a.name, serve_asset_cached(a.name, false));
+                    // Mmojo Server START
+                    //  srv->Get(params.api_prefix + "/" + a.name, serve_asset_cached(a.name, false));
+                    srv->Get(prefix + "/" + a.name, serve_asset_cached(a.name, false));
+                    // Mmojo Server END
                 }
             }
 
@@ -475,6 +497,7 @@ bool server_http_context::init(const common_params & params) {
         }
       
         // Mmojo Server START
+        /*
         if (params.default_ui_endpoint != "") {
             auto serve_asset_cached = [](const std::string & name, bool isolation) {
                 return [name, isolation](const httplib::Request & req, httplib::Response & res) {
@@ -560,6 +583,7 @@ bool server_http_context::init(const common_params & params) {
                 return false;
             });
         }
+        */
         // Mmojo Server END
     }
     return true;

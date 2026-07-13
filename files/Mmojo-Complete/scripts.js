@@ -1738,7 +1738,7 @@ function IconClickedPrint(event) {
 		ShowPanel(event, "print");
 	}
 	else {
-		ShowPanel(event, "work-area");
+		ShowPanel(event, "tools");
 	}
 }
 

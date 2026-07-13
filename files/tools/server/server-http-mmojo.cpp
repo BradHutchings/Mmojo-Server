@@ -476,6 +476,29 @@ bool server_http_context::init(const common_params & params) {
       
         // Mmojo Server START
         if (params.default_ui_endpoint != "") {
+            auto serve_asset_cached = [](const std::string & name, bool isolation) {
+                return [name, isolation](const httplib::Request & req, httplib::Response & res) {
+                    if (!handle_gzip_header(req, res)) {
+                        return true; // returns error message
+                    }
+                    const llama_ui_asset * a = llama_ui_find_asset(name);
+                    if (!a) { res.status = 404; return false; }
+                    res.set_header("ETag", a->etag);
+                    if (const std::string & inm = req.get_header_value("If-None-Match");
+                        !inm.empty() && (inm == a->etag || inm == std::string("W/") + a->etag)) {
+                        res.status = 304;
+                        return false;
+                    }
+                    if (isolation) {
+                        res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
+                        res.set_header("Cross-Origin-Opener-Policy",   "same-origin");
+                    }
+                    res.set_header("Cache-Control", "public, max-age=31536000, immutable");
+                    res.set_content(reinterpret_cast<const char*>(a->data), a->size, a->type.c_str());
+                    return false;
+                };
+            };
+
             auto serve_asset = [](const std::string & name, const char * mime, bool with_isolation_headers) {
                 return [name, mime, with_isolation_headers](const httplib::Request & req, httplib::Response & res) {
                     const llama_ui_asset * a = llama_ui_find_asset(name.c_str());
@@ -513,9 +536,9 @@ bool server_http_context::init(const common_params & params) {
                 res.set_redirect(req.path + "/");
                 return false;
             });
-            srv->Get(endpoint + "/", serve_asset("index.html", "text/html; charset=utf-8", true));
-            srv->Get(endpoint + "/bundle.js",  serve_asset("bundle.js",  "application/javascript; charset=utf-8", false));
-            srv->Get(endpoint + "/bundle.css", serve_asset("bundle.css", "text/css; charset=utf-8",               false));
+            srv->Get(endpoint + "/", serve_asset_cached("index.html", "text/html; charset=utf-8", true));
+            srv->Get(endpoint + "/bundle.js",  serve_asset_cached("bundle.js",  "application/javascript; charset=utf-8", false));
+            srv->Get(endpoint + "/bundle.css", serve_asset_cached("bundle.css", "text/css; charset=utf-8",               false));
                       
             // This is so the relocated chat UI can get properties. 
             srv->Get(endpoint + "/props", [endpoint](const httplib::Request & req, httplib::Response & res) {

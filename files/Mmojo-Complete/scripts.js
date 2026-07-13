@@ -1678,9 +1678,11 @@ function IconClickedSettings(event) {
 	}
 	else {
 		if (elements.settings.classList.contains("hidden")) {
+			console.log("Showing settings panel.");
 			ShowPanel(event, "settings");
 		}
 		else {
+			console.log("Hiding settings panel.");
 			ShowPanel(event, "work-area");
 		}
 	}
@@ -1688,9 +1690,11 @@ function IconClickedSettings(event) {
 
 function IconClickedTools(event) {
 	if (elements.toolsArea.classList.contains("hidden")) {
+		console.log("Showing tools panel.");
 		ShowPanel(event, "tools");
 	}
 	else {
+		console.log("Hiding tools panel.");
 		ShowPanel(event, "work-area");
 	}
 }

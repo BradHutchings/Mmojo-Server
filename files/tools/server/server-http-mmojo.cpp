@@ -391,7 +391,14 @@ bool server_http_context::init(const common_params & params) {
                 SRV_ERR("static assets path not found: %s\n", params.public_path.c_str());
                 return false;
             }
-        } else {
+          
+        // Mmojo Server START
+        // Replace the "} else {" line with this block.
+        // } else {
+        }
+        if (params.default_ui_endpoint != "") {
+        // Mmojo Server END
+          
 #if defined(LLAMA_UI_HAS_ASSETS)
             static auto handle_gzip_header = [](const httplib::Request & req, httplib::Response & res) {
                 if (!llama_ui_use_gzip()) {

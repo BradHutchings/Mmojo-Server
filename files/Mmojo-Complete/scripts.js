@@ -1641,6 +1641,7 @@ function ShowPanel(event, panel) {
 	if (!elements.print.classList.contains("hidden") && (panel != "print")) {
     	HideElement(elements.print);
 	}
+	console.log("Show panel (2): " + panel);
 	
 	// Show the right panels
 	if (elements.filesArea.classList.contains("hidden") && (panel == "files")) {
@@ -1649,19 +1650,23 @@ function ShowPanel(event, panel) {
 		ShowSelectedFile();
     	ShowElement(elements.filesArea);
 	}
+	console.log("Show panel (2): " + panel);
 	if (elements.bookmarkMaker.classList.contains("hidden") && (panel == "bookmark")) {
 		let hash = MakeHash();
 		UseBookmarkHash(hash);
     	ShowElement(elements.bookmarkMaker);
 	}
+	console.log("Show panel (3): " + panel);
 	if (elements.helpContainer.classList.contains("hidden") && (panel -= "help")) {
     	ShowElement(elements.helpContainer);
 	}
+	console.log("Show panel (4): " + panel);
 	if (elements.workArea.classList.contains("hidden") && ((panel != "files") && (panel != "bookmark") && (panel != "help"))) {
     	ShowElement(elements.workArea);
     	ShowElement(elements.status);
 		elements.workAreaText.focus();
 	}
+	console.log("Show panel (5): " + panel);
 	if (elements.settings.classList.contains("hidden") && (panel == "settings")) {
 		console.log("- showing settings.")
 		ShowElement(elements.settings);

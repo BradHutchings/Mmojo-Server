@@ -536,10 +536,14 @@ bool server_http_context::init(const common_params & params) {
                 res.set_redirect(req.path + "/");
                 return false;
             });
-            srv->Get(endpoint + "/", serve_asset_cached("index.html", "text/html; charset=utf-8", true));
-            srv->Get(endpoint + "/bundle.js",  serve_asset_cached("bundle.js",  "application/javascript; charset=utf-8", false));
-            srv->Get(endpoint + "/bundle.css", serve_asset_cached("bundle.css", "text/css; charset=utf-8",               false));
-                      
+            srv->Get(endpoint + "/", serve_asset_cached("index.html", true));
+            srv->Get(endpoint + "/bundle.js",  serve_asset_cached("bundle.js", false));
+            srv->Get(endpoint + "/bundle.css", serve_asset_cached("bundle.css", false));
+
+            // srv->Get(endpoint + "/", serve_asset_cached("index.html", "text/html; charset=utf-8", true));
+            // srv->Get(endpoint + "/bundle.js",  serve_asset_cached("bundle.js",  "application/javascript; charset=utf-8", false));
+            // srv->Get(endpoint + "/bundle.css", serve_asset_cached("bundle.css", "text/css; charset=utf-8",               false));
+
             // This is so the relocated chat UI can get properties. 
             srv->Get(endpoint + "/props", [endpoint](const httplib::Request & req, httplib::Response & res) {
                 // LOG_INF("Redirecting %s/props to /props\n", endpoint.c_str());

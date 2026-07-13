@@ -31,10 +31,10 @@
 
         <div id="title-bar" class="row">
             <div id="mmojo-complete" onclick="WorkAreaFocus();">Mmojo Complete is Private.</div>
-            <div id="settings-icon" onclick="ToggleSettings(event);" title="Toggle Settings" ></div>
-            <div id="tools-icon" onclick="ToggleTools(event);" title="Toggle Tools" ></div>
-            <div id="files-icon" class="hidden" onclick="ToggleFiles(event);" title="Toggle Files" ></div>
-            <div id="help-icon" onclick="ToggleHelp(event);" title="Help" ></div>
+            <div id="settings-icon" onclick="IconClickedSettings(event);" title="Toggle Settings" ></div>
+            <div id="tools-icon" onclick="IconClickedTools(event);" title="Toggle Tools" ></div>
+            <div id="files-icon" class="hidden" onclick="IconClickedFiles(event);" title="Toggle Files" ></div>
+            <div id="help-icon" onclick="IconClickedHelp(event);" title="Help" ></div>
         </div>
 
         <div id="tools-area" class="row hidden" onclick="WorkAreaFocus();">
@@ -51,10 +51,10 @@
                 <div id="chat-icon" onclick="Chat(event);" title="Mmojo Chat" ></div>
                 <div id="read-icon" onclick="Read(event)" title="Read Work Area" ></div>
                 <div id="download-icon" onclick="Download(event)" title="Download Work Area" ></div>
-                <div id="print-icon" onclick="TogglePrintSettings(event);" title="Print Work Area" ></div>
-                <div id="bookmark-icon" onclick="ToggleBookmarkMaker(event);" title="Bookmark Maker" ></div>
-                <div id="fullscreen-icon" onclick="ToggleFullScreen(event);" title="Full Screen" ></div>
-                <div id="restore-icon" class="hidden" onclick="ToggleFullScreen(event);" title="Exit Full Screen" ></div>
+                <div id="print-icon" onclick="IconClickedPrint(event, "print");" title="Print Work Area" ></div>
+                <div id="bookmark-icon" onclick="IconClickedBookmark(event);" title="Bookmark Maker" ></div>
+                <div id="fullscreen-icon" onclick="IconClickedFullScreen(event);" title="Full Screen" ></div>
+                <div id="restore-icon" class="hidden" onclick="IconClickedRestore(event);" title="Exit Full Screen" ></div>
             </div>
         </div>
 
@@ -125,7 +125,7 @@
 
         </div>
 
-        <div id="print-settings" class="row hidden" onclick="WorkAreaFocus();">
+        <div id="print" class="row hidden" onclick="WorkAreaFocus();">
             <label id="print-size-label" for="print-size">Print Size:</label>
             <select id="print-size" onclick="EnableControls(event);">
                 <option value="1rem">Tiny</option>
@@ -149,8 +149,8 @@
             </select>
 
             <div id="print-space" class="space"></div>
-            <button id="print" onclick="Print(event);">Print</button>
-            <button id="print-cancel" onclick="TogglePrintSettings(event);">Cancel</button>
+            <button id="print-print-button" onclick="Print(event);">Print</button>
+            <button id="print-cancel-button" onclick="TogglePrintSettings(event);">Cancel</button>
 
             <div id="picture-url-break" class="break"></div>
             <label id="picture-url-label" for="picture-url">Picture URL:</label>

@@ -585,7 +585,7 @@ ul, li {
     user-select: none;
     background-color: var(--header-light);
     color: var(--text-dark);
-    margin-bottom: 0rem;
+    xxmargin-bottom: 0rem;
 }
 
 #settings-space {

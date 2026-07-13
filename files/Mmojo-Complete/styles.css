@@ -558,34 +558,12 @@ ul, li {
     color: var(--text-dark);
 }
 
-#tools-area {
-    min-height: 1.4rem;
-    flex-wrap: wrap;
-    user-select: none;
-    background-color: #00000000;
-    color: var(--text-dark);
-    padding: 0rem 0rem;
-}
-
-#tools-info {
-    min-height: 1.4rem;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-grow: 8;
-    flex-shrink: 20;
-    background-color: var(--header-light);
-    margin-right: 0.5rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-}
-
 #tools {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
     background-color: var(--header-light);
     color: var(--text-dark);
-    xxmargin-bottom: 0rem;
 }
 
 #settings-space {

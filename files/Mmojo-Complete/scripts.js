@@ -1616,6 +1616,8 @@ async function GetModelInfoFromServer() {
 function ShowPanel(event, panel) {
     event.stopPropagation();
 
+	console.log("Show panel: " + panel);
+
 	// Hide all panels
 	if (!elements.filesArea.classList.contains("hidden") && (panel != "files")) {
     	HideElement(elements.filesArea);
@@ -1661,12 +1663,15 @@ function ShowPanel(event, panel) {
 		elements.workAreaText.focus();
 	}
 	if (elements.settings.classList.contains("hidden") && (panel == "settings")) {
+		console.log("- showing settings.")
 		ShowElement(elements.settings);
 	}
 	if (elements.toolsArea.classList.contains("hidden") && (panel == "tools")) {
+		console.log("- showing tools.")
     	ShowElement(elements.toolsArea);
 	}
 	if (elements.print.classList.contains("hidden") && (panel == "print")) {
+		console.log("- showing print.")
     	ShowElement(elements.print);
 	}
 }

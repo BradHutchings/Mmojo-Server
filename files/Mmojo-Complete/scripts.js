@@ -1666,6 +1666,11 @@ function ShowPanel(event, panel) {
 		console.log("- showing settings.")
 		ShowElement(elements.settings);
 	}
+	else {
+		console.log("- not showing settings.");
+		console.log("- elements.settings.classList: " + elements.settings.classList);
+		console.log("- panel: " + panel);
+	}
 	if (elements.toolsArea.classList.contains("hidden") && (panel == "tools")) {
 		console.log("- showing tools.")
     	ShowElement(elements.toolsArea);

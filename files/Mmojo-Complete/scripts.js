@@ -1670,7 +1670,7 @@ function ShowPanel(event, panel) {
 		console.log("- showing settings.")
 		ShowElement(elements.settings);
 	}
-	if (elements.toolsArea.classList.contains("hidden") && ((panel == "tools" || (panel == "print") || (panel == "bookmark")) {
+	if (elements.toolsArea.classList.contains("hidden") && ((panel == "tools" || (panel == "print") || (panel == "bookmark"))) {
 		console.log("- showing tools.")
     	ShowElement(elements.toolsArea);
 	}

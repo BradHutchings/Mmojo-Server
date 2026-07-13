@@ -453,7 +453,7 @@ bool server_http_context::init(const common_params & params) {
             if (ui_endpoint != "") {
                 prefix = prefix + "/" + ui_endpoint;
                 while (ends_with(prefix, "/")) {
-                    prefix = prefix.substr(0, endpoint.length() - 1);
+                    prefix = prefix.substr(0, prefix.length() - 1);
                 }
             }
             // Mmojo Server END

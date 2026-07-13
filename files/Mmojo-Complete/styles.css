@@ -27,7 +27,6 @@
     --files-icon: url('images/files-64.png');
     --help-icon: url('images/help-64.png');
 
-    --chat-icon: url('images/chat-64.png');
     --read-icon: url('images/read-64.png');
     --download-icon: url('images/download-64.png');
     --print-icon: url('images/print-64.png');
@@ -150,7 +149,6 @@ body.theme-dark {
     --files-icon: url('images/files-light-64.png');
     --help-icon: url('images/help-light-64.png');
 
-    --chat-icon: url('images/chat-light-64.png');
     --read-icon: url('images/read-light-64.png');
     --download-icon: url('images/download-light-64.png');
     --print-icon: url('images/print-light-64.png');
@@ -493,7 +491,7 @@ ul, li {
     font-weight: bold;
 }
 
-#files-icon, #settings-icon, #tools-icon, #help-icon, #chat-icon, 
+#files-icon, #settings-icon, #tools-icon, #help-icon, 
 #read-icon, #download-icon, #print-icon, #bookmark-icon, 
 #color-wheel-icon, #fullscreen-icon, #restore-icon {
     width: 1.6rem;
@@ -520,10 +518,6 @@ ul, li {
 
 #help-icon {
     background-image: var(--help-icon);
-}
-
-#chat-icon {
-    background-image: var(--chat-icon);
 }
 
 #read-icon {

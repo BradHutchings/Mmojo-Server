@@ -1616,6 +1616,10 @@ async function GetModelInfoFromServer() {
 function ShowPanel(event, panel) {
     event.stopPropagation();
 
+	if ((panel === undefined) || (panel === null) || (panel === """)) {
+		panel = "work-area";
+	}
+
 	console.log("Show panel: " + panel);
 
 	// Hide all panels
@@ -1666,11 +1670,6 @@ function ShowPanel(event, panel) {
 		console.log("- showing settings.")
 		ShowElement(elements.settings);
 	}
-	else {
-		console.log("- not showing settings.");
-		console.log("- elements.settings.classList: " + elements.settings.classList);
-		console.log("- panel: " + panel);
-	}
 	if (elements.toolsArea.classList.contains("hidden") && (panel == "tools")) {
 		console.log("- showing tools.")
     	ShowElement(elements.toolsArea);
@@ -1679,6 +1678,11 @@ function ShowPanel(event, panel) {
 		console.log("- showing print.")
     	ShowElement(elements.toolsArea);
     	ShowElement(elements.print);
+	}
+	else {
+		console.log("- not showing print.");
+		console.log("- elements.print.classList: " + elements.print.classList);
+		console.log("- panel: " + panel);
 	}
 }
 
@@ -1764,23 +1768,6 @@ function IconClickedRestore(event) {
     }
 }
 
-function ToggleFullScreen_Old(event) {
-    event.stopPropagation();
-
-    var elt = document.documentElement;
-
-    if (document.fullscreenElement) {
-        if (kLogging) ('Exit fullscreen.');
-        document.exitFullscreen();
-    }
-    else {
-        if (kLogging) ('Enter fullscreen.');
-        document.documentElement.requestFullscreen();
-    }
-
-    elements.workAreaText.focus();
-}
-
 function ToggleFiles_Old(event) {
     event.stopPropagation();
 	if (!elements.bookmarkMaker.classList.contains("hidden")) {
@@ -1844,77 +1831,6 @@ function ToggleBookmarkMaker_Old(event) {
     	ShowElement(elements.status);
 		elements.workAreaText.focus();
 	}
-}
-
-function ToggleHelp_Old(event) {
-    event.stopPropagation();
-	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles_Old(event);
-	}
-	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker_Old(event);
-	}
-
-	HideElement(elements.settings);
-    HideElement(elements.toolsArea);
-    HideElement(elements.print);
-
-	if (elements.helpContainer.classList.contains("hidden")) {
-    	HideElement(elements.workArea);
-    	HideElement(elements.status);
-    	ShowElement(elements.helpContainer);
-	}
-	else {
-    	HideElement(elements.helpContainer);
-		ShowElement(elements.workArea);
-    	ShowElement(elements.status);
-		elements.workAreaText.focus();
-	}
-}
-
-function ToggleSettings_Old(event) {
-    event.stopPropagation();
-
-	if (event.shiftKey) {
-		NextTheme();
-	}
-	else {
-		if (!elements.filesArea.classList.contains("hidden")) {
-			ToggleFiles_Old(event);
-		}
-		if (!elements.bookmarkMaker.classList.contains("hidden")) {
-			ToggleBookmarkMaker_Old(event);
-		}
-		
-	    elements.workAreaText.focus();
-	    ToggleShowElement(elements.settings);
-	    HideElement(elements.toolsArea);
-	    HideElement(elements.print);
-	    HideElement(elements.helpContainer);
-	
-	    if (elements.settings.classList.contains("hidden")) {
-	        elements.workAreaText.focus()
-	    }
-	    else {
-	        elements.showCopyAndPasteCheckbox.focus()
-	    }
-	}
-}
-
-function ToggleTools_Old(event) {
-    event.stopPropagation();
-	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles_Old(event);
-	}
-	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker_Old(event);
-	}
-
-	elements.workAreaText.focus()
-    ToggleShowElement(elements.toolsArea);
-    HideElement(elements.settings);
-    HideElement(elements.print);
-    HideElement(elements.helpContainer);
 }
 
 function TogglePrintSettings_Old() {

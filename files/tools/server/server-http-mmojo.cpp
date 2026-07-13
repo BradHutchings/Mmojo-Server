@@ -456,12 +456,14 @@ bool server_http_context::init(const common_params & params) {
                     prefix = prefix.substr(0, prefix.length() - 1);
                 }
             }
+            SRV_INF("prefix: \"%s\"\n", prefix.c_str());
             // Mmojo Server END
 
             // Mmojo Server START
             // main index file
             //  srv->Get(params.api_prefix + "/",           serve_asset_cached("index.html", true));
             //  srv->Get(params.api_prefix + "/index.html", serve_asset_cached("index.html", true));
+            
             srv->Get(prefix + "/",           serve_asset_cached("index.html", true));
             srv->Get(prefix + "/index.html", serve_asset_cached("index.html", true));
             // Mmojo Server END

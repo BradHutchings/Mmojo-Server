@@ -1657,7 +1657,7 @@ function ShowPanel(event, panel) {
     	ShowElement(elements.bookmarkMaker);
 	}
 	console.log("Show panel (3): " + panel);
-	if (elements.helpContainer.classList.contains("hidden") && (panel -= "help")) {
+	if (elements.helpContainer.classList.contains("hidden") && (panel == "help")) {
     	ShowElement(elements.helpContainer);
 	}
 	console.log("Show panel (4): " + panel);

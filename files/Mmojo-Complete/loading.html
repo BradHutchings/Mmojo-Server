@@ -55,13 +55,14 @@
         <script>
             function PageLoaded() {
                 const currentUrl = window.location.href;
-                console.log("Current URL: " + currentUrl);
                 const parentUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1);
-                console.log("Parent URL: " + parentUrl);
+
+                // console.log("Current URL: " + currentUrl);
+                // console.log("Parent URL: " + parentUrl);
 
                 if (currentUrl != parentUrl) {
                     setTimeout(() => {
-                        //    window.location.href = parentUrl;
+                        window.location.href = parentUrl;
                     }, 5000);
                 }
             }

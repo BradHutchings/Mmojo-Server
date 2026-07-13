@@ -645,7 +645,7 @@ ul, li {
     padding-right: 0.5rem;
 }
 
-#print-settings {
+#print {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
@@ -660,7 +660,7 @@ ul, li {
     flex-shrink: 20;
 }
 
-#print, #print-cancel {
+#print-print-button, #print-cancel-button {
     font-size: 0.8rem;
     min-width: 4rem;
     padding: 0.25rem 0.5rem;

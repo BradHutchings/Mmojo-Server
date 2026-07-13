@@ -1620,8 +1620,6 @@ function ShowPanel(event, panel) {
 		panel = "work-area";
 	}
 
-	console.log("Show panel: " + panel);
-
 	// Hide all panels
 	if (!elements.filesArea.classList.contains("hidden") && (panel != "files")) {
     	HideElement(elements.filesArea);
@@ -1667,22 +1665,14 @@ function ShowPanel(event, panel) {
 		elements.workAreaText.focus();
 	}
 	if (elements.settings.classList.contains("hidden") && (panel == "settings")) {
-		console.log("- showing settings.")
 		ShowElement(elements.settings);
 	}
 	if (elements.toolsArea.classList.contains("hidden") && ((panel == "tools") || (panel == "print") || (panel == "bookmark"))) {
-		console.log("- showing tools.")
     	ShowElement(elements.toolsArea);
 	}
 	if (elements.print.classList.contains("hidden") && (panel == "print")) {
-		console.log("- showing print.")
     	ShowElement(elements.toolsArea);
     	ShowElement(elements.print);
-	}
-	else {
-		console.log("- not showing print.");
-		console.log("- elements.print.classList: " + elements.print.classList);
-		console.log("- panel: " + panel);
 	}
 }
 
@@ -1693,11 +1683,9 @@ function IconClickedSettings(event) {
 	}
 	else {
 		if (elements.settings.classList.contains("hidden")) {
-			console.log("Showing settings panel.");
 			ShowPanel(event, "settings");
 		}
 		else {
-			console.log("Hiding settings panel.");
 			ShowPanel(event, "work-area");
 		}
 	}
@@ -1705,11 +1693,9 @@ function IconClickedSettings(event) {
 
 function IconClickedTools(event) {
 	if (elements.toolsArea.classList.contains("hidden")) {
-		console.log("Showing tools panel.");
 		ShowPanel(event, "tools");
 	}
 	else {
-		console.log("Hiding tools panel.");
 		ShowPanel(event, "work-area");
 	}
 }
@@ -1831,21 +1817,6 @@ function ToggleBookmarkMaker_Old(event) {
     	ShowElement(elements.status);
 		elements.workAreaText.focus();
 	}
-}
-
-function TogglePrintSettings_Old() {
-    elements.workAreaText.focus();
-	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles_Old(event);
-	}
-	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker_Old(event);
-	}
-
-	ToggleShowElement(elements.print)
-    HideElement(elements.settings);
-    HideElement(elements.toolsArea);
-    HideElement(elements.helpContainer);
 }
 
 function ScrollToEnd() {

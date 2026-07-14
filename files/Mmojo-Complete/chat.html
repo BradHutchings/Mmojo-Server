@@ -6,7 +6,10 @@
     <title>Mmojo Chat is private.</title>
     <style>
         :root {
-            --bg-color: #F0EFEB;
+            --background-color: #F0EFEB;        /* --background in styles.css.       */
+            --header-medium: #B7B7A4;           /* --header-medium in styles.css.    */
+            --content-light: #EDDCD2;           /* --content-light in styles.css.    */
+            
             --chat-bg: #EDDCD2;
             --text-color: #404040;
             --user-msg: #B7B7A4;
@@ -18,17 +21,31 @@
         }
 
         header {
-            background-color: var(--chat-bg);
-            padding: 10px 20px;
+            background-color: var(--header-medium);
+            border-radius: 0.5rem;
+            min-height: 6rem;
+            margin-bottom: var(--main-spacing);
+            padding: 1.0rem 1.0rem 1.0rem 1.0rem;
             display: flex;
             gap: 15px;
             align-items: center;
-            border-bottom: 1px solid var(--input-bg);
+        }
+
+        main {
+            background-color: var(--content-light);
+            border-radius: 0.5rem;
+            min-height: 6rem;
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
         body {
             font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--background-color);
             color: var(--text-color);
             margin: 0;
             display: flex;
@@ -36,7 +53,7 @@
             height: 100vh;
         }
 
-        #chat-container {
+        #chat-container-xx {
             flex: 1;
             overflow-y: auto;
             padding: 20px;

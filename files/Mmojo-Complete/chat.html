@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    From https://github.com/aaronbolton/simple-ui
+    - Aaron Bolton's simple-ui
+    - MIT license mentioned in README.md, but no LICENSE.md file.
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chat UI</title>
+    <link rel="stylesheet" href="chat-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <h1>Simple Chat UI</h1>
+                <div class="usage-display" id="totalUsage" style="display: none;"></div>
+                <div class="performance-display" id="performanceDisplay" style="display: none;"></div>
+            </div>
+            <div class="header-right">
+                <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
+                    <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="status" id="status">Ready</div>
+            </div>
+        </header>
+        
+        <div class="chat-container">
+            <div class="messages" id="messages">
+                <div class="message system">
+                    <div class="message-content">
+                        Welcome! This is a simple chat interface for OpenAI compatible services.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <div class="input-container">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Type your message here..." 
+                        rows="1"
+                        maxlength="4000"
+                    ></textarea>
+                    <button id="sendButton" class="send-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22,2 15,22 11,13 2,9"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <div class="input-info">
+                    <span id="charCount">0/4000</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-panel" id="settingsPanel">
+            <h3>Settings</h3>
+            <div class="setting-group">
+                <label for="apiUrl">API URL:</label>
+                <input type="url" id="apiUrl" placeholder="https://api.openai.com/v1">
+            </div>
+            <div class="setting-group">
+                <label for="apiKey">API Key:</label>
+                <input type="password" id="apiKey" placeholder="Enter your API key">
+            </div>
+            <div class="setting-group">
+                <label for="modelName">Model:</label>
+                <input type="text" id="modelName" placeholder="gpt-3.5-turbo">
+            </div>
+            <div class="setting-group">
+                <label for="systemPrompt">System Prompt:</label>
+                <textarea id="systemPrompt" rows="3" placeholder="You are a helpful assistant."></textarea>
+            </div>
+            <div class="setting-actions">
+                <button id="saveSettings">Save Settings</button>
+                <button id="resetSettings">Reset to Defaults</button>
+                <button id="clearChat">Clear Chat</button>
+            </div>
+        </div>
+        
+        <button class="settings-toggle" id="settingsToggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.79a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1"></path>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Markdown parsing library -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+    <script src="chat-script.js?v=10"></script>
+</body>
+</html>

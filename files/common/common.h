@@ -470,7 +470,6 @@ struct common_params {
     // Mmojo Server START
     // This could be automated by searching for "int32_t n_batch " and inserting this block immediately below. -Brad 2025-11-05
     int32_t n_batch_sleep_ms          =     0; // delay in milliseconds after processing each batch.
-    std::string default_ui_endpoint   =    ""; // endpoint for chat UI
     bool    show_request              =    false;
     bool    show_prompt               =    false;
     bool    show_messages             =    false;

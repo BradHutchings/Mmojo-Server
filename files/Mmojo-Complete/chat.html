@@ -268,7 +268,7 @@
                             if (Object.hasOwn(delta, "reasoning_content")) {
                                 if (firstReasoning) {
                                     firstReasoning = false;
-                                    botReplyAccumulator = "Preparing...\n";
+                                    botReplyAccumulator = "Preparing...\n\n";
                                 }
                                 const token = delta.reasoning_content;
                                 if (token) {

@@ -269,12 +269,12 @@
                                 if (firstReasoning) {
                                     firstReasoning = false;
                                     botReplyAccumulator = "Preparing...\n";
-                                    const token = delta.reasoning_content;
-                                    if (token) {
-                                        botReplyAccumulator += token;
-                                        botMessageElement.textContent = botReplyAccumulator;
-                                        chatContainer.scrollTop = chatContainer.scrollHeight;
-                                    }
+                                }
+                                const token = delta.reasoning_content;
+                                if (token) {
+                                    botReplyAccumulator += token;
+                                    botMessageElement.textContent = botReplyAccumulator;
+                                    chatContainer.scrollTop = chatContainer.scrollHeight;
                                 }
                             }
                             else if (Object.hasOwn(delta, "content")) {

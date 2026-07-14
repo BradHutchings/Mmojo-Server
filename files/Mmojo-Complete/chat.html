@@ -121,14 +121,15 @@
 
     <div id="input-container">
         <textarea id="user-input" placeholder="Type your message here... (Press Enter to send)"></textarea>
-        <button id="send-btn" onclick="sendMessage()">Send</button>
+        <button id="send-button" onclick="sendMessage()">Send</button>
         <button id="clear-button" onclick="clear()">Clear</button>
     </div>
 
     <script>
         const chatContainer = document.getElementById('chat-container');
         const userInput = document.getElementById('user-input');
-        const sendBtn = document.getElementById('send-btn');
+        const sendButton = document.getElementById('send-button');
+        const clearButton = document.getElementById('send-button');
         
         // Store conversation context history
         let conversationHistory = [];
@@ -148,6 +149,7 @@
         });
 
         function clear() {
+            console.log("clearing.");
             chatContainer.innerHTML = "";
             conversationHistory = [];
         }
@@ -175,7 +177,8 @@
 
             // Lock Input elements
             userInput.disabled = true;
-            sendBtn.disabled = true;
+            sendButton.disabled = true;
+            clearButton.disabled = true;
 
             // Setup placeholder element for streamed Bot response
             const botMessageElement = appendMessage("", 'bot');
@@ -234,7 +237,8 @@
             } finally {
                 // Re-enable interactive elements
                 userInput.disabled = false;
-                sendBtn.disabled = false;
+                sendButton.disabled = false;
+                clearButton.disabled = false;
                 userInput.focus();
             }
         }

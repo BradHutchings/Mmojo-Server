@@ -147,6 +147,11 @@
             }
         });
 
+        function clear() {
+            chatContainer.innerHTML = "";
+            conversationHistory = [];
+        }
+
         function appendMessage(text, sender) {
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('message', sender);

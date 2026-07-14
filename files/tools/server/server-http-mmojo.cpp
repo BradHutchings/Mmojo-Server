@@ -267,21 +267,6 @@ bool server_http_context::init(const common_params & params) {
 
     auto middleware_server_state = [this](const httplib::Request & req, httplib::Response & res) {
         if (!is_ready.load()) {
-            /*
-            // Mmojo Server START
-            // This changed in June/July 2025. Not sure if this code is needed.
-            // Replace the "if" statement in llama.cpp version.
-            const auto tmp = string_split<std::string>(req.path, '.');
-            if (req.path == "/" || tmp.back() == "html" || ends_with(req.path, "/") || ends_with(req.path, ".html")) {
-                if (const llama_ui_asset * a = llama_ui_find_asset("loading.html")) {
-                    res.status = 503;
-                    res.set_content(reinterpret_cast<const char*>(a->data), a->size, "text/html; charset=utf-8");
-                    return false;
-                }
-            }
-            // Mmojo Server END
-            */
-
             // Mmojo Server START
             if ((req.path == "/") || (req.path == "/index.html")) {
                 // in the PATH directory.
@@ -391,13 +376,7 @@ bool server_http_context::init(const common_params & params) {
                 SRV_ERR("static assets path not found: %s\n", params.public_path.c_str());
                 return false;
             }
-          
-        // Mmojo Server START
-        // Replace the "} else {" line with this block.
-        // } else {
-        }
-        if (params.default_ui_endpoint != "") {
-        // Mmojo Server END
+        } else {
           
 #if defined(LLAMA_UI_HAS_ASSETS)
             static auto handle_gzip_header = [](const httplib::Request & req, httplib::Response & res) {
@@ -454,27 +433,9 @@ bool server_http_context::init(const common_params & params) {
                 };
             };
           
-            // Mmojo Server START
-            std::string prefix = params.api_prefix;
-            std::string ui_endpoint = params.default_ui_endpoint;
-            if (ui_endpoint != "") {
-                prefix = prefix + "/" + ui_endpoint;
-                while (ends_with(prefix, "/")) {
-                    prefix = prefix.substr(0, prefix.length() - 1);
-                }
-            }
-            SRV_INF("prefix: \"%s\"\n", prefix.c_str());
-            // Mmojo Server END
-
-            // Mmojo Server START
-            // main index file
-            //  srv->Get(params.api_prefix + "/",           serve_asset_cached("index.html", true));
-            //  srv->Get(params.api_prefix + "/index.html", serve_asset_cached("index.html", true));
+            srv->Get(params.api_prefix + "/",           serve_asset_cached("index.html", true));
+            srv->Get(params.api_prefix + "/index.html", serve_asset_cached("index.html", true));
             
-            srv->Get(prefix + "/",           serve_asset_cached("index.html", true));
-            srv->Get(prefix + "/index.html", serve_asset_cached("index.html", true));
-            // Mmojo Server END
-
             // All remaining assets registered directly from the embedded asset table.
             // PWA revalidation files (sw.js, manifest, version.json) use no-cache;
             // everything else is immutable.
@@ -490,110 +451,14 @@ bool server_http_context::init(const common_params & params) {
                 if (no_cache_names.count(a.name)) {
                     SRV_DBG("serve nocache for %s\n", a.name.c_str());
                   
-                    // Mmojo Server START
-                    //  srv->Get(params.api_prefix + "/" + a.name, serve_asset_nocache(a.name));
-                    srv->Get(prefix + "/" + a.name, serve_asset_nocache(a.name));
-                    // Mmojo Server END
+                    srv->Get(params.api_prefix + "/" + a.name, serve_asset_nocache(a.name));
                 } else {
-                    // Mmojo Server START
-                    //  srv->Get(params.api_prefix + "/" + a.name, serve_asset_cached(a.name, false));
-                    srv->Get(prefix + "/" + a.name, serve_asset_cached(a.name, false));
-                    // Mmojo Server END
+                    srv->Get(params.api_prefix + "/" + a.name, serve_asset_cached(a.name, false));
                 }
             }
 
 #endif
         }
-      
-        // Mmojo Server START
-        /*
-        if (params.default_ui_endpoint != "") {
-            auto serve_asset_cached = [](const std::string & name, bool isolation) {
-                return [name, isolation](const httplib::Request & req, httplib::Response & res) {
-                    if (!handle_gzip_header(req, res)) {
-                        return true; // returns error message
-                    }
-                    const llama_ui_asset * a = llama_ui_find_asset(name);
-                    if (!a) { res.status = 404; return false; }
-                    res.set_header("ETag", a->etag);
-                    if (const std::string & inm = req.get_header_value("If-None-Match");
-                        !inm.empty() && (inm == a->etag || inm == std::string("W/") + a->etag)) {
-                        res.status = 304;
-                        return false;
-                    }
-                    if (isolation) {
-                        res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
-                        res.set_header("Cross-Origin-Opener-Policy",   "same-origin");
-                    }
-                    res.set_header("Cache-Control", "public, max-age=31536000, immutable");
-                    res.set_content(reinterpret_cast<const char*>(a->data), a->size, a->type.c_str());
-                    return false;
-                };
-            };
-
-            auto serve_asset = [](const std::string & name, const char * mime, bool with_isolation_headers) {
-                return [name, mime, with_isolation_headers](const httplib::Request & req, httplib::Response & res) {
-                    const llama_ui_asset * a = llama_ui_find_asset(name.c_str());
-                    if (!a) {
-                        res.status = 404;
-                        return false;
-                    }
-                    res.set_header("ETag", a->etag);
-                    // Check If-None-Match for conditional GET (304 Not Modified)
-                    if (const std::string & inm = req.get_header_value("If-None-Match");
-                        !inm.empty() && inm == a->etag) {
-                        res.status = 304;
-                        return false;
-                    }
-                    if (with_isolation_headers) {
-                        // COEP and COOP headers, required by pyodide (python interpreter)
-                        res.set_header("Cross-Origin-Embedder-Policy", "require-corp");
-                        res.set_header("Cross-Origin-Opener-Policy", "same-origin");
-                    }
-                    res.set_content(reinterpret_cast<const char*>(a->data), a->size, mime);
-                    return false;
-                };
-            };
-      
-            std::string endpoint = params.default_ui_endpoint;
-            if (!starts_with(endpoint, "/")) {
-                endpoint = "/" + endpoint;
-            }
-            while (ends_with(endpoint, "/")) {
-                endpoint = endpoint.substr(0, endpoint.length() - 1);
-            }
-                
-            // These support the relocated chat UI.
-            srv->Get(endpoint, [](const httplib::Request & req, httplib::Response & res) {
-                res.set_redirect(req.path + "/");
-                return false;
-            });
-            srv->Get(endpoint + "/", serve_asset_cached("index.html", true));
-            srv->Get(endpoint + "/bundle.js",  serve_asset_cached("bundle.js", false));
-            srv->Get(endpoint + "/bundle.css", serve_asset_cached("bundle.css", false));
-
-            // srv->Get(endpoint + "/", serve_asset_cached("index.html", "text/html; charset=utf-8", true));
-            // srv->Get(endpoint + "/bundle.js",  serve_asset_cached("bundle.js",  "application/javascript; charset=utf-8", false));
-            // srv->Get(endpoint + "/bundle.css", serve_asset_cached("bundle.css", "text/css; charset=utf-8",               false));
-
-            // This is so the relocated chat UI can get properties. 
-            srv->Get(endpoint + "/props", [endpoint](const httplib::Request & req, httplib::Response & res) {
-                // LOG_INF("Redirecting %s/props to /props\n", endpoint.c_str());
-                res.set_redirect("/props");
-                return false;
-            });
-    
-            // This is so the relocated chat UI can call the v1 UI. 
-            srv->Get(endpoint + "/v1/.*", [endpoint](const httplib::Request & req, httplib::Response & res) {
-                // LOG_INF("Redirecting %s/v1/xxx to /v1/xxx\n", endpoint.c_str());
-                std::string new_path = req.path.substr(endpoint.length());
-                // LOG_INF("-- new_path: %s\n", new_path.c_str());
-                res.set_redirect(new_path);
-                return false;
-            });
-        }
-        */
-        // Mmojo Server END
     }
     return true;
 }

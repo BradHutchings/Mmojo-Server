@@ -228,6 +228,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         messages: conversationHistory,
+                        temperature: 0.25,
                         stream: true // Enable Server-Sent Events (Streaming Tokens)
                     })
                 });

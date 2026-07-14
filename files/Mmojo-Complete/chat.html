@@ -27,23 +27,6 @@
             height: 100vh;
         }
 
-        header {
-            background-color: var(--chat-bg);
-            padding: 10px 20px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            border-bottom: 1px solid var(--input-bg);
-        }
-
-        header input {
-            background: var(--input-bg);
-            border: 1px solid #585b70;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-
         #chat-container {
             flex: 1;
             overflow-y: auto;
@@ -123,12 +106,6 @@
     </style>
 </head>
 <body>
-
-    <header>
-        <label>API Endpoint: <input type="text" id="api-url" value="http://localhost:11434/v1/chat/completions"></label>
-        <label>Model Name: <input type="text" id="model-name" value="llama3"></label>
-    </header>
-
     <main id="chat-container"></main>
 
     <div id="input-container">
@@ -186,15 +163,13 @@
             // Setup placeholder element for streamed Bot response
             const botMessageElement = appendMessage("", 'bot');
 
-            const apiUrl = document.getElementById('api-url').value;
-            const modelName = document.getElementById('model-name').value;
+            const apiUrl = "/v1/chat/completions";
 
             try {
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        model: modelName,
                         messages: conversationHistory,
                         stream: true // Enable Server-Sent Events (Streaming Tokens)
                     })

@@ -258,6 +258,8 @@
                         if (!cleanedLine || cleanedLine === '[DONE]') continue;
 
                         try {
+                            console.log("cleanedLine:\n\n\" + cleanedLine + "\n\n");
+                                
                             const parsed = JSON.parse(cleanedLine);
                             const token = parsed.choices[0].delta.content;
                             if (token) {
@@ -274,7 +276,7 @@
                 // Add complete assistant message to context memory history 
                 conversationHistory.push({ role: "assistant", content: botReplyAccumulator });
 
-                console.log("Answer is complete.\n\n" + botReplyAccumulator + "\n\n");
+                // console.log("Answer is complete.\n\n" + botReplyAccumulator + "\n\n");
 
             } catch (error) {
                 console.error(error);

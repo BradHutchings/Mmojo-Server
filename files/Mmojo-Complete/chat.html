@@ -17,6 +17,15 @@
             --button-text: #11111b;
         }
 
+        header {
+            background-color: var(--chat-bg);
+            padding: 10px 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            border-bottom: 1px solid var(--input-bg);
+        }
+
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background-color: var(--bg-color);
@@ -106,6 +115,8 @@
     </style>
 </head>
 <body>
+    <header>Mmojo Chat is private.</header>
+    
     <main id="chat-container"></main>
 
     <div id="input-container">

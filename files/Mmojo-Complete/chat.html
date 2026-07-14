@@ -258,7 +258,7 @@
                         if (!cleanedLine || cleanedLine === '[DONE]') continue;
 
                         try {
-                            console.log("cleanedLine:\n\n\" + cleanedLine + "\n\n");
+                            console.log("cleanedLine:\n\n" + cleanedLine + "\n\n");
                                 
                             const parsed = JSON.parse(cleanedLine);
                             const token = parsed.choices[0].delta.content;

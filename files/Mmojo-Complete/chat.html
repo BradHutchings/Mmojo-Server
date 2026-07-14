@@ -122,7 +122,7 @@
     <div id="input-container">
         <textarea id="user-input" placeholder="Type your message here... (Press Enter to send)"></textarea>
         <button id="send-button" onclick="sendMessage()">Send</button>
-        <button id="clear-button" onclick="clear()">Clear</button>
+        <button id="clear-button" onclick="clearChat()">Clear</button>
     </div>
 
     <script>
@@ -148,13 +148,14 @@
             }
         });
 
-        function clear() {
+        function clearChat() {
             console.log("clearing.");
             chatContainer.innerHTML = "";
             conversationHistory = [];
         }
 
         function appendMessage(text, sender) {
+            console.log("appending message.");
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('message', sender);
             msgDiv.textContent = text;
@@ -164,6 +165,7 @@
         }
 
         async function sendMessage() {
+            console.log("sending message.");
             const text = userInput.value.trim();
             if (!text) return;
 

@@ -273,6 +273,8 @@
                 // Add complete assistant message to context memory history 
                 conversationHistory.push({ role: "assistant", content: botReplyAccumulator });
 
+                console.log("Answer is complete.\n\n" + botReplyAccumulator + "\n\n");
+
             } catch (error) {
                 console.error(error);
                 botMessageElement.textContent = `Error connecting to API. Make sure your local server is running and CORS is enabled. Details: ${error.message}`;

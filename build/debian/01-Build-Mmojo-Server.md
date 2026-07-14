@@ -89,7 +89,6 @@ if [ "$DEPLOY_DIR" != "" ]; then
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE" ]; then
         cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
     fi
-    cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
     cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
@@ -100,16 +99,6 @@ if [ "$DEPLOY_DIR" != "" ]; then
     touch "$DEPLOY_DIR/$_TOUCH_FILE"
 fi
 ```
-
-<details>
-  <summary><b>Optional:</b> Create a <code>mmojo-server-args</code> file in the <code>$DEPLOY_DIR</code> to launch Mmojo Server with chat UI.</summary>
-<br/>
-    
-Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
-```
-cp "$REPO_DIR/build/support-files/mmojo-server-args-chat" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
-```
-</details>
 
 ---
 ### Review Your Work

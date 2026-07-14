@@ -199,13 +199,11 @@
         });
 
         function clearChat() {
-            console.log("clearing.");
             chatContainer.innerHTML = "";
             conversationHistory = [];
         }
 
         function appendMessage(text, sender) {
-            console.log("appending message.");
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('message', sender);
             msgDiv.textContent = text;
@@ -215,7 +213,6 @@
         }
 
         async function sendMessage() {
-            console.log("sending message.");
             const text = userInput.value.trim();
             if (!text) return;
 

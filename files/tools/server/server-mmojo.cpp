@@ -364,29 +364,9 @@ int llama_server(common_params & params, int argc, char ** argv) {
         SRV_WRN("%s", "Built-in tools are enabled, do not expose server to untrusted environments\n");
         SRV_WRN("%s", "This feature is EXPERIMENTAL and may be changed in the future\n");
         SRV_WRN("%s", "-----------------\n");
-        // Mmojo Server START
-        // Search for:
-        //    ctx_http.get ("/tools",
-        // Comment these lines out:
-            // ctx_http.get ("/tools",           ex_wrapper(tools.handle_get));
-            // ctx_http.post("/tools",           ex_wrapper(tools.handle_post));
 
-        std::string endpoint = params.default_ui_endpoint;
-        if (endpoint != "") {
-            if (!starts_with(endpoint, "/")) {
-                endpoint = "/" + endpoint;
-            }
-            while (ends_with(endpoint, "/")) {
-                endpoint = endpoint.substr(0, endpoint.length() - 1);
-            }
-        }
-
-        SRV_WRN("endpoint: %s\n", endpoint.c_str());
-        SRV_WRN("%s", "-----------------\n");
-
-        ctx_http.get (endpoint + "/tools",           ex_wrapper(tools.handle_get));
-        ctx_http.post(endpoint + "/tools",           ex_wrapper(tools.handle_post));
-        // Mmojo Server END
+        ctx_http.get ("/tools",           ex_wrapper(tools.handle_get));
+        ctx_http.post("/tools",           ex_wrapper(tools.handle_post));
     } else {
         ctx_http.get ("/tools",           ex_wrapper(res_403));
         ctx_http.post("/tools",           ex_wrapper(res_403));

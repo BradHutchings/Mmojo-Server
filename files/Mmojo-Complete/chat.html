@@ -234,7 +234,8 @@
                     body: JSON.stringify({
                         messages: conversationHistory,
                         temperature: 0.75,
-                        stream: true // Enable Server-Sent Events (Streaming Tokens)
+                        stream: true,     // Enable Server-Sent Events (Streaming Tokens)
+                        return_progress: true,
                     })
                 });
 

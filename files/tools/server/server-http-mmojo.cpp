@@ -273,6 +273,9 @@ bool server_http_context::init(const common_params & params) {
                 res.set_redirect("/loading.html");
                 return true;
             }
+            else if (req.path == "/loading.html") {
+                return true;
+            }
             // Mmojo Server END
           
             if (frontend_paths.count(req.path)) {

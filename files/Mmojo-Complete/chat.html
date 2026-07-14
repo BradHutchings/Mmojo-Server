@@ -245,6 +245,8 @@
                 const reader = response.body.getReader();
                 const decoder = new TextDecoder('utf-8');
                 let botReplyAccumulator = "";
+                let firstReasoning = true;
+                let firstContent = true;
 
                 while (true) {
                     const { done, value } = await reader.read();
@@ -261,12 +263,41 @@
                             console.log("cleanedLine:\n\n" + cleanedLine + "\n\n");
                                 
                             const parsed = JSON.parse(cleanedLine);
+                            const delta = parsed.choices[0].delta;
+
+                            if (Object.hasOwn(delta, "reasoning_content")) {
+                                if (firstReasoning) {
+                                    firstReasoning = false;
+                                    botReplyAccumulator = "Preparing...\n";
+                                    const token = delta.reasoning_content;
+                                    if (token) {
+                                        botReplyAccumulator += token;
+                                        botMessageElement.textContent = botReplyAccumulator;
+                                        chatContainer.scrollTop = chatContainer.scrollHeight;
+                                    }
+                                }
+                            }
+                            else if (Object.hasOwn(delta, "content")) {
+                                if (firstContent) {
+                                    firstContent = false;
+                                    botReplyAccumulator = "";
+                                }
+                                const token = delta.content;
+                                if (token) {
+                                    botReplyAccumulator += token;
+                                    botMessageElement.textContent = botReplyAccumulator;
+                                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                                }
+                            }
+
+                            /*
                             const token = parsed.choices[0].delta.content;
                             if (token) {
                                 botReplyAccumulator += token;
                                 botMessageElement.textContent = botReplyAccumulator;
                                 chatContainer.scrollTop = chatContainer.scrollHeight;
                             }
+                            */
                         } catch (e) {
                             // Suppress parsing anomalies on partial data chunks
                         }

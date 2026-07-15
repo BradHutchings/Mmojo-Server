@@ -31,7 +31,7 @@ Prepare to build Mmojo Server (llama.cpp with patches and extensions).
 if [ ! -d "$BUILD_DIR" ]; then
     mm-prepare-clone-llama-cpp.sh
     mm-prepare-patch-llama-cpp.sh
-    mm-prepare-customize-webui.sh
+    # mm-prepare-customize-webui.sh
 fi
 ```
 

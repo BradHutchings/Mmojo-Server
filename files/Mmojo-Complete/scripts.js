@@ -116,6 +116,7 @@ var kHelpHTML =
     "<hr />\n" +
     "<h3>Tools Panel:</h3>\n" +
     "<ul>\n" +
+        "<li><img src=\"images/chat-64.png\" class=\"inline-image\" /><b>Chat:</b> Click for a more standard chat-style interface.</li>\n" + 
         "<li><img src=\"images/read-64.png\" class=\"inline-image\" /><b>Read:</b> Click to have the computer read the (selected) Work Area text.</li>\n" + 
         "<li><img src=\"images/download-64.png\" class=\"inline-image\" /><b>Download:</b> Click to download the Work Area text.</li>\n" + 
         "<li><img src=\"images/print-64.png\" class=\"inline-image\" /><b>Print:</b> Click to show the <b>Print</b> panel.</li>\n" + 
@@ -253,7 +254,7 @@ function PageLoaded() {
 
     elements.workAreaText.placeholder = kWorkAreaTextPlaceholder;
     elements.workAreaText.value = '';
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     elements.helpText.innerHTML = kHelpHTML;
 	
@@ -329,7 +330,9 @@ function FindElements() {
     elements.helpIcon                   = document.getElementById("help-icon");
 
     elements.tools                      = document.getElementById("tools");
-    elements.model                  = document.getElementById("model");
+    elements.model                  	= document.getElementById("model");
+    elements.chatIcon                   = document.getElementById("chat-icon");
+    elements.readIcon                   = document.getElementById("read-icon");
     elements.downloadIcon               = document.getElementById("download-icon");
     elements.printIcon                  = document.getElementById("print-icon");
     elements.bookmarkIcon               = document.getElementById("bookmark-icon");
@@ -450,14 +453,14 @@ function SetCopyPasteScripts() {
 }
 
 function HandleCopyPaste(copyPasteItem) {
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     if (copyPasteItem.pasteValue !== undefined) {
         if (kLogging) console.log("Pasting.");
         HandleCopyPasteMouseLeave(copyPasteItem);
 
         elements.workAreaText.value = copyPasteItem.pasteValue.workAreaText;
-        elements.workAreaText.focus();
+        WorkAreaFocus();
         ScrollToEnd();
 
         elements.temperature.value = copyPasteItem.pasteValue.temperature;
@@ -542,7 +545,7 @@ function HandleCopyPasteMouseLeave(copyPasteItem) {
 }
 
 function HandleRemove(copyPasteItem) {
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     if (copyPasteItem.pasteValue !== undefined) {
         if (kLogging) console.log("Removing button.");
@@ -590,7 +593,7 @@ function ClearCue() {
 
     if ((script.completedContent != '') && (workAreaText.endsWith(script.completedContent))) {
         elements.workAreaText.value = script.completedContent.trimStart();
-        elements.workAreaText.focus();
+        WorkAreaFocus();
         script.completedContent = "";
         EnableCopyPaste();
         PushChange();
@@ -599,7 +602,7 @@ function ClearCue() {
 
 function ClearWorkArea() {
     elements.workAreaText.value = '';
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     ClearUndoRedoStack();
     ShowHideStatusButtons();
@@ -773,14 +776,14 @@ function SetCompleting(value) {
 		elements.workAreaText.caretColor = "transparent";
 		elements.workAreaText.classList.add("working");
 
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 	}
 	else {
 		elements.workAreaText.readOnly = false;
 		elements.workAreaText.caretColor = null;
 		elements.workAreaText.classList.remove("working");
 
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 
 		PushChange();
     }
@@ -911,7 +914,7 @@ async function StartCompleting(workAreaText, temperature, tokens, stopWords) {
                             script.completedContent = script.completedContent + lineData.data.stopping_word;
                             elements.workAreaText.value = content;
 
-                            elements.workAreaText.focus();
+                            WorkAreaFocus();
                             ScrollToEnd();
                             
                             script.completingController = null;
@@ -1003,7 +1006,7 @@ function StopCompleting() {
         ShowHideStatusButtons();
 		PushChange();
 
-        elements.workAreaText.focus();
+        WorkAreaFocus();
         ScrollToEnd();
     }
 }
@@ -1063,11 +1066,11 @@ function SetReplaying(value) {
 		//  elements.statusStop.focus();
 	
 		elements.workAreaText.classList.add("working");
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 	}
 	else {
 		elements.workAreaText.classList.remove("working");
-		elements.workAreaText.focus();
+		WorkAreaFocus();
     }
 }
 
@@ -1658,7 +1661,7 @@ function ShowPanel(event, panel) {
 	if (elements.workArea.classList.contains("hidden") && ((panel != "files") && (panel != "bookmark") && (panel != "help"))) {
     	ShowElement(elements.workArea);
     	ShowElement(elements.status);
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 	}
 	if (elements.settings.classList.contains("hidden") && (panel == "settings")) {
 		ShowElement(elements.settings);
@@ -1776,7 +1779,7 @@ function ToggleFiles_Old(event) {
     	HideElement(elements.filesArea);
     	ShowElement(elements.workArea);
     	ShowElement(elements.status);
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 	}
 
     HideElement(elements.helpContainer);
@@ -1809,7 +1812,7 @@ function ToggleBookmarkMaker_Old(event) {
     	HideElement(elements.bookmarkMaker);
 		ShowElement(elements.workArea);
     	ShowElement(elements.status);
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 	}
 }
 
@@ -1828,7 +1831,7 @@ function ScrollToSelectionStart() {
 	// Help from Google Gemini on this. Allegedly no-flicker.
 	// https://share.google/aimode/AvqJraXA5OSjvJwbq
 
-	elements.workAreaText.focus();
+	WorkAreaFocus();
 	
 	const originalText = elements.workAreaText.value;
 	const selectionStart = elements.workAreaText.selectionStart;
@@ -2116,7 +2119,7 @@ function UseHash() {
     }
 
     elements.workAreaText.disabled = false;
-    elements.workAreaText.focus();
+    WorkAreaFocus();
     ScrollToEnd();
 
 	script.replayText = "";
@@ -2218,9 +2221,16 @@ function UpdatePicture() {
 
 }
 
+function Chat(event) {
+    event.stopPropagation();
+    WorkAreaFocus();
+
+    window.open('chat.html', '_blank');
+}
+
 function Read(event) {
     event.stopPropagation();
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     if (window.speechSynthesis.speaking) {
         window.speechSynthesis.cancel();
@@ -2260,7 +2270,7 @@ function Read(event) {
 
 function Download(event) {
     event.stopPropagation();
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     textData = elements.workAreaText.value;
     if (textData === "") {
@@ -2320,7 +2330,7 @@ async function downloadFileWithFetch(url, fileName) {
 
 function Print() {
     event.stopPropagation();
-    elements.workAreaText.focus();
+    WorkAreaFocus();
     window.print();
 }
 
@@ -2339,7 +2349,7 @@ function EditBookmark(event) {
     }
     window.open(bookmarkLink, '_blank');
 
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 }
 
 function GetElapsedTimeString(ms) {
@@ -2715,7 +2725,7 @@ function FilesListItemDoubleClicked(event) {
 			selectionStart += watLines[i].length + 1;
 		}
 
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 		elements.workAreaText.setSelectionRange(selectionStart, selectionStart);
 		ScrollToSelectionStart();
 	}

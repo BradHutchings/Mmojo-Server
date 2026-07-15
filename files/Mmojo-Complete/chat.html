@@ -279,6 +279,7 @@
                                     botMessageElement.textContent = botReplyAccumulator;
                                     chatContainer.scrollTop = chatContainer.scrollHeight;
                                 }
+                                firstContent = true;
                             }
                             if (Object.hasOwn(delta, "content")) {
                                 if (firstContent) {

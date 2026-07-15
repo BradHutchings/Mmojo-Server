@@ -205,6 +205,8 @@
             return msgDiv;
         }
 
+        const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
         async function sendMessage() {
             const text = userInput.value.trim();
             if (!text) return;
@@ -277,10 +279,11 @@
                                     chatContainer.scrollTop = chatContainer.scrollHeight;
                                 }
                             }
-                            else if (Object.hasOwn(delta, "content")) {
+                            if (Object.hasOwn(delta, "content")) {
                                 if (firstContent) {
                                     firstContent = false;
                                     botReplyAccumulator = "";
+                                    await sleep(2000);
                                 }
                                 const token = delta.content;
                                 if (token) {

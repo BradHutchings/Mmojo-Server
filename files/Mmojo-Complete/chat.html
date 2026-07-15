@@ -274,7 +274,6 @@
 
                             if (Object.hasOwn(delta, "reasoning_content")) {
                                 if (firstReasoning) {
-                                    console.log("firstReasoning");
                                     firstReasoning = false;
                                     botReplyAccumulator = "Preparing...\n\n";
                                 }
@@ -289,7 +288,6 @@
                             }
                             if (Object.hasOwn(delta, "content")) {
                                 if (firstContent) {
-                                    console.log("firstContent");
                                     firstContent = false;
                                     botReplyAccumulator = "";
                                     await sleep(2000);
@@ -302,21 +300,12 @@
                                 }
                                  botMessageElement.classList.remove("reasoning");
                            }
-
-                            /*
-                            const token = parsed.choices[0].delta.content;
-                            if (token) {
-                                botReplyAccumulator += token;
-                                botMessageElement.textContent = botReplyAccumulator;
-                                chatContainer.scrollTop = chatContainer.scrollHeight;
-                            }
-                            */
                         } catch (e) {
                             // Suppress parsing anomalies on partial data chunks
                         }
                     }
                 }
-
+                
                 // Add complete assistant message to context memory history 
                 conversationHistory.push({ role: "assistant", content: botReplyAccumulator });
 
@@ -326,7 +315,10 @@
                 console.error(error);
                 botMessageElement.textContent = `Error connecting to API. Make sure your local server is running and CORS is enabled. Details: ${error.message}`;
                 botMessageElement.style.color = "#f38ba8";
+                botMessageElement.classList.remove("reasoning");
             } finally {
+                botMessageElement.classList.remove("reasoning");
+
                 // Re-enable interactive elements
                 userInput.disabled = false;
                 sendButton.disabled = false;

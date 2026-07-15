@@ -262,13 +262,14 @@
                         if (!cleanedLine || cleanedLine === '[DONE]') continue;
 
                         try {
-                            console.log("cleanedLine:\n\n" + cleanedLine + "\n\n");
+                            // console.log("cleanedLine:\n\n" + cleanedLine + "\n\n");
                                 
                             const parsed = JSON.parse(cleanedLine);
                             const delta = parsed.choices[0].delta;
 
                             if (Object.hasOwn(delta, "reasoning_content")) {
                                 if (firstReasoning) {
+                                    console.log("firstReasoning");
                                     firstReasoning = false;
                                     botReplyAccumulator = "Preparing...\n\n";
                                 }
@@ -281,6 +282,7 @@
                             }
                             if (Object.hasOwn(delta, "content")) {
                                 if (firstContent) {
+                                    console.log("firstContent");
                                     firstContent = false;
                                     botReplyAccumulator = "";
                                     await sleep(2000);

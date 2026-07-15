@@ -22,6 +22,7 @@
             --text-light: #C0C0C0;              /* --text-light in styles.css.       */
             
             --control-border: #A5A58D;
+            --reasoning: #F0F0F0;
             
             --main-spacing: 0.5rem;
         }
@@ -155,6 +156,10 @@
             margin-top: auto;
             margin-bottom: auto;
         }
+
+        .reasoning {
+            background: var(--reasoning);
+        }
     </style>
 </head>
 <body>
@@ -279,6 +284,7 @@
                                     botMessageElement.textContent = botReplyAccumulator;
                                     chatContainer.scrollTop = chatContainer.scrollHeight;
                                 }
+                                botMessageElement.classList.add("reasoning");
                                 firstContent = true;
                             }
                             if (Object.hasOwn(delta, "content")) {
@@ -294,7 +300,8 @@
                                     botMessageElement.textContent = botReplyAccumulator;
                                     chatContainer.scrollTop = chatContainer.scrollHeight;
                                 }
-                            }
+                                 botMessageElement.classList.remove("reasoning");
+                           }
 
                             /*
                             const token = parsed.choices[0].delta.content;

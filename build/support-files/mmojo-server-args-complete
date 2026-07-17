@@ -1,7 +1,5 @@
 --path
 /app/Mmojo-Complete
---default-ui-endpoint
-chat
 --host
 127.0.0.1
 --port

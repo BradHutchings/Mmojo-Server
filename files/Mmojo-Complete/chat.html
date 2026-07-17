@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mmojo Chat is private.</title>
+    <style>
+        :root {
+            --background-color: #F0EFEB;        /* --background in styles.css.       */
+
+            --content-lightest: #FFF1E6; 
+            --content-light: #EDDCD2;
+            --content-dark: #DDBEA9;
+            --content-darkest: #CB997E;
+
+            --header-lightest: #dbdbd2;
+            --header-light: #c9c9bb;
+            --header-medium: #B7B7A4;
+
+            --text-dark: #404040;               /* --text-dark in styles.css.        */
+            --text-medium: #808080;             /* --text-medium in styles.css.      */
+            --text-light: #C0C0C0;              /* --text-light in styles.css.       */
+            
+            --control-border: #A5A58D;
+            --reasoning: #F0F0F0;
+            
+            --main-spacing: 0.5rem;
+        }
+        
+        html {
+            /* 100dvh should make the page resize when keyboard appears. */
+            /* height: 100%; */
+            height: 100dvh;
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+        
+            color: var(--text-dark) !important;
+            font-family: Arial !important;
+            font-size: 1em !important;
+         }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-dark);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background-color: var(--header-medium);
+            color: var(--text-dark);
+            font-weight: bold;
+            border-radius: 0.5rem;
+            min-height: 2rem;
+            margin: var(--main-spacing) var(--main-spacing) var(--main-spacing) var(--main-spacing);
+            padding: 1.0rem 1.0rem 1.0rem 1.0rem;
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        main {
+            background-color: var(--content-light);
+            color: var(--text-dark);
+            border-radius: 0.5rem;
+            min-height: 6rem;
+            margin: 0rem var(--main-spacing) var(--main-spacing) var(--main-spacing);
+            padding: 1.0rem 1.0rem 1.0rem 1.0rem;
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.0rem;
+        }
+
+        footer {
+            background-color: var(--header-medium);
+            color: var(--text-dark);
+            border-radius: 0.5rem;
+            min-height: 2rem;
+            margin: 0rem var(--main-spacing) var(--main-spacing) var(--main-spacing);
+            padding: 1.0rem 1.0rem 1.0rem 1.0rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .message {
+            max-width: 75%;
+            padding: 1rem 1rem 1rem 1rem;
+            border-radius: 1.0rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .user {
+            background-color: var(--content-dark);
+            color: var(--text-dark);
+            align-self: flex-end;
+            border: 2px solid var(--content-darkest);
+            border-bottom-right-radius: 0rem;
+        }
+
+        .bot {
+            background-color: var(--content-lightest);
+            color: var(--text-dark);
+            align-self: flex-start;
+            border: 2px solid var(--content-darkest);
+            border-bottom-left-radius: 0rem;
+        }
+
+        textarea {
+            flex: 1;
+            background-color: var(--header-lightest);
+            color: var(--text-dark);
+            padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+            border-radius: 0.5rem;
+            resize: none;
+            height: 2rem;
+            font-family: inherit;
+            font-size: 1rem;
+            border: 0px;
+        }
+
+        textarea:focus {
+            outline: 1px solid var(--header-light);
+        }
+
+        button {
+            background: var(--content-lightest);
+            color: var(--text-dark);
+            border: 1px solid var(--control-border);
+            font-family: inherit;
+            font-size: inherit;
+            padding: 0 20px;
+            border-radius: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            max-height: 1.75rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:disabled {
+            background: var(--content-lightest);
+            color: var(--text-light);
+            cursor: not-allowed;
+        }
+
+        #send-button, #clear-button {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .reasoning {
+            background: var(--reasoning);
+        }
+    </style>
+</head>
+<body>
+    <header>Mmojo Chat is Private.</header>
+    
+    <main id="chat-container"></main>
+
+    <footer id="input-container">
+        <textarea id="user-input" placeholder="Type your message here. Press Enter to send."></textarea>
+        <button id="send-button" onclick="sendMessage()">Send</button>
+        <button id="clear-button" onclick="clearChat()">Clear</button>
+    </footer>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const clearButton = document.getElementById('clear-button');
+        
+        // Store conversation context history
+        let conversationHistory = [];
+
+        // Auto-expand textarea slightly as user types
+        userInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight - 20) + 'px';
+        });
+
+        // Enter key to send message
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        function clearChat() {
+            chatContainer.innerHTML = "";
+            conversationHistory = [];
+        }
+
+        function appendMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', sender);
+            msgDiv.textContent = text;
+            chatContainer.appendChild(msgDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            return msgDiv;
+        }
+
+        const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+        async function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            // Clear input field reset height
+            userInput.value = '';
+            userInput.style.height = '24px';
+            
+            // Append User Message to UI & Context History
+            appendMessage(text, 'user');
+            conversationHistory.push({ role: "user", content: text });
+
+            // Lock Input elements
+            userInput.disabled = true;
+            sendButton.disabled = true;
+            clearButton.disabled = true;
+
+            // Setup placeholder element for streamed Bot response
+            const botMessageElement = appendMessage("", 'bot');
+
+            const apiUrl = "/v1/chat/completions";
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        messages: conversationHistory,
+                        temperature: 0.75,
+                        stream: true,     // Enable Server-Sent Events (Streaming Tokens)
+                        return_progress: true,
+                    })
+                });
+
+                if (!response.ok) throw new Error(`HTTP Error Status: ${response.status}`);
+
+                // Read streamed response body chunks
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let botReplyAccumulator = "";
+                let firstReasoning = true;
+                let firstContent = true;
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    const chunk = decoder.decode(value, { stream: true });
+                    const lines = chunk.split('\n');
+
+                    for (const line of lines) {
+                        const cleanedLine = line.replace(/^data: /, '').trim();
+                        if (!cleanedLine || cleanedLine === '[DONE]') continue;
+
+                        try {
+                            // console.log("cleanedLine:\n\n" + cleanedLine + "\n\n");
+                                
+                            const parsed = JSON.parse(cleanedLine);
+                            const delta = parsed.choices[0].delta;
+
+                            if (Object.hasOwn(delta, "reasoning_content")) {
+                                if (firstReasoning) {
+                                    firstReasoning = false;
+                                    botReplyAccumulator = "Preparing...\n\n";
+                                }
+                                const token = delta.reasoning_content;
+                                if (token) {
+                                    botReplyAccumulator += token;
+                                    botMessageElement.textContent = botReplyAccumulator;
+                                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                                }
+                                botMessageElement.classList.add("reasoning");
+                                firstContent = true;
+                            }
+                            if (Object.hasOwn(delta, "content")) {
+                                if (firstContent) {
+                                    firstContent = false;
+                                    botReplyAccumulator = "";
+                                    await sleep(2000);
+                                }
+                                const token = delta.content;
+                                if (token) {
+                                    botReplyAccumulator += token;
+                                    botMessageElement.textContent = botReplyAccumulator;
+                                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                                }
+                                 botMessageElement.classList.remove("reasoning");
+                           }
+                        } catch (e) {
+                            // Suppress parsing anomalies on partial data chunks
+                        }
+                    }
+                }
+                
+                // Add complete assistant message to context memory history 
+                conversationHistory.push({ role: "assistant", content: botReplyAccumulator });
+
+                // console.log("Answer is complete.\n\n" + botReplyAccumulator + "\n\n");
+
+            } catch (error) {
+                console.error(error);
+                botMessageElement.textContent = `Error connecting to API. Make sure your local server is running and CORS is enabled. Details: ${error.message}`;
+                botMessageElement.style.color = "#f38ba8";
+                botMessageElement.classList.remove("reasoning");
+            } finally {
+                botMessageElement.classList.remove("reasoning");
+
+                // Re-enable interactive elements
+                userInput.disabled = false;
+                sendButton.disabled = false;
+                clearButton.disabled = false;
+                userInput.focus();
+            }
+        }
+    </script>
+</body>
+</html>

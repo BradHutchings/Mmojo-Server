@@ -493,7 +493,7 @@ ul, li {
     font-weight: bold;
 }
 
-#files-icon, #settings-icon, #tools-icon, #help-icon, #chat-icon, 
+#files-icon, #settings-icon, #tools-icon, #help-icon, #chat-icon,
 #read-icon, #download-icon, #print-icon, #bookmark-icon, 
 #color-wheel-icon, #fullscreen-icon, #restore-icon {
     width: 1.6rem;
@@ -558,34 +558,12 @@ ul, li {
     color: var(--text-dark);
 }
 
-#tools-area {
-    min-height: 1.4rem;
-    flex-wrap: wrap;
-    user-select: none;
-    background-color: #00000000;
-    color: var(--text-dark);
-    padding: 0rem 0rem;
-}
-
-#tools-info {
-    min-height: 1.4rem;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-grow: 8;
-    flex-shrink: 20;
-    background-color: var(--header-light);
-    margin-right: 0.5rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-}
-
 #tools {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
     background-color: var(--header-light);
     color: var(--text-dark);
-    margin-bottom: 0rem;
 }
 
 #settings-space {
@@ -645,7 +623,7 @@ ul, li {
     padding-right: 0.5rem;
 }
 
-#print-settings {
+#print {
     min-height: 1.4rem;
     flex-wrap: wrap;
     user-select: none;
@@ -660,7 +638,7 @@ ul, li {
     flex-shrink: 20;
 }
 
-#print, #print-cancel {
+#print-print-button, #print-cancel-button {
     font-size: 0.8rem;
     min-width: 4rem;
     padding: 0.25rem 0.5rem;

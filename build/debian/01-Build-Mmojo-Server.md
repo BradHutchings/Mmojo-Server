@@ -24,7 +24,7 @@ Prepare to build Mmojo Server (llama.cpp with patches and extensions):
 if [ ! -d "$BUILD_DIR" ]; then
     mm-prepare-clone-llama-cpp.sh
     mm-prepare-patch-llama-cpp.sh
-    mm-prepare-customize-webui.sh
+    # mm-prepare-customize-webui.sh
 fi
 ```
 
@@ -100,16 +100,6 @@ if [ "$DEPLOY_DIR" != "" ]; then
     touch "$DEPLOY_DIR/$_TOUCH_FILE"
 fi
 ```
-
-<details>
-  <summary><b>Optional:</b> Create a <code>mmojo-server-args</code> file in the <code>$DEPLOY_DIR</code> to launch Mmojo Server with chat UI.</summary>
-<br/>
-    
-Chat user interfaces are an abomination, but have at it if you must! 😆  -Brad
-```
-cp "$REPO_DIR/build/support-files/mmojo-server-args-chat" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
-```
-</details>
 
 ---
 ### Review Your Work

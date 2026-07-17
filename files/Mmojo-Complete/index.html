@@ -31,43 +31,39 @@
 
         <div id="title-bar" class="row">
             <div id="mmojo-complete" onclick="WorkAreaFocus();">Mmojo Complete is Private.</div>
-            <div id="settings-icon" onclick="ToggleSettings(event);" title="Toggle Settings" ></div>
-            <div id="tools-icon" onclick="ToggleTools(event);" title="Toggle Tools" ></div>
-            <div id="files-icon" class="hidden" onclick="ToggleFiles(event);" title="Toggle Files" ></div>
-            <div id="help-icon" onclick="ToggleHelp(event);" title="Help" ></div>
+            <div id="settings-icon" onclick="IconClickedSettings(event);" title="Toggle Settings" ></div>
+            <div id="tools-icon" onclick="IconClickedTools(event);" title="Toggle Tools" ></div>
+            <div id="files-icon" class="hidden" onclick="IconClickedFiles(event);" title="Toggle Files" ></div>
+            <div id="help-icon" onclick="IconClickedHelp(event);" title="Help" ></div>
         </div>
 
-        <div id="tools-area" class="row hidden" onclick="WorkAreaFocus();">
-            <div id="tools-info" class="row-item" onclick="WorkAreaFocus();">
-                <label id="model-label">Model:</label>
-                <div id="model"></div>
-                <div id="updated-space" class="space"></div>
-                <label id="updated-label">Mmojo Server:</label>
-                <div id="updated">Date</div>
+        <div id="tools" class="row hidden" onclick="WorkAreaFocus();">
+            <label id="model-label">Model:</label>
+            <div id="model"></div>
+            <div id="updated-space" class="space"></div>
 
-
-            </div>
-            <div id="tools" class="row" onclick="WorkAreaFocus();">
-                <div id="chat-icon" onclick="Chat(event);" title="Mmojo Chat" ></div>
-                <div id="read-icon" onclick="Read(event)" title="Read Work Area" ></div>
-                <div id="download-icon" onclick="Download(event)" title="Download Work Area" ></div>
-                <div id="print-icon" onclick="TogglePrintSettings(event);" title="Print Work Area" ></div>
-                <div id="bookmark-icon" onclick="ToggleBookmarkMaker(event);" title="Bookmark Maker" ></div>
-                <div id="fullscreen-icon" onclick="ToggleFullScreen(event);" title="Full Screen" ></div>
-                <div id="restore-icon" class="hidden" onclick="ToggleFullScreen(event);" title="Exit Full Screen" ></div>
-            </div>
+            <div id="chat-icon" onclick="Chat(event);" title="Mmojo Chat" ></div>
+            <div id="read-icon" onclick="Read(event)" title="Read Work Area" ></div>
+            <div id="download-icon" onclick="Download(event)" title="Download Work Area" ></div>
+            <div id="print-icon" onclick="IconClickedPrint(event);" title="Print Work Area" ></div>
+            <div id="bookmark-icon" onclick="IconClickedBookmark(event);" title="Bookmark Maker" ></div>
+            <div id="fullscreen-icon" onclick="IconClickedFullScreen(event);" title="Full Screen" ></div>
+            <div id="restore-icon" class="hidden" onclick="IconClickedRestore(event);" title="Exit Full Screen" ></div>
         </div>
 
         <div id="settings" class="row hidden" onclick="WorkAreaFocus();">
+            <label id="theme-label" for="theme">Theme:</label>
+            <select id="theme" onclick="EnableControls(event);" onchange="ThemeChanged(event);" >
+                <option value="peach-olive" selected>Peach Olive</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+
+            <div id="copy-paste-divider" class="vertical-divider"></div>
             <label class="checkbox-container" id="show-copy-and-paste-checkbox-label">Show Copy &amp; Paste
                 <input type="checkbox" id="show-copy-and-paste-checkbox" onclick="EnableControls(event);" onchange="ShowCopyAndPasteChanged(event);">
                 <span class="checkbox-checkmark"></span>
             </label>
-
-            <!--
-            <input id="show-copy-and-paste-checkbox" type="checkbox" onclick="EnableControls(event);" onchange="ShowCopyAndPasteChanged(event);" />
-            <label id="show-copy-and-paste-checkbox-label" for="show-copy-and-paste-checkbox">Show Copy &amp; Paste</label>
-            -->
             <div id="settings-break-1" class="break"></div>
 
             <label id="temperature-label" for="temperature">Temperature:</label>
@@ -102,30 +98,19 @@
                 <span class="checkbox-checkmark"></span>
             </label>
             
-            <!--
-            <input id="stop-words-checkbox" type="checkbox" onclick="EnableControls(event);" onchange="EnableControls(); StopWordsSetFocus();" />
-            <label id="stop-words-checkbox-label" for="stop-words-checkbox">Stop Words</label>
-            -->
-
             <div id="stop-words-break" class="break hidden"></div>
             <label id="stop-words-label" for="stop-words" class="hidden">Stop Words:</label>
             <input id="stop-words" type="text" class="hidden" onclick="EnableControls(event);" />
 
             <div id="settings-break-2" class="break"></div>
+            <label id="updated-label" class="">Mmojo Server:</label>
+            <div id="updated" class="">Date</div>
             <label id="api-key-label" class="hidden" for="api-key">API Key:</label>
             <input id="api-key" class="hidden" type="text" onclick="EnableControls(event);" onkeyup="APIKeyChanged(event);" onchange="APIKeyChanged(event);" />
 
-            <div id="theme-divider" class="vertical-divider hidden"></div>
-            <label id="theme-label" for="theme">Theme:</label>
-            <select id="theme" onclick="EnableControls(event);" onchange="ThemeChanged(event);" >
-                <option value="peach-olive" selected>Peach Olive</option>
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-            </select>
-
         </div>
 
-        <div id="print-settings" class="row hidden" onclick="WorkAreaFocus();">
+        <div id="print" class="row hidden" onclick="WorkAreaFocus();">
             <label id="print-size-label" for="print-size">Print Size:</label>
             <select id="print-size" onclick="EnableControls(event);">
                 <option value="1rem">Tiny</option>
@@ -149,8 +134,8 @@
             </select>
 
             <div id="print-space" class="space"></div>
-            <button id="print" onclick="Print(event);">Print</button>
-            <button id="print-cancel" onclick="TogglePrintSettings(event);">Cancel</button>
+            <button id="print-print-button" onclick="Print(event);">Print</button>
+            <button id="print-cancel-button" onclick="TogglePrintSettings(event);">Cancel</button>
 
             <div id="picture-url-break" class="break"></div>
             <label id="picture-url-label" for="picture-url">Picture URL:</label>

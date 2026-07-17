@@ -254,7 +254,7 @@ function PageLoaded() {
 
     elements.workAreaText.placeholder = kWorkAreaTextPlaceholder;
     elements.workAreaText.value = '';
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     elements.helpText.innerHTML = kHelpHTML;
 	
@@ -329,15 +329,15 @@ function FindElements() {
     elements.filesIcon                  = document.getElementById("files-icon");
     elements.helpIcon                   = document.getElementById("help-icon");
 
-    elements.toolsArea                  = document.getElementById("tools-area");
     elements.tools                      = document.getElementById("tools");
+    elements.model                  	= document.getElementById("model");
     elements.chatIcon                   = document.getElementById("chat-icon");
+    elements.readIcon                   = document.getElementById("read-icon");
     elements.downloadIcon               = document.getElementById("download-icon");
     elements.printIcon                  = document.getElementById("print-icon");
     elements.bookmarkIcon               = document.getElementById("bookmark-icon");
-    //  elements.colorWheelIcon             = document.getElementById("color-wheel-icon");
     elements.fullscreenIcon             = document.getElementById("fullscreen-icon");
-    elements.restoreIcon             = document.getElementById("restore-icon");
+    elements.restoreIcon             	= document.getElementById("restore-icon");
 
     elements.settings                   = document.getElementById("settings");
     elements.showCopyAndPasteCheckbox   = document.getElementById("show-copy-and-paste-checkbox");
@@ -351,44 +351,43 @@ function FindElements() {
     elements.apiKey                  	= document.getElementById("api-key");
     elements.themeLabel             	= document.getElementById("theme-label");
     elements.theme                  	= document.getElementById("theme");
+    elements.updated                	= document.getElementById("updated");
 
-    elements.printSettings          = document.getElementById("print-settings");
-    elements.printSize              = document.getElementById("print-size");
-    elements.pictureWidth           = document.getElementById("picture-width");
-    elements.pictureUrlBreak        = document.getElementById("picture-url-break");
-    elements.pictureUrl             = document.getElementById("picture-url");
-    elements.print                  = document.getElementById("print");
+    elements.print          			= document.getElementById("print");
+    elements.printSize              	= document.getElementById("print-size");
+    elements.pictureWidth           	= document.getElementById("picture-width");
+    elements.pictureUrlBreak        	= document.getElementById("picture-url-break");
+    elements.pictureUrl             	= document.getElementById("picture-url");
+    elements.printPrintButton       	= document.getElementById("print-print-button");
+    elements.printCancelButton       	= document.getElementById("print-cancel-button");
 
-    elements.model                  = document.getElementById("model");
-    elements.updated                = document.getElementById("updated");
+    elements.workArea               	= document.getElementById("work-area");
+    elements.workAreaText           	= document.getElementById("work-area-text");
 
-    elements.workArea               = document.getElementById("work-area");
-    elements.workAreaText           = document.getElementById("work-area-text");
+    elements.copyPaste              	= document.getElementById("copy-paste");    
+    elements.copyPasteItem          	= document.getElementById("copy-paste-item");
+    elements.copyPasteSpace         	= document.getElementById("copy-paste-space");
+    elements.clearCue               	= document.getElementById("clear-cue");
+    elements.preview                	= document.getElementById("preview");
 
-    elements.copyPaste              = document.getElementById("copy-paste");    
-    elements.copyPasteItem          = document.getElementById("copy-paste-item");
-    elements.copyPasteSpace         = document.getElementById("copy-paste-space");
-    elements.clearCue               = document.getElementById("clear-cue");
-    elements.preview                = document.getElementById("preview");
+	elements.filesArea					= document.getElementById("files-area");
+	elements.filesAreaHeader			= document.getElementById("files-area-header");
+	elements.filesDirectoryName			= document.getElementById("files-directory-name");
+	elements.filesDirectoryChoose		= document.getElementById("files-directory-choose");
+	elements.filesDownloadAll			= document.getElementById("files-download-all");
+	elements.filesAreaBody				= document.getElementById("files-area-body");
+	elements.filesList					= document.getElementById("files-list");
+	elements.filesListItemTemplate		= document.getElementById("files-list-item-template");
+	elements.fileView					= document.getElementById("file-view");
+	elements.fileViewHeader				= document.getElementById("file-view-header");
+	elements.fileName					= document.getElementById("file-name");
+	elements.fileContents				= document.getElementById("file-contents");
+	elements.fileControls				= document.getElementById("file-controls");
+	elements.fileCopy					= document.getElementById("file-copy");
+	elements.fileDownload				= document.getElementById("file-download");
 
-	elements.filesArea				= document.getElementById("files-area");
-	elements.filesAreaHeader		= document.getElementById("files-area-header");
-	elements.filesDirectoryName		= document.getElementById("files-directory-name");
-	elements.filesDirectoryChoose	= document.getElementById("files-directory-choose");
-	elements.filesDownloadAll		= document.getElementById("files-download-all");
-	elements.filesAreaBody			= document.getElementById("files-area-body");
-	elements.filesList				= document.getElementById("files-list");
-	elements.filesListItemTemplate	= document.getElementById("files-list-item-template");
-	elements.fileView				= document.getElementById("file-view");
-	elements.fileViewHeader			= document.getElementById("file-view-header");
-	elements.fileName				= document.getElementById("file-name");
-	elements.fileContents			= document.getElementById("file-contents");
-	elements.fileControls			= document.getElementById("file-controls");
-	elements.fileCopy				= document.getElementById("file-copy");
-	elements.fileDownload			= document.getElementById("file-download");
-
-	elements.helpContainer			= document.getElementById("help-container");
-	elements.helpText				= document.getElementById("help-text");
+	elements.helpContainer				= document.getElementById("help-container");
+	elements.helpText					= document.getElementById("help-text");
 
 	elements.bookmarkMaker					= document.getElementById("bookmark-maker");
 	elements.bookmarkSettings				= document.getElementById("bookmark-settings");
@@ -412,16 +411,16 @@ function FindElements() {
 	elements.bookmarkCompleted				= document.getElementById("bookmark-completed");
 	elements.bookmarkCompletedText			= document.getElementById("bookmark-completed-text");
 
-    elements.status                 = document.getElementById("status");
-    elements.statusText             = document.getElementById("status-text");
-    elements.statusStart            = document.getElementById("status-start");
-    elements.statusStop             = document.getElementById("status-stop");
-    elements.statusUndo             = document.getElementById("status-undo");
-    elements.statusClear            = document.getElementById("status-clear");
+    elements.status                 	= document.getElementById("status");
+    elements.statusText             	= document.getElementById("status-text");
+    elements.statusStart            	= document.getElementById("status-start");
+    elements.statusStop             	= document.getElementById("status-stop");
+    elements.statusUndo             	= document.getElementById("status-undo");
+    elements.statusClear            	= document.getElementById("status-clear");
 
-    elements.gutter                 = document.getElementById("gutter");
-    elements.link                   = document.getElementById("link");
-    elements.copyright              = document.getElementById("copyright");
+    elements.gutter                 	= document.getElementById("gutter");
+    elements.link                  		= document.getElementById("link");
+    elements.copyright              	= document.getElementById("copyright");
 
     document.addEventListener("fullscreenchange", FullscreenChange);
     document.addEventListener("keydown", KeyPress);
@@ -454,14 +453,14 @@ function SetCopyPasteScripts() {
 }
 
 function HandleCopyPaste(copyPasteItem) {
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     if (copyPasteItem.pasteValue !== undefined) {
         if (kLogging) console.log("Pasting.");
         HandleCopyPasteMouseLeave(copyPasteItem);
 
         elements.workAreaText.value = copyPasteItem.pasteValue.workAreaText;
-        elements.workAreaText.focus();
+        WorkAreaFocus();
         ScrollToEnd();
 
         elements.temperature.value = copyPasteItem.pasteValue.temperature;
@@ -546,7 +545,7 @@ function HandleCopyPasteMouseLeave(copyPasteItem) {
 }
 
 function HandleRemove(copyPasteItem) {
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     if (copyPasteItem.pasteValue !== undefined) {
         if (kLogging) console.log("Removing button.");
@@ -594,7 +593,7 @@ function ClearCue() {
 
     if ((script.completedContent != '') && (workAreaText.endsWith(script.completedContent))) {
         elements.workAreaText.value = script.completedContent.trimStart();
-        elements.workAreaText.focus();
+        WorkAreaFocus();
         script.completedContent = "";
         EnableCopyPaste();
         PushChange();
@@ -603,7 +602,7 @@ function ClearCue() {
 
 function ClearWorkArea() {
     elements.workAreaText.value = '';
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     ClearUndoRedoStack();
     ShowHideStatusButtons();
@@ -777,18 +776,14 @@ function SetCompleting(value) {
 		elements.workAreaText.caretColor = "transparent";
 		elements.workAreaText.classList.add("working");
 
-		// elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
-		// elements.workAreaText.style.borderColor = "var(--color6)";
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 	}
 	else {
 		elements.workAreaText.readOnly = false;
 		elements.workAreaText.caretColor = null;
 		elements.workAreaText.classList.remove("working");
 
-		// elements.workAreaText.style.backgroundColor = "var(--color2)";
-		// elements.workAreaText.style.borderColor = "var(--color2)";
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 
 		PushChange();
     }
@@ -919,7 +914,7 @@ async function StartCompleting(workAreaText, temperature, tokens, stopWords) {
                             script.completedContent = script.completedContent + lineData.data.stopping_word;
                             elements.workAreaText.value = content;
 
-                            elements.workAreaText.focus();
+                            WorkAreaFocus();
                             ScrollToEnd();
                             
                             script.completingController = null;
@@ -1011,7 +1006,7 @@ function StopCompleting() {
         ShowHideStatusButtons();
 		PushChange();
 
-        elements.workAreaText.focus();
+        WorkAreaFocus();
         ScrollToEnd();
     }
 }
@@ -1071,16 +1066,11 @@ function SetReplaying(value) {
 		//  elements.statusStop.focus();
 	
 		elements.workAreaText.classList.add("working");
-		// elements.workAreaText.style.backgroundColor = "var(--grey-lightlight)";
-		// elements.workAreaText.style.borderColor = "var(--color6)";
-
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 	}
 	else {
 		elements.workAreaText.classList.remove("working");
-		// elements.workAreaText.style.backgroundColor = "var(--color2)";
-		// elements.workAreaText.style.borderColor = "var(--color2)";
-		elements.workAreaText.focus();
+		WorkAreaFocus();
     }
 }
 
@@ -1360,23 +1350,6 @@ function WorkAreaFocus() {
     elements.workAreaText.focus();
 }
 
-function ToggleFullScreen(event) {
-    event.stopPropagation();
-
-    var elt = document.documentElement;
-
-    if (document.fullscreenElement) {
-        if (kLogging) ('Exit fullscreen.');
-        document.exitFullscreen();
-    }
-    else {
-        if (kLogging) ('Enter fullscreen.');
-        document.documentElement.requestFullscreen();
-    }
-
-    elements.workAreaText.focus();
-}
-
 function FullscreenChange() {
     if (document.fullscreenElement) {
         elements.fullscreenIcon.classList.add("hidden");
@@ -1409,21 +1382,23 @@ function KeyPress(event) {
         if (kLogging) console.log('ctrl-b');
         event.preventDefault();
 
-		ToggleBookmarkMaker(event);
+		// bookmark panel needs a close button to just show work area.
+		// ShowPanel(event, "bookmark");
+		IconClickedBookmark(event);
     }
 
     if (event.ctrlKey && !event.shiftKey && (event.key == 'e')) {
         if (kLogging) console.log('ctrl-e');
         event.preventDefault();
 
-		ToggleSettings(event);
+		ShowPanel(event, "settings");
     }
 
     if (event.ctrlKey && !event.shiftKey && (event.key == 'l')) {
         if (kLogging) console.log('ctrl-l');
         event.preventDefault();
 
-		ToggleTools(event);
+		ShowPanel(event, "tools");
     }
 }
 
@@ -1637,10 +1612,149 @@ async function GetModelInfoFromServer() {
     }
 }
 
-function ToggleFiles(event) {
+function ShowPanel(event, panel) {
+    event.stopPropagation();
+
+	if ((panel === undefined) || (panel === null) || (panel === "")) {
+		panel = "work-area";
+	}
+
+	// Hide all panels
+	if (!elements.filesArea.classList.contains("hidden") && (panel != "files")) {
+    	HideElement(elements.filesArea);
+	}
+	if (!elements.bookmarkMaker.classList.contains("hidden") && (panel != "bookmark")) {
+    	HideElement(elements.bookmarkMaker);
+	}
+	if (!elements.helpContainer.classList.contains("hidden") && (panel != "help")) {
+    	HideElement(elements.helpContainer);
+	}
+	if (!elements.workArea.classList.contains("hidden") && ((panel == "files") || (panel == "bookmark") || (panel == "help"))) {
+    	HideElement(elements.workArea);
+    	HideElement(elements.status);
+	}
+	if (!elements.settings.classList.contains("hidden") && (panel != "settings")) {
+		HideElement(elements.settings);
+	}
+	if (!elements.tools.classList.contains("hidden") && (panel != "tools") && (panel != "print") && (panel != "bookmark")) {
+    	HideElement(elements.tools);
+	}
+	if (!elements.print.classList.contains("hidden") && (panel != "print")) {
+    	HideElement(elements.print);
+	}
+	
+	// Show the right panels
+	if (elements.filesArea.classList.contains("hidden") && (panel == "files")) {
+		ShowFilesDirectoryName();
+		PopulateFilesList();
+		ShowSelectedFile();
+    	ShowElement(elements.filesArea);
+	}
+	if (elements.bookmarkMaker.classList.contains("hidden") && (panel == "bookmark")) {
+		let hash = MakeHash();
+		UseBookmarkHash(hash);
+    	ShowElement(elements.bookmarkMaker);
+	}
+	if (elements.helpContainer.classList.contains("hidden") && (panel == "help")) {
+    	ShowElement(elements.helpContainer);
+	}
+	if (elements.workArea.classList.contains("hidden") && ((panel != "files") && (panel != "bookmark") && (panel != "help"))) {
+    	ShowElement(elements.workArea);
+    	ShowElement(elements.status);
+		WorkAreaFocus();
+	}
+	if (elements.settings.classList.contains("hidden") && (panel == "settings")) {
+		ShowElement(elements.settings);
+	}
+	if (elements.tools.classList.contains("hidden") && ((panel == "tools") || (panel == "print") || (panel == "bookmark"))) {
+    	ShowElement(elements.tools);
+	}
+	if (elements.print.classList.contains("hidden") && (panel == "print")) {
+    	ShowElement(elements.print);
+	}
+}
+
+function IconClickedSettings(event) {
+	if (event.shiftKey) {
+		NextTheme();
+    	event.stopPropagation();
+	}
+	else {
+		if (elements.settings.classList.contains("hidden")) {
+			ShowPanel(event, "settings");
+		}
+		else {
+			ShowPanel(event, "work-area");
+		}
+	}
+}
+
+function IconClickedTools(event) {
+	if (elements.tools.classList.contains("hidden")) {
+		ShowPanel(event, "tools");
+	}
+	else {
+		ShowPanel(event, "work-area");
+	}
+}
+
+function IconClickedFiles(event) {
+	if (elements.filesArea.classList.contains("hidden")) {
+		ShowPanel(event, "files");
+	}
+	else {
+		ShowPanel(event, "work-area");
+	}
+}
+
+function IconClickedHelp(event) {
+	if (elements.helpContainer.classList.contains("hidden")) {
+		ShowPanel(event, "help");
+	}
+	else {
+		ShowPanel(event, "work-area");
+	}
+}
+
+function IconClickedPrint(event) {
+	if (elements.print.classList.contains("hidden")) {
+		ShowPanel(event, "print");
+	}
+	else {
+		ShowPanel(event, "tools");
+	}
+}
+
+function IconClickedBookmark(event) {
+	if (elements.bookmarkMaker.classList.contains("hidden")) {
+		ShowPanel(event, "bookmark");
+	}
+	else {
+		ShowPanel(event, "tools");
+	}
+}
+
+function IconClickedFullScreen(event) {
+    event.stopPropagation();
+
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+	}
+}
+
+function IconClickedRestore(event) {
+    event.stopPropagation();
+
+    if (document.fullscreenElement) {
+        if (kLogging) ('Exit fullscreen.');
+        document.exitFullscreen();
+    }
+}
+
+function ToggleFiles_Old(event) {
     event.stopPropagation();
 	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker(event);
+		ToggleBookmarkMaker_Old(event);
 	}
 
 	if (elements.filesArea.classList.contains("hidden")) {
@@ -1665,26 +1779,26 @@ function ToggleFiles(event) {
     	HideElement(elements.filesArea);
     	ShowElement(elements.workArea);
     	ShowElement(elements.status);
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 	}
 
     HideElement(elements.helpContainer);
 	HideElement(elements.settings);
-    HideElement(elements.toolsArea);
-    HideElement(elements.printSettings);
+    HideElement(elements.tools);
+    HideElement(elements.print);
     HideElement(elements.helpContainer);
 }
 
-function ToggleBookmarkMaker(event) {
+function ToggleBookmarkMaker_Old(event) {
     event.stopPropagation();
 	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles(event);
+		ToggleFiles_Old(event);
 	}
 
 	HideElement(elements.settings);
-    HideElement(elements.printSettings);
+    HideElement(elements.print);
     HideElement(elements.helpContainer);
-    ShowElement(elements.toolsArea);
+    ShowElement(elements.tools);
 
 	if (elements.bookmarkMaker.classList.contains("hidden")) {
 		let hash = MakeHash();
@@ -1698,94 +1812,8 @@ function ToggleBookmarkMaker(event) {
     	HideElement(elements.bookmarkMaker);
 		ShowElement(elements.workArea);
     	ShowElement(elements.status);
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 	}
-}
-
-function ToggleHelp(event) {
-    event.stopPropagation();
-	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles(event);
-	}
-	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker(event);
-	}
-
-	HideElement(elements.settings);
-    HideElement(elements.toolsArea);
-    HideElement(elements.printSettings);
-
-	if (elements.helpContainer.classList.contains("hidden")) {
-    	HideElement(elements.workArea);
-    	HideElement(elements.status);
-    	ShowElement(elements.helpContainer);
-	}
-	else {
-    	HideElement(elements.helpContainer);
-		ShowElement(elements.workArea);
-    	ShowElement(elements.status);
-		elements.workAreaText.focus();
-	}
-}
-
-function ToggleSettings(event) {
-    event.stopPropagation();
-
-	if (event.shiftKey) {
-		NextTheme();
-	}
-	else {
-		if (!elements.filesArea.classList.contains("hidden")) {
-			ToggleFiles(event);
-		}
-		if (!elements.bookmarkMaker.classList.contains("hidden")) {
-			ToggleBookmarkMaker(event);
-		}
-		
-	    elements.workAreaText.focus();
-	    ToggleShowElement(elements.settings);
-	    HideElement(elements.toolsArea);
-	    HideElement(elements.printSettings);
-	    HideElement(elements.helpContainer);
-	
-	    if (elements.settings.classList.contains("hidden")) {
-	        elements.workAreaText.focus()
-	    }
-	    else {
-	        elements.showCopyAndPasteCheckbox.focus()
-	    }
-	}
-}
-
-function ToggleTools(event) {
-    event.stopPropagation();
-	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles(event);
-	}
-	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker(event);
-	}
-
-	elements.workAreaText.focus()
-    ToggleShowElement(elements.toolsArea);
-    HideElement(elements.settings);
-    HideElement(elements.printSettings);
-    HideElement(elements.helpContainer);
-}
-
-function TogglePrintSettings() {
-    elements.workAreaText.focus();
-	if (!elements.filesArea.classList.contains("hidden")) {
-		ToggleFiles(event);
-	}
-	if (!elements.bookmarkMaker.classList.contains("hidden")) {
-		ToggleBookmarkMaker(event);
-	}
-
-	ToggleShowElement(elements.printSettings)
-    HideElement(elements.settings);
-    HideElement(elements.toolsArea);
-    HideElement(elements.helpContainer);
 }
 
 function ScrollToEnd() {
@@ -1803,7 +1831,7 @@ function ScrollToSelectionStart() {
 	// Help from Google Gemini on this. Allegedly no-flicker.
 	// https://share.google/aimode/AvqJraXA5OSjvJwbq
 
-	elements.workAreaText.focus();
+	WorkAreaFocus();
 	
 	const originalText = elements.workAreaText.value;
 	const selectionStart = elements.workAreaText.selectionStart;
@@ -2091,7 +2119,7 @@ function UseHash() {
     }
 
     elements.workAreaText.disabled = false;
-    elements.workAreaText.focus();
+    WorkAreaFocus();
     ScrollToEnd();
 
 	script.replayText = "";
@@ -2195,14 +2223,14 @@ function UpdatePicture() {
 
 function Chat(event) {
     event.stopPropagation();
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
-    window.open('/chat', '_blank');
+    window.open('chat.html', '_blank');
 }
 
 function Read(event) {
     event.stopPropagation();
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     if (window.speechSynthesis.speaking) {
         window.speechSynthesis.cancel();
@@ -2242,7 +2270,7 @@ function Read(event) {
 
 function Download(event) {
     event.stopPropagation();
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 
     textData = elements.workAreaText.value;
     if (textData === "") {
@@ -2302,7 +2330,7 @@ async function downloadFileWithFetch(url, fileName) {
 
 function Print() {
     event.stopPropagation();
-    elements.workAreaText.focus();
+    WorkAreaFocus();
     window.print();
 }
 
@@ -2321,7 +2349,7 @@ function EditBookmark(event) {
     }
     window.open(bookmarkLink, '_blank');
 
-    elements.workAreaText.focus();
+    WorkAreaFocus();
 }
 
 function GetElapsedTimeString(ms) {
@@ -2686,7 +2714,7 @@ function FilesListItemDoubleClicked(event) {
 		if (logThis) console.log("- codeBlock:\n" + JSON.stringify(codeBlock));
 
 		if (!elements.filesArea.classList.contains("hidden")) {
-			ToggleFiles(event);
+			ShowPanel(event, "work-area");
 		}
 
 		let wat = elements.workAreaText.value;
@@ -2697,7 +2725,7 @@ function FilesListItemDoubleClicked(event) {
 			selectionStart += watLines[i].length + 1;
 		}
 
-		elements.workAreaText.focus();
+		WorkAreaFocus();
 		elements.workAreaText.setSelectionRange(selectionStart, selectionStart);
 		ScrollToSelectionStart();
 	}

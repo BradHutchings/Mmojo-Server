@@ -23,12 +23,6 @@ if [ -d "$REPO_DIR" ]; then
             # echo "Fixing $file."
             $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
         done
-
-        # cd "$REPO_DIR_SCRIPTS_OPENCLAW"
-        # for file in oc*.sh; do
-        #     # echo "Fixing $file."
-        #     $MMOJO_SED -i -e '1c#!/usr/local/bin/bash' "$file"
-        # done
     fi
 
     parent=$(dirname -- $0)

@@ -55,7 +55,7 @@ _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 _RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
-if [[ $(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"* ]] && [ ("$_BUILD_CHOICE" = "-native") || ("$_BUILD_CHOICE" = "pi") ]; then
+if [[ ($(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"*) && (("$_BUILD_CHOICE" = "-native") || ("$_BUILD_CHOICE" = "pi")) ]]; then
     _GPUS_CHOICE=""
     _BUILD_CHOICE="pi"
     _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_PI_AARCH64"

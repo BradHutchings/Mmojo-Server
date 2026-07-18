@@ -141,6 +141,8 @@ if [ -d "$THIS_BUILD_DIR" ] && [ "$BUILD_SUBDIRECTORY" != "" ]; then
 
     echo
     echo "Build command: cmake --build \"$BUILD_SUBDIRECTORY\""
+else
+    echo "Failed build directory test."
 fi
 
 cd $HOME

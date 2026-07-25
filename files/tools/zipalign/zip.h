@@ -14,9 +14,16 @@
       https://raw.githubusercontent.com/mozilla-ai/llamafile/refs/tags/0.9.3/llamafile/zip.h
 
   -Brad 2025-11-08
-  --
-  Brad Hutchings
-  brad@bradhutchings.com
+	----------
+	This is a modified source file for the Mmojo Server repo. It is covered by
+	the repo's MIT-style LICENSE:
+
+	https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
+
+	Copyright (c) 2025-26 Brad Hutchings.
+	--
+	Brad Hutchings
+	brad@Mmojo.net
 */
 
 #ifndef COSMO_ZIP_

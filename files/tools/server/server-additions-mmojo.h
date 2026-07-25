@@ -15,6 +15,7 @@
 	Copyright (c) 2025-26 Brad Hutchings.
 	--
 	Brad Hutchings
+	brad@Mmojo.net
 */
 
 #include "server-context.h"

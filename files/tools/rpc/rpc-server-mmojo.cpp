@@ -10,9 +10,16 @@
       https://github.com/ggml-org/llama.cpp/blob/master/tools/rpc/rpc-server.cpp
 
   -Brad 2025-11-09
-  --
-  Brad Hutchings
-  brad@Mmojo.net
+	----------
+	This is a modified source file for the Mmojo Server repo. It is covered by
+	the repo's MIT-style LICENSE:
+
+	https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
+
+	Copyright (c) 2025-26 Brad Hutchings.
+	--
+	Brad Hutchings
+	brad@Mmojo.net
 */
 
 // Mmojo Server START

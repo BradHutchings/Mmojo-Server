@@ -125,5 +125,5 @@ cd $pwd
 #  Copyright (c) 2025-26 Brad Hutchings.
 #  --
 #  Brad Hutchings
-#  brad@bradhutchings.com
+#  brad@Mmojo.net
 ################################################################################

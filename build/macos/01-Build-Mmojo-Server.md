@@ -97,6 +97,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     fi
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
+    cp "$REPO_DIR/build/support-files/mmojo-read-me.html" "$DEPLOY_DIR/Read-Me.html"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
     cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE" ]; then

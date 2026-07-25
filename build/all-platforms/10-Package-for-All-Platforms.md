@@ -1,4 +1,4 @@
-## 04. Package for All Platforms
+## 10. Package for All Platforms
 ### About this Step
 In this step, you will package the build you just created and tested.
 

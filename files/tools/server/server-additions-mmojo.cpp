@@ -7,7 +7,7 @@
   -Brad 2026-03-03
   --
   Brad Hutchings
-  brad@bradhutchings.com
+  brad@Mmojo.net
 */
 
 #include "server-additions-mmojo.h"

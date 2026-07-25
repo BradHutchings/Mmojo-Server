@@ -19,5 +19,5 @@ printf "\n**********\n*\n* FINISHED: 208-Set-up-Cross-Compile-x86_64-on-aarch64.
 #  Copyright (c) 2025-26 Brad Hutchings.
 #  --
 #  Brad Hutchings
-#  brad@bradhutchings.com
+#  brad@Mmojo.net
 ################################################################################

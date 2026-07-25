@@ -1,6 +1,6 @@
 // Copyright 2024-26 Brad Hutchings. 
 // All Rights Reserved.
-// License Inquiries: brad@BradHutchings.com.
+// License Inquiries: brad@Mmojo.net.
 
 const isMmojoPage = true;
 const kLogging = false;

@@ -49,10 +49,10 @@ Would you like to sponsor accessible, local, private LLMs? Email me!
 -Brad<br/>
 --<br/>
 Brad Hutchings<br/>
-brad@bradhutchings.com
+brad@Mmojo.net
 <!-- END SPONSOR -->
 
 ---
 [MIT-Style License](/LICENSE)<br/>
-Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@Mmojo.net)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

@@ -13,7 +13,7 @@ I offer paid assistance over Zoom if you need it:
 -Brad<br/>
 \--<br/>
 Brad Hutchings<br/>
-brad@BradHutchings.com<br/><br/>
+brad@Mmojo.net<br/><br/>
 <!-- END SPONSOR -->
 
 <!--
@@ -42,5 +42,5 @@ Here are the deployment steps:
 
 ---
 [MIT-Style License](/LICENSE)<br/>
-Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@Mmojo.net)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

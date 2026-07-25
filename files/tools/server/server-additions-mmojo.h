@@ -6,9 +6,15 @@
   This file has been added to implement Mmojo Server specific fixes and features.
 
   -Brad 2026-03-03
-  --
-  Brad Hutchings
-  brad@bradhutchings.com
+	----------
+	This is a modified source file for the Mmojo Server repo. It is covered by
+	the repo's MIT-style LICENSE:
+
+	https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
+
+	Copyright (c) 2025-26 Brad Hutchings.
+	--
+	Brad Hutchings
 */
 
 #include "server-context.h"

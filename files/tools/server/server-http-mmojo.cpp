@@ -12,7 +12,7 @@
   -Brad 2025-11-25
   --
   Brad Hutchings
-  brad@bradhutchings.com
+  brad@Mmojo.net
 */
 
 #include "common.h"

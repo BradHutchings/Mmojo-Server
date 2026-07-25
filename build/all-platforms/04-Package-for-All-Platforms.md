@@ -5,13 +5,6 @@ In this step, you will package the build you just created and tested.
 In this alternative, you will package the compatible and performant builds separately, Windows and Linux/macOS separately.
 
 ---
-### Choose a Model
-Choose a model to include in the package. If you don't want one, choose "None".
-```
-mm-model
-```
-
----
 ### Review Your Work
 Let's list the contents of the `$HOME/mm-deploy` directory and review your work:
 ```
@@ -23,6 +16,15 @@ It should look like:
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/3233af7d-978c-423a-9f83-94e9afb70782" />
 
 If you have a model to be included in the package, it will show up as a link. It is light blue in my listing.
+
+---
+### Choose a Model for Compatible Packages
+Choose a model to include in the compatible packages. If you don't want one, choose "None".
+
+Suggested: Google Gemma 1B Instruct v3.
+```
+mm-model
+```
 
 ---
 ### Make a Compatable Windows Package File
@@ -66,6 +68,15 @@ if test -n "$DEPLOY_DIR"; then
     cd $HOME
     ls -al "$PACKAGES_DIR"
 fi
+```
+
+---
+### Choose a Model for Performant Packages
+Choose a model to include in the performant packages. If you don't want one, choose "None".
+
+Suggested: Google Gemma 4B Instruct v3.
+```
+mm-model
 ```
 
 ---

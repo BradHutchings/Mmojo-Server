@@ -24,6 +24,7 @@ echo "       cloning in: $THIS_BUILD_DIR"
 echo ""
 
 # This copies the $REPO_DIR_FILES tree into the $THIS_BUILD_DIR tree.
+# This is how the original "Mmojo-Complete" directory gets into the build folder.
 cp -r $REPO_DIR_FILES/* $THIS_BUILD_DIR/
 
 cd $THIS_BUILD_DIR

@@ -4,6 +4,8 @@ In this step, you will package the build you just created and tested.
 
 In this alternative, you will package the compatible and performant builds separately, Windows and Linux/macOS separately.
 
+**NOTE: PLEASE REVIEW THE [LICENSE FILE](/LICENSE) BEFORE DISTRIUBUTING ANY BUILDS YOU PACKAGE. YOU MAY NOT CALL WHAT YOU DISTRIBUITE "Mmojo Server".**
+
 ---
 ### Review Your Work
 Let's list the contents of the `$HOME/mm-deploy` directory and review your work:
@@ -133,7 +135,7 @@ mm-packages-backup.sh
 ---
 ### Proceed
 - **Next:** This is the last step in this guide.
-- **Previous:** [05. Package for All Platforms](05-Package-for-All-Platforms.md)
+- **Previous:** [03. Prepare to Package](03-Prepare-to-Package.md)
 - **Up:** [Build Mmojo Server for All Platforms](README.md)
 
 ---

@@ -14,7 +14,7 @@ mm-models-create-directory.sh
 mm-models-download.sh
 ```
 
-**Optional:** Here are essential Gemma 4 and Qwen3.5 quantizations for OpenClaw. Run this script to download them.
+**Optional:** Here are essential Gemma 4 and Qwen3.5 quantizations. Run this script to download them.
 ```
 cat << EOF >> $_MODEL_QUEUE
 Google-Gemma-E4B-Instruct-v4-q4_K_M.gguf

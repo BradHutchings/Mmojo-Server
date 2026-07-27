@@ -40,7 +40,6 @@ This document identifies the periodic builds, when to build them, how to build t
 - **How:**
   - Complete a fresh [Windows-WSL deployment](/deploy/Windows-WSL/README.md) after llama.cpp sync.
   - Build with [Debian recipe](/build/debian/README.md), CUDA GPUs, performant.
-  - Keep this package available for use with OpenClaw.
 
 ---
 ### Mmojo-Server-aarch64-comp-cud.zip

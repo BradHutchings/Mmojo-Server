@@ -9,9 +9,6 @@ Here are more deployments that are ready for you to use:
 - [Deploy Mmojo Server on Debian / Ubuntu](Debian-Ubuntu/README.md) - Deploy Mmojo Server on Debian, Ubuntu.
 - [Deploy Mmojo Server on Raspberry Pi](Raspberry-Pi/README.md) - Deploy Mmojo Server on Raspberry Pi 5.
 
-OpenClaw deployments have moved to their own root directory in this repo:
-- [Deploy OpenClaw](/deploy-openclaw/README.md) - Deploy OpenClaw server with Mmojo Server.
-
 <!-- SPONSOR --> 
 I offer paid assistance over Zoom if you need it:
 * [Paid Assistance](/docs/Paid-Assistance.md)

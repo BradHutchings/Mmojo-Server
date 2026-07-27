@@ -36,5 +36,5 @@ target_compile_features(${TARGET} PRIVATE cxx_std_17)
 #  Copyright (c) 2025 Brad Hutchings.
 #  --
 #  Brad Hutchings
-#  brad@bradhutchings.com
+#  brad@Mmojo.net
 ################################################################################

@@ -21,6 +21,16 @@
   Modified for Mmojo Server by Brad Hutchings.
   - Get cosmo_args definition from libc/cosmo.h.
   - cosmo_args() --> mmojo_args().
+	----------
+	This is a modified source file for the Mmojo Server repo. It is covered by
+	the repo's MIT-style LICENSE:
+
+	https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
+
+	Copyright (c) 2025-26 Brad Hutchings.
+	--
+	Brad Hutchings
+	brad@Mmojo.net
 */
 
 #ifdef __cplusplus

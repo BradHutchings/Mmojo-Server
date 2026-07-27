@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+        This is an original source file for the Mmojo Server repo. It is covered by
+        the repo's MIT-style LICENSE:
+    
+        https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
+    
+        Copyright (c) 2025-26 Brad Hutchings.
+        --
+        Brad Hutchings
+        brad@Mmojo.net
+    -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mmojo Server is private.</title>
+    <style>
+        :root {
+            --background-color: #F0EFEB;        /* --background in styles.css.       */
+
+            --content-lightest: #FFF1E6; 
+            --content-light: #EDDCD2;
+            --content-dark: #DDBEA9;
+            --content-darkest: #CB997E;
+
+            --header-lightest: #dbdbd2;
+            --header-light: #c9c9bb;
+            --header-medium: #B7B7A4;
+
+            --text-dark: #404040;               /* --text-dark in styles.css.        */
+            --text-medium: #808080;             /* --text-medium in styles.css.      */
+            --text-light: #C0C0C0;              /* --text-light in styles.css.       */
+            
+            --control-border: #A5A58D;
+            --reasoning: #F0F0F0;
+            
+            --main-spacing: 0.5rem;
+        }
+        
+        html {
+            /* 100dvh should make the page resize when keyboard appears. */
+            /* height: 100%; */
+            height: 100dvh;
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+        
+            color: var(--text-dark) !important;
+            font-family: Arial !important;
+            font-size: 1em !important;
+         }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-dark);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header, footer {
+            background-color: var(--header-medium);
+            color: var(--text-dark);
+            font-weight: bold;
+            border-radius: 0.5rem;
+            min-height: 2rem;
+            margin: var(--main-spacing) var(--main-spacing) var(--main-spacing) var(--main-spacing);
+            padding: 1.0rem 1.0rem 1.0rem 1.0rem;
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        main {
+            background-color: var(--content-light);
+            color: var(--text-dark);
+            border-radius: 0.5rem;
+            min-height: 6rem;
+            margin: 0rem var(--main-spacing) var(--main-spacing) var(--main-spacing);
+            padding: 0rem 1.0rem 0rem 1.0rem;
+            flex: 1;
+            overflow-x: hidden;
+            overflow-y: auto;
+            display: block;
+            gap: 1.0rem;
+        }
+
+        footer {
+            margin-top: 0rem;
+        }
+
+        ul {
+            list-style-position: outside; /* Keeps text aligned perfectly */
+            padding-left: 1rem;           /* Moves the entire list (and bullets) inward */
+        }
+
+        ul li {
+            padding-left: 0rem;           /* Adjusts the gap between the bullet and the text */
+            margin-top: 0rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-top: 0rem;
+            margin-bottom: 1rem;
+        }
+
+        h1, h2, h3, h4, h5 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        hr {
+            width: 100%;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>Mmojo Server. Release: July 26, 2026.</header>
+
+    <main>
+        <h3>Thank You!</h3>
+        <p>
+            Thank you for downloading and using my Mmojo Server software. It runs privately on your computer. Use it as a 
+            replacement for cloud LLMs like ChatGPT, Claude, or Grok.
+        </p>
+        <p>
+            Need assistance installing or using? Drop me an email. I will direct you to easy answers or suggest a paid support
+            option depending on your question. Developers and power users: You will likely end up in paid support.
+        </p>
+        <p>
+            -Brad<br/>
+            --<br/>
+            Brad Hutchings<br/>
+            <a href="mailto:brad@Mmojo.net">brad@Mmojo.net</a>
+        </p>
+        <hr/>
+
+        <h3>About Mmojo Server</h3>
+        <ul>
+            <li>
+                Mmojo Server is private. None of your data is sent to the cloud. EVER. I do not want to see your cues and prompts.
+            </li>
+            <li>
+                The default Mmojo Complete user interface is humane, simple, and powerful. You do not have to pretend to have 
+                a conversation with a robot to get answers or assistance. It is truly collaborative, with a rollback feature 
+                that lets the LLM complete from any point in previous completion or editing.
+            </li>
+            <li>
+                The more traditional Mmojo Chat user interface is very simple &mdash; and private. Yet, it is powerful enough to 
+                interview you, tease an idea out of you, and summarize it!
+            </li>
+            <li>
+                Mmojo Server requires no signup and no installation. You can copy it to a fast USB 3.2 thumb drive and  use it when 
+                needed on any computer with a USB port.
+            </li>
+            <li>
+                This free build of Mmojo Server uses CPU inference. It is not accelerated by your GPU. My GPU accelerated builds 
+                are a paid product. Email me if you're interested in one for your computer and GPU, including for Apple Silicon
+                (M-series processors). I will have them available for direct purchase on Mmojo.net in the future.
+            </li>
+            <li>
+                Get the latest Mmojo Server from <a href="https://mmojo.net/get-mmojo-server/" target="_blank">Mmojo.net</a>.
+            </li>
+            <li>
+                Read the <a href="https://mmojo.net/get-mmojo-server/faq/" target="_blank">Mmojo Server FAQ</a>.
+            </li>
+            <li>
+                If you need my assistance with setup issues, I offer a paid 30 minute Zoom or email thread. You may purchase 
+                <a href="https://www.paypal.com/ncp/payment/JXVBK7CR636N8" target="_blank">Mmojo Server Setup Assistance</a> with PayPal.
+            </li>
+            <li>
+                Mmojo Server is open source, based on llama.cpp. I do this so competent developers can verify my claims of privacy.
+                Developers are also welcome to build their own. Mmojo Server has the easiest to follow build and deployment instructions 
+                you will find in an open source project. I do not accept pull requests for this repo. It is not a community project.<br/><br/>
+                Visit the <a href="https://github.com/BradHutchings/Mmojo-Server" target="_blank">Mmojo Server Github Repo</a>.
+            </li>
+        </ul>
+        <hr/>
+
+        <h3>Release Notes: July 26, 2026.</h3>
+        <p>
+            This release has the new Mmojo Chat, the new Files panel, and brings bookmarking and help into the main Mmojo Complete
+            web application. The new Mmojo Chat will eventually be moved into the main web application as well. This release has
+            visual themes in Mmojo Complete: Peach / Olive, Light, and Dark.
+        </p>
+    </main>
+
+    <footer id="input-container">
+        &copy; 2024-26 Brad Hutchings. All rights reserved.
+    </footer>
+</body>
+</html>

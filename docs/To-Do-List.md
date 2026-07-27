@@ -55,5 +55,5 @@ Well, this got out of hand. I'm cleaning it up and trying to use it again. -Brad
 
 ---
 [MIT-Style License](/LICENSE)<br/>
-Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@Mmojo.net)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

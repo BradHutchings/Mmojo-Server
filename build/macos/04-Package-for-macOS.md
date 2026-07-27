@@ -3,6 +3,8 @@
 ### About this Step
 In this step, you will package the build you just created and tested.
 
+**NOTE: PLEASE REVIEW THE [LICENSE FILE](/LICENSE) BEFORE DISTRIUBUTING ANY BUILDS YOU PACKAGE. YOU MAY NOT CALL WHAT YOU DISTRIBUITE "Mmojo Server".**
+
 ---
 ### Choose a Model
 Choose a model to include in the package. If you don't want one, choose "None".

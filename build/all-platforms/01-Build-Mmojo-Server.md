@@ -31,7 +31,7 @@ Prepare to build Mmojo Server (llama.cpp with patches and extensions).
 if [ ! -d "$BUILD_DIR" ]; then
     mm-prepare-clone-llama-cpp.sh
     mm-prepare-patch-llama-cpp.sh
-    # mm-prepare-customize-webui.sh
+    mm-prepare-mmojo-complete.sh
 fi
 ```
 
@@ -79,6 +79,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     fi
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
+    cp "$REPO_DIR/build/support-files/mmojo-read-me.html" "$DEPLOY_DIR/Read-Me.html"
 fi
 ```
 
@@ -112,5 +113,5 @@ It should look like:
 
 ---
 [MIT-Style License](/LICENSE)<br/>
-Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@Mmojo.net)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

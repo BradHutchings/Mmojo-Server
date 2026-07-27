@@ -1,5 +1,4 @@
 ## Maintenance
-
 These are the instructions for maintaining the files in the `/fies` directory. This turns into a mess if we're in the middle of rapid fire commits to llama.cpp. Test builds after maintenance!
 
 1. Switch to the `work-in-progress` branch for this page.
@@ -54,5 +53,5 @@ These are the instructions for maintaining the files in the `/fies` directory. T
 
 ---
 [MIT-Style License](/LICENSE)<br/>
-Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@Mmojo.net)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

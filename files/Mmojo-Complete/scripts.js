@@ -1,6 +1,14 @@
-// Copyright 2024-26 Brad Hutchings. 
-// All Rights Reserved.
-// License Inquiries: brad@BradHutchings.com.
+/*
+#  This is an original source file for the Mmojo Server repo. It is covered by
+#  the repo's MIT-style LICENSE:
+#
+#  https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
+#
+#  Copyright (c) 2025-26 Brad Hutchings.
+#  --
+#  Brad Hutchings
+#  brad@Mmojo.net
+*/
 
 const isMmojoPage = true;
 const kLogging = false;
@@ -69,7 +77,7 @@ const kWorkAreaTextPlaceholder =
     "Type some text in this work area that will get the language model started. The " +
 	"text you type is called a \"cue\".\n\n" +
     "Once you've entered your cue, click the Start button at the bottom or hold down " + 
-	"the SHIFT key type the ENTER key to start completing.\n\n" +
+	"the SHIFT key and type the ENTER key to start completing.\n\n" +
     "Remember: You are intelligent. LLMs do not think. Chat is an illusion.\n\n" +
     "Click the ? button (top-right) for more help.";
 

@@ -2,6 +2,8 @@
 ### About this Step
 In this step, you will package the build you just created and tested.
 
+**NOTE: PLEASE REVIEW THE [LICENSE FILE](/LICENSE) BEFORE DISTRIUBUTING ANY BUILDS YOU PACKAGE. YOU MAY NOT CALL WHAT YOU DISTRIBUITE "Mmojo Server".**
+
 ---
 ### Choose a Model
 Choose a model to include in the package. If you don't want one, choose "None".
@@ -81,5 +83,5 @@ mm-packages-backup.sh
 
 ---
 [MIT-Style License](/LICENSE)<br/>
-Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@Mmojo.net)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

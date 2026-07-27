@@ -82,6 +82,7 @@ export BUILD_SUBDIRECTORY_MACOS_X86_64="build-macos-x86_64"
 export BUILD_SUBDIRECTORY_MACOS_AARCH64="build-macos-aarch64"
 export BUILD_SUBDIRECTORY_COSMO_X86_64="build-cosmo-x86_64"
 export BUILD_SUBDIRECTORY_COSMO_AARCH64="build-cosmo-aarch64"
+export BUILD_SUBDIRECTORY_PI_AARCH64="build-pi-aarch64"
 export BUILD_SUBDIRECTORY_COSMO_APE="build-cosmo-ape"
 
 echo "Setting Build Pieces paths."

@@ -18,15 +18,6 @@ if [ -d "$HOME_SCRIPTS" ]; then
     chmod a+x "$HOME_SCRIPTS/"mm-*.sh
 fi
 
-if [ -d "$HOME_OC_SCRIPTS" ]; then
-    cp "$REPO_DIR_SCRIPTS_OPENCLAW/oc-"*.sh "$HOME_OC_SCRIPTS"
-    cp "$REPO_DIR_SCRIPTS/mm-environment-variables.sh" "$HOME_OC_SCRIPTS"
-    cp "$REPO_DIR_SCRIPTS/mm-repo-"*.sh "$HOME_OC_SCRIPTS"
-    cp "$REPO_DIR_SCRIPTS/mm-share-"*.sh "$HOME_OC_SCRIPTS"
-    chmod a+x "$HOME_OC_SCRIPTS/mm-"*.sh
-    chmod a+x "$HOME_OC_SCRIPTS/oc-"*.sh
-fi
-
 cd "$wd"
 
 # printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
@@ -40,5 +31,5 @@ cd "$wd"
 #  Copyright (c) 2025-26 Brad Hutchings.
 #  --
 #  Brad Hutchings
-#  brad@bradhutchings.com
+#  brad@Mmojo.net
 ################################################################################

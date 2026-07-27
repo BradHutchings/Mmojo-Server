@@ -24,7 +24,7 @@ Prepare to build Mmojo Server (llama.cpp with patches and extensions):
 if [ ! -d "$BUILD_DIR" ]; then
     mm-prepare-clone-llama-cpp.sh
     mm-prepare-patch-llama-cpp.sh
-    # mm-prepare-customize-webui.sh
+    mm-prepare-mmojo-complete.sh
 fi
 ```
 
@@ -55,10 +55,10 @@ _BUILD_SUBDIR=""
 _PACKAGE_FILE=""
 _RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
-if [[ $(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"* ]] && [ "$_BUILD_CHOICE" = "-native" ]; then
+if [[ ($(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"*) && (("$_BUILD_CHOICE" = "-native") || ("$_BUILD_CHOICE" = "pi")) ]]; then
     _GPUS_CHOICE=""
     _BUILD_CHOICE="pi"
-    _BUILD_SUBDIR="$BUILD_DIR/$EXECUTABLE_RPI5_AARCH64"
+    _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_PI_AARCH64"
     _PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
     _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
     _TOUCH_FILE="build-aarch64-rpi5"
@@ -91,6 +91,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     fi
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
+    cp "$REPO_DIR/build/support-files/mmojo-read-me.html" "$DEPLOY_DIR/Read-Me.html"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
     cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE" ]; then

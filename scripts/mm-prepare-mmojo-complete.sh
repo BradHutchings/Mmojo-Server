@@ -20,7 +20,6 @@ if [ "$1" == "" ]; then
 
     TODAY=$(date +%Y-%m-%d)
     $MMOJO_SED -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/scripts.js
-    $MMOJO_SED -i -e "s/\[\[UPDATED\]\]/$TODAY/g" Mmojo-Complete/bookmark-scripts.js
     cd $wd
 fi
 
@@ -35,5 +34,5 @@ printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME.\n*\n$STARS\n\n"
 #  Copyright (c) 2025-26 Brad Hutchings.
 #  --
 #  Brad Hutchings
-#  brad@bradhutchings.com
+#  brad@Mmojo.net
 ################################################################################

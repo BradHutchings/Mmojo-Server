@@ -115,7 +115,7 @@ echo "          Processor: $processor"
 echo "          Variation: $variation"
 echo "               GPUs: $gpus"
 echo "         arch param: $ARCH_LEVEL_PARAM"
-echo "       subdirectory: $BUILD_SUBDIRECTORY"
+echo "       subdirectory: $THIS_BUILD_DIR/$BUILD_SUBDIRECTORY"
 echo "        building in: $BUILD_SUBDIRECTORY"
 echo "        GGML Params: $GGML_PARAMS"
 echo "\$MMOJO_EXTRA_PARAMS: $MMOJO_EXTRA_PARAMS"
@@ -141,6 +141,14 @@ if [ -d "$THIS_BUILD_DIR" ] && [ "$BUILD_SUBDIRECTORY" != "" ]; then
 
     echo
     echo "Build command: cmake --build \"$BUILD_SUBDIRECTORY\""
+else
+    echo "Failed build directory test."
+    if [ -d "$THIS_BUILD_DIR" ]; then
+        echo "Passed -d \$THIS_BUILD_DIR."
+    fi
+    if  [ "$BUILD_SUBDIRECTORY" != "" ]; then
+        echo "Passed \$BUILD_SUBDIRECTORY not empty."
+    fi
 fi
 
 cd $HOME
@@ -156,5 +164,5 @@ printf "\n$STARS\n*\n* FINISHED: $SCRIPT_NAME $1 $2 $3.\n*\n$STARS\n\n"
 #  Copyright (c) 2025-26 Brad Hutchings.
 #  --
 #  Brad Hutchings
-#  brad@bradhutchings.com
+#  brad@Mmojo.net
 ################################################################################

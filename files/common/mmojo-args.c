@@ -22,6 +22,16 @@
   - Start with: tool/args/args2.c.
   - cosmo_args() --> mmojo_args().
   - Patch up includes.
+	----------
+	This is a modified source file for the Mmojo Server repo. It is covered by
+	the repo's MIT-style LICENSE:
+
+	https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
+
+	Copyright (c) 2025-26 Brad Hutchings.
+	--
+	Brad Hutchings
+	brad@Mmojo.net
 */
 
 #include "mmojo-args.h"

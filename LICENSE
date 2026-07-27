@@ -17,6 +17,10 @@ of the Software.
 2. Sponsorship messages wrapped with <!-- SPONSOR --> and <!-- END SPONSOR -->
 shall not be modified or removed from .md files.
 
+3. "Mmojo Server" is a trademark of Brad Hutchings. If you distribute the
+Software, you MUST call it something else that does not confuse people about
+its origin. You MAY say it is "based on Mmojo Server".
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE

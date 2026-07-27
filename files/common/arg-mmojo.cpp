@@ -10,9 +10,16 @@
       https://raw.githubusercontent.com/ggml-org/llama.cpp/refs/heads/master/common/arg.cpp
 
   -Brad 2025-12-05
+  ----------
+	This is a modified source file for the Mmojo Server repo. It is covered by
+	the repo's MIT-style LICENSE:
+
+	https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
+
+	Copyright (c) 2025-26 Brad Hutchings.
   --
-  Brad Hutchings
-  brad@bradhutchings.com
+	Brad Hutchings
+	brad@Mmojo.net
 */
 
 #include "arg.h"

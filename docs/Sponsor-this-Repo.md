@@ -6,15 +6,15 @@ You can become a recognized and valued partner in my mission for private and loc
 
 Prices start at $2000/year. You'll enable my mission. You'll reach the people who will buy your human-first products!
 
-[Email me if interested](mailto:brad@BradHutchings.com?subject=Mmojo%20Server%20Install%20Help).
+[Email me if interested](mailto:brad@Mmojo.net?subject=Mmojo%20Server%20Install%20Help).
 
 -Brad<br/>
 \--<br/>
 Brad Hutchings<br/>
-brad@BradHutchings.com<br/><br/>
+brad@Mmojo.net<br/><br/>
 <!-- END SPONSOR -->
 
 ---
 [MIT-Style License](/LICENSE)<br/>
-Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@bradhutchings.com)<br/>
+Copyright (c) 2025-26 [Brad Hutchings](mailto:brad@Mmojo.net)<br/>
 [https://github.com/BradHutchings/Mmojo-Server](https://github.com/BradHutchings/Mmojo-Server)

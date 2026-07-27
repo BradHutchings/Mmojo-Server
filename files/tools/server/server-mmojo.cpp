@@ -10,9 +10,16 @@
       https://raw.githubusercontent.com/ggml-org/llama.cpp/refs/heads/master/tools/server/server.cpp
 
   -Brad 2025-11-09
-  --
-  Brad Hutchings
-  brad@bradhutchings.com
+	----------
+	This is a modified source file for the Mmojo Server repo. It is covered by
+	the repo's MIT-style LICENSE:
+
+	https://github.com/BradHutchings/Mmojo-Server/blob/main/LICENSE
+
+	Copyright (c) 2025-26 Brad Hutchings.
+	--
+	Brad Hutchings
+	brad@Mmojo.net
 */
 
 #include "server-context.h"

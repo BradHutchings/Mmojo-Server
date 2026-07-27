@@ -35,7 +35,7 @@ Prepare to build Mmojo Server (llama.cpp with patches and extensions):
 if [ ! -d "$BUILD_DIR" ]; then
     mm-prepare-clone-llama-cpp.sh
     mm-prepare-patch-llama-cpp.sh
-    # mm-prepare-customize-webui.sh
+    mm-prepare-mmojo-complete.sh
 fi
 ```
 
@@ -97,6 +97,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     fi
     cp "$REPO_DIR/build/support-files/mmojo-chat.html" "$DEPLOY_DIR/Connect-to-Mmojo-Chat.html"
     cp "$REPO_DIR/build/support-files/mmojo-connect.html" "$DEPLOY_DIR/Connect-to-Mmojo-Connect.html"
+    cp "$REPO_DIR/build/support-files/mmojo-read-me.html" "$DEPLOY_DIR/Read-Me.html"
     cp "$REPO_DIR/LICENSE" "$DEPLOY_DIR"
     cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_RPC_SERVER_FILE" "$DEPLOY_DIR"
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_RPC_SERVER_ARGS_FILE" ]; then

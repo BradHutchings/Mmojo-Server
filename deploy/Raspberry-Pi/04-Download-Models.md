@@ -22,7 +22,7 @@ EOF
 mm-models-download.sh
 ```
 
-**Optional:** Qwen3.5 models implement so-called "thinking" and "tool calling". Qwen3.5 models, particularly 9B, seem to be the best for use with OpenClaw. Run this script to download them.
+**Optional:** Qwen3.5 models implement so-called "thinking" and "tool calling". Qwen3.5 models, particularly 9B, work well for genrating code for simple apps.
 ```
 cat << EOF >> $_MODEL_QUEUE
 Qwen3.5-2B-v3.5-q8_0.gguf

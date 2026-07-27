@@ -12,7 +12,7 @@ The default set of models contains Google Gemma 270M, 1B, and 4B. Run this comma
 mm-models-create-directory.sh
 mm-models-download.sh
 ```
-**Optional:** Here are essential Gemma 4 and Qwen3.5 quantizations for OpenClaw. Run this script to download them.
+**Optional:** Here are essential Gemma 4 and Qwen3.5 quantizations for creating simple apps. Run this script to download them.
 ```
 cat << EOF >> $_MODEL_QUEUE
 Google-Gemma-E4B-Instruct-v4-q4_K_M.gguf
@@ -38,7 +38,7 @@ EOF
 mm-models-download.sh
 ```
 
-**Optional:** Qwen3.5 models implement so-called "thinking" and "tool calling". Qwen3.5 models, particularly 9B, seem to be the best for use with OpenClaw. Run this script to download them.
+**Optional:** Qwen3.5 models implement so-called "thinking" and "tool calling". Qwen3.5 models, particularly 9B, seem to be the best for creating simple apps. Run this script to download them.
 ```
 cat << EOF >> $_MODEL_QUEUE
 Qwen3.5-2B-v3.5-q8_0.gguf

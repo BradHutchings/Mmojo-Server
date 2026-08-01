@@ -24,12 +24,12 @@ Here are additional flags that can be used when launching `mmojo-server`:
   - Implemented in: [server-context-mmojo.cpp](/files/tools/server/server-context-mmojo.cpp).
 
 - `--show-prompt`
-  - If present, the user's prompt will be displayed in diagnostic output stream. This has been useful for figuring out what OpenClaw is trying to accomplish.
+  - If present, the user's prompt will be displayed in diagnostic output stream.
   - Example: `--show-prompt`
   - Implemented in: [server-context-mmojo.cpp](/files/tools/server/server-context-mmojo.cpp).
  
 - `--show-completion`
-  - If present, the finished completion (response) to the user's prompt will be displayed in diagnostic output stream. This has been useful for figuring out what OpenClaw is trying to accomplish.
+  - If present, the finished completion (response) to the user's prompt will be displayed in diagnostic output stream.
   - Example: `--show-completion`
   - Implemented in: [server-context-mmojo.cpp](/files/tools/server/server-context-mmojo.cpp).
  

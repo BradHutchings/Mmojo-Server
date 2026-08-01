@@ -48,7 +48,6 @@ echo "Setting Mmojo-Server repo paths."
 export REPO_DIR="$HOME/mm-repo"
 export REPO_DIR_FILES="$REPO_DIR/files"
 export REPO_DIR_SCRIPTS="$REPO_DIR/scripts"
-export REPO_DIR_SCRIPTS_OPENCLAW="$REPO_DIR/scripts-openclaw"
 
 echo "Setting Mmojo Share paths."
 if [ "$(uname -s)" = "Darwin" ]; then

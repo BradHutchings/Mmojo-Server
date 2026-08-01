@@ -77,6 +77,16 @@ static void log_server_request(const httplib::Request & req, const httplib::Resp
     SRV_DBG("response: %s\n", res.body.c_str());
 }
 
+// returns true if the Origin header value's host is localhost / 127.0.0.1 / ::1 (any port)
+static bool origin_is_localhost(const std::string & origin) {
+    try {
+        const std::string host = common_http_parse_url(origin).host;
+        return host == "localhost" || host == "127.0.0.1" || host == "::1";
+    } catch (const std::exception &) {
+        return false;
+    }
+}
+
 // For Google Cloud Platform deployment compatibility
 struct gcp_params {
     bool enabled;
@@ -284,9 +294,9 @@ bool server_http_context::init(const common_params & params) {
                 return true;
             }
             // Mmojo Server END
-          
-            if (frontend_paths.count(req.path)) {
-                return true;
+
+			if (frontend_paths.count(req.path)) {
+                return true; // frontend asset, allow it to load and show "loading"
             }
             // no endpoints are allowed to be accessed when the server is not ready
             // this is to prevent any data races or inconsistent states
@@ -307,13 +317,26 @@ bool server_http_context::init(const common_params & params) {
     };
 
     // register server middlewares
-    srv->set_pre_routing_handler([middleware_validate_api_key, middleware_server_state](const httplib::Request & req, httplib::Response & res) {
-        res.set_header("Access-Control-Allow-Origin", req.get_header_value("Origin"));
+    srv->set_pre_routing_handler([&params, middleware_validate_api_key, middleware_server_state](const httplib::Request & req, httplib::Response & res) {
+        if (params.cors_credentials && params.cors_origins == "*") {
+            // special case: echo back the Origin header to allow any origin to access the server with credentials
+            res.set_header("Access-Control-Allow-Origin", req.get_header_value("Origin"));
+        } else if (params.cors_origins == "localhost") {
+            // special case: only reflect the Origin header if it is a localhost origin
+            std::string origin = req.get_header_value("Origin");
+            if (!origin.empty() && origin_is_localhost(origin)) {
+                res.set_header("Access-Control-Allow-Origin", origin);
+            } else if (!origin.empty()) {
+                SRV_WRN("(CORS) skip non-localhost origin: %s\n", origin.c_str());
+            }
+        } else {
+            res.set_header("Access-Control-Allow-Origin", params.cors_origins);
+        }
         // If this is OPTIONS request, skip validation because browsers don't include Authorization header
         if (req.method == "OPTIONS") {
-            res.set_header("Access-Control-Allow-Credentials", "true");
-            res.set_header("Access-Control-Allow-Methods",     "GET, POST");
-            res.set_header("Access-Control-Allow-Headers",     "*");
+            res.set_header("Access-Control-Allow-Credentials", params.cors_credentials ? "true" : "false");
+            res.set_header("Access-Control-Allow-Methods",     params.cors_methods);
+            res.set_header("Access-Control-Allow-Headers",     params.cors_headers);
             res.set_content("", "text/html"); // blank response, no data
             return httplib::Server::HandlerResponse::Handled; // skip further processing
         }
@@ -325,7 +348,7 @@ bool server_http_context::init(const common_params & params) {
         }
         return httplib::Server::HandlerResponse::Unhandled;
     });
-  
+	
     // Mmojo Server START
     srv->set_post_routing_handler([](const httplib::Request & req, httplib::Response & res) {
         std::string cacheControlValue = "max-age=3600";
@@ -387,7 +410,6 @@ bool server_http_context::init(const common_params & params) {
                 return false;
             }
         } else {
-          
 #if defined(LLAMA_UI_HAS_ASSETS)
             static auto handle_gzip_header = [](const httplib::Request & req, httplib::Response & res) {
                 if (!llama_ui_use_gzip()) {
@@ -442,10 +464,11 @@ bool server_http_context::init(const common_params & params) {
                     return false;
                 };
             };
-          
+
+            // main index file
             srv->Get(params.api_prefix + "/",           serve_asset_cached("index.html", true));
             srv->Get(params.api_prefix + "/index.html", serve_asset_cached("index.html", true));
-            
+
             // All remaining assets registered directly from the embedded asset table.
             // PWA revalidation files (sw.js, manifest, version.json) use no-cache;
             // everything else is immutable.
@@ -460,7 +483,6 @@ bool server_http_context::init(const common_params & params) {
                 if (a.name == "index.html") continue;  // served at "/" and "/index.html" above
                 if (no_cache_names.count(a.name)) {
                     SRV_DBG("serve nocache for %s\n", a.name.c_str());
-                  
                     srv->Get(params.api_prefix + "/" + a.name, serve_asset_nocache(a.name));
                 } else {
                     srv->Get(params.api_prefix + "/" + a.name, serve_asset_cached(a.name, false));

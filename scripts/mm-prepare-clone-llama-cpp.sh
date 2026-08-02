@@ -49,8 +49,8 @@ cd $THIS_BUILD_DIR
 # Up through: https://github.com/ggml-org/llama.cpp/commit/a7a6d0d269c896218b6c78e0933bd6a17519d3f6
 # a7a6d0d269c896218b6c78e0933bd6a17519d3f6
 
-# Verified: 2026-07-11
-git checkout e3546c7948e3af463d0b401e6421d5a4c2faf565 
+# Verified: 2026-08-01
+git checkout a7a6d0d269c896218b6c78e0933bd6a17519d3f6 
 
 # Verified: 2026-07-11
 # Previous: e3546c7948e3af463d0b401e6421d5a4c2faf565

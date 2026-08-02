@@ -46,14 +46,14 @@ cd $THIS_BUILD_DIR
 
 cd $THIS_BUILD_DIR
 # Roll the llama.cpp repo back to last known working.
-# Up through: https://github.com/ggml-org/llama.cpp/commit/e3546c7948e3af463d0b401e6421d5a4c2faf565
-# e3546c7948e3af463d0b401e6421d5a4c2faf565
+# Up through: https://github.com/ggml-org/llama.cpp/commit/a7a6d0d269c896218b6c78e0933bd6a17519d3f6
+# a7a6d0d269c896218b6c78e0933bd6a17519d3f6
+
+# Verified: 2026-08-01
+git checkout a7a6d0d269c896218b6c78e0933bd6a17519d3f6 
 
 # Verified: 2026-07-11
-git checkout e3546c7948e3af463d0b401e6421d5a4c2faf565 
-
-# Verified: 2026-05-30
-# Previous: 2d9b7c8e98e1fc0b768f46ec176756a47738e460
+# Previous: e3546c7948e3af463d0b401e6421d5a4c2faf565
 
 # To see where you're checked out:
 # git log -1

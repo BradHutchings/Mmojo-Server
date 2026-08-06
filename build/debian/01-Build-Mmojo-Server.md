@@ -70,8 +70,8 @@ elif [ $(uname -m) = "x86_64" ]; then
     _TOUCH_FILE="$BUILD_SUBDIRECTORY_DEBIAN_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
 elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
     _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_DEBIAN_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-debian-arm64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-debian-arm64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _PACKAGE_FILE="Mmojo-Server-debian-aarch64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-debian-aarch64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _TOUCH_FILE="$BUILD_SUBDIRECTORY_DEBIAN_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
 

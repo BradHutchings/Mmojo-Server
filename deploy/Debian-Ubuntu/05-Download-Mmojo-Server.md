@@ -34,9 +34,9 @@ URL=""
 if [[ $(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"* ]]; then
     URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-rpi5.zip"
 elif [ $(uname -m) = "x86_64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-perf-cud.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-debian-x86_64-performant-cud.zip"
 elif [ $(uname -m) = "aarch64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-perf-cud.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-debian-aarch64-perf-cud.zip"
 fi
 ```
 

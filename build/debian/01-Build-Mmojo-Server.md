@@ -57,7 +57,7 @@ _RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
 if [[ ($(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"*) && (("$_BUILD_CHOICE" = "-native") || ("$_BUILD_CHOICE" = "pi")) ]]; then
     _GPUS_CHOICE=""
-    _BUILD_CHOICE="pi"
+    _BUILD_CHOICE="-pi"
     _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_PI_AARCH64"
     _PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
     _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"

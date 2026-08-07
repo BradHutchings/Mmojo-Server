@@ -26,13 +26,13 @@ if [ "$processor" != "x86_64" ] && [ "$processor" != "aarch64" ]; then
     processor="x86_64"
 fi
 
-if [ "$variation" != "compatible" ] && [ "$variation" != "performant" ] && \
-    [ "$variation" != "native" ] && [ "$variation" != "pi" ]; then
-    variation="native"
+if [ "$variation" != "-compatible" ] && [ "$variation" != "-performant" ] && \
+    [ "$variation" != "-native" ] && [ "$variation" != "-pi" ]; then
+    variation="-native"
 fi
 
 if [ "$build_subdirectory" == "" ]; then
-    build_subdirectory="build-$processor-$variation-$gpus"
+    build_subdirectory="build-$processor$variation$gpus"
 fi
 
 THIS_BUILD_DIR=$BUILD_DIR
@@ -49,23 +49,23 @@ VERBOSE="OFF"
 
 if [ $processor == "x86_64" ]; then
     ARCH_LEVEL_PARAM=" -march=$ARCH_X86_64_COMPATIBLE "
-    if [ $variation == "performant" ]; then
+    if [ $variation == "-performant" ]; then
         ARCH_LEVEL_PARAM=" -march=$ARCH_X86_64_PERFORMANT  "
         # Reference that x86-64-v3 supports these:
         # https://infotechys.com/x86-64-v3-architecture/
         GGML_PARAMS="-DGGML_NATIVE=OFF -DGGML_AVX=ON -DGGML_AVX2=ON -DGGML_BMI2=ON -DGGML_F16C=ON -DGGML_FMA=ON "
         GGML_PARAMS+="-DGGML_SCHED_MAX_COPIES=4 -DGGML_SSE42=ON -DGGML_USE_CPU_REPACK=ON "
         GGML_PARAMS+="-DGGML_USE_LLAMAFILE=ON -DGGML_USE_OPENMP=ON "
-    elif [ $variation == "native" ]; then
+    elif [ $variation == "-native" ]; then
         ARCH_LEVEL_PARAM=" -march=$ARCH_X86_64_NATIVE  "
         GGML_PARAMS=""
     fi
 fi
 if [ $processor == "aarch64" ]; then
     ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_COMPATIBLE "
-    if [ $variation == "performant" ]; then
+    if [ $variation == "-performant" ]; then
         ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_PERFORMANT  "
-    elif [ $variation == "native" ]; then
+    elif [ $variation == "-native" ]; then
         ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_NATIVE "
         GGML_PARAMS=""
     fi
@@ -75,7 +75,7 @@ fi
 # if [[ $(cat /proc/cpuinfo | grep "Model") == *"Raspberry Pi 5"* ]]; then
 
 # Pass in pi as a variation to trigger this.
-if [ "$variation" == "pi" ]; then
+if [ "$variation" == "-pi" ]; then
     ARCH_LEVEL_PARAM=" -march=$ARCH_AARCH64_NATIVE "
     GGML_PARAMS=""
     gpus=""

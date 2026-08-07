@@ -47,9 +47,9 @@ fi
 ```
 URL=""
 if [ $(uname -m) = "x86_64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-x86_64-comp-cud.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-debian-x86_64-comp-cud.zip"
 elif [ $(uname -m) = "aarch64" ]; then
-    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-aarch64-comp-cud.zip"
+    URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy/Mmojo-Server-debian-aarch64-comp-cud.zip"
 fi
 ```
 </details>

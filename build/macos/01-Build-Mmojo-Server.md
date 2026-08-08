@@ -18,9 +18,9 @@ brew install cmake
 
 If they're already installed, upodate them.
 ```
-brew update -y npm
-brew update -y gcc
-brew update -y cmake
+brew upgrade -y npm
+brew upgrade -y gcc
+brew upgrade -y cmake
 ```
 
 `npm` seems to get caught up with certificate problems, so run this:

@@ -44,7 +44,7 @@ fi
 Choose the build type (native, performant, compatible):
 ```
 mm-build-choose.sh
-_BUILD_CHOICE="$(cat /tmp/mm-build-choose.out)"
+_BUILD_CHOICE="-$(cat /tmp/mm-build-choose.out)"
 rm /tmp/mm-build-choose.out
 ```
 

@@ -612,20 +612,19 @@ struct server_slot {
     // Mmojo Server START
     // Replace the whole print_timings_pp() function.
     void print_timings_pp() const {
-        const double n_prompt_second = stats.n_prompt_tps();
-        // const double f_progress = task->n_tokens() > 0 ? (double) prompt.n_tokens() / task->n_tokens() : 0.0;
-
+        const double t_prompt_total = stats.t_prompt_ms();
         // if (t_prompt_processing < 3000.0) {
         if (t_prompt_total < 3000.0) {
             // return;
         }
 
-        // SLT_INF(*this, "prompt processing, n_tokens = %6d, progress = %.2f, t = %6.2f s / %.2f tokens per second\n",
-        //        n_prompt_tokens_processed, f_progress, t_prompt_processing / 1e3, n_prompt_second);
-      
-        float percent_complete = (float) 100.0 * (int) stats.n_prompt_processed / task->n_tokens();
+		const double n_prompt_second = stats.n_prompt_tps();
+        // const double f_progress = task->n_tokens() > 0 ? (double) prompt.n_tokens() / task->n_tokens() : 0.0;      
+        float percent_complete = task->n_tokens() > 0 ? (float) 100.0 * (int) stats.n_prompt_processed / task->n_tokens() : 0.0;
 
-        // batch.n_tokens is 0. Not ideal.
+		// SLT_INF(*this, "prompt processing, n_tokens = %6d, progress = %.2f, t = %6.2f s / %.2f tokens per second\n",
+        //        n_prompt_tokens_processed, f_progress, t_prompt_processing / 1e3, n_prompt_second);
+
         SLT_INF(*this, "prompt processing: %d / %d (%.1f%%) complete, last batch: %d, time: %.2f sec, tokens/sec: %.2f\n", 
           (int) stats.n_prompt_processed, task->n_tokens(), percent_complete, last_batch_size, t_prompt_total / 1e3, n_prompt_second );
     }

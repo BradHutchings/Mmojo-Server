@@ -57,7 +57,7 @@ _RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
 if [[ ($(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"*) && (("$_BUILD_CHOICE" = "-native") || ("$_BUILD_CHOICE" = "pi")) ]]; then
     _GPUS_CHOICE=""
-    _BUILD_CHOICE="pi"
+    _BUILD_CHOICE="-pi"
     _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_PI_AARCH64"
     _PACKAGE_FILE="Mmojo-Server-aarch64-rpi5.zip"
     _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
@@ -65,15 +65,24 @@ if [[ ($(cat /proc/cpuinfo | grep "Model") = *"Raspberry Pi 5"*) && (("$_BUILD_C
 elif [ $(uname -m) = "x86_64" ]; then
     echo "Building for Intel Macs is not supported yet."
     _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_DEBIAN_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-macos-x86_64-native$_GPUS_CHOICE.zip"
-    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
+    _PACKAGE_FILE="Mmojo-Server-debian-x86_64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-debian-x86_64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _TOUCH_FILE="$BUILD_SUBDIRECTORY_DEBIAN_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
 elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
     _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_DEBIAN_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-arm64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _PACKAGE_FILE="Mmojo-Server-debian-aarch64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-debian-aarch64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
     _TOUCH_FILE="$BUILD_SUBDIRECTORY_DEBIAN_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
+
+echo "Building with these parameters:"
+echo "    _BUILD_CHOICE: $_BUILD_CHOICE"
+echo "     _GPUS_CHOICE: $_GPUS_CHOICE"
+echo "    _BUILD_SUBDIR: $_BUILD_SUBDIR"
+echo "    _PACKAGE_FILE: $_PACKAGE_FILE"
+echo "_RPC_PACKAGE_FILE: $_RPC_PACKAGE_FILE"
+echo "      _TOUCH_FILE: $_TOUCH_FILE"
+echo "-------------------------------------"
 mm-build-for-platform.sh "$_BUILD_SUBDIR" "$_BUILD_CHOICE" "$_GPUS_CHOICE"
 ```
 

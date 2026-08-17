@@ -18,9 +18,9 @@ brew install cmake
 
 If they're already installed, upodate them.
 ```
-brew update -y npm
-brew update -y gcc
-brew update -y cmake
+brew upgrade -y npm
+brew upgrade -y gcc
+brew upgrade -y cmake
 ```
 
 `npm` seems to get caught up with certificate problems, so run this:
@@ -44,7 +44,7 @@ fi
 Choose the build type (native, performant, compatible):
 ```
 mm-build-choose.sh
-_BUILD_CHOICE="$(cat /tmp/mm-build-choose.out)"
+_BUILD_CHOICE="-$(cat /tmp/mm-build-choose.out)"
 rm /tmp/mm-build-choose.out
 ```
 
@@ -67,17 +67,24 @@ _PACKAGE_FILE=""
 _RPC_PACKAGE_FILE=""
 _TOUCH_FILE=""
 if [ $(uname -m) = "x86_64" ]; then
-    echo "Building for Intel Macs is not supported yet."
-    # _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_MACOS_X86_64-$_BUILD_CHOICE$_GPUS_CHOICE"
-    # _PACKAGE_FILE="Mmojo-Server-macos-x86_64-native$_GPUS_CHOICE.zip"
-    # _RPC_PACKAGE_FILE="Mmojo-RPC-Server-aarch64-rpi5.zip"
-    # _TOUCH_FILE="$BUILD_SUBDIRECTORY_MACOS_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_MACOS_X86_64$_BUILD_CHOICE$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-macos-x86_64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-x86_64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="macos-x86_64$_BUILD_CHOICE$_GPUS_CHOICE"
 elif [ $(uname -m) = "aarch64" ] || [ $(uname -m) = "arm64" ]; then
-    _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_MACOS_AARCH64-$_BUILD_CHOICE$_GPUS_CHOICE"
-    _PACKAGE_FILE="Mmojo-Server-macos-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE.zip"
-    _TOUCH_FILE="macos-aarch64-$_BUILD_CHOICE$_GPUS_CHOICE"
+    _BUILD_SUBDIR="$BUILD_SUBDIRECTORY_MACOS_AARCH64$_BUILD_CHOICE$_GPUS_CHOICE"
+    _PACKAGE_FILE="Mmojo-Server-macos-aarch64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _RPC_PACKAGE_FILE="Mmojo-RPC-Server-macos-aarch64$_BUILD_CHOICE$_GPUS_CHOICE.zip"
+    _TOUCH_FILE="macos-aarch64$_BUILD_CHOICE$_GPUS_CHOICE"
 fi
+
+echo "Building with these parameters:"
+echo "    _BUILD_CHOICE: $_BUILD_CHOICE"
+echo "     _GPUS_CHOICE: $_GPUS_CHOICE"
+echo "    _BUILD_SUBDIR: $_BUILD_SUBDIR"
+echo "    _PACKAGE_FILE: $_PACKAGE_FILE"
+echo "_RPC_PACKAGE_FILE: $_RPC_PACKAGE_FILE"
+echo "      _TOUCH_FILE: $_TOUCH_FILE"
 mm-build-for-platform.sh "$_BUILD_SUBDIR" "$_BUILD_CHOICE" "$_GPUS_CHOICE"
 ```
 
@@ -91,7 +98,7 @@ if [ "$DEPLOY_DIR" != "" ]; then
     cp "$BUILD_DIR/$_BUILD_SUBDIR/bin/$_PACKAGE_MMOJO_SERVER_FILE" "$DEPLOY_DIR"
     cp -r "$BUILD_DIR/Mmojo-Complete" "$DEPLOY_DIR"
     if [ ! -f "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE" ]; then
-        cp "$REPO_DIR/build/support-files/mmojo-server-args-complete" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
+        cp "$REPO_DIR/build/support-files/mmojo-server-args" "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
         $MMOJO_SED -i -e 's/# -ngl/-ngl/g' "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
         $MMOJO_SED -i -e 's/# all/all/g' "$DEPLOY_DIR/$_PACKAGE_MMOJO_SERVER_ARGS_FILE"
     fi

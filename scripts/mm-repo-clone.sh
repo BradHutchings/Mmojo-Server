@@ -22,7 +22,7 @@ git clone https://github.com/BradHutchings/mmojo-server.git $REPO_DIR
 source $REPO_DIR_SCRIPTS/mm-environment-variables.sh
 
 # mm-repo-update-local.sh copies mm- scripts to $HOME/mm-scripts
-$REPO_DIR_SCRIPTS/mm-repo-update-local.sh
+bash $REPO_DIR_SCRIPTS/mm-repo-update-local.sh
 
 if ! grep -q "mm-env=" "$HOME/$MMOJO_RC_FILE"; then
 cat << EOF1 >> $HOME/$MMOJO_RC_FILE

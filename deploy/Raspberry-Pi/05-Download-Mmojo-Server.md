@@ -7,7 +7,7 @@ In this step, we will download Mmojo Server from Hugging Face.
 Set the URL for the Mmojo Server package that runs on Raspberry Pi. This build was compiled on a Raspberry Pi with native CPU features enabled.
 ```
 DEPLOY_URL="https://huggingface.co/bradhutchings/Mmojo-Server/resolve/main/deploy"
-URL="$DEPLOY_URL/Mmojo-Server-raspberry-pi-5.zip"
+URL="$DEPLOY_URL/Mmojo-Server-aarch64-rpi5.zip"
 ```
 
 ---
